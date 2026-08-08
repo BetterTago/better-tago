@@ -49,11 +49,56 @@ The palette is separately **deliberately independent** of the municipality's vis
 `portal.paletteNote` in `config/lgu.config.json`: visual similarity to official material reads as affiliation
 to a resident skimming a page, which is the one impression this project must never give.
 
-> **Two things still open.** Nobody has compared the mark's greens against the official municipal site's own
-> colours to confirm they are not accidentally close — independence is asserted, not verified. And because the
-> emblem is derived from municipal motifs rather than unrelated to them, **"does not imply endorsement" is a
-> judgement this project has made about itself and has not put to the municipality.** Both belong in the
-> conversation that settles the seal question.
+### The colour comparison — run 2026-08-09
+
+**Result: no collision, and nothing to change.** Independence is now measured rather than asserted.
+
+**Method.** Every hex literal in the official municipal site's home page and in its theme's `theme.css` and
+`style.css` was extracted, converted to OKLCH, and compared against this mark's four colours and the portal's
+`primary` and `accent` ramps. Hue gap is the metric that matters — two colours a resident would call "the same
+green" sit within a few degrees of each other, whatever their lightness.
+
+**What the official site's own palette turned out to be: greyscale.** Its chrome runs `#f7f7f7` → `#e9e9e9` →
+`#313131`, and it declares **no chromatic brand colour at all** — the site is a Philippine government
+WordPress template, and the template is neutral.
+
+**The one apparent near-miss, and why it is not one.** The closest pair found was a green at hue 148.2°
+against this mark's emblem green at 146.1° — a 2.1° gap, which would be a genuine collision. It is not
+municipal. That value is `#67a671`, one stop of WordPress's stock _"subdued olive"_ gradient preset, which
+ships with the software on every site that runs it. The other chromatic value in range, a red at hue 26.0°, is
+a loading-placeholder animation belonging to a popular-posts plugin. **Neither is a colour the municipality
+chose**, and this is recorded precisely so the next contributor who runs this comparison does not rediscover
+the same 2.1° and mistake it for a real finding.
+
+**Against colours the municipality actually chose, there is nothing to compare** — it has not declared any on
+its website. The portal's teal `primary` (hue ≈ 184°) and amber `accent` (hue ≈ 50–60°) therefore collide with
+nothing, and the mark's greens collide with nothing.
+
+**What this comparison does _not_ cover**, and should not be read as covering: the seal's own colours as
+printed, municipal signage, letterhead, vehicle livery, or anything else off the website. It compared one
+website's CSS.
+
+> **The residual, stated plainly rather than resolved quietly.** Because the emblem is derived from municipal
+> motifs rather than unrelated to them, **"does not imply endorsement" remains a judgement this project has
+> made about itself.** It has not been put to the municipality, and — with this project taking its information
+> from the official site directly rather than by correspondence — there is no plan to put it to them.
+>
+> The position this project takes, and will defend: no seal artwork is reproduced, the cues are abstracted
+> past recognition, the measurement above found no collision with anything the municipality chose, and every
+> page states the project is independent and not an official channel. **If the municipality ever says the mark
+> reads as theirs, it gets redrawn** — that commitment stands whether or not anyone asks first.
+
+## Licence
+
+**CC BY 4.0** — share and adapt with attribution, including commercially. Recorded in `LICENSE` at the root
+of this repository, which is the authoritative statement; this is a pointer, not a second licence.
+
+It is stated at all because an asset with no recorded licence is a problem in a civic project, not a detail —
+and one carrying motifs derived from municipal imagery is a slightly larger one. What the licence cannot grant
+is permission to imply that this project or the municipality endorses a reuse, or to deploy this mark somewhere
+it would read as municipal. That is a question about truthfulness, not about copyright.
+
+**The municipal seal is not covered by this or any licence here, because it is not here.**
 
 ## Framing
 

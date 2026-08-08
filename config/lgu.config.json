@@ -9,7 +9,7 @@
     "paletteNote": "Provisional, and DELIBERATELY INDEPENDENT of the municipality's own visual identity. Visual similarity to official material would imply an endorsement this project does not have. Do not derive these from tago.gov.ph, and do not use the municipal seal anywhere without written permission.",
     "tagline": "The Municipality of Tago's public information, made findable.",
     "independent": true,
-    "repository": null,
+    "repository": "https://github.com/BetterTago/better-tago",
     "network": { "name": "BetterGov.ph", "url": "https://bettergov.ph/" }
   },
   "lgu": {
@@ -60,7 +60,7 @@
     },
     "project": {
       "email": null,
-      "correctionChannel": null
+      "correctionChannel": "https://github.com/BetterTago/better-tago/issues"
     }
   },
   "emergency": {
@@ -79,7 +79,6 @@
     "psa": "https://psa.gov.ph"
   },
   "pending": {
-    "portal.repository": "The public repository has not been created yet. A resident cannot open an issue against a repository that does not exist, so the contributor path stays closed until it does.",
     "lgu.district": "Not published on the official site. Obtain from the national elections commission or the Sanggunian.",
     "lgu.psgc": "Not published on the official site. Obtain from the national statistics agency's PSGC release.",
     "lgu.postalCode": "The official contact page publishes 1101, which sits outside the range used for Surigao del Sur and appears to belong to a different part of the country. HELD: do not publish it, and do not 'correct' it to a guess. Confirm against the postal service's own record, then tell the municipality if their published value is a typo.",
@@ -93,8 +92,7 @@
     "contact.municipalHall.mapUrl": "No map link is published. Confirm the hall's actual location in person before publishing one — a wrong pin costs a resident a fare.",
     "contact.municipalHall.email": "The official contact page publishes one address at a free consumer mail provider for the Office of the Mayor. Confirm it is the channel the office wants published before republishing it.",
     "contact.municipalHall.officeHours": "Not stated anywhere on the official site. A phone number with no stated hours is a coin toss, and a directory without them sends people to locked doors. This is Phase 0 request #3.",
-    "contact.project.email": "The project contact address to print on every page and in the introduction letter. Blocked on the domain being pointed.",
-    "contact.project.correctionChannel": "How a resident reports an error. Every page must carry one before any page ships.",
+    "contact.project.email": "No project email address is published, and none is currently needed: the contact and correction channel is the public repository's issue tracker, which is live and linked from the footer of every page. This field stays null until there is a reason to publish an address. It is not blocked on anything — the earlier note here claimed it was blocked on the domain being pointed, which was wrong on the facts.",
     "socials.municipalFacebook": "A Facebook page exists and is referenced from the official contact page; capture the exact URL."
   }
 }

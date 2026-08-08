@@ -11,6 +11,7 @@ import { PORTAL_VERSION } from '@/lib/version';
 export async function SiteFooter() {
   const t = await getTranslations('footer');
   const { network } = lguConfig.portal;
+  const { correctionChannel } = lguConfig.contact.project;
 
   return (
     <footer className="mt-16 border-t border-line bg-surface-raised py-8">
@@ -21,6 +22,22 @@ export async function SiteFooter() {
           {/* Standalone in a flex row rather than inline in a sentence, so the
               WCAG 2.5.8 inline exception does not apply to it — it gets a real
               44px target like every other control. */}
+          {/* The correction path is a commitment this project made to the
+              municipality before it published anything — corrections fixed
+              first, discussed after — and a commitment nobody can find is not
+              one. It renders first in the row for that reason. Null-guarded
+              because the channel is a config value: no channel means no dead
+              link, never a hardcoded fallback. */}
+          {correctionChannel && (
+            <a
+              href={correctionChannel}
+              rel="noopener noreferrer"
+              target="_blank"
+              className="inline-flex min-h-11 items-center text-ink-link hover:text-ink-link-hover"
+            >
+              {t('corrections')}
+            </a>
+          )}
           <a
             href={network.url}
             rel="noopener noreferrer"

@@ -33,6 +33,7 @@
     "independence": "BetterTago is an independent, volunteer-run project. It is not operated by, endorsed by, or affiliated with the Municipal Government of Tago.",
     "networkLabel": "Part of {network}",
     "versionLabel": "Version {version}",
+    "corrections": "Report an error",
     "sourceNote": "Every figure this portal publishes names its source and the date it was last checked — including the ones we do not have yet."
   },
   "notFound": {

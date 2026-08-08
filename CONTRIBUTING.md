@@ -6,6 +6,14 @@ If something on this site is wrong — a fee, a requirement, an office's hours, 
 — tell us what it should say and where you saw the right version. A photograph of a posted notice, with the
 date you took it, is a genuinely valuable contribution.
 
+**Where to send it: [open an issue](https://github.com/BetterTago/better-tago/issues).** That is the channel
+linked from the footer of every page, and it is the one we watch.
+
+> **A gap in this, stated rather than hidden.** Opening an issue needs a free account on a code-hosting site,
+> which is a real barrier for exactly the resident most likely to spot a wrong fee at a counter. There is no
+> second channel yet. That is a shortcoming of this project, not of the person who cannot use the first one,
+> and it is written down here so it does not quietly become normal.
+
 **A correction from the Municipality of Tago outranks everything else in the queue.** Fixed first, discussed
 after. If the municipality asks for something to be removed, it comes down while we discuss it. Being right
 matters less than being trustworthy.

@@ -24,6 +24,31 @@ test.describe('the holding page', () => {
     ).toBeVisible();
   });
 
+  test('carries a correction channel a resident can actually reach', async ({
+    page,
+  }) => {
+    // The commitment is "tell us and we fix it first". A commitment with no
+    // visible way to act on it is decoration, so this asserts the affordance
+    // exists, points at the real tracker, and is a genuine 44px target.
+    await page.goto('/en');
+    const corrections = page.getByRole('link', { name: /report an error/i });
+    await expect(corrections).toHaveAttribute(
+      'href',
+      'https://github.com/BetterTago/better-tago/issues'
+    );
+    await expect(corrections).toHaveAttribute('rel', /noopener/);
+    expect((await corrections.boundingBox())?.height).toBeGreaterThanOrEqual(
+      44
+    );
+  });
+
+  test('carries the correction channel in Filipino too', async ({ page }) => {
+    await page.goto('/fil');
+    await expect(
+      page.getByRole('link', { name: /mag-ulat ng mali/i })
+    ).toBeVisible();
+  });
+
   test('links to the official municipal site, not away from it', async ({
     page,
   }) => {

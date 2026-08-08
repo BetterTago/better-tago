@@ -35,6 +35,23 @@ function sourceFiles(dir: string): SourceFile[] {
   );
 }
 
+/** Every `.md` under a directory, recursively. */
+function markdownFiles(dir: string): SourceFile[] {
+  return readdirSync(dir, { withFileTypes: true }).flatMap<SourceFile>(
+    entry => {
+      const full = path.join(dir, entry.name);
+      if (entry.isDirectory()) return markdownFiles(full);
+      if (!/\.md$/.test(entry.name)) return [];
+      return [
+        {
+          path: path.relative(ROOT, full).replace(/\\/g, '/'),
+          text: readFileSync(full, 'utf8'),
+        },
+      ];
+    }
+  );
+}
+
 const SRC_FILES = sourceFiles(SRC);
 const APP_FILES = sourceFiles(APP);
 
@@ -74,12 +91,15 @@ describe('self-containment', () => {
   it('holds for the checked-in docs and dotfiles too', () => {
     // The docs are where this slips first: a contributor-facing file pointing
     // at a workspace path is a dead link for anyone who cloned just this repo.
-    const docs = [
+    //
+    // `docs/` is swept rather than listed. A hardcoded list only covers the
+    // files somebody remembered to add to it, and the doc most likely to carry
+    // an outward path is the one just written by someone reading a workspace
+    // file at the time.
+    const named = [
       'README.md',
       'CONTRIBUTING.md',
       'CODE_OF_CONDUCT.md',
-      'docs/coding-standards.md',
-      'docs/sources/README.md',
       'content/README.md',
       // The mark's notes are imported from a design project that lives outside
       // this repo, so this is the one doc most likely to carry a path back to
@@ -92,7 +112,14 @@ describe('self-containment', () => {
       text: readFileSync(path.join(ROOT, name), 'utf8'),
     }));
 
-    expect(offenders(docs, OUTWARD)).toEqual([]);
+    const swept = markdownFiles(path.join(ROOT, 'docs'));
+
+    // Same reasoning as the source-scan check above: a walker that silently
+    // returns nothing turns this whole assertion into a green no-op.
+    expect(swept.length).toBeGreaterThanOrEqual(2);
+    expect(swept.map(file => file.path)).toContain('docs/coding-standards.md');
+
+    expect(offenders([...named, ...swept], OUTWARD)).toEqual([]);
   });
 
   it('holds for the e2e specs, which neither scan above reaches', () => {
