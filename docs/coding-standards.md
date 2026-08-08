@@ -147,6 +147,17 @@ historical figure that reaches the page through a cited record in `content/`.
   the element**. That is what lets `bg-surface-page text-ink` work with no `dark:` prefix anywhere.
 - **Semantic names, not literal ones.** `--color-primary-700`, not `--color-green-700`. The portal is
   re-pointable at another LGU by changing the ramp.
+- **The mark is the one exception, and it is deliberate.** `--color-mark-emblem-{light,mid,deep}` and
+  `--color-mark-sun` sit in `@theme` named for what they draw, outside the ramps and with no role layer. The
+  ramps are provisional and re-pointable; the mark is a fixed artefact, and settling the palette must not
+  silently repaint the logo. They are hex rather than oklch because they are exact delivered brand values.
+  **Don't fold them into the ramp, and don't add a fifth without a design sheet.** See
+  [`brand/logo/README.md`](../brand/logo/README.md).
+- **The mark is inlined, never an `<img>`.** `src/components/ui/Logo.tsx` carries the geometry so its fills can
+  come from those tokens. It takes a **required `idPrefix`** — its masks, clip path and `<use>` chain need
+  document-unique ids and a Server Component cannot call `useId()`, so two instances sharing a prefix break the
+  second one's masks while the first still looks right. It is always `aria-hidden`; the wordmark beside it
+  carries the accessible name.
 - **Prefer a `@bettergov/kapwa` component** over a bespoke one, and match its API shape when you do write one.
   Note that no Kapwa dist file carries `'use client'`, so its interactive components must be imported from
   inside one of our client leaves.

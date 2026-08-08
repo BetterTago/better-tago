@@ -53,6 +53,41 @@
   --color-neutral-900: oklch(20% 0.008 250);
   --color-neutral-950: oklch(14% 0.007 250);
 
+  /* -------------------------------------------------------------------------
+     The mark's own colours — see brand/logo/README.md.
+
+     NOT part of the ramps above, and deliberately so. The ramps are provisional
+     and re-pointable; the mark is a fixed artefact. Its sun is the PHILIPPINE
+     FLAG yellow (#fcd116, the flag's official value) and its three greens are
+     the emblem's three regions. Settling the portal palette must not silently
+     repaint the logo, so the mark carries its own tokens and is the one place
+     `--color-*` is named for what it draws rather than what role it plays.
+
+     Hex rather than oklch here on purpose: these are exact delivered brand
+     values, and a round trip through another colour space is a change to them,
+     however small.
+
+     No dark-mode override, because the mark's worst case on the dark ground is
+     the deep green at 3.09:1 — still above the 3:1 floor for a graphic, so
+     there is nothing for a second set of values to fix.
+
+     On the LIGHT ground two of the four sit below that floor: the sun at 1.47:1
+     and the light green at 1.80:1. That is the mark as delivered and it is not
+     a defect to fix here — flag yellow on white is 1.47:1 by construction. It
+     is legible because the eight rays are read as a shape against the emblem's
+     hard circular edge, not against the page. WCAG exempts logotypes, the mark
+     is aria-hidden, and the text wordmark beside it carries the meaning.
+
+     No role indirection either: there is no inverse surface in this portal yet,
+     so there is nothing to flip these to. When one lands, they get promoted to
+     roles the way the sibling portal does it, and brand/logo/better-tago-white.svg
+     is the record of what that reversed variant looks like.
+  ------------------------------------------------------------------------- */
+  --color-mark-emblem-light: #86d294;
+  --color-mark-emblem-mid: #2e9b41;
+  --color-mark-emblem-deep: #1c6b4c;
+  --color-mark-sun: #fcd116;
+
   --font-sans:
     ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
 

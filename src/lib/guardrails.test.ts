@@ -81,6 +81,10 @@ describe('self-containment', () => {
       'docs/coding-standards.md',
       'docs/sources/README.md',
       'content/README.md',
+      // The mark's notes are imported from a design project that lives outside
+      // this repo, so this is the one doc most likely to carry a path back to
+      // it. Anyone who cloned only this repo has to be able to follow it.
+      'brand/logo/README.md',
       '.env.example',
       '.gitignore',
     ].map(name => ({
