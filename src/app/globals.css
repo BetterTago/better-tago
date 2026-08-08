@@ -1,0 +1,158 @@
+@import 'tailwindcss';
+@plugin '@tailwindcss/typography';
+
+/* Kapwa ships compiled CSS; Tailwind has to be told to scan it, or the design
+   system's own classes are dropped from the build with no warning. */
+@source '../../node_modules/@bettergov/kapwa/dist';
+
+/* ---------------------------------------------------------------------------
+   Layer 1 — raw ramps.
+   These never change with the theme. Names are SEMANTIC (`primary`), not
+   literal (`teal`), so re-pointing the portal at another LGU is a change to the
+   values here and nowhere else.
+
+   The palette is DELIBERATELY INDEPENDENT of the Municipality of Tago's own
+   visual identity: visual similarity to official material would imply an
+   endorsement this project does not have. It is also provisional — it is a
+   working palette, not a finished brand.
+--------------------------------------------------------------------------- */
+@theme {
+  --color-primary-50: oklch(97.5% 0.014 190);
+  --color-primary-100: oklch(94% 0.03 190);
+  --color-primary-200: oklch(88% 0.055 189);
+  --color-primary-300: oklch(80% 0.075 188);
+  --color-primary-400: oklch(70% 0.09 186);
+  --color-primary-500: oklch(60% 0.095 185);
+  --color-primary-600: oklch(52% 0.088 184);
+  --color-primary-700: oklch(45% 0.078 184);
+  --color-primary-800: oklch(38% 0.062 184);
+  --color-primary-900: oklch(30% 0.048 185);
+  --color-primary-950: oklch(21% 0.035 186);
+
+  --color-accent-50: oklch(97.5% 0.02 75);
+  --color-accent-100: oklch(94% 0.045 72);
+  --color-accent-200: oklch(89% 0.08 70);
+  --color-accent-300: oklch(82% 0.11 68);
+  --color-accent-400: oklch(75% 0.13 64);
+  --color-accent-500: oklch(68% 0.14 60);
+  --color-accent-600: oklch(60% 0.135 55);
+  --color-accent-700: oklch(50% 0.115 50);
+  --color-accent-800: oklch(41% 0.09 48);
+  --color-accent-900: oklch(33% 0.07 48);
+
+  --color-neutral-0: oklch(100% 0 0);
+  --color-neutral-50: oklch(98% 0.002 250);
+  --color-neutral-100: oklch(96% 0.004 250);
+  --color-neutral-200: oklch(92% 0.005 250);
+  --color-neutral-300: oklch(86% 0.006 250);
+  --color-neutral-400: oklch(70% 0.008 250);
+  --color-neutral-500: oklch(58% 0.009 250);
+  --color-neutral-600: oklch(48% 0.01 250);
+  --color-neutral-700: oklch(38% 0.01 250);
+  --color-neutral-800: oklch(28% 0.009 250);
+  --color-neutral-900: oklch(20% 0.008 250);
+  --color-neutral-950: oklch(14% 0.007 250);
+
+  --font-sans:
+    ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+
+  /* Content width. Civic prose, not a marketing page. */
+  --spacing-measure: 72rem;
+}
+
+/* ---------------------------------------------------------------------------
+   Layer 2 — semantic roles.
+   Declared per theme, then exposed through `@theme inline` so a utility
+   resolves them AT THE ELEMENT. That is what lets `bg-surface-page text-ink`
+   work with no `dark:` prefix anywhere in a component.
+
+   Light mode is the design. Dark is derived from the same roles — never a
+   second set of hardcoded colours.
+--------------------------------------------------------------------------- */
+:root {
+  --surface-page: var(--color-neutral-0);
+  --surface-raised: var(--color-neutral-50);
+  --surface-inset: var(--color-neutral-100);
+  --surface-brand: var(--color-primary-800);
+  --surface-notice: var(--color-accent-50);
+
+  --ink: var(--color-neutral-900);
+  --ink-secondary: var(--color-neutral-600);
+  --ink-inverse: var(--color-neutral-0);
+  --ink-link: var(--color-primary-700);
+  --ink-link-hover: var(--color-primary-800);
+
+  --line: var(--color-neutral-200);
+  --line-strong: var(--color-neutral-300);
+  --focus: var(--color-primary-600);
+}
+
+@media (prefers-color-scheme: dark) {
+  :root {
+    --surface-page: var(--color-neutral-950);
+    --surface-raised: var(--color-neutral-900);
+    --surface-inset: var(--color-neutral-800);
+    --surface-brand: var(--color-primary-900);
+    --surface-notice: var(--color-accent-900);
+
+    --ink: var(--color-neutral-100);
+    --ink-secondary: var(--color-neutral-400);
+    --ink-inverse: var(--color-neutral-950);
+    --ink-link: var(--color-primary-300);
+    --ink-link-hover: var(--color-primary-200);
+
+    --line: var(--color-neutral-800);
+    --line-strong: var(--color-neutral-700);
+    --focus: var(--color-primary-400);
+  }
+}
+
+@theme inline {
+  --color-surface-page: var(--surface-page);
+  --color-surface-raised: var(--surface-raised);
+  --color-surface-inset: var(--surface-inset);
+  --color-surface-brand: var(--surface-brand);
+  --color-surface-notice: var(--surface-notice);
+
+  --color-ink: var(--ink);
+  --color-ink-secondary: var(--ink-secondary);
+  --color-ink-inverse: var(--ink-inverse);
+  --color-ink-link: var(--ink-link);
+  --color-ink-link-hover: var(--ink-link-hover);
+
+  --color-line: var(--line);
+  --color-line-strong: var(--line-strong);
+  --color-focus: var(--focus);
+}
+
+/* --------------------------------------------------------------------------- */
+
+@layer base {
+  /* One visible focus ring for everything, so no component has to remember. */
+  :focus-visible {
+    outline: 2px solid var(--focus);
+    outline-offset: 2px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    *,
+    *::before,
+    *::after {
+      animation-duration: 0.01ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.01ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@utility page-measure {
+  margin-inline: auto;
+  width: 100%;
+  max-width: var(--spacing-measure);
+  padding-inline: 1rem;
+
+  @variant sm {
+    padding-inline: 1.5rem;
+  }
+}

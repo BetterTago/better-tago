@@ -1,0 +1,100 @@
+{
+  "portal": {
+    "name": "BetterTago",
+    "shortName": "BetterTago",
+    "wordmark": { "lead": "Better", "main": "Tago" },
+    "domain": "https://bettertago.org",
+    "brandColor": "#0F6E68",
+    "accentColor": "#D9822B",
+    "paletteNote": "Provisional, and DELIBERATELY INDEPENDENT of the municipality's own visual identity. Visual similarity to official material would imply an endorsement this project does not have. Do not derive these from tago.gov.ph, and do not use the municipal seal anywhere without written permission.",
+    "tagline": "The Municipality of Tago's public information, made findable.",
+    "independent": true,
+    "repository": null,
+    "network": { "name": "BetterGov.ph", "url": "https://bettergov.ph/" }
+  },
+  "lgu": {
+    "type": "municipality",
+    "officialName": "Municipality of Tago",
+    "shortName": "Tago",
+    "province": "Surigao del Sur",
+    "region": "Caraga",
+    "district": null,
+    "psgc": null,
+    "postalCode": null,
+    "incomeClass": null,
+    "coordinates": null,
+    "landAreaKm2": null,
+    "barangayCount": null,
+    "population": null,
+    "households": null,
+    "censusYear": null,
+    "history": {
+      "establishedYear": 1865,
+      "reEstablishedDate": "1883-08-23",
+      "townConversionInstrument": "Executive Order No. 41",
+      "townConversionDate": "1918-11-06",
+      "firstMunicipalTermStart": "1919-01-01",
+      "separatedFrom": "the municipality that is now Tandag City"
+    }
+  },
+  "officialSite": {
+    "url": "https://tago.gov.ph",
+    "status": "live",
+    "checkedAt": "2026-08-03",
+    "note": "The authoritative record. Where this portal and the official site disagree, the official site is right and this portal is wrong."
+  },
+  "contact": {
+    "municipalHall": {
+      "name": "Tago Municipal Hall",
+      "locality": "Tago, Surigao del Sur",
+      "address": "Purisima, Tago, Surigao del Sur",
+      "mapUrl": null,
+      "phone": "086-214-2116",
+      "phoneStatus": "published-unverified",
+      "email": null,
+      "officeHours": null,
+      "source": {
+        "url": "https://tago.gov.ph/contact-us/",
+        "checkedAt": "2026-08-03"
+      }
+    },
+    "project": {
+      "email": null,
+      "correctionChannel": null
+    }
+  },
+  "emergency": {
+    "nationalLine": "911",
+    "municipalHotlines": [],
+    "status": "not-obtained",
+    "note": "No municipal emergency hotline is published on tago.gov.ph. Requesting it is the single most important ask in the proposal. Until it is obtained the emergency surface renders the gap, not a guess, and never another municipality's number."
+  },
+  "socials": {
+    "municipalFacebook": null
+  },
+  "sources": {
+    "officialPortal": "https://tago.gov.ph",
+    "citizensCharter": "https://tago.gov.ph/about-us-2/citizens-charter/citezens-charter-by-office/",
+    "transparencySeal": "https://tago.gov.ph/transparency-seal/",
+    "psa": "https://psa.gov.ph"
+  },
+  "pending": {
+    "portal.repository": "The public repository has not been created yet. A resident cannot open an issue against a repository that does not exist, so the contributor path stays closed until it does.",
+    "lgu.district": "Not published on the official site. Obtain from the national elections commission or the Sanggunian.",
+    "lgu.psgc": "Not published on the official site. Obtain from the national statistics agency's PSGC release.",
+    "lgu.postalCode": "The official contact page publishes 1101, which sits outside the range used for Surigao del Sur and appears to belong to a different part of the country. HELD: do not publish it, and do not 'correct' it to a guess. Confirm against the postal service's own record, then tell the municipality if their published value is a typo.",
+    "lgu.incomeClass": "Not published on the official site. Obtain from the finance department's income-classification issuance.",
+    "lgu.coordinates": "Not published on the official site. Obtain from the national statistics agency or a cited gazetteer; needed before any map ships.",
+    "lgu.landAreaKm2": "Not published on the official site. Obtain from the national statistics agency alongside the population figure; a land area with no cited source is exactly the kind of plausible number this register exists to keep out.",
+    "lgu.barangayCount": "Not published on the official site, and neither is the barangay list. Both are a Phase 0 request and a national-statistics-agency cross-check.",
+    "lgu.population": "Obtain from the national statistics agency's census release, cited by census year.",
+    "lgu.households": "Obtain from the same census release as the population figure.",
+    "lgu.censusYear": "Set in the same change that sets population and households; a figure without its census year is not citable.",
+    "contact.municipalHall.mapUrl": "No map link is published. Confirm the hall's actual location in person before publishing one — a wrong pin costs a resident a fare.",
+    "contact.municipalHall.email": "The official contact page publishes one address at a free consumer mail provider for the Office of the Mayor. Confirm it is the channel the office wants published before republishing it.",
+    "contact.municipalHall.officeHours": "Not stated anywhere on the official site. A phone number with no stated hours is a coin toss, and a directory without them sends people to locked doors. This is Phase 0 request #3.",
+    "contact.project.email": "The project contact address to print on every page and in the introduction letter. Blocked on the domain being pointed.",
+    "contact.project.correctionChannel": "How a resident reports an error. Every page must carry one before any page ships.",
+    "socials.municipalFacebook": "A Facebook page exists and is referenced from the official contact page; capture the exact URL."
+  }
+}

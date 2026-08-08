@@ -1,0 +1,47 @@
+{
+  "meta": {
+    "title": "BetterTago — pampublikong impormasyon ng Bayan ng Tago",
+    "description": "Isang malayang proyekto ng mga boluntaryo na nag-aayos ng impormasyong inilalathala mismo ng Bayan ng Tago. Hindi ito ang opisyal na sityo.",
+    "notFoundTitle": "Hindi natagpuan ang pahina"
+  },
+  "common": {
+    "home": "Unang pahina",
+    "skipToContent": "Lumaktaw sa nilalaman"
+  },
+  "header": {
+    "homeLink": "Unang pahina ng {portal}",
+    "language": "Wika",
+    "english": "EN",
+    "filipino": "FIL",
+    "englishFull": "English",
+    "filipinoFull": "Filipino"
+  },
+  "holding": {
+    "eyebrow": "Wala pang inilalathala rito",
+    "heading": "Isang daan papasok sa impormasyon ng Bayan ng Tago.",
+    "lead": "Inilalathala na ng bayan ang kanilang Citizen's Charter, ang kanilang mga tanggapan, at ang kanilang mga balita. Layunin ng proyektong ito na gawing mahahanap at mababasa sa telepono ang impormasyong iyon — isang pahina para sa bawat bagay na kailangang gawin ng isang residente, at may kaakibat na sipi at kawing pabalik sa opisyal na dokumentong pinagmulan nito.",
+    "statusHeading": "Ano ang mayroon ngayon",
+    "statusBody": "Ang domain, at ang pahinang ito. Walang gabay sa serbisyo, walang direktoryo ng tanggapan, walang bilang. Hindi pa nahihingan ng pahintulot ang bayan upang muling ilathala ang kanilang charter, at hindi nagtatayo muna ang proyektong ito bago magpaalam.",
+    "officialHeading": "Ang opisyal na talaan",
+    "officialBody": "Ang bayan mismo ang naglalathala ng lahat ng opisyal tungkol sa Bayan ng Tago. Kapag nagkaiba ang talaang iyon at ang proyektong ito, tama ang opisyal na talaan at mali ang proyektong ito.",
+    "officialCta": "Pumunta sa opisyal na sityo ng bayan",
+    "emergencyHeading": "Sa oras ng emerhensiya",
+    "emergencyNational": "Pambansang hotline sa emerhensiya",
+    "emergencyGap": "Walang hotline sa emerhensiya ng bayan na maaaring sipiin ng proyektong ito, at hiniling na ito. Hangga't hindi pa nakukuha, ipinapakita ng pahinang ito ang kakulangan sa halip na isang numerong maaaring mali — mas masahol ang maling numero sa oras ng emerhensiya kaysa sa walang numero."
+  },
+  "footer": {
+    "independence": "Ang BetterTago ay isang malayang proyekto ng mga boluntaryo. Hindi ito pinapatakbo, inendorso, o kaugnay ng Pamahalaang Bayan ng Tago.",
+    "networkLabel": "Bahagi ng {network}",
+    "versionLabel": "Bersyon {version}",
+    "sourceNote": "Bawat bilang na inilalathala rito ay may pinagmulan at petsa ng huling pagsusuri — pati na ang mga wala pa sa amin."
+  },
+  "notFound": {
+    "heading": "Wala ang pahinang iyon",
+    "body": "Kakaunti pa lamang ang nailalathala rito. Ang opisyal na sityo ng bayan ang mabuting puntahan sa ngayon."
+  },
+  "error": {
+    "heading": "May naganap na mali",
+    "body": "Hindi ma-load ang pahinang ito. Hindi apektado ang opisyal na sityo ng bayan.",
+    "retry": "Subukan muli"
+  }
+}

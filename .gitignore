@@ -1,0 +1,61 @@
+# See https://help.github.com/articles/ignoring-files/ for more about ignoring files.
+
+# dependencies
+/node_modules
+/.pnp
+.pnp.*
+.yarn/*
+!.yarn/patches
+!.yarn/plugins
+!.yarn/releases
+!.yarn/versions
+
+# testing
+/coverage
+/test-results/
+/playwright-report/
+/blob-report/
+/playwright/.cache/
+
+# next.js
+/.next/
+/out/
+
+# production
+/build
+
+# misc
+.DS_Store
+*.pem
+
+# debug
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+.pnpm-debug.log*
+
+# env files (can opt-in for committing if needed)
+.env*
+!.env.example
+
+# vercel
+.vercel
+
+# typescript
+*.tsbuildinfo
+next-env.d.ts
+
+# Retrieved source documents. The charter PDFs are kept locally so a
+# transcription can always be re-checked against what was actually published,
+# but they are the municipality's documents and are not redistributed from
+# here. See docs/sources/README.md.
+/sources/**
+!/sources/README.md
+
+# AI tooling — assistant scratch state, not project documentation. The rules
+# this repo is built to are checked in: docs/coding-standards.md, CONTRIBUTING.md
+# and CODE_OF_CONDUCT.md. Nothing in this repository depends on a file outside
+# it, so a clone of it on its own is complete.
+.claude/
+CLAUDE.md
+AGENTS.md

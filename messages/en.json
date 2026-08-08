@@ -1,0 +1,47 @@
+{
+  "meta": {
+    "title": "BetterTago — Municipality of Tago public information",
+    "description": "An independent, volunteer-run index over the Municipality of Tago's own published information. Not the official site.",
+    "notFoundTitle": "Page not found"
+  },
+  "common": {
+    "home": "Home",
+    "skipToContent": "Skip to content"
+  },
+  "header": {
+    "homeLink": "{portal} home",
+    "language": "Language",
+    "english": "EN",
+    "filipino": "FIL",
+    "englishFull": "English",
+    "filipinoFull": "Filipino"
+  },
+  "holding": {
+    "eyebrow": "Nothing has been published here yet",
+    "heading": "A way in to the Municipality of Tago's own information.",
+    "lead": "The municipality already publishes its Citizen's Charter, its offices, and its news. This project would make that information searchable and readable on a phone — one page for each thing a resident is trying to do, each one citing and linking back to the official document it came from.",
+    "statusHeading": "What exists today",
+    "statusBody": "The domain, and this page. No service guides, no office directory, no figures. The municipality has not yet been asked for permission to republish its charter, and this project does not build first and ask later.",
+    "officialHeading": "The official record",
+    "officialBody": "Everything authoritative about the Municipality of Tago is published by the municipality itself. Where that record and this project ever disagree, the official record is right and this project is wrong.",
+    "officialCta": "Go to the official municipal site",
+    "emergencyHeading": "In an emergency",
+    "emergencyNational": "National emergency hotline",
+    "emergencyGap": "No municipal emergency hotline is published anywhere this project can cite, and one has been requested. Until it is obtained, this page shows the gap rather than a number that might be wrong — a wrong number in an emergency is worse than no number at all."
+  },
+  "footer": {
+    "independence": "BetterTago is an independent, volunteer-run project. It is not operated by, endorsed by, or affiliated with the Municipal Government of Tago.",
+    "networkLabel": "Part of {network}",
+    "versionLabel": "Version {version}",
+    "sourceNote": "Every figure this portal publishes names its source and the date it was last checked — including the ones we do not have yet."
+  },
+  "notFound": {
+    "heading": "That page does not exist",
+    "body": "Very little has been published here yet. The official municipal site is the place to look in the meantime."
+  },
+  "error": {
+    "heading": "Something went wrong",
+    "body": "This page could not be loaded. The official municipal site is unaffected.",
+    "retry": "Try again"
+  }
+}
