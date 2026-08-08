@@ -1,0 +1,58 @@
+# `inventory/` — the work list, not the portal
+
+**Nothing in this folder is published.** It is the record of what the Municipality of Tago has put on its own
+website, what this project retrieved, when, and what each document does and does not state. It is a work list
+for contributors and an audit trail — not content, not a page, not a manifest a route reads.
+
+That distinction is structural on purpose. `content/` is the published data layer, and everything in it is
+meant to reach a resident. If this inventory lived there, the first mistake anyone made would publish a
+half-checked service. Here, publishing it would take a deliberate act.
+
+Regenerate with `npm run harvest`. **Do not edit these files by hand** — the next harvest overwrites them, and
+an edit that survives is an unsourced claim.
+
+## The files
+
+| File                     | What it holds                                                                                                                         |
+| ------------------------ | ------------------------------------------------------------------------------------------------------------------------------------- |
+| `site-pages.yaml`        | Every public page, from the official sitemap. The charter pages and per-office pages are called out separately                        |
+| `charter-documents.yaml` | Every Citizen's Charter PDF: published title, URL, retrieval date, `sha256`, size, and which branch of the municipality it belongs to |
+| `charter-services.yaml`  | Every service inside those PDFs, with six fields recorded **present or absent**                                                       |
+
+The PDFs themselves go to `sources/charter/`, which is **git-ignored**. They are the municipality's documents.
+This project keeps a copy so a transcription can always be re-checked against what was actually published, and
+does not redistribute them. What gets republished later is the transcription, with attribution and a link back
+to the official original.
+
+## How to read `charter-services.yaml`
+
+**`present` / `absent` describe the charter, not our work.** `absent` means _the published document does not
+state this_, and it is the most useful thing in the file: it is where a resident is left guessing, and it is
+what the portal will have to render as a gap rather than fill in.
+
+Two results that look like bugs and are not:
+
+- **`output: absent` on every service.** The national charter layout has no output or deliverable field. The
+  service title usually implies it. Inferring one from the title would be a guess presented as a fact, so it
+  is recorded as missing.
+- **`titleStatus: not-in-layout`.** Two documents carry no numbered service headings, so there is no title to
+  extract. Those services are real and need a human to name them from the page before any of them becomes a
+  task page.
+
+**`section` matters more than it looks.** Each charter covers both `external` services — what a resident can
+ask for — and `internal` ones, which are government-to-government. **An internal service published as a
+resident task would send someone to a counter for something they cannot request.** Only `external` services
+are candidates for a page.
+
+## Checksums
+
+Every document carries a `sha256`. That is what makes a later charter revision **detectable** rather than
+assumed: re-run the harvest, and a changed hash tells you a document moved before anyone notices a fee is
+wrong. A transcription can only be defended if it can be re-checked against what was published on the day it
+was made.
+
+## No names
+
+Nothing here records a person. The charter's `PERSON RESPONSIBLE` column is deliberately not captured — it is
+the one column that could carry a name, and a name in this folder would be an unsourced assertion sitting
+outside the data layer. Refer to the office.

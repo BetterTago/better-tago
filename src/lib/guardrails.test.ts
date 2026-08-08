@@ -35,13 +35,13 @@ function sourceFiles(dir: string): SourceFile[] {
   );
 }
 
-/** Every `.md` under a directory, recursively. */
-function markdownFiles(dir: string): SourceFile[] {
+/** Every file under a directory whose name matches, recursively. */
+function filesIn(dir: string, pattern: RegExp): SourceFile[] {
   return readdirSync(dir, { withFileTypes: true }).flatMap<SourceFile>(
     entry => {
       const full = path.join(dir, entry.name);
-      if (entry.isDirectory()) return markdownFiles(full);
-      if (!/\.md$/.test(entry.name)) return [];
+      if (entry.isDirectory()) return filesIn(full, pattern);
+      if (!pattern.test(entry.name)) return [];
       return [
         {
           path: path.relative(ROOT, full).replace(/\\/g, '/'),
@@ -112,12 +112,22 @@ describe('self-containment', () => {
       text: readFileSync(path.join(ROOT, name), 'utf8'),
     }));
 
-    const swept = markdownFiles(path.join(ROOT, 'docs'));
+    // Swept rather than listed, so the next doc or script cannot escape the
+    // scan by nobody remembering to add it. scripts/ is committed tooling and
+    // is reached by neither the src/ scan above nor the markdown sweep.
+    const swept = [
+      ...filesIn(path.join(ROOT, 'docs'), /\.md$/),
+      ...filesIn(path.join(ROOT, 'inventory'), /\.md$/),
+      ...filesIn(path.join(ROOT, 'scripts'), /\.mjs$/),
+    ];
 
     // Same reasoning as the source-scan check above: a walker that silently
     // returns nothing turns this whole assertion into a green no-op.
-    expect(swept.length).toBeGreaterThanOrEqual(2);
-    expect(swept.map(file => file.path)).toContain('docs/coding-standards.md');
+    const paths = swept.map(file => file.path);
+    expect(swept.length).toBeGreaterThanOrEqual(5);
+    expect(paths).toContain('docs/coding-standards.md');
+    expect(paths).toContain('inventory/README.md');
+    expect(paths).toContain('scripts/harvest.mjs');
 
     expect(offenders([...named, ...swept], OUTWARD)).toEqual([]);
   });

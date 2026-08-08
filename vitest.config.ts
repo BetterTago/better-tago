@@ -13,7 +13,9 @@ export default defineConfig({
     environment: 'jsdom',
     setupFiles: ['./vitest.setup.ts'],
     globals: true,
-    // e2e/ belongs to Playwright.
-    include: ['src/**/*.{test,spec}.{ts,tsx}'],
+    // e2e/ belongs to Playwright. scripts/ is plain .mjs so the harvester
+    // stays runnable by `node` with no build step — its parser is the
+    // riskiest code in the repo and is tested here rather than by hand.
+    include: ['src/**/*.{test,spec}.{ts,tsx}', 'scripts/**/*.{test,spec}.mjs'],
   },
 });
