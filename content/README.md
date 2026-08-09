@@ -4,9 +4,24 @@ Every word this portal publishes lives here as markdown plus a YAML manifest. **
 change, not a code change.** If adding one ever requires touching a component, the route is wrong and the
 route is what gets fixed.
 
-**It is empty on purpose.** The Municipality of Tago has not yet been asked for permission to republish its
-Citizen's Charter, and this project does not build first and ask later. Nothing goes in here until that
-conversation has happened.
+## What is in here, and what is deliberately not
+
+**This folder holds index-and-link records.** Each one names a service or an office, says which office provides
+it, and links the municipality's own document. That shape needs no permission at all, which is why it is the
+shape this project took.
+
+🔴 **No charter text is transcribed into it.** No fee, no requirement list, no processing time, no steps. Those
+are the contents of the municipality's own document, republishing them is a permission this project has not
+asked for, and they are **out of scope rather than pending**. A page here that states a fee is a defect, and
+`src/lib/guardrails.test.ts` fails the build on one.
+
+🔒 **Nothing in here is reachable by a URL yet.** No route reads this folder, and a guardrail asserts that —
+the route set is frozen to the holding page, and nothing in `src/` may import the content loader. That is not
+an accident of the build; it is the Phase 0 position holding. **The municipality has not yet been told this
+project exists**, and no public route ships until it has. Writing records is not publishing them, and the test
+is what keeps the difference real rather than intended.
+
+When that changes, the guardrail is deleted deliberately, in a diff somebody reviews.
 
 ## Layout
 

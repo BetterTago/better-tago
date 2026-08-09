@@ -2,7 +2,10 @@
   "portal": {
     "name": "BetterTago",
     "shortName": "BetterTago",
-    "wordmark": { "lead": "Better", "main": "Tago" },
+    "wordmark": {
+      "lead": "Better",
+      "main": "Tago"
+    },
     "domain": "https://bettertago.org",
     "brandColor": "#1c6b4c",
     "accentColor": "#fcd116",
@@ -10,7 +13,10 @@
     "tagline": "The Municipality of Tago's public information, made findable.",
     "independent": true,
     "repository": "https://github.com/BetterTago/better-tago",
-    "network": { "name": "BetterGov.ph", "url": "https://bettergov.ph/" }
+    "network": {
+      "name": "BetterGov.ph",
+      "url": "https://bettergov.ph/"
+    }
   },
   "lgu": {
     "type": "municipality",
@@ -40,7 +46,7 @@
   "officialSite": {
     "url": "https://tago.gov.ph",
     "status": "live",
-    "checkedAt": "2026-08-03",
+    "checkedAt": "2026-08-09",
     "note": "The authoritative record. Where this portal and the official site disagree, the official site is right and this portal is wrong."
   },
   "contact": {
@@ -51,11 +57,11 @@
       "mapUrl": null,
       "phone": "086-214-2116",
       "phoneStatus": "published-unverified",
-      "email": null,
+      "email": "lgutagosds@gmail.com",
       "officeHours": null,
       "source": {
         "url": "https://tago.gov.ph/contact-us/",
-        "checkedAt": "2026-08-03"
+        "checkedAt": "2026-08-09"
       }
     },
     "project": {
@@ -67,10 +73,38 @@
     "nationalLine": "911",
     "municipalHotlines": [],
     "status": "not-obtained",
-    "note": "No municipal emergency hotline is published on tago.gov.ph. SETTLED POSITION (2026-08-09): the emergency surface renders that absence rather than a number, and will not carry a neighbouring municipality's number, an undated one, or a plausible guess. This is the position, not a temporary state — a wrong number in an emergency is worse than no number at all. If numbers are obtained later they are recorded with the office that supplied them and the date, and the surface changes then. See docs/governance.md."
+    "note": "No municipal emergency hotline is published anywhere this project can cite. SETTLED POSITION (2026-08-09): the emergency surface renders that absence rather than a number, and will not carry a neighbouring municipality's number, a provincial office's number, an undated one, or a plausible guess. This is the position, not a temporary state — a wrong number in an emergency is worse than no number at all. The sources swept are listed below, so the absence is a recorded result rather than an assumption. If numbers are obtained later they are recorded with the office that supplied them and the date, and the surface changes then. See docs/governance.md.",
+    "checkedAt": "2026-08-09",
+    "recheckDays": 90,
+    "sourcesChecked": [
+      {
+        "label": "Municipality of Tago — official site, home and contact pages",
+        "url": "https://tago.gov.ph/contact-us/",
+        "result": "no-municipal-number-published",
+        "checkedAt": "2026-08-09"
+      },
+      {
+        "label": "Province of Surigao del Sur — provincial contacts page",
+        "url": "https://surigaodelsur.gov.ph/contact",
+        "result": "no-municipal-number-published",
+        "checkedAt": "2026-08-09"
+      },
+      {
+        "label": "Philippine National Police — national directory",
+        "url": "https://pnp.gov.ph/pnp-directory-2/",
+        "result": "not-retrievable",
+        "checkedAt": "2026-08-09"
+      },
+      {
+        "label": "Surigao del Sur Police Provincial Office — station directory",
+        "url": "https://sdsppo.pro13.pnp.gov.ph/?page_id=355",
+        "result": "not-retrievable",
+        "checkedAt": "2026-08-09"
+      }
+    ]
   },
   "socials": {
-    "municipalFacebook": null
+    "municipalFacebook": "https://www.facebook.com/profile.php?id=61577723051532"
   },
   "sources": {
     "officialPortal": "https://tago.gov.ph",
@@ -79,20 +113,89 @@
     "psa": "https://psa.gov.ph"
   },
   "pending": {
-    "lgu.district": "Not published on the official site. Obtain from the national elections commission or the Sanggunian.",
-    "lgu.psgc": "Not published on the official site. Obtain from the national statistics agency's PSGC release.",
-    "lgu.postalCode": "The official contact page publishes 1101, which sits outside the range used for Surigao del Sur and appears to belong to a different part of the country. HELD: do not publish it, and do not 'correct' it to a guess. Confirm against the postal service's own record, then tell the municipality if their published value is a typo.",
-    "lgu.incomeClass": "Not published on the official site. Obtain from the finance department's income-classification issuance.",
-    "lgu.coordinates": "Not published on the official site. Obtain from the national statistics agency or a cited gazetteer; needed before any map ships.",
-    "lgu.landAreaKm2": "Not published on the official site. Obtain from the national statistics agency alongside the population figure; a land area with no cited source is exactly the kind of plausible number this register exists to keep out.",
-    "lgu.barangayCount": "Not published on the official site, and neither is the barangay list. Both are a Phase 0 request and a national-statistics-agency cross-check.",
-    "lgu.population": "Obtain from the national statistics agency's census release, cited by census year.",
-    "lgu.households": "Obtain from the same census release as the population figure.",
-    "lgu.censusYear": "Set in the same change that sets population and households; a figure without its census year is not citable.",
-    "contact.municipalHall.mapUrl": "No map link is published. Confirm the hall's actual location in person before publishing one — a wrong pin costs a resident a fare.",
-    "contact.municipalHall.email": "The official contact page publishes one address at a free consumer mail provider for the Office of the Mayor. Confirm it is the channel the office wants published before republishing it.",
-    "contact.municipalHall.officeHours": "Not stated anywhere on the official site. A phone number with no stated hours is a coin toss, and a directory without them sends people to locked doors. This is Phase 0 request #3.",
-    "contact.project.email": "There is now a stated reason to publish one, and this is the honest gap it leaves open. The correction channel is the public repository's issue tracker — live, linked from the footer of every page, and requiring a free account on a code-hosting site. That account is a real barrier for exactly the resident most likely to spot a wrong fee at a counter, and the governance standard asks for a channel usable with no code account. Closing this needs an address that exists and someone reading it; it needs no code, because the footer link is already null-guarded. Recorded in CONTRIBUTING.md and docs/governance.md rather than left to be noticed.",
-    "socials.municipalFacebook": "A Facebook page exists and is referenced from the official contact page; capture the exact URL."
+    "lgu.district": {
+      "note": "Not published by the municipality. Checked 2026-08-09 across every page the official site's sitemap lists that is not a news post or a profile page — home, about, vision-and-mission, services, tourism, contact, transparency-seal and all 17 office pages — and across all 22 Citizen's Charter documents. The national statistics authority's PSGC record would state it; that record is not machine-retrievable (see lgu.psgc).",
+      "channel": "national-agency",
+      "state": "open",
+      "lastCheckedAt": "2026-08-09"
+    },
+    "lgu.psgc": {
+      "note": "The national statistics authority publishes this municipality's PSGC record at psa.gov.ph/classification/psgc/barangays/1606818000. Checked 2026-08-09: the host returns an automated-traffic challenge, so the page could not be retrieved. It is not behind a login and robots.txt permits it — closing this needs a person opening that URL in a browser and recording the code with the date they read it.",
+      "channel": "national-agency",
+      "state": "open",
+      "lastCheckedAt": "2026-08-09"
+    },
+    "lgu.postalCode": {
+      "note": "HELD, not missing. The official contact page publishes 1101, re-read 2026-08-09; that value sits outside the range used for this province and appears to belong to a different part of the country. Do not publish it, and do not 'correct' it to a guess. Confirm against the postal service's own record, then tell the municipality if their published value is a typo.",
+      "channel": "national-agency",
+      "state": "held",
+      "lastCheckedAt": "2026-08-09"
+    },
+    "lgu.incomeClass": {
+      "note": "Not published by the municipality. Checked 2026-08-09 across every page the official site's sitemap lists that is not a news post or a profile page — home, about, vision-and-mission, services, tourism, contact, transparency-seal and all 17 office pages — and across all 22 Citizen's Charter documents. It is stated on the national statistics authority's PSGC record, which could not be retrieved (see lgu.psgc).",
+      "channel": "national-agency",
+      "state": "open",
+      "lastCheckedAt": "2026-08-09"
+    },
+    "lgu.coordinates": {
+      "note": "Not published by the municipality. Checked 2026-08-09 across every page the official site's sitemap lists that is not a news post or a profile page — home, about, vision-and-mission, services, tourism, contact, transparency-seal and all 17 office pages — and across all 22 Citizen's Charter documents. Needed before any map ships, and before a per-barangay hazard reading can be looked up, because the national hazard service answers a point rather than a place name.",
+      "channel": "national-agency",
+      "state": "open",
+      "lastCheckedAt": "2026-08-09"
+    },
+    "lgu.landAreaKm2": {
+      "note": "Not published by the municipality. Checked 2026-08-09 across every page the official site's sitemap lists that is not a news post or a profile page — home, about, vision-and-mission, services, tourism, contact, transparency-seal and all 17 office pages — and across all 22 Citizen's Charter documents. Obtain from the national statistics authority alongside the population figure; a land area with no cited source is exactly the kind of plausible number this register exists to keep out.",
+      "channel": "national-agency",
+      "state": "open",
+      "lastCheckedAt": "2026-08-09"
+    },
+    "lgu.barangayCount": {
+      "note": "Not published by the municipality, and neither is the barangay list. Checked 2026-08-09 across every page the official site's sitemap lists that is not a news post or a profile page — home, about, vision-and-mission, services, tourism, contact, transparency-seal and all 17 office pages — and across all 22 Citizen's Charter documents. Both are on the national statistics authority's PSGC record, which could not be retrieved (see lgu.psgc). This is the field that blocks per-barangay hazard and evacuation records.",
+      "channel": "national-agency",
+      "state": "open",
+      "lastCheckedAt": "2026-08-09"
+    },
+    "lgu.population": {
+      "note": "Obtain from the national statistics authority's census release, cited by census year. Checked 2026-08-09; the authority's site could not be retrieved (see lgu.psgc), and the municipality publishes no figure.",
+      "channel": "national-agency",
+      "state": "open",
+      "lastCheckedAt": "2026-08-09"
+    },
+    "lgu.households": {
+      "note": "Obtain from the same census release as the population figure. Checked 2026-08-09; not retrievable, and not published by the municipality (see lgu.psgc).",
+      "channel": "national-agency",
+      "state": "open",
+      "lastCheckedAt": "2026-08-09"
+    },
+    "lgu.censusYear": {
+      "note": "Set in the same change that sets population and households; a figure without its census year is not citable. Checked 2026-08-09 alongside them.",
+      "channel": "national-agency",
+      "state": "open",
+      "lastCheckedAt": "2026-08-09"
+    },
+    "contact.municipalHall.mapUrl": {
+      "note": "No map link is published on the official contact page, re-read 2026-08-09. Confirm the hall's actual location in person before publishing one — a wrong pin costs a resident a fare.",
+      "channel": "field-verification",
+      "state": "open",
+      "lastCheckedAt": "2026-08-09"
+    },
+    "contact.municipalHall.officeHours": {
+      "note": "Stated nowhere by the municipality. Checked 2026-08-09 across every page the official site's sitemap lists that is not a news post or a profile page — home, about, vision-and-mission, services, tourism, contact, transparency-seal and all 17 office pages — and across all 22 Citizen's Charter documents. A phone number with no stated hours is a coin toss, and a directory without them sends people to locked doors. Hours posted physically at the hall are the remaining channel and need somebody in Tago.",
+      "channel": "field-verification",
+      "state": "open",
+      "lastCheckedAt": "2026-08-09"
+    },
+    "contact.project.email": {
+      "note": "The only entry here that is not about the municipality. The correction channel is the public repository's issue tracker — live and linked from every page — but it needs a free account on a code-hosting site, which is a real barrier for exactly the resident most likely to spot a wrong fee at a counter. Closing this needs an address that exists and someone reading it; it needs no code, because the footer link is already null-guarded.",
+      "channel": "project",
+      "state": "open",
+      "lastCheckedAt": "2026-08-09"
+    },
+    "emergency.municipalHotlines": {
+      "note": "The largest known gap in this record. No municipal disaster, police, fire, rescue or hospital number for Tago is published on the municipal site or the provincial site, and the national police directories could not be retrieved — all four sweeps are recorded under emergency.sourcesChecked with today's date. A number will be recorded only when a source states it is Tago's; a provincial or neighbouring-municipality number is never a substitute.",
+      "channel": "national-agency",
+      "state": "open",
+      "lastCheckedAt": "2026-08-09"
+    }
   }
 }

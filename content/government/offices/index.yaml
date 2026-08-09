@@ -1,0 +1,321 @@
+# Office directory — one record per municipal office named in the Citizen's Charter.
+#
+# Every entry cites the charter document it was drawn from, with the date that
+# document was retrieved. Office hours are recorded as an explicit, dated "not
+# stated" rather than left blank: a directory that omits them sends people to
+# locked doors, and one that guesses them does the same thing with more
+# confidence.
+pages:
+  - name: Business Licensing and Permitting Division
+    slug: business-licensing-and-permitting-division
+    description: >-
+      What this office does for residents, the 4 services it lists in the Citizen's Charter, and how
+      to reach it.
+    source:
+      label:
+        en: >-
+          Municipality of Tago Citizen's Charter — Business Licensing and Permitting Division
+          External Services
+      url: >-
+        https://tago.gov.ph/wp-content/uploads/2024/12/Business-Licensing-and-Permitting-Division-External-Services.pdf
+      documentTitle: Business Licensing and Permitting Division External Services
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+  - name: Executive Division
+    slug: executive-division
+    description: >-
+      What this office does for residents, the 6 services it lists in the Citizen's Charter, and how
+      to reach it.
+    source:
+      label:
+        en: Municipality of Tago Citizen's Charter — Executive Division External Services
+      url: https://tago.gov.ph/wp-content/uploads/2024/12/Executive-Division-External-Services.pdf
+      documentTitle: Executive Division External Services
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+  - name: Gender and Development Division
+    slug: gender-and-development-division
+    description: >-
+      What this office does for residents, the 1 service it lists in the Citizen's Charter, and how
+      to reach it.
+    source:
+      label:
+        en: Municipality of Tago Citizen's Charter — Gender and Development Division External Services
+      url: >-
+        https://tago.gov.ph/wp-content/uploads/2024/12/Gender-and-Development-Division-External-Services.pdf
+      documentTitle: Gender and Development Division External Services
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+  - name: Human Resource Management Division
+    slug: human-resource-management-division
+    description: >-
+      What this office does for residents, the 5 services it lists in the Citizen's Charter, and how
+      to reach it.
+    source:
+      label:
+        en: >-
+          Municipality of Tago Citizen's Charter — Human Resource Management Division External
+          Services
+      url: >-
+        https://tago.gov.ph/wp-content/uploads/2024/12/Human-Resource-Management-Division-External-Services.pdf
+      documentTitle: Human Resource Management Division External Services
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+  - name: Municipal Accounting Office
+    slug: municipal-accounting-office
+    description: >-
+      What this office does for residents, the 1 service it lists in the Citizen's Charter, and how
+      to reach it.
+    source:
+      label:
+        en: Municipality of Tago Citizen's Charter — Municipal Accounting Office
+      url: https://tago.gov.ph/wp-content/uploads/2024/12/Municipal-Accounting-Office.pdf
+      documentTitle: Municipal Accounting Office
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+  - name: Municipal Environment and Natural Resources Office
+    slug: municipal-environment-and-natural-resources-office
+    description: >-
+      What this office does for residents, the 2 services it lists in the Citizen's Charter, and how
+      to reach it.
+    source:
+      label:
+        en: >-
+          Municipality of Tago Citizen's Charter — Municipal Environment and Natural Resources
+          Office
+      url: >-
+        https://tago.gov.ph/wp-content/uploads/2024/12/Office-of-the-Municipal-Environment-and-Natural-Resources-Designate-Services.pdf
+      documentTitle: Municipal Environment and Natural Resources Office
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+  - name: Municipal Health Office
+    slug: municipal-health-office
+    description: >-
+      What this office does for residents, the 21 services it lists in the Citizen's Charter, and
+      how to reach it.
+    source:
+      label:
+        en: Municipality of Tago Citizen's Charter — Municipal Health Office
+      url: https://tago.gov.ph/wp-content/uploads/2024/12/Municipal-Health-Office.pdf
+      documentTitle: Municipal Health Office
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+  - name: Municipal Social Welfare and Development Office
+    slug: municipal-social-welfare-and-development-office
+    description: >-
+      What this office does for residents, the 6 services it lists in the Citizen's Charter, and how
+      to reach it.
+    source:
+      label:
+        en: Municipality of Tago Citizen's Charter — Municipal Social Welfare and Development Office
+      url: >-
+        https://tago.gov.ph/wp-content/uploads/2024/12/Municipal-Social-Welfare-and-Development-Office.pdf
+      documentTitle: Municipal Social Welfare and Development Office
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+  - name: Office of the Municipal Agriculture
+    slug: office-of-the-municipal-agriculture
+    description: >-
+      What this office does for residents, the 11 services it lists in the Citizen's Charter, and
+      how to reach it.
+    source:
+      label:
+        en: Municipality of Tago Citizen's Charter — Office of the Municipal Agriculture
+      url: https://tago.gov.ph/wp-content/uploads/2024/12/Office-of-the-Municipal-Agriculture.pdf
+      documentTitle: Office of the Municipal Agriculture
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+  - name: Office of the Municipal Assessor
+    slug: office-of-the-municipal-assessor
+    description: >-
+      What this office does for residents, the 8 services it lists in the Citizen's Charter, and how
+      to reach it.
+    source:
+      label:
+        en: Municipality of Tago Citizen's Charter — Office of the Municipal Assessor Services
+      url: https://tago.gov.ph/wp-content/uploads/2024/12/Office-of-the-Municipal-Assessor-Services.pdf
+      documentTitle: Office of the Municipal Assessor Services
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+  - name: Office of the Municipal Budget
+    slug: office-of-the-municipal-budget
+    description: >-
+      What this office does for residents, the 1 service it lists in the Citizen's Charter, and how
+      to reach it.
+    source:
+      label:
+        en: Municipality of Tago Citizen's Charter — Office of the Municipal Budget
+      url: https://tago.gov.ph/wp-content/uploads/2024/12/Office-of-the-Municipal-Budget.pdf
+      documentTitle: Office of the Municipal Budget
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+  - name: Office of the Municipal Civil Registrar
+    slug: office-of-the-municipal-civil-registrar
+    description: >-
+      What this office does for residents, the 14 services it lists in the Citizen's Charter, and
+      how to reach it.
+    source:
+      label:
+        en: Municipality of Tago Citizen's Charter — Office of the Municipal Civil Registrar
+      url: https://tago.gov.ph/wp-content/uploads/2024/12/Office-of-the-Municipal-Civil-Registrar.pdf
+      documentTitle: Office of the Municipal Civil Registrar
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+  - name: Office of the Municipal Disaster Risk Reduction Management
+    slug: office-of-the-municipal-disaster-risk-reduction-management
+    description: >-
+      What this office does for residents, the 5 services it lists in the Citizen's Charter, and how
+      to reach it.
+    source:
+      label:
+        en: >-
+          Municipality of Tago Citizen's Charter — Office of the Municipal Disaster Risk Reduction
+          Management
+      url: >-
+        https://tago.gov.ph/wp-content/uploads/2024/12/Office-of-the-Municipal-Disaster-Risk-Reduction-Management.pdf
+      documentTitle: Office of the Municipal Disaster Risk Reduction Management
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+  - name: Office of the Municipal Engineering
+    slug: office-of-the-municipal-engineering
+    description: >-
+      What this office does for residents, the 2 services it lists in the Citizen's Charter, and how
+      to reach it.
+    source:
+      label:
+        en: Municipality of Tago Citizen's Charter — Office of the Municipal Engineering Services
+      url: >-
+        https://tago.gov.ph/wp-content/uploads/2024/12/Office-of-the-Municipal-Engineering-Services.pdf
+      documentTitle: Office of the Municipal Engineering Services
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+  - name: Office of the Municipal Nutrition
+    slug: office-of-the-municipal-nutrition
+    description: >-
+      What this office does for residents, the 2 services it lists in the Citizen's Charter, and how
+      to reach it.
+    source:
+      label:
+        en: Municipality of Tago Citizen's Charter — Office of the Municipal Nutrition
+      url: https://tago.gov.ph/wp-content/uploads/2024/12/Office-of-the-Municipal-Nutrition.pdf
+      documentTitle: Office of the Municipal Nutrition
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+  - name: Office of the Municipal Planning and Development
+    slug: office-of-the-municipal-planning-and-development
+    description: >-
+      What this office does for residents, the 2 services it lists in the Citizen's Charter, and how
+      to reach it.
+    source:
+      label:
+        en: Municipality of Tago Citizen's Charter — Office of the Municipal Planning and Development
+      url: >-
+        https://tago.gov.ph/wp-content/uploads/2024/12/Office-of-the-Municipal-Planning-and-Development.pdf
+      documentTitle: Office of the Municipal Planning and Development
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+  - name: Office of the Municipal Treasurer
+    slug: office-of-the-municipal-treasurer
+    description: >-
+      How to reach this office, and why the Citizen's Charter lists no resident-facing service for
+      it.
+    source:
+      label:
+        en: Municipality of Tago Citizen's Charter — Office of the Municipal Treasurer
+      url: https://tago.gov.ph/wp-content/uploads/2024/12/Office-of-the-Municipal-Treasurer.pdf
+      documentTitle: Office of the Municipal Treasurer
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+  - name: Office of the Sangguniang Bayan
+    slug: office-of-the-sangguniang-bayan
+    description: >-
+      What this office does for residents, the 1 service it lists in the Citizen's Charter, and how
+      to reach it.
+    source:
+      label:
+        en: Municipality of Tago Citizen's Charter — Office of the Sangguniang Bayan Services
+      url: https://tago.gov.ph/wp-content/uploads/2024/12/Office-of-the-Sangguniang-Bayan-Services.pdf
+      documentTitle: Office of the Sangguniang Bayan Services
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+  - name: Office of the Vice Mayor
+    slug: office-of-the-vice-mayor
+    description: >-
+      What this office does for residents, the 1 service it lists in the Citizen's Charter, and how
+      to reach it.
+    source:
+      label:
+        en: Municipality of Tago Citizen's Charter — Office of the Vice Mayor
+      url: https://tago.gov.ph/wp-content/uploads/2024/12/Office-of-the-Vice-Mayor.pdf
+      documentTitle: Office of the Vice Mayor
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+  - name: Public Employment Office Division
+    slug: public-employment-office-division
+    description: >-
+      What this office does for residents, the 3 services it lists in the Citizen's Charter, and how
+      to reach it.
+    source:
+      label:
+        en: >-
+          Municipality of Tago Citizen's Charter — Public Employment Office Division External
+          Services
+      url: >-
+        https://tago.gov.ph/wp-content/uploads/2024/12/Public-Employment-Office-Division-External-Services.pdf
+      documentTitle: Public Employment Office Division External Services
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+  - name: Tourism Office
+    slug: tourism-office
+    description: >-
+      What this office does for residents, the 3 services it lists in the Citizen's Charter, and how
+      to reach it.
+    source:
+      label:
+        en: Municipality of Tago Citizen's Charter — Tourism Office
+      url: https://tago.gov.ph/wp-content/uploads/2024/12/Tourism-External-Services.pdf
+      documentTitle: Tourism Office
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'

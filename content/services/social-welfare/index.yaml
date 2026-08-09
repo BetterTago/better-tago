@@ -1,0 +1,38 @@
+# Service index — index-and-link only.
+#
+# Each entry names a service, says which office provides it, and links the
+# Citizen's Charter document that defines it. NO fee, requirement, processing
+# time or other charter figure is published here: republishing the charter's
+# contents is a permission this project has not sought, and the index is the
+# part residents were actually missing.
+pages:
+  - name: Get a certificate of indigency
+    slug: get-a-certificate-of-indigency
+    description: A certificate of indigency from the municipal social welfare office.
+    office: Municipal Social Welfare and Development Office
+    source:
+      label:
+        en: Municipality of Tago Citizen's Charter — Municipal Social Welfare and Development Office
+      url: >-
+        https://tago.gov.ph/wp-content/uploads/2024/12/Municipal-Social-Welfare-and-Development-Office.pdf
+      documentTitle: Municipal Social Welfare and Development Office
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+  - name: Get support as a solo parent, senior citizen or person with disability
+    slug: get-support-as-a-solo-parent-senior-citizen-or-person-with-disability
+    description: >-
+      Services for solo parents, senior citizens, persons with disabilities, women and out-of-school
+      youth.
+    office: Municipal Social Welfare and Development Office
+    source:
+      label:
+        en: Municipality of Tago Citizen's Charter — Municipal Social Welfare and Development Office
+      url: >-
+        https://tago.gov.ph/wp-content/uploads/2024/12/Municipal-Social-Welfare-and-Development-Office.pdf
+      documentTitle: Municipal Social Welfare and Development Office
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'

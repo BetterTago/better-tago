@@ -19,6 +19,7 @@ harvest overwrites the edit, and an edit that survives is an unsourced claim.
 | `charter-documents.yaml`       | Every Citizen's Charter PDF: published title, URL, retrieval date, `sha256`, size, and which branch of the municipality it belongs to |
 | `charter-services.yaml`        | Every service inside those PDFs, with six fields recorded **present or absent**                                                       |
 | `source-notes.md`              | One note per document: what was retrieved, and what was derived from it                                                               |
+| `office-pages.yaml`            | Every `/municipal-offices/` page, and whether it publishes a mandate. **None does** — see below                                       |
 
 | Authored by hand       | What it holds                                                                                       |
 | ---------------------- | --------------------------------------------------------------------------------------------------- |
@@ -85,6 +86,20 @@ Two results that look like bugs and are not:
 ask for — and `internal` ones, which are government-to-government. **An internal service published as a
 resident task would send someone to a counter for something they cannot request.** Only `external` services
 are candidates for a page.
+
+## `office-pages.yaml` — and the finding it records
+
+An office directory needs each office's mandate. **The municipality does not publish one anywhere**, and this
+file is what makes that a checked fact rather than an assumption.
+
+All 17 pages under `/municipal-offices/` were retrieved and dated. Thirteen carry no body text at all; the
+four that carry any carry a news item or a list of names. **Not one states a mandate**, and neither does any
+of the 22 charter documents — those go straight from the office name to the service list.
+
+⚠️ **The body text is deliberately not captured here**, and that is a rule rather than an oversight. Where a
+page has any, it is news or people's names, and a name belongs in the content layer beside a source and a
+check date — where one edit corrects it after an election — not baked into a generated file outside it. So the
+file records the _length_ of what is published and never the substance.
 
 ## Checksums
 

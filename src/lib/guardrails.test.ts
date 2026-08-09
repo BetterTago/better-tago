@@ -1,6 +1,12 @@
 import { readFileSync, readdirSync } from 'node:fs';
 import path from 'node:path';
 import { describe, expect, it } from 'vitest';
+import {
+  filesMatching,
+  matchesIn,
+  sourceFilesIn,
+  type ScannedFile,
+} from './file-scan';
 
 /**
  * Project rules that would otherwise be enforced only by review.
@@ -15,45 +21,10 @@ const ROOT = process.cwd();
 const SRC = path.join(ROOT, 'src');
 const APP = path.join(SRC, 'app');
 
-type SourceFile = { path: string; text: string };
+type SourceFile = ScannedFile;
 
-/** Every shipped `.ts`/`.tsx` under a directory. Tests are not shipped. */
-function sourceFiles(dir: string): SourceFile[] {
-  return readdirSync(dir, { withFileTypes: true }).flatMap<SourceFile>(
-    entry => {
-      const full = path.join(dir, entry.name);
-      if (entry.isDirectory()) return sourceFiles(full);
-      if (!/\.tsx?$/.test(entry.name)) return [];
-      if (/\.(test|spec)\.tsx?$/.test(entry.name)) return [];
-      return [
-        {
-          path: path.relative(ROOT, full).replace(/\\/g, '/'),
-          text: readFileSync(full, 'utf8'),
-        },
-      ];
-    }
-  );
-}
-
-/** Every file under a directory whose name matches, recursively. */
-function filesIn(dir: string, pattern: RegExp): SourceFile[] {
-  return readdirSync(dir, { withFileTypes: true }).flatMap<SourceFile>(
-    entry => {
-      const full = path.join(dir, entry.name);
-      if (entry.isDirectory()) return filesIn(full, pattern);
-      if (!pattern.test(entry.name)) return [];
-      return [
-        {
-          path: path.relative(ROOT, full).replace(/\\/g, '/'),
-          text: readFileSync(full, 'utf8'),
-        },
-      ];
-    }
-  );
-}
-
-const SRC_FILES = sourceFiles(SRC);
-const APP_FILES = sourceFiles(APP);
+const SRC_FILES = sourceFilesIn(SRC);
+const APP_FILES = sourceFilesIn(APP);
 
 /** Every string leaf in a parsed JSON tree, keyed by its dotted path. */
 function flatten(value: unknown, prefix = ''): [string, string][] {
@@ -65,11 +36,8 @@ function flatten(value: unknown, prefix = ''): [string, string][] {
 }
 
 /** Files whose text matches, reported as paths so a failure names the culprit. */
-function offenders(files: SourceFile[], pattern: RegExp): string[] {
-  return files
-    .filter(file => pattern.test(file.text))
-    .map(file => `${file.path} → ${file.text.match(pattern)?.[0]}`);
-}
+const offenders = (files: SourceFile[], pattern: RegExp): string[] =>
+  matchesIn(files, pattern);
 
 describe('the source scan itself', () => {
   it('is actually reading files', () => {
@@ -125,9 +93,9 @@ describe('self-containment', () => {
     // scan by nobody remembering to add it. scripts/ is committed tooling and
     // is reached by neither the src/ scan above nor the markdown sweep.
     const swept = [
-      ...filesIn(path.join(ROOT, 'docs'), /\.md$/),
-      ...filesIn(path.join(ROOT, 'inventory'), /\.md$/),
-      ...filesIn(path.join(ROOT, 'scripts'), /\.mjs$/),
+      ...filesMatching(path.join(ROOT, 'docs'), /\.md$/),
+      ...filesMatching(path.join(ROOT, 'inventory'), /\.md$/),
+      ...filesMatching(path.join(ROOT, 'scripts'), /\.mjs$/),
     ];
 
     // Same reasoning as the source-scan check above: a walker that silently
@@ -151,6 +119,98 @@ describe('self-containment', () => {
 
     expect(specs.length).toBeGreaterThan(0);
     expect(offenders(specs, OUTWARD)).toEqual([]);
+  });
+});
+
+describe('nothing is public while the Phase 0 gate is open', () => {
+  /*
+   * THE WAVE GATE. No public route ships, and the domain does not begin to
+   * resolve, until the municipality has been told this project exists. That is
+   * a decision about the project rather than about the code — so the code's job
+   * is to make breaching it by accident impossible.
+   *
+   * `content/` is now populated: office records, service index entries, the
+   * emergency layer, the home copy. NONE of it is reachable by a URL, and these
+   * two assertions are the whole of what keeps that true. The trunk deploys to
+   * production, so "we did not mean to publish it" is not a control.
+   *
+   * When the gate closes, this block is DELETED — deliberately, in a diff
+   * somebody reviews. That review is the moment the gate exists to force, and a
+   * test that has to be removed on purpose is the only kind that produces it.
+   */
+
+  /** Every route file permitted while the gate is open. */
+  const ROUTES_WHILE_GATED = [
+    'src/app/[locale]/error.tsx',
+    'src/app/[locale]/layout.tsx',
+    'src/app/[locale]/not-found.tsx',
+    'src/app/[locale]/page.tsx',
+    'src/app/layout.tsx',
+    'src/app/not-found.tsx',
+    'src/app/robots.ts',
+    'src/app/sitemap.ts',
+  ];
+
+  /** Route files present that the gate does not permit. */
+  function unpermittedRoutes(files: SourceFile[]): string[] {
+    return files
+      .map(file => file.path)
+      .filter(route => !ROUTES_WHILE_GATED.includes(route))
+      .sort();
+  }
+
+  /**
+   * Anything importing the content loader.
+   *
+   * Deliberately scanned over the WHOLE source tree, not just `src/app`. A
+   * route reaches `content/` just as effectively through a component two levels
+   * down, and a scan that only reads the route files would miss exactly that.
+   * If nothing anywhere imports the loader, no route can reach it — which is
+   * the property worth asserting, and it is cheap to keep true.
+   */
+  function contentReaders(files: SourceFile[]): string[] {
+    return files
+      .filter(file => file.path !== 'src/lib/content.ts')
+      .filter(file => /['"]@\/lib\/content['"]/.test(file.text))
+      .map(file => file.path)
+      .sort();
+  }
+
+  it('adds no route beyond the holding page', () => {
+    expect(unpermittedRoutes(APP_FILES)).toEqual([]);
+
+    // The reverse, so a deleted route is caught too: a shrinking route set
+    // while the gate is open is not a breach, but it does mean this list has
+    // stopped describing the application and nobody noticed.
+    expect(APP_FILES.map(file => file.path).sort()).toEqual(
+      [...ROUTES_WHILE_GATED].sort()
+    );
+  });
+
+  it('lets nothing in the source tree read the content layer', () => {
+    expect(contentReaders(SRC_FILES)).toEqual([]);
+  });
+
+  it('fires on a doctored route and a doctored importer', () => {
+    // Neither assertion above has ever gone red, and a guardrail that has never
+    // gone red is not known to work. These are the two exact breaches: a route
+    // that renders content, and a component that fetches it.
+    expect(
+      unpermittedRoutes([
+        ...APP_FILES,
+        { path: 'src/app/[locale]/services/page.tsx', text: '' },
+      ])
+    ).toEqual(['src/app/[locale]/services/page.tsx']);
+
+    expect(
+      contentReaders([
+        ...SRC_FILES,
+        {
+          path: 'src/components/content/ServiceList.tsx',
+          text: "import { getManifest } from '@/lib/content';",
+        },
+      ])
+    ).toEqual(['src/components/content/ServiceList.tsx']);
   });
 });
 
@@ -477,7 +537,7 @@ describe('how an absence is described', () => {
           text,
         }))
       ),
-      ...filesIn(path.join(ROOT, 'content'), /\.md$/),
+      ...filesMatching(path.join(ROOT, 'content'), /\.md$/),
     ];
   }
 

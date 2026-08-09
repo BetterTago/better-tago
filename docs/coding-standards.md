@@ -451,6 +451,26 @@ a bug, and the code encodes it:
   in `pending` saying what is missing and how it gets closed. `src/lib/lgu-config.ts` fails the parse otherwise.
 - **The reverse also fails**: a `pending` entry pointing at a field that now has a value is stale, and a register
   full of closed items stops being read — at which point the open ones stop being seen.
+- **An entry is a record, not a sentence.** Each one carries four fields, and the parse rejects it otherwise:
+
+  | Field           | What it is                                                                                         |
+  | --------------- | -------------------------------------------------------------------------------------------------- |
+  | `note`          | What is missing and how it gets closed, in at least 40 characters — so `"TODO"` cannot close a gap |
+  | `channel`       | How it actually closes: `official-site`, `national-agency`, `field-verification`, or `project`     |
+  | `state`         | `open` (not obtained) or `held` (obtained, and deliberately not published)                         |
+  | `lastCheckedAt` | **The day somebody looked. Not the day the entry was written**                                     |
+
+  `lastCheckedAt` is the field this shape exists for. Every date in this register was once inherited from a
+  document rather than made by a person, and the old shape — a bare string — had nowhere to put one, so nothing
+  could tell the difference. **Stamping it without checking is worse than leaving the register alone**: it turns
+  "nobody has looked" into "somebody looked and it is still missing", which is a different and false claim.
+
+- **`written-request` is not a channel.** The correspondence lane is retired — no request is being sent to any
+  office — so an entry claiming a letter will close it would be false the day it was written. The enum rejects
+  it, and re-opening that lane is a deliberate decision rather than a word somebody types.
+- **An empty list is a gap too.** `emergency.municipalHotlines` is an array, and the null scan does not descend
+  arrays, so the largest absence in the record was invisible to the register. An empty hotline list now requires
+  its own entry, and a hotline arriving makes that entry stale.
 - **`portal.independent` is a literal, not a boolean.** There is no configuration of this portal that lets it
   stop saying it is independent of the Municipal Government of Tago.
 - **No emergency number ships without a source.** While `emergency.status` is `not-obtained`, the emergency

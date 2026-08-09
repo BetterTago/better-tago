@@ -137,7 +137,42 @@ is worth knowing now rather than discovering it with a dozen pages half-written.
 
 What is _not_ blocked: the searchable index of which services exist, which office provides each one, and a link
 to the official document. That shape needs no transcription and no second verifier, and it is most of what
-residents currently lack.
+residents currently lack. **That index is now written** — 21 office records and the first service entries, each
+citing the charter document it came from.
+
+### What the vacancies are actually holding up, as of 2026-08-09
+
+Two roles are blocking specific, named work. Recorded here as a list rather than as a feeling, so that filling
+a role has an obvious first task attached to it.
+
+**Field checker — nothing on this list can be done from a computer.** Every item needs somebody in Tago.
+
+| Record                                  | What has to be checked                               | Where it is                                                                                |
+| --------------------------------------- | ---------------------------------------------------- | ------------------------------------------------------------------------------------------ |
+| The municipal hall's published landline | Ring it. Does it answer, and is it the hall?         | `config/lgu.config.json` → `contact.municipalHall.phone`, currently `published-unverified` |
+| The municipal hall's address            | Is the hall where the contact page says it is?       | `contact.municipalHall.address`                                                            |
+| Office hours, every office              | Photograph what is posted on the door, with the date | 21 office records, all currently a dated _not stated_                                      |
+| Which room each office occupies         | The office records say the hall and no more          | 21 office records                                                                          |
+| Any emergency number                    | Whether it rings, and what hours it is staffed       | Nothing to check yet — none has been found                                                 |
+
+**Until that list is worked, nothing on it ships as though it had been checked.** Today that costs nothing,
+because no route renders any of it. It stops being free the moment one does.
+
+**Translator — the Filipino side is a draft, not a publication.**
+
+The bilingual policy is explicit that machine output is a draft and never a publication, and that procedural
+copy is rewritten for meaning by a fluent speaker. **No Filipino in this repository has been reviewed by one.**
+What exists is a careful draft, and it is listed here rather than left to be assumed:
+
+| Filipino text                                              | State            |
+| ---------------------------------------------------------- | ---------------- |
+| `messages/fil.json` — the whole shell string set           | Unreviewed draft |
+| `content/emergency/**/*.fil.md` — all four emergency pages | Unreviewed draft |
+| `content/home/notice/*.fil.md` — both home pages           | Unreviewed draft |
+
+Service titles inside the Filipino pages are **deliberately left in English**, because they are the words on the
+form and at the counter. That is a translation decision, not an omission, and it is the same rule that keeps
+fees, document names and office names untranslated.
 
 ---
 

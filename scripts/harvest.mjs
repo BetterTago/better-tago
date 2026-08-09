@@ -296,6 +296,91 @@ function writeYaml(file, data) {
 }
 
 /**
+ * The visible text inside a page's `<article>`, with scripts and markup gone.
+ *
+ * Used only to MEASURE whether a page publishes anything — never to capture
+ * what it says. See `harvestOfficePages` for why that distinction is the whole
+ * point of this function.
+ */
+function articleTextLength(html) {
+  const withoutCode = html.replace(
+    /<(script|style)\b[^>]*>[\s\S]*?<\/\1>/gi,
+    ''
+  );
+  const article = withoutCode.match(/<article\b[^>]*>([\s\S]*?)<\/article>/i);
+  if (!article) return 0;
+  return decodeEntities(article[1].replace(/<[^>]+>/g, ' '))
+    .replace(/\s+/g, ' ')
+    .trim().length;
+}
+
+/**
+ * Every `/municipal-offices/` page: what it is, when it was read, and HOW MUCH
+ * it publishes.
+ *
+ * ⚠️ **The body text is deliberately NOT captured**, and that is a rule rather
+ * than an omission. Most of these pages are empty; the few that are not carry a
+ * news item or a list of council members' NAMES. A name belongs in the content
+ * layer beside a source and a check date, where one edit corrects it after an
+ * election — never baked into a generated file outside it. So this records the
+ * LENGTH of what is published and not the substance.
+ *
+ * It deliberately records **no judgement about mandates.** It once carried a
+ * `publishesMandate` field, and that field was a lie by construction: it was
+ * the literal `false` on every page, its summary count was computed from that
+ * constant, and its own comment claimed it was "a human judgement recorded per
+ * page" — which a file this script overwrites on every run cannot hold. The
+ * finding it was trying to express (no office page states a mandate) is a
+ * reading of these pages, so it lives in `inventory/README.md`, which is
+ * hand-authored and can be argued with.
+ */
+async function harvestOfficePages(officePages, legislativePages, disallowed) {
+  const pages = [];
+
+  for (const url of [...officePages].sort()) {
+    const html = await getText(url, disallowed);
+    const title = html.match(/<title>([^<]*)<\/title>/i);
+    const bodyChars = articleTextLength(html);
+
+    pages.push({
+      url,
+      slug: url.replace(/\/$/, '').split('/').pop(),
+      // The municipality's own words. The site suffixes every title with its
+      // own name, which is chrome rather than the office's name.
+      publishedTitle: title
+        ? decodeEntities(title[1])
+            .replace(/\s*\|\s*LGU TAGO\s*$/i, '')
+            .trim()
+        : null,
+      branch: legislativePages.includes(url) ? 'legislative' : 'executive',
+      retrievedAt: TODAY,
+      sha256: createHash('sha256').update(html).digest('hex'),
+      bodyChars,
+    });
+    console.log(
+      `  ${url.split('/').filter(Boolean).pop()} — ${bodyChars} chars`
+    );
+  }
+
+  /*
+   * The tripwire. `bodyChars` is measured by matching <article>, and if the
+   * site restructures so that selector stops matching, EVERY page reads 0 —
+   * which is indistinguishable from "the municipality publishes nothing", the
+   * exact conclusion this file is used to support. Some pages do carry text
+   * today, so zero across the board means the extractor broke, not the site.
+   */
+  if (pages.length > 0 && pages.every(page => page.bodyChars === 0)) {
+    console.warn(
+      '  ! Every office page measured 0 characters. That is how this looks when\n' +
+        '    the <article> selector stops matching, not only when the pages are\n' +
+        '    empty. Check one page by hand before trusting this run.'
+    );
+  }
+
+  return pages;
+}
+
+/**
  * The per-document source note: what was retrieved, and what was derived from
  * it. Generated rather than written, so it cannot drift from the archive it
  * describes — a source note that disagrees with its document is worse than
@@ -512,6 +597,24 @@ async function main() {
     ).length,
     services,
   });
+
+  const officePageRecords = await harvestOfficePages(
+    officePages,
+    legislativePages,
+    disallowed
+  );
+  const withBody = officePageRecords.filter(page => page.bodyChars > 0).length;
+
+  writeYaml('office-pages.yaml', {
+    harvestedAt: TODAY,
+    pageCount: officePageRecords.length,
+    pagesWithAnyBodyText: withBody,
+    note: 'Every /municipal-offices/ page the sitemap lists, measured and dated. This file records WHAT WAS READ, not what it means: url, published title, branch, retrieval date, checksum, and how many characters of body text the page carries. Body text itself is deliberately not captured — the few pages that have any carry a news item or a list of names, and a name belongs in the content layer beside a source and a check date, not in a generated inventory. What these measurements are read to MEAN — that no office page states a mandate — is a human judgement and lives in inventory/README.md, which is hand-authored.',
+    pages: officePageRecords,
+  });
+  console.log(
+    `  ${officePageRecords.length} office pages · ${withBody} with any body text`
+  );
 
   writeSourceNotes(documents, services);
 

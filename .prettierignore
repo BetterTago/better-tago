@@ -16,5 +16,6 @@ package-lock.json
 # `*.yaml` glob silently excluded the vocabulary the day it was added.
 inventory/charter-documents.yaml
 inventory/charter-services.yaml
+inventory/office-pages.yaml
 inventory/site-pages.yaml
 inventory/source-notes.md

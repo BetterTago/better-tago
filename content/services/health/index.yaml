@@ -1,0 +1,47 @@
+# Service index — index-and-link only.
+#
+# Each entry names a service, says which office provides it, and links the
+# Citizen's Charter document that defines it. NO fee, requirement, processing
+# time or other charter figure is published here: republishing the charter's
+# contents is a permission this project has not sought, and the index is the
+# part residents were actually missing.
+pages:
+  - name: See a doctor for a consultation
+    slug: see-a-doctor-for-a-consultation
+    description: General consultation and treatment at the municipal health office.
+    office: Municipal Health Office
+    source:
+      label:
+        en: Municipality of Tago Citizen's Charter — Municipal Health Office
+      url: https://tago.gov.ph/wp-content/uploads/2024/12/Municipal-Health-Office.pdf
+      documentTitle: Municipal Health Office
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+  - name: Get a child immunized
+    slug: get-a-child-immunized
+    description: Childhood immunisation at the municipal health office.
+    office: Municipal Health Office
+    source:
+      label:
+        en: Municipality of Tago Citizen's Charter — Municipal Health Office
+      url: https://tago.gov.ph/wp-content/uploads/2024/12/Municipal-Health-Office.pdf
+      documentTitle: Municipal Health Office
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+  - name: Get a medical certificate
+    slug: get-a-medical-certificate
+    description: A medical certificate issued by the municipal health office.
+    office: Municipal Health Office
+    source:
+      label:
+        en: Municipality of Tago Citizen's Charter — Municipal Health Office
+      url: https://tago.gov.ph/wp-content/uploads/2024/12/Municipal-Health-Office.pdf
+      documentTitle: Municipal Health Office
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'

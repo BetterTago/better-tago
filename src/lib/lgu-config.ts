@@ -146,6 +146,31 @@ const emergencySchema = z.object({
   municipalHotlines: z.array(hotlineSchema),
   status: z.enum(['not-obtained', 'requested', 'partial', 'obtained']),
   note: z.string().min(1),
+  /** The day the sources below were last swept for a municipal number. */
+  checkedAt: z.iso.date(),
+  /**
+   * The re-check cadence, in days. 90, per the governance standard: emergency
+   * information is the one class allowed to ship unconfirmed, and the price of
+   * that is that it comes off the page if nobody looks at it for a quarter.
+   */
+  recheckDays: z.int().positive(),
+  /**
+   * Where a municipal number was looked for, and what came back.
+   *
+   * The gap is the published content here, and a gap with no record of the
+   * looking is indistinguishable from nobody having looked. Each entry is a
+   * source that WOULD have carried the number if it existed.
+   */
+  sourcesChecked: z
+    .array(
+      z.object({
+        label: z.string().min(1),
+        url: z.url(),
+        result: z.enum(['no-municipal-number-published', 'not-retrievable']),
+        checkedAt: z.iso.date(),
+      })
+    )
+    .min(1),
 });
 
 /** The subtrees whose nulls are municipal gaps. `pending` describes them. */
@@ -167,6 +192,74 @@ function nullPaths(value: unknown, prefix: string): string[] {
   );
 }
 
+/**
+ * How a gap actually gets closed.
+ *
+ * `written-request` is deliberately ABSENT. The correspondence lane was retired
+ * — no request is being sent to any office — so an entry claiming a letter will
+ * close it would be false on the day it was written. Re-opening that lane is a
+ * deliberate decision, and it should cost a change here rather than happen by
+ * someone typing a channel that reads plausible.
+ *
+ * See docs/governance.md § the Phase 0 positions.
+ */
+const gapChannel = z.enum([
+  /** Published somewhere on the municipality's own site, once it is. */
+  'official-site',
+  /** A national agency's own published record — the statistics authority, say. */
+  'national-agency',
+  /** Somebody in Tago looking at a wall, a door, or a counter. */
+  'field-verification',
+  /**
+   * This project doing something, rather than anyone else answering.
+   *
+   * Exactly one entry uses it, and it is the only gap in this register that is
+   * not about the municipality at all: the project has no mail address of its
+   * own. Kept in the same register rather than a second one, because a reader
+   * asking "what is missing here" deserves one list.
+   */
+  'project',
+]);
+
+/**
+ * A gap in the record, and what it would take to close it.
+ *
+ * This used to be a bare string, and two of the register's own requirements
+ * could not be met by that shape at all: an entry has to name the channel that
+ * would close it, and it has to carry **the date it was last checked, not the
+ * date it was written**. Prose can claim both and nothing can check either,
+ * which is how every date in this register came to be inherited rather than
+ * made.
+ */
+const pendingEntrySchema = z.object({
+  /**
+   * What is missing and how it gets closed, in a real sentence.
+   *
+   * The 40-character floor is not styling: it is what stops `"TODO"` closing a
+   * gap. A register whose entries can be one word is a register that fills up
+   * with them.
+   */
+  note: z.string().min(40),
+  channel: gapChannel,
+  /**
+   * `open` — not obtained yet. `held` — obtained and deliberately NOT published.
+   *
+   * The two are not the same absence and must not read as one. Exactly one
+   * field is `held` today: the postal code the official site publishes sits
+   * outside this province's range, so publishing it would propagate an error
+   * and "correcting" it would invent one.
+   */
+  state: z.enum(['open', 'held']),
+  /**
+   * The day a human last went and looked. Not the day the entry was written.
+   *
+   * Stamping this without checking is the one way to make the register worse
+   * than having none — it converts "nobody has looked" into "somebody looked
+   * and it is still missing", which is a different and false claim.
+   */
+  lastCheckedAt: z.iso.date(),
+});
+
 const configSchema = z
   .object({
     portal: portalSchema,
@@ -176,12 +269,27 @@ const configSchema = z
     emergency: emergencySchema,
     socials: z.object({ municipalFacebook: z.url().nullable() }),
     sources: z.record(z.string(), z.url()),
-    pending: z.record(z.string(), z.string().min(40)),
+    pending: z.record(z.string(), pendingEntrySchema),
   })
   .superRefine((config, ctx) => {
     const nulls = new Set(
       FACT_GROUPS.flatMap(group => nullPaths(config[group], group))
     );
+
+    /*
+     * An empty hotline list is a gap, and `nullPaths` cannot see it.
+     *
+     * Arrays are not descended — correctly, or every element would become a
+     * registered path — so `municipalHotlines: []` was invisible to a register
+     * whose entire purpose is to be exhaustive. It was also the LARGEST gap in
+     * the record: a coastal municipality with no findable local emergency
+     * number. The one absence most worth registering was the one the register
+     * structurally could not hold.
+     */
+    if (config.emergency.municipalHotlines.length === 0) {
+      nulls.add('emergency.municipalHotlines');
+    }
+
     const registered = new Set(Object.keys(config.pending));
 
     for (const path of nulls) {
