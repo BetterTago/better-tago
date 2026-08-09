@@ -55,6 +55,15 @@ function filesIn(dir: string, pattern: RegExp): SourceFile[] {
 const SRC_FILES = sourceFiles(SRC);
 const APP_FILES = sourceFiles(APP);
 
+/** Every string leaf in a parsed JSON tree, keyed by its dotted path. */
+function flatten(value: unknown, prefix = ''): [string, string][] {
+  if (typeof value === 'string') return [[prefix, value]];
+  if (value === null || typeof value !== 'object') return [];
+  return Object.entries(value).flatMap(([key, child]) =>
+    flatten(child, prefix ? `${prefix}.${key}` : key)
+  );
+}
+
 /** Files whose text matches, reported as paths so a failure names the culprit. */
 function offenders(files: SourceFile[], pattern: RegExp): string[] {
   return files
@@ -261,14 +270,6 @@ describe('translation coverage', () => {
       readFileSync(path.join(ROOT, 'messages', `${locale}.json`), 'utf8')
     );
 
-  function flatten(value: unknown, prefix = ''): [string, string][] {
-    if (typeof value === 'string') return [[prefix, value]];
-    if (value === null || typeof value !== 'object') return [];
-    return Object.entries(value).flatMap(([key, child]) =>
-      flatten(child, prefix ? `${prefix}.${key}` : key)
-    );
-  }
-
   const en = Object.fromEntries(flatten(read('en')));
   const fil = Object.fromEntries(flatten(read('fil')));
 
@@ -308,5 +309,207 @@ describe('translation coverage', () => {
       key => fil[key] !== en[key]
     );
     expect(stale).toEqual([]);
+  });
+});
+
+describe('the two-person rule reaches the record that needs it', () => {
+  /*
+   * `verificationRecordSchema` makes the collector-never-verifies rule
+   * unparseable to violate — but only for a record that actually requires it.
+   * The service guide, which is where fees, deadlines and requirements live,
+   * is not built yet (it belongs to the guide-contract work), so this is a
+   * TRIPWIRE rather than an assertion about today.
+   *
+   * Without it, the schema is exported and used by nothing, which is how a
+   * rule gets deleted as dead code and nobody notices the rule went with it.
+   */
+  const schema = readFileSync(
+    path.join(SRC, 'lib', 'content-schema.ts'),
+    'utf8'
+  );
+
+  it('declares the record', () => {
+    expect(schema).toContain('export const verificationRecordSchema');
+  });
+
+  /**
+   * The text of one `export const <name> = …` declaration, up to the next
+   * top-level export. Counting occurrences file-wide does NOT work: the record
+   * is already named a second time by its own `z.infer` type alias, so a
+   * counter reads as satisfied before the guide is written at all.
+   */
+  function declarationOf(name: string): string | null {
+    const start = schema.search(new RegExp(`^export const ${name}\\b`, 'm'));
+    if (start === -1) return null;
+    const rest = schema.slice(start + 1);
+    const end = rest.search(/^export (?:const|type) /m);
+    return end === -1 ? rest : rest.slice(0, end);
+  }
+
+  it('requires it on the service guide record, the day that record exists', () => {
+    const guide = declarationOf('serviceGuideSchema');
+
+    // No guide yet → nothing to check, and the check starts biting by itself
+    // the moment somebody adds one. A guide that never names the record is the
+    // failure this exists to catch.
+    const violation =
+      guide && !/\bverificationRecordSchema\b/.test(guide)
+        ? [
+            'serviceGuideSchema exists but does not carry verificationRecordSchema',
+          ]
+        : [];
+    expect(violation).toEqual([]);
+  });
+});
+
+describe('how an absence is described', () => {
+  /*
+   * The publication rule from docs/governance.md § how an absence is described:
+   * an outstanding or unobtainable fact is never described as a REFUSAL, a
+   * CONCEALMENT, or a LACK OF TRANSPARENCY.
+   *
+   * "Requested on this date, not yet answered" is a fact. "Not published
+   * anywhere we can cite" is a fact. "They are withholding it" is an inference
+   * about intent this project cannot support and has no business making — and
+   * it is the kind of sentence that gets written once, late, by someone
+   * frustrated, and then sits on a civic page indefinitely.
+   *
+   * Phrase-matched, never word-matched. `refuse collection` is a real municipal
+   * service and `withholding tax` is a real one too; a word list would fail the
+   * build on a correct page and get deleted the first time it did.
+   */
+  const ACCUSATIONS: { framing: string; pattern: RegExp }[] = [
+    { framing: 'refusal', pattern: /\brefus(?:ed|es|al|ing)\s+to\b/i },
+    {
+      framing: 'refusal',
+      pattern: /\bdeclin(?:ed|es|ing)\s+to\s+(?:answer|provide|disclose|say)/i,
+    },
+    { framing: 'concealment', pattern: /\bconceal(?:s|ed|ing|ment)?\b/i },
+    { framing: 'concealment', pattern: /\bcover[-\s]?up\b/i },
+    { framing: 'concealment', pattern: /\bwithh(?:eld|olding)\b(?!\s+tax)/i },
+    { framing: 'concealment', pattern: /\bhiding\s+(?:it|the|this|these)\b/i },
+    {
+      framing: 'transparency',
+      pattern: /\black(?:s|ing)?\s+of\s+transparency\b/i,
+    },
+    { framing: 'transparency', pattern: /\bnot\s+transparent\b/i },
+    { framing: 'transparency', pattern: /\bstonewall/i },
+  ];
+
+  /**
+   * Every reader-facing string this project controls: the gap register and the
+   * notes beside it, both message catalogues, and the content tree.
+   */
+  function scannedText(): SourceFile[] {
+    const config = JSON.parse(
+      readFileSync(path.join(ROOT, 'config', 'lgu.config.json'), 'utf8')
+    );
+
+    return [
+      ...flatten(config).map(([key, text]) => ({
+        path: `config/lgu.config.json → ${key}`,
+        text,
+      })),
+      ...['en', 'fil'].flatMap(locale =>
+        flatten(
+          JSON.parse(
+            readFileSync(path.join(ROOT, 'messages', `${locale}.json`), 'utf8')
+          )
+        ).map(([key, text]) => ({
+          path: `messages/${locale}.json → ${key}`,
+          text,
+        }))
+      ),
+      ...filesIn(path.join(ROOT, 'content'), /\.md$/),
+    ];
+  }
+
+  /**
+   * Every accusatory framing found, as `<where> → <framing>: <matched>`.
+   *
+   * EVERY occurrence, not the first — `String.match` without `/g` returns one
+   * hit per pattern per file, which would mean a page carrying two accusations
+   * surfaces one, and defending that one silently hides the other. The unit
+   * being defended has to be the wording, not the file.
+   */
+  function accusations(files: SourceFile[]): string[] {
+    return files.flatMap(file =>
+      ACCUSATIONS.flatMap(({ framing, pattern }) => {
+        const everywhere = new RegExp(pattern.source, `${pattern.flags}g`);
+        const found = [...file.text.matchAll(everywhere)].map(
+          hit => `${file.path} → ${framing}: "${hit[0]}"`
+        );
+        // Two identical wordings in one file are one thing to fix, and one
+        // entry to defend.
+        return [...new Set(found)];
+      })
+    );
+  }
+
+  /**
+   * Wordings that trip a pattern above and are NOT accusations.
+   *
+   * Empty today, and adding a line is an editorial decision that has to be
+   * defended in the reason string — never a way to close a red build. The
+   * staleness check below deletes the excuse for leaving one behind.
+   */
+  const DEFENDED: Record<string, string> = {};
+
+  const SCANNED = scannedText();
+
+  it('is actually reading the register, the messages and the content', () => {
+    // A scan that silently reads nothing is a green no-op, which is worse than
+    // no scan at all because it looks like somebody checked.
+    expect(SCANNED.length).toBeGreaterThan(20);
+    expect(SCANNED.map(file => file.path)).toContain(
+      'config/lgu.config.json → emergency.note'
+    );
+    expect(SCANNED.some(file => file.path.startsWith('content/'))).toBe(true);
+  });
+
+  it('fires on a doctored fixture', () => {
+    // A guardrail that has never gone red is not known to work. Every framing
+    // the rule names gets a sentence that must trip it.
+    const doctored = [
+      { path: 'fixture', text: 'The office refused to answer our request.' },
+      { path: 'fixture', text: 'The figure is being withheld from residents.' },
+      { path: 'fixture', text: 'This reflects a lack of transparency.' },
+    ];
+    expect(accusations(doctored)).toHaveLength(3);
+  });
+
+  it('reports every accusation in a page, not just the first', () => {
+    // The bug this replaced: one hit per pattern per file meant a page with two
+    // accusations surfaced one, and defending that one hid the other.
+    const twice = [
+      {
+        path: 'fixture',
+        text: 'The office conceals the fee. A second office concealed its hours.',
+      },
+    ];
+    expect(accusations(twice)).toHaveLength(2);
+  });
+
+  it('does not fire on legitimate municipal vocabulary', () => {
+    // The two terms that make a word list unusable here.
+    expect(
+      accusations([
+        { path: 'fixture', text: 'Refuse collection runs on Tuesdays.' },
+        { path: 'fixture', text: 'Bring your withholding tax certificate.' },
+      ])
+    ).toEqual([]);
+  });
+
+  it('frames no absence as a refusal, a concealment, or a lack of transparency', () => {
+    expect(accusations(SCANNED).filter(found => !(found in DEFENDED))).toEqual(
+      []
+    );
+  });
+
+  it('keeps the defended list honest', () => {
+    // An exemption for a wording that no longer exists stops anyone reading the
+    // list, at which point the live ones stop being seen.
+    const live = new Set(accusations(SCANNED));
+    expect(Object.keys(DEFENDED).filter(entry => !live.has(entry))).toEqual([]);
   });
 });

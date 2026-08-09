@@ -67,7 +67,7 @@
     "nationalLine": "911",
     "municipalHotlines": [],
     "status": "not-obtained",
-    "note": "No municipal emergency hotline is published on tago.gov.ph. Requesting it is the single most important ask in the proposal. Until it is obtained the emergency surface renders the gap, not a guess, and never another municipality's number."
+    "note": "No municipal emergency hotline is published on tago.gov.ph. SETTLED POSITION (2026-08-09): the emergency surface renders that absence rather than a number, and will not carry a neighbouring municipality's number, an undated one, or a plausible guess. This is the position, not a temporary state — a wrong number in an emergency is worse than no number at all. If numbers are obtained later they are recorded with the office that supplied them and the date, and the surface changes then. See docs/governance.md."
   },
   "socials": {
     "municipalFacebook": null
@@ -92,7 +92,7 @@
     "contact.municipalHall.mapUrl": "No map link is published. Confirm the hall's actual location in person before publishing one — a wrong pin costs a resident a fare.",
     "contact.municipalHall.email": "The official contact page publishes one address at a free consumer mail provider for the Office of the Mayor. Confirm it is the channel the office wants published before republishing it.",
     "contact.municipalHall.officeHours": "Not stated anywhere on the official site. A phone number with no stated hours is a coin toss, and a directory without them sends people to locked doors. This is Phase 0 request #3.",
-    "contact.project.email": "No project email address is published, and none is currently needed: the contact and correction channel is the public repository's issue tracker, which is live and linked from the footer of every page. This field stays null until there is a reason to publish an address. It is not blocked on anything — the earlier note here claimed it was blocked on the domain being pointed, which was wrong on the facts.",
+    "contact.project.email": "There is now a stated reason to publish one, and this is the honest gap it leaves open. The correction channel is the public repository's issue tracker — live, linked from the footer of every page, and requiring a free account on a code-hosting site. That account is a real barrier for exactly the resident most likely to spot a wrong fee at a counter, and the governance standard asks for a channel usable with no code account. Closing this needs an address that exists and someone reading it; it needs no code, because the footer link is already null-guarded. Recorded in CONTRIBUTING.md and docs/governance.md rather than left to be noticed.",
     "socials.municipalFacebook": "A Facebook page exists and is referenced from the official contact page; capture the exact URL."
   }
 }

@@ -24,11 +24,51 @@ export const sourceSchema = z.object({
 });
 
 /**
- * V3 verified primary · V2 official communication · V1 corroborated indirect ·
- * V0 unconfirmed. Fees, deadlines and requirements must be V2 or better; V0 is
- * for safety-critical information only, and only while it is visibly labelled.
+ * How well a fact is stood up, strongest first: `V3` primary · `V2` official
+ * communication · `V1` corroborated indirect · `V0` unconfirmed.
+ *
+ * The definitions, a worked example of each, which level is good enough for
+ * what, and the 90-day `V0` re-check live in ONE place — docs/governance.md.
+ * Do not restate the rules here: this docblock used to, and had already fallen
+ * a rule behind.
  */
 export const verificationSchema = z.enum(['V3', 'V2', 'V1', 'V0']);
+
+/**
+ * A contributor handle — lowercase, hyphenated, self-chosen.
+ *
+ * Deliberately the same shape as a page slug, and deliberately unable to
+ * express a personal name or an email address: no spaces, no `@`, no dots.
+ * Contributing here requires no personal information, and this format is what
+ * keeps that true rather than someone remembering it at review time.
+ */
+const contributorHandleSchema = z
+  .string()
+  .regex(
+    /^[a-z0-9]+(?:-[a-z0-9]+)*$/,
+    'must be a lowercase, hyphenated handle — never a name or an address'
+  );
+
+/**
+ * Who collected a fact, who checked it, and when — the record that makes the
+ * two-person rule checkable instead of merely stated.
+ *
+ * The refinement is the point: a record naming the same handle twice does not
+ * parse, so a page cannot ship having been verified by the person who wrote it.
+ * Documented in docs/governance.md § the two-person rule.
+ */
+export const verificationRecordSchema = z
+  .object({
+    collectedBy: contributorHandleSchema,
+    verifiedBy: contributorHandleSchema,
+    /** The day the second person checked it against the source. */
+    verifiedAt: z.iso.date(),
+  })
+  .refine(record => record.collectedBy !== record.verifiedBy, {
+    message:
+      'the collector never verifies their own work — collectedBy and verifiedBy must differ',
+    path: ['verifiedBy'],
+  });
 
 export const pageEntrySchema = z.object({
   name: z.string().min(1),
@@ -49,3 +89,4 @@ export const manifestSchema = z.object({ pages: z.array(pageEntrySchema) });
 export type PageEntry = z.infer<typeof pageEntrySchema>;
 export type SourceRef = z.infer<typeof sourceSchema>;
 export type Verification = z.infer<typeof verificationSchema>;
+export type VerificationRecord = z.infer<typeof verificationRecordSchema>;

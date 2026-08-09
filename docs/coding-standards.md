@@ -366,10 +366,14 @@ beside it is a rumour with better typography**, so provenance is enforced by sch
   wants the original is one tap away, and the citation names it.
 - **The official municipal site is the source of truth.** Where it and this portal disagree, it is right and we
   are wrong, and the correction is a same-day content change.
-- **Verification levels.** `V3` verified primary (an official municipal or national record, linked and dated) ·
-  `V2` official communication (from an office directly, dated and archived) · `V1` corroborated indirect
-  (two independent secondary sources) · `V0` unconfirmed. **Fees, deadlines and requirements must be V2 or
-  better.** V0 is for safety-critical information only, and only while it is visibly labelled.
+- **Verification levels are defined in one place — [`governance.md`](governance.md).** `V3` down to `V0`, a
+  worked example of each, which level is good enough for what, and the 90-day `V0` re-check. Do not restate
+  them here or in any other file: a definition that exists twice is a definition that will disagree with itself,
+  and the copy somebody reads will be the stale one.
+- **The collector never verifies their own work**, and `verificationRecordSchema` in `content-schema.ts`
+  enforces it — a record whose `collectedBy` equals its `verifiedBy` does not parse. The identifiers are
+  self-chosen handles whose format cannot express a personal name or an email address, because contributing
+  here requires no personal information.
 - **`lastCheckedAt` is the date a human last looked**, not the date the page was written.
 - **Never round, simplify, or modernise a figure** transcribed from an official document. Where the source is
   unclear, say so on the page and link it — do not resolve the ambiguity by guessing.
@@ -390,6 +394,10 @@ a bug, and the code encodes it:
   stop saying it is independent of the Municipal Government of Tago.
 - **No emergency number ships without a source.** While `emergency.status` is `not-obtained`, the emergency
   surface renders the gap. A wrong number in an emergency is worse than no number at all.
+- **A gap is stated, never blamed.** An outstanding or unobtainable fact is never described as a refusal, a
+  concealment, or a lack of transparency — in the register, in a message string, or on a page. _"Not published
+  anywhere we can cite"_ is a fact; an inference about intent is not. `guardrails.test.ts` scans all three for
+  those framings and fails the build; the rule and its reasoning are in [`governance.md`](governance.md).
 
 ## Occam's Razor
 

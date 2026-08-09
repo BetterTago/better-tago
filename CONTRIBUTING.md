@@ -6,6 +6,9 @@ If something on this site is wrong — a fee, a requirement, an office's hours, 
 — tell us what it should say and where you saw the right version. A photograph of a posted notice, with the
 date you took it, is a genuinely valuable contribution.
 
+**You do not need to be sure.** _"The fee at the counter was different from your page, here is the photo"_ is
+exactly the report we want.
+
 **Where to send it: [open an issue](https://github.com/BetterTago/better-tago/issues).** That is the channel
 linked from the footer of every page, and it is the one we watch.
 
@@ -39,9 +42,10 @@ Every fact needs three things before it can ship:
 
 1. **A source.** Where it came from — the official page, the charter PDF, a letter from an office, a photograph
    of a posted notice.
-2. **A verification level.** `V3` official record · `V2` official communication · `V1` two independent
-   secondary sources · `V0` unconfirmed. **Fees, deadlines and requirements must be V2 or better.** V0 is for
-   safety-critical information only, and only while it is visibly labelled.
+2. **A verification level**, `V3` to `V0`. The four levels, a worked example of each, and which level is good
+   enough for what are in [`docs/governance.md`](docs/governance.md) — **read them there before choosing one.**
+   The short version, which is not a substitute: **fees, deadlines and requirements need `V2` or better, and
+   `V1` is never enough for those three.**
 3. **A check date** — the day a human last looked, not the day the page was written.
 
 And two rules about how it is written down:
@@ -50,7 +54,24 @@ And two rules about how it is written down:
 - **Where the source is unclear, say so on the page** and link it. Do not resolve an ambiguity by guessing.
 
 **Whoever transcribes a page does not verify it.** A second person checks it against the source before it
-ships. A transcription error in a fee is indistinguishable from a lie to the person who paid it.
+ships. A transcription error in a fee is indistinguishable from a lie to the person who paid it. This is not
+only a rule — the content schema rejects a page whose collector and verifier are the same handle.
+
+Your contribution takes the same path as everyone's, with no fast lane and no separate queue:
+
+```
+report / transcribe  →  verify (a second person, against the source)  →  content review  →  ships
+```
+
+**A resident report is labelled until it is confirmed** — it enters at `V1` or `V0` and stays there until an
+office or an official document confirms it. That is the same floor our own transcription meets, not a judgement
+about who reported it.
+
+**We ask for no personal information, ever.** Not a real name, not an address, not a phone number. If you want
+credit, a self-chosen handle is credit; if you would rather have none, say so and you will not be named.
+
+Who does what — all nine roles, which are open (most of them), and which two may never be the same person —
+is in [`docs/governance.md`](docs/governance.md).
 
 ## Code contributions
 

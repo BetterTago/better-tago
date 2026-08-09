@@ -1,5 +1,9 @@
 import { describe, expect, it } from 'vitest';
-import { manifestSchema, pageEntrySchema } from './content-schema';
+import {
+  manifestSchema,
+  pageEntrySchema,
+  verificationRecordSchema,
+} from './content-schema';
 
 /**
  * The content contract is the one thing every page depends on, so these tests
@@ -95,6 +99,78 @@ describe('a page entry', () => {
       source: { ...validEntry.source, url: 'tago.gov.ph' },
     });
     expect(result.success).toBe(false);
+  });
+});
+
+describe('a verification record', () => {
+  /*
+   * The two-person rule is the load-bearing rule of the verification standard,
+   * and the one most tempting to skip with one contributor and a page nearly
+   * finished. These fixtures are deliberately synthetic — a handle that looks
+   * like a real contributor is how an unversioned claim about a real person
+   * gets into a test file and stays there.
+   */
+  const validRecord = {
+    collectedBy: 'handle-one',
+    verifiedBy: 'handle-two',
+    verifiedAt: '2026-08-09',
+  };
+
+  it('accepts a record checked by a second person', () => {
+    expect(verificationRecordSchema.safeParse(validRecord).success).toBe(true);
+  });
+
+  it('rejects a record whose collector verified their own work', () => {
+    // The whole point. A transcription error in a fee is indistinguishable
+    // from a lie to the person who paid it, and the person who made the error
+    // is the person least able to see it.
+    const result = verificationRecordSchema.safeParse({
+      ...validRecord,
+      verifiedBy: validRecord.collectedBy,
+    });
+    expect(result.success).toBe(false);
+  });
+
+  it('rejects an empty collector', () => {
+    expect(
+      verificationRecordSchema.safeParse({ ...validRecord, collectedBy: '' })
+        .success
+    ).toBe(false);
+  });
+
+  it('rejects an empty verifier', () => {
+    // Separate from the case above on purpose: one "a required field is
+    // missing" test would not prove both halves of the record are enforced.
+    expect(
+      verificationRecordSchema.safeParse({ ...validRecord, verifiedBy: '' })
+        .success
+    ).toBe(false);
+  });
+
+  it('rejects a verification date that is not an ISO date', () => {
+    expect(
+      verificationRecordSchema.safeParse({
+        ...validRecord,
+        verifiedAt: 'last August',
+      }).success
+    ).toBe(false);
+  });
+
+  it('rejects a handle that could be a personal name or an address', () => {
+    // Contributing requires no personal information, and the handle format is
+    // what keeps that structural rather than remembered.
+    for (const collectedBy of [
+      'Two Words',
+      'someone@example.org',
+      'Capitalised',
+      'trailing-',
+      'under_score',
+    ]) {
+      expect(
+        verificationRecordSchema.safeParse({ ...validRecord, collectedBy })
+          .success
+      ).toBe(false);
+    }
   });
 });
 
