@@ -28,7 +28,23 @@ export default defineConfig({
   // Capped deliberately: every worker shares ONE Next dev server, and past
   // roughly four the server saturates compiling routes on demand.
   workers: process.env.CI ? 1 : 4,
-  reporter: 'html',
+  /*
+   * On CI the failure has to be readable IN THE LOG.
+   *
+   * `html` alone writes a report nobody can open without downloading an
+   * artifact — which needs repository permissions most contributors do not
+   * have, and which turns "the gate went red" into a support request. The first
+   * red run of this workflow was exactly that: a failed step, an uploaded zip,
+   * and no way to see which test failed.
+   *
+   * `list` prints the failing test and its error to stdout; `github` turns each
+   * one into an inline annotation on the commit, visible to anyone who can see
+   * the repository. The HTML report is still produced and still uploaded, for
+   * the traces.
+   */
+  reporter: process.env.CI
+    ? [['github'], ['list'], ['html', { open: 'never' }]]
+    : 'html',
   use: {
     baseURL: BASE_URL,
     trace: 'on-first-retry',

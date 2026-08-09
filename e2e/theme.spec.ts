@@ -189,13 +189,43 @@ test.describe('both themes are a gate, not a preference', () => {
     });
   }
 
+  /*
+   * ⚠️ This assertion is FONT-DEPENDENT, and that is a property of the app
+   * rather than of the test.
+   *
+   * `--font-sans` is a system stack, so the page renders in whatever the host
+   * resolves `ui-sans-serif` to: something narrow on a developer machine, and
+   * DejaVu Sans on a bare Linux runner, which is wider. This passed everywhere
+   * locally and failed on the first CI run this project ever had — the header
+   * row pushed the page 7px sideways, because neither of its two children could
+   * shrink. `SiteHeader` now wraps and lets the wordmark shrink, so no font can
+   * overflow it.
+   *
+   * **It is therefore CI that guards this, not your machine**, and no local
+   * test can stand in: a check forced into one specific font only moves the
+   * disagreement, and one forced into `monospace` was tried and proved it does
+   * not catch the original defect at all. The durable fix is to stop rendering
+   * in a system stack — self-hosting the type through `next/font` makes every
+   * environment agree — and that belongs with the type tokens, not here.
+   */
   test('never scrolls the body sideways at 320px', async ({ page }) => {
     await page.setViewportSize({ width: 320, height: 720 });
     await page.goto('/en');
 
-    const overflows = await page.evaluate(
-      () => document.documentElement.scrollWidth > window.innerWidth
+    const offenders = await page.evaluate(() =>
+      [...document.querySelectorAll('body *')]
+        .filter(node => Math.round(node.getBoundingClientRect().right) > 320)
+        .map(node => `${node.tagName.toLowerCase()}.${node.className}`)
     );
-    expect(overflows).toBe(false);
+
+    // Named rather than counted. A bare boolean reported "expected false,
+    // received true" and left the next person measuring elements by hand on a
+    // machine where the page does not overflow — which is what this cost once.
+    expect(offenders).toEqual([]);
+    expect(
+      await page.evaluate(
+        () => document.documentElement.scrollWidth > window.innerWidth
+      )
+    ).toBe(false);
   });
 });

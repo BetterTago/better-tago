@@ -101,7 +101,15 @@ jobs:
 
       # `playwright.config.ts` starts `next start` rather than `next dev` when
       # CI is set, and derives the port from the URL it waits on.
+      #
+      # The literal IPv4 address, not `localhost`. `next start` binds
+      # `0.0.0.0`, and on a runner that resolves `localhost` to `::1` first,
+      # both the readiness poll and the browser can be refused by a server that
+      # is running perfectly well. Naming the address removes the ambiguity for
+      # nothing.
       - run: npm run test:e2e
+        env:
+          PLAYWRIGHT_BASE_URL: http://127.0.0.1:3000
 
       - if: ${{ !cancelled() }}
         uses: actions/upload-artifact@v4
