@@ -5,9 +5,10 @@ origin: https://tago.gov.ph
 sitemap: https://tago.gov.ph/wp-sitemap.xml
 pageCount: 75
 note: >-
-  Only the pages this project works from are listed. The remainder are news posts and individual
-  profile pages, counted below but not enumerated: their URLs carry personal names, which belong in
-  content/ beside a source and a date, not in a generated inventory.
+  Every page the sitemap lists, classified. charter/office/legislative/reference pages are
+  enumerated here; announcements are enumerated in phase3-pages.yaml ONLY where the URL carries no
+  personal name. The count below is announcements held back for that reason — never a claim that
+  nothing else exists.
 charterPages:
   - https://tago.gov.ph/about-us-2/citizens-charter/
   - https://tago.gov.ph/about-us-2/citizens-charter/citezens-charter-by-office/
@@ -40,4 +41,19 @@ officePages:
 legislativePages:
   - https://tago.gov.ph/municipal-offices/legislative-offices/office-of-the-municipal-vice-mayor/
   - https://tago.gov.ph/municipal-offices/legislative-offices/office-of-the-sangguniang-bayan/
-unlistedPages: 54
+referencePages:
+  - https://tago.gov.ph/
+  - https://tago.gov.ph/about-us-2/history/
+  - https://tago.gov.ph/about-us-2/services/
+  - https://tago.gov.ph/contact-us/
+  - https://tago.gov.ph/about-us-2/tourism/
+  - https://tago.gov.ph/transparency-seal/
+  - https://tago.gov.ph/about-us-2/
+  - https://tago.gov.ph/facebook-links/
+  - https://tago.gov.ph/about-us-2/vision-mission/
+  - https://tago.gov.ph/municipal-offices/
+  - https://tago.gov.ph/municipal-offices/legislative-offices/
+  - https://tago.gov.ph/municipal-offices/executive-offices/
+announcementPages: 42
+announcementsWithNamesInUrl: 18
+unlistedPages: 18

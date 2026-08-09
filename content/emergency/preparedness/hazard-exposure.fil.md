@@ -1,5 +1,7 @@
 # Panganib ng baha, storm surge at landslide
 
+> **Paunawa:** Ang Filipino sa pahinang ito ay **draft, hindi pa nasusuri ng katutubong nagsasalita.** Bakante pa ang tungkulin ng Translator sa proyektong ito. Kung may mali, ang correction link sa footer ang pinakamabilis na paraan para maayos ito.
+
 Nasa baybaying Pasipiko ng Surigao del Sur ang Tago. Hindi teoretikal na alalahanin dito ang baha, storm
 surge, landslide at pag-apaw ng ilog, at ang malaman kung alin sa mga ito ang tumatama sa **inyong barangay**
 ang pagkakaiba ng pangkalahatang pag-aalala at isang desisyon.

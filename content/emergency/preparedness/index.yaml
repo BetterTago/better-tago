@@ -1,5 +1,6 @@
 pages:
-  - name: 'Evacuation centres in Tago'
+  - dataClass: 'emergency'
+    name: 'Evacuation centres in Tago'
     slug: 'evacuation-centres'
     description: 'Which building to walk to. Not published anywhere this project can cite yet.'
     office: 'Office of the Municipal Disaster Risk Reduction Management'
@@ -13,8 +14,10 @@ pages:
       retrievedAt: '2026-08-09'
     verification: 'V3'
     lastCheckedAt: '2026-08-09'
+    lastReview: null
 
-  - name: 'Flood, storm surge and landslide exposure'
+  - dataClass: 'emergency'
+    name: 'Flood, storm surge and landslide exposure'
     slug: 'hazard-exposure'
     description: 'What is known about hazard exposure in Tago, and what would be needed to state it per barangay.'
     source:
@@ -27,3 +30,4 @@ pages:
       retrievedAt: '2026-08-09'
     verification: 'V3'
     lastCheckedAt: '2026-08-09'
+    lastReview: null

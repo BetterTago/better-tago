@@ -1,5 +1,7 @@
 # Ano ang magagawa ninyo rito
 
+> **Paunawa:** Ang Filipino sa pahinang ito ay **draft, hindi pa nasusuri ng katutubong nagsasalita.** Bakante pa ang tungkulin ng Translator sa proyektong ito. Kung may mali, ang correction link sa footer ang pinakamabilis na paraan para maayos ito.
+
 **Sampung serbisyo pa lamang ang may sariling pahina.** Sinasabi ng bawat isa kung aling opisina ang
 nagbibigay nito at ini-link ang sariling dokumento ng munisipyo, para makita ninyo ang dapat dalhin at ang
 halaga bago pa kayo maglakbay.

@@ -1,5 +1,7 @@
 # Ano ito
 
+> **Paunawa:** Ang Filipino sa pahinang ito ay **draft, hindi pa nasusuri ng katutubong nagsasalita.** Bakante pa ang tungkulin ng Translator sa proyektong ito. Kung may mali, ang correction link sa footer ang pinakamabilis na paraan para maayos ito.
+
 **Ang BetterTago ay isang malayang index na pinapatakbo ng mga boluntaryo, batay sa sariling inilathalang
 impormasyon ng Munisipyo ng Tago.** Hindi ito ang opisyal na site, hindi ito pinapatakbo ng pamahalaang
 munisipal, at hindi ito kapalit ng alinman sa dalawa.

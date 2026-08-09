@@ -4,7 +4,8 @@
 # is the copy it will consume. Written in resident-task language, using the
 # titles from the frozen task vocabulary rather than feature names.
 pages:
-  - name: 'What this is'
+  - dataClass: 'project'
+    name: 'What this is'
     slug: 'what-this-is'
     description: 'An independent index over the municipality’s own published information.'
     source:
@@ -17,8 +18,10 @@ pages:
       retrievedAt: '2026-08-09'
     verification: 'V3'
     lastCheckedAt: '2026-08-09'
+    lastReview: null
 
-  - name: 'What you can do here'
+  - dataClass: 'project'
+    name: 'What you can do here'
     slug: 'what-you-can-do-here'
     description: 'The things a resident comes here to sort out, in the words they would use.'
     source:
@@ -31,3 +34,4 @@ pages:
       retrievedAt: '2026-08-09'
     verification: 'V3'
     lastCheckedAt: '2026-08-09'
+    lastReview: null

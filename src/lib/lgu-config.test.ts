@@ -225,3 +225,97 @@ describe('the emergency block', () => {
     expect(lguConfig.emergency.recheckDays).toBe(90);
   });
 });
+
+/**
+ * CONT-302 · CONT-304 — the mirror of the gap register.
+ *
+ * `pending` made every null account for itself. Nothing made a FILLED figure
+ * do the same, so the moment one was obtained it became an unsourced
+ * assertion — which is what `lgu.history` had quietly been since Wave 2, six
+ * facts with no source and no check date.
+ */
+describe('an obtained figure carries its source', () => {
+  it('is sourced for every tracked figure that has a value', () => {
+    // Today exactly one: the income class, which the municipality states about
+    // itself on its tourism page. Every other tracked figure is still null.
+    expect(lguConfig.lgu.incomeClass).toBe('2nd class');
+    expect(lguConfig.lgu.sources.incomeClass?.url).toBe(
+      'https://tago.gov.ph/about-us-2/tourism/'
+    );
+    expect(lguConfig.lgu.sources.incomeClass?.checkedAt).toMatch(
+      /^\d{4}-\d{2}-\d{2}$/
+    );
+  });
+
+  it('rejects a figure that was filled without a citation', () => {
+    // THE regression. A value arrives, nobody records where from, and the
+    // register still reads as complete because the null is gone.
+    const result = lguConfigSchema.safeParse({
+      ...rawConfig,
+      lgu: { ...rawConfig.lgu, sources: {} },
+    });
+    expect(result.success).toBe(false);
+    expect(JSON.stringify(result.error?.issues)).toContain('incomeClass');
+  });
+
+  it('rejects a citation for a figure this project does not hold', () => {
+    // The other direction: a source left behind after a value was withdrawn
+    // reads, to anyone rendering it, as though the fact were still held.
+    const result = lguConfigSchema.safeParse({
+      ...rawConfig,
+      lgu: { ...rawConfig.lgu, incomeClass: null },
+    });
+    expect(result.success).toBe(false);
+    expect(JSON.stringify(result.error?.issues)).toContain('incomeClass');
+  });
+
+  it('rejects a source that names no tracked figure', () => {
+    const result = lguConfigSchema.safeParse({
+      ...rawConfig,
+      lgu: {
+        ...rawConfig.lgu,
+        sources: {
+          ...rawConfig.lgu.sources,
+          somethingElse: {
+            label: 'Fixture, not a real source',
+            url: 'https://example.org/fixture',
+            checkedAt: '2026-08-09',
+            note: 'A note long enough to clear the forty-character floor imposed on these.',
+          },
+        },
+      },
+    });
+    expect(result.success).toBe(false);
+    expect(JSON.stringify(result.error?.issues)).toContain('somethingElse');
+  });
+
+  it('keeps the postal code held rather than sourced', () => {
+    // It is the one figure this project HAS seen and deliberately does not
+    // publish. Sourcing it would be the wrong kind of closing.
+    expect(lguConfig.lgu.postalCode).toBeNull();
+    expect(lguConfig.lgu.sources.postalCode).toBeUndefined();
+    expect(lguConfig.pending['lgu.postalCode']?.state).toBe('held');
+  });
+});
+
+describe('the history block', () => {
+  it('cites the page every one of its facts comes from', () => {
+    // Six municipal facts sat here unsourced until 2026-08-09. CONT-304 c3.
+    expect(lguConfig.lgu.history.source.url).toBe(
+      'https://tago.gov.ph/about-us-2/history/'
+    );
+    expect(lguConfig.lgu.history.townConversionInstrument).toBe(
+      'Executive Order No. 41'
+    );
+  });
+
+  it('rejects the block with its citation removed', () => {
+    const unsourced: Record<string, unknown> = { ...rawConfig.lgu.history };
+    delete unsourced.source;
+    const result = lguConfigSchema.safeParse({
+      ...rawConfig,
+      lgu: { ...rawConfig.lgu, history: unsourced },
+    });
+    expect(result.success).toBe(false);
+  });
+});

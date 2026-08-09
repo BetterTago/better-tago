@@ -1,0 +1,348 @@
+pages:
+  - dataClass: 'transparency'
+    name: Annual budget
+    slug: annual-budget
+    description: >-
+      The budget the municipal council enacts for a fiscal year, and what it sets aside for each
+      office.
+    source:
+      label:
+        en: Municipality of Tago — Transparency Seal page
+      url: https://tago.gov.ph/transparency-seal/
+      documentTitle: Transparency Seal
+      documentType: web
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+    lastReview: null
+    documentName: Annual budget
+    fiscalYear: null
+    status: not-located
+    lookedFor:
+      - label: Municipality of Tago — Transparency Seal page
+        url: https://tago.gov.ph/transparency-seal/
+        result: not-published-here
+        checkedAt: '2026-08-09'
+      - label: Municipality of Tago — every page listed in the official sitemap (75 pages)
+        url: https://tago.gov.ph/wp-sitemap.xml
+        result: not-published-here
+        checkedAt: '2026-08-09'
+      - label: Department of the Interior and Local Government — Full Disclosure Policy Portal
+        url: https://fdpp.dilg.gov.ph/
+        result: not-retrievable
+        checkedAt: '2026-08-09'
+    requestedOf: null
+    requestedAt: null
+  - dataClass: 'transparency'
+    name: Annual investment programme
+    slug: annual-investment-programme
+    description: The programme of projects the municipality plans to fund in a fiscal year.
+    source:
+      label:
+        en: Municipality of Tago — Transparency Seal page
+      url: https://tago.gov.ph/transparency-seal/
+      documentTitle: Transparency Seal
+      documentType: web
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+    lastReview: null
+    documentName: Annual investment programme
+    fiscalYear: null
+    status: not-located
+    lookedFor:
+      - label: Municipality of Tago — Transparency Seal page
+        url: https://tago.gov.ph/transparency-seal/
+        result: not-published-here
+        checkedAt: '2026-08-09'
+      - label: Municipality of Tago — every page listed in the official sitemap (75 pages)
+        url: https://tago.gov.ph/wp-sitemap.xml
+        result: not-published-here
+        checkedAt: '2026-08-09'
+      - label: Department of the Interior and Local Government — Full Disclosure Policy Portal
+        url: https://fdpp.dilg.gov.ph/
+        result: not-retrievable
+        checkedAt: '2026-08-09'
+    requestedOf: null
+    requestedAt: null
+  - dataClass: 'transparency'
+    name: Financial statements
+    slug: financial-statements
+    description: The statements reporting what the municipality actually received and spent.
+    source:
+      label:
+        en: Municipality of Tago — Transparency Seal page
+      url: https://tago.gov.ph/transparency-seal/
+      documentTitle: Transparency Seal
+      documentType: web
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+    lastReview: null
+    documentName: Financial statements
+    fiscalYear: null
+    status: not-located
+    lookedFor:
+      - label: Municipality of Tago — Transparency Seal page
+        url: https://tago.gov.ph/transparency-seal/
+        result: not-published-here
+        checkedAt: '2026-08-09'
+      - label: Municipality of Tago — every page listed in the official sitemap (75 pages)
+        url: https://tago.gov.ph/wp-sitemap.xml
+        result: not-published-here
+        checkedAt: '2026-08-09'
+      - label: Department of the Interior and Local Government — Full Disclosure Policy Portal
+        url: https://fdpp.dilg.gov.ph/
+        result: not-retrievable
+        checkedAt: '2026-08-09'
+    requestedOf: null
+    requestedAt: null
+  - dataClass: 'transparency'
+    name: Procurement plan
+    slug: procurement-plan
+    description: The plan of what the municipality intends to buy in a fiscal year.
+    source:
+      label:
+        en: Municipality of Tago — Transparency Seal page
+      url: https://tago.gov.ph/transparency-seal/
+      documentTitle: Transparency Seal
+      documentType: web
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+    lastReview: null
+    documentName: Annual procurement plan
+    fiscalYear: null
+    status: not-located
+    lookedFor:
+      - label: Municipality of Tago — Transparency Seal page
+        url: https://tago.gov.ph/transparency-seal/
+        result: not-published-here
+        checkedAt: '2026-08-09'
+      - label: Municipality of Tago — every page listed in the official sitemap (75 pages)
+        url: https://tago.gov.ph/wp-sitemap.xml
+        result: not-published-here
+        checkedAt: '2026-08-09'
+      - label: Department of the Interior and Local Government — Full Disclosure Policy Portal
+        url: https://fdpp.dilg.gov.ph/
+        result: not-retrievable
+        checkedAt: '2026-08-09'
+    requestedOf: null
+    requestedAt: null
+  - dataClass: 'transparency'
+    name: Bid results
+    slug: bid-results
+    description: The outcome of each public bidding the municipality holds.
+    source:
+      label:
+        en: Municipality of Tago — Transparency Seal page
+      url: https://tago.gov.ph/transparency-seal/
+      documentTitle: Transparency Seal
+      documentType: web
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+    lastReview: null
+    documentName: Bid results
+    fiscalYear: null
+    status: not-located
+    lookedFor:
+      - label: Municipality of Tago — Transparency Seal page
+        url: https://tago.gov.ph/transparency-seal/
+        result: not-published-here
+        checkedAt: '2026-08-09'
+      - label: Municipality of Tago — every page listed in the official sitemap (75 pages)
+        url: https://tago.gov.ph/wp-sitemap.xml
+        result: not-published-here
+        checkedAt: '2026-08-09'
+      - label: Department of the Interior and Local Government — Full Disclosure Policy Portal
+        url: https://fdpp.dilg.gov.ph/
+        result: not-retrievable
+        checkedAt: '2026-08-09'
+    requestedOf: null
+    requestedAt: null
+  - dataClass: 'transparency'
+    name: Contracts awarded
+    slug: contracts-awarded
+    description: The contracts the municipality has entered into, and with whom.
+    source:
+      label:
+        en: Municipality of Tago — Transparency Seal page
+      url: https://tago.gov.ph/transparency-seal/
+      documentTitle: Transparency Seal
+      documentType: web
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+    lastReview: null
+    documentName: Contracts awarded
+    fiscalYear: null
+    status: not-located
+    lookedFor:
+      - label: Municipality of Tago — Transparency Seal page
+        url: https://tago.gov.ph/transparency-seal/
+        result: not-published-here
+        checkedAt: '2026-08-09'
+      - label: Municipality of Tago — every page listed in the official sitemap (75 pages)
+        url: https://tago.gov.ph/wp-sitemap.xml
+        result: not-published-here
+        checkedAt: '2026-08-09'
+      - label: Department of the Interior and Local Government — Full Disclosure Policy Portal
+        url: https://fdpp.dilg.gov.ph/
+        result: not-retrievable
+        checkedAt: '2026-08-09'
+    requestedOf: null
+    requestedAt: null
+  - dataClass: 'transparency'
+    name: Special fund utilisation
+    slug: special-fund-utilisation
+    description: How the municipality used the funds it is required to set aside for specific purposes.
+    source:
+      label:
+        en: Municipality of Tago — Transparency Seal page
+      url: https://tago.gov.ph/transparency-seal/
+      documentTitle: Transparency Seal
+      documentType: web
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+    lastReview: null
+    documentName: Special fund utilisation
+    fiscalYear: null
+    status: not-located
+    lookedFor:
+      - label: Municipality of Tago — Transparency Seal page
+        url: https://tago.gov.ph/transparency-seal/
+        result: not-published-here
+        checkedAt: '2026-08-09'
+      - label: Municipality of Tago — every page listed in the official sitemap (75 pages)
+        url: https://tago.gov.ph/wp-sitemap.xml
+        result: not-published-here
+        checkedAt: '2026-08-09'
+      - label: Department of the Interior and Local Government — Full Disclosure Policy Portal
+        url: https://fdpp.dilg.gov.ph/
+        result: not-retrievable
+        checkedAt: '2026-08-09'
+    requestedOf: null
+    requestedAt: null
+  - dataClass: 'transparency'
+    name: Personnel complement
+    slug: personnel-complement
+    description: 'The municipality’s staffing: which positions exist and which are filled.'
+    source:
+      label:
+        en: Municipality of Tago — Transparency Seal page
+      url: https://tago.gov.ph/transparency-seal/
+      documentTitle: Transparency Seal
+      documentType: web
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+    lastReview: null
+    documentName: Personnel complement
+    fiscalYear: null
+    status: not-located
+    lookedFor:
+      - label: Municipality of Tago — Transparency Seal page
+        url: https://tago.gov.ph/transparency-seal/
+        result: not-published-here
+        checkedAt: '2026-08-09'
+      - label: Municipality of Tago — every page listed in the official sitemap (75 pages)
+        url: https://tago.gov.ph/wp-sitemap.xml
+        result: not-published-here
+        checkedAt: '2026-08-09'
+      - label: Department of the Interior and Local Government — Full Disclosure Policy Portal
+        url: https://fdpp.dilg.gov.ph/
+        result: not-retrievable
+        checkedAt: '2026-08-09'
+    requestedOf: null
+    requestedAt: null
+  - dataClass: 'transparency'
+    name: Accomplishment report
+    slug: accomplishment-report
+    description: The municipality’s own report of what it did in a period.
+    source:
+      label:
+        en: Municipality of Tago — Transparency Seal page
+      url: https://tago.gov.ph/transparency-seal/
+      documentTitle: Transparency Seal
+      documentType: web
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+    lastReview: null
+    documentName: Accomplishment report
+    fiscalYear: null
+    status: not-located
+    lookedFor:
+      - label: Municipality of Tago — Transparency Seal page
+        url: https://tago.gov.ph/transparency-seal/
+        result: not-published-here
+        checkedAt: '2026-08-09'
+      - label: Municipality of Tago — every page listed in the official sitemap (75 pages)
+        url: https://tago.gov.ph/wp-sitemap.xml
+        result: not-published-here
+        checkedAt: '2026-08-09'
+      - label: Department of the Interior and Local Government — Full Disclosure Policy Portal
+        url: https://fdpp.dilg.gov.ph/
+        result: not-retrievable
+        checkedAt: '2026-08-09'
+    requestedOf: null
+    requestedAt: null
+  - dataClass: 'transparency'
+    name: Planning documents
+    slug: planning-documents
+    description: The longer-range plans that govern land use and development.
+    source:
+      label:
+        en: Municipality of Tago — Transparency Seal page
+      url: https://tago.gov.ph/transparency-seal/
+      documentTitle: Transparency Seal
+      documentType: web
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+    lastReview: null
+    documentName: Planning documents
+    fiscalYear: null
+    status: not-located
+    lookedFor:
+      - label: Municipality of Tago — Transparency Seal page
+        url: https://tago.gov.ph/transparency-seal/
+        result: not-published-here
+        checkedAt: '2026-08-09'
+      - label: Municipality of Tago — every page listed in the official sitemap (75 pages)
+        url: https://tago.gov.ph/wp-sitemap.xml
+        result: not-published-here
+        checkedAt: '2026-08-09'
+      - label: Department of the Interior and Local Government — Full Disclosure Policy Portal
+        url: https://fdpp.dilg.gov.ph/
+        result: not-retrievable
+        checkedAt: '2026-08-09'
+    requestedOf: null
+    requestedAt: null
+  - dataClass: 'transparency'
+    name: Status of Appropriations, Allotments and Obligations (FY 2022)
+    slug: status-of-appropriations-allotments-and-obligations-fy-2022
+    description: The one disclosure document published on the municipality’s Transparency Seal page.
+    source:
+      label:
+        en: Municipality of Tago — Status of Appropriations, Allotments and Obligations F.Y. 2022
+      url: >-
+        https://tago.gov.ph/wp-content/uploads/2024/12/Status-of-Appropriations-Allotments-and-Obligations-F.Y.-2022.pdf
+      documentTitle: Status-of-Appropriations-Allotments-and-Obligations-F.Y.-2022
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+    lastReview: null
+    documentName: Status-of-Appropriations-Allotments-and-Obligations-F.Y.-2022
+    fiscalYear: '2022'
+    status: linked
+    lookedFor:
+      - label: Municipality of Tago — Transparency Seal page
+        url: https://tago.gov.ph/transparency-seal/
+        result: published-here
+        checkedAt: '2026-08-09'
+    requestedOf: null
+    requestedAt: null

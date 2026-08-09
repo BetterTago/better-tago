@@ -1,0 +1,41 @@
+pages:
+  - dataClass: 'profile'
+    name: 'PRIME-HRM award, Civil Service Commission'
+    slug: 'prime-hrm-award'
+    description: >-
+      A Civil Service Commission PRIME-HRM award, presented 20 December 2024. The municipality's own site
+      describes it as an Accreditation on two pages and as a Bronze Award on a third; both are recorded.
+    office: 'Human Resource Management Division'
+    source:
+      label:
+        en: >-
+          Municipality of Tago — Seven [7] Agencies in Caraga Region conferred PRIME HRM Accreditation
+          and Bronze Awards
+      url: 'https://tago.gov.ph/seven-7-agencies-in-caraga-region-conferred-prime-hrm-accreditation-and-bronze-awards/'
+      documentTitle: >-
+        Seven [7] Agencies in Caraga Region conferred PRIME HRM Accreditation and Bronze Awards
+      documentType: 'web'
+      retrievedAt: '2026-08-09'
+    verification: 'V3'
+    lastCheckedAt: '2026-08-09'
+    lastReview: null
+  - dataClass: 'profile'
+    name: 'Top 1 in highest increase in real property units, Q4 2023 to Q4 2024'
+    slug: 'top-1-increase-in-real-property-units'
+    description: >-
+      Recognition for ranking first in highest increase in real property units. Reported by the
+      municipality; the announcement does not state which body conferred it.
+    office: 'Office of the Municipal Assessor'
+    source:
+      label:
+        en: >-
+          Municipality of Tago — Top 1 in Highest Increase in Real Property Units from Q4 2023 to
+          Q4 2024
+      url: 'https://tago.gov.ph/top-1-in-highest-increase-in-real-property-units-from-q4-2023-to-q4-2024/'
+      documentTitle: >-
+        Top 1 in Highest Increase in Real Property Units from Q4 2023 to Q4 2024
+      documentType: 'web'
+      retrievedAt: '2026-08-09'
+    verification: 'V3'
+    lastCheckedAt: '2026-08-09'
+    lastReview: null

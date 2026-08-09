@@ -1,5 +1,7 @@
 # Mga evacuation centre sa Tago
 
+> **Paunawa:** Ang Filipino sa pahinang ito ay **draft, hindi pa nasusuri ng katutubong nagsasalita.** Bakante pa ang tungkulin ng Translator sa proyektong ito. Kung may mali, ang correction link sa footer ang pinakamabilis na paraan para maayos ito.
+
 **Wala pang nahahanap ang proyektong ito na nakalathalang listahan ng mga evacuation centre ng Tago.** Wala sa
 website ng munisipyo, at wala sa Citizen's Charter.
 

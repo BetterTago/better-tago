@@ -27,6 +27,7 @@ import path from 'node:path';
 import process from 'node:process';
 import yaml from 'js-yaml';
 import { parseCharter, withServiceIds } from './charter-parse.mjs';
+import { articleText, contentChecksum } from './page-text.mjs';
 
 const ORIGIN = 'https://tago.gov.ph';
 const SITEMAP = `${ORIGIN}/wp-sitemap.xml`;
@@ -45,6 +46,10 @@ const DELAY_MS = 1000;
 const ROOT = path.resolve(import.meta.dirname, '..');
 const INVENTORY = path.join(ROOT, 'inventory');
 const ARCHIVE = path.join(ROOT, 'sources', 'charter');
+/** Reference pages — the second target set. Phase 3 cites these. */
+const SITE_ARCHIVE = path.join(ROOT, 'sources', 'site');
+/** Disclosure documents linked from the Transparency Seal page. */
+const DISCLOSURE_ARCHIVE = path.join(ROOT, 'sources', 'transparency');
 
 /**
  * The date the harvest ran, which is the date every fact below was checked.
@@ -136,6 +141,51 @@ async function discoverPages(disallowed) {
 const CHARTER_PAGE = /citizens-charter/i;
 const OFFICE_PAGE = /\/municipal-offices\/[a-z-]+\/[a-z0-9-]+\/?$/i;
 const LEGISLATIVE_PAGE = /\/municipal-offices\/legislative-offices\//i;
+
+/**
+ * The site's STRUCTURAL pages — the ones this project's profile, history,
+ * tourism and transparency records are written from.
+ *
+ * Derived from the path rather than listed by hand, so a page the
+ * municipality adds under `/about-us-2/` is picked up on the next run instead
+ * of being silently absent. Charter and office pages are excluded because
+ * they already have their own inventories.
+ */
+const REFERENCE_PATHS = new Set([
+  '/',
+  '/about-us-2/',
+  '/transparency-seal/',
+  '/contact-us/',
+  '/facebook-links/',
+  '/municipal-offices/',
+  '/municipal-offices/executive-offices/',
+  '/municipal-offices/legislative-offices/',
+]);
+
+function isReferencePage(url) {
+  if (CHARTER_PAGE.test(url) || OFFICE_PAGE.test(url)) return false;
+  const { pathname } = new URL(url);
+  return REFERENCE_PATHS.has(pathname) || pathname.startsWith('/about-us-2/');
+}
+
+/**
+ * Does this URL's own slug carry a person's name?
+ *
+ * ⚠️ **Deliberately over-inclusive, and the asymmetry is the point.** A page
+ * wrongly held back is merely counted rather than listed — nothing is lost but
+ * a URL in a generated file. A page wrongly let through writes somebody's name
+ * into an inventory that sits outside the content layer, which is the one
+ * place this project has said a name may never be. So anything that even looks
+ * like a name is held back.
+ *
+ * The single-letter test catches middle initials, which is how almost every
+ * name on this site is written. It also catches `...-is-hiring-a-vacant-...`,
+ * and that false positive is accepted rather than tuned away.
+ */
+const NAME_IN_URL =
+  /(?:^|-)(?:hon|mayor|congressman|gov|sen|cong|atty|engr)-|(?:^|-)[a-z](?:-|$)/;
+
+const slugOf = url => new URL(url).pathname.replace(/\/$/, '').split('/').pop();
 
 /*
  * Words that appear in nearly every office name and so distinguish nothing.
@@ -295,6 +345,8 @@ function writeYaml(file, data) {
   console.log(`  wrote inventory/${file}`);
 }
 
+const sha256 = value => createHash('sha256').update(value).digest('hex');
+
 /**
  * The visible text inside a page's `<article>`, with scripts and markup gone.
  *
@@ -302,17 +354,7 @@ function writeYaml(file, data) {
  * what it says. See `harvestOfficePages` for why that distinction is the whole
  * point of this function.
  */
-function articleTextLength(html) {
-  const withoutCode = html.replace(
-    /<(script|style)\b[^>]*>[\s\S]*?<\/\1>/gi,
-    ''
-  );
-  const article = withoutCode.match(/<article\b[^>]*>([\s\S]*?)<\/article>/i);
-  if (!article) return 0;
-  return decodeEntities(article[1].replace(/<[^>]+>/g, ' '))
-    .replace(/\s+/g, ' ')
-    .trim().length;
-}
+const articleTextLength = html => articleText(html).length;
 
 /**
  * Every `/municipal-offices/` page: what it is, when it was read, and HOW MUCH
@@ -354,7 +396,11 @@ async function harvestOfficePages(officePages, legislativePages, disallowed) {
         : null,
       branch: legislativePages.includes(url) ? 'legislative' : 'executive',
       retrievedAt: TODAY,
-      sha256: createHash('sha256').update(html).digest('hex'),
+      // Over the PUBLISHED TEXT, not the delivered HTML — see page-text.mjs.
+      // A full-HTML hash changed on all seventeen of these every run while no
+      // page had moved, because the site stamps each response with a
+      // timestamp. That is an alarm nobody can act on.
+      contentSha256: contentChecksum(html, sha256),
       bodyChars,
     });
     console.log(
@@ -378,6 +424,89 @@ async function harvestOfficePages(officePages, legislativePages, disallowed) {
   }
 
   return pages;
+}
+
+/**
+ * The reference pages — retrieved, dated, checksummed and archived.
+ *
+ * This is the second target set, and it exists because of a real hole: every
+ * charter record cites a document with a URL, a retrieval date and a `sha256`,
+ * while the profile, history, tourism and transparency records had no such
+ * source to cite. A page this project restates but has never archived cannot
+ * be re-checked against what was published on the day, which is the whole
+ * standard the charter side is held to.
+ *
+ * Unlike `harvestOfficePages`, the HTML **is** archived — under a git-ignored
+ * `sources/site/`, exactly as the charter PDFs are. `bodyChars` is still only
+ * a measurement; what a page SAYS reaches the reader through `content/`, where
+ * it carries a citation.
+ */
+async function harvestReferencePages(urls, disallowed) {
+  mkdirSync(SITE_ARCHIVE, { recursive: true });
+  const pages = [];
+
+  for (const url of [...urls].sort()) {
+    const html = await getText(url, disallowed);
+    const title = html.match(/<title>([^<]*)<\/title>/i);
+    const slug = slugOf(url) || 'home';
+
+    writeFileSync(path.join(SITE_ARCHIVE, `${slug}.html`), html);
+
+    pages.push({
+      url,
+      slug,
+      publishedTitle: title
+        ? decodeEntities(title[1])
+            .replace(/\s*\|\s*LGU TAGO\s*$/i, '')
+            .trim()
+        : null,
+      retrievedAt: TODAY,
+      contentSha256: contentChecksum(html, sha256),
+      bodyChars: articleTextLength(html),
+    });
+    console.log(`  ${slug} — ${articleTextLength(html)} chars`);
+  }
+
+  return pages;
+}
+
+/**
+ * Every document the Transparency Seal page links, archived with its checksum.
+ *
+ * The register CONT-301 builds records a STATUS per mandated document, and the
+ * only status that can be `linked` is one whose document was actually
+ * retrieved. Without this the register would claim a link it had never
+ * followed.
+ */
+async function harvestDisclosureDocuments(sealPageUrl, disallowed) {
+  mkdirSync(DISCLOSURE_ARCHIVE, { recursive: true });
+  const documents = [];
+  const html = await getText(sealPageUrl, disallowed);
+
+  for (const [url, publishedTitle] of [...pdfLinksIn(html)].sort()) {
+    const name = decodeURIComponent(url.split('/').pop());
+    const bytes = await getBinary(url, disallowed);
+    writeFileSync(path.join(DISCLOSURE_ARCHIVE, name), bytes);
+
+    documents.push({
+      // The municipality's own link text where it exists. A filename is not a
+      // published title, and recording one as though it were puts words in
+      // their mouth — the same rule the charter documents follow.
+      title: publishedTitle ?? name.replace(/\.pdf$/i, '').replace(/-/g, ' '),
+      titleSource: publishedTitle
+        ? 'published-link-text'
+        : 'derived-from-filename',
+      file: name,
+      url,
+      linkedFrom: sealPageUrl,
+      retrievedAt: TODAY,
+      sha256: createHash('sha256').update(bytes).digest('hex'),
+      bytes: bytes.length,
+    });
+    console.log(`  ${name} — ${bytes.length} bytes`);
+  }
+
+  return documents;
 }
 
 /**
@@ -459,26 +588,48 @@ async function main() {
     );
   }
 
+  const referencePages = pages.filter(isReferencePage);
+  const classified = new Set([
+    ...charterPages,
+    ...officePages,
+    ...legislativePages,
+    ...referencePages,
+  ]);
+  const announcements = pages.filter(url => !classified.has(url));
+  const namedAnnouncements = announcements.filter(url =>
+    NAME_IN_URL.test(slugOf(url))
+  );
+  const citableAnnouncements = announcements.filter(
+    url => !NAME_IN_URL.test(slugOf(url))
+  );
+
   /*
-   * The full sitemap is counted but not listed, and that is a rule about
-   * names rather than about size. Many of the remaining URLs are news posts
-   * and councillor profile pages whose SLUGS CONTAIN PEOPLE'S NAMES. A name
-   * belongs in the content layer beside a source and a check date, where one
-   * edit corrects it after an election — not baked into a generated file
-   * outside it. The pages this project actually works from carry none.
+   * ⚠️ This note used to say the unlisted remainder was "news posts and
+   * individual profile pages". That was WRONG, and it mattered: the
+   * municipality's history, tourism, vision and Transparency Seal pages were
+   * in that bucket too, so the file read as though the only things unlisted
+   * were things nobody needed. They are the entire source base for Phase 3.
+   * They are now classified as `referencePages` and enumerated in
+   * phase3-pages.yaml. Corrected 2026-08-09.
+   *
+   * What remains genuinely unlisted is announcements whose SLUGS CONTAIN
+   * PEOPLE'S NAMES. A name belongs in the content layer beside a source and a
+   * check date, where one edit corrects it after an election — not baked into
+   * a generated file outside it.
    */
   writeYaml('site-pages.yaml', {
     harvestedAt: TODAY,
     origin: ORIGIN,
     sitemap: SITEMAP,
     pageCount: pages.length,
-    note: 'Only the pages this project works from are listed. The remainder are news posts and individual profile pages, counted below but not enumerated: their URLs carry personal names, which belong in content/ beside a source and a date, not in a generated inventory.',
+    note: 'Every page the sitemap lists, classified. charter/office/legislative/reference pages are enumerated here; announcements are enumerated in phase3-pages.yaml ONLY where the URL carries no personal name. The count below is announcements held back for that reason — never a claim that nothing else exists.',
     charterPages,
     officePages,
     legislativePages,
-    unlistedPages:
-      pages.length -
-      new Set([...charterPages, ...officePages, ...legislativePages]).size,
+    referencePages,
+    announcementPages: announcements.length,
+    announcementsWithNamesInUrl: namedAnnouncements.length,
+    unlistedPages: namedAnnouncements.length,
   });
 
   // Every charter page contributes its PDFs; one office publishes its charter
@@ -609,11 +760,48 @@ async function main() {
     harvestedAt: TODAY,
     pageCount: officePageRecords.length,
     pagesWithAnyBodyText: withBody,
-    note: 'Every /municipal-offices/ page the sitemap lists, measured and dated. This file records WHAT WAS READ, not what it means: url, published title, branch, retrieval date, checksum, and how many characters of body text the page carries. Body text itself is deliberately not captured — the few pages that have any carry a news item or a list of names, and a name belongs in the content layer beside a source and a check date, not in a generated inventory. What these measurements are read to MEAN — that no office page states a mandate — is a human judgement and lives in inventory/README.md, which is hand-authored.',
+    note: 'Every /municipal-offices/ page the sitemap lists, measured and dated. This file records WHAT WAS READ, not what it means: url, published title, branch, retrieval date, checksum, and how many characters of body text the page carries. contentSha256 is taken over the PUBLISHED TEXT, not the delivered HTML: the site stamps every response with a fresh timestamp, so a full-HTML hash reported all seventeen of these as changed on every harvest while no page had moved. Body text itself is deliberately not captured — the few pages that have any carry a news item or a list of names, and a name belongs in the content layer beside a source and a check date, not in a generated inventory. What these measurements are read to MEAN — that no office page states a mandate — is a human judgement and lives in inventory/README.md, which is hand-authored.',
     pages: officePageRecords,
   });
   console.log(
     `  ${officePageRecords.length} office pages · ${withBody} with any body text`
+  );
+
+  const referencePageRecords = await harvestReferencePages(
+    referencePages,
+    disallowed
+  );
+
+  const sealPage = referencePages.find(url =>
+    /\/transparency-seal\/?$/i.test(url)
+  );
+  const disclosureDocuments = sealPage
+    ? await harvestDisclosureDocuments(sealPage, disallowed)
+    : [];
+  if (!sealPage) {
+    console.warn(
+      '  ! No Transparency Seal page found in the sitemap. The disclosure\n' +
+        '    register has nothing to mark as linked — check the site structure\n' +
+        '    before recording every mandated document as not-located.'
+    );
+  }
+
+  writeYaml('phase3-pages.yaml', {
+    harvestedAt: TODAY,
+    origin: ORIGIN,
+    note: 'The pages Phase 3 (transparency, profile, history, tourism) is written from, plus every document the Transparency Seal page links. HTML and documents are archived under sources/site/ and sources/transparency/, both git-ignored — the municipality’s pages, kept so a restatement can be re-checked against what was published, and not redistributed. contentSha256 on a page is taken over its PUBLISHED TEXT rather than the delivered HTML, because the site stamps every response with a fresh timestamp; sha256 on a document is over its bytes, which are stable. Announcements are listed ONLY where the URL carries no personal name; the held-back count is in site-pages.yaml.',
+    referencePageCount: referencePageRecords.length,
+    referencePages: referencePageRecords,
+    citableAnnouncements,
+    announcementsHeldBackForNames: namedAnnouncements.length,
+    disclosureDocumentCount: disclosureDocuments.length,
+    disclosureDocuments,
+  });
+  console.log(
+    `  ${referencePageRecords.length} reference pages · ` +
+      `${disclosureDocuments.length} disclosure documents · ` +
+      `${citableAnnouncements.length} citable announcements ` +
+      `(${namedAnnouncements.length} held back for names)`
   );
 
   writeSourceNotes(documents, services);

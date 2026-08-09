@@ -1,0 +1,17 @@
+pages:
+  - dataClass: 'transparency'
+    name: 'How to request a statement of assets, liabilities and net worth'
+    slug: 'how-to-request-a-saln'
+    description: >-
+      This project does not publish these. The Office of the Ombudsman publishes a request route, and
+      this page names it.
+    source:
+      label:
+        en: 'Office of the Ombudsman — Request for SALN'
+      url: 'https://www.ombudsman.gov.ph/?page_id=128060'
+      documentTitle: 'Request for SALN'
+      documentType: 'web'
+      retrievedAt: '2026-08-09'
+    verification: 'V3'
+    lastCheckedAt: '2026-08-09'
+    lastReview: null

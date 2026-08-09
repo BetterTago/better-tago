@@ -9,7 +9,8 @@
 # Titles, slugs, offices, groups and ambiguities are joined from
 # inventory/task-vocabulary.yaml by charterServiceId. Do not re-derive one.
 pages:
-  - name: Claim an honorarium as a women’s association president
+  - dataClass: 'charter-derived'
+    name: Claim an honorarium as a women’s association president
     slug: claim-an-honorarium-as-a-womens-association-president
     description: Claiming the honorarium paid to a women’s association president.
     office: Gender and Development Division
@@ -23,6 +24,7 @@ pages:
       retrievedAt: '2026-08-09'
     verification: V3
     lastCheckedAt: '2026-08-09'
+    lastReview: null
     charterServiceId: gender-and-development-division-external-services#external-1
     charterSection: external
     charterDocument:
@@ -35,7 +37,8 @@ pages:
     ambiguity: null
     verificationRecord: null
     transcriptionNote: null
-  - name: Get emergency financial assistance
+  - dataClass: 'charter-derived'
+    name: Get emergency financial assistance
     slug: get-emergency-financial-assistance
     description: Assistance from the social welfare office for a household in a crisis situation.
     office: Municipal Social Welfare and Development Office
@@ -49,6 +52,7 @@ pages:
       retrievedAt: '2026-08-09'
     verification: V3
     lastCheckedAt: '2026-08-09'
+    lastReview: null
     charterServiceId: municipal-social-welfare-and-development-office#external-1
     charterSection: external
     charterDocument:
@@ -63,7 +67,8 @@ pages:
     ambiguity: null
     verificationRecord: null
     transcriptionNote: null
-  - name: Get a social case study report
+  - dataClass: 'charter-derived'
+    name: Get a social case study report
     slug: get-a-social-case-study-report
     description: Requesting a social case study, home study or child case study report with a referral letter.
     office: Municipal Social Welfare and Development Office
@@ -77,6 +82,7 @@ pages:
       retrievedAt: '2026-08-09'
     verification: V3
     lastCheckedAt: '2026-08-09'
+    lastReview: null
     charterServiceId: municipal-social-welfare-and-development-office#external-2
     charterSection: external
     charterDocument:
@@ -91,7 +97,8 @@ pages:
     ambiguity: null
     verificationRecord: null
     transcriptionNote: null
-  - name: Get a certificate of indigency
+  - dataClass: 'charter-derived'
+    name: Get a certificate of indigency
     slug: get-a-certificate-of-indigency
     description: A certificate of indigency from the municipal social welfare office.
     office: Municipal Social Welfare and Development Office
@@ -105,6 +112,7 @@ pages:
       retrievedAt: '2026-08-09'
     verification: V3
     lastCheckedAt: '2026-08-09'
+    lastReview: null
     charterServiceId: municipal-social-welfare-and-development-office#external-3
     charterSection: external
     charterDocument:
@@ -117,7 +125,8 @@ pages:
     ambiguity: null
     verificationRecord: null
     transcriptionNote: null
-  - name: Get support as a solo parent, senior citizen or person with disability
+  - dataClass: 'charter-derived'
+    name: Get support as a solo parent, senior citizen or person with disability
     slug: get-support-as-a-solo-parent-senior-citizen-or-person-with-disability
     description: >-
       Services for solo parents, senior citizens, persons with disabilities, women and out-of-school
@@ -133,6 +142,7 @@ pages:
       retrievedAt: '2026-08-09'
     verification: V3
     lastCheckedAt: '2026-08-09'
+    lastReview: null
     charterServiceId: municipal-social-welfare-and-development-office#external-4
     charterSection: external
     charterDocument:
@@ -147,7 +157,8 @@ pages:
     ambiguity: null
     verificationRecord: null
     transcriptionNote: null
-  - name: Get help after violence against a woman or child
+  - dataClass: 'charter-derived'
+    name: Get help after violence against a woman or child
     slug: get-help-after-violence-against-a-woman-or-child
     description: Support from the social welfare office after violence against a woman or her children.
     office: Municipal Social Welfare and Development Office
@@ -161,6 +172,7 @@ pages:
       retrievedAt: '2026-08-09'
     verification: V3
     lastCheckedAt: '2026-08-09'
+    lastReview: null
     charterServiceId: municipal-social-welfare-and-development-office#external-5
     charterSection: external
     charterDocument:
@@ -177,7 +189,8 @@ pages:
     transcriptionNote: >-
       The document titles this entry with a colon and lists sub-services beneath it (5.1 VAWC, 5.4
       release on recognizance). The heading alone is not a title, so it was read from the page.
-  - name: Get help for a child in conflict with the law
+  - dataClass: 'charter-derived'
+    name: Get help for a child in conflict with the law
     slug: get-help-for-a-child-in-conflict-with-the-law
     description: Support from the social welfare office for a child in conflict with the law.
     office: Municipal Social Welfare and Development Office
@@ -191,6 +204,7 @@ pages:
       retrievedAt: '2026-08-09'
     verification: V3
     lastCheckedAt: '2026-08-09'
+    lastReview: null
     charterServiceId: municipal-social-welfare-and-development-office#external-6
     charterSection: external
     charterDocument:

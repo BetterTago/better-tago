@@ -2,6 +2,7 @@ import { readFileSync, readdirSync } from 'node:fs';
 import path from 'node:path';
 import { describe, expect, it } from 'vitest';
 import {
+  REPO_ROOT,
   filesMatching,
   matchesIn,
   sourceFilesIn,
@@ -640,5 +641,153 @@ describe('how an absence is described', () => {
     // list, at which point the live ones stop being seen.
     const live = new Set(accusations(SCANNED));
     expect(Object.keys(DEFENDED).filter(entry => !live.has(entry))).toEqual([]);
+  });
+});
+
+/**
+ * CONT-403 criterion 5 · CONT-404 — the reporting scripts never edit content.
+ *
+ * *"No page is updated in bulk or automatically — an automated fee edit is the
+ * exact failure this pass exists to prevent."* A script that can write into
+ * `content/` is one bad regex away from doing it to a hundred pages at once,
+ * and the diff would be too large for anyone to read properly.
+ *
+ * So the rule is structural: these scripts read the tree and report. A human
+ * corrects, and a second human verifies.
+ */
+describe('the reporting scripts cannot edit the content tree', () => {
+  const SCRIPTS = ['charter-diff.mjs', 'freshness.mjs', 'handover.mjs'];
+
+  const sourceOf = (name: string) =>
+    readFileSync(path.join(REPO_ROOT, 'scripts', name), 'utf8');
+
+  it('is actually reading the scripts', () => {
+    for (const name of SCRIPTS) {
+      expect(sourceOf(name).length, name).toBeGreaterThan(500);
+    }
+  });
+
+  /*
+   * ⚠️ Matching a literal `'content'` inside the call is NOT enough, and the
+   * first version of this test made exactly that mistake: `handover.mjs`
+   * copies directories from an array, so its write target is a VARIABLE and a
+   * literal-only scan waved it straight through. A guardrail that cannot see
+   * the real shape of the code it guards is worse than none, because it reads
+   * as though somebody checked.
+   *
+   * So the check is on the FIRST ARGUMENT of every write call: it must be a
+   * destination the script is allowed to write, and the allow-list is named
+   * here per script rather than inferred.
+   */
+  /*
+   * ⚠️ Two ways to get this wrong, and the first version of this test made
+   * both.
+   *
+   * 1. Matching a literal `'content'` inside the call is not enough.
+   *    `handover.mjs` copies directories from an array, so its target is a
+   *    VARIABLE, and a literal-only scan waved it straight through.
+   * 2. For `cpSync` and `renameSync` the destination is the SECOND argument.
+   *    Checking the first would have been checking what is read, not what is
+   *    written — and would have passed on a script copying content anywhere.
+   *
+   * A guardrail that cannot see the real shape of the code it guards is worse
+   * than none, because it reads as though somebody checked.
+   */
+  const WRITERS =
+    /\b(writeFileSync|appendFileSync|rmSync|mkdirSync|cpSync|renameSync)\(/g;
+
+  /** The destination argument: second for a copy or move, first otherwise. */
+  const DESTINATION_ARG: Record<string, number> = {
+    writeFileSync: 0,
+    appendFileSync: 0,
+    rmSync: 0,
+    mkdirSync: 0,
+    cpSync: 1,
+    renameSync: 1,
+  };
+
+  /** Split a call's arguments at depth-zero commas, balancing brackets. */
+  function argumentsAt(source: string, openParen: number): string[] {
+    const args: string[] = [];
+    let depth = 0;
+    let current = '';
+    for (let i = openParen + 1; i < source.length; i++) {
+      const character = source[i]!;
+      if ('([{'.includes(character)) depth++;
+      else if (')]}'.includes(character)) {
+        if (depth === 0) {
+          args.push(current.trim());
+          return args;
+        }
+        depth--;
+      }
+      if (character === ',' && depth === 0) {
+        args.push(current.trim());
+        current = '';
+        continue;
+      }
+      current += character;
+    }
+    return args;
+  }
+
+  const ALLOWED: Record<string, RegExp> = {
+    'charter-diff.mjs': /^VERSIONS$/,
+    'freshness.mjs': /^path\.join\(ROOT, 'inventory'/,
+    // Everything lands under OUT, which is ROOT/handover and nothing else.
+    'handover.mjs': /^(?:OUT$|path\.join\(OUT)/,
+  };
+
+  const destinationsIn = (name: string, source: string) =>
+    [...source.matchAll(WRITERS)].map(match => {
+      const call = match[1]!;
+      const args = argumentsAt(source, match.index! + match[0].length - 1);
+      return { call, target: args[DESTINATION_ARG[call]!] ?? '' };
+    });
+
+  it('is reading real write calls, not zero of them', () => {
+    // Two empty sets agree perfectly, which is how this check would rot.
+    for (const name of SCRIPTS) {
+      expect(destinationsIn(name, sourceOf(name)).length, name).toBeGreaterThan(
+        0
+      );
+    }
+  });
+
+  it('writes only where its allow-list permits', () => {
+    const offenders: string[] = [];
+    for (const name of SCRIPTS) {
+      for (const { call, target } of destinationsIn(name, sourceOf(name))) {
+        if (!ALLOWED[name]?.test(target)) {
+          offenders.push(`${name}: ${call} → ${target}`);
+        }
+      }
+    }
+    expect(offenders).toEqual([]);
+  });
+
+  it('pins handover.mjs to a destination that is not the content tree', () => {
+    // The destination is one constant. If it ever stops being `handover`, this
+    // fails rather than the copy quietly landing somewhere else.
+    expect(sourceOf('handover.mjs')).toMatch(
+      /const OUT = path\.join\(ROOT, 'handover'\);/
+    );
+  });
+
+  it('catches a copy INTO content, where the destination is the second argument', () => {
+    // The bug this test had: checking argument one would read `sources/` here
+    // and pass, while the script rewrote the whole content tree.
+    const doctored = `cpSync(path.join(ROOT, 'sources'), path.join(ROOT, 'content'), { recursive: true });`;
+    const found = destinationsIn('handover.mjs', doctored);
+    expect(found).toHaveLength(1);
+    expect(found[0]?.target).toBe("path.join(ROOT, 'content')");
+    expect(ALLOWED['handover.mjs']!.test(found[0]!.target)).toBe(false);
+  });
+
+  it('fires on a direct write into content', () => {
+    const doctored = `writeFileSync(path.join(ROOT, 'content', rel), fixed);`;
+    const found = destinationsIn('freshness.mjs', doctored);
+    expect(found).toHaveLength(1);
+    expect(ALLOWED['freshness.mjs']!.test(found[0]!.target)).toBe(false);
   });
 });

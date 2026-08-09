@@ -1,0 +1,46 @@
+pages:
+  - dataClass: 'tourism'
+    name: Alondoy's Original Cassava Pudding
+    slug: alondoys-original-cassava-pudding
+    description: A local product listed on the municipality’s tourism page.
+    office: Tourism Office
+    source:
+      label:
+        en: Municipality of Tago — Tourism
+      url: https://tago.gov.ph/about-us-2/tourism/
+      documentTitle: Tourism
+      documentType: web
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+    lastReview: null
+  - dataClass: 'tourism'
+    name: Centro Kamalig
+    slug: centro-kamalig
+    description: Listed on the municipality’s tourism page.
+    office: Tourism Office
+    source:
+      label:
+        en: Municipality of Tago — Tourism
+      url: https://tago.gov.ph/about-us-2/tourism/
+      documentTitle: Tourism
+      documentType: web
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+    lastReview: null
+  - dataClass: 'tourism'
+    name: Gwen's Cafè
+    slug: gwens-cafe
+    description: Listed on the municipality’s tourism page.
+    office: Tourism Office
+    source:
+      label:
+        en: Municipality of Tago — Tourism
+      url: https://tago.gov.ph/about-us-2/tourism/
+      documentTitle: Tourism
+      documentType: web
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+    lastReview: null

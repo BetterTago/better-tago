@@ -9,7 +9,8 @@
 # Titles, slugs, offices, groups and ambiguities are joined from
 # inventory/task-vocabulary.yaml by charterServiceId. Do not re-derive one.
 pages:
-  - name: See a doctor for a consultation
+  - dataClass: 'charter-derived'
+    name: See a doctor for a consultation
     slug: see-a-doctor-for-a-consultation
     description: General consultation and treatment at the municipal health office.
     office: Municipal Health Office
@@ -22,6 +23,7 @@ pages:
       retrievedAt: '2026-08-09'
     verification: V3
     lastCheckedAt: '2026-08-09'
+    lastReview: null
     charterServiceId: municipal-health-office#external-1
     charterSection: external
     charterDocument:
@@ -34,7 +36,8 @@ pages:
     ambiguity: null
     verificationRecord: null
     transcriptionNote: null
-  - name: Get a certification of the cause of death
+  - dataClass: 'charter-derived'
+    name: Get a certification of the cause of death
     slug: get-a-certification-of-the-cause-of-death
     description: The health office’s certification of a cause of death, in a medico-legal case.
     office: Municipal Health Office
@@ -47,6 +50,7 @@ pages:
       retrievedAt: '2026-08-09'
     verification: V3
     lastCheckedAt: '2026-08-09'
+    lastReview: null
     charterServiceId: municipal-health-office#external-2
     charterSection: external
     charterDocument:
@@ -59,7 +63,8 @@ pages:
     ambiguity: null
     verificationRecord: null
     transcriptionNote: null
-  - name: Have a death certificate reviewed
+  - dataClass: 'charter-derived'
+    name: Have a death certificate reviewed
     slug: have-a-death-certificate-reviewed
     description: Having the health office review a death certificate.
     office: Municipal Health Office
@@ -72,6 +77,7 @@ pages:
       retrievedAt: '2026-08-09'
     verification: V3
     lastCheckedAt: '2026-08-09'
+    lastReview: null
     charterServiceId: municipal-health-office#external-3
     charterSection: external
     charterDocument:
@@ -84,7 +90,8 @@ pages:
     ambiguity: null
     verificationRecord: null
     transcriptionNote: null
-  - name: Get a dental check-up during pregnancy
+  - dataClass: 'charter-derived'
+    name: Get a dental check-up during pregnancy
     slug: get-a-dental-check-up-during-pregnancy
     description: The ante-partum dental check-up offered at the health office.
     office: Municipal Health Office
@@ -97,6 +104,7 @@ pages:
       retrievedAt: '2026-08-09'
     verification: V3
     lastCheckedAt: '2026-08-09'
+    lastReview: null
     charterServiceId: municipal-health-office#external-4
     charterSection: external
     charterDocument:
@@ -109,7 +117,8 @@ pages:
     ambiguity: null
     verificationRecord: null
     transcriptionNote: null
-  - name: Get a dental check-up or tooth extraction
+  - dataClass: 'charter-derived'
+    name: Get a dental check-up or tooth extraction
     slug: get-a-dental-check-up-or-tooth-extraction
     description: Oral examination, dental consultation and tooth extraction at the health office.
     office: Municipal Health Office
@@ -122,6 +131,7 @@ pages:
       retrievedAt: '2026-08-09'
     verification: V3
     lastCheckedAt: '2026-08-09'
+    lastReview: null
     charterServiceId: municipal-health-office#external-5
     charterSection: external
     charterDocument:
@@ -134,7 +144,8 @@ pages:
     ambiguity: null
     verificationRecord: null
     transcriptionNote: null
-  - name: Get family planning advice
+  - dataClass: 'charter-derived'
+    name: Get family planning advice
     slug: get-family-planning-advice
     description: Family planning services and counselling at the health office.
     office: Municipal Health Office
@@ -147,6 +158,7 @@ pages:
       retrievedAt: '2026-08-09'
     verification: V3
     lastCheckedAt: '2026-08-09'
+    lastReview: null
     charterServiceId: municipal-health-office#external-6
     charterSection: external
     charterDocument:
@@ -159,7 +171,8 @@ pages:
     ambiguity: null
     verificationRecord: null
     transcriptionNote: null
-  - name: Get an HIV test
+  - dataClass: 'charter-derived'
+    name: Get an HIV test
     slug: get-an-hiv-test
     description: HIV testing services at the health office.
     office: Municipal Health Office
@@ -172,6 +185,7 @@ pages:
       retrievedAt: '2026-08-09'
     verification: V3
     lastCheckedAt: '2026-08-09'
+    lastReview: null
     charterServiceId: municipal-health-office#external-7
     charterSection: external
     charterDocument:
@@ -184,7 +198,8 @@ pages:
     ambiguity: null
     verificationRecord: null
     transcriptionNote: null
-  - name: Get a child immunized
+  - dataClass: 'charter-derived'
+    name: Get a child immunized
     slug: get-a-child-immunized
     description: Childhood immunisation at the municipal health office.
     office: Municipal Health Office
@@ -197,6 +212,7 @@ pages:
       retrievedAt: '2026-08-09'
     verification: V3
     lastCheckedAt: '2026-08-09'
+    lastReview: null
     charterServiceId: municipal-health-office#external-8
     charterSection: external
     charterDocument:
@@ -209,7 +225,8 @@ pages:
     ambiguity: null
     verificationRecord: null
     transcriptionNote: null
-  - name: Get a laboratory test
+  - dataClass: 'charter-derived'
+    name: Get a laboratory test
     slug: get-a-laboratory-test
     description: Tests run by the health office’s clinical laboratory.
     office: Municipal Health Office
@@ -222,6 +239,7 @@ pages:
       retrievedAt: '2026-08-09'
     verification: V3
     lastCheckedAt: '2026-08-09'
+    lastReview: null
     charterServiceId: municipal-health-office#external-9
     charterSection: external
     charterDocument:
@@ -236,7 +254,8 @@ pages:
     transcriptionNote: >-
       The office is written “Municipality Health Office” on this entry and “Municipal Health Office”
       on the rest of the document.
-  - name: Get a medical certificate
+  - dataClass: 'charter-derived'
+    name: Get a medical certificate
     slug: get-a-medical-certificate
     description: A medical certificate issued by the municipal health office.
     office: Municipal Health Office
@@ -249,6 +268,7 @@ pages:
       retrievedAt: '2026-08-09'
     verification: V3
     lastCheckedAt: '2026-08-09'
+    lastReview: null
     charterServiceId: municipal-health-office#external-10
     charterSection: external
     charterDocument:
@@ -261,7 +281,8 @@ pages:
     ambiguity: null
     verificationRecord: null
     transcriptionNote: null
-  - name: Get a medico-legal medical certificate
+  - dataClass: 'charter-derived'
+    name: Get a medico-legal medical certificate
     slug: get-a-medico-legal-medical-certificate
     description: >-
       A medical certificate issued for a medico-legal case, which the charter treats as its own
@@ -276,6 +297,7 @@ pages:
       retrievedAt: '2026-08-09'
     verification: V3
     lastCheckedAt: '2026-08-09'
+    lastReview: null
     charterServiceId: municipal-health-office#external-11
     charterSection: external
     charterDocument:
@@ -288,7 +310,8 @@ pages:
     ambiguity: null
     verificationRecord: null
     transcriptionNote: null
-  - name: Get free medicine
+  - dataClass: 'charter-derived'
+    name: Get free medicine
     slug: get-free-medicine
     description: Obtaining medication stocked by the health office.
     office: Municipal Health Office
@@ -301,6 +324,7 @@ pages:
       retrievedAt: '2026-08-09'
     verification: V3
     lastCheckedAt: '2026-08-09'
+    lastReview: null
     charterServiceId: municipal-health-office#external-12
     charterSection: external
     charterDocument:
@@ -313,7 +337,8 @@ pages:
     ambiguity: null
     verificationRecord: null
     transcriptionNote: null
-  - name: Attend pre-marriage counseling
+  - dataClass: 'charter-derived'
+    name: Attend pre-marriage counseling
     slug: attend-pre-marriage-counseling
     description: The pre-marriage counselling session run by the health office.
     office: Municipal Health Office
@@ -326,6 +351,7 @@ pages:
       retrievedAt: '2026-08-09'
     verification: V3
     lastCheckedAt: '2026-08-09'
+    lastReview: null
     charterServiceId: municipal-health-office#external-13
     charterSection: external
     charterDocument:
@@ -338,7 +364,8 @@ pages:
     ambiguity: null
     verificationRecord: null
     transcriptionNote: null
-  - name: Get prenatal check-ups
+  - dataClass: 'charter-derived'
+    name: Get prenatal check-ups
     slug: get-prenatal-check-ups
     description: Prenatal care at the health office.
     office: Municipal Health Office
@@ -351,6 +378,7 @@ pages:
       retrievedAt: '2026-08-09'
     verification: V3
     lastCheckedAt: '2026-08-09'
+    lastReview: null
     charterServiceId: municipal-health-office#external-14
     charterSection: external
     charterDocument:
@@ -363,7 +391,8 @@ pages:
     ambiguity: null
     verificationRecord: null
     transcriptionNote: null
-  - name: Get a health certificate
+  - dataClass: 'charter-derived'
+    name: Get a health certificate
     slug: get-a-health-certificate
     description: Obtaining a health certificate from the health office.
     office: Municipal Health Office
@@ -376,6 +405,7 @@ pages:
       retrievedAt: '2026-08-09'
     verification: V3
     lastCheckedAt: '2026-08-09'
+    lastReview: null
     charterServiceId: municipal-health-office#external-15
     charterSection: external
     charterDocument:
@@ -388,7 +418,8 @@ pages:
     ambiguity: null
     verificationRecord: null
     transcriptionNote: null
-  - name: Get a sanitary permit
+  - dataClass: 'charter-derived'
+    name: Get a sanitary permit
     slug: get-a-sanitary-permit
     description: Obtaining a sanitary permit from the health office.
     office: Municipal Health Office
@@ -401,6 +432,7 @@ pages:
       retrievedAt: '2026-08-09'
     verification: V3
     lastCheckedAt: '2026-08-09'
+    lastReview: null
     charterServiceId: municipal-health-office#external-16
     charterSection: external
     charterDocument:
@@ -413,7 +445,8 @@ pages:
     ambiguity: null
     verificationRecord: null
     transcriptionNote: null
-  - name: Get an exhumation permit
+  - dataClass: 'charter-derived'
+    name: Get an exhumation permit
     slug: get-an-exhumation-permit
     description: The exhumation permit issued by the health office.
     office: Municipal Health Office
@@ -426,6 +459,7 @@ pages:
       retrievedAt: '2026-08-09'
     verification: V3
     lastCheckedAt: '2026-08-09'
+    lastReview: null
     charterServiceId: municipal-health-office#external-17
     charterSection: external
     charterDocument:
@@ -438,7 +472,8 @@ pages:
     ambiguity: null
     verificationRecord: null
     transcriptionNote: null
-  - name: Get a permit to transfer remains
+  - dataClass: 'charter-derived'
+    name: Get a permit to transfer remains
     slug: get-a-permit-to-transfer-remains
     description: The permit the health office issues for transferring a cadaver.
     office: Municipal Health Office
@@ -451,6 +486,7 @@ pages:
       retrievedAt: '2026-08-09'
     verification: V3
     lastCheckedAt: '2026-08-09'
+    lastReview: null
     charterServiceId: municipal-health-office#external-18
     charterSection: external
     charterDocument:
@@ -463,7 +499,8 @@ pages:
     ambiguity: null
     verificationRecord: null
     transcriptionNote: null
-  - name: Visit the social hygiene clinic
+  - dataClass: 'charter-derived'
+    name: Visit the social hygiene clinic
     slug: visit-the-social-hygiene-clinic
     description: The health office’s social hygiene clinic.
     office: Municipal Health Office
@@ -476,6 +513,7 @@ pages:
       retrievedAt: '2026-08-09'
     verification: V3
     lastCheckedAt: '2026-08-09'
+    lastReview: null
     charterServiceId: municipal-health-office#external-19
     charterSection: external
     charterDocument:
@@ -488,7 +526,8 @@ pages:
     ambiguity: null
     verificationRecord: null
     transcriptionNote: null
-  - name: Get treatment for tuberculosis
+  - dataClass: 'charter-derived'
+    name: Get treatment for tuberculosis
     slug: get-treatment-for-tuberculosis
     description: Tuberculosis treatment services provided by the health office.
     office: Municipal Health Office
@@ -501,6 +540,7 @@ pages:
       retrievedAt: '2026-08-09'
     verification: V3
     lastCheckedAt: '2026-08-09'
+    lastReview: null
     charterServiceId: municipal-health-office#external-20
     charterSection: external
     charterDocument:
@@ -513,7 +553,8 @@ pages:
     ambiguity: null
     verificationRecord: null
     transcriptionNote: null
-  - name: Get help to stop smoking
+  - dataClass: 'charter-derived'
+    name: Get help to stop smoking
     slug: get-help-to-stop-smoking
     description: Smoking cessation counselling at the health office.
     office: Municipal Health Office
@@ -526,6 +567,7 @@ pages:
       retrievedAt: '2026-08-09'
     verification: V3
     lastCheckedAt: '2026-08-09'
+    lastReview: null
     charterServiceId: municipal-health-office#external-21
     charterSection: external
     charterDocument:
@@ -538,7 +580,8 @@ pages:
     ambiguity: null
     verificationRecord: null
     transcriptionNote: null
-  - name: Get a nutrition referral
+  - dataClass: 'charter-derived'
+    name: Get a nutrition referral
     slug: get-a-nutrition-referral
     description: A patient referral issued by the municipal nutrition office.
     office: Office of the Municipal Nutrition
@@ -551,6 +594,7 @@ pages:
       retrievedAt: '2026-08-09'
     verification: V3
     lastCheckedAt: '2026-08-09'
+    lastReview: null
     charterServiceId: office-of-the-municipal-nutrition#external-1
     charterSection: external
     charterDocument:
@@ -563,7 +607,8 @@ pages:
     ambiguity: null
     verificationRecord: null
     transcriptionNote: null
-  - name: Get a nutrition pack or supplements
+  - dataClass: 'charter-derived'
+    name: Get a nutrition pack or supplements
     slug: get-a-nutrition-pack-or-supplements
     description: Nutrition packs, micronutrient supplements, and the counselling that goes with them.
     office: Office of the Municipal Nutrition
@@ -576,6 +621,7 @@ pages:
       retrievedAt: '2026-08-09'
     verification: V3
     lastCheckedAt: '2026-08-09'
+    lastReview: null
     charterServiceId: office-of-the-municipal-nutrition#external-2
     charterSection: external
     charterDocument:

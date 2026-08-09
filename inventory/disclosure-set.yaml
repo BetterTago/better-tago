@@ -1,0 +1,102 @@
+# The mandated disclosure set — AUTHORED BY HAND, not generated.
+#
+# `npm run harvest` does NOT write this file. It is the list of documents the
+# transparency register accounts for, and it is the ONE place that list lives:
+# src/lib/content-records.test.ts derives the register's checks from it, so the
+# register and the list cannot drift apart.
+#
+# Nothing here is published. It is a work list.
+version: 1
+authoredAt: '2026-08-09'
+
+# ---------------------------------------------------------------------------
+# 🔴 WHERE THIS LIST COMES FROM — read this before adding to it
+# ---------------------------------------------------------------------------
+#
+# This is THIS PROJECT'S WORKING LIST. It is **not** a legal enumeration, and
+# it must never be presented as one.
+#
+# The governing issuance was sought and not obtained. What was tried, and what
+# came back, on 2026-08-09:
+#
+#   - The Department of the Interior and Local Government's issuance archive
+#     was reachable and links a "Full Disclosure Policy Portal" as the place
+#     the set is published.
+#   - That portal, https://fdpp.dilg.gov.ph/, DOES NOT RESOLVE: the address
+#     redirects from HTTP to HTTPS and the secure connection does not
+#     complete. Its DNS record exists, so this is an unreachable host rather
+#     than a missing one.
+#   - A direct memorandum-circular URL was tried and answered 404.
+#
+# So the items below are taken from the scope this project wrote down for
+# itself before any of them was sought — the transparency request ticket's own
+# description — and NOT from the issuance that mandates them.
+#
+# ⚠️ What that means for a reader: this register is honest about every item it
+# lists, and it CANNOT claim to be complete. An unsourced list of a
+# municipality's legal obligations, published by an unaffiliated project,
+# would be a compliance claim this project has no standing to make. Recorded as
+# a dated gap instead.
+#
+# What closes it: retrieving the issuance itself, archiving it with a checksum
+# like every other source, and reconciling this list against it.
+issuance:
+  obtained: false
+  soughtAt: '2026-08-09'
+  channels:
+    - label: Department of the Interior and Local Government — Full Disclosure Policy Portal
+      url: https://fdpp.dilg.gov.ph/
+      result: not-retrievable
+      note: >-
+        Redirects HTTP to HTTPS; the secure connection does not complete. DNS resolves, so the host
+        exists and is unreachable rather than absent.
+    - label: Department of the Interior and Local Government — memorandum circular archive
+      url: https://www.dilg.gov.ph/issuances-archive/mc/
+      result: reachable-but-links-only-the-portal
+      note: >-
+        The archive page loads and links the portal above as the place the set is published. It did
+        not itself yield a retrievable copy of the issuance.
+
+# Each item becomes exactly one entry in content/transparency/register/.
+# `slug` is the register page's slug and the join key.
+documents:
+  - slug: annual-budget
+    name: Annual budget
+  - slug: annual-investment-programme
+    name: Annual investment programme
+  - slug: financial-statements
+    name: Financial statements
+  - slug: procurement-plan
+    name: Procurement plan
+  - slug: bid-results
+    name: Bid results
+  - slug: contracts-awarded
+    name: Contracts awarded
+  - slug: special-fund-utilisation
+    name: Special fund utilisation
+  - slug: personnel-complement
+    name: Personnel complement
+  - slug: accomplishment-report
+    name: Accomplishment report
+  - slug: planning-documents
+    name: Planning documents
+  # The one document the municipality actually publishes. It is in the register
+  # because it is a disclosure document that exists, not because the list above
+  # predicted it — and it does not map cleanly onto any of the ten, which is
+  # itself worth a reader knowing.
+  - slug: status-of-appropriations-allotments-and-obligations-fy-2022
+    name: Status of Appropriations, Allotments and Obligations (FY 2022)
+    locatedIndependently: true
+
+# ---------------------------------------------------------------------------
+# Permanently excluded — not a gap, and never to be added
+# ---------------------------------------------------------------------------
+excluded:
+  - what: Statements of assets, liabilities and net worth
+    reason: >-
+      Personal financial disclosures about identifiable people. Everything else this project restates
+      is a document about the municipality. Republishing these is not something a volunteer
+      restatement project has any business doing, and the exclusion is permanent rather than pending.
+      src/lib/content-schema.ts refuses one as a register entry, so the rule is a property of the data
+      rather than a thing a reviewer has to remember.
+    insteadSee: content/transparency/requests/how-to-request-a-saln.md

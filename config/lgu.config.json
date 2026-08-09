@@ -27,7 +27,7 @@
     "district": null,
     "psgc": null,
     "postalCode": null,
-    "incomeClass": null,
+    "incomeClass": "2nd class",
     "coordinates": null,
     "landAreaKm2": null,
     "barangayCount": null,
@@ -40,7 +40,20 @@
       "townConversionInstrument": "Executive Order No. 41",
       "townConversionDate": "1918-11-06",
       "firstMunicipalTermStart": "1919-01-01",
-      "separatedFrom": "the municipality that is now Tandag City"
+      "separatedFrom": "the municipality that is now Tandag City",
+      "source": {
+        "label": "Municipality of Tago — History",
+        "url": "https://tago.gov.ph/about-us-2/history/",
+        "checkedAt": "2026-08-09"
+      }
+    },
+    "sources": {
+      "incomeClass": {
+        "label": "Municipality of Tago — Tourism",
+        "url": "https://tago.gov.ph/about-us-2/tourism/",
+        "checkedAt": "2026-08-09",
+        "note": "The municipality states this itself: its tourism page opens 'The Municipality of Tago is a 2nd class Municipality'. Recorded from the municipality's own site rather than left null, and it is the ONLY one of the ten tracked figures the municipality publishes anywhere. STILL OPEN, and recorded rather than implied: the national issuance that SET this classification was not retrieved, so the figure is the municipality's own statement about itself and carries no issuance date. If a national record is later obtained and disagrees, both are shown with their sources — neither is chosen."
+      }
     }
   },
   "officialSite": {
@@ -120,7 +133,7 @@
       "lastCheckedAt": "2026-08-09"
     },
     "lgu.psgc": {
-      "note": "The national statistics authority publishes this municipality's PSGC record at psa.gov.ph/classification/psgc/barangays/1606818000. Checked 2026-08-09 and re-attempted the same day for the barangay directory: the host answers HTTP 403 to an automated request. It is not behind a login and robots.txt permits it — closing this needs a person opening that URL in a browser and recording the code with the date they read it. Two attempts, both machine-refused, is the reason CONT-210 is recorded blocked rather than skipped.",
+      "note": "The national statistics authority publishes this municipality's PSGC record at psa.gov.ph/classification/psgc/barangays/1606818000. Checked 2026-08-09, re-attempted the same day for the barangay directory, and re-attempted a THIRD time on 2026-08-09 for the statistics baseline: the host answers HTTP 403 to an automated request every time, as does psa.gov.ph itself and every /classification/ and /statistics/ path tried. It is not behind a login and robots.txt permits it — closing this needs a person opening that URL in a browser and recording the code with the date they read it. Three attempts, all machine-refused, is the reason CONT-210 is recorded blocked rather than skipped. NOT A CHANNEL: an aggregator site answered 200 on the same sweep and was deliberately NOT READ — this project did not check what it carries, because a figure it cannot trace to the authority that published it is unusable either way. Recorded so the refusal is a decision on the record rather than an absence.",
       "channel": "national-agency",
       "state": "open",
       "lastCheckedAt": "2026-08-09"
@@ -129,12 +142,6 @@
       "note": "HELD, not missing. The official contact page publishes 1101, re-read 2026-08-09; that value sits outside the range used for this province and appears to belong to a different part of the country. Do not publish it, and do not 'correct' it to a guess. Confirm against the postal service's own record, then tell the municipality if their published value is a typo.",
       "channel": "national-agency",
       "state": "held",
-      "lastCheckedAt": "2026-08-09"
-    },
-    "lgu.incomeClass": {
-      "note": "Not published by the municipality. Checked 2026-08-09 across every page the official site's sitemap lists that is not a news post or a profile page — home, about, vision-and-mission, services, tourism, contact, transparency-seal and all 17 office pages — and across all 22 Citizen's Charter documents. It is stated on the national statistics authority's PSGC record, which could not be retrieved (see lgu.psgc).",
-      "channel": "national-agency",
-      "state": "open",
       "lastCheckedAt": "2026-08-09"
     },
     "lgu.coordinates": {
@@ -156,7 +163,7 @@
       "lastCheckedAt": "2026-08-09"
     },
     "lgu.population": {
-      "note": "Obtain from the national statistics authority's census release, cited by census year. Checked 2026-08-09; the authority's site could not be retrieved (see lgu.psgc), and the municipality publishes no figure.",
+      "note": "Obtain from the national statistics authority's census release, cited by census year. Checked 2026-08-09 and re-attempted the same day against the authority's population and housing pages; every path answers HTTP 403 to an automated request (see lgu.psgc). The municipality publishes no figure of its own. An aggregator site was reachable on the same sweep and was deliberately not read; whether it carries a figure for this municipality was not checked, because it could not be used either way.",
       "channel": "national-agency",
       "state": "open",
       "lastCheckedAt": "2026-08-09"

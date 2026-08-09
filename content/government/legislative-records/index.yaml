@@ -7,7 +7,8 @@
 # and a resident looking for one deserves to be told that rather than to find
 # an empty page.
 pages:
-  - name: 'Where ordinances and session records are published'
+  - dataClass: 'charter-derived'
+    name: 'Where ordinances and session records are published'
     slug: 'where-ordinances-and-session-records-are-published'
     description: 'What the Sangguniang Bayan publishes about its own work, and what it does not — checked, and dated.'
     office: 'Office of the Sangguniang Bayan'
@@ -20,3 +21,4 @@ pages:
       retrievedAt: '2026-08-09'
     verification: 'V3'
     lastCheckedAt: '2026-08-09'
+    lastReview: null

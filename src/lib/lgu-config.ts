@@ -94,7 +94,41 @@ const lguSchema = z.object({
     townConversionDate: z.iso.date(),
     firstMunicipalTermStart: z.iso.date(),
     separatedFrom: z.string().min(1),
+    /**
+     * 🔴 Required, and it was missing until 2026-08-09.
+     *
+     * Six municipal facts sat in this block with no source and no check date,
+     * while every other published fact in this project carried all three. They
+     * predated the rule being enforced anywhere the schema could see, and
+     * nothing rendered them, so nothing caught it.
+     *
+     * They are all stated on the municipality's own history page. Requiring
+     * the citation here is what stops the next fact being added the same way —
+     * CONT-304 criterion 3.
+     */
+    source: z.object({
+      label: z.string().min(1),
+      url: z.url(),
+      checkedAt: z.iso.date(),
+    }),
   }),
+  /**
+   * Where each OBTAINED figure came from — the mirror of `pending`.
+   *
+   * `note` is not decoration. The one entry here today records a figure the
+   * municipality states about itself while the national issuance that set it
+   * was never retrieved, and a reader deserves that distinction beside the
+   * value rather than in a commit message.
+   */
+  sources: z.record(
+    z.string(),
+    z.object({
+      label: z.string().min(1),
+      url: z.url(),
+      checkedAt: z.iso.date(),
+      note: z.string().min(40),
+    })
+  ),
 });
 
 const officialSiteSchema = z.object({
@@ -172,6 +206,30 @@ const emergencySchema = z.object({
     )
     .min(1),
 });
+
+/**
+ * The municipal figures this project tracks one way or the other.
+ *
+ * Each is either null with a `pending` entry, or filled with a `lgu.sources`
+ * entry — never neither, never both. They are the ten that a resident would
+ * expect a municipality page to state and that no single source hands over.
+ *
+ * `officialName`, `province`, `region` and the like are deliberately NOT here:
+ * they are the municipality's identity rather than figures about it, and
+ * requiring a citation per word would make the register noise.
+ */
+const TRACKED_LGU_FACTS = [
+  'district',
+  'psgc',
+  'postalCode',
+  'incomeClass',
+  'coordinates',
+  'landAreaKm2',
+  'barangayCount',
+  'population',
+  'households',
+  'censusYear',
+] as const;
 
 /** The subtrees whose nulls are municipal gaps. `pending` describes them. */
 const FACT_GROUPS = [
@@ -307,6 +365,47 @@ const configSchema = z
         code: 'custom',
         path: ['pending', path],
         message: `${path} has a \`pending\` entry but is no longer null. Delete the entry — a register nobody trusts is a register nobody reads.`,
+      });
+    }
+
+    /*
+     * The mirror of the rule above, and it was missing.
+     *
+     * `pending` made every NULL account for itself. Nothing made a non-null
+     * one do the same, so the moment a figure was obtained it became an
+     * unsourced assertion — which is the failure `lgu.history` had already
+     * silently committed with six facts before 2026-08-09.
+     *
+     * So each tracked fact is now in exactly one of two states: null with a
+     * `pending` entry saying how it gets closed, or filled with a `sources`
+     * entry saying where it came from and when somebody looked. Neither, or
+     * both, is a build failure.
+     */
+    for (const field of TRACKED_LGU_FACTS) {
+      const filled = config.lgu[field] !== null;
+      const sourced = field in config.lgu.sources;
+      if (filled && !sourced) {
+        ctx.addIssue({
+          code: 'custom',
+          path: ['lgu', 'sources', field],
+          message: `lgu.${field} has a value and no entry in \`lgu.sources\`. Cite where it came from and when it was checked, or set it back to null with a \`pending\` entry.`,
+        });
+      }
+      if (!filled && sourced) {
+        ctx.addIssue({
+          code: 'custom',
+          path: ['lgu', 'sources', field],
+          message: `lgu.${field} is null but carries a source. A citation for a fact this project does not hold reads as though it did.`,
+        });
+      }
+    }
+
+    for (const field of Object.keys(config.lgu.sources)) {
+      if ((TRACKED_LGU_FACTS as readonly string[]).includes(field)) continue;
+      ctx.addIssue({
+        code: 'custom',
+        path: ['lgu', 'sources', field],
+        message: `lgu.sources.${field} names no tracked fact. Add it to TRACKED_LGU_FACTS or remove the entry.`,
       });
     }
   });

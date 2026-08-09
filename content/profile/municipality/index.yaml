@@ -1,0 +1,17 @@
+pages:
+  - dataClass: 'profile'
+    name: 'Tago at a glance'
+    slug: 'tago-at-a-glance'
+    description: >-
+      What is established about Tago as a place, what is not yet known, and why the postal code is
+      deliberately left blank.
+    source:
+      label:
+        en: 'Municipality of Tago — official site'
+      url: 'https://tago.gov.ph/about-us-2/'
+      documentTitle: 'About Us'
+      documentType: 'web'
+      retrievedAt: '2026-08-09'
+    verification: 'V3'
+    lastCheckedAt: '2026-08-09'
+    lastReview: null

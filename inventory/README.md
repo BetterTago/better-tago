@@ -20,14 +20,16 @@ harvest overwrites the edit, and an edit that survives is an unsourced claim.
 | `charter-services.yaml`        | Every service inside those PDFs, with six fields recorded **present or absent**                                                       |
 | `source-notes.md`              | One note per document: what was retrieved, and what was derived from it                                                               |
 | `office-pages.yaml`            | Every `/municipal-offices/` page, and whether it publishes a mandate. **None does** — see below                                       |
+| `phase3-pages.yaml`            | The reference pages Phase 3 is written from, the announcements it may cite, and every document the Transparency Seal page links       |
 
 | Authored by hand       | What it holds                                                                                       |
 | ---------------------- | --------------------------------------------------------------------------------------------------- |
 | `task-vocabulary.yaml` | The title each service is published under, the office roster, and the verbatim terms pages must use |
+| `disclosure-set.yaml`  | The documents the transparency register accounts for — **a working list, not a legal enumeration**  |
 | `README.md`            | This file                                                                                           |
 
-**The harvest does not write `task-vocabulary.yaml` and will never overwrite it.** It is the one file in here
-somebody is meant to edit.
+**The harvest does not write `task-vocabulary.yaml` or `disclosure-set.yaml` and will never overwrite them.**
+Those are the two files in here somebody is meant to edit.
 
 ## `id` — and why it is not the charter's number
 
@@ -103,6 +105,27 @@ is the **Assessor's eight services**, and that is what `content/services/treasur
 services in its charter and nothing about collection. Checked across its charter document and its office page
 on 2026-08-09.
 
+## The whole-site document sweep — 2026-08-09
+
+**Every one of the 75 URLs in the municipality's sitemap was retrieved and scanned for a linked document**
+(`.pdf`, `.xls(x)`, `.doc(x)`, `.csv`) on 2026-08-09 — pages, news posts and the category archive alike.
+
+**Twenty-three documents exist on the whole site, and that is all of them:**
+
+- the **22 Citizen's Charter PDFs**, already enumerated in `charter-documents.yaml`;
+- **one** disclosure document — `Status-of-Appropriations-Allotments-and-Obligations-F.Y.-2022.pdf`, linked
+  from the Transparency Seal page.
+
+That is what makes `content/transparency/register/`'s claim honest rather than assumed. Each register entry
+says the document was not found across the sitemap, and this is the sweep behind that sentence.
+
+⚠️ **It was a link scan, not a reading.** A figure printed in the body of a news post would not be caught by
+it. What it establishes is narrow and worth stating exactly: **no mandated disclosure document is published as
+a downloadable file anywhere the municipality's sitemap reaches.**
+
+One post is titled as bidding documents for a catering service; **it links no document.** That is why
+`bid-results` is recorded as not-located rather than as partially published.
+
 ## `office-pages.yaml` — and the finding it records
 
 An office directory needs each office's mandate. **The municipality does not publish one anywhere**, and this
@@ -123,6 +146,27 @@ Every document carries a `sha256`. That is what makes a later charter revision *
 assumed: re-run the harvest, and a changed hash tells you a document moved before anyone notices a fee is
 wrong. A transcription can only be defended if it can be re-checked against what was published on the day it
 was made.
+
+### ⚠️ A page is not a document, and it is not hashed the same way — corrected 2026-08-09
+
+**A `sha256` over a delivered HTML page does not answer the question a checksum is here for.** This site runs a
+security plugin that stamps every response with a fresh timestamp:
+
+```
+<script src="//tago.gov.ph/?wordfence_syncAttackData=1786279124.203">
+```
+
+So two fetches a second apart differ, and a full-HTML hash reports _"this page changed"_ on **every run,
+forever**. `office-pages.yaml` carried exactly that from Wave 3 until this was found: re-running the harvest
+changed all seventeen checksums while every `bodyChars` stayed identical, because not one page had moved.
+
+**An alarm that always fires is worse than no alarm** — it trains everyone to ignore the one time it means
+something, which is precisely the revision this project exists to catch.
+
+Pages therefore carry **`contentSha256`, taken over the published text** rather than the delivered markup —
+`scripts/page-text.mjs`, and `scripts/page-text.test.mjs` pins both directions: two fetches differing only by
+the stamp hash the same, and a single changed word does not. **Documents keep `sha256` over their bytes**,
+which is correct and has held across four harvests.
 
 ## No names
 

@@ -1,5 +1,7 @@
 # Magparehistro ng kapanganakan
 
+> **Paunawa:** Ang Filipino sa pahinang ito ay **draft, hindi pa nasusuri ng katutubong nagsasalita.** Bakante pa ang tungkulin ng Translator sa proyektong ito. Kung may mali, ang correction link sa footer ang pinakamabilis na paraan para maayos ito.
+
 **Sino ang nagbibigay nito:** Office of the Municipal Civil Registrar, Tago Municipal Hall.
 
 ## Ano ang tawag dito ng charter

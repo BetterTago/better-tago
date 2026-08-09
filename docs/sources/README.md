@@ -7,8 +7,18 @@ written down beside the document it came from.
 one note per document to `inventory/source-notes.md`, alongside the machine-readable inventory it builds. This
 folder holds the convention those notes follow and anything that has to be recorded by hand.
 
-The retrieved documents themselves (charter PDFs, posted notices, photographs of a wall) are kept **outside
-version control**, under a git-ignored `sources/` directory at the repository root. They are the municipality's
+The retrieved documents themselves are kept **outside version control**, under a git-ignored `sources/`
+directory at the repository root, in three folders:
+
+| Folder                  | What it holds                                                                                           |
+| ----------------------- | ------------------------------------------------------------------------------------------------------- |
+| `sources/charter/`      | The 22 Citizen's Charter PDFs                                                                           |
+| `sources/site/`         | The HTML of the reference pages the profile, history, tourism and transparency records are written from |
+| `sources/transparency/` | Every document linked from the Transparency Seal page                                                   |
+
+⚠️ **A page and a document are not checksummed the same way.** A document is hashed over its bytes; a page is
+hashed over its **published text**, because this site stamps every response with a fresh timestamp and a
+full-HTML hash would report every page as changed on every run. See `inventory/README.md` § Checksums. They are the municipality's
 documents; this project keeps a copy — with a checksum, so a later revision is _detectable_ rather than assumed —
 so a transcription can always be re-checked against what was actually published, but it does not redistribute
 them.

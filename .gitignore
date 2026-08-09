@@ -59,3 +59,6 @@ next-env.d.ts
 .claude/
 CLAUDE.md
 AGENTS.md
+
+# The handover export, assembled by `npm run handover`. Regenerated, never edited.
+/handover/

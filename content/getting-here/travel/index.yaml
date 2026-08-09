@@ -1,0 +1,17 @@
+pages:
+  - dataClass: 'tourism'
+    name: 'How to reach Tago'
+    slug: 'how-to-reach-tago'
+    description: >-
+      Road access, terminals, journey times and fares are not published by the municipality. What was
+      looked for, where, and on what date — recorded rather than estimated.
+    source:
+      label:
+        en: 'Municipality of Tago — Tourism'
+      url: 'https://tago.gov.ph/about-us-2/tourism/'
+      documentTitle: 'Tourism'
+      documentType: 'web'
+      retrievedAt: '2026-08-09'
+    verification: 'V3'
+    lastCheckedAt: '2026-08-09'
+    lastReview: null

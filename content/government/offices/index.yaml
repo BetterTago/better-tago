@@ -6,7 +6,8 @@
 # locked doors, and one that guesses them does the same thing with more
 # confidence.
 pages:
-  - name: Business Licensing and Permitting Division
+  - dataClass: 'offices'
+    name: Business Licensing and Permitting Division
     slug: business-licensing-and-permitting-division
     description: >-
       What this office does for residents, the 4 services it lists in the Citizen's Charter, and how
@@ -23,7 +24,9 @@ pages:
       retrievedAt: '2026-08-09'
     verification: V3
     lastCheckedAt: '2026-08-09'
-  - name: Executive Division
+    lastReview: null
+  - dataClass: 'offices'
+    name: Executive Division
     slug: executive-division
     description: >-
       What this office does for residents, the 6 services it lists in the Citizen's Charter, and how
@@ -37,7 +40,9 @@ pages:
       retrievedAt: '2026-08-09'
     verification: V3
     lastCheckedAt: '2026-08-09'
-  - name: Gender and Development Division
+    lastReview: null
+  - dataClass: 'offices'
+    name: Gender and Development Division
     slug: gender-and-development-division
     description: >-
       What this office does for residents, the 1 service it lists in the Citizen's Charter, and how
@@ -52,7 +57,9 @@ pages:
       retrievedAt: '2026-08-09'
     verification: V3
     lastCheckedAt: '2026-08-09'
-  - name: Human Resource Management Division
+    lastReview: null
+  - dataClass: 'offices'
+    name: Human Resource Management Division
     slug: human-resource-management-division
     description: >-
       What this office does for residents, the 5 services it lists in the Citizen's Charter, and how
@@ -69,7 +76,9 @@ pages:
       retrievedAt: '2026-08-09'
     verification: V3
     lastCheckedAt: '2026-08-09'
-  - name: Municipal Accounting Office
+    lastReview: null
+  - dataClass: 'offices'
+    name: Municipal Accounting Office
     slug: municipal-accounting-office
     description: >-
       What this office does for residents, the 1 service it lists in the Citizen's Charter, and how
@@ -83,7 +92,9 @@ pages:
       retrievedAt: '2026-08-09'
     verification: V3
     lastCheckedAt: '2026-08-09'
-  - name: Municipal Environment and Natural Resources Office
+    lastReview: null
+  - dataClass: 'offices'
+    name: Municipal Environment and Natural Resources Office
     slug: municipal-environment-and-natural-resources-office
     description: >-
       What this office does for residents, the 2 services it lists in the Citizen's Charter, and how
@@ -100,7 +111,9 @@ pages:
       retrievedAt: '2026-08-09'
     verification: V3
     lastCheckedAt: '2026-08-09'
-  - name: Municipal Health Office
+    lastReview: null
+  - dataClass: 'offices'
+    name: Municipal Health Office
     slug: municipal-health-office
     description: >-
       What this office does for residents, the 21 services it lists in the Citizen's Charter, and
@@ -114,7 +127,9 @@ pages:
       retrievedAt: '2026-08-09'
     verification: V3
     lastCheckedAt: '2026-08-09'
-  - name: Municipal Social Welfare and Development Office
+    lastReview: null
+  - dataClass: 'offices'
+    name: Municipal Social Welfare and Development Office
     slug: municipal-social-welfare-and-development-office
     description: >-
       What this office does for residents, the 6 services it lists in the Citizen's Charter, and how
@@ -129,7 +144,9 @@ pages:
       retrievedAt: '2026-08-09'
     verification: V3
     lastCheckedAt: '2026-08-09'
-  - name: Office of the Municipal Agriculture
+    lastReview: null
+  - dataClass: 'offices'
+    name: Office of the Municipal Agriculture
     slug: office-of-the-municipal-agriculture
     description: >-
       What this office does for residents, the 11 services it lists in the Citizen's Charter, and
@@ -143,7 +160,9 @@ pages:
       retrievedAt: '2026-08-09'
     verification: V3
     lastCheckedAt: '2026-08-09'
-  - name: Office of the Municipal Assessor
+    lastReview: null
+  - dataClass: 'offices'
+    name: Office of the Municipal Assessor
     slug: office-of-the-municipal-assessor
     description: >-
       What this office does for residents, the 8 services it lists in the Citizen's Charter, and how
@@ -157,7 +176,9 @@ pages:
       retrievedAt: '2026-08-09'
     verification: V3
     lastCheckedAt: '2026-08-09'
-  - name: Office of the Municipal Budget
+    lastReview: null
+  - dataClass: 'offices'
+    name: Office of the Municipal Budget
     slug: office-of-the-municipal-budget
     description: >-
       What this office does for residents, the 1 service it lists in the Citizen's Charter, and how
@@ -171,7 +192,9 @@ pages:
       retrievedAt: '2026-08-09'
     verification: V3
     lastCheckedAt: '2026-08-09'
-  - name: Office of the Municipal Civil Registrar
+    lastReview: null
+  - dataClass: 'offices'
+    name: Office of the Municipal Civil Registrar
     slug: office-of-the-municipal-civil-registrar
     description: >-
       What this office does for residents, the 14 services it lists in the Citizen's Charter, and
@@ -185,7 +208,9 @@ pages:
       retrievedAt: '2026-08-09'
     verification: V3
     lastCheckedAt: '2026-08-09'
-  - name: Office of the Municipal Disaster Risk Reduction Management
+    lastReview: null
+  - dataClass: 'offices'
+    name: Office of the Municipal Disaster Risk Reduction Management
     slug: office-of-the-municipal-disaster-risk-reduction-management
     description: >-
       What this office does for residents, the 5 services it lists in the Citizen's Charter, and how
@@ -202,7 +227,9 @@ pages:
       retrievedAt: '2026-08-09'
     verification: V3
     lastCheckedAt: '2026-08-09'
-  - name: Office of the Municipal Engineering
+    lastReview: null
+  - dataClass: 'offices'
+    name: Office of the Municipal Engineering
     slug: office-of-the-municipal-engineering
     description: >-
       What this office does for residents, the 2 services it lists in the Citizen's Charter, and how
@@ -217,7 +244,9 @@ pages:
       retrievedAt: '2026-08-09'
     verification: V3
     lastCheckedAt: '2026-08-09'
-  - name: Office of the Municipal Nutrition
+    lastReview: null
+  - dataClass: 'offices'
+    name: Office of the Municipal Nutrition
     slug: office-of-the-municipal-nutrition
     description: >-
       What this office does for residents, the 2 services it lists in the Citizen's Charter, and how
@@ -231,7 +260,9 @@ pages:
       retrievedAt: '2026-08-09'
     verification: V3
     lastCheckedAt: '2026-08-09'
-  - name: Office of the Municipal Planning and Development
+    lastReview: null
+  - dataClass: 'offices'
+    name: Office of the Municipal Planning and Development
     slug: office-of-the-municipal-planning-and-development
     description: >-
       What this office does for residents, the 2 services it lists in the Citizen's Charter, and how
@@ -246,7 +277,9 @@ pages:
       retrievedAt: '2026-08-09'
     verification: V3
     lastCheckedAt: '2026-08-09'
-  - name: Office of the Municipal Treasurer
+    lastReview: null
+  - dataClass: 'offices'
+    name: Office of the Municipal Treasurer
     slug: office-of-the-municipal-treasurer
     description: >-
       How to reach this office, and why the Citizen's Charter lists no resident-facing service for
@@ -260,7 +293,9 @@ pages:
       retrievedAt: '2026-08-09'
     verification: V3
     lastCheckedAt: '2026-08-09'
-  - name: Office of the Sangguniang Bayan
+    lastReview: null
+  - dataClass: 'offices'
+    name: Office of the Sangguniang Bayan
     slug: office-of-the-sangguniang-bayan
     description: >-
       What this office does for residents, the 1 service it lists in the Citizen's Charter, and how
@@ -274,7 +309,9 @@ pages:
       retrievedAt: '2026-08-09'
     verification: V3
     lastCheckedAt: '2026-08-09'
-  - name: Office of the Vice Mayor
+    lastReview: null
+  - dataClass: 'offices'
+    name: Office of the Vice Mayor
     slug: office-of-the-vice-mayor
     description: >-
       What this office does for residents, the 1 service it lists in the Citizen's Charter, and how
@@ -288,7 +325,9 @@ pages:
       retrievedAt: '2026-08-09'
     verification: V3
     lastCheckedAt: '2026-08-09'
-  - name: Public Employment Office Division
+    lastReview: null
+  - dataClass: 'offices'
+    name: Public Employment Office Division
     slug: public-employment-office-division
     description: >-
       What this office does for residents, the 3 services it lists in the Citizen's Charter, and how
@@ -305,7 +344,9 @@ pages:
       retrievedAt: '2026-08-09'
     verification: V3
     lastCheckedAt: '2026-08-09'
-  - name: Tourism Office
+    lastReview: null
+  - dataClass: 'offices'
+    name: Tourism Office
     slug: tourism-office
     description: >-
       What this office does for residents, the 3 services it lists in the Citizen's Charter, and how
@@ -319,3 +360,4 @@ pages:
       retrievedAt: '2026-08-09'
     verification: V3
     lastCheckedAt: '2026-08-09'
+    lastReview: null

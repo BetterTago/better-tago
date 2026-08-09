@@ -1,4 +1,5 @@
 import { z } from 'zod';
+import { isDataClass } from './freshness';
 
 /**
  * The content contract, kept separate from the loader.
@@ -70,7 +71,24 @@ export const verificationRecordSchema = z
     path: ['verifiedBy'],
   });
 
+/**
+ * ★ TAGO-401 criterion 5 — a page with no data class FAILS the build.
+ *
+ * Not a warning, not a default. A page with no cadence never goes stale, so it
+ * would sit there looking tended for as long as nobody noticed — which is the
+ * precise failure CONT-401 exists to close, and it is invisible until a fact
+ * on it is three years old.
+ *
+ * The enum is derived from `config/freshness.config.json` rather than written
+ * here, so a class cannot exist in a manifest without a cadence behind it.
+ */
+const dataClassSchema = z.string().refine(isDataClass, {
+  message:
+    'unknown data class. Declare it in config/freshness.config.json first — a class with no cadence is a page that never goes stale',
+});
+
 export const pageEntrySchema = z.object({
+  dataClass: dataClassSchema,
   name: z.string().min(1),
   slug: z
     .string()
@@ -82,6 +100,39 @@ export const pageEntrySchema = z.object({
   source: sourceSchema,
   verification: verificationSchema,
   lastCheckedAt: z.iso.date(),
+  /**
+   * Who last re-checked this against its source, BY ROLE, and when.
+   *
+   * CONT-401 criterion 5: a page is never made to look fresh by advancing its
+   * check date without somebody actually re-checking it. Prose cannot prevent
+   * that; this plus the committed `inventory/check-dates.yaml` baseline can —
+   * a `lastCheckedAt` that moves past the baseline with no `lastReview` added
+   * in the same change fails the build.
+   *
+   * A ROLE, never a handle and never a name. The verification record uses
+   * handles because it is about two specific people not being the same person;
+   * a review is about a job having been done.
+   *
+   * `null` everywhere today: nothing has been re-checked since it was written,
+   * and claiming otherwise is the falsification this field exists to make
+   * visible.
+   */
+  lastReview: z
+    .object({
+      role: z.enum([
+        'project-lead',
+        'transcriber',
+        'verifier',
+        'office-liaison',
+        'field-checker',
+        'translator',
+        'content-reviewer',
+        'platform-maintainer',
+        'maintenance-owner',
+      ]),
+      at: z.iso.date(),
+    })
+    .nullable(),
 });
 
 export const manifestSchema = z.object({ pages: z.array(pageEntrySchema) });
@@ -211,8 +262,143 @@ export const charterManifestSchema = z.object({
   pages: z.array(charterRecordSchema),
 });
 
+/**
+ * Where a document was looked for, and what came back.
+ *
+ * Deliberately the same shape as `emergency.sourcesChecked` in the config: a
+ * gap with no record of the looking is indistinguishable from nobody having
+ * looked, and that shape has already proved it can carry the difference.
+ *
+ * `result` is what was OBSERVED at that address on that date — never why. The
+ * register records that a document was not at the place checked; it does not
+ * say anything about whether it exists, or about anyone's intent.
+ */
+export const lookedForSchema = z.object({
+  label: z.string().min(1),
+  url: z.url().nullable(),
+  result: z.enum(['not-published-here', 'not-retrievable', 'published-here']),
+  checkedAt: z.iso.date(),
+});
+
+/**
+ * How a mandated disclosure document actually stands.
+ *
+ * `not-located` is a FIRST-CLASS state, not the absence of one. ★ TAGO-301's
+ * whole reason for existing is that a labelled gap is honest and an omission
+ * looks like concealment, so the register's central field is a status rather
+ * than a URL and every mandated document has a row whether or not it was found.
+ */
+export const disclosureStatusSchema = z.enum([
+  /** Published by the municipality, and this project links the original. */
+  'linked',
+  /** Published somewhere else citable — a national portal, another office. */
+  'published',
+  /** Asked for, and the asking is logged. Never a claim about the answer. */
+  'requested',
+  /** Not at the addresses checked, on the dates recorded. Nothing more. */
+  'not-located',
+]);
+
+/**
+ * A name this project will not record, in any form.
+ *
+ * Statements of assets, liabilities and net worth are on a permanent,
+ * documented hold — not deferred, not "pending a request". They are personal
+ * financial disclosures about identifiable people, and republishing them is
+ * outside what a volunteer restatement project has any business doing.
+ *
+ * It is a schema rule rather than a review rule because the failure would be
+ * one contributor acting in good faith on a list of "mandated documents": the
+ * register EXISTS to enumerate that list, so the wrong entry is the natural
+ * mistake here rather than an unlikely one. The positive half — how a resident
+ * requests one — is an ordinary page in content/transparency/requests/.
+ */
+const HELD_DOCUMENT = /\bSALN\b|statements?\s+of\s+assets/i;
+
+/** Personal honorifics. `requestedOf` records an OFFICE, never a person. */
+const PERSONAL_TITLE =
+  /^\s*(hon\.?|mr\.?|ms\.?|mrs\.?|atty\.?|engr\.?|dr\.?)\s/i;
+
+/**
+ * A transparency register entry: the shape ★ TAGO-301 freezes, and the
+ * contract CONT-301 fills in and the transparency route renders.
+ *
+ * It is `pageEntrySchema` plus the four things a disclosure register needs
+ * that a generic page does not — which document it is, which fiscal year,
+ * where it actually stands, and where it was looked for.
+ */
+export const transparencyRecordSchema = pageEntrySchema
+  .extend({
+    /** The document's name as the enumeration names it, not as we'd phrase it. */
+    documentName: z.string().min(1),
+    /** Null where the document is not annual — a land-use plan, say. */
+    fiscalYear: z
+      .string()
+      .regex(/^\d{4}$/, 'a four-digit fiscal year, or null')
+      .nullable(),
+    status: disclosureStatusSchema,
+    lookedFor: z.array(lookedForSchema),
+    /** The OFFICE a request went to. Never a person — see PERSONAL_TITLE. */
+    requestedOf: z.string().min(1).nullable(),
+    requestedAt: z.iso.date().nullable(),
+  })
+  .refine(record => record.status !== 'linked' || record.source.url !== null, {
+    message:
+      'a linked document must carry the address it is linked at — otherwise the status claims a link nobody can follow',
+    path: ['source', 'url'],
+  })
+  .refine(
+    record => record.status !== 'not-located' || record.lookedFor.length > 0,
+    {
+      message:
+        'not-located must record where it was looked for and when. Without that it is indistinguishable from nobody having looked',
+      path: ['lookedFor'],
+    }
+  )
+  .refine(
+    record =>
+      record.status !== 'requested' ||
+      (record.requestedOf !== null && record.requestedAt !== null),
+    {
+      message:
+        'a requested document records when it was asked for and of which office',
+      path: ['requestedOf'],
+    }
+  )
+  .refine(
+    record =>
+      record.status === 'requested' ||
+      (record.requestedOf === null && record.requestedAt === null),
+    {
+      message:
+        'only a requested document carries request details — a half-filled request reads as an ask that never happened',
+      path: ['requestedAt'],
+    }
+  )
+  .refine(record => !PERSONAL_TITLE.test(record.requestedOf ?? ''), {
+    message: 'requestedOf names an office, never a person',
+    path: ['requestedOf'],
+  })
+  .refine(
+    record =>
+      !HELD_DOCUMENT.test(record.documentName) &&
+      !HELD_DOCUMENT.test(record.name) &&
+      !HELD_DOCUMENT.test(record.slug),
+    {
+      message:
+        'statements of assets, liabilities and net worth are on a permanent documented hold and are never recorded here. The register explains how a resident requests one instead',
+      path: ['documentName'],
+    }
+  );
+
+export const transparencyManifestSchema = z.object({
+  pages: z.array(transparencyRecordSchema),
+});
+
 export type PageEntry = z.infer<typeof pageEntrySchema>;
 export type CharterRecord = z.infer<typeof charterRecordSchema>;
+export type TransparencyRecord = z.infer<typeof transparencyRecordSchema>;
+export type DisclosureStatus = z.infer<typeof disclosureStatusSchema>;
 export type CharterDocumentRef = z.infer<typeof charterDocumentSchema>;
 export type SourceRef = z.infer<typeof sourceSchema>;
 export type Verification = z.infer<typeof verificationSchema>;

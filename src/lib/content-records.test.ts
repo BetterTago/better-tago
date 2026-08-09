@@ -4,9 +4,11 @@ import yaml from 'js-yaml';
 import { describe, expect, it } from 'vitest';
 import {
   charterManifestSchema,
+  transparencyManifestSchema,
   manifestSchema,
   type CharterRecord,
 } from './content-schema';
+import { DATA_CLASSES, freshnessOf } from './freshness';
 import {
   REPO_ROOT as ROOT,
   filesMatching,
@@ -321,11 +323,15 @@ describe('the office directory is complete', () => {
   });
 
   it('states office hours on every record, never leaving them blank', () => {
+    // English pages only: the Filipino counterparts carry the translated
+    // heading, and counting both would silently double every office total.
     // Office hours are the highest-value missing field in the project, and
     // this is the settled fallback for them. A blank cell reads as "no hours";
     // a dated "not stated" reads as what it is.
-    const offices = PAGES.filter(page =>
-      page.path.startsWith('content/government/offices/')
+    const offices = PAGES.filter(
+      page =>
+        page.path.startsWith('content/government/offices/') &&
+        !page.path.endsWith('.fil.md')
     );
     expect(offices.length).toBe(21);
 
@@ -637,8 +643,10 @@ describe('the eight-field guide has not crept back in', () => {
     // CONT-103 requires `## Office hours` on all 21 office records, stated as
     // a dated "not stated". Scoping this scan to charter pages is what keeps
     // the two rules from cancelling each other out.
-    const offices = PAGES.filter(page =>
-      page.path.startsWith('content/government/offices/')
+    const offices = PAGES.filter(
+      page =>
+        page.path.startsWith('content/government/offices/') &&
+        !page.path.endsWith('.fil.md')
     );
     expect(offices.length).toBe(21);
     expect(hits(offices, /^##[ \t]+Office hours[ \t]*$/m).length).toBe(21);
@@ -790,11 +798,20 @@ describe('the Filipino set is the one that was chosen, and no other', () => {
       page.path.startsWith('content/government/legislative/')
   );
 
-  it('has twenty of them, and they are the recorded twenty', () => {
-    const shipped = charterFilipino
-      .map(page => path.basename(page.path).replace(/\.fil\.md$/, ''))
-      .sort();
-    expect(shipped).toEqual([...PRIORITY].sort());
+  it('still covers every one of the recorded twenty', () => {
+    /*
+     * ⚠️ This used to assert the charter Filipino set was EXACTLY the twenty.
+     * CONT-402 superseded that by translating everything, so an equality check
+     * would now fail on success. What still matters is that the twenty chosen
+     * by transaction class were not dropped in the sweep — so it is now a
+     * subset check, and full coverage is asserted separately below.
+     */
+    const shipped = new Set(
+      charterFilipino.map(page =>
+        path.basename(page.path).replace(/\.fil\.md$/, '')
+      )
+    );
+    expect(PRIORITY.filter(slug => !shipped.has(slug))).toEqual([]);
   });
 
   it('names a service that exists, for every one', () => {
@@ -934,5 +951,502 @@ describe('only a resident-facing ambiguity reaches the page', () => {
       return body ? !body.text.includes('read off the document by hand') : true;
     }).map(({ page }) => page.slug);
     expect(silent).toEqual([]);
+  });
+});
+
+/**
+ * ★ TAGO-301 · CONT-301 — the transparency register, reconciled against the
+ * mandated set.
+ *
+ * This is Wave 5's checkpoint, and like the charter reconciliation it is
+ * DERIVED rather than written down: the set comes from
+ * inventory/disclosure-set.yaml, so the register and the list cannot drift.
+ *
+ * ⚠️ What a machine can check here is that every listed document has exactly
+ * one entry and that each entry's status is internally honest. What it CANNOT
+ * check is whether the list is complete — the governing issuance was sought on
+ * 2026-08-09 and could not be retrieved, and that limit is recorded in the
+ * file itself rather than papered over by a green test.
+ */
+type DisclosureDocument = { slug: string; name: string };
+
+const DISCLOSURE_SET = yaml.load(
+  readFileSync(path.join(ROOT, 'inventory', 'disclosure-set.yaml'), 'utf8')
+) as {
+  issuance: { obtained: boolean; channels: { url: string }[] };
+  documents: DisclosureDocument[];
+  excluded: { what: string }[];
+};
+
+const REGISTER = (() => {
+  const manifest = MANIFESTS.find(
+    file => file.path === 'content/transparency/register/index.yaml'
+  );
+  if (!manifest)
+    throw new Error('the transparency register manifest is missing');
+  const parsed = transparencyManifestSchema.safeParse(yaml.load(manifest.text));
+  if (!parsed.success)
+    throw new Error(`the register is not a register: ${parsed.error}`);
+  return parsed.data.pages;
+})();
+
+/** Both directions, as pure functions, so each can be fired at bad input. */
+const documentsWithNoEntry = (
+  set: DisclosureDocument[],
+  entries: { slug: string }[]
+) => {
+  const present = new Set(entries.map(entry => entry.slug));
+  return set.filter(doc => !present.has(doc.slug)).map(doc => doc.slug);
+};
+
+const entriesWithNoDocument = (
+  set: DisclosureDocument[],
+  entries: { slug: string }[]
+) => {
+  const listed = new Set(set.map(doc => doc.slug));
+  return entries.filter(entry => !listed.has(entry.slug)).map(e => e.slug);
+};
+
+describe('the transparency register accounts for the mandated set', () => {
+  it('is reading both sides', () => {
+    // Two empty sets agree perfectly, which is how this check would rot.
+    expect(DISCLOSURE_SET.documents.length).toBeGreaterThanOrEqual(10);
+    expect(REGISTER.length).toBeGreaterThanOrEqual(10);
+  });
+
+  it('has an entry for every document in the set', () => {
+    expect(documentsWithNoEntry(DISCLOSURE_SET.documents, REGISTER)).toEqual(
+      []
+    );
+  });
+
+  it('has no entry for anything outside it', () => {
+    expect(entriesWithNoDocument(DISCLOSURE_SET.documents, REGISTER)).toEqual(
+      []
+    );
+  });
+
+  it('claims each document exactly once', () => {
+    const slugs = REGISTER.map(entry => entry.slug);
+    expect(slugs.length).toBe(new Set(slugs).size);
+  });
+
+  it('records where it looked, and when, for everything not located', () => {
+    // The whole failure mode of a gap register: an absence indistinguishable
+    // from nobody having looked. The schema refuses an empty list; this also
+    // pins that every check carries a real date.
+    const bad = REGISTER.filter(
+      entry => entry.status === 'not-located'
+    ).flatMap(entry =>
+      entry.lookedFor.length === 0 ||
+      entry.lookedFor.some(look => !/^\d{4}-\d{2}-\d{2}$/.test(look.checkedAt))
+        ? [entry.slug]
+        : []
+    );
+    expect(bad).toEqual([]);
+    expect(
+      REGISTER.filter(entry => entry.status === 'not-located').length
+    ).toBeGreaterThan(0);
+  });
+
+  it('marks nothing as requested while no request can be sent', () => {
+    /*
+     * 🔴 PROG-201 is retired and the correspondence lane with it, so no item
+     * can honestly be `requested`. The status stays in the schema — the day
+     * the lane re-opens, the register needs no re-shaping — but an entry
+     * using it today would describe an ask that never happened.
+     *
+     * When that changes, this test is deleted deliberately, in a diff
+     * somebody reviews. That is the same shape as the Phase 0 route freeze.
+     */
+    expect(REGISTER.filter(entry => entry.status === 'requested')).toEqual([]);
+  });
+
+  it('links the one published document rather than rehosting it', () => {
+    const linked = REGISTER.filter(entry => entry.status === 'linked');
+    expect(linked).toHaveLength(1);
+    expect(linked[0]?.source.url).toMatch(/^https:\/\/tago\.gov\.ph\//);
+    expect(linked[0]?.fiscalYear).toBe('2022');
+  });
+
+  it('holds no statement of assets, liabilities and net worth', () => {
+    // Permanently excluded. The schema refuses one; this proves none slipped
+    // in under a different field, and that the page explaining the request
+    // route does exist — the exclusion is a position, not a hole.
+    const held = /\bSALN\b|statements?\s+of\s+assets/i;
+    expect(
+      REGISTER.filter(
+        entry => held.test(entry.name) || held.test(entry.documentName)
+      )
+    ).toEqual([]);
+    expect(
+      existsSync(
+        path.join(
+          ROOT,
+          'content/transparency/requests/how-to-request-a-saln.md'
+        )
+      )
+    ).toBe(true);
+  });
+
+  it('cites, on every absence, a place it actually checked', () => {
+    /*
+     * `verification` on a `not-located` entry describes the CHECK, not a
+     * document — no official record says a document is unpublished. `V3`
+     * therefore means the absence was observed first-hand at the primary
+     * address, and that claim is only true if the address cited is one this
+     * project actually opened.
+     *
+     * Without this, an entry could cite a page nobody looked at and still
+     * carry the strongest level in the standard. See docs/governance.md
+     * § What a level means on a recorded absence.
+     */
+    const mismatched = REGISTER.filter(entry => entry.status === 'not-located')
+      .filter(
+        entry => !entry.lookedFor.some(look => look.url === entry.source.url)
+      )
+      .map(entry => entry.slug);
+    expect(mismatched).toEqual([]);
+  });
+
+  it('claims no level stronger than the looking supports', () => {
+    // V3 is first-hand at the primary location. An entry claiming it while
+    // every address it checked was unreachable would be claiming an
+    // observation nobody could make.
+    const overclaimed = REGISTER.filter(
+      entry =>
+        entry.verification === 'V3' &&
+        entry.lookedFor.length > 0 &&
+        entry.lookedFor.every(look => look.result === 'not-retrievable')
+    ).map(entry => entry.slug);
+    expect(overclaimed).toEqual([]);
+  });
+
+  it('records that the governing issuance was not obtained', () => {
+    // The register's own limit, asserted rather than left to a comment. If
+    // somebody later retrieves the issuance they flip this, and the test tells
+    // them the completeness claim may change with it.
+    expect(DISCLOSURE_SET.issuance.obtained).toBe(false);
+    expect(DISCLOSURE_SET.issuance.channels.length).toBeGreaterThan(0);
+  });
+});
+
+describe('the register reconciliation actually fires', () => {
+  const set: DisclosureDocument[] = [
+    { slug: 'alpha', name: 'Alpha' },
+    { slug: 'beta', name: 'Beta' },
+  ];
+
+  it('agrees when the pair agrees', () => {
+    const entries = [{ slug: 'alpha' }, { slug: 'beta' }];
+    expect(documentsWithNoEntry(set, entries)).toEqual([]);
+    expect(entriesWithNoDocument(set, entries)).toEqual([]);
+  });
+
+  it('catches a mandated document with no entry', () => {
+    expect(documentsWithNoEntry(set, [{ slug: 'alpha' }])).toEqual(['beta']);
+  });
+
+  it('catches an entry for something nobody mandated', () => {
+    expect(
+      entriesWithNoDocument(set, [
+        { slug: 'alpha' },
+        { slug: 'beta' },
+        { slug: 'invented' },
+      ])
+    ).toEqual(['invented']);
+  });
+});
+
+describe('every municipal URL a page cites was actually retrieved', () => {
+  /*
+   * The provenance rule, made checkable at last. A page may cite the
+   * municipality only at an address this project has retrieved, dated and
+   * checksummed — otherwise "retrieved 2026-08-09" is a claim about a fetch
+   * nobody can show happened.
+   *
+   * Scoped to tago.gov.ph on purpose: a national agency's page is cited with
+   * its URL and date but is not archived here, and pretending otherwise would
+   * be the same overclaim in the other direction.
+   */
+  const inventoried = new Set<string>();
+  for (const file of [
+    'site-pages.yaml',
+    'phase3-pages.yaml',
+    'charter-documents.yaml',
+  ]) {
+    const text = readFileSync(path.join(ROOT, 'inventory', file), 'utf8');
+    for (const [url] of text.matchAll(/https:\/\/tago\.gov\.ph\/[^\s"']+/g)) {
+      inventoried.add(url.replace(/[),.]+$/, ''));
+    }
+  }
+
+  const cited = new Set<string>();
+  for (const manifest of MANIFESTS) {
+    for (const [url] of manifest.text.matchAll(
+      /https:\/\/tago\.gov\.ph\/[^\s"']+/g
+    )) {
+      cited.add(url.replace(/[),.]+$/, ''));
+    }
+  }
+
+  it('is reading both sides', () => {
+    expect(inventoried.size).toBeGreaterThan(30);
+    expect(cited.size).toBeGreaterThan(10);
+  });
+
+  it('cites no municipal address that appears in no inventory', () => {
+    expect([...cited].filter(url => !inventoried.has(url))).toEqual([]);
+  });
+});
+
+/**
+ * CONT-402 · CONT-401 — the whole corpus, in both languages, with a cadence.
+ *
+ * These are the first checks in this project that sweep EVERY page rather than
+ * a section. That is the point of Wave 6: the failures they catch are ones no
+ * per-page review would ever see, because each page is individually fine.
+ */
+describe('Filipino coverage is complete', () => {
+  const english = PAGES.filter(page => !page.path.endsWith('.fil.md'));
+  const filipino = new Set(
+    PAGES.filter(page => page.path.endsWith('.fil.md')).map(page => page.path)
+  );
+
+  it('is reading the whole tree', () => {
+    expect(english.length).toBeGreaterThan(100);
+  });
+
+  it('has a Filipino body for every English page', () => {
+    // CONT-402 criterion 1, measured rather than claimed.
+    const untranslated = english
+      .filter(page => !filipino.has(page.path.replace(/\.md$/, '.fil.md')))
+      .map(page => page.path);
+    expect(untranslated).toEqual([]);
+  });
+
+  it('reaches 100%, and says so as a number', () => {
+    expect(filipino.size).toBe(english.length);
+  });
+
+  it('leaves no Filipino page without an English counterpart', () => {
+    const orphans = [...filipino]
+      .filter(
+        p => !english.some(e => e.path === p.replace(/\.fil\.md$/, '.md'))
+      )
+      .sort();
+    expect(orphans).toEqual([]);
+  });
+
+  it('labels every Filipino page as an unreviewed draft', () => {
+    /*
+     * 🔴 CONT-402 criterion 2 CANNOT close — the Translator role is vacant, so
+     * not one of these has been read by a fluent speaker. A page that does not
+     * say so reads as though it had been, which is the difference between a
+     * draft and a claim.
+     *
+     * When the role is filled and a page is reviewed, its notice comes off in
+     * a diff somebody reviews — deliberately, one page at a time.
+     */
+    const unlabelled = [...filipino]
+      .filter(
+        p => !PAGES.find(page => page.path === p)?.text.includes('**Paunawa:**')
+      )
+      .sort();
+    expect(unlabelled).toEqual([]);
+  });
+
+  it('🔴 carries no paragraph that was never actually translated', () => {
+    /*
+     * File existence is not translation, and this test exists because the
+     * first Filipino sweep produced pages whose unique prose was still
+     * English under translated headings — 26 of them. A whole-page similarity
+     * check missed it, because a page can be 70% Filipino boilerplate and
+     * still open with an English paragraph nobody translated.
+     *
+     * So this looks at LINES. A long sentence dense in English function words
+     * and empty of Filipino ones has not been translated, whatever the rest
+     * of the page looks like.
+     *
+     * Terms of art, office names, document titles and URLs stay English by
+     * rule — hence the length floor and the requirement for FIVE English
+     * markers, which a phrase like "Business Licensing and Permitting
+     * Division" cannot reach on its own.
+     */
+    const ENGLISH =
+      /\b(the|is|are|was|were|of|and|that|which|with|from|this|these|does|not|for|it)\b/gi;
+    const FILIPINO =
+      /\b(ang|ng|sa|ay|mga|hindi|para|ito|kung|nang|nito|iyon|bawat|walang)\b/gi;
+
+    const untranslated: string[] = [];
+    for (const page of PAGES.filter(p => p.path.endsWith('.fil.md'))) {
+      for (const raw of page.text.split('\n')) {
+        const line = raw.trim();
+        if (line.length < 60) continue;
+        if (/^[-#>|]|```/.test(line) || line.includes('http')) continue;
+        const english = line.match(ENGLISH)?.length ?? 0;
+        const filipino = line.match(FILIPINO)?.length ?? 0;
+        if (english >= 5 && filipino <= 1) {
+          untranslated.push(`${page.path}: ${line.slice(0, 60)}…`);
+        }
+      }
+    }
+    expect(untranslated).toEqual([]);
+  });
+
+  it('fires on a Filipino page left in English', () => {
+    const ENGLISH =
+      /\b(the|is|are|was|were|of|and|that|which|with|from|this|these|does|not|for|it)\b/gi;
+    const FILIPINO =
+      /\b(ang|ng|sa|ay|mga|hindi|para|ito|kung|nang|nito|iyon|bawat|walang)\b/gi;
+    const doctored =
+      'The annual budget is the document that says how much the municipality plans to spend.';
+    expect((doctored.match(ENGLISH) ?? []).length).toBeGreaterThanOrEqual(5);
+    expect((doctored.match(FILIPINO) ?? []).length).toBeLessThanOrEqual(1);
+
+    // And the other direction: a real translated line must NOT trip it.
+    const real =
+      'Ang taunang badyet ang dokumentong nagsasabi kung magkano ang balak gastusin ng munisipyo.';
+    expect((real.match(FILIPINO) ?? []).length).toBeGreaterThan(1);
+  });
+
+  it('adds no Surigaonon locale', () => {
+    // CONT-402 criterion 5. Starting it without a fluent speaker would ship an
+    // unreviewed locale, which is the thing the Filipino side already is and
+    // is not a reason to do it twice.
+    const other = PAGES.filter(page =>
+      /\.(sgd|sur|surigaonon)\.md$/.test(page.path)
+    );
+    expect(other).toEqual([]);
+    const messages = readFileSync(
+      path.join(ROOT, 'messages', 'fil.json'),
+      'utf8'
+    );
+    expect(messages.length).toBeGreaterThan(100);
+    expect(existsSync(path.join(ROOT, 'messages', 'sgd.json'))).toBe(false);
+  });
+});
+
+describe('every page declares a cadence, and no check date is invented', () => {
+  const entries = MANIFESTS.flatMap(manifest => {
+    const parsed = manifestSchema.parse(yaml.load(manifest.text));
+    return parsed.pages.map(page => ({ page, manifest: manifest.path }));
+  });
+
+  const BASELINE = yaml.load(
+    readFileSync(path.join(ROOT, 'inventory', 'check-dates.yaml'), 'utf8')
+  ) as { takenAt: string; pages: Record<string, string> };
+
+  it('is reading the whole tree', () => {
+    expect(entries.length).toBeGreaterThan(100);
+    expect(Object.keys(BASELINE.pages).length).toBe(entries.length);
+  });
+
+  it('declares a data class on every entry', () => {
+    // Guaranteed by the schema; asserted anyway, because "the schema covers
+    // it" is how a loosened schema goes unnoticed.
+    expect(
+      entries.filter(({ page }) => !DATA_CLASSES.includes(page.dataClass))
+    ).toEqual([]);
+  });
+
+  it('carries no check date in the future', () => {
+    const today = BASELINE.takenAt;
+    const ahead = entries
+      .filter(({ page }) => page.lastCheckedAt > today)
+      .map(({ page }) => page.slug);
+    expect(ahead).toEqual([]);
+  });
+
+  it('nothing is stale yet, and that is a fact about age rather than about care', () => {
+    const today = BASELINE.takenAt;
+    const stale = entries
+      .filter(
+        ({ page }) =>
+          freshnessOf(page.dataClass, page.lastCheckedAt, today) === 'stale'
+      )
+      .map(({ page }) => page.slug);
+    expect(stale).toEqual([]);
+  });
+
+  it('🔴 lets no check date advance past the baseline without a recorded review', () => {
+    /*
+     * CONT-401 criterion 5, and the only mechanism in this repository that can
+     * actually enforce it. A check date moved without a check is a falsified
+     * record: it converts "nobody has looked" into "somebody looked and it is
+     * still true", which is a different and false claim.
+     *
+     * Prose cannot stop that. This can: the baseline is committed, it is
+     * regenerated only by a deliberate `npm run freshness -- --baseline`, and
+     * a date that moves past it must arrive with a `lastReview` naming the
+     * role that did the checking.
+     */
+    const falsified: string[] = [];
+    for (const { page, manifest } of entries) {
+      const key = `${path.dirname(manifest).replace(/^content\//, '')}/${page.slug}`;
+      const recorded = BASELINE.pages[key];
+      if (recorded === undefined) {
+        falsified.push(
+          `${key}: not in the baseline — regenerate it deliberately`
+        );
+        continue;
+      }
+      if (page.lastCheckedAt > recorded && page.lastReview === null) {
+        falsified.push(
+          `${key}: ${recorded} → ${page.lastCheckedAt} with no lastReview`
+        );
+      }
+    }
+    expect(falsified).toEqual([]);
+  });
+
+  it('🔴 keeps the generated report agreeing with the tested computation', () => {
+    /*
+     * The staleness thresholds exist TWICE. `src/lib/freshness.ts` is the
+     * contract and is unit-tested; `scripts/freshness.mjs` re-implements them
+     * inline, because a `.mjs` script cannot import the TypeScript module —
+     * and the script is the copy that writes the report a maintenance owner
+     * actually reads.
+     *
+     * Two implementations of one rule drift, and this one would drift
+     * silently: the report would go on looking authoritative while disagreeing
+     * with the contract. So the two are pinned to each other here. If somebody
+     * changes a cadence in one place and not the other, this goes red.
+     *
+     * The real fix is one implementation. Until a `.mjs` core shared by both
+     * is worth the refactor, this is the check that makes the duplication
+     * safe rather than merely known.
+     */
+    const report = readFileSync(
+      path.join(ROOT, 'inventory', 'freshness-report.md'),
+      'utf8'
+    );
+
+    const claimed = report.match(
+      /against (\d+) published pages in (\d+) manifests/
+    );
+    expect(claimed, 'the report does not state its own totals').not.toBeNull();
+    expect(Number(claimed![1])).toBe(entries.length);
+    expect(Number(claimed![2])).toBe(MANIFESTS.length);
+
+    const today = BASELINE.takenAt;
+    const computed = entries.map(({ page }) =>
+      freshnessOf(page.dataClass, page.lastCheckedAt, today)
+    );
+    const overdue = computed.filter(s => s === 'stale' || s === 'due').length;
+    const future = computed.filter(s => s === 'undated').length;
+
+    // The report names pages needing review individually; when there are none
+    // it says so in prose. Either way the two must agree on the count.
+    const listed = [...report.matchAll(/^\| `[a-z0-9-]+` \| `/gm)].length;
+    expect(listed).toBe(overdue);
+    expect(report.includes('Check dates in the future')).toBe(future > 0);
+  });
+
+  it('records no review at all yet, which is the honest state', () => {
+    // Nothing has been re-checked since it was written. A lastReview appearing
+    // is the tripwire: it means somebody did the work, and this assertion is
+    // then deleted deliberately rather than quietly loosened.
+    expect(entries.filter(({ page }) => page.lastReview !== null)).toEqual([]);
   });
 });

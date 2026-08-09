@@ -42,6 +42,24 @@ them. A standard that describes a project we are not is a standard nobody applie
 - **`V0` ships only for safety-critical information**, only while it is **visibly labelled** as unconfirmed,
   and only on a 90-day re-check.
 
+### What a level means on a recorded ABSENCE
+
+The four levels above describe how well a fact is stood up. **A transparency register entry marked
+`not-located` is not a fact about the municipality — it is an observation this project made**: that a document
+was not at a named address on a named date. No official record says a document is unpublished, so the levels
+need reading rather than applying.
+
+**The level describes the check, not the document.** `V3` on a `not-located` entry means the absence was
+observed **first-hand at the primary location**, dated, and repeatable by anyone who opens the same address —
+which is the strongest footing an absence can have. It does **not** mean an official record states the
+document is missing, and nothing in this project should be read as claiming that.
+
+Two things follow, and both are enforced rather than trusted:
+
+- **An entry cites a place it actually checked.** A `not-located` record's `source` must be one of the
+  addresses in its own `lookedFor` list. Citing a page nobody looked at would make the level meaningless.
+- **`lookedFor` carries the dates.** The level says how the looking was done; the list says where and when.
+
 ### The 90-day re-check, and what happens when it lapses
 
 A `V0` fact carries the date it was last checked. **At 90 days without a re-check it comes off the page.**
@@ -169,18 +187,46 @@ a role has an obvious first task attached to it.
 **Until that list is worked, nothing on it ships as though it had been checked.** Today that costs nothing,
 because no route renders any of it. It stops being free the moment one does.
 
+**The statistics worklist — a browser, and ten minutes per figure.**
+
+Nine municipal figures are still `null` for one reason: **the national statistics authority answers an
+automated request with HTTP 403.** Not a login, not a robots rule — three separate attempts on 2026-08-09,
+against the PSGC record, the site root and the population pages, all refused. A person opening the same address
+in a browser is not refused, and that is the whole of what is missing.
+
+| Figure                                                           | Where it is stated                                                                                                         | What to record                                                           |
+| ---------------------------------------------------------------- | -------------------------------------------------------------------------------------------------------------------------- | ------------------------------------------------------------------------ |
+| Legislative district · PSGC code · income class · barangay count | The authority's PSGC record for this municipality — the address is in `config/lgu.config.json` under `pending['lgu.psgc']` | The value, the page's own release/edition, and the date you read it      |
+| Population · households · census year                            | The authority's census release for this municipality                                                                       | The value **with its census year** — a figure without one is not citable |
+| Land area                                                        | The authority's record, or the issuance it cites                                                                           | The value and the issuance that states it                                |
+| Coordinates                                                      | The authority's record                                                                                                     | Needed before any map, and before per-barangay hazard can be looked up   |
+
+🔴 **The one thing that must not happen.** An aggregator site was reachable on the same sweep and was
+deliberately **not read** — this project did not check whether it carries these figures, because it could not
+use them either way. Looking would take thirty seconds, and using what it found would be the exact failure this
+project exists not to commit: a plausible number, with this portal's name on it and no way for a reader to tell
+where it came from. **If the authority refuses, the figure stays null.**
+
+The income classification is the one figure that closed this way round: the municipality states it on its own
+tourism page, so it is recorded from there with that citation — and the national issuance that _set_ it is
+still outstanding, which the register says beside the value rather than leaving implied.
+
 **Translator — the Filipino side is a draft, not a publication.**
 
 The bilingual policy is explicit that machine output is a draft and never a publication, and that procedural
 copy is rewritten for meaning by a fluent speaker. **No Filipino in this repository has been reviewed by one.**
 What exists is a careful draft, and it is listed here rather than left to be assumed:
 
-| Filipino text                                                 | State            |
-| ------------------------------------------------------------- | ---------------- |
-| `messages/fil.json` — the whole shell string set              | Unreviewed draft |
-| `content/emergency/**/*.fil.md` — all four emergency pages    | Unreviewed draft |
-| `content/home/notice/*.fil.md` — both home pages              | Unreviewed draft |
-| `content/services/**/*.fil.md` — the twenty priority services | Unreviewed draft |
+| Filipino text                                        | State            |
+| ---------------------------------------------------- | ---------------- |
+| `messages/fil.json` — the whole shell string set     | Unreviewed draft |
+| `content/**/*.fil.md` — **all 155 pages**, every one | Unreviewed draft |
+
+**Coverage is 100% and review is 0%, and those are two different numbers.** CONT-402 translated every remaining
+page; not one has been read by a fluent speaker. So that a reader is never misled by a page that looks
+finished, **every Filipino page carries a notice on its own face** saying it is an unreviewed draft, and a test
+fails the build if one does not. The notice comes off a page when somebody reviews that page — deliberately,
+one page at a time, in a diff somebody reads.
 
 Service titles inside the Filipino pages are **deliberately left in English**, because they are the words on the
 form and at the counter. That is a translation decision, not an omission, and it is the same rule that keeps

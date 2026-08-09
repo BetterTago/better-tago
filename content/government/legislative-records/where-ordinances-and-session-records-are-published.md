@@ -12,8 +12,8 @@ On **9 August 2026** this project read, and dated:
 
 - both Legislative office pages on the municipal website — the Sangguniang Bayan's and the Vice Mayor's;
 - both Legislative Citizen's Charter documents;
-- **every URL in the municipality's own sitemap** — 21 posts and 65 pages on the day of the check, including
-  the ones filed as news. Not one is an ordinance, a resolution, a register, a session agenda or minutes, or a
+- **every URL in the municipality's own sitemap** — **75 pages** on the day of the check, including the ones
+  filed as news. Not one is an ordinance, a resolution, a register, a session agenda or minutes, or a
   committee list.
 
 The pages carrying people's names were counted and not recorded here. A name belongs beside a source and a

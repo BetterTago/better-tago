@@ -1,0 +1,72 @@
+{
+  "note": "How fast each class of information goes out of date, and what forces it stale early. Cadence lives HERE and nowhere else — never hardcoded per page or per component (TAGO-401 criterion 1). A page declares its dataClass in its manifest entry; a page with none fails the build rather than silently never going stale.",
+  "classes": {
+    "emergency": {
+      "cadenceDays": 90,
+      "why": "The one class allowed to ship unconfirmed, and the price of that is a quarterly re-check. A wrong number in an emergency is worse than no number at all. Matches the V0 re-check in docs/governance.md.",
+      "immediateTriggers": [
+        "a storm or hazard warning for Tago or Surigao del Sur",
+        "a reported change to any number or evacuation location",
+        "a municipal office publishing hotlines for the first time"
+      ]
+    },
+    "charter-derived": {
+      "cadenceDays": 365,
+      "why": "Citizen's Charter documents are revised occasionally rather than continuously. The checksum watch is what catches a revision between reviews; this is the floor for when nobody has looked at all.",
+      "immediateTriggers": [
+        "a charter document's sha256 changing on a harvest",
+        "the municipality announcing a revised Citizen's Charter",
+        "a reported error in a service, office or document link"
+      ]
+    },
+    "offices": {
+      "cadenceDays": 182,
+      "why": "Office names, divisions and locations move on reorganisation rather than on a schedule. Twice a year is the compromise between churn and staleness.",
+      "immediateTriggers": [
+        "a reorganisation or a renamed office",
+        "a reported change to an office's location or hours"
+      ]
+    },
+    "transparency": {
+      "cadenceDays": 365,
+      "why": "Disclosure documents follow a publication cycle this project cannot see from outside. An annual re-check is the honest floor: every not-located entry is a claim about a date, and a year-old claim needs re-looking rather than re-dating.",
+      "immediateTriggers": [
+        "the Transparency Seal page changing at all",
+        "a document appearing at an address previously recorded as not-located"
+      ]
+    },
+    "profile": {
+      "cadenceDays": 365,
+      "why": "Statistics move on census and issuance cycles. The nine unobtained figures are also re-attempted on this cadence — a gap entry that is never re-tried becomes a permanent excuse.",
+      "immediateTriggers": [
+        "a new census or national statistical release covering this municipality",
+        "the national statistics authority becoming retrievable",
+        "an award or recognition being announced"
+      ]
+    },
+    "history": {
+      "cadenceDays": 1825,
+      "why": "The longest cadence here, and deliberately so: these are events from 1865 to 1919. What can change is the official page this project summarises, not what happened.",
+      "immediateTriggers": [
+        "the municipality's own history page changing",
+        "a reported error in a date or an instrument"
+      ]
+    },
+    "tourism": {
+      "cadenceDays": 365,
+      "why": "Places open and close, and the municipality's own list is the thing being restated. No fare or cost is published here, which is what keeps this class off the emergency end of the scale.",
+      "immediateTriggers": [
+        "the municipality's tourism page changing",
+        "a listed place closing or being reported closed"
+      ]
+    },
+    "project": {
+      "cadenceDays": 365,
+      "why": "Copy this project wrote about itself — what the portal is, what it is not, and how to correct it. It goes stale when the project's own position changes, which a date cannot predict.",
+      "immediateTriggers": [
+        "a change to the independence statement or the correction channel",
+        "the Phase 0 gate closing"
+      ]
+    }
+  }
+}

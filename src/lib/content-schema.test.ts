@@ -4,8 +4,11 @@ import {
   charterRecordSchema,
   manifestSchema,
   pageEntrySchema,
+  transparencyManifestSchema,
+  transparencyRecordSchema,
   verificationRecordSchema,
 } from './content-schema';
+import { DATA_CLASSES } from './freshness';
 
 /**
  * The content contract is the one thing every page depends on, so these tests
@@ -15,6 +18,8 @@ import {
  */
 
 const validEntry = {
+  dataClass: 'charter-derived',
+  lastReview: null,
   name: 'Renew a business permit',
   slug: 'renew-a-business-permit',
   description: 'What to bring, where to go, what it costs, how long it takes.',
@@ -413,6 +418,238 @@ describe('a charter manifest', () => {
   it('rejects a plain page entry — a charter page owes its provenance', () => {
     expect(
       charterManifestSchema.safeParse({ pages: [validEntry] }).success
+    ).toBe(false);
+  });
+});
+
+/**
+ * ★ TAGO-301 — the transparency document register.
+ *
+ * Every rejection below is a way the register could quietly stop being honest:
+ * a link nobody can follow, an absence nobody looked for, a request that never
+ * happened, a person recorded where an office belongs, and the one document
+ * this project has said it will never hold.
+ */
+const validRegisterEntry = {
+  dataClass: 'transparency',
+  lastReview: null,
+  name: 'Annual budget',
+  slug: 'annual-budget',
+  description: 'The budget the municipal council enacts for a fiscal year.',
+  source: {
+    label: { en: 'Municipality of Tago — Transparency Seal' },
+    url: 'https://tago.gov.ph/transparency-seal/',
+    documentType: 'web',
+    retrievedAt: '2026-08-09',
+  },
+  verification: 'V3',
+  lastCheckedAt: '2026-08-09',
+  documentName: 'Annual budget',
+  fiscalYear: null,
+  status: 'not-located',
+  lookedFor: [
+    {
+      label: 'Municipality of Tago — Transparency Seal page',
+      url: 'https://tago.gov.ph/transparency-seal/',
+      result: 'not-published-here',
+      checkedAt: '2026-08-09',
+    },
+  ],
+  requestedOf: null,
+  requestedAt: null,
+};
+
+const register = (patch: Record<string, unknown>) =>
+  transparencyRecordSchema.safeParse({ ...validRegisterEntry, ...patch });
+
+describe('a transparency register entry', () => {
+  it('accepts a not-located entry that records where it was looked for', () => {
+    expect(register({}).success).toBe(true);
+  });
+
+  it('rejects not-located with nothing looked for', () => {
+    // The whole failure mode of a gap register: an absence nobody can tell
+    // apart from nobody having looked.
+    expect(register({ lookedFor: [] }).success).toBe(false);
+  });
+
+  it('rejects linked with no address to link', () => {
+    expect(
+      register({
+        status: 'linked',
+        source: { ...validRegisterEntry.source, url: null },
+      }).success
+    ).toBe(false);
+  });
+
+  it('accepts linked when the document has an address', () => {
+    expect(register({ status: 'linked' }).success).toBe(true);
+  });
+
+  it('rejects requested with no office and no date', () => {
+    expect(register({ status: 'requested' }).success).toBe(false);
+  });
+
+  it('accepts requested when both are recorded', () => {
+    expect(
+      register({
+        status: 'requested',
+        requestedOf: 'Municipal Budget Office',
+        requestedAt: '2026-08-09',
+      }).success
+    ).toBe(true);
+  });
+
+  it('rejects request details on an entry that was never requested', () => {
+    // A half-filled request reads, to anyone rendering this, as an ask that
+    // happened. Nothing was asked, and the register may not imply it was.
+    expect(register({ requestedOf: 'Municipal Budget Office' }).success).toBe(
+      false
+    );
+  });
+
+  it('rejects a person where an office belongs', () => {
+    expect(
+      register({
+        status: 'requested',
+        requestedOf: 'Hon. A Person',
+        requestedAt: '2026-08-09',
+      }).success
+    ).toBe(false);
+  });
+
+  it('rejects an entry with no check date', () => {
+    const noDate: Record<string, unknown> = { ...validRegisterEntry };
+    delete noDate.lastCheckedAt;
+    expect(transparencyRecordSchema.safeParse(noDate).success).toBe(false);
+  });
+
+  it('rejects a fiscal year that is not one', () => {
+    expect(register({ fiscalYear: 'FY2022' }).success).toBe(false);
+    expect(register({ fiscalYear: '2022' }).success).toBe(true);
+  });
+
+  it('rejects a statement of assets, liabilities and net worth', () => {
+    // The permanent hold, made a property of the data. A contributor working
+    // from a list of mandated documents would add this in good faith, which
+    // is exactly why review is not where it should be caught.
+    expect(
+      register({
+        name: 'Statement of assets, liabilities and net worth',
+        slug: 'statement-of-assets-liabilities-and-net-worth',
+        documentName: 'Statement of Assets, Liabilities and Net Worth',
+      }).success
+    ).toBe(false);
+  });
+
+  it('rejects it under its acronym too', () => {
+    expect(
+      register({
+        name: 'SALN filings',
+        slug: 'saln-filings',
+        documentName: 'SALN',
+      }).success
+    ).toBe(false);
+  });
+
+  it('does not fire on an ordinary financial statement', () => {
+    // The rule is phrase-matched, not word-matched. "Financial statements" is
+    // a mandated document this register MUST carry, and an over-broad hold
+    // would silently drop it — a gap created by the anti-gap machinery.
+    expect(
+      register({
+        name: 'Financial statements',
+        slug: 'financial-statements',
+        documentName: 'Annual financial statements',
+      }).success
+    ).toBe(true);
+  });
+});
+
+describe('a transparency manifest', () => {
+  it('accepts a list of register entries', () => {
+    expect(
+      transparencyManifestSchema.safeParse({ pages: [validRegisterEntry] })
+        .success
+    ).toBe(true);
+  });
+
+  it('rejects a plain page entry — a register row owes its status', () => {
+    expect(
+      transparencyManifestSchema.safeParse({ pages: [validEntry] }).success
+    ).toBe(false);
+  });
+});
+
+/**
+ * ★ TAGO-401 · CONT-401 — the data class, and the review record.
+ *
+ * A page with no cadence never goes stale. It sits there looking tended for as
+ * long as nobody notices, and nobody notices until a fact on it is years old.
+ * That is why this is a build failure rather than a warning.
+ */
+describe('the data class on a page entry', () => {
+  it('rejects an entry that declares none', () => {
+    const noClass: Record<string, unknown> = { ...validEntry };
+    delete noClass.dataClass;
+    expect(pageEntrySchema.safeParse(noClass).success).toBe(false);
+  });
+
+  it('rejects a class with no cadence behind it', () => {
+    // The enum is derived from config/freshness.config.json, so a class
+    // cannot be invented in a manifest and quietly acquire no cadence.
+    expect(
+      pageEntrySchema.safeParse({ ...validEntry, dataClass: 'whenever' })
+        .success
+    ).toBe(false);
+  });
+
+  it('accepts every class the config declares', () => {
+    for (const dataClass of DATA_CLASSES) {
+      expect(
+        pageEntrySchema.safeParse({ ...validEntry, dataClass }).success,
+        dataClass
+      ).toBe(true);
+    }
+  });
+
+  it('requires the review record to be present, even as null', () => {
+    // Optional would let a page omit it and read as "never claimed a review",
+    // which is the same thing but unenforceable. Explicit null is a statement.
+    const noReview: Record<string, unknown> = { ...validEntry };
+    delete noReview.lastReview;
+    expect(pageEntrySchema.safeParse(noReview).success).toBe(false);
+  });
+
+  it('accepts a review recorded by role', () => {
+    expect(
+      pageEntrySchema.safeParse({
+        ...validEntry,
+        lastReview: { role: 'maintenance-owner', at: '2026-08-09' },
+      }).success
+    ).toBe(true);
+  });
+
+  it('rejects a review recorded by a handle or a name', () => {
+    // A review is about a job having been done, not about which two people
+    // were involved — that is the verification record's question.
+    for (const role of ['handle-one', 'A Person', 'somebody@example.org']) {
+      expect(
+        pageEntrySchema.safeParse({
+          ...validEntry,
+          lastReview: { role, at: '2026-08-09' },
+        }).success,
+        role
+      ).toBe(false);
+    }
+  });
+
+  it('rejects a review with no date', () => {
+    expect(
+      pageEntrySchema.safeParse({
+        ...validEntry,
+        lastReview: { role: 'maintenance-owner' },
+      }).success
     ).toBe(false);
   });
 });

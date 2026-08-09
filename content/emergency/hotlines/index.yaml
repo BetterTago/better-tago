@@ -1,5 +1,6 @@
 pages:
-  - name: 'Emergency numbers for Tago'
+  - dataClass: 'emergency'
+    name: 'Emergency numbers for Tago'
     slug: 'emergency-numbers-for-tago'
     description: 'What this project has been able to find, what it has not, and where it looked.'
     source:
@@ -12,3 +13,4 @@ pages:
       retrievedAt: '2026-08-09'
     verification: 'V3'
     lastCheckedAt: '2026-08-09'
+    lastReview: null

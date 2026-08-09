@@ -1,5 +1,7 @@
 # Kung saan inilalathala ang mga opisyal na abiso
 
+> **Paunawa:** Ang Filipino sa pahinang ito ay **draft, hindi pa nasusuri ng katutubong nagsasalita.** Bakante pa ang tungkulin ng Translator sa proyektong ito. Kung may mali, ang correction link sa footer ang pinakamabilis na paraan para maayos ito.
+
 Kung may paparating na bagyo, suspendido ang klase, o may saradong kalsada, dito talaga ito sinasabi ng
 Munisipyo ng Tago. **Ini-link ng pahinang ito ang mga channel na iyon. Hindi nito kinokopya ang laman** —
 hindi news outlet ang proyektong ito, at ang second-hand na abiso ay isa pang bagay na maaaring lipas na.

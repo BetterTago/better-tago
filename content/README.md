@@ -28,7 +28,7 @@ When that changes, the guardrail is deleted deliberately, in a diff somebody rev
 ```
 content/<section>/<category>/index.yaml     the manifest
 content/<section>/<category>/<slug>.md      the English body
-content/<section>/<category>/<slug>.fil.md  the Filipino body (optional)
+content/<section>/<category>/<slug>.fil.md  the Filipino body (REQUIRED — coverage is 100%)
 ```
 
 **The YAML `slug` must match the markdown filename exactly.** A mismatch is the one failure that looks like
@@ -82,6 +82,20 @@ pages:
 
 `source`, `verification` and `lastCheckedAt` are **required**. Cite or don't publish.
 
+So are **`dataClass`** and **`lastReview`**, and both are about staying true rather than being true today:
+
+- **`dataClass`** says how fast this page goes out of date — one of the classes in
+  [`../config/freshness.config.json`](../config/freshness.config.json). **A page with no class fails the
+  build**, because a page with no cadence never goes stale and nobody would notice for years. See
+  [`../docs/freshness.md`](../docs/freshness.md).
+- **`lastReview`** is `{ role, at }` or `null` — the **role** that last re-checked this against its source.
+  Never a handle, never a name. It is `null` on every page today: nothing has been re-checked since it was
+  written, and saying otherwise is the falsification the field exists to make visible.
+
+🔴 **Do not advance `lastCheckedAt` without adding a `lastReview` in the same change.** A check date moved
+without a check is a falsified record, and `inventory/check-dates.yaml` is the committed baseline that catches
+it.
+
 What the charter fields add, and why each one is not optional:
 
 | Field                                 | What it is for                                                                                                                               |
@@ -94,6 +108,55 @@ What the charter fields add, and why each one is not optional:
 | `ambiguity`                           | What the charter left unclear **for a resident**, carried onto the page as stated. A transcriber never resolves one. **This one renders**    |
 | `transcriptionNote`                   | How _this project_ read the document — a truncated heading, a service number printed twice. Recorded for the verifier, **never rendered**    |
 | `verificationRecord`                  | `null` until a second person has checked it. Never partially filled — whole, or null                                                         |
+
+## A transparency register entry
+
+Everything under `content/transparency/register/` is a **register record** and carries the ★ `TAGO-301` fields.
+Its central field is a **status, not a URL** — because a labelled gap is honest and a silent omission is not,
+so every mandated document has a row whether or not it was found.
+
+```yaml
+pages:
+  - name: 'Annual budget'
+    slug: 'annual-budget'
+    description: 'The budget the municipal council enacts for a fiscal year.'
+    source: { … }
+    verification: 'V3'
+    lastCheckedAt: '2026-08-09'
+    # ── the register record ──
+    documentName: 'Annual budget'
+    fiscalYear: null # or '2022' — null where the document is not annual
+    status: 'not-located' # linked | published | requested | not-located
+    lookedFor:
+      - label: 'Municipality of Tago — Transparency Seal page'
+        url: 'https://tago.gov.ph/transparency-seal/'
+        result: 'not-published-here'
+        checkedAt: '2026-08-09'
+    requestedOf: null
+    requestedAt: null
+```
+
+⚠️ **`verification` on a `not-located` entry describes the CHECK, not a document.** `V3` means the absence was
+observed first-hand at the primary address, dated and repeatable — not that an official record says the
+document is missing, because none does. See [`../docs/governance.md`](../docs/governance.md) § _What a level
+means on a recorded absence_. The entry must cite one of the addresses in its own `lookedFor` list, and a test
+enforces it.
+
+The schema **rejects** five things, each because it would make the register quietly dishonest: a `linked`
+document with no address, a `not-located` one with nothing looked for, a `requested` one with no office and
+date, request details on an entry nobody requested, and a person's name where an office belongs.
+
+🔴 **It also refuses a statement of assets, liabilities and net worth outright**, under that name or its
+acronym. Those are personal financial disclosures about identifiable people, the exclusion is permanent rather
+than pending, and it is a property of the data because a contributor working from a list of mandated documents
+would add one in good faith. The positive half — how a resident requests one — is an ordinary page in
+`content/transparency/requests/`.
+
+**Which documents the register accounts for is decided once**, in
+[`../inventory/disclosure-set.yaml`](../inventory/disclosure-set.yaml), and
+`src/lib/content-records.test.ts` derives the reconciliation from it. ⚠️ That file is explicit that it is
+**this project's working list and not a legal enumeration** — the governing issuance was sought on 2026-08-09
+and its portal does not resolve. Do not describe the register as complete.
 
 ## The title is not yours to invent
 

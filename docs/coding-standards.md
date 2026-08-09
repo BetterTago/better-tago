@@ -423,6 +423,10 @@ beside it is a rumour with better typography**, so provenance is enforced by sch
 - **Cite or don't publish.** Every manifest entry carries `source` (label, URL, document type, retrieval date),
   a `verification` level, and `lastCheckedAt`. `src/lib/content-schema.ts` makes all three non-optional —
   there is no shape of content that renders without them.
+- **Every entry also declares a `dataClass` and a `lastReview`.** The class says how fast the page goes out of
+  date; **a page with no class fails the build**, because a page with no cadence never goes stale and nobody
+  would notice for years. `lastReview` records the ROLE that last re-checked it, or `null`. Cadences and the
+  rule against advancing a check date without a check are in [`freshness.md`](freshness.md) — one place.
 - **Link back, always.** Every transcribed page names and links the official document it came from. A reader who
   wants the original is one tap away, and the citation names it.
 - **The official municipal site is the source of truth.** Where it and this portal disagree, it is right and we
@@ -465,6 +469,11 @@ a bug, and the code encodes it:
   could tell the difference. **Stamping it without checking is worse than leaving the register alone**: it turns
   "nobody has looked" into "somebody looked and it is still missing", which is a different and false claim.
 
+- **A FILLED fact owes a citation, exactly as a null owes a gap entry.** `lgu.sources` is the mirror of
+  `pending`: each tracked figure is either `null` with a `pending` entry, or has a value with a `lgu.sources`
+  entry naming where it came from and when somebody looked. Neither, or both, fails the parse. The mirror was
+  missing until 2026-08-09, and `lgu.history` had spent two waves carrying six municipal facts with no source
+  at all — nothing rendered them, so nothing caught it.
 - **`written-request` is not a channel.** The correspondence lane is retired — no request is being sent to any
   office — so an entry claiming a letter will close it would be false the day it was written. The enum rejects
   it, and re-opening that lane is a deliberate decision rather than a word somebody types.

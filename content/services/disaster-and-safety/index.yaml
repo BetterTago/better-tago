@@ -9,7 +9,8 @@
 # Titles, slugs, offices, groups and ambiguities are joined from
 # inventory/task-vocabulary.yaml by charterServiceId. Do not re-derive one.
 pages:
-  - name: Get a disaster certification for shelter assistance
+  - dataClass: 'charter-derived'
+    name: Get a disaster certification for shelter assistance
     slug: get-a-disaster-certification-for-shelter-assistance
     description: The disaster certification used when applying for shelter assistance.
     office: Office of the Municipal Disaster Risk Reduction Management
@@ -25,6 +26,7 @@ pages:
       retrievedAt: '2026-08-09'
     verification: V3
     lastCheckedAt: '2026-08-09'
+    lastReview: null
     charterServiceId: office-of-the-municipal-disaster-risk-reduction-management#external-1
     charterSection: external
     charterDocument:
@@ -37,7 +39,8 @@ pages:
     ambiguity: null
     verificationRecord: null
     transcriptionNote: null
-  - name: Request a patient transfer outside Tago
+  - dataClass: 'charter-derived'
+    name: Request a patient transfer outside Tago
     slug: request-a-patient-transfer-outside-tago
     description: Asking the disaster office to transfer a patient out of Tago.
     office: Office of the Municipal Disaster Risk Reduction Management
@@ -53,6 +56,7 @@ pages:
       retrievedAt: '2026-08-09'
     verification: V3
     lastCheckedAt: '2026-08-09'
+    lastReview: null
     charterServiceId: office-of-the-municipal-disaster-risk-reduction-management#external-2
     charterSection: external
     charterDocument:
@@ -65,7 +69,8 @@ pages:
     ambiguity: null
     verificationRecord: null
     transcriptionNote: null
-  - name: Request water delivery
+  - dataClass: 'charter-derived'
+    name: Request water delivery
     slug: request-water-delivery
     description: Requesting water rationing or delivery from the disaster office.
     office: Office of the Municipal Disaster Risk Reduction Management
@@ -81,6 +86,7 @@ pages:
       retrievedAt: '2026-08-09'
     verification: V3
     lastCheckedAt: '2026-08-09'
+    lastReview: null
     charterServiceId: office-of-the-municipal-disaster-risk-reduction-management#external-3
     charterSection: external
     charterDocument:
@@ -93,7 +99,8 @@ pages:
     ambiguity: null
     verificationRecord: null
     transcriptionNote: null
-  - name: Request a disaster preparedness training
+  - dataClass: 'charter-derived'
+    name: Request a disaster preparedness training
     slug: request-a-disaster-preparedness-training
     description: Requesting a disaster preparedness training, drill, seminar or symposium.
     office: Office of the Municipal Disaster Risk Reduction Management
@@ -109,6 +116,7 @@ pages:
       retrievedAt: '2026-08-09'
     verification: V3
     lastCheckedAt: '2026-08-09'
+    lastReview: null
     charterServiceId: office-of-the-municipal-disaster-risk-reduction-management#external-4
     charterSection: external
     charterDocument:
@@ -121,7 +129,8 @@ pages:
     ambiguity: null
     verificationRecord: null
     transcriptionNote: null
-  - name: Request a patient transfer between facilities
+  - dataClass: 'charter-derived'
+    name: Request a patient transfer between facilities
     slug: request-a-patient-transfer-between-facilities
     description: Asking the disaster office to transfer a patient between facilities.
     office: Office of the Municipal Disaster Risk Reduction Management
@@ -137,6 +146,7 @@ pages:
       retrievedAt: '2026-08-09'
     verification: V3
     lastCheckedAt: '2026-08-09'
+    lastReview: null
     charterServiceId: office-of-the-municipal-disaster-risk-reduction-management#external-5
     charterSection: external
     charterDocument:

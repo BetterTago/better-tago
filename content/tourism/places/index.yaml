@@ -1,0 +1,123 @@
+pages:
+  - dataClass: 'tourism'
+    name: Tago River and Nature Adventure (TaRA NA!)
+    slug: tago-river-and-nature-adventure
+    description: A river adventure destination on the Tago River, in Barangay Purisima.
+    office: Tourism Office
+    source:
+      label:
+        en: Municipality of Tago — Tourism
+      url: https://tago.gov.ph/about-us-2/tourism/
+      documentTitle: Tourism
+      documentType: web
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+    lastReview: null
+  - dataClass: 'tourism'
+    name: Villa Azarcon Mountain Resort
+    slug: villa-azarcon-mountain-resort
+    description: A mountain resort with a waterfall and a swimming pool, in Barangay Cabangahan.
+    office: Tourism Office
+    source:
+      label:
+        en: Municipality of Tago — Tourism
+      url: https://tago.gov.ph/about-us-2/tourism/
+      documentTitle: Tourism
+      documentType: web
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+    lastReview: null
+  - dataClass: 'tourism'
+    name: Green Falls Mountain Liesure Farm & Resort
+    slug: green-falls-mountain-liesure-farm-and-resort
+    description: >-
+      A waterfall in a wooded setting, in Barangay Cabangahan. The tourism page’s heading and its
+      description name different places.
+    office: Tourism Office
+    source:
+      label:
+        en: Municipality of Tago — Tourism
+      url: https://tago.gov.ph/about-us-2/tourism/
+      documentTitle: Tourism
+      documentType: web
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+    lastReview: null
+  - dataClass: 'tourism'
+    name: Butong Cold Spring
+    slug: butong-cold-spring
+    description: A cold spring in Barangay Lindoy.
+    office: Tourism Office
+    source:
+      label:
+        en: Municipality of Tago — Tourism
+      url: https://tago.gov.ph/about-us-2/tourism/
+      documentTitle: Tourism
+      documentType: web
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+    lastReview: null
+  - dataClass: 'tourism'
+    name: Paloma Falls
+    slug: paloma-falls
+    description: Two adjacent waterfalls in Barangay Layog.
+    office: Tourism Office
+    source:
+      label:
+        en: Municipality of Tago — Tourism
+      url: https://tago.gov.ph/about-us-2/tourism/
+      documentTitle: Tourism
+      documentType: web
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+    lastReview: null
+  - dataClass: 'tourism'
+    name: Pamus-an Falls
+    slug: pamus-an-falls
+    description: A waterfall with a series of ponds, in Barangay Anahao Daan.
+    office: Tourism Office
+    source:
+      label:
+        en: Municipality of Tago — Tourism
+      url: https://tago.gov.ph/about-us-2/tourism/
+      documentTitle: Tourism
+      documentType: web
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+    lastReview: null
+  - dataClass: 'tourism'
+    name: Villa Pacita Beach Resort
+    slug: villa-pacita-beach-resort
+    description: A beach resort in Barangay Purisima.
+    office: Tourism Office
+    source:
+      label:
+        en: Municipality of Tago — Tourism
+      url: https://tago.gov.ph/about-us-2/tourism/
+      documentTitle: Tourism
+      documentType: web
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+    lastReview: null
+  - dataClass: 'tourism'
+    name: Coco Cay Beach Resort
+    slug: coco-cay-beach-resort
+    description: A beach resort in Barangay Purisima.
+    office: Tourism Office
+    source:
+      label:
+        en: Municipality of Tago — Tourism
+      url: https://tago.gov.ph/about-us-2/tourism/
+      documentTitle: Tourism
+      documentType: web
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+    lastReview: null

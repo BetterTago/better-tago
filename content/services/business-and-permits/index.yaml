@@ -9,7 +9,8 @@
 # Titles, slugs, offices, groups and ambiguities are joined from
 # inventory/task-vocabulary.yaml by charterServiceId. Do not re-derive one.
 pages:
-  - name: Pay the annual fees for a tricycle operator’s permit
+  - dataClass: 'charter-derived'
+    name: Pay the annual fees for a tricycle operator’s permit
     slug: pay-the-annual-fees-for-a-tricycle-operators-permit
     description: Paying the annual regulatory fees on a motorised tricycle operator’s permit, new or renewed.
     office: Business Licensing and Permitting Division
@@ -25,6 +26,7 @@ pages:
       retrievedAt: '2026-08-09'
     verification: V3
     lastCheckedAt: '2026-08-09'
+    lastReview: null
     charterServiceId: business-licensing-and-permitting-division-external-services#external-1
     charterSection: external
     charterDocument:
@@ -37,7 +39,8 @@ pages:
     ambiguity: null
     verificationRecord: null
     transcriptionNote: null
-  - name: Apply for a new business permit
+  - dataClass: 'charter-derived'
+    name: Apply for a new business permit
     slug: apply-for-a-new-business-permit
     description: Applying for the permit for a business that has not held one before.
     office: Business Licensing and Permitting Division
@@ -53,6 +56,7 @@ pages:
       retrievedAt: '2026-08-09'
     verification: V3
     lastCheckedAt: '2026-08-09'
+    lastReview: null
     charterServiceId: business-licensing-and-permitting-division-external-services#external-2
     charterSection: external
     charterDocument:
@@ -67,7 +71,8 @@ pages:
     ambiguity: null
     verificationRecord: null
     transcriptionNote: null
-  - name: Renew a business permit
+  - dataClass: 'charter-derived'
+    name: Renew a business permit
     slug: renew-a-business-permit
     description: Keeping an existing business permit current.
     office: Business Licensing and Permitting Division
@@ -83,6 +88,7 @@ pages:
       retrievedAt: '2026-08-09'
     verification: V3
     lastCheckedAt: '2026-08-09'
+    lastReview: null
     charterServiceId: business-licensing-and-permitting-division-external-services#external-3
     charterSection: external
     charterDocument:
@@ -95,7 +101,8 @@ pages:
     ambiguity: null
     verificationRecord: null
     transcriptionNote: null
-  - name: Close a business
+  - dataClass: 'charter-derived'
+    name: Close a business
     slug: close-a-business
     description: Retiring a business permit when a business stops operating in Tago.
     office: Business Licensing and Permitting Division
@@ -111,6 +118,7 @@ pages:
       retrievedAt: '2026-08-09'
     verification: V3
     lastCheckedAt: '2026-08-09'
+    lastReview: null
     charterServiceId: business-licensing-and-permitting-division-external-services#external-4
     charterSection: external
     charterDocument:
