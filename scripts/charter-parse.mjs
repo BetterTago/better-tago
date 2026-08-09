@@ -97,6 +97,54 @@ function sectionAt(lines, index) {
   return window.match(SECTION_RE)?.[1].toLowerCase() ?? null;
 }
 
+/**
+ * The document half of a service id: the filename, lowercased and hyphenated.
+ *
+ * `Office-of-the-Municipal-Civil-Registrar.pdf`
+ *   → `office-of-the-municipal-civil-registrar`
+ */
+export function documentStem(file) {
+  return file
+    .replace(/\.pdf$/i, '')
+    .toLowerCase()
+    .replace(/[^a-z0-9]+/g, '-')
+    .replace(/^-+|-+$/g, '');
+}
+
+/**
+ * Stamps each service with a stable id: `<document-stem>#<section>-<ordinal>`.
+ *
+ * WHY THIS EXISTS. The obvious key — document + section + the charter's own
+ * printed number — COLLIDES. Across the real charter it yields 159 distinct
+ * keys for 167 services: one office prints `10` twice, two documents carry no
+ * numbers at all, and one prints `1 2 3 4 5 6 10 7 8 9 10 11 12 13` for
+ * fourteen services. That numbering is data ABOUT the document, faithfully
+ * captured, and it is not an identifier.
+ *
+ * The failure it causes is silent. Anything keyed on a colliding field — the
+ * task-title vocabulary above all — assigns one service's title to a different
+ * service, and the mistake surfaces much later as a wrong fee on a page a
+ * resident acted on. So `number` stays exactly as printed, and `id` is ours.
+ *
+ * The ordinal is the service's position within its document and section, in
+ * parse order. **It is stable only while the document is** — a revision that
+ * inserts a service shifts every ordinal after it, which is precisely what the
+ * archived `sha256` exists to make detectable before anyone trusts an id again.
+ *
+ * @param {string} file      the PDF filename, e.g. `Municipal-Health-Office.pdf`
+ * @param {Array<object>} services  the parsed services, in document order
+ */
+export function withServiceIds(file, services) {
+  const stem = documentStem(file);
+  const counts = new Map();
+
+  return services.map(service => {
+    const ordinal = (counts.get(service.section) ?? 0) + 1;
+    counts.set(service.section, ordinal);
+    return { id: `${stem}#${service.section}-${ordinal}`, ...service };
+  });
+}
+
 /** @returns {Array<object>} one entry per service, in document order. */
 export function parseCharter(text) {
   const lines = text.split('\n');

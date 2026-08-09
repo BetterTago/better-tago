@@ -1,0 +1,2491 @@
+# The resident-task title vocabulary — AUTHORED BY HAND, not generated.
+#
+# `npm run harvest` does NOT write this file and will not overwrite it. It is
+# the mapping from each enumerated charter service to the title it is published
+# under, plus the office roster and the verbatim terms pages must use.
+#
+# The rules behind it are in docs/task-titles.md. src/lib/task-vocabulary.test.ts
+# enforces the ones that can be enforced.
+#
+# Nothing here is published. It is a work list.
+version: 1
+authoredAt: '2026-08-09'
+derivedFrom:
+  file: charter-services.yaml
+  harvestedAt: '2026-08-09'
+  services: 167
+coverage:
+  total: 167
+  external: 99
+  internal: 68
+  titled: 99
+  readFromPdf: 6
+  officeStrings: 49
+  canonicalOffices: 21
+namingRules:
+  spelling: >-
+    Resident-facing titles use the spelling residents use here — organization, immunized,
+    counseling, license. The rest of this repository’s prose is British; titles are not prose.
+  imperativeVerbs:
+    - Add
+    - Apply
+    - Attend
+    - Cancel
+    - Change
+    - Claim
+    - Close
+    - Correct
+    - Declare
+    - Get
+    - Have
+    - Join
+    - Pay
+    - Reclassify
+    - Register
+    - Renew
+    - Request
+    - See
+    - Submit
+    - Transfer
+    - Use
+    - Visit
+  residentAcronyms:
+    PSA: >-
+      The Philippine Statistics Authority. People ask for “a PSA birth certificate” by that name and
+      rarely by the full one.
+    DOT: The Department of Tourism. An establishment seeking accreditation knows it as DOT.
+    DOLE: The Department of Labor and Employment. Widely used in speech.
+    NGO: In ordinary use in the Philippines, including by the organisations themselves.
+    HIV: Universally used; the expansion would make the title harder to scan, not easier.
+  forbiddenInTitles:
+    - office
+    - division
+    - bureau
+    - department
+    - unit
+    - sangguniang
+    - municipal
+    - municipality
+    - enro
+    - peso
+    - peeso
+    - mswdo
+    - mdrrmo
+    - meo
+  roleExceptions:
+    Mayor: >-
+      “Mayor’s permit” and “mayor’s certificate” are what the documents are called and what
+      residents ask for. The ROLE is permitted in a title; “Mayor’s Office” is not.
+    Vice Mayor: >-
+      Same reasoning — the letter goes to the office-holder, and a resident asks for the Vice Mayor
+      by role.
+offices:
+  - verbatim: MO-Business Permitting and Licensing Division
+    canonical: Business Licensing and Permitting Division
+    branch: executive
+    note: null
+  - verbatim: MO-Business Permitting and Licensing Office
+    canonical: Business Licensing and Permitting Division
+    branch: executive
+    note: The same office as the row above, written “Office” rather than “Division” within one document.
+  - verbatim: Municipal Mayor’s Office - Non-Fiscal Unit
+    canonical: Executive Division
+    branch: executive
+    note: null
+  - verbatim: Municipal Mayor’s Office- Non-Fiscal Unit
+    canonical: Executive Division
+    branch: executive
+    note: Differs from the row above only by the missing space before the hyphen.
+  - verbatim: Gender and Development (GAD)
+    canonical: Gender and Development Division
+    branch: executive
+    note: null
+  - verbatim: Municipal Human Resource Mgt. Office
+    canonical: Human Resource Management Division
+    branch: executive
+    note: null
+  - verbatim: Municipal Human Resource Management Office- Benefits & Human Resource Development Division
+    canonical: Human Resource Management Division
+    branch: executive
+    note: null
+  - verbatim: Municipal Accounting Office
+    canonical: Municipal Accounting Office
+    branch: executive
+    note: null
+  - verbatim: Municipal Health Office
+    canonical: Municipal Health Office
+    branch: executive
+    note: null
+  - verbatim: Municipal Health Office – Birthing Facility
+    canonical: Municipal Health Office
+    branch: executive
+    note: null
+  - verbatim: Municipality Health Office
+    canonical: Municipal Health Office
+    branch: executive
+    note: The charter writes “Municipality” rather than “Municipal” here.
+  - verbatim: Social Welfare and Development Office
+    canonical: Municipal Social Welfare and Development Office
+    branch: executive
+    note: null
+  - verbatim: Social Welfare and Development Office Crisis Intervention Unit
+    canonical: Municipal Social Welfare and Development Office
+    branch: executive
+    note: null
+  - verbatim: City Social Welfare and Development Office
+    canonical: Municipal Social Welfare and Development Office
+    branch: executive
+    note: The document says “City”. Tago is a municipality. Recorded as published; not corrected here.
+  - verbatim: Office of the Municipal Agriculturist
+    canonical: Office of the Municipal Agriculture
+    branch: executive
+    note: >-
+      The office names itself “Agriculturist”; the municipality publishes the document as “Office of
+      the Municipal Agriculture”.
+  - verbatim: Municipal Assessor's Office
+    canonical: Office of the Municipal Assessor
+    branch: executive
+    note: null
+  - verbatim: Municipal Budget Office
+    canonical: Office of the Municipal Budget
+    branch: executive
+    note: null
+  - verbatim: Office of the Municipal Civil Registrar
+    canonical: Office of the Municipal Civil Registrar
+    branch: executive
+    note: null
+  - verbatim: OFFICE OF THE MUNICIPAL CIVIL REGISTRAR
+    canonical: Office of the Municipal Civil Registrar
+    branch: executive
+    note: Published in capitals.
+  - verbatim: Office of the Municipal Civil Registrar - Registration Division
+    canonical: Office of the Municipal Civil Registrar
+    branch: executive
+    note: null
+  - verbatim: OFFICE OF THE MUNICIPAL CIVIL REGISTRAR-REGISTRATION DIVISION
+    canonical: Office of the Municipal Civil Registrar
+    branch: executive
+    note: Published in capitals, and without the spaces around the hyphen.
+  - verbatim: Office of the Municipal Civil Registrar - Regulatory Division
+    canonical: Office of the Municipal Civil Registrar
+    branch: executive
+    note: null
+  - verbatim: Office of the Municipal Civil Registrar-Regulatory Division
+    canonical: Office of the Municipal Civil Registrar
+    branch: executive
+    note: Differs from the row above only by the spaces around the hyphen.
+  - verbatim: Office of the Local Civil Registrar-Registration Division
+    canonical: Office of the Municipal Civil Registrar
+    branch: executive
+    note: The document says “Local”.
+  - verbatim: Office of the City Civil Registrar-Regulatory Division
+    canonical: Office of the Municipal Civil Registrar
+    branch: executive
+    note: The document says “City”. Tago is a municipality. Recorded as published; not corrected here.
+  - verbatim: Office of the City Municipal Civil Registrar - Registration Division
+    canonical: Office of the Municipal Civil Registrar
+    branch: executive
+    note: The document says “City Municipal”, carrying both. Recorded as published; not corrected here.
+  - verbatim: Office of the Municipal
+    canonical: Office of the Municipal Civil Registrar
+    branch: executive
+    note: >-
+      The published string stops mid-name. Read from the document it appears in, which is the Civil
+      Registrar’s.
+  - verbatim: Municipal Disaster Risk Reduction and Management Office – Admin and Training
+    canonical: Office of the Municipal Disaster Risk Reduction Management
+    branch: executive
+    note: null
+  - verbatim: Municipal Disaster Risk Reduction and Management Office – Administration and Training
+    canonical: Office of the Municipal Disaster Risk Reduction Management
+    branch: executive
+    note: One of three spellings of the same division within one document.
+  - verbatim: Municipal Disaster Risk Reduction and Management Office – Administrative and Training
+    canonical: Office of the Municipal Disaster Risk Reduction Management
+    branch: executive
+    note: One of three spellings of the same division within one document.
+  - verbatim: Municipal Engineer’s Office - Building and Industrial Safety Division
+    canonical: Office of the Municipal Engineering
+    branch: executive
+    note: null
+  - verbatim: City Engineer’s Office - Building and Industrial Safety Division
+    canonical: Office of the Municipal Engineering
+    branch: executive
+    note: The document says “City”. Tago is a municipality. Recorded as published; not corrected here.
+  - verbatim: Municipal Engineering Office
+    canonical: Office of the Municipal Engineering
+    branch: executive
+    note: null
+  - verbatim: City Engineering Office
+    canonical: Office of the Municipal Engineering
+    branch: executive
+    note: The document says “City”. Tago is a municipality. Recorded as published; not corrected here.
+  - verbatim: MEO- Planning, Programming, Designing Division
+    canonical: Office of the Municipal Engineering
+    branch: executive
+    note: null
+  - verbatim: Municipal ENRO – Solid Waste Management Division
+    canonical: Municipal Environment and Natural Resources Office
+    branch: executive
+    note: null
+  - verbatim: Municipal ENRO – Extension Services Division (ESD)
+    canonical: Municipal Environment and Natural Resources Office
+    branch: executive
+    note: null
+  - verbatim: Municipal Nutrition Office
+    canonical: Office of the Municipal Nutrition
+    branch: executive
+    note: null
+  - verbatim: Municipal Planning and Development Office
+    canonical: Office of the Municipal Planning and Development
+    branch: executive
+    note: null
+  - verbatim: Municipal Treasurer's Office - Administrative Division
+    canonical: Office of the Municipal Treasurer
+    branch: executive
+    note: null
+  - verbatim: PESO
+    canonical: Public Employment Office Division
+    branch: executive
+    note: null
+  - verbatim: PEESO- Employment Division
+    canonical: Public Employment Office Division
+    branch: executive
+    note: The document writes “PEESO”; the same office is “PESO” elsewhere in it.
+  - verbatim: Municipal Tourism Office
+    canonical: Tourism Office
+    branch: executive
+    note: null
+  - verbatim: SANGGUNIANG BAYAN
+    canonical: Office of the Sangguniang Bayan
+    branch: legislative
+    note: Published in capitals.
+  - verbatim: Office of the Sangguniang Bayan
+    canonical: Office of the Sangguniang Bayan
+    branch: legislative
+    note: null
+  - verbatim: Office of the Secretary to the Sanggunian
+    canonical: Office of the Sangguniang Bayan
+    branch: legislative
+    note: null
+  - verbatim: Office of the Secretary to the Sanggunian – Records Division
+    canonical: Office of the Sangguniang Bayan
+    branch: legislative
+    note: null
+  - verbatim: Municipal Vice Mayor
+    canonical: Office of the Vice Mayor
+    branch: legislative
+    note: null
+  - verbatim: Office of the Vice Mayor
+    canonical: Office of the Vice Mayor
+    branch: legislative
+    note: null
+groups:
+  - id: register-a-death
+    question: How do I register a death?
+    members:
+      - office-of-the-municipal-civil-registrar#external-3
+      - office-of-the-municipal-civil-registrar#external-4
+    note: >-
+      Two charter entries, and the charter does not say what separates them. Both are kept: merging
+      them would mean choosing one set of requirements for a resident and hiding the other.
+  - id: electronic-endorsement
+    question: How do I get a civil registry record endorsed electronically?
+    members:
+      - office-of-the-municipal-civil-registrar#external-6
+      - office-of-the-municipal-civil-registrar#external-7
+    note: >-
+      The second entry adds certifications and certified copies. Different requirements, so they
+      stay separate records.
+  - id: patient-transfer
+    question: How do I get a patient transferred?
+    members:
+      - office-of-the-municipal-disaster-risk-reduction-management#external-2
+      - office-of-the-municipal-disaster-risk-reduction-management#external-5
+    note: >-
+      One entry covers transfer out of Tago, the other transfer between facilities. A caller in an
+      emergency asks one question; the charter answers it twice.
+  - id: medical-certificate
+    question: How do I get a medical certificate?
+    members:
+      - municipal-health-office#external-10
+      - municipal-health-office#external-11
+    note: The medico-legal certificate has its own requirements and its own processing time.
+  - id: business-permit
+    question: How do I get or renew a business permit?
+    members:
+      - business-licensing-and-permitting-division-external-services#external-2
+      - business-licensing-and-permitting-division-external-services#external-3
+      - tourism-external-services#external-1
+    note: >-
+      Two offices answer this. A tourism establishment is served by the Tourism Office; every other
+      business by the licensing division. A resident does not know that in advance, which is the
+      whole reason for the group.
+services:
+  - id: business-licensing-and-permitting-division-external-services#external-1
+    section: external
+    charterTitle: Motorized Tricycle Operator’s Permit (MTOP) Payment of Annual Regulatory Fees for New/Renewal
+    charterTitleSource: extracted
+    taskTitle: Pay the annual fees for a tricycle operator’s permit
+    slug: pay-the-annual-fees-for-a-tricycle-operators-permit
+    office:
+      verbatim: MO-Business Permitting and Licensing Division
+      canonical: Business Licensing and Permitting Division
+    excluded: null
+    answers: null
+    notes: null
+  - id: business-licensing-and-permitting-division-external-services#external-2
+    section: external
+    charterTitle: >-
+      Processing of Application for New Business Permit (Assuming inspection has already been
+      conducted)
+    charterTitleSource: extracted
+    taskTitle: Apply for a new business permit
+    slug: apply-for-a-new-business-permit
+    office:
+      verbatim: MO-Business Permitting and Licensing Division
+      canonical: Business Licensing and Permitting Division
+    excluded: null
+    answers: business-permit
+    notes: null
+  - id: business-licensing-and-permitting-division-external-services#external-3
+    section: external
+    charterTitle: Processing of Application for Business Permit Renewal
+    charterTitleSource: extracted
+    taskTitle: Renew a business permit
+    slug: renew-a-business-permit
+    office:
+      verbatim: MO-Business Permitting and Licensing Office
+      canonical: Business Licensing and Permitting Division
+    excluded: null
+    answers: business-permit
+    notes: null
+  - id: business-licensing-and-permitting-division-external-services#external-4
+    section: external
+    charterTitle: Processing of Application for Business Retirement
+    charterTitleSource: extracted
+    taskTitle: Close a business
+    slug: close-a-business
+    office:
+      verbatim: MO-Business Permitting and Licensing Office
+      canonical: Business Licensing and Permitting Division
+    excluded: null
+    answers: null
+    notes: null
+  - id: executive-division-external-services#external-1
+    section: external
+    charterTitle: Mayor’s Certificate for the Church Existence
+    charterTitleSource: extracted
+    taskTitle: Get a mayor’s certificate that a church exists
+    slug: get-a-mayors-certificate-that-a-church-exists
+    office:
+      verbatim: Municipal Mayor’s Office - Non-Fiscal Unit
+      canonical: Executive Division
+    excluded: null
+    answers: null
+    notes: null
+  - id: executive-division-external-services#external-2
+    section: external
+    charterTitle: Service fee for the Office of the Mayor
+    charterTitleSource: extracted
+    taskTitle: Pay a mayor’s service fee
+    slug: pay-a-mayors-service-fee
+    office:
+      verbatim: Municipal Mayor’s Office- Non-Fiscal Unit
+      canonical: Executive Division
+    excluded: null
+    answers: null
+    notes: null
+  - id: executive-division-external-services#external-3
+    section: external
+    charterTitle: Mayor’s Special Permit for Concert, Stage Performances and Other Amusement Activities
+    charterTitleSource: extracted
+    taskTitle: Get a permit for a concert or public performance
+    slug: get-a-permit-for-a-concert-or-public-performance
+    office:
+      verbatim: Municipal Mayor’s Office- Non-Fiscal Unit
+      canonical: Executive Division
+    excluded: null
+    answers: null
+    notes: null
+  - id: executive-division-external-services#external-4
+    section: external
+    charterTitle: Mayor’s Permit on Business
+    charterTitleSource: extracted
+    taskTitle: Get a mayor’s permit for a business
+    slug: get-a-mayors-permit-for-a-business
+    office:
+      verbatim: Municipal Mayor’s Office- Non-Fiscal Unit
+      canonical: Executive Division
+    excluded: null
+    answers: null
+    notes: null
+  - id: executive-division-external-services#external-5
+    section: external
+    charterTitle: Mayor’s Permit Fee for Cockpits Owners/Operators/Licensees/Promoters and Cockpit Personnel
+    charterTitleSource: extracted
+    taskTitle: Pay a mayor’s permit fee for a cockpit
+    slug: pay-a-mayors-permit-fee-for-a-cockpit
+    office:
+      verbatim: Municipal Mayor’s Office- Non-Fiscal Unit
+      canonical: Executive Division
+    excluded: null
+    answers: null
+    notes: null
+  - id: executive-division-external-services#external-6
+    section: external
+    charterTitle: Mayor’s Special Permit for Cockfighting
+    charterTitleSource: extracted
+    taskTitle: Get a special permit for a cockfight
+    slug: get-a-special-permit-for-a-cockfight
+    office:
+      verbatim: Municipal Mayor’s Office- Non-Fiscal Unit
+      canonical: Executive Division
+    excluded: null
+    answers: null
+    notes: null
+  - id: gender-and-development-division-external-services#external-1
+    section: external
+    charterTitle: Payroll of Honorarium of Women President’s
+    charterTitleSource: extracted
+    taskTitle: Claim an honorarium as a women’s association president
+    slug: claim-an-honorarium-as-a-womens-association-president
+    office:
+      verbatim: Gender and Development (GAD)
+      canonical: Gender and Development Division
+    excluded: null
+    answers: null
+    notes: null
+  - id: human-resource-management-division-external-services#external-1
+    section: external
+    charterTitle: Issuance of Clearance Certifications
+    charterTitleSource: extracted
+    taskTitle: Get an employment clearance certification
+    slug: get-an-employment-clearance-certification
+    office:
+      verbatim: Municipal Human Resource Mgt. Office
+      canonical: Human Resource Management Division
+    excluded: null
+    answers: null
+    notes: null
+  - id: human-resource-management-division-external-services#external-2
+    section: external
+    charterTitle: Issuance of Certificate of Employment & Others
+    charterTitleSource: extracted
+    taskTitle: Get a certificate of employment
+    slug: get-a-certificate-of-employment
+    office:
+      verbatim: Municipal Human Resource Mgt. Office
+      canonical: Human Resource Management Division
+    excluded: null
+    answers: null
+    notes: null
+  - id: human-resource-management-division-external-services#external-3
+    section: external
+    charterTitle: Issuance of Service Record
+    charterTitleSource: extracted
+    taskTitle: Get a service record
+    slug: get-a-service-record
+    office:
+      verbatim: Municipal Human Resource Mgt. Office
+      canonical: Human Resource Management Division
+    excluded: null
+    answers: null
+    notes: null
+  - id: human-resource-management-division-external-services#external-4
+    section: external
+    charterTitle: Accepting Job Applications
+    charterTitleSource: extracted
+    taskTitle: Apply for a local government job
+    slug: apply-for-a-local-government-job
+    office:
+      verbatim: Municipal Human Resource Mgt. Office
+      canonical: Human Resource Management Division
+    excluded: null
+    answers: null
+    notes: null
+  - id: human-resource-management-division-external-services#external-5
+    section: external
+    charterTitle: Issuance of Appointment
+    charterTitleSource: extracted
+    taskTitle: Get your appointment papers
+    slug: get-your-appointment-papers
+    office:
+      verbatim: Municipal Human Resource Mgt. Office
+      canonical: Human Resource Management Division
+    excluded: null
+    answers: null
+    notes: null
+  - id: human-resource-management-division-internal-services#internal-1
+    section: internal
+    charterTitle: Processing of Study Leave Application
+    charterTitleSource: extracted
+    taskTitle: null
+    slug: null
+    office:
+      verbatim: Municipal Human Resource Management Office- Benefits & Human Resource Development Division
+      canonical: Human Resource Management Division
+    excluded: internal — government-to-government
+    answers: null
+    notes: null
+  - id: human-resource-management-division-internal-services#internal-2
+    section: internal
+    charterTitle: Payroll Certification for Loan Application with Pag-Ibig
+    charterTitleSource: extracted
+    taskTitle: null
+    slug: null
+    office:
+      verbatim: Municipal Human Resource Mgt. Office
+      canonical: Human Resource Management Division
+    excluded: internal — government-to-government
+    answers: null
+    notes: null
+  - id: human-resource-management-division-internal-services#internal-3
+    section: internal
+    charterTitle: Employment and Net Take Home Pay Certification for Loan Applications with Land Bank
+    charterTitleSource: extracted
+    taskTitle: null
+    slug: null
+    office:
+      verbatim: Municipal Human Resource Mgt. Office
+      canonical: Human Resource Management Division
+    excluded: internal — government-to-government
+    answers: null
+    notes: null
+  - id: human-resource-management-division-internal-services#internal-4
+    section: internal
+    charterTitle: Payroll Certification for Loan Applications with DBP
+    charterTitleSource: extracted
+    taskTitle: null
+    slug: null
+    office:
+      verbatim: Municipal Human Resource Mgt. Office
+      canonical: Human Resource Management Division
+    excluded: internal — government-to-government
+    answers: null
+    notes: null
+  - id: human-resource-management-division-internal-services#internal-5
+    section: internal
+    charterTitle: Issuance of Authority to Travel Abroad
+    charterTitleSource: extracted
+    taskTitle: null
+    slug: null
+    office:
+      verbatim: Municipal Human Resource Mgt. Office
+      canonical: Human Resource Management Division
+    excluded: internal — government-to-government
+    answers: null
+    notes: null
+  - id: human-resource-management-division-internal-services#internal-6
+    section: internal
+    charterTitle: Approval of GSIS Loans
+    charterTitleSource: extracted
+    taskTitle: null
+    slug: null
+    office:
+      verbatim: Municipal Human Resource Mgt. Office
+      canonical: Human Resource Management Division
+    excluded: internal — government-to-government
+    answers: null
+    notes: null
+  - id: human-resource-management-division-internal-services#internal-7
+    section: internal
+    charterTitle: Computation for the Monetization
+    charterTitleSource: extracted
+    taskTitle: null
+    slug: null
+    office:
+      verbatim: Municipal Human Resource Mgt. Office
+      canonical: Human Resource Management Division
+    excluded: internal — government-to-government
+    answers: null
+    notes: null
+  - id: human-resource-management-division-internal-services#internal-8
+    section: internal
+    charterTitle: Application of Compensatory Overtime Credit
+    charterTitleSource: extracted
+    taskTitle: null
+    slug: null
+    office:
+      verbatim: Municipal Human Resource Mgt. Office
+      canonical: Human Resource Management Division
+    excluded: internal — government-to-government
+    answers: null
+    notes: null
+  - id: human-resource-management-division-internal-services#internal-9
+    section: internal
+    charterTitle: Application for Compensatory Time-Off (CTO)
+    charterTitleSource: extracted
+    taskTitle: null
+    slug: null
+    office:
+      verbatim: Municipal Human Resource Mgt. Office
+      canonical: Human Resource Management Division
+    excluded: internal — government-to-government
+    answers: null
+    notes: null
+  - id: human-resource-management-division-internal-services#internal-10
+    section: internal
+    charterTitle: Application of Leave of Absence
+    charterTitleSource: extracted
+    taskTitle: null
+    slug: null
+    office:
+      verbatim: Municipal Human Resource Mgt. Office
+      canonical: Human Resource Management Division
+    excluded: internal — government-to-government
+    answers: null
+    notes: null
+  - id: human-resource-management-division-internal-services#internal-11
+    section: internal
+    charterTitle: Issuance of Appointment
+    charterTitleSource: extracted
+    taskTitle: null
+    slug: null
+    office:
+      verbatim: Municipal Human Resource Mgt. Office
+      canonical: Human Resource Management Division
+    excluded: internal — government-to-government
+    answers: null
+    notes: null
+  - id: human-resource-management-division-internal-services#internal-12
+    section: internal
+    charterTitle: Processing of the terminal leave pay of the deceased LGU – Tago Official or Employee
+    charterTitleSource: extracted
+    taskTitle: null
+    slug: null
+    office:
+      verbatim: Municipal Human Resource Mgt. Office
+      canonical: Human Resource Management Division
+    excluded: internal — government-to-government
+    answers: null
+    notes: null
+  - id: human-resource-management-division-internal-services#internal-13
+    section: internal
+    charterTitle: Application for the Claim of Terminal Leave Pay
+    charterTitleSource: extracted
+    taskTitle: null
+    slug: null
+    office:
+      verbatim: Municipal Human Resource Mgt. Office
+      canonical: Human Resource Management Division
+    excluded: internal — government-to-government
+    answers: null
+    notes: null
+  - id: municipal-accounting-office#external-1
+    section: external
+    charterTitle: Issuance of Certificate of No Claim
+    charterTitleSource: extracted
+    taskTitle: Get a certificate of no claim
+    slug: get-a-certificate-of-no-claim
+    office:
+      verbatim: Municipal Accounting Office
+      canonical: Municipal Accounting Office
+    excluded: null
+    answers: null
+    notes: null
+  - id: municipal-accounting-office#internal-1
+    section: internal
+    charterTitle: Receiving of Documents
+    charterTitleSource: extracted
+    taskTitle: null
+    slug: null
+    office:
+      verbatim: Municipal Accounting Office
+      canonical: Municipal Accounting Office
+    excluded: internal — government-to-government
+    answers: null
+    notes: null
+  - id: municipal-accounting-office#internal-2
+    section: internal
+    charterTitle: Receipt, Checking and Recording of Financial Documents
+    charterTitleSource: extracted
+    taskTitle: null
+    slug: null
+    office:
+      verbatim: Municipal Accounting Office
+      canonical: Municipal Accounting Office
+    excluded: internal — government-to-government
+    answers: null
+    notes: null
+  - id: municipal-accounting-office#internal-3
+    section: internal
+    charterTitle: Receiving, Checking and Recording of Barangay Financial Documents
+    charterTitleSource: extracted
+    taskTitle: null
+    slug: null
+    office:
+      verbatim: Municipal Accounting Office
+      canonical: Municipal Accounting Office
+    excluded: internal — government-to-government
+    answers: null
+    notes: null
+  - id: municipal-accounting-office#internal-4
+    section: internal
+    charterTitle: >-
+      Pre-Audit and Processing of Payroll Fund for Salaries, Wages, Allowances, Honoraria and Other
+      Similar Expenses
+    charterTitleSource: extracted
+    taskTitle: null
+    slug: null
+    office:
+      verbatim: Municipal Accounting Office
+      canonical: Municipal Accounting Office
+    excluded: internal — government-to-government
+    answers: null
+    notes: null
+  - id: municipal-accounting-office#internal-5
+    section: internal
+    charterTitle: Pre-Audit and Processing of Disbursement Voucher of Cash Advance for Petty Cash Fund
+    charterTitleSource: extracted
+    taskTitle: null
+    slug: null
+    office:
+      verbatim: Municipal Accounting Office
+      canonical: Municipal Accounting Office
+    excluded: internal — government-to-government
+    answers: null
+    notes: null
+  - id: municipal-accounting-office#internal-6
+    section: internal
+    charterTitle: null
+    charterTitleSource: not-in-layout
+    taskTitle: null
+    slug: null
+    office:
+      verbatim: Municipal Accounting Office
+      canonical: Municipal Accounting Office
+    excluded: internal — government-to-government
+    answers: null
+    notes: null
+  - id: municipal-accounting-office#internal-7
+    section: internal
+    charterTitle: Pre-Audit and Processing of Disbursement Voucher of Cash Advance for Special Purpose
+    charterTitleSource: extracted
+    taskTitle: null
+    slug: null
+    office:
+      verbatim: Municipal Accounting Office
+      canonical: Municipal Accounting Office
+    excluded: internal — government-to-government
+    answers: null
+    notes: null
+  - id: municipal-accounting-office#internal-8
+    section: internal
+    charterTitle: >-
+      Pre-Audit and Processing of Liquidation Report of Cash Advance of Payroll for Salaries, Wages,
+      Allowances, Honoraria and Other Similar Expenses
+    charterTitleSource: extracted
+    taskTitle: null
+    slug: null
+    office:
+      verbatim: Municipal Accounting Office
+      canonical: Municipal Accounting Office
+    excluded: internal — government-to-government
+    answers: null
+    notes: null
+  - id: municipal-accounting-office#internal-9
+    section: internal
+    charterTitle: Pre-Audit and Processing of Liquidation/ Replenishment of Petty Cash Fund
+    charterTitleSource: extracted
+    taskTitle: null
+    slug: null
+    office:
+      verbatim: Municipal Accounting Office
+      canonical: Municipal Accounting Office
+    excluded: internal — government-to-government
+    answers: null
+    notes: null
+  - id: municipal-accounting-office#internal-10
+    section: internal
+    charterTitle: Pre-Audit and Processing of Liquidation of Cash Advance for Local Travel
+    charterTitleSource: extracted
+    taskTitle: null
+    slug: null
+    office:
+      verbatim: Municipal Accounting Office
+      canonical: Municipal Accounting Office
+    excluded: internal — government-to-government
+    answers: null
+    notes: null
+  - id: municipal-accounting-office#internal-11
+    section: internal
+    charterTitle: Pre-Audit and Processing of Liquidation of Cash Advance for Special Purpose
+    charterTitleSource: extracted
+    taskTitle: null
+    slug: null
+    office:
+      verbatim: Municipal Accounting Office
+      canonical: Municipal Accounting Office
+    excluded: internal — government-to-government
+    answers: null
+    notes: null
+  - id: municipal-accounting-office#internal-12
+    section: internal
+    charterTitle: Pre-Audit and Processing of Disbursement Voucher of Fund Transfers to Component Barangays
+    charterTitleSource: extracted
+    taskTitle: null
+    slug: null
+    office:
+      verbatim: Municipal Accounting Office
+      canonical: Municipal Accounting Office
+    excluded: internal — government-to-government
+    answers: null
+    notes: null
+  - id: municipal-accounting-office#internal-13
+    section: internal
+    charterTitle: Pre-Audit and Processing of Disbursement Voucher of Individual Claims for First Salary
+    charterTitleSource: extracted
+    taskTitle: null
+    slug: null
+    office:
+      verbatim: Municipal Accounting Office
+      canonical: Municipal Accounting Office
+    excluded: internal — government-to-government
+    answers: null
+    notes: null
+  - id: municipal-accounting-office#internal-14
+    section: internal
+    charterTitle: >-
+      Pre-Audit and Processing of Disbursement Voucher of Salary Differential due to Promotion
+      and/or Step Increment
+    charterTitleSource: extracted
+    taskTitle: null
+    slug: null
+    office:
+      verbatim: Municipal Accounting Office
+      canonical: Municipal Accounting Office
+    excluded: internal — government-to-government
+    answers: null
+    notes: null
+  - id: municipal-accounting-office#internal-15
+    section: internal
+    charterTitle: Pre-Audit and Processing of Disbursement Voucher of Last Salary
+    charterTitleSource: extracted
+    taskTitle: null
+    slug: null
+    office:
+      verbatim: Municipal Accounting Office
+      canonical: Municipal Accounting Office
+    excluded: internal — government-to-government
+    answers: null
+    notes: null
+  - id: municipal-accounting-office#internal-16
+    section: internal
+    charterTitle: Pre-Audit and Processing of Disbursement Voucher of Salary due to Heirs of Deceased Employee
+    charterTitleSource: extracted
+    taskTitle: null
+    slug: null
+    office:
+      verbatim: Municipal Accounting Office
+      canonical: Municipal Accounting Office
+    excluded: internal — government-to-government
+    answers: null
+    notes: null
+  - id: municipal-accounting-office#internal-17
+    section: internal
+    charterTitle: Pre-Audit and Processing of Disbursement Voucher of RATA (Individual Claim)
+    charterTitleSource: extracted
+    taskTitle: null
+    slug: null
+    office:
+      verbatim: Municipal Accounting Office
+      canonical: Municipal Accounting Office
+    excluded: internal — government-to-government
+    answers: null
+    notes: null
+  - id: municipal-accounting-office#internal-18
+    section: internal
+    charterTitle: Pre-Audit and Processing of Disbursement Voucher of Clothing Allowance (Individual Claim)
+    charterTitleSource: extracted
+    taskTitle: null
+    slug: null
+    office:
+      verbatim: Municipal Accounting Office
+      canonical: Municipal Accounting Office
+    excluded: internal — government-to-government
+    answers: null
+    notes: null
+  - id: municipal-accounting-office#internal-19
+    section: internal
+    charterTitle: >-
+      Pre-Audit and Processing of Payroll of Honoraria to Government Personnel involved in
+      Government Procurement
+    charterTitleSource: extracted
+    taskTitle: null
+    slug: null
+    office:
+      verbatim: Municipal Accounting Office
+      canonical: Municipal Accounting Office
+    excluded: internal — government-to-government
+    answers: null
+    notes: null
+  - id: municipal-accounting-office#internal-20
+    section: internal
+    charterTitle: Pre-Audit and Processing of Payroll of Honoraria to Lecturer/Coordinator
+    charterTitleSource: extracted
+    taskTitle: null
+    slug: null
+    office:
+      verbatim: Municipal Accounting Office
+      canonical: Municipal Accounting Office
+    excluded: internal — government-to-government
+    answers: null
+    notes: null
+  - id: municipal-accounting-office#internal-21
+    section: internal
+    charterTitle: Pre-Audit and Processing of Payroll of Overtime Pay
+    charterTitleSource: extracted
+    taskTitle: null
+    slug: null
+    office:
+      verbatim: Municipal Accounting Office
+      canonical: Municipal Accounting Office
+    excluded: internal — government-to-government
+    answers: null
+    notes: null
+  - id: municipal-accounting-office#internal-22
+    section: internal
+    charterTitle: Pre-Audit and Processing of Disbursement Voucher of Terminal Leave Benefits
+    charterTitleSource: extracted
+    taskTitle: null
+    slug: null
+    office:
+      verbatim: Municipal Accounting Office
+      canonical: Municipal Accounting Office
+    excluded: internal — government-to-government
+    answers: null
+    notes: null
+  - id: municipal-accounting-office#internal-23
+    section: internal
+    charterTitle: Pre-Audit and Processing of Disbursement Voucher of Monetization
+    charterTitleSource: extracted
+    taskTitle: null
+    slug: null
+    office:
+      verbatim: Municipal Accounting Office
+      canonical: Municipal Accounting Office
+    excluded: internal — government-to-government
+    answers: null
+    notes: null
+  - id: municipal-accounting-office#internal-24
+    section: internal
+    charterTitle: >-
+      Pre-Audit and Processing of Disbursement Voucher of Utilities Expense/Telephone/Communication
+      Services
+    charterTitleSource: extracted
+    taskTitle: null
+    slug: null
+    office:
+      verbatim: Municipal Accounting Office
+      canonical: Municipal Accounting Office
+    excluded: internal — government-to-government
+    answers: null
+    notes: null
+  - id: municipal-accounting-office#internal-25
+    section: internal
+    charterTitle: >-
+      Pre-Audit and Processing of Disbursement Voucher of Infrastructure Projects-Advance
+      Payment(not to exceed 15% of CP)
+    charterTitleSource: extracted
+    taskTitle: null
+    slug: null
+    office:
+      verbatim: Municipal Accounting Office
+      canonical: Municipal Accounting Office
+    excluded: internal — government-to-government
+    answers: null
+    notes: null
+  - id: municipal-accounting-office#internal-26
+    section: internal
+    charterTitle: Pre-Audit and Processing of Disbursement Voucher of Infrastructure Projects-Progress Billing
+    charterTitleSource: extracted
+    taskTitle: null
+    slug: null
+    office:
+      verbatim: Municipal Accounting Office
+      canonical: Municipal Accounting Office
+    excluded: internal — government-to-government
+    answers: null
+    notes: null
+  - id: municipal-accounting-office#internal-27
+    section: internal
+    charterTitle: Pre-Audit and Processing of Disbursement Voucher of Infrastructure Projects-Final Billing
+    charterTitleSource: extracted
+    taskTitle: null
+    slug: null
+    office:
+      verbatim: Municipal Accounting Office
+      canonical: Municipal Accounting Office
+    excluded: internal — government-to-government
+    answers: null
+    notes: null
+  - id: municipal-accounting-office#internal-28
+    section: internal
+    charterTitle: >-
+      Pre-Audit and Processing of Disbursement Voucher of Infrastructure Projects-Variation
+      Order/Change Order/Extra Work Order
+    charterTitleSource: extracted
+    taskTitle: null
+    slug: null
+    office:
+      verbatim: Municipal Accounting Office
+      canonical: Municipal Accounting Office
+    excluded: internal — government-to-government
+    answers: null
+    notes: null
+  - id: municipal-accounting-office#internal-29
+    section: internal
+    charterTitle: >-
+      Pre-Audit and Processing of Disbursement Voucher of Infrastructure Projects-Release of
+      Retention Money
+    charterTitleSource: extracted
+    taskTitle: null
+    slug: null
+    office:
+      verbatim: Municipal Accounting Office
+      canonical: Municipal Accounting Office
+    excluded: internal — government-to-government
+    answers: null
+    notes: null
+  - id: municipal-accounting-office#internal-30
+    section: internal
+    charterTitle: Pre-Audit and Processing of Disbursement Voucher of Goods through Public Bidding
+    charterTitleSource: extracted
+    taskTitle: null
+    slug: null
+    office:
+      verbatim: Municipal Accounting Office
+      canonical: Municipal Accounting Office
+    excluded: internal — government-to-government
+    answers: null
+    notes: null
+  - id: municipal-accounting-office#internal-31
+    section: internal
+    charterTitle: >-
+      Pre-Audit and Processing of Disbursement Voucher of Goods through Alternative Modes of
+      Procurement-Limited Source Bidding (Goods)
+    charterTitleSource: extracted
+    taskTitle: null
+    slug: null
+    office:
+      verbatim: Municipal Accounting Office
+      canonical: Municipal Accounting Office
+    excluded: internal — government-to-government
+    answers: null
+    notes: null
+  - id: municipal-accounting-office#internal-32
+    section: internal
+    charterTitle: >-
+      Pre-Audit and Processing of Disbursement Voucher of Goods through Alternative Modes of
+      Procurement-Limited Source Bidding (Consulting Services)
+    charterTitleSource: extracted
+    taskTitle: null
+    slug: null
+    office:
+      verbatim: Municipal Accounting Office
+      canonical: Municipal Accounting Office
+    excluded: internal — government-to-government
+    answers: null
+    notes: null
+  - id: municipal-accounting-office#internal-33
+    section: internal
+    charterTitle: >-
+      Pre-Audit and Processing of Disbursement Voucher of Goods through Alternative Modes of
+      Procurement-Direct Contracting (Goods)
+    charterTitleSource: extracted
+    taskTitle: null
+    slug: null
+    office:
+      verbatim: Municipal Accounting Office
+      canonical: Municipal Accounting Office
+    excluded: internal — government-to-government
+    answers: null
+    notes: null
+  - id: municipal-accounting-office#internal-34
+    section: internal
+    charterTitle: >-
+      Pre-Audit and Processing of Disbursement Voucher of Goods through Alternative Modes of
+      Procurement-Repeat Order
+    charterTitleSource: extracted
+    taskTitle: null
+    slug: null
+    office:
+      verbatim: Municipal Accounting Office
+      canonical: Municipal Accounting Office
+    excluded: internal — government-to-government
+    answers: null
+    notes: null
+  - id: municipal-accounting-office#internal-35
+    section: internal
+    charterTitle: >-
+      Pre-Audit and Processing of Disbursement Voucher of Goods through Alternative Modes of
+      Procurement-Direct Contracting (Goods)
+    charterTitleSource: extracted
+    taskTitle: null
+    slug: null
+    office:
+      verbatim: Municipal Accounting Office
+      canonical: Municipal Accounting Office
+    excluded: internal — government-to-government
+    answers: null
+    notes: null
+  - id: municipal-accounting-office#internal-36
+    section: internal
+    charterTitle: >-
+      Pre-Audit and Processing of Disbursement Voucher of Goods through Alternative Modes of
+      Procurement-Shopping
+    charterTitleSource: extracted
+    taskTitle: null
+    slug: null
+    office:
+      verbatim: Municipal Accounting Office
+      canonical: Municipal Accounting Office
+    excluded: internal — government-to-government
+    answers: null
+    notes: null
+  - id: municipal-accounting-office#internal-37
+    section: internal
+    charterTitle: >-
+      Pre-Audit and Processing of Disbursement Voucher of Goods through Alternative Modes of
+      Procurement-Negotiated Procurement (Two Failed Biddings)
+    charterTitleSource: extracted
+    taskTitle: null
+    slug: null
+    office:
+      verbatim: Municipal Accounting Office
+      canonical: Municipal Accounting Office
+    excluded: internal — government-to-government
+    answers: null
+    notes: null
+  - id: municipal-accounting-office#internal-38
+    section: internal
+    charterTitle: >-
+      Pre-Audit and Processing of Disbursement Voucher of Goods through Alternative Modes of
+      Procurement-Negotiated Procurement (Small Value Procurement)
+    charterTitleSource: extracted
+    taskTitle: null
+    slug: null
+    office:
+      verbatim: Municipal Accounting Office
+      canonical: Municipal Accounting Office
+    excluded: internal — government-to-government
+    answers: null
+    notes: null
+  - id: municipal-health-office#external-1
+    section: external
+    charterTitle: General Consultation and Treatment Services
+    charterTitleSource: extracted
+    taskTitle: See a doctor for a consultation
+    slug: see-a-doctor-for-a-consultation
+    office:
+      verbatim: Municipal Health Office
+      canonical: Municipal Health Office
+    excluded: null
+    answers: null
+    notes: null
+  - id: municipal-health-office#external-2
+    section: external
+    charterTitle: Certification of the Cause of Death (Medico-Legal Cases)
+    charterTitleSource: extracted
+    taskTitle: Get a certification of the cause of death
+    slug: get-a-certification-of-the-cause-of-death
+    office:
+      verbatim: Municipal Health Office
+      canonical: Municipal Health Office
+    excluded: null
+    answers: null
+    notes: null
+  - id: municipal-health-office#external-3
+    section: external
+    charterTitle: Review of Death Certificate
+    charterTitleSource: extracted
+    taskTitle: Have a death certificate reviewed
+    slug: have-a-death-certificate-reviewed
+    office:
+      verbatim: Municipal Health Office
+      canonical: Municipal Health Office
+    excluded: null
+    answers: null
+    notes: null
+  - id: municipal-health-office#external-4
+    section: external
+    charterTitle: Ante-Partum Dental Check Up
+    charterTitleSource: extracted
+    taskTitle: Get a dental check-up during pregnancy
+    slug: get-a-dental-check-up-during-pregnancy
+    office:
+      verbatim: Municipal Health Office
+      canonical: Municipal Health Office
+    excluded: null
+    answers: null
+    notes: null
+  - id: municipal-health-office#external-5
+    section: external
+    charterTitle: Oral Examination/ Consultation & Tooth Extraction
+    charterTitleSource: extracted
+    taskTitle: Get a dental check-up or tooth extraction
+    slug: get-a-dental-check-up-or-tooth-extraction
+    office:
+      verbatim: Municipal Health Office
+      canonical: Municipal Health Office
+    excluded: null
+    answers: null
+    notes: null
+  - id: municipal-health-office#external-6
+    section: external
+    charterTitle: Family Planning and Counseling
+    charterTitleSource: extracted
+    taskTitle: Get family planning advice
+    slug: get-family-planning-advice
+    office:
+      verbatim: Municipal Health Office
+      canonical: Municipal Health Office
+    excluded: null
+    answers: null
+    notes: null
+  - id: municipal-health-office#external-7
+    section: external
+    charterTitle: HIV Testing Services
+    charterTitleSource: extracted
+    taskTitle: Get an HIV test
+    slug: get-an-hiv-test
+    office:
+      verbatim: Municipal Health Office
+      canonical: Municipal Health Office
+    excluded: null
+    answers: null
+    notes: null
+  - id: municipal-health-office#external-8
+    section: external
+    charterTitle: Immunization for Children
+    charterTitleSource: extracted
+    taskTitle: Get a child immunized
+    slug: get-a-child-immunized
+    office:
+      verbatim: Municipal Health Office
+      canonical: Municipal Health Office
+    excluded: null
+    answers: null
+    notes: null
+  - id: municipal-health-office#external-9
+    section: external
+    charterTitle: Municipality Health Office Clinical Laboratory
+    charterTitleSource: extracted
+    taskTitle: Get a laboratory test
+    slug: get-a-laboratory-test
+    office:
+      verbatim: Municipal Health Office
+      canonical: Municipal Health Office
+    excluded: null
+    answers: null
+    notes: >-
+      The office is written “Municipality Health Office” on this entry and “Municipal Health Office”
+      on the rest of the document.
+  - id: municipal-health-office#external-10
+    section: external
+    charterTitle: Issuance of Medical Certificate
+    charterTitleSource: extracted
+    taskTitle: Get a medical certificate
+    slug: get-a-medical-certificate
+    office:
+      verbatim: Municipality Health Office
+      canonical: Municipal Health Office
+    excluded: null
+    answers: medical-certificate
+    notes: null
+  - id: municipal-health-office#external-11
+    section: external
+    charterTitle: Issuance of Medical Certificate (Medico-Legal Cases)
+    charterTitleSource: extracted
+    taskTitle: Get a medico-legal medical certificate
+    slug: get-a-medico-legal-medical-certificate
+    office:
+      verbatim: Municipal Health Office
+      canonical: Municipal Health Office
+    excluded: null
+    answers: medical-certificate
+    notes: null
+  - id: municipal-health-office#external-12
+    section: external
+    charterTitle: Availing of Medication
+    charterTitleSource: extracted
+    taskTitle: Get free medicine
+    slug: get-free-medicine
+    office:
+      verbatim: Municipal Health Office
+      canonical: Municipal Health Office
+    excluded: null
+    answers: null
+    notes: null
+  - id: municipal-health-office#external-13
+    section: external
+    charterTitle: Pre-Marriage Counseling
+    charterTitleSource: extracted
+    taskTitle: Attend pre-marriage counseling
+    slug: attend-pre-marriage-counseling
+    office:
+      verbatim: Municipal Health Office
+      canonical: Municipal Health Office
+    excluded: null
+    answers: null
+    notes: null
+  - id: municipal-health-office#external-14
+    section: external
+    charterTitle: Prenatal Care
+    charterTitleSource: extracted
+    taskTitle: Get prenatal check-ups
+    slug: get-prenatal-check-ups
+    office:
+      verbatim: Municipal Health Office – Birthing Facility
+      canonical: Municipal Health Office
+    excluded: null
+    answers: null
+    notes: null
+  - id: municipal-health-office#external-15
+    section: external
+    charterTitle: Issuance of Health Certificate
+    charterTitleSource: extracted
+    taskTitle: Get a health certificate
+    slug: get-a-health-certificate
+    office:
+      verbatim: Municipal Health Office
+      canonical: Municipal Health Office
+    excluded: null
+    answers: null
+    notes: null
+  - id: municipal-health-office#external-16
+    section: external
+    charterTitle: Issuance of Sanitary Permit
+    charterTitleSource: extracted
+    taskTitle: Get a sanitary permit
+    slug: get-a-sanitary-permit
+    office:
+      verbatim: Municipal Health Office
+      canonical: Municipal Health Office
+    excluded: null
+    answers: null
+    notes: null
+  - id: municipal-health-office#external-17
+    section: external
+    charterTitle: Issuance of Exhumation Permit
+    charterTitleSource: extracted
+    taskTitle: Get an exhumation permit
+    slug: get-an-exhumation-permit
+    office:
+      verbatim: Municipal Health Office
+      canonical: Municipal Health Office
+    excluded: null
+    answers: null
+    notes: null
+  - id: municipal-health-office#external-18
+    section: external
+    charterTitle: Issuance of Transfer Permit of Cadaver
+    charterTitleSource: extracted
+    taskTitle: Get a permit to transfer remains
+    slug: get-a-permit-to-transfer-remains
+    office:
+      verbatim: Municipal Health Office
+      canonical: Municipal Health Office
+    excluded: null
+    answers: null
+    notes: null
+  - id: municipal-health-office#external-19
+    section: external
+    charterTitle: Social Hygiene Clinic
+    charterTitleSource: extracted
+    taskTitle: Visit the social hygiene clinic
+    slug: visit-the-social-hygiene-clinic
+    office:
+      verbatim: Municipal Health Office
+      canonical: Municipal Health Office
+    excluded: null
+    answers: null
+    notes: null
+  - id: municipal-health-office#external-20
+    section: external
+    charterTitle: Treatment Services for Tuberculosis (TB) Patients
+    charterTitleSource: extracted
+    taskTitle: Get treatment for tuberculosis
+    slug: get-treatment-for-tuberculosis
+    office:
+      verbatim: Municipal Health Office
+      canonical: Municipal Health Office
+    excluded: null
+    answers: null
+    notes: null
+  - id: municipal-health-office#external-21
+    section: external
+    charterTitle: Smoking Cessation Counseling
+    charterTitleSource: extracted
+    taskTitle: Get help to stop smoking
+    slug: get-help-to-stop-smoking
+    office:
+      verbatim: Municipal Health Office
+      canonical: Municipal Health Office
+    excluded: null
+    answers: null
+    notes: null
+  - id: municipal-social-welfare-and-development-office#external-1
+    section: external
+    charterTitle: >-
+      Availing of Assistance in Crisis Situation (Financial for Food, Medicines, Funeral/ Burial,
+      Materials for Houses, etc.)
+    charterTitleSource: extracted
+    taskTitle: Get emergency financial assistance
+    slug: get-emergency-financial-assistance
+    office:
+      verbatim: Social Welfare and Development Office Crisis Intervention Unit
+      canonical: Municipal Social Welfare and Development Office
+    excluded: null
+    answers: null
+    notes: null
+  - id: municipal-social-welfare-and-development-office#external-2
+    section: external
+    charterTitle: >-
+      Securing a Social Case Study Report/ Home Study Report/ Child Case Study Report with Referral
+      Letter
+    charterTitleSource: extracted
+    taskTitle: Get a social case study report
+    slug: get-a-social-case-study-report
+    office:
+      verbatim: Social Welfare and Development Office
+      canonical: Municipal Social Welfare and Development Office
+    excluded: null
+    answers: null
+    notes: null
+  - id: municipal-social-welfare-and-development-office#external-3
+    section: external
+    charterTitle: Securing Certificate of Indigency
+    charterTitleSource: extracted
+    taskTitle: Get a certificate of indigency
+    slug: get-a-certificate-of-indigency
+    office:
+      verbatim: Social Welfare and Development Office
+      canonical: Municipal Social Welfare and Development Office
+    excluded: null
+    answers: null
+    notes: null
+  - id: municipal-social-welfare-and-development-office#external-4
+    section: external
+    charterTitle: >-
+      Securing Services for Kalipi-Women, Solo Parents, Persons with Disabilities, Out of School
+      Youth and Senior Citizens.
+    charterTitleSource: extracted
+    taskTitle: Get support as a solo parent, senior citizen or person with disability
+    slug: get-support-as-a-solo-parent-senior-citizen-or-person-with-disability
+    office:
+      verbatim: Social Welfare and Development Office
+      canonical: Municipal Social Welfare and Development Office
+    excluded: null
+    answers: null
+    notes: null
+  - id: municipal-social-welfare-and-development-office#external-5
+    section: external
+    charterTitle: >-
+      Securing Assistance/Services for the following: 5.1 Violence against Women and their Children
+      (VAWC)
+    charterTitleSource: read-from-pdf
+    taskTitle: Get help after violence against a woman or child
+    slug: get-help-after-violence-against-a-woman-or-child
+    office:
+      verbatim: City Social Welfare and Development Office
+      canonical: Municipal Social Welfare and Development Office
+    excluded: null
+    answers: null
+    notes: >-
+      The document titles this entry with a colon and lists sub-services beneath it (5.1 VAWC, 5.4
+      release on recognizance). The heading alone is not a title, so it was read from the page.
+  - id: municipal-social-welfare-and-development-office#external-6
+    section: external
+    charterTitle: 'Securing Assistance/Services for the following: 6.1 Children in Conflict with the Law (CICL)'
+    charterTitleSource: read-from-pdf
+    taskTitle: Get help for a child in conflict with the law
+    slug: get-help-for-a-child-in-conflict-with-the-law
+    office:
+      verbatim: Social Welfare and Development Office
+      canonical: Municipal Social Welfare and Development Office
+    excluded: null
+    answers: null
+    notes: >-
+      The document titles this entry with a colon and lists sub-services beneath it (6.1 CICL, 6.2
+      referral to a rehabilitation centre). The heading alone is not a title, so it was read from
+      the page.
+  - id: office-of-the-municipal-agriculture#external-1
+    section: external
+    charterTitle: Rice and Corn Seeds Assistance
+    charterTitleSource: extracted
+    taskTitle: Get rice or corn seeds
+    slug: get-rice-or-corn-seeds
+    office:
+      verbatim: Office of the Municipal Agriculturist
+      canonical: Office of the Municipal Agriculture
+    excluded: null
+    answers: null
+    notes: null
+  - id: office-of-the-municipal-agriculture#external-2
+    section: external
+    charterTitle: Provision of High Value Commercial Crop Assistance
+    charterTitleSource: extracted
+    taskTitle: Get high-value crop planting materials
+    slug: get-high-value-crop-planting-materials
+    office:
+      verbatim: Office of the Municipal Agriculturist
+      canonical: Office of the Municipal Agriculture
+    excluded: null
+    answers: null
+    notes: null
+  - id: office-of-the-municipal-agriculture#external-3
+    section: external
+    charterTitle: Provision of Vaccinations (Anti Rabies)
+    charterTitleSource: extracted
+    taskTitle: Get an animal vaccinated against rabies
+    slug: get-an-animal-vaccinated-against-rabies
+    office:
+      verbatim: Office of the Municipal Agriculturist
+      canonical: Office of the Municipal Agriculture
+    excluded: null
+    answers: null
+    notes: null
+  - id: office-of-the-municipal-agriculture#external-4
+    section: external
+    charterTitle: Provision of Ante Mortem, Post Mortem and Post Abattoir Services
+    charterTitleSource: extracted
+    taskTitle: Have livestock inspected before and after slaughter
+    slug: have-livestock-inspected-before-and-after-slaughter
+    office:
+      verbatim: Office of the Municipal Agriculturist
+      canonical: Office of the Municipal Agriculture
+    excluded: null
+    answers: null
+    notes: null
+  - id: office-of-the-municipal-agriculture#external-5
+    section: external
+    charterTitle: Provision of Artificial Insemination
+    charterTitleSource: extracted
+    taskTitle: Request artificial insemination for livestock
+    slug: request-artificial-insemination-for-livestock
+    office:
+      verbatim: Office of the Municipal Agriculturist
+      canonical: Office of the Municipal Agriculture
+    excluded: null
+    answers: null
+    notes: null
+  - id: office-of-the-municipal-agriculture#external-6
+    section: external
+    charterTitle: Provision of Travel Certificate for Live Animals
+    charterTitleSource: extracted
+    taskTitle: Get a travel certificate for live animals
+    slug: get-a-travel-certificate-for-live-animals
+    office:
+      verbatim: Office of the Municipal Agriculturist
+      canonical: Office of the Municipal Agriculture
+    excluded: null
+    answers: null
+    notes: null
+  - id: office-of-the-municipal-agriculture#external-7
+    section: external
+    charterTitle: Provision of Castration Services
+    charterTitleSource: extracted
+    taskTitle: Have livestock castrated
+    slug: have-livestock-castrated
+    office:
+      verbatim: Office of the Municipal Agriculturist
+      canonical: Office of the Municipal Agriculture
+    excluded: null
+    answers: null
+    notes: null
+  - id: office-of-the-municipal-agriculture#external-8
+    section: external
+    charterTitle: Provision of Vaccinations (Surra Disease)
+    charterTitleSource: extracted
+    taskTitle: Get livestock vaccinated against surra
+    slug: get-livestock-vaccinated-against-surra
+    office:
+      verbatim: Office of the Municipal Agriculturist
+      canonical: Office of the Municipal Agriculture
+    excluded: null
+    answers: null
+    notes: null
+  - id: office-of-the-municipal-agriculture#external-9
+    section: external
+    charterTitle: Rural Based Organization (RBO) Strengthening Program
+    charterTitleSource: extracted
+    taskTitle: Join a rural-based organization program
+    slug: join-a-rural-based-organization-program
+    office:
+      verbatim: Office of the Municipal Agriculturist
+      canonical: Office of the Municipal Agriculture
+    excluded: null
+    answers: null
+    notes: null
+  - id: office-of-the-municipal-agriculture#external-10
+    section: external
+    charterTitle: Provision of Technical Assistance (Pond Preparation and Fish Sampling)
+    charterTitleSource: extracted
+    taskTitle: Get technical help with a fishpond
+    slug: get-technical-help-with-a-fishpond
+    office:
+      verbatim: Office of the Municipal Agriculturist
+      canonical: Office of the Municipal Agriculture
+    excluded: null
+    answers: null
+    notes: null
+  - id: office-of-the-municipal-agriculture#external-11
+    section: external
+    charterTitle: >-
+      Provision of Mass Rabies and Surra Disease Vaccinations, Animal Registration and Mass
+      distribution of Biologics and Vegetables seeds (CVAC Activity)
+    charterTitleSource: extracted
+    taskTitle: Join a mass animal vaccination and registration drive
+    slug: join-a-mass-animal-vaccination-and-registration-drive
+    office:
+      verbatim: Office of the Municipal Agriculturist
+      canonical: Office of the Municipal Agriculture
+    excluded: null
+    answers: null
+    notes: null
+  - id: office-of-the-municipal-assessor-services#external-1
+    section: external
+    charterTitle: Processing of Issuance of Certified True Copy of Tax Declaration
+    charterTitleSource: extracted
+    taskTitle: Get a certified copy of a tax declaration
+    slug: get-a-certified-copy-of-a-tax-declaration
+    office:
+      verbatim: Municipal Assessor's Office
+      canonical: Office of the Municipal Assessor
+    excluded: null
+    answers: null
+    notes: null
+  - id: office-of-the-municipal-assessor-services#external-2
+    section: external
+    charterTitle: Processing for the Issuance of Assessment Certifications
+    charterTitleSource: extracted
+    taskTitle: Get an assessment certification
+    slug: get-an-assessment-certification
+    office:
+      verbatim: Municipal Assessor's Office
+      canonical: Office of the Municipal Assessor
+    excluded: null
+    answers: null
+    notes: null
+  - id: office-of-the-municipal-assessor-services#external-3
+    section: external
+    charterTitle: Processing for Transfer of Ownership of Real Property
+    charterTitleSource: extracted
+    taskTitle: Transfer property ownership on a tax declaration
+    slug: transfer-property-ownership-on-a-tax-declaration
+    office:
+      verbatim: Municipal Assessor's Office
+      canonical: Office of the Municipal Assessor
+    excluded: null
+    answers: null
+    notes: null
+  - id: office-of-the-municipal-assessor-services#external-4
+    section: external
+    charterTitle: PROCESSING OF TAX DECLARATION FOR LAND DECLARED FOR THE 1ST TIME (DECLARED NEW PROPERTIES)
+    charterTitleSource: extracted
+    taskTitle: Declare land for the first time
+    slug: declare-land-for-the-first-time
+    office:
+      verbatim: Municipal Assessor's Office
+      canonical: Office of the Municipal Assessor
+    excluded: null
+    answers: null
+    notes: null
+  - id: office-of-the-municipal-assessor-services#external-5
+    section: external
+    charterTitle: PROCESSING OF TAX DECLARATION FOR RECLASSIFICATION OF LAND FOR TAXATION PURPOSES
+    charterTitleSource: extracted
+    taskTitle: Reclassify land for taxation
+    slug: reclassify-land-for-taxation
+    office:
+      verbatim: Municipal Assessor's Office
+      canonical: Office of the Municipal Assessor
+    excluded: null
+    answers: null
+    notes: null
+  - id: office-of-the-municipal-assessor-services#external-6
+    section: external
+    charterTitle: PROCESSING FOR REVISION/ADJUSTMENT OF TAX DECLARATION
+    charterTitleSource: extracted
+    taskTitle: Correct a tax declaration
+    slug: correct-a-tax-declaration
+    office:
+      verbatim: Municipal Assessor's Office
+      canonical: Office of the Municipal Assessor
+    excluded: null
+    answers: null
+    notes: null
+  - id: office-of-the-municipal-assessor-services#external-7
+    section: external
+    charterTitle: PROCESSING TAX DECLARATION FOR DECLARED NEW BUILDING AND MACHINERY
+    charterTitleSource: extracted
+    taskTitle: Declare a new building or machinery
+    slug: declare-a-new-building-or-machinery
+    office:
+      verbatim: Municipal Assessor's Office
+      canonical: Office of the Municipal Assessor
+    excluded: null
+    answers: null
+    notes: null
+  - id: office-of-the-municipal-assessor-services#external-8
+    section: external
+    charterTitle: PROCESSING FOR CANCELLATION OF TAX DECLARATION
+    charterTitleSource: extracted
+    taskTitle: Cancel a tax declaration
+    slug: cancel-a-tax-declaration
+    office:
+      verbatim: Municipal Assessor's Office
+      canonical: Office of the Municipal Assessor
+    excluded: null
+    answers: null
+    notes: null
+  - id: office-of-the-municipal-budget#external-1
+    section: external
+    charterTitle: Review of Barangay Annual/Supplemental Budget
+    charterTitleSource: extracted
+    taskTitle: Have a barangay budget reviewed
+    slug: have-a-barangay-budget-reviewed
+    office:
+      verbatim: Municipal Budget Office
+      canonical: Office of the Municipal Budget
+    excluded: null
+    answers: null
+    notes: null
+  - id: office-of-the-municipal-budget#internal-1
+    section: internal
+    charterTitle: >-
+      Printing/Preparation of Advise of Allotment for distribution to the Municipal Accounting
+      Office, Concerned Office and Municipal Treasurer’s Office
+    charterTitleSource: extracted
+    taskTitle: null
+    slug: null
+    office:
+      verbatim: Municipal Budget Office
+      canonical: Office of the Municipal Budget
+    excluded: internal — government-to-government
+    answers: null
+    notes: null
+  - id: office-of-the-municipal-budget#internal-2
+    section: internal
+    charterTitle: Preparation of CAFOA as requested by concern office.
+    charterTitleSource: extracted
+    taskTitle: null
+    slug: null
+    office:
+      verbatim: Municipal Budget Office
+      canonical: Office of the Municipal Budget
+    excluded: internal — government-to-government
+    answers: null
+    notes: null
+  - id: office-of-the-municipal-civil-registrar#external-1
+    section: external
+    charterTitle: Registration of births for on-time and delayed report, occurred at home, or in clinic.
+    charterTitleSource: extracted
+    taskTitle: Register a birth
+    slug: register-a-birth
+    office:
+      verbatim: Office of the Local Civil Registrar-Registration Division
+      canonical: Office of the Municipal Civil Registrar
+    excluded: null
+    answers: null
+    notes: null
+  - id: office-of-the-municipal-civil-registrar#external-2
+    section: external
+    charterTitle: >-
+      Registration of Certificate of Marriage (COM) for on-time and delayed report, occurred in
+      Tago, Surigao del Sur.
+    charterTitleSource: extracted
+    taskTitle: Register a marriage
+    slug: register-a-marriage
+    office:
+      verbatim: Office of the Municipal Civil Registrar - Registration Division
+      canonical: Office of the Municipal Civil Registrar
+    excluded: null
+    answers: null
+    notes: null
+  - id: office-of-the-municipal-civil-registrar#external-3
+    section: external
+    charterTitle: >-
+      Registration of Certificate of Death for on-time and delayed report, occurred in Tago, Surigao
+      del Sur.
+    charterTitleSource: extracted
+    taskTitle: Register a death that happened in Tago
+    slug: register-a-death-that-happened-in-tago
+    office:
+      verbatim: OFFICE OF THE MUNICIPAL CIVIL REGISTRAR-REGISTRATION DIVISION
+      canonical: Office of the Municipal Civil Registrar
+    excluded: null
+    answers: register-a-death
+    notes: >-
+      The charter carries two death-registration entries. This one is qualified “occurred in Tago,
+      Surigao del Sur”; the other is not. What separates them is not stated.
+  - id: office-of-the-municipal-civil-registrar#external-4
+    section: external
+    charterTitle: Registration of Certificate of Death
+    charterTitleSource: extracted
+    taskTitle: Register a death
+    slug: register-a-death
+    office:
+      verbatim: OFFICE OF THE MUNICIPAL CIVIL REGISTRAR
+      canonical: Office of the Municipal Civil Registrar
+    excluded: null
+    answers: register-a-death
+    notes: >-
+      The charter carries two death-registration entries. This one has no qualifier; the other is
+      limited to deaths that occurred in Tago. What separates them is not stated.
+  - id: office-of-the-municipal-civil-registrar#external-5
+    section: external
+    charterTitle: Application and Issuance of Marriage License
+    charterTitleSource: extracted
+    taskTitle: Apply for a marriage license
+    slug: apply-for-a-marriage-license
+    office:
+      verbatim: Office of the Municipal Civil Registrar
+      canonical: Office of the Municipal Civil Registrar
+    excluded: null
+    answers: null
+    notes: null
+  - id: office-of-the-municipal-civil-registrar#external-6
+    section: external
+    charterTitle: Request for an Electronic Endorsement of Birth, Death and Marriage Certificate
+    charterTitleSource: extracted
+    taskTitle: Request an electronic endorsement of a civil registry record
+    slug: request-an-electronic-endorsement-of-a-civil-registry-record
+    office:
+      verbatim: Office of the Municipal Civil Registrar - Registration Division
+      canonical: Office of the Municipal Civil Registrar
+    excluded: null
+    answers: electronic-endorsement
+    notes: null
+  - id: office-of-the-municipal-civil-registrar#external-7
+    section: external
+    charterTitle: >-
+      Request for an Electronic Endorsement of Birth, Death and Marriage Certificate and
+      Certifications/Certified
+    charterTitleSource: extracted
+    taskTitle: Request an electronic endorsement with certified copies
+    slug: request-an-electronic-endorsement-with-certified-copies
+    office:
+      verbatim: Office of the City Municipal Civil Registrar - Registration Division
+      canonical: Office of the Municipal Civil Registrar
+    excluded: null
+    answers: electronic-endorsement
+    notes: >-
+      The charter prints this service as number 10, out of sequence and duplicating the number of a
+      later entry. Its printed number is kept verbatim; the id is what identifies it.
+  - id: office-of-the-municipal-civil-registrar#external-8
+    section: external
+    charterTitle: Registration and Annotation of Affidavit of Legitimation (Family Code and RA No. 9858)
+    charterTitleSource: extracted
+    taskTitle: Have a child legitimated after the parents marry
+    slug: have-a-child-legitimated-after-the-parents-marry
+    office:
+      verbatim: Office of the Municipal Civil Registrar - Regulatory Division
+      canonical: Office of the Municipal Civil Registrar
+    excluded: null
+    answers: null
+    notes: null
+  - id: office-of-the-municipal-civil-registrar#external-9
+    section: external
+    charterTitle: Registration and Annotation of Affidavit to Use the Surname of the Father (AUSF) (RA No. 9255)
+    charterTitleSource: extracted
+    taskTitle: Use the father’s surname on a birth record
+    slug: use-the-fathers-surname-on-a-birth-record
+    office:
+      verbatim: Office of the Municipal Civil Registrar-Regulatory Division
+      canonical: Office of the Municipal Civil Registrar
+    excluded: null
+    answers: null
+    notes: null
+  - id: office-of-the-municipal-civil-registrar#external-10
+    section: external
+    charterTitle: >-
+      Annotation of Affidavit of Supplemental Report in the Certificate of Live Birth, Marriage,
+      Death or Fetal Death.
+    charterTitleSource: extracted
+    taskTitle: Add missing details to a civil registry record
+    slug: add-missing-details-to-a-civil-registry-record
+    office:
+      verbatim: Office of the Municipal Civil Registrar - Regulatory Division
+      canonical: Office of the Municipal Civil Registrar
+    excluded: null
+    answers: null
+    notes: null
+  - id: office-of-the-municipal-civil-registrar#external-11
+    section: external
+    charterTitle: Petition for Change of First Name (CFN) (Pursuant to Republic Act No. 9048)
+    charterTitleSource: extracted
+    taskTitle: Change a first name on a civil registry record
+    slug: change-a-first-name-on-a-civil-registry-record
+    office:
+      verbatim: Office of the City Civil Registrar-Regulatory Division
+      canonical: Office of the Municipal Civil Registrar
+    excluded: null
+    answers: null
+    notes: The charter prints number 10 twice. This is the second of them.
+  - id: office-of-the-municipal-civil-registrar#external-12
+    section: external
+    charterTitle: >-
+      Petition for Correction of Clerical Error in the Birth/Marriage/Death Certificate (Pursuant To
+      Republic Act No. 9048)
+    charterTitleSource: extracted
+    taskTitle: Correct a clerical error on a civil registry record
+    slug: correct-a-clerical-error-on-a-civil-registry-record
+    office:
+      verbatim: Office of the Municipal Civil Registrar-Regulatory Division
+      canonical: Office of the Municipal Civil Registrar
+    excluded: null
+    answers: null
+    notes: null
+  - id: office-of-the-municipal-civil-registrar#external-13
+    section: external
+    charterTitle: >-
+      Petition for Correction of Sex/Gender and Birth Date (Day and Month only) (Pursuant to
+      Republic Act No. 10172)
+    charterTitleSource: extracted
+    taskTitle: Correct the sex or birth date on a birth record
+    slug: correct-the-sex-or-birth-date-on-a-birth-record
+    office:
+      verbatim: Office of the Municipal
+      canonical: Office of the Municipal Civil Registrar
+    excluded: null
+    answers: null
+    notes: null
+  - id: office-of-the-municipal-civil-registrar#external-14
+    section: external
+    charterTitle: Request for PSA’s Annotated Birth, Marriage or Death Certificate in Security Paper (SECPA)
+    charterTitleSource: extracted
+    taskTitle: Get a PSA copy of a birth, marriage or death certificate
+    slug: get-a-psa-copy-of-a-birth-marriage-or-death-certificate
+    office:
+      verbatim: Office of the Municipal Civil Registrar - Regulatory Division
+      canonical: Office of the Municipal Civil Registrar
+    excluded: null
+    answers: null
+    notes: null
+  - id: office-of-the-municipal-disaster-risk-reduction-management#external-1
+    section: external
+    charterTitle: Issuance of Disaster Certification for Shelter Assistance
+    charterTitleSource: extracted
+    taskTitle: Get a disaster certification for shelter assistance
+    slug: get-a-disaster-certification-for-shelter-assistance
+    office:
+      verbatim: Municipal Disaster Risk Reduction and Management Office – Admin and Training
+      canonical: Office of the Municipal Disaster Risk Reduction Management
+    excluded: null
+    answers: null
+    notes: null
+  - id: office-of-the-municipal-disaster-risk-reduction-management#external-2
+    section: external
+    charterTitle: Request for Patient Transfer (Outside Tago, Surigao del Sur)
+    charterTitleSource: extracted
+    taskTitle: Request a patient transfer outside Tago
+    slug: request-a-patient-transfer-outside-tago
+    office:
+      verbatim: Municipal Disaster Risk Reduction and Management Office – Administration and Training
+      canonical: Office of the Municipal Disaster Risk Reduction Management
+    excluded: null
+    answers: patient-transfer
+    notes: null
+  - id: office-of-the-municipal-disaster-risk-reduction-management#external-3
+    section: external
+    charterTitle: Request for Water Rationing/Delivery
+    charterTitleSource: extracted
+    taskTitle: Request water delivery
+    slug: request-water-delivery
+    office:
+      verbatim: Municipal Disaster Risk Reduction and Management Office – Admin and Training
+      canonical: Office of the Municipal Disaster Risk Reduction Management
+    excluded: null
+    answers: null
+    notes: null
+  - id: office-of-the-municipal-disaster-risk-reduction-management#external-4
+    section: external
+    charterTitle: Request for DRRM Trainings, Drill, Seminars and Symposiums
+    charterTitleSource: extracted
+    taskTitle: Request a disaster preparedness training
+    slug: request-a-disaster-preparedness-training
+    office:
+      verbatim: Municipal Disaster Risk Reduction and Management Office – Admin and Training
+      canonical: Office of the Municipal Disaster Risk Reduction Management
+    excluded: null
+    answers: null
+    notes: null
+  - id: office-of-the-municipal-disaster-risk-reduction-management#external-5
+    section: external
+    charterTitle: Request for Patient Transfer (Inter-Facility)
+    charterTitleSource: extracted
+    taskTitle: Request a patient transfer between facilities
+    slug: request-a-patient-transfer-between-facilities
+    office:
+      verbatim: Municipal Disaster Risk Reduction and Management Office – Administrative and Training
+      canonical: Office of the Municipal Disaster Risk Reduction Management
+    excluded: null
+    answers: patient-transfer
+    notes: null
+  - id: office-of-the-municipal-engineering-services#external-1
+    section: external
+    charterTitle: >-
+      Processing of the Application for Building Permits and other Ancillary/Accessory Permits
+      pursuant to P.D. 1096, also known as the “National Building Code of the Philippines”
+    charterTitleSource: read-from-pdf
+    taskTitle: Apply for a building permit
+    slug: apply-for-a-building-permit
+    office:
+      verbatim: City Engineer’s Office - Building and Industrial Safety Division
+      canonical: Office of the Municipal Engineering
+    excluded: null
+    answers: null
+    notes: >-
+      The published heading runs onto a second line; the extractor captured it as far as “National
+      Building Code of”. Completed from the archived document.
+  - id: office-of-the-municipal-engineering-services#external-2
+    section: external
+    charterTitle: >-
+      Processing of the Application for Certificate of Occupancy pursuant to P.D. 1096, also known
+      as the “National Building Code of the Philippines”.
+    charterTitleSource: read-from-pdf
+    taskTitle: Get a certificate of occupancy
+    slug: get-a-certificate-of-occupancy
+    office:
+      verbatim: Municipal Engineer’s Office - Building and Industrial Safety Division
+      canonical: Office of the Municipal Engineering
+    excluded: null
+    answers: null
+    notes: >-
+      The published heading runs onto a second line; the extractor captured it as far as “National
+      Building Code of the”. Completed from the archived document.
+  - id: office-of-the-municipal-engineering-services#internal-1
+    section: internal
+    charterTitle: Mandatory submission of Quarterly Report on Government Projects / Programs / Activities
+    charterTitleSource: extracted
+    taskTitle: null
+    slug: null
+    office:
+      verbatim: City Engineering Office
+      canonical: Office of the Municipal Engineering
+    excluded: internal — government-to-government
+    answers: null
+    notes: null
+  - id: office-of-the-municipal-engineering-services#internal-2
+    section: internal
+    charterTitle: Preparation of Program of Works (POW)
+    charterTitleSource: extracted
+    taskTitle: null
+    slug: null
+    office:
+      verbatim: MEO- Planning, Programming, Designing Division
+      canonical: Office of the Municipal Engineering
+    excluded: internal — government-to-government
+    answers: null
+    notes: null
+  - id: office-of-the-municipal-engineering-services#internal-3
+    section: internal
+    charterTitle: >-
+      Preparation of Program of Works (POW), Purchase Request (PR), Detailed Engineering Design
+      (DED)
+    charterTitleSource: extracted
+    taskTitle: null
+    slug: null
+    office:
+      verbatim: Municipal Engineering Office
+      canonical: Office of the Municipal Engineering
+    excluded: internal — government-to-government
+    answers: null
+    notes: null
+  - id: office-of-the-municipal-environment-and-natural-resources-designate-services#external-1
+    section: external
+    charterTitle: Special Waste Disposal Permit
+    charterTitleSource: extracted
+    taskTitle: Get a special waste disposal permit
+    slug: get-a-special-waste-disposal-permit
+    office:
+      verbatim: Municipal ENRO – Solid Waste Management Division
+      canonical: Municipal Environment and Natural Resources Office
+    excluded: null
+    answers: null
+    notes: null
+  - id: office-of-the-municipal-environment-and-natural-resources-designate-services#external-2
+    section: external
+    charterTitle: Recommendation Letter for Tree Cutting Request
+    charterTitleSource: extracted
+    taskTitle: Get a recommendation letter to cut a tree
+    slug: get-a-recommendation-letter-to-cut-a-tree
+    office:
+      verbatim: Municipal ENRO – Extension Services Division (ESD)
+      canonical: Municipal Environment and Natural Resources Office
+    excluded: null
+    answers: null
+    notes: null
+  - id: office-of-the-municipal-nutrition#external-1
+    section: external
+    charterTitle: Issuance of Patient’s Referral
+    charterTitleSource: extracted
+    taskTitle: Get a nutrition referral
+    slug: get-a-nutrition-referral
+    office:
+      verbatim: Municipal Nutrition Office
+      canonical: Office of the Municipal Nutrition
+    excluded: null
+    answers: null
+    notes: null
+  - id: office-of-the-municipal-nutrition#external-2
+    section: external
+    charterTitle: Availment of Nutrition Pack and Micronutrient Supplement and advocacy/ counseling
+    charterTitleSource: extracted
+    taskTitle: Get a nutrition pack or supplements
+    slug: get-a-nutrition-pack-or-supplements
+    office:
+      verbatim: Municipal Nutrition Office
+      canonical: Office of the Municipal Nutrition
+    excluded: null
+    answers: null
+    notes: null
+  - id: office-of-the-municipal-nutrition#internal-1
+    section: internal
+    charterTitle: Issuance of Certificate grant of BNS Eligibility
+    charterTitleSource: extracted
+    taskTitle: null
+    slug: null
+    office:
+      verbatim: Municipal Nutrition Office
+      canonical: Office of the Municipal Nutrition
+    excluded: internal — government-to-government
+    answers: null
+    notes: null
+  - id: office-of-the-municipal-planning-and-development#external-1
+    section: external
+    charterTitle: Issuance of Zoning Certification
+    charterTitleSource: extracted
+    taskTitle: Get a zoning certification
+    slug: get-a-zoning-certification
+    office:
+      verbatim: Municipal Planning and Development Office
+      canonical: Office of the Municipal Planning and Development
+    excluded: null
+    answers: null
+    notes: null
+  - id: office-of-the-municipal-planning-and-development#external-2
+    section: external
+    charterTitle: Issuance of Locational Clearance
+    charterTitleSource: extracted
+    taskTitle: Get a locational clearance
+    slug: get-a-locational-clearance
+    office:
+      verbatim: Municipal Planning and Development Office
+      canonical: Office of the Municipal Planning and Development
+    excluded: null
+    answers: null
+    notes: null
+  - id: office-of-the-municipal-treasurer#internal-1
+    section: internal
+    charterTitle: Issuance of Accountable Forms
+    charterTitleSource: extracted
+    taskTitle: null
+    slug: null
+    office:
+      verbatim: Municipal Treasurer's Office - Administrative Division
+      canonical: Office of the Municipal Treasurer
+    excluded: internal — government-to-government
+    answers: null
+    notes: null
+  - id: office-of-the-sangguniang-bayan-services#external-1
+    section: external
+    charterTitle: Accreditation of Non-Governmental Organizations (NGO’s) and People’s Organization (PO’s)
+    charterTitleSource: read-from-pdf
+    taskTitle: Get an NGO or people’s organization accredited
+    slug: get-an-ngo-or-peoples-organization-accredited
+    office:
+      verbatim: SANGGUNIANG BAYAN
+      canonical: Office of the Sangguniang Bayan
+    excluded: null
+    answers: null
+    notes: >-
+      This document carries no numbered service headings at all. The service name was read from the
+      requirements block of the archived document.
+  - id: office-of-the-sangguniang-bayan-services#internal-1
+    section: internal
+    charterTitle: null
+    charterTitleSource: not-in-layout
+    taskTitle: null
+    slug: null
+    office:
+      verbatim: SANGGUNIANG BAYAN
+      canonical: Office of the Sangguniang Bayan
+    excluded: internal — government-to-government
+    answers: null
+    notes: null
+  - id: office-of-the-sangguniang-bayan-services#internal-2
+    section: internal
+    charterTitle: null
+    charterTitleSource: not-in-layout
+    taskTitle: null
+    slug: null
+    office:
+      verbatim: Office of the Sangguniang Bayan
+      canonical: Office of the Sangguniang Bayan
+    excluded: internal — government-to-government
+    answers: null
+    notes: null
+  - id: office-of-the-sangguniang-bayan-services#internal-3
+    section: internal
+    charterTitle: >-
+      Provision of approved resolutions and ordinances, certifications, and any other related
+      legislative documents
+    charterTitleSource: extracted
+    taskTitle: null
+    slug: null
+    office:
+      verbatim: Office of the Secretary to the Sanggunian – Records Division
+      canonical: Office of the Sangguniang Bayan
+    excluded: internal — government-to-government
+    answers: null
+    notes: null
+  - id: office-of-the-sangguniang-bayan-services#internal-4
+    section: internal
+    charterTitle: Sign the logbook and get the 3. Release the document to the
+    charterTitleSource: extracted
+    taskTitle: null
+    slug: null
+    office:
+      verbatim: Office of the Secretary to the Sanggunian
+      canonical: Office of the Sangguniang Bayan
+    excluded: internal — government-to-government
+    answers: null
+    notes: null
+  - id: office-of-the-vice-mayor#external-1
+    section: external
+    charterTitle: >-
+      Receiving of official documents, communications correspondences, notices, letters, invitations
+      from individuals, private organizations or other government agencies
+    charterTitleSource: read-from-pdf
+    taskTitle: Submit a letter or invitation to the Vice Mayor
+    slug: submit-a-letter-or-invitation-to-the-vice-mayor
+    office:
+      verbatim: Municipal Vice Mayor
+      canonical: Office of the Vice Mayor
+    excluded: null
+    answers: null
+    notes: >-
+      This document carries no numbered service headings at all. The service name was read from the
+      client-steps column of the archived document.
+  - id: office-of-the-vice-mayor#internal-1
+    section: internal
+    charterTitle: null
+    charterTitleSource: not-in-layout
+    taskTitle: null
+    slug: null
+    office:
+      verbatim: Municipal Vice Mayor
+      canonical: Office of the Vice Mayor
+    excluded: internal — government-to-government
+    answers: null
+    notes: null
+  - id: office-of-the-vice-mayor#internal-2
+    section: internal
+    charterTitle: null
+    charterTitleSource: not-in-layout
+    taskTitle: null
+    slug: null
+    office:
+      verbatim: Office of the Vice Mayor
+      canonical: Office of the Vice Mayor
+    excluded: internal — government-to-government
+    answers: null
+    notes: null
+  - id: office-of-the-vice-mayor#internal-3
+    section: internal
+    charterTitle: null
+    charterTitleSource: not-in-layout
+    taskTitle: null
+    slug: null
+    office:
+      verbatim: Office of the Vice Mayor
+      canonical: Office of the Vice Mayor
+    excluded: internal — government-to-government
+    answers: null
+    notes: null
+  - id: office-of-the-vice-mayor#internal-4
+    section: internal
+    charterTitle: null
+    charterTitleSource: not-in-layout
+    taskTitle: null
+    slug: null
+    office:
+      verbatim: Office of the Vice Mayor
+      canonical: Office of the Vice Mayor
+    excluded: internal — government-to-government
+    answers: null
+    notes: null
+  - id: office-of-the-vice-mayor#internal-5
+    section: internal
+    charterTitle: null
+    charterTitleSource: not-in-layout
+    taskTitle: null
+    slug: null
+    office:
+      verbatim: Office of the Vice Mayor
+      canonical: Office of the Vice Mayor
+    excluded: internal — government-to-government
+    answers: null
+    notes: null
+  - id: office-of-the-vice-mayor#internal-6
+    section: internal
+    charterTitle: null
+    charterTitleSource: not-in-layout
+    taskTitle: null
+    slug: null
+    office:
+      verbatim: Office of the Vice Mayor
+      canonical: Office of the Vice Mayor
+    excluded: internal — government-to-government
+    answers: null
+    notes: null
+  - id: public-employment-office-division-external-services#external-1
+    section: external
+    charterTitle: Special Program for Employment of Students (SPES)
+    charterTitleSource: extracted
+    taskTitle: Apply for a student summer job
+    slug: apply-for-a-student-summer-job
+    office:
+      verbatim: PESO
+      canonical: Public Employment Office Division
+    excluded: null
+    answers: null
+    notes: null
+  - id: public-employment-office-division-external-services#external-2
+    section: external
+    charterTitle: Issuance of No Objection Certificate
+    charterTitleSource: extracted
+    taskTitle: Get a no objection certificate
+    slug: get-a-no-objection-certificate
+    office:
+      verbatim: PESO
+      canonical: Public Employment Office Division
+    excluded: null
+    answers: null
+    notes: null
+  - id: public-employment-office-division-external-services#external-3
+    section: external
+    charterTitle: Request for Organization/Association to be registered in DOLE
+    charterTitleSource: extracted
+    taskTitle: Register a workers’ organization with DOLE
+    slug: register-a-workers-organization-with-dole
+    office:
+      verbatim: PEESO- Employment Division
+      canonical: Public Employment Office Division
+    excluded: null
+    answers: null
+    notes: null
+  - id: tourism-external-services#external-1
+    section: external
+    charterTitle: APPLICATION / RENEWAL OF BUSINESS PERMIT (TOURISM ESTABLISHMENT)
+    charterTitleSource: extracted
+    taskTitle: Get or renew a permit for a tourism business
+    slug: get-or-renew-a-permit-for-a-tourism-business
+    office:
+      verbatim: Municipal Tourism Office
+      canonical: Tourism Office
+    excluded: null
+    answers: business-permit
+    notes: null
+  - id: tourism-external-services#external-2
+    section: external
+    charterTitle: DOT ACCREDITATION PROCEDURES
+    charterTitleSource: extracted
+    taskTitle: Apply for DOT accreditation
+    slug: apply-for-dot-accreditation
+    office:
+      verbatim: Municipal Tourism Office
+      canonical: Tourism Office
+    excluded: null
+    answers: null
+    notes: null
+  - id: tourism-external-services#external-3
+    section: external
+    charterTitle: REQUEST FOR TOURISM FRONTLINERS TRAINING
+    charterTitleSource: extracted
+    taskTitle: Request tourism frontliner training
+    slug: request-tourism-frontliner-training
+    office:
+      verbatim: Municipal Tourism Office
+      canonical: Tourism Office
+    excluded: null
+    answers: null
+    notes: null
+glossary:
+  note: >-
+    Recurring terms as the charter writes them, for use INSIDE a page. Counts are occurrences across
+    the external services. This is a glossary of what recurs, not an exhaustive transcription — the
+    full requirement and fee text belongs to the transcription work, not to this vocabulary.
+  documents:
+    - verbatim: Barangay Certificate of Indigency
+      occurrences: 7
+    - verbatim: Certificate of Indigency
+      occurrences: 2
+    - verbatim: Proof of Identification
+      occurrences: 6
+    - verbatim: Official Receipt
+      occurrences: 6
+    - verbatim: Authorization Letter or SPA
+      occurrences: 3
+    - verbatim: Barangay Clearance
+      occurrences: 2
+    - verbatim: Police Clearance
+      occurrences: 2
+    - verbatim: NBI Clearance
+      occurrences: 2
+    - verbatim: Police Report
+      occurrences: 2
+    - verbatim: Community Tax Certificate.
+      occurrences: 2
+      note: The trailing full stop is the document’s.
+    - verbatim: Community Tax or Cedula (xerox copy)
+      occurrences: 2
+    - verbatim: Individual Treatment Record
+      occurrences: 4
+      note: Also printed “Individual treatment Record”.
+    - verbatim: PSA’s Request Form (Certificate of Live Birth)
+      occurrences: 4
+    - verbatim: PSA’s Request Form (Birth/Marriage/Death Certificate)
+      occurrences: 2
+    - verbatim: PSA copy(blurred) or PSA Negative Certification
+      occurrences: 2
+      note: Printed without a space before the bracket.
+    - verbatim: Certificate of Live Birth sought to be corrected
+      occurrences: 3
+    - verbatim: Birth/Marriage/Death Certificate sought to be corrected
+      occurrences: 2
+    - verbatim: Child’s Certificate of Live Birth
+      occurrences: 2
+    - verbatim: Duly accomplished death certificate
+      occurrences: 2
+    - verbatim: Sanitary Permit (original copy)
+      occurrences: 2
+    - verbatim: Realty Tax Clearance (including back taxes)
+      occurrences: 1
+      note: Also printed “Realty Property Tax Clearance (including back taxes)”.
+    - verbatim: Latest Tax Declaration
+      occurrences: 1
+  fees:
+    - verbatim: Application Filling fee
+      note: The charter’s own spelling. Recorded as published — not corrected to “Filing”.
+    - verbatim: Ground Preparation and Excavation Fee
+    - verbatim: 'Fencing Fees:'
+    - verbatim: Plumbing Fee
+    - verbatim: Electronics Fee
+    - verbatim: Accessory Fees
+    - verbatim: Accessories of the Building/Structures Fees
+    - verbatim: Moving Fee, per sq. meter of area of building/structure to be moved
+    - verbatim: Sultadas fee
+    - verbatim: 'Laboratory Fees :'
+      note: Spaced before the colon in the document.
+    - verbatim: JRS/LBC (Private Courier) 250.00 fee to PSA Regional Office
+      note: Also printed “JRS/LBC (Private courier)” and “JRS/LBC private courier”.
+  claimants:
+    - verbatim: Person Principal to the Transaction
+      occurrences: 5
+    - verbatim: Authorized Representative
+      occurrences: 5

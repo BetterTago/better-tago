@@ -26,7 +26,7 @@ import { mkdirSync, writeFileSync } from 'node:fs';
 import path from 'node:path';
 import process from 'node:process';
 import yaml from 'js-yaml';
-import { parseCharter } from './charter-parse.mjs';
+import { parseCharter, withServiceIds } from './charter-parse.mjs';
 
 const ORIGIN = 'https://tago.gov.ph';
 const SITEMAP = `${ORIGIN}/wp-sitemap.xml`;
@@ -452,7 +452,10 @@ async function main() {
       },
     });
 
-    for (const service of parsed) services.push({ document: name, ...service });
+    // The id is stamped here rather than in the parser because it needs the
+    // document's name, which the parser never sees — it is handed text.
+    for (const service of withServiceIds(name, parsed))
+      services.push({ document: name, ...service });
     console.log(`  ${name} — ${parsed.length} services`);
   }
 

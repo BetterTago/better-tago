@@ -40,6 +40,20 @@ pages:
 
 `source`, `verification` and `lastCheckedAt` are **required**. Cite or don't publish.
 
+## The title is not yours to invent
+
+**A page's `name` comes from the frozen task vocabulary, not from the charter and not from your judgement on
+the day.** Look the service up by its `id` in [`../inventory/task-vocabulary.yaml`](../inventory/task-vocabulary.yaml)
+and use the `taskTitle` and `slug` recorded there.
+
+Every page is titled as the **task a resident is trying to do**, never as the office that performs it — _"Renew
+a business permit"_, not _"Processing of Application for Business Permit Renewal"_. Doing that consistently
+across a hundred-odd services is why the vocabulary is agreed once rather than argued per page. The rules are
+in [`../docs/task-titles.md`](../docs/task-titles.md).
+
+The charter's own wording is not discarded — it is kept on the vocabulary entry, and the office name, document
+names and fee names are used **verbatim inside the page**, because that is what the counter will ask for.
+
 ## A service guide answers eight questions
 
 That shape is not invented — it is the shape of a Citizen's Charter entry, which is why the charter is the
@@ -80,7 +94,8 @@ was opened.
 5. **A second person checks the page against the source before it ships**, and never the person who
    transcribed it.
 6. Where the source is silent on a field — office hours, most often — the field says _not stated in the
-   charter_. That is a request to make, not a blank to fill.
+   charter_. That is a **recorded gap**, not a blank to fill: it goes into the gap register and renders as an
+   absence. Never complete it from a neighbouring municipality, an older document, or what seems likely.
 
 ## No named people here — with one exception, which is this folder
 

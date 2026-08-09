@@ -15,6 +15,7 @@ gapsInExternalServices:
 titlesNeedingManualEntry: 11
 services:
   - document: Business-Licensing-and-Permitting-Division-External-Services.pdf
+    id: business-licensing-and-permitting-division-external-services#external-1
     section: external
     number: 1
     title: Motorized Tricycle Operator’s Permit (MTOP) Payment of Annual Regulatory Fees for New/Renewal
@@ -29,6 +30,7 @@ services:
       owningOffice: present
       output: absent
   - document: Business-Licensing-and-Permitting-Division-External-Services.pdf
+    id: business-licensing-and-permitting-division-external-services#external-2
     section: external
     number: 2
     title: >-
@@ -45,6 +47,7 @@ services:
       owningOffice: present
       output: absent
   - document: Business-Licensing-and-Permitting-Division-External-Services.pdf
+    id: business-licensing-and-permitting-division-external-services#external-3
     section: external
     number: 3
     title: Processing of Application for Business Permit Renewal
@@ -59,6 +62,7 @@ services:
       owningOffice: present
       output: absent
   - document: Business-Licensing-and-Permitting-Division-External-Services.pdf
+    id: business-licensing-and-permitting-division-external-services#external-4
     section: external
     number: 4
     title: Processing of Application for Business Retirement
@@ -73,6 +77,7 @@ services:
       owningOffice: present
       output: absent
   - document: Executive-Division-External-Services.pdf
+    id: executive-division-external-services#external-1
     section: external
     number: 1
     title: Mayor’s Certificate for the Church Existence
@@ -87,6 +92,7 @@ services:
       owningOffice: present
       output: absent
   - document: Executive-Division-External-Services.pdf
+    id: executive-division-external-services#external-2
     section: external
     number: 2
     title: Service fee for the Office of the Mayor
@@ -101,6 +107,7 @@ services:
       owningOffice: present
       output: absent
   - document: Executive-Division-External-Services.pdf
+    id: executive-division-external-services#external-3
     section: external
     number: 3
     title: Mayor’s Special Permit for Concert, Stage Performances and Other Amusement Activities
@@ -115,6 +122,7 @@ services:
       owningOffice: present
       output: absent
   - document: Executive-Division-External-Services.pdf
+    id: executive-division-external-services#external-4
     section: external
     number: 4
     title: Mayor’s Permit on Business
@@ -129,6 +137,7 @@ services:
       owningOffice: present
       output: absent
   - document: Executive-Division-External-Services.pdf
+    id: executive-division-external-services#external-5
     section: external
     number: 5
     title: Mayor’s Permit Fee for Cockpits Owners/Operators/Licensees/Promoters and Cockpit Personnel
@@ -143,6 +152,7 @@ services:
       owningOffice: present
       output: absent
   - document: Executive-Division-External-Services.pdf
+    id: executive-division-external-services#external-6
     section: external
     number: 6
     title: Mayor’s Special Permit for Cockfighting
@@ -157,6 +167,7 @@ services:
       owningOffice: present
       output: absent
   - document: Gender-and-Development-Division-External-Services.pdf
+    id: gender-and-development-division-external-services#external-1
     section: external
     number: 1
     title: Payroll of Honorarium of Women President’s
@@ -171,6 +182,7 @@ services:
       owningOffice: present
       output: absent
   - document: Human-Resource-Management-Division-External-Services.pdf
+    id: human-resource-management-division-external-services#external-1
     section: external
     number: 1
     title: Issuance of Clearance Certifications
@@ -185,6 +197,7 @@ services:
       owningOffice: present
       output: absent
   - document: Human-Resource-Management-Division-External-Services.pdf
+    id: human-resource-management-division-external-services#external-2
     section: external
     number: 2
     title: Issuance of Certificate of Employment & Others
@@ -199,6 +212,7 @@ services:
       owningOffice: present
       output: absent
   - document: Human-Resource-Management-Division-External-Services.pdf
+    id: human-resource-management-division-external-services#external-3
     section: external
     number: 3
     title: Issuance of Service Record
@@ -213,6 +227,7 @@ services:
       owningOffice: present
       output: absent
   - document: Human-Resource-Management-Division-External-Services.pdf
+    id: human-resource-management-division-external-services#external-4
     section: external
     number: 4
     title: Accepting Job Applications
@@ -227,6 +242,7 @@ services:
       owningOffice: present
       output: absent
   - document: Human-Resource-Management-Division-External-Services.pdf
+    id: human-resource-management-division-external-services#external-5
     section: external
     number: 5
     title: Issuance of Appointment
@@ -241,6 +257,7 @@ services:
       owningOffice: present
       output: absent
   - document: Human-Resource-Management-Division-Internal-Services.pdf
+    id: human-resource-management-division-internal-services#internal-1
     section: internal
     number: 1
     title: Processing of Study Leave Application
@@ -255,6 +272,7 @@ services:
       owningOffice: present
       output: absent
   - document: Human-Resource-Management-Division-Internal-Services.pdf
+    id: human-resource-management-division-internal-services#internal-2
     section: internal
     number: 2
     title: Payroll Certification for Loan Application with Pag-Ibig
@@ -269,6 +287,7 @@ services:
       owningOffice: present
       output: absent
   - document: Human-Resource-Management-Division-Internal-Services.pdf
+    id: human-resource-management-division-internal-services#internal-3
     section: internal
     number: 3
     title: Employment and Net Take Home Pay Certification for Loan Applications with Land Bank
@@ -283,6 +302,7 @@ services:
       owningOffice: present
       output: absent
   - document: Human-Resource-Management-Division-Internal-Services.pdf
+    id: human-resource-management-division-internal-services#internal-4
     section: internal
     number: 4
     title: Payroll Certification for Loan Applications with DBP
@@ -297,6 +317,7 @@ services:
       owningOffice: present
       output: absent
   - document: Human-Resource-Management-Division-Internal-Services.pdf
+    id: human-resource-management-division-internal-services#internal-5
     section: internal
     number: 5
     title: Issuance of Authority to Travel Abroad
@@ -311,6 +332,7 @@ services:
       owningOffice: present
       output: absent
   - document: Human-Resource-Management-Division-Internal-Services.pdf
+    id: human-resource-management-division-internal-services#internal-6
     section: internal
     number: 6
     title: Approval of GSIS Loans
@@ -325,6 +347,7 @@ services:
       owningOffice: present
       output: absent
   - document: Human-Resource-Management-Division-Internal-Services.pdf
+    id: human-resource-management-division-internal-services#internal-7
     section: internal
     number: 7
     title: Computation for the Monetization
@@ -339,6 +362,7 @@ services:
       owningOffice: present
       output: absent
   - document: Human-Resource-Management-Division-Internal-Services.pdf
+    id: human-resource-management-division-internal-services#internal-8
     section: internal
     number: 8
     title: Application of Compensatory Overtime Credit
@@ -353,6 +377,7 @@ services:
       owningOffice: present
       output: absent
   - document: Human-Resource-Management-Division-Internal-Services.pdf
+    id: human-resource-management-division-internal-services#internal-9
     section: internal
     number: 9
     title: Application for Compensatory Time-Off (CTO)
@@ -367,6 +392,7 @@ services:
       owningOffice: present
       output: absent
   - document: Human-Resource-Management-Division-Internal-Services.pdf
+    id: human-resource-management-division-internal-services#internal-10
     section: internal
     number: 10
     title: Application of Leave of Absence
@@ -381,6 +407,7 @@ services:
       owningOffice: present
       output: absent
   - document: Human-Resource-Management-Division-Internal-Services.pdf
+    id: human-resource-management-division-internal-services#internal-11
     section: internal
     number: 11
     title: Issuance of Appointment
@@ -395,6 +422,7 @@ services:
       owningOffice: present
       output: absent
   - document: Human-Resource-Management-Division-Internal-Services.pdf
+    id: human-resource-management-division-internal-services#internal-12
     section: internal
     number: 12
     title: Processing of the terminal leave pay of the deceased LGU – Tago Official or Employee
@@ -409,6 +437,7 @@ services:
       owningOffice: present
       output: absent
   - document: Human-Resource-Management-Division-Internal-Services.pdf
+    id: human-resource-management-division-internal-services#internal-13
     section: internal
     number: 13
     title: Application for the Claim of Terminal Leave Pay
@@ -423,6 +452,7 @@ services:
       owningOffice: present
       output: absent
   - document: Municipal-Accounting-Office.pdf
+    id: municipal-accounting-office#external-1
     section: external
     number: 1
     title: Issuance of Certificate of No Claim
@@ -437,6 +467,7 @@ services:
       owningOffice: present
       output: absent
   - document: Municipal-Accounting-Office.pdf
+    id: municipal-accounting-office#internal-1
     section: internal
     number: 1
     title: Receiving of Documents
@@ -451,6 +482,7 @@ services:
       owningOffice: present
       output: absent
   - document: Municipal-Accounting-Office.pdf
+    id: municipal-accounting-office#internal-2
     section: internal
     number: 2
     title: Receipt, Checking and Recording of Financial Documents
@@ -465,6 +497,7 @@ services:
       owningOffice: present
       output: absent
   - document: Municipal-Accounting-Office.pdf
+    id: municipal-accounting-office#internal-3
     section: internal
     number: 3
     title: Receiving, Checking and Recording of Barangay Financial Documents
@@ -479,6 +512,7 @@ services:
       owningOffice: present
       output: absent
   - document: Municipal-Accounting-Office.pdf
+    id: municipal-accounting-office#internal-4
     section: internal
     number: 4
     title: >-
@@ -495,6 +529,7 @@ services:
       owningOffice: present
       output: absent
   - document: Municipal-Accounting-Office.pdf
+    id: municipal-accounting-office#internal-5
     section: internal
     number: 5
     title: Pre-Audit and Processing of Disbursement Voucher of Cash Advance for Petty Cash Fund
@@ -509,6 +544,7 @@ services:
       owningOffice: present
       output: absent
   - document: Municipal-Accounting-Office.pdf
+    id: municipal-accounting-office#internal-6
     section: internal
     number: null
     title: null
@@ -523,6 +559,7 @@ services:
       owningOffice: present
       output: absent
   - document: Municipal-Accounting-Office.pdf
+    id: municipal-accounting-office#internal-7
     section: internal
     number: 7
     title: Pre-Audit and Processing of Disbursement Voucher of Cash Advance for Special Purpose
@@ -537,6 +574,7 @@ services:
       owningOffice: present
       output: absent
   - document: Municipal-Accounting-Office.pdf
+    id: municipal-accounting-office#internal-8
     section: internal
     number: 8
     title: >-
@@ -553,6 +591,7 @@ services:
       owningOffice: present
       output: absent
   - document: Municipal-Accounting-Office.pdf
+    id: municipal-accounting-office#internal-9
     section: internal
     number: 9
     title: Pre-Audit and Processing of Liquidation/ Replenishment of Petty Cash Fund
@@ -567,6 +606,7 @@ services:
       owningOffice: present
       output: absent
   - document: Municipal-Accounting-Office.pdf
+    id: municipal-accounting-office#internal-10
     section: internal
     number: 10
     title: Pre-Audit and Processing of Liquidation of Cash Advance for Local Travel
@@ -581,6 +621,7 @@ services:
       owningOffice: present
       output: absent
   - document: Municipal-Accounting-Office.pdf
+    id: municipal-accounting-office#internal-11
     section: internal
     number: 11
     title: Pre-Audit and Processing of Liquidation of Cash Advance for Special Purpose
@@ -595,6 +636,7 @@ services:
       owningOffice: present
       output: absent
   - document: Municipal-Accounting-Office.pdf
+    id: municipal-accounting-office#internal-12
     section: internal
     number: 12
     title: Pre-Audit and Processing of Disbursement Voucher of Fund Transfers to Component Barangays
@@ -609,6 +651,7 @@ services:
       owningOffice: present
       output: absent
   - document: Municipal-Accounting-Office.pdf
+    id: municipal-accounting-office#internal-13
     section: internal
     number: 13
     title: Pre-Audit and Processing of Disbursement Voucher of Individual Claims for First Salary
@@ -623,6 +666,7 @@ services:
       owningOffice: present
       output: absent
   - document: Municipal-Accounting-Office.pdf
+    id: municipal-accounting-office#internal-14
     section: internal
     number: 14
     title: >-
@@ -639,6 +683,7 @@ services:
       owningOffice: present
       output: absent
   - document: Municipal-Accounting-Office.pdf
+    id: municipal-accounting-office#internal-15
     section: internal
     number: 15
     title: Pre-Audit and Processing of Disbursement Voucher of Last Salary
@@ -653,6 +698,7 @@ services:
       owningOffice: present
       output: absent
   - document: Municipal-Accounting-Office.pdf
+    id: municipal-accounting-office#internal-16
     section: internal
     number: 16
     title: Pre-Audit and Processing of Disbursement Voucher of Salary due to Heirs of Deceased Employee
@@ -667,6 +713,7 @@ services:
       owningOffice: present
       output: absent
   - document: Municipal-Accounting-Office.pdf
+    id: municipal-accounting-office#internal-17
     section: internal
     number: 17
     title: Pre-Audit and Processing of Disbursement Voucher of RATA (Individual Claim)
@@ -681,6 +728,7 @@ services:
       owningOffice: present
       output: absent
   - document: Municipal-Accounting-Office.pdf
+    id: municipal-accounting-office#internal-18
     section: internal
     number: 18
     title: Pre-Audit and Processing of Disbursement Voucher of Clothing Allowance (Individual Claim)
@@ -695,6 +743,7 @@ services:
       owningOffice: present
       output: absent
   - document: Municipal-Accounting-Office.pdf
+    id: municipal-accounting-office#internal-19
     section: internal
     number: 19
     title: >-
@@ -711,6 +760,7 @@ services:
       owningOffice: present
       output: absent
   - document: Municipal-Accounting-Office.pdf
+    id: municipal-accounting-office#internal-20
     section: internal
     number: 20
     title: Pre-Audit and Processing of Payroll of Honoraria to Lecturer/Coordinator
@@ -725,6 +775,7 @@ services:
       owningOffice: present
       output: absent
   - document: Municipal-Accounting-Office.pdf
+    id: municipal-accounting-office#internal-21
     section: internal
     number: 21
     title: Pre-Audit and Processing of Payroll of Overtime Pay
@@ -739,6 +790,7 @@ services:
       owningOffice: present
       output: absent
   - document: Municipal-Accounting-Office.pdf
+    id: municipal-accounting-office#internal-22
     section: internal
     number: 22
     title: Pre-Audit and Processing of Disbursement Voucher of Terminal Leave Benefits
@@ -753,6 +805,7 @@ services:
       owningOffice: present
       output: absent
   - document: Municipal-Accounting-Office.pdf
+    id: municipal-accounting-office#internal-23
     section: internal
     number: 23
     title: Pre-Audit and Processing of Disbursement Voucher of Monetization
@@ -767,6 +820,7 @@ services:
       owningOffice: present
       output: absent
   - document: Municipal-Accounting-Office.pdf
+    id: municipal-accounting-office#internal-24
     section: internal
     number: 24
     title: >-
@@ -783,6 +837,7 @@ services:
       owningOffice: present
       output: absent
   - document: Municipal-Accounting-Office.pdf
+    id: municipal-accounting-office#internal-25
     section: internal
     number: 25
     title: >-
@@ -799,6 +854,7 @@ services:
       owningOffice: present
       output: absent
   - document: Municipal-Accounting-Office.pdf
+    id: municipal-accounting-office#internal-26
     section: internal
     number: 26
     title: Pre-Audit and Processing of Disbursement Voucher of Infrastructure Projects-Progress Billing
@@ -813,6 +869,7 @@ services:
       owningOffice: present
       output: absent
   - document: Municipal-Accounting-Office.pdf
+    id: municipal-accounting-office#internal-27
     section: internal
     number: 27
     title: Pre-Audit and Processing of Disbursement Voucher of Infrastructure Projects-Final Billing
@@ -827,6 +884,7 @@ services:
       owningOffice: present
       output: absent
   - document: Municipal-Accounting-Office.pdf
+    id: municipal-accounting-office#internal-28
     section: internal
     number: 28
     title: >-
@@ -843,6 +901,7 @@ services:
       owningOffice: present
       output: absent
   - document: Municipal-Accounting-Office.pdf
+    id: municipal-accounting-office#internal-29
     section: internal
     number: 29
     title: >-
@@ -859,6 +918,7 @@ services:
       owningOffice: present
       output: absent
   - document: Municipal-Accounting-Office.pdf
+    id: municipal-accounting-office#internal-30
     section: internal
     number: 30
     title: Pre-Audit and Processing of Disbursement Voucher of Goods through Public Bidding
@@ -873,6 +933,7 @@ services:
       owningOffice: present
       output: absent
   - document: Municipal-Accounting-Office.pdf
+    id: municipal-accounting-office#internal-31
     section: internal
     number: 31
     title: >-
@@ -889,6 +950,7 @@ services:
       owningOffice: present
       output: absent
   - document: Municipal-Accounting-Office.pdf
+    id: municipal-accounting-office#internal-32
     section: internal
     number: 32
     title: >-
@@ -905,6 +967,7 @@ services:
       owningOffice: present
       output: absent
   - document: Municipal-Accounting-Office.pdf
+    id: municipal-accounting-office#internal-33
     section: internal
     number: 33
     title: >-
@@ -921,6 +984,7 @@ services:
       owningOffice: present
       output: absent
   - document: Municipal-Accounting-Office.pdf
+    id: municipal-accounting-office#internal-34
     section: internal
     number: 34
     title: >-
@@ -937,6 +1001,7 @@ services:
       owningOffice: present
       output: absent
   - document: Municipal-Accounting-Office.pdf
+    id: municipal-accounting-office#internal-35
     section: internal
     number: 35
     title: >-
@@ -953,6 +1018,7 @@ services:
       owningOffice: present
       output: absent
   - document: Municipal-Accounting-Office.pdf
+    id: municipal-accounting-office#internal-36
     section: internal
     number: 36
     title: >-
@@ -969,6 +1035,7 @@ services:
       owningOffice: present
       output: absent
   - document: Municipal-Accounting-Office.pdf
+    id: municipal-accounting-office#internal-37
     section: internal
     number: 37
     title: >-
@@ -985,6 +1052,7 @@ services:
       owningOffice: present
       output: absent
   - document: Municipal-Accounting-Office.pdf
+    id: municipal-accounting-office#internal-38
     section: internal
     number: 38
     title: >-
@@ -1001,6 +1069,7 @@ services:
       owningOffice: present
       output: absent
   - document: Municipal-Health-Office.pdf
+    id: municipal-health-office#external-1
     section: external
     number: 1
     title: General Consultation and Treatment Services
@@ -1015,6 +1084,7 @@ services:
       owningOffice: present
       output: absent
   - document: Municipal-Health-Office.pdf
+    id: municipal-health-office#external-2
     section: external
     number: 2
     title: Certification of the Cause of Death (Medico-Legal Cases)
@@ -1029,6 +1099,7 @@ services:
       owningOffice: present
       output: absent
   - document: Municipal-Health-Office.pdf
+    id: municipal-health-office#external-3
     section: external
     number: 3
     title: Review of Death Certificate
@@ -1043,6 +1114,7 @@ services:
       owningOffice: present
       output: absent
   - document: Municipal-Health-Office.pdf
+    id: municipal-health-office#external-4
     section: external
     number: 4
     title: Ante-Partum Dental Check Up
@@ -1057,6 +1129,7 @@ services:
       owningOffice: present
       output: absent
   - document: Municipal-Health-Office.pdf
+    id: municipal-health-office#external-5
     section: external
     number: 5
     title: Oral Examination/ Consultation & Tooth Extraction
@@ -1071,6 +1144,7 @@ services:
       owningOffice: present
       output: absent
   - document: Municipal-Health-Office.pdf
+    id: municipal-health-office#external-6
     section: external
     number: 6
     title: Family Planning and Counseling
@@ -1085,6 +1159,7 @@ services:
       owningOffice: present
       output: absent
   - document: Municipal-Health-Office.pdf
+    id: municipal-health-office#external-7
     section: external
     number: 7
     title: HIV Testing Services
@@ -1099,6 +1174,7 @@ services:
       owningOffice: present
       output: absent
   - document: Municipal-Health-Office.pdf
+    id: municipal-health-office#external-8
     section: external
     number: 8
     title: Immunization for Children
@@ -1113,6 +1189,7 @@ services:
       owningOffice: present
       output: absent
   - document: Municipal-Health-Office.pdf
+    id: municipal-health-office#external-9
     section: external
     number: 9
     title: Municipality Health Office Clinical Laboratory
@@ -1127,6 +1204,7 @@ services:
       owningOffice: present
       output: absent
   - document: Municipal-Health-Office.pdf
+    id: municipal-health-office#external-10
     section: external
     number: 10
     title: Issuance of Medical Certificate
@@ -1141,6 +1219,7 @@ services:
       owningOffice: present
       output: absent
   - document: Municipal-Health-Office.pdf
+    id: municipal-health-office#external-11
     section: external
     number: 11
     title: Issuance of Medical Certificate (Medico-Legal Cases)
@@ -1155,6 +1234,7 @@ services:
       owningOffice: present
       output: absent
   - document: Municipal-Health-Office.pdf
+    id: municipal-health-office#external-12
     section: external
     number: 12
     title: Availing of Medication
@@ -1169,6 +1249,7 @@ services:
       owningOffice: present
       output: absent
   - document: Municipal-Health-Office.pdf
+    id: municipal-health-office#external-13
     section: external
     number: 13
     title: Pre-Marriage Counseling
@@ -1183,6 +1264,7 @@ services:
       owningOffice: present
       output: absent
   - document: Municipal-Health-Office.pdf
+    id: municipal-health-office#external-14
     section: external
     number: 14
     title: Prenatal Care
@@ -1197,6 +1279,7 @@ services:
       owningOffice: present
       output: absent
   - document: Municipal-Health-Office.pdf
+    id: municipal-health-office#external-15
     section: external
     number: 15
     title: Issuance of Health Certificate
@@ -1211,6 +1294,7 @@ services:
       owningOffice: present
       output: absent
   - document: Municipal-Health-Office.pdf
+    id: municipal-health-office#external-16
     section: external
     number: 16
     title: Issuance of Sanitary Permit
@@ -1225,6 +1309,7 @@ services:
       owningOffice: present
       output: absent
   - document: Municipal-Health-Office.pdf
+    id: municipal-health-office#external-17
     section: external
     number: 17
     title: Issuance of Exhumation Permit
@@ -1239,6 +1324,7 @@ services:
       owningOffice: present
       output: absent
   - document: Municipal-Health-Office.pdf
+    id: municipal-health-office#external-18
     section: external
     number: 18
     title: Issuance of Transfer Permit of Cadaver
@@ -1253,6 +1339,7 @@ services:
       owningOffice: present
       output: absent
   - document: Municipal-Health-Office.pdf
+    id: municipal-health-office#external-19
     section: external
     number: 19
     title: Social Hygiene Clinic
@@ -1267,6 +1354,7 @@ services:
       owningOffice: present
       output: absent
   - document: Municipal-Health-Office.pdf
+    id: municipal-health-office#external-20
     section: external
     number: 20
     title: Treatment Services for Tuberculosis (TB) Patients
@@ -1281,6 +1369,7 @@ services:
       owningOffice: present
       output: absent
   - document: Municipal-Health-Office.pdf
+    id: municipal-health-office#external-21
     section: external
     number: 21
     title: Smoking Cessation Counseling
@@ -1295,6 +1384,7 @@ services:
       owningOffice: present
       output: absent
   - document: Municipal-Social-Welfare-and-Development-Office.pdf
+    id: municipal-social-welfare-and-development-office#external-1
     section: external
     number: 1
     title: >-
@@ -1311,6 +1401,7 @@ services:
       owningOffice: present
       output: absent
   - document: Municipal-Social-Welfare-and-Development-Office.pdf
+    id: municipal-social-welfare-and-development-office#external-2
     section: external
     number: 2
     title: >-
@@ -1327,6 +1418,7 @@ services:
       owningOffice: present
       output: absent
   - document: Municipal-Social-Welfare-and-Development-Office.pdf
+    id: municipal-social-welfare-and-development-office#external-3
     section: external
     number: 3
     title: Securing Certificate of Indigency
@@ -1341,6 +1433,7 @@ services:
       owningOffice: present
       output: absent
   - document: Municipal-Social-Welfare-and-Development-Office.pdf
+    id: municipal-social-welfare-and-development-office#external-4
     section: external
     number: 4
     title: >-
@@ -1357,6 +1450,7 @@ services:
       owningOffice: present
       output: absent
   - document: Municipal-Social-Welfare-and-Development-Office.pdf
+    id: municipal-social-welfare-and-development-office#external-5
     section: external
     number: 5
     title: "Securing Assistance/Services for the following:"
@@ -1371,6 +1465,7 @@ services:
       owningOffice: present
       output: absent
   - document: Municipal-Social-Welfare-and-Development-Office.pdf
+    id: municipal-social-welfare-and-development-office#external-6
     section: external
     number: 6
     title: "Securing Assistance/Services for the following:"
@@ -1385,6 +1480,7 @@ services:
       owningOffice: present
       output: absent
   - document: Office-of-the-Municipal-Agriculture.pdf
+    id: office-of-the-municipal-agriculture#external-1
     section: external
     number: 1
     title: Rice and Corn Seeds Assistance
@@ -1399,6 +1495,7 @@ services:
       owningOffice: present
       output: absent
   - document: Office-of-the-Municipal-Agriculture.pdf
+    id: office-of-the-municipal-agriculture#external-2
     section: external
     number: 2
     title: Provision of High Value Commercial Crop Assistance
@@ -1413,6 +1510,7 @@ services:
       owningOffice: present
       output: absent
   - document: Office-of-the-Municipal-Agriculture.pdf
+    id: office-of-the-municipal-agriculture#external-3
     section: external
     number: 3
     title: Provision of Vaccinations (Anti Rabies)
@@ -1427,6 +1525,7 @@ services:
       owningOffice: present
       output: absent
   - document: Office-of-the-Municipal-Agriculture.pdf
+    id: office-of-the-municipal-agriculture#external-4
     section: external
     number: 4
     title: Provision of Ante Mortem, Post Mortem and Post Abattoir Services
@@ -1441,6 +1540,7 @@ services:
       owningOffice: present
       output: absent
   - document: Office-of-the-Municipal-Agriculture.pdf
+    id: office-of-the-municipal-agriculture#external-5
     section: external
     number: 5
     title: Provision of Artificial Insemination
@@ -1455,6 +1555,7 @@ services:
       owningOffice: present
       output: absent
   - document: Office-of-the-Municipal-Agriculture.pdf
+    id: office-of-the-municipal-agriculture#external-6
     section: external
     number: 6
     title: Provision of Travel Certificate for Live Animals
@@ -1469,6 +1570,7 @@ services:
       owningOffice: present
       output: absent
   - document: Office-of-the-Municipal-Agriculture.pdf
+    id: office-of-the-municipal-agriculture#external-7
     section: external
     number: 7
     title: Provision of Castration Services
@@ -1483,6 +1585,7 @@ services:
       owningOffice: present
       output: absent
   - document: Office-of-the-Municipal-Agriculture.pdf
+    id: office-of-the-municipal-agriculture#external-8
     section: external
     number: 8
     title: Provision of Vaccinations (Surra Disease)
@@ -1497,6 +1600,7 @@ services:
       owningOffice: present
       output: absent
   - document: Office-of-the-Municipal-Agriculture.pdf
+    id: office-of-the-municipal-agriculture#external-9
     section: external
     number: 9
     title: Rural Based Organization (RBO) Strengthening Program
@@ -1511,6 +1615,7 @@ services:
       owningOffice: present
       output: absent
   - document: Office-of-the-Municipal-Agriculture.pdf
+    id: office-of-the-municipal-agriculture#external-10
     section: external
     number: 10
     title: Provision of Technical Assistance (Pond Preparation and Fish Sampling)
@@ -1525,6 +1630,7 @@ services:
       owningOffice: present
       output: absent
   - document: Office-of-the-Municipal-Agriculture.pdf
+    id: office-of-the-municipal-agriculture#external-11
     section: external
     number: 11
     title: >-
@@ -1541,6 +1647,7 @@ services:
       owningOffice: present
       output: absent
   - document: Office-of-the-Municipal-Assessor-Services.pdf
+    id: office-of-the-municipal-assessor-services#external-1
     section: external
     number: 1
     title: Processing of Issuance of Certified True Copy of Tax Declaration
@@ -1555,6 +1662,7 @@ services:
       owningOffice: present
       output: absent
   - document: Office-of-the-Municipal-Assessor-Services.pdf
+    id: office-of-the-municipal-assessor-services#external-2
     section: external
     number: 2
     title: Processing for the Issuance of Assessment Certifications
@@ -1569,6 +1677,7 @@ services:
       owningOffice: present
       output: absent
   - document: Office-of-the-Municipal-Assessor-Services.pdf
+    id: office-of-the-municipal-assessor-services#external-3
     section: external
     number: 3
     title: Processing for Transfer of Ownership of Real Property
@@ -1583,6 +1692,7 @@ services:
       owningOffice: present
       output: absent
   - document: Office-of-the-Municipal-Assessor-Services.pdf
+    id: office-of-the-municipal-assessor-services#external-4
     section: external
     number: 4
     title: PROCESSING OF TAX DECLARATION FOR LAND DECLARED FOR THE 1ST TIME (DECLARED NEW PROPERTIES)
@@ -1597,6 +1707,7 @@ services:
       owningOffice: present
       output: absent
   - document: Office-of-the-Municipal-Assessor-Services.pdf
+    id: office-of-the-municipal-assessor-services#external-5
     section: external
     number: 5
     title: PROCESSING OF TAX DECLARATION FOR RECLASSIFICATION OF LAND FOR TAXATION PURPOSES
@@ -1611,6 +1722,7 @@ services:
       owningOffice: present
       output: absent
   - document: Office-of-the-Municipal-Assessor-Services.pdf
+    id: office-of-the-municipal-assessor-services#external-6
     section: external
     number: 6
     title: PROCESSING FOR REVISION/ADJUSTMENT OF TAX DECLARATION
@@ -1625,6 +1737,7 @@ services:
       owningOffice: present
       output: absent
   - document: Office-of-the-Municipal-Assessor-Services.pdf
+    id: office-of-the-municipal-assessor-services#external-7
     section: external
     number: 7
     title: PROCESSING TAX DECLARATION FOR DECLARED NEW BUILDING AND MACHINERY
@@ -1639,6 +1752,7 @@ services:
       owningOffice: present
       output: absent
   - document: Office-of-the-Municipal-Assessor-Services.pdf
+    id: office-of-the-municipal-assessor-services#external-8
     section: external
     number: 8
     title: PROCESSING FOR CANCELLATION OF TAX DECLARATION
@@ -1653,6 +1767,7 @@ services:
       owningOffice: present
       output: absent
   - document: Office-of-the-Municipal-Budget.pdf
+    id: office-of-the-municipal-budget#external-1
     section: external
     number: 1
     title: Review of Barangay Annual/Supplemental Budget
@@ -1667,6 +1782,7 @@ services:
       owningOffice: present
       output: absent
   - document: Office-of-the-Municipal-Budget.pdf
+    id: office-of-the-municipal-budget#internal-1
     section: internal
     number: 1
     title: >-
@@ -1683,6 +1799,7 @@ services:
       owningOffice: present
       output: absent
   - document: Office-of-the-Municipal-Budget.pdf
+    id: office-of-the-municipal-budget#internal-2
     section: internal
     number: 2
     title: Preparation of CAFOA as requested by concern office.
@@ -1697,6 +1814,7 @@ services:
       owningOffice: present
       output: absent
   - document: Office-of-the-Municipal-Civil-Registrar.pdf
+    id: office-of-the-municipal-civil-registrar#external-1
     section: external
     number: 1
     title: Registration of births for on-time and delayed report, occurred at home, or in clinic.
@@ -1711,6 +1829,7 @@ services:
       owningOffice: present
       output: absent
   - document: Office-of-the-Municipal-Civil-Registrar.pdf
+    id: office-of-the-municipal-civil-registrar#external-2
     section: external
     number: 2
     title: >-
@@ -1727,6 +1846,7 @@ services:
       owningOffice: present
       output: absent
   - document: Office-of-the-Municipal-Civil-Registrar.pdf
+    id: office-of-the-municipal-civil-registrar#external-3
     section: external
     number: 3
     title: >-
@@ -1743,6 +1863,7 @@ services:
       owningOffice: present
       output: absent
   - document: Office-of-the-Municipal-Civil-Registrar.pdf
+    id: office-of-the-municipal-civil-registrar#external-4
     section: external
     number: 4
     title: Registration of Certificate of Death
@@ -1757,6 +1878,7 @@ services:
       owningOffice: present
       output: absent
   - document: Office-of-the-Municipal-Civil-Registrar.pdf
+    id: office-of-the-municipal-civil-registrar#external-5
     section: external
     number: 5
     title: Application and Issuance of Marriage License
@@ -1771,6 +1893,7 @@ services:
       owningOffice: present
       output: absent
   - document: Office-of-the-Municipal-Civil-Registrar.pdf
+    id: office-of-the-municipal-civil-registrar#external-6
     section: external
     number: 6
     title: Request for an Electronic Endorsement of Birth, Death and Marriage Certificate
@@ -1785,6 +1908,7 @@ services:
       owningOffice: present
       output: absent
   - document: Office-of-the-Municipal-Civil-Registrar.pdf
+    id: office-of-the-municipal-civil-registrar#external-7
     section: external
     number: 10
     title: >-
@@ -1801,6 +1925,7 @@ services:
       owningOffice: present
       output: absent
   - document: Office-of-the-Municipal-Civil-Registrar.pdf
+    id: office-of-the-municipal-civil-registrar#external-8
     section: external
     number: 7
     title: Registration and Annotation of Affidavit of Legitimation (Family Code and RA No. 9858)
@@ -1815,6 +1940,7 @@ services:
       owningOffice: present
       output: absent
   - document: Office-of-the-Municipal-Civil-Registrar.pdf
+    id: office-of-the-municipal-civil-registrar#external-9
     section: external
     number: 8
     title: Registration and Annotation of Affidavit to Use the Surname of the Father (AUSF) (RA No. 9255)
@@ -1829,6 +1955,7 @@ services:
       owningOffice: present
       output: absent
   - document: Office-of-the-Municipal-Civil-Registrar.pdf
+    id: office-of-the-municipal-civil-registrar#external-10
     section: external
     number: 9
     title: >-
@@ -1845,6 +1972,7 @@ services:
       owningOffice: present
       output: absent
   - document: Office-of-the-Municipal-Civil-Registrar.pdf
+    id: office-of-the-municipal-civil-registrar#external-11
     section: external
     number: 10
     title: Petition for Change of First Name (CFN) (Pursuant to Republic Act No. 9048)
@@ -1859,6 +1987,7 @@ services:
       owningOffice: present
       output: absent
   - document: Office-of-the-Municipal-Civil-Registrar.pdf
+    id: office-of-the-municipal-civil-registrar#external-12
     section: external
     number: 11
     title: >-
@@ -1875,6 +2004,7 @@ services:
       owningOffice: present
       output: absent
   - document: Office-of-the-Municipal-Civil-Registrar.pdf
+    id: office-of-the-municipal-civil-registrar#external-13
     section: external
     number: 12
     title: >-
@@ -1891,6 +2021,7 @@ services:
       owningOffice: present
       output: absent
   - document: Office-of-the-Municipal-Civil-Registrar.pdf
+    id: office-of-the-municipal-civil-registrar#external-14
     section: external
     number: 13
     title: Request for PSA’s Annotated Birth, Marriage or Death Certificate in Security Paper (SECPA)
@@ -1905,6 +2036,7 @@ services:
       owningOffice: present
       output: absent
   - document: Office-of-the-Municipal-Disaster-Risk-Reduction-Management.pdf
+    id: office-of-the-municipal-disaster-risk-reduction-management#external-1
     section: external
     number: 1
     title: Issuance of Disaster Certification for Shelter Assistance
@@ -1919,6 +2051,7 @@ services:
       owningOffice: present
       output: absent
   - document: Office-of-the-Municipal-Disaster-Risk-Reduction-Management.pdf
+    id: office-of-the-municipal-disaster-risk-reduction-management#external-2
     section: external
     number: 2
     title: Request for Patient Transfer (Outside Tago, Surigao del Sur)
@@ -1933,6 +2066,7 @@ services:
       owningOffice: present
       output: absent
   - document: Office-of-the-Municipal-Disaster-Risk-Reduction-Management.pdf
+    id: office-of-the-municipal-disaster-risk-reduction-management#external-3
     section: external
     number: 3
     title: Request for Water Rationing/Delivery
@@ -1947,6 +2081,7 @@ services:
       owningOffice: present
       output: absent
   - document: Office-of-the-Municipal-Disaster-Risk-Reduction-Management.pdf
+    id: office-of-the-municipal-disaster-risk-reduction-management#external-4
     section: external
     number: 4
     title: Request for DRRM Trainings, Drill, Seminars and Symposiums
@@ -1961,6 +2096,7 @@ services:
       owningOffice: present
       output: absent
   - document: Office-of-the-Municipal-Disaster-Risk-Reduction-Management.pdf
+    id: office-of-the-municipal-disaster-risk-reduction-management#external-5
     section: external
     number: 5
     title: Request for Patient Transfer (Inter-Facility)
@@ -1975,6 +2111,7 @@ services:
       owningOffice: present
       output: absent
   - document: Office-of-the-Municipal-Engineering-Services.pdf
+    id: office-of-the-municipal-engineering-services#external-1
     section: external
     number: 1
     title: >-
@@ -1991,6 +2128,7 @@ services:
       owningOffice: present
       output: absent
   - document: Office-of-the-Municipal-Engineering-Services.pdf
+    id: office-of-the-municipal-engineering-services#external-2
     section: external
     number: 2
     title: >-
@@ -2007,6 +2145,7 @@ services:
       owningOffice: present
       output: absent
   - document: Office-of-the-Municipal-Engineering-Services.pdf
+    id: office-of-the-municipal-engineering-services#internal-1
     section: internal
     number: 1
     title: Mandatory submission of Quarterly Report on Government Projects / Programs / Activities
@@ -2021,6 +2160,7 @@ services:
       owningOffice: present
       output: absent
   - document: Office-of-the-Municipal-Engineering-Services.pdf
+    id: office-of-the-municipal-engineering-services#internal-2
     section: internal
     number: 2
     title: Preparation of Program of Works (POW)
@@ -2035,6 +2175,7 @@ services:
       owningOffice: present
       output: absent
   - document: Office-of-the-Municipal-Engineering-Services.pdf
+    id: office-of-the-municipal-engineering-services#internal-3
     section: internal
     number: 1
     title: >-
@@ -2051,6 +2192,7 @@ services:
       owningOffice: present
       output: absent
   - document: Office-of-the-Municipal-Environment-and-Natural-Resources-Designate-Services.pdf
+    id: office-of-the-municipal-environment-and-natural-resources-designate-services#external-1
     section: external
     number: 1
     title: Special Waste Disposal Permit
@@ -2065,6 +2207,7 @@ services:
       owningOffice: present
       output: absent
   - document: Office-of-the-Municipal-Environment-and-Natural-Resources-Designate-Services.pdf
+    id: office-of-the-municipal-environment-and-natural-resources-designate-services#external-2
     section: external
     number: 2
     title: Recommendation Letter for Tree Cutting Request
@@ -2079,6 +2222,7 @@ services:
       owningOffice: present
       output: absent
   - document: Office-of-the-Municipal-Nutrition.pdf
+    id: office-of-the-municipal-nutrition#external-1
     section: external
     number: 1
     title: Issuance of Patient’s Referral
@@ -2093,6 +2237,7 @@ services:
       owningOffice: present
       output: absent
   - document: Office-of-the-Municipal-Nutrition.pdf
+    id: office-of-the-municipal-nutrition#external-2
     section: external
     number: 2
     title: Availment of Nutrition Pack and Micronutrient Supplement and advocacy/ counseling
@@ -2107,6 +2252,7 @@ services:
       owningOffice: present
       output: absent
   - document: Office-of-the-Municipal-Nutrition.pdf
+    id: office-of-the-municipal-nutrition#internal-1
     section: internal
     number: 1
     title: Issuance of Certificate grant of BNS Eligibility
@@ -2121,6 +2267,7 @@ services:
       owningOffice: present
       output: absent
   - document: Office-of-the-Municipal-Planning-and-Development.pdf
+    id: office-of-the-municipal-planning-and-development#external-1
     section: external
     number: 1
     title: Issuance of Zoning Certification
@@ -2135,6 +2282,7 @@ services:
       owningOffice: present
       output: absent
   - document: Office-of-the-Municipal-Planning-and-Development.pdf
+    id: office-of-the-municipal-planning-and-development#external-2
     section: external
     number: 2
     title: Issuance of Locational Clearance
@@ -2149,6 +2297,7 @@ services:
       owningOffice: present
       output: absent
   - document: Office-of-the-Municipal-Treasurer.pdf
+    id: office-of-the-municipal-treasurer#internal-1
     section: internal
     number: 1
     title: Issuance of Accountable Forms
@@ -2163,6 +2312,7 @@ services:
       owningOffice: present
       output: absent
   - document: Office-of-the-Sangguniang-Bayan-Services.pdf
+    id: office-of-the-sangguniang-bayan-services#external-1
     section: external
     number: null
     title: null
@@ -2177,6 +2327,7 @@ services:
       owningOffice: present
       output: absent
   - document: Office-of-the-Sangguniang-Bayan-Services.pdf
+    id: office-of-the-sangguniang-bayan-services#internal-1
     section: internal
     number: null
     title: null
@@ -2191,6 +2342,7 @@ services:
       owningOffice: present
       output: absent
   - document: Office-of-the-Sangguniang-Bayan-Services.pdf
+    id: office-of-the-sangguniang-bayan-services#internal-2
     section: internal
     number: null
     title: null
@@ -2205,6 +2357,7 @@ services:
       owningOffice: present
       output: absent
   - document: Office-of-the-Sangguniang-Bayan-Services.pdf
+    id: office-of-the-sangguniang-bayan-services#internal-3
     section: internal
     number: 1
     title: >-
@@ -2221,6 +2374,7 @@ services:
       owningOffice: present
       output: absent
   - document: Office-of-the-Sangguniang-Bayan-Services.pdf
+    id: office-of-the-sangguniang-bayan-services#internal-4
     section: internal
     number: 3
     title: Sign the logbook and get the 3. Release the document to the
@@ -2235,6 +2389,7 @@ services:
       owningOffice: present
       output: absent
   - document: Office-of-the-Vice-Mayor.pdf
+    id: office-of-the-vice-mayor#external-1
     section: external
     number: null
     title: null
@@ -2249,6 +2404,7 @@ services:
       owningOffice: present
       output: absent
   - document: Office-of-the-Vice-Mayor.pdf
+    id: office-of-the-vice-mayor#internal-1
     section: internal
     number: null
     title: null
@@ -2263,6 +2419,7 @@ services:
       owningOffice: present
       output: absent
   - document: Office-of-the-Vice-Mayor.pdf
+    id: office-of-the-vice-mayor#internal-2
     section: internal
     number: null
     title: null
@@ -2277,6 +2434,7 @@ services:
       owningOffice: present
       output: absent
   - document: Office-of-the-Vice-Mayor.pdf
+    id: office-of-the-vice-mayor#internal-3
     section: internal
     number: null
     title: null
@@ -2291,6 +2449,7 @@ services:
       owningOffice: present
       output: absent
   - document: Office-of-the-Vice-Mayor.pdf
+    id: office-of-the-vice-mayor#internal-4
     section: internal
     number: null
     title: null
@@ -2305,6 +2464,7 @@ services:
       owningOffice: present
       output: absent
   - document: Office-of-the-Vice-Mayor.pdf
+    id: office-of-the-vice-mayor#internal-5
     section: internal
     number: null
     title: null
@@ -2319,6 +2479,7 @@ services:
       owningOffice: present
       output: absent
   - document: Office-of-the-Vice-Mayor.pdf
+    id: office-of-the-vice-mayor#internal-6
     section: internal
     number: null
     title: null
@@ -2333,6 +2494,7 @@ services:
       owningOffice: present
       output: absent
   - document: Public-Employment-Office-Division-External-Services.pdf
+    id: public-employment-office-division-external-services#external-1
     section: external
     number: 1
     title: Special Program for Employment of Students (SPES)
@@ -2347,6 +2509,7 @@ services:
       owningOffice: present
       output: absent
   - document: Public-Employment-Office-Division-External-Services.pdf
+    id: public-employment-office-division-external-services#external-2
     section: external
     number: 2
     title: Issuance of No Objection Certificate
@@ -2361,6 +2524,7 @@ services:
       owningOffice: present
       output: absent
   - document: Public-Employment-Office-Division-External-Services.pdf
+    id: public-employment-office-division-external-services#external-3
     section: external
     number: 3
     title: Request for Organization/Association to be registered in DOLE
@@ -2375,6 +2539,7 @@ services:
       owningOffice: present
       output: absent
   - document: Tourism-External-Services.pdf
+    id: tourism-external-services#external-1
     section: external
     number: 1
     title: APPLICATION / RENEWAL OF BUSINESS PERMIT (TOURISM ESTABLISHMENT)
@@ -2389,6 +2554,7 @@ services:
       owningOffice: present
       output: absent
   - document: Tourism-External-Services.pdf
+    id: tourism-external-services#external-2
     section: external
     number: 2
     title: DOT ACCREDITATION PROCEDURES
@@ -2403,6 +2569,7 @@ services:
       owningOffice: present
       output: absent
   - document: Tourism-External-Services.pdf
+    id: tourism-external-services#external-3
     section: external
     number: 3
     title: REQUEST FOR TOURISM FRONTLINERS TRAINING

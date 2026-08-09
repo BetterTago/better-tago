@@ -1,5 +1,9 @@
 import { describe, expect, it } from 'vitest';
-import { parseCharter } from './charter-parse.mjs';
+import {
+  documentStem,
+  parseCharter,
+  withServiceIds,
+} from './charter-parse.mjs';
 
 /**
  * Every fixture here is INVENTED. No real Tago service, office, fee or person
@@ -250,5 +254,92 @@ describe('degenerate input', () => {
 
   it('returns nothing for a document with no service blocks', () => {
     expect(parseCharter('Just some prose.\nAnd another line.\n')).toEqual([]);
+  });
+});
+
+describe('documentStem', () => {
+  it('reduces a filename to a hyphenated stem', () => {
+    expect(documentStem('Example-Office-External-Services.pdf')).toBe(
+      'example-office-external-services'
+    );
+  });
+
+  it('collapses punctuation and runs, and trims the edges', () => {
+    expect(documentStem('Example  Office (Sample) — Services.PDF')).toBe(
+      'example-office-sample-services'
+    );
+  });
+});
+
+describe('withServiceIds — the stable identifier', () => {
+  /*
+   * The failure this exists to prevent, reproduced on invented data.
+   *
+   * In the real charter, document + section + the printed number yields 159
+   * distinct keys for 167 services. Every shape that causes it is below: a
+   * number printed twice, a number missing entirely, and a sequence that skips
+   * and doubles back. Keyed on that, a title-to-service mapping silently
+   * attaches one service's title to another — and it surfaces as a wrong fee
+   * on a page somebody already acted on.
+   */
+  const COLLIDING = [
+    { section: 'external', number: 1 },
+    { section: 'external', number: 10 },
+    { section: 'external', number: 10 }, // the same printed number, twice
+    { section: 'external', number: null }, // a layout with no heading at all
+    { section: 'internal', number: 1 },
+    { section: 'internal', number: null },
+    { section: 'internal', number: null }, // two of them, indistinguishable
+  ];
+
+  const stamped = withServiceIds('Example-Office.pdf', COLLIDING);
+
+  it('gives every service a distinct id where the printed number does not', () => {
+    const printed = new Set(
+      COLLIDING.map(service => `${service.section}|${service.number}`)
+    );
+    // The premise: the printed key really does collide on this input.
+    expect(printed.size).toBeLessThan(COLLIDING.length);
+
+    expect(new Set(stamped.map(service => service.id)).size).toBe(
+      COLLIDING.length
+    );
+  });
+
+  it('numbers each section from one, independently', () => {
+    expect(stamped.map(service => service.id)).toEqual([
+      'example-office#external-1',
+      'example-office#external-2',
+      'example-office#external-3',
+      'example-office#external-4',
+      'example-office#internal-1',
+      'example-office#internal-2',
+      'example-office#internal-3',
+    ]);
+  });
+
+  it('leaves the charter’s own printed number untouched', () => {
+    // `number` is what the document says, verbatim — duplicates, gaps, nulls
+    // and all. It describes the charter; `id` identifies the record. Correcting
+    // the printed number here would be editing the municipality's document.
+    expect(stamped.map(service => service.number)).toEqual(
+      COLLIDING.map(service => service.number)
+    );
+  });
+
+  it('scopes ids to the document, so two documents cannot collide', () => {
+    const other = withServiceIds('Another-Office.pdf', COLLIDING);
+    const overlap = stamped
+      .map(service => service.id)
+      .filter(id => other.some(service => service.id === id));
+    expect(overlap).toEqual([]);
+  });
+
+  it('keeps the id first, so a record reads as its own identifier', () => {
+    expect(Object.keys(stamped[0])[0]).toBe('id');
+  });
+
+  it('returns nothing for a document with no services', () => {
+    expect(withServiceIds('Empty-Office.pdf', [])).toEqual([]);
   });
 });
