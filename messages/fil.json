@@ -40,6 +40,36 @@
     "corrections": "Mag-ulat ng mali",
     "sourceNote": "Bawat bilang na inilalathala rito ay may pinagmulan at petsa ng huling pagsusuri — pati na ang mga wala pa sa amin."
   },
+  "source": {
+    "heading": "Saan ito nanggaling",
+    "office": "Inilathala ng {office}",
+    "retrieved": "Kinuha noong {date}",
+    "openOriginal": "Buksan ang opisyal na dokumento",
+    "noPublicAddress": "{channel} — wala itong pampublikong web address, kaya walang maikakawing dito.",
+    "deference": "Kapag nagkaiba ang pahinang ito at ang dokumentong iyon, tama ang dokumento at mali ang pahinang ito.",
+    "channelWeb": "Binasa sa sariling sityo ng bayan",
+    "channelPdf": "Isang dokumentong inilathala ng bayan",
+    "channelLetter": "Isang liham na natanggap ng proyektong ito",
+    "channelNotice": "Isang paskil na nakalagay sa pampublikong lugar",
+    "channelPhotograph": "Isang larawan ng nakapaskil na dokumento"
+  },
+  "verification": {
+    "label": "Paano ito sinuri",
+    "v3": "Binasa mula sa dokumentong inilathala mismo ng bayan",
+    "v2": "Ibinigay nang nakasulat sa proyektong ito ng tanggapang may hawak nito",
+    "v1": "May patunay na hindi tuwiran, at hindi pa nababasa ang orihinal na talaan",
+    "v0": "Hindi pa nakumpirma, at wala pang pinagkumparahang pinagmulan"
+  },
+  "staleness": {
+    "heading": "Lampas na sa takdang muling pagsusuri ang pahinang ito",
+    "body": "Huling sinuri ito noong {date}, at ang ganitong uri ng pahina ay sinusuri muli tuwing {days} araw. Buksan ang opisyal na dokumento sa ibaba — iyon ang bersyong tama."
+  },
+  "gap": {
+    "notObtained": "Hindi pa nakukuha",
+    "held": "Nakuha na, at sinadyang hindi inilathala",
+    "checked": "Huling hinanap noong {date}",
+    "englishOnly": "Nakatala sa Ingles ang paliwanag na ito sa talaan ng mga kakulangan ng proyekto, at hindi pa ito naisasalin."
+  },
   "notFound": {
     "heading": "Wala ang pahinang iyon",
     "body": "Kakaunti pa lamang ang nailalathala rito. Ang opisyal na sityo ng bayan ang mabuting puntahan sa ngayon."

@@ -384,6 +384,11 @@ npm run typecheck && npm run lint && npm run format:check && npm test && npm run
 `next build` does **not** lint in Next.js 16, and `next lint` has been removed — linting is always its own
 step. E2E needs browsers once: `npx playwright install chromium`.
 
+⚠️ **On a fresh clone, run `npm run typegen` before `npm run typecheck`.** `PageProps` and `LayoutProps` are
+globals Next generates into `.next/types/routes.d.ts`, which `next-env.d.ts` imports; `.next/` is git-ignored,
+so on a clean checkout `tsc` fails with `Cannot find name 'PageProps'` while every source file is correct. It
+passes on your machine only because a build has run there. CI runs `typegen` first for this reason.
+
 **Don't run the full gate after every edit while building.** Run what the change touches:
 
 | Situation                                               | Run                                |
@@ -395,6 +400,25 @@ step. E2E needs browsers once: `npx playwright install chromium`.
 
 Scoping while building is not the same as narrowing the gate. The gate itself is never narrowed and never
 `--no-verify`'d.
+
+### Where it actually runs
+
+`.github/workflows/ci.yml` runs all five on every pull request against `main`, and on every push to `main`.
+Two jobs, split by cost: `checks` does typecheck, lint, format and unit; `e2e` installs Chromium, builds, and
+runs Playwright.
+
+**The E2E job runs against a production build, not `next dev`** — and that is not a preference. `next dev`
+compiles each route on first request, which makes the suite both slower and less truthful, and
+`cacheComponents` behaves differently between the two: a route that has silently stopped prerendering looks
+perfect under dev and is only visible in a build. `playwright.config.ts` starts `next start` when `CI` is set
+and `next dev` when it is not, so the same command means the right thing in both places.
+
+Three things the workflow may never grow: `continue-on-error`, `--no-verify`, and a narrowed test selection. A
+gate that can be talked round is not one. Everything in this section is enforced by the file itself and by
+`src/lib/guardrails.test.ts`; neither is a convention.
+
+⚠️ **Branch protection is a repository setting, not a file.** The workflow reports a failure; making that
+failure _block a merge_ is a rule configured on the remote, and until it is, a red gate is advice.
 
 ## Branching, commits, versioning
 

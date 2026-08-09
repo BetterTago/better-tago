@@ -40,6 +40,36 @@
     "corrections": "Report an error",
     "sourceNote": "Every figure this portal publishes names its source and the date it was last checked — including the ones we do not have yet."
   },
+  "source": {
+    "heading": "Where this comes from",
+    "office": "Published by {office}",
+    "retrieved": "Retrieved {date}",
+    "openOriginal": "Open the official document",
+    "noPublicAddress": "{channel} — it has no public web address, so there is nothing to link to.",
+    "deference": "Where this page and that document disagree, the document is right and this page is wrong.",
+    "channelWeb": "Read on the municipality's own website",
+    "channelPdf": "A document published by the municipality",
+    "channelLetter": "A letter received by this project",
+    "channelNotice": "A notice posted in public",
+    "channelPhotograph": "A photograph of a posted document"
+  },
+  "verification": {
+    "label": "How this was checked",
+    "v3": "Read from the municipality's own published document",
+    "v2": "Given to this project in writing by the office responsible",
+    "v1": "Corroborated indirectly, and the original record has not been read yet",
+    "v0": "Unconfirmed, and not yet checked against any source"
+  },
+  "staleness": {
+    "heading": "This page is overdue for a re-check",
+    "body": "It was last checked on {date}, and pages of this kind are re-checked every {days} days. Open the official document below — that is the version that is right."
+  },
+  "gap": {
+    "notObtained": "Not obtained yet",
+    "held": "Obtained, and deliberately not published",
+    "checked": "Last looked for on {date}",
+    "englishOnly": "This explanation is recorded in English in the project's gap register, and has not been translated yet."
+  },
   "notFound": {
     "heading": "That page does not exist",
     "body": "Very little has been published here yet. The official municipal site is the place to look in the meantime."

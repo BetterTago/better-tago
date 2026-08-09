@@ -38,7 +38,19 @@ export default defineConfig({
     { name: 'mobile-chrome', use: { ...devices['Pixel 7'] } },
   ],
   webServer: {
-    command: `npm run dev -- --port ${PORT}`,
+    /*
+     * CI runs the suite against a PRODUCTION build; locally it runs against the
+     * dev server you already have open.
+     *
+     * The difference is not cosmetic. `cacheComponents` behaves differently
+     * between the two, and a route that has silently stopped prerendering —
+     * because a page read a request API outside <Suspense>, say — looks
+     * perfect under `next dev` and is only visible in a build. The CI job runs
+     * `npm run build` before this, so `next start` has something to serve.
+     */
+    command: process.env.CI
+      ? `npm run start -- --port ${PORT}`
+      : `npm run dev -- --port ${PORT}`,
     url: BASE_URL,
     /*
      * ⚠️ Locally this reuses whatever is already answering on that port, and it

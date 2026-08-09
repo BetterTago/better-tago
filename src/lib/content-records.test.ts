@@ -101,6 +101,33 @@ describe('every manifest is valid and matches the tree', () => {
       }
     }
   });
+
+  it('claims no check that has not happened yet', () => {
+    /*
+     * ★ TAGO-104 criterion 5, on the data side. `StalenessNotice` throws when
+     * it is handed a future check date, which fails the prerender of whichever
+     * page carries one — but that only fires for a page somebody has built a
+     * route for. This fires for every entry in the tree, today, and it is the
+     * half that catches a typo the moment it is committed.
+     *
+     * A date in the future is not a degree of staleness. It is a page claiming
+     * it was checked on a day that has not arrived, which makes it look like
+     * the best-maintained page on the site.
+     */
+    const today = new Date().toISOString().slice(0, 10);
+    const future: string[] = [];
+
+    for (const manifest of MANIFESTS) {
+      for (const page of manifestSchema.parse(yaml.load(manifest.text)).pages) {
+        if (page.lastCheckedAt > today)
+          future.push(`${page.slug}: ${page.lastCheckedAt}`);
+        if (page.source.retrievedAt > today)
+          future.push(`${page.slug}: retrieved ${page.source.retrievedAt}`);
+      }
+    }
+
+    expect(future).toEqual([]);
+  });
 });
 
 describe('no page links to a file instead of a page', () => {

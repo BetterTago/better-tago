@@ -1,0 +1,111 @@
+# The quality gate, run where it cannot be skipped.
+#
+# Five checks — typecheck, lint, format, unit, end-to-end. All five run on every
+# pull request against `main` and on every push to `main`, and any one of them
+# failing fails the workflow.
+#
+# Two Next.js 16 facts shape this file:
+#
+#   - `next build` does NOT lint. A green build is not evidence of a green lint,
+#     so `lint` is its own step and always will be.
+#   - `next lint` has been REMOVED. ESLint is invoked directly.
+#
+# What is deliberately absent, and must stay absent: `continue-on-error`,
+# `--no-verify`, and any narrowed test selection. A gate that can be talked
+# round is not a gate — `src/lib/guardrails.test.ts` and this file are the two
+# places that rule is enforced rather than remembered.
+name: gate
+
+on:
+  pull_request:
+    branches: [main]
+  push:
+    branches: [main]
+
+# A second push to the same pull request cancels the first run. `main` is not
+# cancelled: its runs are the record of what the trunk actually passed.
+concurrency:
+  group: ${{ github.workflow }}-${{ github.ref }}
+  cancel-in-progress: ${{ github.event_name == 'pull_request' }}
+
+permissions:
+  contents: read
+
+jobs:
+  # Four of the five. Fast, no browser, no build — this is the job that fails
+  # first on ordinary mistakes, and it is separated for exactly that reason.
+  checks:
+    name: typecheck · lint · format · unit
+    runs-on: ubuntu-latest
+    # A hung step otherwise burns the six-hour default. Nothing here takes two.
+    timeout-minutes: 15
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          # Read from .nvmrc so CI and a contributor's machine cannot disagree
+          # about the runtime. Node 24 is the floor `package.json` declares.
+          node-version-file: .nvmrc
+          cache: npm
+
+      - run: npm ci
+
+      # REQUIRED before typecheck, and easy to lose.
+      #
+      # `PageProps` and `LayoutProps` are globals Next generates into
+      # `.next/types/routes.d.ts`, which `next-env.d.ts` imports. `.next/` is
+      # git-ignored, so on a clean checkout it does not exist and `tsc` fails
+      # with "Cannot find name 'PageProps'" — on a machine where every source
+      # file is correct. It passes locally only because a build has run there
+      # at some point.
+      - run: npm run typegen
+
+      - run: npm run typecheck
+
+      - run: npm run lint
+
+      - run: npm run format:check
+
+      - run: npm test
+
+  # The fifth, and the slow one.
+  #
+  # It runs against a PRODUCTION build, not `next dev`. That is not a detail:
+  # `cacheComponents` behaves differently between the two, a route that silently
+  # stops prerendering is invisible under dev, and dev compiles each route on
+  # first request — which is what makes a dev-server suite both slower and less
+  # truthful than the thing it is standing in for.
+  e2e:
+    name: end-to-end · accessibility
+    runs-on: ubuntu-latest
+    # Browsers, a build and 58 tests. Generous, and still far under the default.
+    timeout-minutes: 25
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version-file: .nvmrc
+          cache: npm
+
+      - run: npm ci
+
+      # `--with-deps` installs the system libraries the browser needs on a bare
+      # runner. Chromium only: the suite's projects are chromium and a Chromium
+      # mobile profile, so installing the other two engines is minutes of
+      # download for nothing.
+      - run: npx playwright install --with-deps chromium
+
+      - run: npm run build
+
+      # `playwright.config.ts` starts `next start` rather than `next dev` when
+      # CI is set, and derives the port from the URL it waits on.
+      - run: npm run test:e2e
+
+      - if: ${{ !cancelled() }}
+        uses: actions/upload-artifact@v4
+        with:
+          name: playwright-report
+          path: playwright-report/
+          retention-days: 7

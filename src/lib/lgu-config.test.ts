@@ -1,6 +1,6 @@
 import { describe, expect, it } from 'vitest';
 import rawConfig from '../../config/lgu.config.json';
-import { lguConfig, lguConfigSchema } from './lgu-config';
+import { GAP_PATHS, gapFor, lguConfig, lguConfigSchema } from './lgu-config';
 
 describe('the shipped config', () => {
   it('parses', () => {
@@ -317,5 +317,61 @@ describe('the history block', () => {
       lgu: { ...rawConfig.lgu, history: unsourced },
     });
     expect(result.success).toBe(false);
+  });
+});
+
+describe('the register, as a surface reads it', () => {
+  /*
+   * The schema already proves the register and the nulls cannot drift apart.
+   * This is the other half — the lookup a component uses, which is where a gap
+   * stops being a rule and starts being something a resident reads.
+   */
+
+  it('offers every path the register carries, and no other', () => {
+    expect([...GAP_PATHS].sort()).toEqual(
+      Object.keys(rawConfig.pending).sort()
+    );
+  });
+
+  it('hands back the register wording, not a paraphrase', () => {
+    for (const path of GAP_PATHS) {
+      const entry = gapFor(path);
+      expect(entry.note).toBe(
+        (rawConfig.pending as Record<string, { note: string }>)[path].note
+      );
+      // The 40-character floor is what stops "TODO" closing a gap; asserted
+      // here too because this is the value that actually reaches a page.
+      expect(entry.note.length).toBeGreaterThan(40);
+    }
+  });
+
+  it('throws on a path the register does not carry', () => {
+    /*
+     * The union rejects a typo at compile time. This is the runtime half, for a
+     * path that arrives from data rather than from a literal — and the point is
+     * that it FAILS rather than rendering an empty block, because a gap nobody
+     * can see is worse than no gap surface at all.
+     */
+    expect(() =>
+      // @ts-expect-error — deliberately not a registered path.
+      gapFor('lgu.populaton')
+    ).toThrow(/no `pending` entry/);
+  });
+
+  it('names every unobtained fact a page might try to print', () => {
+    // The ten tracked figures, the two contact details and the hotline list.
+    // If a surface meets a null that is not here, `gapFor` cannot explain it —
+    // and the config parse would already have failed.
+    for (const path of [
+      'lgu.population',
+      'lgu.households',
+      'lgu.barangayCount',
+      'lgu.landAreaKm2',
+      'lgu.postalCode',
+      'contact.municipalHall.officeHours',
+      'emergency.municipalHotlines',
+    ]) {
+      expect(GAP_PATHS).toContain(path);
+    }
   });
 });

@@ -420,3 +420,43 @@ export const lguConfig: LguConfig = configSchema.parse(rawConfig);
 
 /** The schema itself, so a test can prove the invariants actually bite. */
 export const lguConfigSchema = configSchema;
+
+export type PendingEntry = z.infer<typeof pendingEntrySchema>;
+
+/**
+ * Every path the gap register accounts for, as a UNION of the actual keys.
+ *
+ * Taken from the raw JSON rather than from the parsed value on purpose. The
+ * schema types `pending` as a record keyed by `string`, which would make
+ * `gapFor('lgu.populaton')` — note the typo — a perfectly well-typed call that
+ * renders nothing. Read off the import, TypeScript knows the thirteen paths
+ * that exist and rejects the fourteenth at compile time.
+ *
+ * Adding or closing a gap stays a configuration change: a new `null` plus its
+ * entry widens this union by itself, and filling a value narrows it, with no
+ * component edited either way.
+ */
+export type GapPath = keyof typeof rawConfig.pending;
+
+/** The register's paths, in file order. */
+export const GAP_PATHS = Object.keys(lguConfig.pending) as GapPath[];
+
+/**
+ * The register entry for one path — the words the UI is allowed to print.
+ *
+ * `GapNotice` renders what this returns and nothing else, which is what stops a
+ * gap being explained one way on a page and another way in the register. The
+ * throw is the runtime half of the compile-time union above: a path that
+ * survives type-checking but is not in the register (a config edited without a
+ * rebuild, a value read from data) fails loudly rather than rendering an empty
+ * block, because an invisible gap is exactly the failure the register exists to
+ * prevent.
+ */
+export function gapFor(path: GapPath): PendingEntry {
+  const entry = lguConfig.pending[path] as PendingEntry | undefined;
+  if (!entry)
+    throw new Error(
+      `no \`pending\` entry for "${path}". A gap surface may only render a reason the register already carries — add the entry to config/lgu.config.json, or render a value.`
+    );
+  return entry;
+}
