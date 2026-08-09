@@ -221,8 +221,44 @@ const validCharterRecord = {
   charterTitleSource: 'extracted',
   group: 'business-permit',
   ambiguity: null,
+  ambiguityFil: null,
   transcriptionNote: null,
   verificationRecord: null,
+  content: null,
+};
+
+/** The charter's contents, as the extractor emits them for a clean service. */
+const validCharterContent = {
+  eligibility: 'All New Business Taxpayers within Tago, Surigao del Sur',
+  classification: 'Simple',
+  typeOfTransaction: 'G2B – Government to Business',
+  requirements: [
+    {
+      item: '1. Barangay Business Clearance (original copy)',
+      marked: true,
+      whereToSecure: 'Barangay Hall',
+    },
+  ],
+  requirementSources: [],
+  steps: [
+    {
+      clientStep: 'Submit the requirements',
+      agencyAction: 'Receive and check',
+      fee: 'P 1,000.00',
+      processingTime: '15 Minutes',
+      personResponsible: 'Licensing Staff',
+    },
+  ],
+  totalFee: 'P 1,000.00',
+  totalProcessingTime: '15 Minutes',
+  fees: ['P 1,000.00'],
+  processingTimes: ['15 Minutes'],
+  mergedColumns: [],
+  columnsNamedBy: { fee: 'content', processingTime: 'content' },
+  proseColumnsTrusted: true,
+  stepsAreStructured: true,
+  extractionFlags: [],
+  notStated: ['whereToGo', 'officeHours', 'output'],
 };
 
 describe('a charter record', () => {
@@ -230,6 +266,71 @@ describe('a charter record', () => {
     expect(charterRecordSchema.safeParse(validCharterRecord).success).toBe(
       true
     );
+  });
+
+  it('accepts a record carrying the charter’s contents', () => {
+    expect(
+      charterRecordSchema.safeParse({
+        ...validCharterRecord,
+        content: validCharterContent,
+      }).success
+    ).toBe(true);
+  });
+
+  it('refuses transcribed contents below V2', () => {
+    /*
+     * PROG-101's floor as a property of the data. Fees, deadlines and
+     * requirements ship at `V2` or better — never `V1`. Two secondary sources
+     * agreeing is how a fee that changed years ago stays alive on ten websites,
+     * and this record now carries all three of the fields that rule names.
+     */
+    for (const verification of ['V1', 'V0']) {
+      expect(
+        charterRecordSchema.safeParse({
+          ...validCharterRecord,
+          verification,
+          content: validCharterContent,
+        }).success,
+        verification
+      ).toBe(false);
+    }
+  });
+
+  it('still accepts a weak level on a record that transcribes nothing', () => {
+    // The floor is about what the page STATES. An index-and-link record makes
+    // no claim about a fee, so the rule has nothing to bite on.
+    expect(
+      charterRecordSchema.safeParse({
+        ...validCharterRecord,
+        verification: 'V1',
+        content: null,
+      }).success
+    ).toBe(true);
+  });
+
+  it('refuses a partially filled transcription', () => {
+    // Whole or null. A page showing three of five requirements is more
+    // dangerous than one showing none, because it looks complete.
+    const { requirements, ...partial } = validCharterContent;
+    expect(requirements).toBeDefined();
+    expect(
+      charterRecordSchema.safeParse({ ...validCharterRecord, content: partial })
+        .success
+    ).toBe(false);
+  });
+
+  it('refuses an ambiguity that renders in one locale only', () => {
+    // A Filipino page showing an English paragraph under a translated heading
+    // is the failure CONT-402 exists to catch, and it is invisible to anyone
+    // reviewing the English.
+    expect(
+      charterRecordSchema.safeParse({
+        ...validCharterRecord,
+        ambiguity:
+          'The charter carries two entries and does not say what separates them.',
+        ambiguityFil: null,
+      }).success
+    ).toBe(false);
   });
 
   it('rejects an internal service outright', () => {
@@ -339,6 +440,8 @@ describe('a charter record', () => {
       ...validCharterRecord,
       ambiguity:
         'The charter registers this twice and does not say what separates them.',
+      ambiguityFil:
+        'Dalawang beses itong nakatala sa charter at hindi sinasabi kung ano ang naghihiwalay sa kanila.',
       transcriptionNote:
         'The published heading was truncated and completed by hand.',
     });

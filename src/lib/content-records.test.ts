@@ -180,24 +180,83 @@ describe('no page links to a file instead of a page', () => {
   });
 });
 
-describe('the transcription stayed out of scope', () => {
+describe('the transcription is what it says it is', () => {
   /*
-   * This project publishes THAT a service exists, which office provides it,
-   * and a link to the official document. It does not republish the document's
-   * contents — that is a permission nobody has asked for.
+   * INVERTED on 2026-08-10, and the inversion is the point.
    *
-   * The risk is not somebody deciding to transcribe the charter. It is
-   * somebody helpfully adding "the fee is ₱50" to one page because they had
-   * the PDF open, and nobody noticing for a year.
+   * This block used to assert that NO fee appeared anywhere in `content/`,
+   * because republishing the charter's contents was a permission ⛔ PROG-003
+   * recorded as out of scope. PROG-003 re-opened; the contents are now the
+   * deliverable. Deleting the check would have left the highest-severity risk
+   * in the project unguarded, so it was turned around instead: every fee on a
+   * page must trace back to the document it cites.
+   *
+   * The risk it guards has not changed shape. It was never somebody deciding
+   * to transcribe the charter. It is somebody helpfully tidying "P 1,000.00"
+   * into "₱1,000.00" because it looked untidy, and nobody noticing for a year —
+   * by which time the string on the page is not the string on the form.
+   *
+   * The byte-for-byte half lives in transcription-integrity.test.ts, which has
+   * the PDFs. This half is what can be checked from the tree alone.
    */
   const FEE_SHAPED =
     /₱\s?[\d,]+|\bPHP\s?[\d,]+|\bPhp\s?[\d,]+|\b\d{1,3}(?:,\d{3})*\.\d{2}\b/;
 
-  it('publishes no fee anywhere in the content tree', () => {
-    expect(hits(PAGES, FEE_SHAPED)).toEqual([]);
+  const CHARTER_MANIFESTS = MANIFESTS.filter(
+    manifest =>
+      manifest.path.startsWith('content/services/') ||
+      manifest.path.startsWith('content/government/legislative/')
+  );
+
+  const RECORDS = CHARTER_MANIFESTS.flatMap(
+    manifest => (yaml.load(manifest.text) as { pages: CharterRecord[] }).pages
+  );
+
+  it('is actually reading the records', () => {
+    expect(RECORDS.length).toBeGreaterThan(90);
+  });
+
+  it('states a fee only on a page whose record carries the transcription', () => {
+    /*
+     * A fee in the markdown with no `content` behind it in the manifest is a
+     * figure somebody typed. The generator cannot produce one: it writes both
+     * sides from the same extracted record, so they agree by construction, and
+     * this is what notices a hand-edit that broke that.
+     */
+    const transcribed = new Set(
+      RECORDS.filter(record => record.content !== null).map(
+        record => record.slug
+      )
+    );
+
+    const offenders = PAGES.filter(page => {
+      const isCharterPage =
+        page.path.startsWith('content/services/') ||
+        page.path.startsWith('content/government/legislative/');
+      if (!isCharterPage) return false;
+      if (!FEE_SHAPED.test(page.text)) return false;
+      const slug = path.basename(page.path).replace(/(\.fil)?\.md$/, '');
+      return !transcribed.has(slug);
+    }).map(page => page.path);
+
+    expect(offenders).toEqual([]);
+  });
+
+  it('publishes no fee outside the charter pages at all', () => {
+    // The emergency layer, the profile, the history, the tourism set and the
+    // transparency register state no figures of their own. Only a page citing
+    // a charter document may carry one.
+    const elsewhere = PAGES.filter(
+      page =>
+        !page.path.startsWith('content/services/') &&
+        !page.path.startsWith('content/government/legislative/') &&
+        !page.path.startsWith('content/charter/')
+    );
+    expect(hits(elsewhere, FEE_SHAPED)).toEqual([]);
   });
 
   it('fires on a doctored page', () => {
+    // A check that has never gone red is not known to work.
     expect(
       hits(
         [{ path: 'fixture', text: 'The fee is ₱50 for the first copy.' }],
@@ -216,8 +275,7 @@ describe('the transcription stayed out of scope', () => {
   });
 
   it('does not fire on a date, a count, or a cadence', () => {
-    // The reason this is phrase-shaped rather than digit-shaped. A check that
-    // fails on "22 documents" gets deleted the first week.
+    // A check that fails on "22 documents" gets deleted the first week.
     expect(
       hits(
         [
@@ -229,6 +287,65 @@ describe('the transcription stayed out of scope', () => {
         FEE_SHAPED
       )
     ).toEqual([]);
+  });
+});
+
+describe('every internal link is locale-correct and resolves', () => {
+  /*
+   * `next-intl` routes every page under a `[locale]` segment and prefixes BOTH
+   * locales, so `/charter/documents/x` written on a Filipino page lands in the
+   * English tree — or, once the locale layout is the only route, on nothing at
+   * all. The first cross-links this project wrote were all unprefixed.
+   *
+   * The failure is the quiet kind: the link works in development on the default
+   * locale and 404s for the other one.
+   */
+  const INTERNAL = /\]\((\/[a-z0-9][^)]*)\)/g;
+
+  const links = PAGES.flatMap(page =>
+    [...page.text.matchAll(INTERNAL)].map(match => ({
+      from: page.path,
+      href: match[1],
+      locale: page.path.endsWith('.fil.md') ? 'fil' : 'en',
+    }))
+  );
+
+  it('is actually finding links', () => {
+    expect(links.length).toBeGreaterThan(50);
+  });
+
+  it('prefixes every one with a locale', () => {
+    const bare = links
+      .filter(link => !/^\/(en|fil)\//.test(link.href))
+      .map(link => `${link.from} → ${link.href}`);
+    expect(bare).toEqual([]);
+  });
+
+  it('never links a page in one locale to a page in the other', () => {
+    const crossed = links
+      .filter(link => !link.href.startsWith(`/${link.locale}/`))
+      .map(link => `${link.from} → ${link.href}`);
+    expect(crossed).toEqual([]);
+  });
+
+  it('points every link at a markdown file that exists', () => {
+    const missing = links
+      .filter(link => {
+        const withoutLocale = link.href.replace(/^\/(en|fil)\//, '');
+        const suffix = link.locale === 'fil' ? '.fil.md' : '.md';
+        return !existsSync(path.join(CONTENT, `${withoutLocale}${suffix}`));
+      })
+      .map(link => `${link.from} → ${link.href}`);
+    expect(missing).toEqual([]);
+  });
+
+  it('fires on an unprefixed link', () => {
+    // A check that has never gone red is not known to work.
+    const doctored = [
+      ...'](/services/health/get-a-medical-certificate)'.matchAll(INTERNAL),
+    ];
+    expect(doctored).toHaveLength(1);
+    expect(/^\/(en|fil)\//.test(doctored[0][1])).toBe(false);
   });
 });
 
@@ -601,25 +718,22 @@ describe('the charter index reconciles against the enumeration', () => {
   });
 });
 
-describe('the eight-field guide has not crept back in', () => {
+describe('a service page shows the transcription, and says whose it is', () => {
   /*
-   * The fee scan above is digit-shaped and catches "₱50". It does not catch
-   * the likelier version: somebody with the PDF open helpfully adding a
-   * "## What to bring" list, which contains no number at all.
+   * ⚠️ THIS REPLACED THE EIGHT-HEADING RULE ON 2026-08-10.
    *
-   * These are exactly the headings ★ TAGO-004 froze for the service guide —
-   * the shape that returns WITH a written permission to republish. Their
-   * appearance under content/services/ means somebody started transcribing
-   * without one. See ⛔ PROG-003.
+   * What was here required ★ TAGO-004's seven charter headings on every
+   * transcribed page and forbade them on every untranscribed one. That shape
+   * was right about wanting one agreed structure and wrong about which one:
+   * it meant re-deriving every field out of the transcription, and every field
+   * that could not be re-derived turned into a page saying *this page cannot
+   * tell you yet* — on thirty services whose transcription sat complete in the
+   * record the whole time.
    *
-   * Anchored to end-of-line on purpose: the page template's own
-   * "## What to bring, what it costs, how long it takes" is the deliberate
-   * REFUSAL to state any of them, and a looser pattern would fail on it.
+   * The document's own structure is the structure now. What must hold is that
+   * every page SHOWS it and ATTRIBUTES it, because a transcription without its
+   * source is a rumour with better typography.
    */
-  const GUIDE_HEADING =
-    /^##[ \t]+(?:Who can apply|What to bring|Where to go|Office hours|Fees|How long it takes|What you get|If something goes wrong)[ \t]*$/m;
-
-  /** Office records legitimately carry `## Office hours` — CONT-103's dated gap. */
   const CHARTER_PAGES = PAGES.filter(
     page =>
       page.path.startsWith('content/services/') ||
@@ -630,53 +744,101 @@ describe('the eight-field guide has not crept back in', () => {
     expect(CHARTER_PAGES.length).toBeGreaterThan(50);
   });
 
-  it('carries none of the eight headings', () => {
-    expect(hits(CHARTER_PAGES, GUIDE_HEADING)).toEqual([]);
+  it('shows the transcription on every one', () => {
+    const missing = CHARTER_PAGES.filter(
+      page =>
+        !/^##\s+(What the charter says|Ano ang sinasabi ng charter)\s*$/m.test(
+          page.text
+        )
+    ).map(page => page.path);
+    expect(missing).toEqual([]);
+  });
+
+  it('names and links the document on every one', () => {
+    const uncited = CHARTER_PAGES.filter(
+      page =>
+        !/^##\s+(The official document|Ang opisyal na dokumento)\s*$/m.test(
+          page.text
+        ) || !/https:\/\/tago\.gov\.ph\//.test(page.text)
+    ).map(page => page.path);
+    expect(uncited).toEqual([]);
+  });
+
+  it('says on every one that no second person has checked it', () => {
+    // The Verifier role is vacant. A page carrying fees must say so on its face.
+    const silent = CHARTER_PAGES.filter(
+      page =>
+        !/not yet checked by a second person|hindi pa nasusuri ng pangalawang tao/i.test(
+          page.text
+        )
+    ).map(page => page.path);
+    expect(silent).toEqual([]);
+  });
+
+  it('🔴 carries no completeness block — that belongs to the transcript', () => {
+    /*
+     * The *Also printed for this service* block is every fragment the document
+     * prints that the structured blocks did not carry. It is what lets the
+     * token-completeness check reach zero, and it belongs on the full-document
+     * transcript, which exists to be checked against.
+     *
+     * On a task page it is a pile of loose fragments under the answer, and a
+     * resident reading how to register a birth is not served by it. Removed
+     * from task pages on 2026-08-10 at the project lead's instruction; this is
+     * what stops it coming back with the next generator change.
+     */
+    const offenders = CHARTER_PAGES.filter(page =>
+      /Also printed for this service|Nakalimbag din para sa serbisyong ito/.test(
+        page.text
+      )
+    ).map(page => page.path);
+
+    expect(offenders).toEqual([]);
+  });
+
+  it('🔴 carries no “what the charter does not say” section', () => {
+    /*
+     * That section told every reader that no document states where to go or the
+     * office's hours. Both were already answered elsewhere and better: **Office
+     * or Division** names the office on every page, and the hours are the
+     * standard government office hours rather than something each charter would
+     * restate.
+     *
+     * Removed on 2026-08-10 at the project lead's instruction. A page that
+     * spends a section saying it cannot tell you something it never needed to
+     * is a page that reads as less complete than it is.
+     */
+    const offenders = CHARTER_PAGES.filter(page =>
+      /^##\s+(What the charter does not say|Ano ang hindi sinasabi ng charter)\s*$/m.test(
+        page.text
+      )
+    ).map(page => page.path);
+
+    expect(offenders).toEqual([]);
+  });
+
+  it('names the office on every page instead', () => {
+    // The replacement for the section above, and the reason it was not needed:
+    // every page states which office provides the service, twice — in the
+    // "Who provides it" line and in the charter's own Office or Division row.
+    const unnamed = CHARTER_PAGES.filter(
+      page =>
+        !/\*\*(Who provides it|Sino ang nagbibigay nito):\*\*/.test(page.text)
+    ).map(page => page.path);
+
+    expect(unnamed).toEqual([]);
   });
 
   it('fires on a doctored page', () => {
-    for (const heading of ['## Fees', '## What to bring', '## Who can apply']) {
-      expect(
-        hits(
-          [
-            {
-              path: 'fixture',
-              text: `# A service\n\n${heading}\n\nSomething.`,
-            },
-          ],
-          GUIDE_HEADING
-        ),
-        heading
-      ).toHaveLength(1);
-    }
-  });
-
-  it('does not fire on the template’s own refusal heading', () => {
-    // The one that would break this check if it were written loosely.
+    const doctored = [
+      {
+        path: 'fixture',
+        text: '# A service\n\n**Also printed for this service**\n\n> stray',
+      },
+    ];
     expect(
-      hits(
-        [
-          {
-            path: 'fixture',
-            text: '## What to bring, what it costs, how long it takes\n\nThis page does not say.',
-          },
-        ],
-        GUIDE_HEADING
-      )
-    ).toEqual([]);
-  });
-
-  it('leaves the office directory’s own hours heading alone', () => {
-    // CONT-103 requires `## Office hours` on all 21 office records, stated as
-    // a dated "not stated". Scoping this scan to charter pages is what keeps
-    // the two rules from cancelling each other out.
-    const offices = PAGES.filter(
-      page =>
-        page.path.startsWith('content/government/offices/') &&
-        !page.path.endsWith('.fil.md')
-    );
-    expect(offices.length).toBe(21);
-    expect(hits(offices, /^##[ \t]+Office hours[ \t]*$/m).length).toBe(21);
+      doctored.filter(page => /Also printed for this service/.test(page.text))
+    ).toHaveLength(1);
   });
 });
 
@@ -875,16 +1037,48 @@ describe('the Filipino set is the one that was chosen, and no other', () => {
     }
   });
 
-  it('publishes no fee in Filipino either', () => {
-    // The scan above already covers the whole tree. Asserted separately
-    // because a figure is the one thing translation may never change, and a
-    // reviewer reading only the English would not catch it.
+  it('publishes no fee in Filipino outside the charter pages', () => {
+    // Asserted separately from the English sweep because a figure is the one
+    // thing translation may never change, and a reviewer reading only the
+    // English would not catch it. Inverted alongside the English scan on
+    // 2026-08-10: a transcribed charter page carries figures in both locales,
+    // and they must be the SAME figures — see § the Filipino carries the
+    // charter's figures unchanged.
     expect(
       hits(
-        filipinoPages,
+        filipinoPages.filter(
+          page =>
+            !page.path.startsWith('content/services/') &&
+            !page.path.startsWith('content/government/legislative/') &&
+            !page.path.startsWith('content/charter/')
+        ),
         /₱\s?[\d,]+|\bPHP\s?[\d,]+|\b\d{1,3}(?:,\d{3})*\.\d{2}\b/
       )
     ).toEqual([]);
+  });
+
+  it('carries the charter figures into Filipino unchanged', () => {
+    /*
+     * The rule that replaces the ban, and the more important one. A fee is
+     * what the counter will ask for BY NAME; translating or reformatting it
+     * produces a figure the form does not carry. So every fee-shaped string on
+     * a Filipino charter page must appear, byte for byte, on its English twin.
+     */
+    const FEE =
+      /₱\s?[\d,]+|\bPHP\s?[\d,]+|\bPhp\.?\s?[\d,]+(?:\.\d{2})?|\b\d{1,3}(?:,\d{3})*\.\d{2}\b/g;
+    const drifted: string[] = [];
+
+    for (const page of filipinoPages) {
+      const twin = PAGES.find(
+        other => other.path === page.path.replace('.fil.md', '.md')
+      );
+      if (!twin) continue;
+      const english = new Set(twin.text.match(FEE) ?? []);
+      for (const figure of new Set(page.text.match(FEE) ?? [])) {
+        if (!english.has(figure)) drifted.push(`${page.path} → ${figure}`);
+      }
+    }
+    expect(drifted).toEqual([]);
   });
 
   it('keeps document, office and charter wording untranslated', () => {
@@ -1299,6 +1493,15 @@ describe('Filipino coverage is complete', () => {
      * rule — hence the length floor and the requirement for FIVE English
      * markers, which a phrase like "Business Licensing and Permitting
      * Division" cannot reach on its own.
+     *
+     * 🔴 EXTENDED 2026-08-10, when the charter's contents came into scope.
+     * A transcribed requirement, step or fee is carried through in the
+     * document's own English on BOTH locales, deliberately: a requirement is
+     * what the counter will ask for by name, and "Certificate of Live Birth"
+     * rendered into Filipino is a phrase no clerk will recognise. Those lines
+     * arrive as table rows (already skipped, they start `|`) and as ordered
+     * list items, which is why `^\d+\.` joins the skip set. The project's own
+     * prose around them is still swept, and that is what this check is for.
      */
     const ENGLISH =
       /\b(the|is|are|was|were|of|and|that|which|with|from|this|these|does|not|for|it)\b/gi;
@@ -1310,7 +1513,20 @@ describe('Filipino coverage is complete', () => {
       for (const raw of page.text.split('\n')) {
         const line = raw.trim();
         if (line.length < 60) continue;
-        if (/^[-#>|]|```/.test(line) || line.includes('http')) continue;
+        // An INDENTED line continues a list item — in practice the second and
+        // third lines of a transcribed step. Tested on the raw line, because
+        // `line` has already been trimmed.
+        if (/^\s/.test(raw)) continue;
+        // A LIST MARKER of any shape opens a transcribed charter item, and the
+        // charter writes `1.Original` with no space after the dot as often as
+        // `1. Original`, so the space is not required. `1\.` is the escaped
+        // form used where a list does not count up and markdown would renumber
+        // it — see scripts/charter-pages.mjs.
+        if (
+          /^[-#>|]|^\d{1,2}\\?[.)]|^[•·▪◦*]|```/.test(line) ||
+          line.includes('http')
+        )
+          continue;
         const english = line.match(ENGLISH)?.length ?? 0;
         const filipino = line.match(FILIPINO)?.length ?? 0;
         if (english >= 5 && filipino <= 1) {

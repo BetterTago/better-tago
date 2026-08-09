@@ -78,5 +78,27 @@
     "heading": "May naganap na mali",
     "body": "Hindi ma-load ang pahinang ito. Hindi apektado ang opisyal na sityo ng bayan.",
     "retry": "Subukan muli"
+  },
+  "services": {
+    "title": "Mga serbisyo",
+    "lead": "Bawat serbisyong inilalarawan ng Citizen’s Charter ng Munisipyo ng Tago, nakalista ayon sa kung ano ang gusto ninyong gawin at hindi ayon sa kung aling opisina ang gumagawa nito.",
+    "counts": "May sariling requirement, bayad at hakbang ng charter ang {transcribed} sa {total} serbisyo. Ang iba ay pinapangalanan ang serbisyo at ini-link ang dokumento habang isinasalin ito ng tao.",
+    "notYetTranscribed": "hindi pa naisasalin ang mga requirement",
+    "fallbackNotice": "Wala pang Filipino ang pahinang ito, kaya Ingles ang ipinapakita. Hindi ito nakatago — ang pagsasalin ay hindi pa tapos.",
+    "categories": {
+      "agriculture-fisheries": "Agrikultura at pangisdaan",
+      "business-and-permits": "Negosyo at permit",
+      "civil-registry": "Civil registry",
+      "disaster-and-safety": "Sakuna at kaligtasan",
+      "engineering": "Engineering at paggamit ng lupa",
+      "health": "Kalusugan",
+      "permits-and-clearances": "Mga permit at clearance",
+      "social-welfare": "Serbisyong panlipunan",
+      "tourism": "Turismo",
+      "treasury": "Treasury at ari-arian",
+      "work-and-employment": "Trabaho at empleyo"
+    },
+    "scrollableTable": "{name}, talahanayan, puwedeng i-scroll pahalang",
+    "table": "Talahanayan"
   }
 }

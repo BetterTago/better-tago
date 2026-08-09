@@ -1,8 +1,10 @@
-# Kumuha ng nutrition pack o supplements
+# Get a nutrition pack or supplements
 
 > **Paunawa:** Ang Filipino sa pahinang ito ay **draft, hindi pa nasusuri ng katutubong nagsasalita.** Bakante pa ang tungkulin ng Translator sa proyektong ito. Kung may mali, ang correction link sa footer ang pinakamabilis na paraan para maayos ito.
 
 **Sino ang nagbibigay nito:** Office of the Municipal Nutrition, Tago Municipal Hall.
+
+> **Isinalin mula sa dokumento sa ibaba, at hindi pa nasusuri ng pangalawang tao.** Ang patakaran ng proyektong ito ay hindi kailanman sinusuri ng nagsulat ng pahina ang sarili niyang gawa, at bakante pa ang tungkulin ng Verifier. Bawat halaga rito ay binasa mula sa charter; wala pang binasang muli ng iba. Suriin sa mismong dokumento ang anumang babayaran o pupuntahan ninyo.
 
 ## Ano ang tawag dito ng charter
 
@@ -10,16 +12,42 @@
 
 Iyan ang sariling pananalita ng munisipyo, kinopya nang eksakto. Mahalagang malaman, dahil iyan ang pananalitang gagamitin sa counter at sa form.
 
-## Ano ang dadalhin, magkano, at gaano katagal
+## Ano ang sinasabi ng charter
 
-**Hindi ito sinasabi ng pahinang ito, at sinadya iyon.** Ang mga kailangan, ang bayad, at ang tagal ng proseso ay nakasulat lahat sa sariling Citizen’s Charter ng munisipyo, at ini-link ng proyektong ito ang dokumentong iyon sa halip na muling i-type ito.
+Isinalin mula sa sariling dokumento ng munisipyo, sa sariling istruktura at pananalita ng dokumento. Walang nasa ibaba ang muling isinulat, inayos o binuod.
 
-Hindi ito pag-iingat sa katumpakan — ang muling paglalathala ng teksto ng charter ay pahintulot na hindi hiningi ng proyektong ito at hindi naman kailangan para maging kapaki-pakinabang ito. Ang kulang sa mga residente ay hindi ang dokumento; kundi ang paraan para malaman kung aling dokumento, at aling opisina. Iyan ang pahinang ito.
+| | |
+| --- | --- |
+| Office or Division | Municipal Nutrition Office |
+| Classification | Simple |
+| Type of Transaction | G2C – Government to Citizen |
+| Who may Avail | Identified Malnourished in the OPT Plus Record Child Admitted in the Hospital and monitored and Lactating Pregnant |
 
-**Buksan ang dokumento ng charter sa ibaba.** Iyon ang opisyal na bersyon, inilathala ito ng munisipyo, at isang tap lang ang layo.
+**Listahan ng requirement**
+
+| Checklist of requirements | Where to secure |
+| --- | --- |
+| 1. Present doctors order/ a. Receive doctors None 1 second MNAO Designate prescription slip order/prescription slip (Shaira Espinoza) with authorized signature b. Check the presented doctors order/ 1 minute prescription slip c. Conduct advocacy o9r counselling and given 10-20 Minutes instructions how to take food pack or micronutrients provided for children FOR DISTRIBUTION OF MULTI-VITAMINS IN EVERY BARANGAY | & Staff |
+
+**Mga hakbang**
+
+| Client steps | Agency action | Fees to be paid | Processing time | Person responsible |
+| --- | --- | --- | --- | --- |
+| 2. Present list of children with Nutrition Status of the following: a. UW/SUW b. Stunted/ Sev. Stunted c. Wasted/Sev. Wasted | a. Receive and evaluate list of children b. Provide Multi- Vitamins and Distribution list from at the same time give instruction |  | None 10 Minutes | & Staff |
+|  | TOTAL |  | 41 MINUTES AND 1 SECOND |  |
+|  |  |  |  | Office of the Municipal Nutrition |
+|  |  |  |  | Internal Services |
+| **TOTAL** | | **** | **10 Minutes** | |
+
+## Kung may mali
+
+Ang pahinang ito ay transkripsyon ng sariling dokumento ng munisipyo, gawa ng isang independiyenteng boluntaryong proyekto. Hindi ito opisyal na channel, at wala itong maiproproseso para sa inyo.
+
+**Kung iba ang sabihin sa inyo ng opisina kaysa sa pahinang ito, ang opisina ang tama.** Binabago ang mga charter, at ang pahinang isinulat sa isang petsa ay maaaring maiwan. Ang correction link sa footer ang pinakamabilis na paraan para maayos ito — ang mga pagwawasto mula sa munisipyo ay unang inaasikaso.
 
 ## Ang opisyal na dokumento
 
 - [Office of the Municipal Nutrition](https://tago.gov.ph/wp-content/uploads/2024/12/Office-of-the-Municipal-Nutrition.pdf) — ang Citizen’s Charter para sa opisinang ito, kinuha noong 9 Agosto 2026
+- [Basahin ang buong dokumento, nakatranskribe](/fil/charter/documents/office-of-the-municipal-nutrition)
 
-Kung magkaiba ang pahinang ito at ang dokumentong iyon, **tama ang dokumento at mali ang pahinang ito.** Kung mapansin ninyo iyon, ang correction link sa footer ang pinakamabilis na paraan para maayos ito.
+Kung magkaiba ang pahinang ito at ang dokumentong iyon, **tama ang dokumento at mali ang pahinang ito.**

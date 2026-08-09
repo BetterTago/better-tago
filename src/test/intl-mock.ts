@@ -17,7 +17,13 @@ import type { Locale } from '@/i18n/routing';
  * returning `key` would hide completely.
  */
 
-type Catalogue = Record<string, Record<string, string>>;
+/**
+ * A message catalogue, which nests. `services.categories.health` is a real key
+ * — a flat `Record<string, Record<string, string>>` cannot describe it, and
+ * widening this was cheaper than flattening a group that is genuinely a group.
+ */
+type Leaf = string | { [key: string]: Leaf };
+type Catalogue = Record<string, Leaf>;
 
 const CATALOGUES: Record<Locale, Catalogue> = { en, fil };
 
@@ -34,13 +40,24 @@ function translator(namespace: string) {
     );
 
   return (key: string, values?: TranslationValues): string => {
-    const template = messages[key];
-    if (template === undefined)
+    // Dotted, because a namespace nests: `categories.health` is one key to a
+    // caller and two levels in the file.
+    const template = key
+      .split('.')
+      .reduce<Leaf | undefined>(
+        (level, part) =>
+          level !== undefined && typeof level !== 'string'
+            ? level[part]
+            : undefined,
+        messages
+      );
+
+    if (typeof template !== 'string')
       throw new Error(
         `missing message "${namespace}.${key}" in messages/${localeState.current}.json`
       );
 
-    return template.replace(/\{(\w+)\}/g, (whole, name: string) =>
+    return template.replace(/\{(\w+)\}/g, (whole: string, name: string) =>
       values && name in values ? String(values[name]) : whole
     );
   };

@@ -1,0 +1,2136 @@
+{
+  "note": "REFERENCE ONLY — never rendered, never served. Every line the source document prints that the generated markdown does not carry. Deleting this file breaks the completeness guarantee in src/lib/transcription-integrity.test.ts. See scripts/charter-pages.mjs.",
+  "generatedBy": "scripts/charter-pages.mjs",
+  "transcribedAt": "2026-08-10",
+  "services": {
+    "business-licensing-and-permitting-division-external-services#external-1": {
+      "charterTitle": "Motorized Tricycle Operator’s Permit (MTOP) Payment of Annual Regulatory Fees for New/Renewal",
+      "section": "external",
+      "document": null,
+      "linesInDocument": 49,
+      "notRendered": [
+        "1. Motorized Tricycle Operator’s Permit (MTOP) Payment of Annual Regulatory Fees for New/Renewal"
+      ]
+    },
+    "business-licensing-and-permitting-division-external-services#external-2": {
+      "charterTitle": "Processing of Application for New Business Permit (Assuming inspection has already been conducted)",
+      "section": "external",
+      "document": null,
+      "linesInDocument": 165,
+      "notRendered": [
+        "2. Processing of Application for New Business Permit (Assuming inspection has already been conducted)",
+        "A business permit is document issued to client/s who may apply for business in the Municipality of Tago to legally operate the same provided all requirements are",
+        "complied with.",
+        "BPLO",
+        "- MTO",
+        "-Revenue Collection Officer",
+        "BPLO personnel",
+        "- Municipal Mayor",
+        "- BPLO Personnel"
+      ]
+    },
+    "business-licensing-and-permitting-division-external-services#external-3": {
+      "charterTitle": "Processing of Application for Business Permit Renewal",
+      "section": "external",
+      "document": null,
+      "linesInDocument": 80,
+      "notRendered": [
+        "3. Processing of Application for Business Permit Renewal"
+      ]
+    },
+    "business-licensing-and-permitting-division-external-services#external-4": {
+      "charterTitle": "Processing of Application for Business Retirement",
+      "section": "external",
+      "document": null,
+      "linesInDocument": 70,
+      "notRendered": [
+        "Retirement of Business is required in the event a business owner/s decide to stop business operation. This will relieve the business owner to incur penalties and fees, if the",
+        "retirement is acted upon retirement of the business operation."
+      ]
+    },
+    "executive-division-external-services#external-1": {
+      "charterTitle": "Mayor’s Certificate for the Church Existence",
+      "section": "external",
+      "document": null,
+      "linesInDocument": 165,
+      "notRendered": [
+        "1. Mayor’s Certificate for the Church Existence",
+        "This Certification is issued to clients who may avail of Mayor’s Certification for the church existence.",
+        "Refer to table",
+        "below",
+        "pursuant to",
+        "Code of the",
+        "municipality",
+        "Refer to",
+        "table below",
+        "pursuant to",
+        "Code of the",
+        "Municipality",
+        "RCEPF"
+      ]
+    },
+    "executive-division-external-services#external-2": {
+      "charterTitle": "Service fee for the Office of the Mayor",
+      "section": "external",
+      "document": null,
+      "linesInDocument": 150,
+      "notRendered": [
+        "This certification is issued to clients who may avail of Mayor’s Clearance for Local Employment, AFP/PNP/BFP/CG/BJMP applications and other",
+        "similar purposes.",
+        "Code of the City",
+        "RCEPF"
+      ]
+    },
+    "executive-division-external-services#external-3": {
+      "charterTitle": "Mayor’s Special Permit for Concert, Stage Performances and Other Amusement Activities",
+      "section": "external",
+      "document": null,
+      "linesInDocument": 120,
+      "notRendered": [
+        "3. Mayor’s Special Permit for Concert, Stage Performances and Other Amusement Activities",
+        "This Special Permit is issued to clients who may avail of special authority to conduct Concerts, Stage Performances, Car and Motor Shows and Other Amusement",
+        "Activities.",
+        "Refer to table",
+        "below pursuant to",
+        "Code of the",
+        "Municipality",
+        "Refer to table",
+        "below",
+        "pursuant to",
+        "Code of the City",
+        "(Security"
+      ]
+    },
+    "executive-division-external-services#external-4": {
+      "charterTitle": "Mayor’s Permit on Business",
+      "section": "external",
+      "document": null,
+      "linesInDocument": 221,
+      "notRendered": [
+        "Revenue Collection Officer - MTO",
+        "ESPF",
+        "(Educational",
+        "(Security",
+        "Support",
+        "Program",
+        "Fund)"
+      ]
+    },
+    "executive-division-external-services#external-5": {
+      "charterTitle": "Mayor’s Permit Fee for Cockpits Owners/Operators/Licensees/Promoters and Cockpit Personnel",
+      "section": "external",
+      "document": null,
+      "linesInDocument": 149,
+      "notRendered": [
+        "5. Mayor’s Permit Fee for Cockpits Owners/Operators/Licensees/Promoters and Cockpit Personnel",
+        "Code of the City",
+        "ESPF",
+        "(Educational",
+        "Support",
+        "RCEPF",
+        "(Security",
+        "Program",
+        "Fund)"
+      ]
+    },
+    "executive-division-external-services#external-6": {
+      "charterTitle": "Mayor’s Special Permit for Cockfighting",
+      "section": "external",
+      "document": null,
+      "linesInDocument": 131,
+      "notRendered": [
+        "6. Mayor’s Special Permit for Cockfighting",
+        "This Special Permit is issued to clients who may avail of special authority to conduct Cockfights in their respective barangays.",
+        "10 minutes",
+        "Revenue Collection Officer - MTO",
+        "32 Minutes",
+        "(Sanitation"
+      ]
+    },
+    "gender-and-development-division-external-services#external-1": {
+      "charterTitle": "Payroll of Honorarium of Women President’s",
+      "section": "external",
+      "document": null,
+      "linesInDocument": 45,
+      "notRendered": [
+        "Provision of honorarium per quarter for Women President"
+      ]
+    },
+    "human-resource-management-division-external-services#external-1": {
+      "charterTitle": "Issuance of Clearance Certifications",
+      "section": "external",
+      "document": null,
+      "linesInDocument": 104,
+      "notRendered": [
+        "1. Issuance of Clearance Certifications",
+        "Clearance issued to requesting clients to conform that the employee is free from his/her obligations in the Municipal Government to whatever",
+        "purpose.",
+        "15 Minutes",
+        "15 Minutes",
+        "40 Minutes",
+        "SSF",
+        "(Sanitation",
+        "Service Fee)"
+      ]
+    },
+    "human-resource-management-division-external-services#external-2": {
+      "charterTitle": "Issuance of Certificate of Employment & Others",
+      "section": "external",
+      "document": null,
+      "linesInDocument": 102,
+      "notRendered": [
+        "2. Issuance of Certificate of Employment & Others",
+        "Certifications issued to requesting clients relative to their employment with the Municipal Government.",
+        "5 Minutes",
+        "15 Minutes",
+        "5 Minutes",
+        "15 Minutes",
+        "40 Minutes",
+        "SSF",
+        "(Sanitation",
+        "Service Fee)",
+        "Program Fund)"
+      ]
+    },
+    "human-resource-management-division-external-services#external-3": {
+      "charterTitle": "Issuance of Service Record",
+      "section": "external",
+      "document": null,
+      "linesInDocument": 102,
+      "notRendered": [
+        "Service Record is issued to clients relative to the work/employment registry as an employee with the Municipal Government.",
+        "15 Minutes",
+        "15 Minutes",
+        "40 Minutes",
+        "SSF",
+        "(Sanitation",
+        "Service Fee)"
+      ]
+    },
+    "human-resource-management-division-external-services#external-4": {
+      "charterTitle": "Accepting Job Applications",
+      "section": "external",
+      "document": null,
+      "linesInDocument": 77,
+      "notRendered": [
+        "4. Accepting Job Applications",
+        "This service is rendered to whoever is interested to apply for a job in the Local Government Unit of Tago whether there is actual job opening or none."
+      ]
+    },
+    "human-resource-management-division-external-services#external-5": {
+      "charterTitle": "Issuance of Appointment",
+      "section": "external",
+      "document": null,
+      "linesInDocument": 113,
+      "notRendered": [
+        "5. Issuance of Appointment",
+        "This service is rendered to an individual judiciously chosen by the appointing authority to be appointed to the vacant position of the LGU – Tago."
+      ]
+    },
+    "human-resource-management-division-internal-services#internal-1": {
+      "charterTitle": "Processing of Study Leave Application",
+      "section": "internal",
+      "document": null,
+      "linesInDocument": 141,
+      "notRendered": [
+        "The study leave is a time-off from work not exceeding six (6) months with pay for qualified officials and employees for educational advancements and/or preparation for",
+        "bar and board exams. This may also be availed for the completion of master’s degree for a period not exceeding four (4) months.",
+        "• Coterminous employees may be allowed, provided that the service obligation will met within the term of the office of the employee",
+        "concerned, and is not related to the agency head, within the 4 th degree of consanguinity or of affinity;",
+        "• With at least two (2) years of continuous service in the Municipal Government of Tago and have at least a rating of “very",
+        "satisfactory” in the latest 2 rating periods;",
+        "• Must not more than fifty (50) year-old as of the date of filing of application;",
+        "• Have yet to avail of a Study Leave before granted by the Municipal Government of Tago"
+      ]
+    },
+    "human-resource-management-division-internal-services#internal-2": {
+      "charterTitle": "Payroll Certification for Loan Application with Pag-Ibig",
+      "section": "internal",
+      "document": null,
+      "linesInDocument": 100,
+      "notRendered": [
+        "2. Payroll Certification for Loan Application with Pag-Ibig",
+        "Payroll certification is required for the Approval of Loan Applications. This is to certifies whether or not the Applicable Loan Amortization for the Employee’s Applied",
+        "Loan can be deducted from his/her salaries; and provided that in no case shall the foregoing deductions reduce the employee’s monthly net take home pay to an",
+        "amount lower than required mandatory retention as prescribed in the General Appropriations Act.",
+        "15 Minutes",
+        "20 Minutes &",
+        "SSF",
+        "(Sanitation",
+        "Service Fee)"
+      ]
+    },
+    "human-resource-management-division-internal-services#internal-3": {
+      "charterTitle": "Employment and Net Take Home Pay Certification for Loan Applications with Land Bank",
+      "section": "internal",
+      "document": null,
+      "linesInDocument": 106,
+      "notRendered": [
+        "3. Employment and Net Take Home Pay Certification for Loan Applications with Land Bank",
+        "This certification is issued to LGU – Tago permanent officials and employees who wanted to avail of Salary Loan and the like facility to Land Bank of the Philippines. This",
+        "certifies that the employee’s net take home pay is more than sufficient to pay for the loan amortization and that the applicant is not due for retirement and/or subject for",
+        "disciplinary action at the time or about to be sanctioned on the next months within the term of the loan. Provided, that in no case shall the foregoing deductions reduce",
+        "the employee’s monthly net take home pay to an amount below the prescribed net take home pay retention as required in the General Appropriations Act.",
+        "RCEPF"
+      ]
+    },
+    "human-resource-management-division-internal-services#internal-4": {
+      "charterTitle": "Payroll Certification for Loan Applications with DBP",
+      "section": "internal",
+      "document": null,
+      "linesInDocument": 115,
+      "notRendered": [
+        "4. Payroll Certification for Loan Applications with DBP",
+        "This certification is issued to LGU – Tago permanent officials and employees who wanted to avail of a Salary Loan and the like facility to Development Bank of the",
+        "Philippines. This certifies that the employee’s net take home pay is more than sufficient to pay for the loan amortization and that the applicant is not due for retirement",
+        "and/or subject for disciplinary action at the time or about to be sanctioned on the next months within the term of the loan. Provided, that in no case shall the foregoing",
+        "deductions reduce the employee’s monthly net take home pay to an amount below the prescribed net take home pay retention as required in the General",
+        "Appropriations Act.",
+        "RCEPF"
+      ]
+    },
+    "human-resource-management-division-internal-services#internal-5": {
+      "charterTitle": "Issuance of Authority to Travel Abroad",
+      "section": "internal",
+      "document": null,
+      "linesInDocument": 95,
+      "notRendered": [
+        "5. Issuance of Authority to Travel Abroad",
+        "Certification authorizing an employee to travel abroad is issued as part of the requirement.",
+        "ESPF",
+        "(Educational",
+        "Support",
+        "Program Fund)"
+      ]
+    },
+    "human-resource-management-division-internal-services#internal-6": {
+      "charterTitle": "Approval of GSIS Loans",
+      "section": "internal",
+      "document": null,
+      "linesInDocument": 54,
+      "notRendered": [
+        "6. Approval of GSIS Loans",
+        "This service is rendered to LGU – Tago government officials and employees who avail of the GSIS financial facilities (salary loans and the like)."
+      ]
+    },
+    "human-resource-management-division-internal-services#internal-7": {
+      "charterTitle": "Computation for the Monetization",
+      "section": "internal",
+      "document": null,
+      "linesInDocument": 62,
+      "notRendered": [
+        "7. Computation for the Monetization",
+        "This service is rendered to permanent officials and employees who wanted to available of the monetization of their earned leave."
+      ]
+    },
+    "human-resource-management-division-internal-services#internal-8": {
+      "charterTitle": "Application of Compensatory Overtime Credit",
+      "section": "internal",
+      "document": null,
+      "linesInDocument": 73,
+      "notRendered": [
+        "8. Application of Compensatory Overtime Credit",
+        "This service is rendered to permanent division heads and below employees who render overtime services for a noncash compensation called Compensatory",
+        "Overtime Credit that will be compensated with leave of absence without deduction to the earned leave equal to the total COC earned called Compensatory",
+        "Time-Off."
+      ]
+    },
+    "human-resource-management-division-internal-services#internal-9": {
+      "charterTitle": "Application for Compensatory Time-Off (CTO)",
+      "section": "internal",
+      "document": null,
+      "linesInDocument": 78,
+      "notRendered": [
+        "9. Application for Compensatory Time-Off (CTO)",
+        "This service is rendered to permanent division head and below employees who may avail of leave of absence against the earned Compensatory Overtime",
+        "Credit without deduction to the earned leave equal to the total COC earned."
+      ]
+    },
+    "human-resource-management-division-internal-services#internal-10": {
+      "charterTitle": "Application of Leave of Absence",
+      "section": "internal",
+      "document": null,
+      "linesInDocument": 71,
+      "notRendered": [
+        "10. Application of Leave of Absence",
+        "This service is rendered to all Elective and Appointive Officials and Employees of the LGU - Tago who wanted to avail of the leave of absence (vacation,",
+        "privilege, emergency, excused, sick and the like leaves of absences)."
+      ]
+    },
+    "human-resource-management-division-internal-services#internal-11": {
+      "charterTitle": "Issuance of Appointment",
+      "section": "internal",
+      "document": null,
+      "linesInDocument": 115,
+      "notRendered": [
+        "11. Issuance of Appointment",
+        "This service is rendered to an individual judiciously chosen by the appointing authority to be appointed to the vacant position of the LGU – Tago."
+      ]
+    },
+    "human-resource-management-division-internal-services#internal-12": {
+      "charterTitle": "Processing of the terminal leave pay of the deceased LGU – Tago Official or Employee",
+      "section": "internal",
+      "document": null,
+      "linesInDocument": 78,
+      "notRendered": [
+        "12. Processing of the terminal leave pay of the deceased LGU – Tago Official or Employee",
+        "This service is rendered to all legitimate beneficiaries of the deceased LGU – Tago appointive and elective Officials and Employees."
+      ]
+    },
+    "human-resource-management-division-internal-services#internal-13": {
+      "charterTitle": "Application for the Claim of Terminal Leave Pay",
+      "section": "internal",
+      "document": null,
+      "linesInDocument": 137,
+      "notRendered": [
+        "13. Application for the Claim of Terminal Leave Pay",
+        "This service is rendered to all LGU – Tago appointive and elective Officials and Employees who is separating from the service.",
+        "ESPF",
+        "(Educational",
+        "Support",
+        "Program Fund)"
+      ]
+    },
+    "municipal-accounting-office#external-1": {
+      "charterTitle": "Issuance of Certificate of No Claim",
+      "section": "external",
+      "document": null,
+      "linesInDocument": 55,
+      "notRendered": [
+        "1. Issuance of Certificate of No Claim",
+        "Certificate of No Claim is issued by this office as per request from the concerned offices of the Municipality of Tago, other Government Agencies and of the",
+        "transacting public to support their processed financial documents.",
+        "to Citizen",
+        "designated Officer in",
+        "Charge"
+      ]
+    },
+    "municipal-accounting-office#internal-1": {
+      "charterTitle": "Receiving of Documents",
+      "section": "internal",
+      "document": null,
+      "linesInDocument": 54,
+      "notRendered": [
+        "1. Receiving of Documents",
+        "Documents from the Commission on Audit (COA) are transmitted to the Municipal Accounting Office for proper action and information."
+      ]
+    },
+    "municipal-accounting-office#internal-2": {
+      "charterTitle": "Receipt, Checking and Recording of Financial Documents",
+      "section": "internal",
+      "document": null,
+      "linesInDocument": 62,
+      "notRendered": [
+        "2. Receipt, Checking and Recording of Financial Documents",
+        "Financial Documents from the Municipal Treasurer’s Office of the Municipal Government of Tago are submitted to the Municipal Accounting Office for the",
+        "preparation of Financial Reports as mandated by the Commission on Audit."
+      ]
+    },
+    "municipal-accounting-office#internal-3": {
+      "charterTitle": "Receiving, Checking and Recording of Barangay Financial Documents",
+      "section": "internal",
+      "document": null,
+      "linesInDocument": 75,
+      "notRendered": [
+        "3. Receiving, Checking and Recording of Barangay Financial Documents",
+        "Financial Documents from the Barangays of the Municipality of Tago are submitted to the Municipal Accounting Office for the preparation of",
+        "Financial",
+        "Reports as mandated by the Commission on Audit."
+      ]
+    },
+    "municipal-accounting-office#internal-4": {
+      "charterTitle": "Pre-Audit and Processing of Payroll Fund for Salaries, Wages, Allowances, Honoraria and Other Similar Expenses",
+      "section": "internal",
+      "document": null,
+      "linesInDocument": 90,
+      "notRendered": [
+        "4. Pre-Audit and Processing of Payroll Fund for Salaries, Wages, Allowances, Honoraria and Other Similar Expenses",
+        "Payroll Fund for Salaries, Wages, Allowances, Honoraria and Other Similar Expenses of the Municipality of Tago are forwarded to the Municipal Accounting Office",
+        "for pre-audit and certification as to completeness and propriety of its supporting documents, in accordance with existing guidelines from various regulating bodies;",
+        "and its processing."
+      ]
+    },
+    "municipal-accounting-office#internal-5": {
+      "charterTitle": "Pre-Audit and Processing of Disbursement Voucher of Cash Advance for Petty Cash Fund",
+      "section": "internal",
+      "document": null,
+      "linesInDocument": 94,
+      "notRendered": [
+        "5. Pre-Audit and Processing of Disbursement Voucher of Cash Advance for Petty Cash Fund",
+        "Disbursement Vouchers from the Municipal Budget Office of the Municipality of Tago for Petty Cash Fund are forwarded to the Municipal Accounting Office for pre-",
+        "audit and certification as to completeness and propriety of its supporting documents, in accordance with existing guidelines from various regulating bodies; and its"
+      ]
+    },
+    "municipal-accounting-office#internal-6": {
+      "charterTitle": "Pre-Audit and Processing of Disbursement Voucher of Cash Advance for Local Travel",
+      "section": "internal",
+      "document": null,
+      "linesInDocument": 94,
+      "notRendered": [
+        "6.Pre-Audit and Processing of Disbursement Voucher of Cash Advance for Local Travel",
+        "Disbursement Vouchers of Cash Advance for Local Travel from the Municipal Budget Office of the Municipality of Tago are forwarded to the Municipal Accounting",
+        "Office for pre-audit and certification as to completeness and propriety of its supporting documents, in accordance with existing guidelines from various regulating",
+        "bodies; and its processing."
+      ]
+    },
+    "municipal-accounting-office#internal-7": {
+      "charterTitle": "Pre-Audit and Processing of Disbursement Voucher of Cash Advance for Special Purpose",
+      "section": "internal",
+      "document": null,
+      "linesInDocument": 92,
+      "notRendered": [
+        "7. Pre-Audit and Processing of Disbursement Voucher of Cash Advance for Special Purpose",
+        "Disbursement Vouchers of Cash Advance for Special Purpose such as during Araw ng Tago, Family Day, and similar activities, from the Municipal Budget Office",
+        "of the Municipality of Tago are forwarded to the Municipal Accounting Office for pre-audit and certification as to completeness and propriety of its supporting",
+        "documents, in accordance with existing guidelines from various regulating bodies; and its processing."
+      ]
+    },
+    "municipal-accounting-office#internal-8": {
+      "charterTitle": "Pre-Audit and Processing of Liquidation Report of Cash Advance of Payroll for Salaries, Wages, Allowances, Honoraria and Other Similar Expenses",
+      "section": "internal",
+      "document": null,
+      "linesInDocument": 98,
+      "notRendered": [
+        "8. Pre-Audit and Processing of Liquidation Report of Cash Advance of Payroll for Salaries, Wages, Allowances, Honoraria and Other Similar Expenses",
+        "Liquidation Reports from the Municipal Treasurer’s Office of the Municipality of Tago are forwarded to the Municipal Accounting Office for pre-audit and certification",
+        "as to completeness and propriety of its supporting documents, in accordance with existing guidelines from various regulating bodies; and its processing."
+      ]
+    },
+    "municipal-accounting-office#internal-9": {
+      "charterTitle": "Pre-Audit and Processing of Liquidation/ Replenishment of Petty Cash Fund",
+      "section": "internal",
+      "document": null,
+      "linesInDocument": 113,
+      "notRendered": [
+        "9. Pre-Audit and Processing of Liquidation/ Replenishment of Petty Cash Fund",
+        "Liquidation/Replenishment Reports from the Petty Cash Custodian of various offices of the Municipality of Tago are forwarded to the Municipal Accounting Office",
+        "for pre-audit and certification as to completeness and propriety of its supporting documents, in accordance with existing guidelines from various regulating bodies;",
+        "and its processing."
+      ]
+    },
+    "municipal-accounting-office#internal-10": {
+      "charterTitle": "Pre-Audit and Processing of Liquidation of Cash Advance for Local Travel",
+      "section": "internal",
+      "document": null,
+      "linesInDocument": 105,
+      "notRendered": [
+        "10. Pre-Audit and Processing of Liquidation of Cash Advance for Local Travel",
+        "Liquidation Reports from the different offices of the Municipality of Tago are forwarded to the Municipal Accounting Office for pre-audit and certification as to",
+        "completeness and propriety of its supporting documents, in accordance with existing guidelines from various regulating bodies; and its processing."
+      ]
+    },
+    "municipal-accounting-office#internal-11": {
+      "charterTitle": "Pre-Audit and Processing of Liquidation of Cash Advance for Special Purpose",
+      "section": "internal",
+      "document": null,
+      "linesInDocument": 95,
+      "notRendered": [
+        "11. Pre-Audit and Processing of Liquidation of Cash Advance for Special Purpose",
+        "Liquidation Reports from accountable officers of various offices of the Municipality of Tago are forwarded to the Municipal Accounting Office for pre-audit and",
+        "certification as to completeness and propriety of its supporting documents, in accordance with existing guidelines from various regulating bodies; and its processing."
+      ]
+    },
+    "municipal-accounting-office#internal-12": {
+      "charterTitle": "Pre-Audit and Processing of Disbursement Voucher of Fund Transfers to Component Barangays",
+      "section": "internal",
+      "document": null,
+      "linesInDocument": 96,
+      "notRendered": [
+        "12. Pre-Audit and Processing of Disbursement Voucher of Fund Transfers to Component Barangays",
+        "Disbursement Vouchers from the Municipal Budget Office of the Municipality of Tago for Fund Transfers to barangays for implementation of projects are forwarded",
+        "to the Municipal Accounting Office for pre-audit and certification as to completeness and propriety of its supporting documents, in accordance with existing guidelines",
+        "from various regulating bodies; and its processing."
+      ]
+    },
+    "municipal-accounting-office#internal-13": {
+      "charterTitle": "Pre-Audit and Processing of Disbursement Voucher of Individual Claims for First Salary",
+      "section": "internal",
+      "document": null,
+      "linesInDocument": 118,
+      "notRendered": [
+        "13. Pre-Audit and Processing of Disbursement Voucher of Individual Claims for First Salary",
+        "Disbursement Vouchers from the Municipal Budget Office of the Municipality of Tago for individual claims of first salary are forwarded to the Municipal Accounting",
+        "Office for pre-audit and certification as to completeness and propriety of its supporting documents, in accordance with existing guidelines from various regulating",
+        "bodies; and its processing."
+      ]
+    },
+    "municipal-accounting-office#internal-14": {
+      "charterTitle": "Pre-Audit and Processing of Disbursement Voucher of Salary Differential due to Promotion and/or Step Increment",
+      "section": "internal",
+      "document": null,
+      "linesInDocument": 95,
+      "notRendered": [
+        "14. Pre-Audit and Processing of Disbursement Voucher of Salary Differential due to Promotion and/or Step Increment",
+        "Disbursement Vouchers from the Municipal Budget Office of the Municipality of Tago for Salary Differential due to Promotion and/or Step Increment are forwarded",
+        "to the Municipal Accounting Office for pre-audit and certification as to completeness and propriety of its supporting documents, in accordance with existing guidelines",
+        "from various regulating bodies; and its processing."
+      ]
+    },
+    "municipal-accounting-office#internal-15": {
+      "charterTitle": "Pre-Audit and Processing of Disbursement Voucher of Last Salary",
+      "section": "internal",
+      "document": null,
+      "linesInDocument": 91,
+      "notRendered": [
+        "15. Pre-Audit and Processing of Disbursement Voucher of Last Salary",
+        "Disbursement Vouchers from the Municipal Budget Office of the Municipality of Tago for Last Salary are forwarded to the Municipal Accounting Office for pre-audit",
+        "and certification as to completeness and propriety of its supporting documents, in accordance with existing guidelines from various regulating bodies; and its"
+      ]
+    },
+    "municipal-accounting-office#internal-16": {
+      "charterTitle": "Pre-Audit and Processing of Disbursement Voucher of Salary due to Heirs of Deceased Employee",
+      "section": "internal",
+      "document": null,
+      "linesInDocument": 101,
+      "notRendered": [
+        "16. Pre-Audit and Processing of Disbursement Voucher of Salary due to Heirs of Deceased Employee",
+        "Disbursement Vouchers from the Municipal Budget Office of the Municipality of Tago for salary due to heirs of deceased employee are forwarded to the Municipal",
+        "Accounting Office for pre-audit and certification as to completeness and propriety of its supporting documents, in accordance with existing guidelines from various",
+        "regulating bodies; and its processing."
+      ]
+    },
+    "municipal-accounting-office#internal-17": {
+      "charterTitle": "Pre-Audit and Processing of Disbursement Voucher of RATA (Individual Claim)",
+      "section": "internal",
+      "document": null,
+      "linesInDocument": 100,
+      "notRendered": [
+        "17. Pre-Audit and Processing of Disbursement Voucher of RATA (Individual Claim)",
+        "Disbursement Vouchers from the Municipal Budget Office of the Municipality of Tago for Representation and Transportation Allowance (individual claim) are",
+        "forwarded to the Municipal Accounting Office for pre-audit and certification as to completeness and propriety of its supporting documents, in accordance with existing",
+        "guidelines from various regulating bodies; and its processing."
+      ]
+    },
+    "municipal-accounting-office#internal-18": {
+      "charterTitle": "Pre-Audit and Processing of Disbursement Voucher of Clothing Allowance (Individual Claim)",
+      "section": "internal",
+      "document": null,
+      "linesInDocument": 94,
+      "notRendered": [
+        "18. Pre-Audit and Processing of Disbursement Voucher of Clothing Allowance (Individual Claim)",
+        "Disbursement Vouchers from the Municipal Budget Office of the Municipality of Tago for clothing allowance (individual claim) are forwarded to the Municipal",
+        "Accounting Office for pre-audit and certification as to completeness and propriety of its supporting documents, in accordance with existing guidelines from various",
+        "regulating bodies; and its processing."
+      ]
+    },
+    "municipal-accounting-office#internal-19": {
+      "charterTitle": "Pre-Audit and Processing of Payroll of Honoraria to Government Personnel involved in Government Procurement",
+      "section": "internal",
+      "document": null,
+      "linesInDocument": 90,
+      "notRendered": [
+        "19. Pre-Audit and Processing of Payroll of Honoraria to Government Personnel involved in Government Procurement",
+        "Payrolls from the Municipal Budget Office of the Municipality of Tago for Honoraria to Government Personnel involved in Government Procurement are forwarded",
+        "to the Municipal Accounting Office for pre-audit and certification as to completeness and propriety of its supporting documents, in accordance with existing guidelines",
+        "from various regulating bodies; and its processing."
+      ]
+    },
+    "municipal-accounting-office#internal-20": {
+      "charterTitle": "Pre-Audit and Processing of Payroll of Honoraria to Lecturer/Coordinator",
+      "section": "internal",
+      "document": null,
+      "linesInDocument": 91,
+      "notRendered": [
+        "20. Pre-Audit and Processing of Payroll of Honoraria to Lecturer/Coordinator",
+        "Payrolls from the Municipal Budget Office of the Municipality of Tago for payment of Honoraria to lecturers, resource persons, coordinators and facilitators are",
+        "forwarded to the Municipal Accounting Office for pre-audit and certification as to completeness and propriety of its supporting documents, in accordance with existing",
+        "guidelines from various regulating bodies; and its processing."
+      ]
+    },
+    "municipal-accounting-office#internal-21": {
+      "charterTitle": "Pre-Audit and Processing of Payroll of Overtime Pay",
+      "section": "internal",
+      "document": null,
+      "linesInDocument": 83,
+      "notRendered": [
+        "21. Pre-Audit and Processing of Payroll of Overtime Pay",
+        "Payrolls from the Municipal Budget Office of the Municipality of Tago for payment overtime pay are forwarded to the Municipal Accounting Office for pre-audit and",
+        "certification as to completeness and propriety of its supporting documents, in accordance with existing guidelines from various regulating bodies; and its processing."
+      ]
+    },
+    "municipal-accounting-office#internal-22": {
+      "charterTitle": "Pre-Audit and Processing of Disbursement Voucher of Terminal Leave Benefits",
+      "section": "internal",
+      "document": null,
+      "linesInDocument": 125,
+      "notRendered": [
+        "22. Pre-Audit and Processing of Disbursement Voucher of Terminal Leave Benefits",
+        "Disbursement Vouchers from the Municipal Budget Office of the Municipality of Tago for payment of terminal leave benefits are forwarded to the Municipal",
+        "Accounting Office for pre-audit and certification as to completeness and propriety of its supporting documents, in accordance with existing guidelines from various",
+        "regulating bodies; and its processing."
+      ]
+    },
+    "municipal-accounting-office#internal-23": {
+      "charterTitle": "Pre-Audit and Processing of Disbursement Voucher of Monetization",
+      "section": "internal",
+      "document": null,
+      "linesInDocument": 100,
+      "notRendered": [
+        "23. Pre-Audit and Processing of Disbursement Voucher of Monetization",
+        "Disbursement Vouchers from the Municipal Budget Office of the Municipality of Tago for payment of monetization are forwarded to the Municipal Accounting Office",
+        "for pre-audit and certification as to completeness and propriety of its supporting documents, in accordance with existing guidelines from various regulating bodies;",
+        "and its processing."
+      ]
+    },
+    "municipal-accounting-office#internal-24": {
+      "charterTitle": "Pre-Audit and Processing of Disbursement Voucher of Utilities Expense/Telephone/Communication Services",
+      "section": "internal",
+      "document": null,
+      "linesInDocument": 93,
+      "notRendered": [
+        "24. Pre-Audit and Processing of Disbursement Voucher of Utilities Expense/Telephone/Communication Services",
+        "Disbursement Vouchers from the Municipal Budget Office of the Municipality of Tago for payment of Utilities Expense/Telephone/Communication Services are",
+        "forwarded to the Municipal Accounting Office for pre-audit and certification as to completeness and propriety of its supporting documents, in accordance with existing",
+        "guidelines from various regulating bodies; and its processing."
+      ]
+    },
+    "municipal-accounting-office#internal-25": {
+      "charterTitle": "Pre-Audit and Processing of Disbursement Voucher of Infrastructure Projects-Advance Payment(not to exceed 15% of CP)",
+      "section": "internal",
+      "document": null,
+      "linesInDocument": 289,
+      "notRendered": [
+        "25. Pre-Audit and Processing of Disbursement Voucher of Infrastructure Projects-Advance Payment(not to exceed 15% of CP)",
+        "Disbursement Vouchers from the Municipal Budget Office of the Municipality of Tago for payment of Infrastructure Projects-Advance Payment (not to exceed 15%",
+        "of Contract Price) are forwarded to the Municipal Accounting Office for pre-audit and certification as to completeness and propriety of its supporting documents, in",
+        "accordance with existing guidelines from various regulating bodies; and its processing.",
+        "52 | P a g e"
+      ]
+    },
+    "municipal-accounting-office#internal-26": {
+      "charterTitle": "Pre-Audit and Processing of Disbursement Voucher of Infrastructure Projects-Progress Billing",
+      "section": "internal",
+      "document": null,
+      "linesInDocument": 304,
+      "notRendered": [
+        "26. Pre-Audit and Processing of Disbursement Voucher of Infrastructure Projects-Progress Billing",
+        "Disbursement Vouchers from the Municipal Budget Office of the Municipality of Tago for payment of Infrastructure Projects-Progress Billing are forwarded to the",
+        "Municipal Accounting Office for pre-audit and certification as to completeness and propriety of its supporting documents, in accordance with existing guidelines from",
+        "various regulating bodies; and its processing.",
+        "57 | P a g e"
+      ]
+    },
+    "municipal-accounting-office#internal-27": {
+      "charterTitle": "Pre-Audit and Processing of Disbursement Voucher of Infrastructure Projects-Final Billing",
+      "section": "internal",
+      "document": null,
+      "linesInDocument": 120,
+      "notRendered": [
+        "27. Pre-Audit and Processing of Disbursement Voucher of Infrastructure Projects-Final Billing",
+        "Disbursement Vouchers from the Municipal Budget Office of the Municipality of Tago for payment of Infrastructure Projects-Final Billing are forwarded to the",
+        "Municipal Accounting Office for pre-audit and certification as to completeness and propriety of its supporting documents, in accordance with existing guidelines from",
+        "various regulating bodies; and its processing.",
+        "62 | P a g e"
+      ]
+    },
+    "municipal-accounting-office#internal-28": {
+      "charterTitle": "Pre-Audit and Processing of Disbursement Voucher of Infrastructure Projects-Variation Order/Change Order/Extra Work Order",
+      "section": "internal",
+      "document": null,
+      "linesInDocument": 109,
+      "notRendered": [
+        "28. Pre-Audit and Processing of Disbursement Voucher of Infrastructure Projects-Variation Order/Change Order/Extra Work Order",
+        "Disbursement Vouchers from the Municipal Budget Office of the Municipality of Tago for payment of Infrastructure Projects with Variation Order/Change Order/Extra",
+        "Work Order are forwarded to the Municipal Accounting Office for pre-audit and certification as to completeness and propriety of its supporting documents, in",
+        "accordance with existing guidelines from various regulating bodies; and its processing."
+      ]
+    },
+    "municipal-accounting-office#internal-29": {
+      "charterTitle": "Pre-Audit and Processing of Disbursement Voucher of Infrastructure Projects-Release of Retention Money",
+      "section": "internal",
+      "document": null,
+      "linesInDocument": 94,
+      "notRendered": [
+        "29. Pre-Audit and Processing of Disbursement Voucher of Infrastructure Projects-Release of Retention Money",
+        "Disbursement Vouchers from the Municipal Budget Office of the Municipality of Tago for payment of Infrastructure Projects-Release of Retention Money are",
+        "forwarded to the Municipal Accounting Office for pre-audit and certification as to completeness and propriety of its supporting documents, in accordance with existing",
+        "guidelines from various regulating bodies; and its processing."
+      ]
+    },
+    "municipal-accounting-office#internal-30": {
+      "charterTitle": "Pre-Audit and Processing of Disbursement Voucher of Goods through Public Bidding",
+      "section": "internal",
+      "document": null,
+      "linesInDocument": 488,
+      "notRendered": [
+        "30. Pre-Audit and Processing of Disbursement Voucher of Goods through Public Bidding",
+        "Disbursement Vouchers from the Municipal Budget Office of the Municipality of Tago for payment of Goods through public bidding are forwarded to the Municipal",
+        "Accounting Office for pre-audit and certification as to completeness and propriety of its supporting documents, in accordance with existing guidelines from various",
+        "regulating bodies; and its processing."
+      ]
+    },
+    "municipal-accounting-office#internal-31": {
+      "charterTitle": "Pre-Audit and Processing of Disbursement Voucher of Goods through Alternative Modes of Procurement-Limited Source Bidding (Goods)",
+      "section": "internal",
+      "document": null,
+      "linesInDocument": 216,
+      "notRendered": [
+        "31. Pre-Audit and Processing of Disbursement Voucher of Goods through Alternative Modes of Procurement-Limited Source Bidding (Goods)",
+        "Disbursement Vouchers from the Municipal Budget Office of the Municipality of Tago for payment of Goods through Alternative Modes of Procurement-Limited",
+        "Source Bidding are forwarded to the Municipal Accounting Office for pre-audit and certification as to completeness and propriety of its supporting documents, in",
+        "accordance with existing guidelines from various regulating bodies; and its processing.",
+        "79 | P a g e"
+      ]
+    },
+    "municipal-accounting-office#internal-32": {
+      "charterTitle": "Pre-Audit and Processing of Disbursement Voucher of Goods through Alternative Modes of Procurement-Limited Source Bidding (Consulting Services)",
+      "section": "internal",
+      "document": null,
+      "linesInDocument": 164,
+      "notRendered": [
+        "32. Pre-Audit and Processing of Disbursement Voucher of Goods through Alternative Modes of Procurement-Limited Source Bidding (Consulting Services)",
+        "Disbursement Vouchers from the Municipal Budget Office of the Municipality of Tago for payment of Consulting Services through Alternative Modes of Procurement-",
+        "Limited Source Bidding are forwarded to the Municipal Accounting Office for pre-audit and certification as to completeness and propriety of its supporting documents,",
+        "in accordance with existing guidelines from various regulating bodies; and its processing."
+      ]
+    },
+    "municipal-accounting-office#internal-33": {
+      "charterTitle": "Pre-Audit and Processing of Disbursement Voucher of Goods through Alternative Modes of Procurement-Direct Contracting (Goods)",
+      "section": "internal",
+      "document": null,
+      "linesInDocument": 213,
+      "notRendered": [
+        "33. Pre-Audit and Processing of Disbursement Voucher of Goods through Alternative Modes of Procurement-Direct Contracting (Goods)",
+        "Disbursement Vouchers from the Municipal Budget Office of the Municipality of Tago for payment of Goods through Alternative Modes of Procurement-Direct",
+        "Contracting are forwarded to the Municipal Accounting Office for pre-audit and certification as to completeness and propriety of its supporting documents, in",
+        "accordance with existing guidelines from various regulating bodies; and its processing."
+      ]
+    },
+    "municipal-accounting-office#internal-34": {
+      "charterTitle": "Pre-Audit and Processing of Disbursement Voucher of Goods through Alternative Modes of Procurement-Repeat Order",
+      "section": "internal",
+      "document": null,
+      "linesInDocument": 201,
+      "notRendered": [
+        "34. Pre-Audit and Processing of Disbursement Voucher of Goods through Alternative Modes of Procurement-Repeat Order",
+        "Disbursement Vouchers from the Municipal Budget Office of the Municipality of Tago for payment of Goods through Alternative Modes of Procurement-Repeat",
+        "Order are forwarded to the Municipal Accounting Office for pre-audit and certification as to completeness and propriety of its supporting documents, in accordance",
+        "with existing guidelines from various regulating bodies; and its processing."
+      ]
+    },
+    "municipal-accounting-office#internal-35": {
+      "charterTitle": "Pre-Audit and Processing of Disbursement Voucher of Goods through Alternative Modes of Procurement-Direct Contracting (Goods)",
+      "section": "internal",
+      "document": null,
+      "linesInDocument": 206,
+      "notRendered": [
+        "35. Pre-Audit and Processing of Disbursement Voucher of Goods through Alternative Modes of Procurement-Direct Contracting (Goods)",
+        "Disbursement Vouchers from the Municipal Budget Office of the Municipality of Tago for payment of Goods through Alternative Modes of Procurement-Direct",
+        "Contracting are forwarded to the Municipal Accounting Office for pre-audit and certification as to completeness and propriety of its supporting documents, in",
+        "accordance with existing guidelines from various regulating bodies; and its processing."
+      ]
+    },
+    "municipal-accounting-office#internal-36": {
+      "charterTitle": "Pre-Audit and Processing of Disbursement Voucher of Goods through Alternative Modes of Procurement-Shopping",
+      "section": "internal",
+      "document": null,
+      "linesInDocument": 201,
+      "notRendered": [
+        "36. Pre-Audit and Processing of Disbursement Voucher of Goods through Alternative Modes of Procurement-Shopping",
+        "Disbursement Vouchers from the Municipal Budget Office of the Municipality of Tago for payment of Goods through Alternative Modes of Procurement-Shopping",
+        "are forwarded to the Municipal Accounting Office for pre-audit and certification as to completeness and propriety of its supporting documents, in accordance with",
+        "existing guidelines from various regulating bodies; and its processing."
+      ]
+    },
+    "municipal-accounting-office#internal-37": {
+      "charterTitle": "Pre-Audit and Processing of Disbursement Voucher of Goods through Alternative Modes of Procurement-Negotiated Procurement (Two Failed Biddings)",
+      "section": "internal",
+      "document": null,
+      "linesInDocument": 173,
+      "notRendered": [
+        "37. Pre-Audit and Processing of Disbursement Voucher of Goods through Alternative Modes of Procurement-Negotiated Procurement (Two Failed Biddings)",
+        "Disbursement Vouchers from the Municipal Budget Office of the Municipality of Tago for payment of Goods through Alternative Modes of Procurement-Negotiated",
+        "Procurement (Two Failed Biddings) are forwarded to the Municipal Accounting Office for pre-audit and certification as to completeness and propriety of its supporting",
+        "documents, in accordance with existing guidelines from various regulating bodies; and its processing.",
+        "102 | P a g e"
+      ]
+    },
+    "municipal-accounting-office#internal-38": {
+      "charterTitle": "Pre-Audit and Processing of Disbursement Voucher of Goods through Alternative Modes of Procurement-Negotiated Procurement (Small Value Procurement)",
+      "section": "internal",
+      "document": null,
+      "linesInDocument": 172,
+      "notRendered": [
+        "38. Pre-Audit and Processing of Disbursement Voucher of Goods through Alternative Modes of Procurement-Negotiated Procurement (Small Value Procurement)",
+        "Disbursement Vouchers from the Municipal Budget Office of the Municipality of Tago for payment of Goods through Alternative Modes of Procurement-Negotiated",
+        "Procurement (Small Value Procurement) are forwarded to the Municipal Accounting Office for pre-audit and certification as to completeness and propriety of its",
+        "supporting documents, in accordance with existing guidelines from various regulating bodies; and its processing."
+      ]
+    },
+    "municipal-health-office#external-1": {
+      "charterTitle": "General Consultation and Treatment Services",
+      "section": "external",
+      "document": null,
+      "linesInDocument": 73,
+      "notRendered": [
+        "1. General Consultation and Treatment Services",
+        "Patients availing general consultation and treatment for primary illnesses. Service available during Monday, Tuesday and Friday from 8:00am to 5:00pm.",
+        "1 Hour & 10"
+      ]
+    },
+    "municipal-health-office#external-2": {
+      "charterTitle": "Certification of the Cause of Death (Medico-Legal Cases)",
+      "section": "external",
+      "document": null,
+      "linesInDocument": 81,
+      "notRendered": [
+        "2. Certification of the Cause of Death (Medico-Legal Cases)",
+        "Certification of cause of death for cases that require police report or intervention unless autopsy is required. Service available from Monday to Friday 8:00am",
+        "to 5:00pm"
+      ]
+    },
+    "municipal-health-office#external-3": {
+      "charterTitle": "Review of Death Certificate",
+      "section": "external",
+      "document": null,
+      "linesInDocument": 63,
+      "notRendered": [
+        "Review and signing of death certificate released from hospitals. Service available from Monday to Friday 8:00am to 5:00pm."
+      ]
+    },
+    "municipal-health-office#external-4": {
+      "charterTitle": "Ante-Partum Dental Check Up",
+      "section": "external",
+      "document": null,
+      "linesInDocument": 68,
+      "notRendered": [
+        "4. Ante-Partum Dental Check Up",
+        "Pregnant women availing of oral examination and consultation. Service available Thursday 8:00pm to 5:00pm. Service rescheduled in case of outreach",
+        "activity done on a Monday or Friday."
+      ]
+    },
+    "municipal-health-office#external-5": {
+      "charterTitle": "Oral Examination/ Consultation & Tooth Extraction",
+      "section": "external",
+      "document": null,
+      "linesInDocument": 75,
+      "notRendered": [
+        "5. Oral Examination/ Consultation & Tooth Extraction",
+        "Provision of oral examination, consultation, and tooth extraction to patients. Service available Mondays, Wednesday and Fridays 8:00am to 12:00nn. Service",
+        "rescheduled in case of outreach activity done on a Monday or Friday."
+      ]
+    },
+    "municipal-health-office#external-6": {
+      "charterTitle": "Family Planning and Counseling",
+      "section": "external",
+      "document": null,
+      "linesInDocument": 35,
+      "notRendered": [
+        "6. Family Planning and Counseling",
+        "Provision of family planning and counseling services. Service available from Monday to Friday 8:00am to 5:00pm."
+      ]
+    },
+    "municipal-health-office#external-7": {
+      "charterTitle": "HIV Testing Services",
+      "section": "external",
+      "document": null,
+      "linesInDocument": 81,
+      "notRendered": [
+        "Provision of free HIV testing services and counseling and referral to treatment hub as needed. Service available Mondays, Tuesday and Friday from 8:00am",
+        "to 4:00pm. Sundown clinic during first Friday of the month from 5:00pm to 11:00 pm."
+      ]
+    },
+    "municipal-health-office#external-8": {
+      "charterTitle": "Immunization for Children",
+      "section": "external",
+      "document": null,
+      "linesInDocument": 65,
+      "notRendered": [
+        "8. Immunization for Children",
+        "Provision of immunization for non-immunized/ under immunized infants 0-11 months and children 1-5 years old. Service available during Wednesdays from",
+        "8:00am to 12:00nn."
+      ]
+    },
+    "municipal-health-office#external-9": {
+      "charterTitle": "Municipality Health Office Clinical Laboratory",
+      "section": "external",
+      "document": null,
+      "linesInDocument": 179,
+      "notRendered": [
+        "9. Municipality Health Office Clinical Laboratory",
+        "Provision of laboratory services such as hematology, Clinical Microscopy, Clinical Chemistry, Serology (including HIV testing), Sputum for ACID FAST",
+        "BACILLI, Gram staining. Service available during Mondays to Fridays 8:00am to 5:00pm except during Mass Blood Donation Services.",
+        "Refer to table of",
+        "below"
+      ]
+    },
+    "municipal-health-office#external-10": {
+      "charterTitle": "Issuance of Medical Certificate",
+      "section": "external",
+      "document": null,
+      "linesInDocument": 80,
+      "notRendered": [
+        "10. Issuance of Medical Certificate",
+        "Provision of Medical Certificate as needed for non-medico-legal purposes. Service available Mondays to Fridays from 8:00am to 5:00pm"
+      ]
+    },
+    "municipal-health-office#external-11": {
+      "charterTitle": "Issuance of Medical Certificate (Medico-Legal Cases)",
+      "section": "external",
+      "document": null,
+      "linesInDocument": 79,
+      "notRendered": [
+        "11. Issuance of Medical Certificate (Medico-Legal Cases)",
+        "Certification of medico-legal cases that require police report and medical intervention. Clients may avail of the service during weekdays from 8:00am to",
+        "5:00pm."
+      ]
+    },
+    "municipal-health-office#external-12": {
+      "charterTitle": "Availing of Medication",
+      "section": "external",
+      "document": null,
+      "linesInDocument": 44,
+      "notRendered": [
+        "12. Availing of Medication",
+        "Provision of free medication as prescribed by the physician. Service available during Mondays to Fridays from 8:00am to 5:00pm."
+      ]
+    },
+    "municipal-health-office#external-13": {
+      "charterTitle": "Pre-Marriage Counseling",
+      "section": "external",
+      "document": null,
+      "linesInDocument": 62,
+      "notRendered": [
+        "13. Pre-Marriage Counseling",
+        "Provision of pre-marriage counseling to couples through series of lectures. Service available every Wednesday 7:00 am to 2:00pm for regular schedule.",
+        "Special schedule arranged with clients on their preferred date from 8:00am to 12:00noon.",
+        "30 Minutes",
+        "PMC Staff",
+        "15 Minutes",
+        "PMC Staff",
+        "7 Days & 6 Hours PMC Lecturers",
+        "7 Days, 6",
+        "Hours & 45",
+        "Minutes"
+      ]
+    },
+    "municipal-health-office#external-14": {
+      "charterTitle": "Prenatal Care",
+      "section": "external",
+      "document": null,
+      "linesInDocument": 74,
+      "notRendered": [
+        "14. Prenatal Care",
+        "Provision of free quality pre-natal care to all pregnant women. Service available Thursday from 8:00am to 5:00pm."
+      ]
+    },
+    "municipal-health-office#external-15": {
+      "charterTitle": "Issuance of Health Certificate",
+      "section": "external",
+      "document": null,
+      "linesInDocument": 61,
+      "notRendered": [
+        "15. Issuance of Health Certificate",
+        "Certification issued by the Municipal Health officer after passing the required physical and medical examinations. Service available Monday, Wednesday,",
+        "and Friday 8:00am to 4:00pm"
+      ]
+    },
+    "municipal-health-office#external-16": {
+      "charterTitle": "Issuance of Sanitary Permit",
+      "section": "external",
+      "document": null,
+      "linesInDocument": 70,
+      "notRendered": [
+        "16. Issuance of Sanitary Permit",
+        "Sanitary Permit issued by the Municipal Health Officer that the establishment complies with the existing sanitation requirements in accordance with PD 856.",
+        "Service available Monday, Wednesday and Friday 8:00am to 4:00pm",
+        "Revenue",
+        "Collecting Officer"
+      ]
+    },
+    "municipal-health-office#external-17": {
+      "charterTitle": "Issuance of Exhumation Permit",
+      "section": "external",
+      "document": null,
+      "linesInDocument": 65,
+      "notRendered": [
+        "17. Issuance of Exhumation Permit",
+        "A permit issued by the Municipal Health Officer provided that the remain is buried for 3-5 years as per Sanitation Code of the Philippines. Service available",
+        "Monday, Wednesday and Friday 8:00am to 4:00pm"
+      ]
+    },
+    "municipal-health-office#external-18": {
+      "charterTitle": "Issuance of Transfer Permit of Cadaver",
+      "section": "external",
+      "document": null,
+      "linesInDocument": 53,
+      "notRendered": [
+        "18. Issuance of Transfer Permit of Cadaver",
+        "A permit issued by the Municipal Health Officer allowing the transport of cadaver after securing first a death certificate and provided that upon",
+        "transfer the prescribed requirements are followed. Service available Monday, Wednesday and Friday 8:00am to 4:00pm"
+      ]
+    },
+    "municipal-health-office#external-19": {
+      "charterTitle": "Social Hygiene Clinic",
+      "section": "external",
+      "document": null,
+      "linesInDocument": 98,
+      "notRendered": [
+        "19. Social Hygiene Clinic",
+        "The Service is responsible for the management, prevention and control of sexually transmitted infection (STI). Providing diagnostic assessment, treatment",
+        "and care. Service available on weekdays from 8:00am to 5:00pm.",
+        "Sundown clinic during first Friday of the month 5:00pm to 11:00pm",
+        "15 Minutes",
+        "30 Minutes",
+        "2 Days",
+        "20 Minutes",
+        "10 Minutes",
+        "2 Days, 1",
+        "Hour & 15",
+        "Minutes"
+      ]
+    },
+    "municipal-health-office#external-20": {
+      "charterTitle": "Treatment Services for Tuberculosis (TB) Patients",
+      "section": "external",
+      "document": null,
+      "linesInDocument": 80,
+      "notRendered": [
+        "20. Treatment Services for Tuberculosis (TB) Patients",
+        "Provision of diagnosis and treatment to TB patients as identified from the barangay health stations or from consultation from Mondays to Fridays 8:00 am to",
+        "5:00pm. Treatment schedule every Monday, Wednesday and Friday 8:00am to 5:00pm. PPD schedule every Monday and Tuesday 8:00 am to 12:00nn.",
+        "20 Minutes",
+        "40 Minutes",
+        "40 Minutes",
+        "Hour & 50"
+      ]
+    },
+    "municipal-health-office#external-21": {
+      "charterTitle": "Smoking Cessation Counseling",
+      "section": "external",
+      "document": null,
+      "linesInDocument": 67,
+      "notRendered": [
+        "21. Smoking Cessation Counseling",
+        "Provision of counseling services to Violators/Clients. Service available Mondays to Fridays from 8:00am to 5:00pm"
+      ]
+    },
+    "municipal-social-welfare-and-development-office#external-1": {
+      "charterTitle": "1 Local Assistance/AICS",
+      "section": "external",
+      "document": null,
+      "linesInDocument": 88,
+      "notRendered": [
+        "1.1 Local Assistance/AICS",
+        "Must be a 60 years old, a Filipino citizen and a resident of Tago S.D.S"
+      ]
+    },
+    "municipal-social-welfare-and-development-office#external-2": {
+      "charterTitle": "1 For Adoption/Legal Guardianship",
+      "section": "external",
+      "document": null,
+      "linesInDocument": 121,
+      "notRendered": [
+        "disability (hearing impairment, and speech and language impairment), learning disability, intellectual disability, orthopedic",
+        "disability, mental/psychosocial disability, visual disability, and disability due to chronic illness",
+        "3 days/72 hours"
+      ]
+    },
+    "municipal-social-welfare-and-development-office#external-3": {
+      "charterTitle": "1 Availment of Legal Assistance from PAO",
+      "section": "external",
+      "document": null,
+      "linesInDocument": 77,
+      "notRendered": [
+        "3.1 Availment of Legal Assistance from PAO",
+        "100.00"
+      ]
+    },
+    "municipal-social-welfare-and-development-office#external-4": {
+      "charterTitle": "1 For Kalipi-Women MSWDO Certification and Identification Card.",
+      "section": "external",
+      "document": null,
+      "linesInDocument": 103,
+      "notRendered": [
+        "• Individuals/families in crisis situation",
+        "• Who have not yet availed of CIU assistance within 6 months"
+      ]
+    },
+    "municipal-social-welfare-and-development-office#external-5": {
+      "charterTitle": "1 Violence against Women and their Children (VAWC)",
+      "section": "external",
+      "document": null,
+      "linesInDocument": 75,
+      "notRendered": [
+        "5.1 Violence against Women and their Children (VAWC)"
+      ]
+    },
+    "municipal-social-welfare-and-development-office#external-6": {
+      "charterTitle": "1 Children in Conflict with the Law (CICL):",
+      "section": "external",
+      "document": null,
+      "linesInDocument": 63,
+      "notRendered": [
+        "6.1 Children in Conflict with the Law (CICL):",
+        "CICL Residents of Tago",
+        "As need arises",
+        "Soon as the CICL Reported",
+        "Soon as the CICL",
+        "Reported",
+        "As need arises",
+        "As need arises",
+        "As need arises",
+        "When case is on-going"
+      ]
+    },
+    "office-of-the-municipal-agriculture#external-1": {
+      "charterTitle": "Rice and Corn Seeds Assistance",
+      "section": "external",
+      "document": null,
+      "linesInDocument": 68,
+      "notRendered": [
+        "1. Rice and Corn Seeds Assistance",
+        "A service providing assistance to rice farmers through the Office of the Municipal Agriculturist in collaboration with the Philippine Rice Research Institute.",
+        "None",
+        "None",
+        "None"
+      ]
+    },
+    "office-of-the-municipal-agriculture#external-2": {
+      "charterTitle": "Provision of High Value Commercial Crop Assistance",
+      "section": "external",
+      "document": null,
+      "linesInDocument": 59,
+      "notRendered": [
+        "2. Provision of High Value Commercial Crop Assistance",
+        "Municipal Agricultures Office shall provide agricultural inputs and materials such as high valued fruit trees seedlings, vegetable seeds and seedlings, organic",
+        "fertilizers (humus, vermi) to its walk in clients. This is also dependent on the availability of agricultural materials and inputs."
+      ]
+    },
+    "office-of-the-municipal-agriculture#external-3": {
+      "charterTitle": "Provision of Vaccinations (Anti Rabies)",
+      "section": "external",
+      "document": null,
+      "linesInDocument": 77,
+      "notRendered": [
+        "3. Provision of Vaccinations (Anti Rabies)",
+        "A service providing mass rabies vaccination in all barangays and purok within the city. Based on the Republic Act No. 9482 also known as the",
+        "Anti-Rabies Act of 2007, it is the policy of the State to promote and protect the right to health of the people. Towards this end, a system for the",
+        "control, prevention of the spread and eventual eradication of human and animal rabies shall be provided and the need for responsible ownership",
+        "established.",
+        "Secretariat on duty",
+        "Cashier"
+      ]
+    },
+    "office-of-the-municipal-agriculture#external-4": {
+      "charterTitle": "Provision of Ante Mortem, Post Mortem and Post Abattoir Services",
+      "section": "external",
+      "document": null,
+      "linesInDocument": 108,
+      "notRendered": [
+        "4. Provision of Ante Mortem, Post Mortem and Post Abattoir Services",
+        "The Department of Agriculture through the National Meat Inspection Service is mandated to formulate, promulgate and implement laws, policies, programs",
+        "and projects governing the post-harvest flow of meat in order to protect the interest and welfare of consumers and to promote the development of the livestock",
+        "and meat industry. The City Veterinary Office is an arm of the Department of Agriculture in implementing this mandate. This is to ensure that only safe and",
+        "quality meat and meat products will be consumed by the constituents of Tagum City."
+      ]
+    },
+    "office-of-the-municipal-agriculture#external-5": {
+      "charterTitle": "Provision of Artificial Insemination",
+      "section": "external",
+      "document": null,
+      "linesInDocument": 92,
+      "notRendered": [
+        "5. Provision of Artificial Insemination",
+        "The mandate of the national government through the Department of Agriculture is to provide farmers with quality inputs to help them augment their livelihood.",
+        "The City Veterinary Office is an arm of the Department of Agriculture in implementing this mandate. The aim of this program is to provide quality semen from",
+        "superior breeds of male livestock animals so as to improve the genetic composition of the current breeds of livestock in Tagum City; to prevent spread of",
+        "infectious diseases."
+      ]
+    },
+    "office-of-the-municipal-agriculture#external-6": {
+      "charterTitle": "Provision of Travel Certificate for Live Animals",
+      "section": "external",
+      "document": null,
+      "linesInDocument": 72,
+      "notRendered": [
+        "6. Provision of Travel Certificate for Live Animals",
+        "Certificate to transport of animals from Tago to any point of the Province which requires shipping and health certificate which can be acquired at the Office of"
+      ]
+    },
+    "office-of-the-municipal-agriculture#external-7": {
+      "charterTitle": "Provision of Castration Services",
+      "section": "external",
+      "document": null,
+      "linesInDocument": 57,
+      "notRendered": [
+        "7. Provision of Castration Services"
+      ]
+    },
+    "office-of-the-municipal-agriculture#external-8": {
+      "charterTitle": "Provision of Vaccinations (Surra Disease)",
+      "section": "external",
+      "document": null,
+      "linesInDocument": 61,
+      "notRendered": [
+        "8. Provision of Vaccinations (Surra Disease)",
+        "A service providing vaccination for surra disease of large ruminants in all barangays and purok within the municipality."
+      ]
+    },
+    "office-of-the-municipal-agriculture#external-9": {
+      "charterTitle": "Rural Based Organization (RBO) Strengthening Program",
+      "section": "external",
+      "document": null,
+      "linesInDocument": 68,
+      "notRendered": [
+        "9. Rural Based Organization (RBO) Strengthening Program",
+        "A strengthening program to revitalized Rural Based Organizations in the municipality of Tago."
+      ]
+    },
+    "office-of-the-municipal-agriculture#external-10": {
+      "charterTitle": "Provision of Technical Assistance (Pond Preparation and Fish Sampling)",
+      "section": "external",
+      "document": null,
+      "linesInDocument": 51,
+      "notRendered": [
+        "10. Provision of Technical Assistance (Pond Preparation and Fish Sampling)"
+      ]
+    },
+    "office-of-the-municipal-agriculture#external-11": {
+      "charterTitle": "Provision of Mass Rabies and Surra Disease Vaccinations, Animal Registration and Mass distribution of Biologics and Vegetables seeds (CVAC Activity)",
+      "section": "external",
+      "document": null,
+      "linesInDocument": 129,
+      "notRendered": [
+        "11. Provision of Mass Rabies and Surra Disease Vaccinations, Animal Registration and Mass distribution of Biologics and Vegetables seeds (CVAC Activity)",
+        "Officers/Staff"
+      ]
+    },
+    "office-of-the-municipal-assessor-services#external-1": {
+      "charterTitle": "Processing of Issuance of Certified True Copy of Tax Declaration",
+      "section": "external",
+      "document": null,
+      "linesInDocument": 89,
+      "notRendered": [
+        "of property located in Tago, Surigao del Sur"
+      ]
+    },
+    "office-of-the-municipal-assessor-services#external-2": {
+      "charterTitle": "Processing for the Issuance of Assessment Certifications",
+      "section": "external",
+      "document": null,
+      "linesInDocument": 94,
+      "notRendered": [
+        "2. Processing for the Issuance of Assessment Certifications",
+        "of property located in Tago, Surigao del Sur"
+      ]
+    },
+    "office-of-the-municipal-assessor-services#external-3": {
+      "charterTitle": "Processing for Transfer of Ownership of Real Property",
+      "section": "external",
+      "document": null,
+      "linesInDocument": 115,
+      "notRendered": [
+        "of property located in Tago, Surigao del Sur"
+      ]
+    },
+    "office-of-the-municipal-assessor-services#external-4": {
+      "charterTitle": "PROCESSING OF TAX DECLARATION FOR LAND DECLARED FOR THE 1 ST TIME (DECLARED NEW PROPERTIES)",
+      "section": "external",
+      "document": null,
+      "linesInDocument": 113,
+      "notRendered": [
+        "4. PROCESSING OF TAX DECLARATION FOR LAND DECLARED FOR THE 1 ST TIME (DECLARED NEW PROPERTIES)",
+        "of property located in Tago, Surigao del Sur"
+      ]
+    },
+    "office-of-the-municipal-assessor-services#external-5": {
+      "charterTitle": "PROCESSING OF TAX DECLARATION FOR RECLASSIFICATION OF LAND FOR TAXATION PURPOSES",
+      "section": "external",
+      "document": null,
+      "linesInDocument": 109,
+      "notRendered": [
+        "5. PROCESSING OF TAX DECLARATION FOR RECLASSIFICATION OF LAND FOR TAXATION PURPOSES",
+        "of property located in Tago, Surigao del Sur"
+      ]
+    },
+    "office-of-the-municipal-assessor-services#external-6": {
+      "charterTitle": "PROCESSING FOR REVISION/ADJUSTMENT OF TAX DECLARATION",
+      "section": "external",
+      "document": null,
+      "linesInDocument": 108,
+      "notRendered": [
+        "of property located in Tago, Surigao del Sur"
+      ]
+    },
+    "office-of-the-municipal-assessor-services#external-7": {
+      "charterTitle": "PROCESSING TAX DECLARATION FOR DECLARED NEW BUILDING AND MACHINERY",
+      "section": "external",
+      "document": null,
+      "linesInDocument": 119,
+      "notRendered": [
+        "7. PROCESSING TAX DECLARATION FOR DECLARED NEW BUILDING AND MACHINERY",
+        "of property located in Tago, Surigao del Sur"
+      ]
+    },
+    "office-of-the-municipal-assessor-services#external-8": {
+      "charterTitle": "PROCESSING FOR CANCELLATION OF TAX DECLARATION",
+      "section": "external",
+      "document": null,
+      "linesInDocument": 85,
+      "notRendered": [
+        "8. PROCESSING FOR CANCELLATION OF TAX DECLARATION",
+        "of property located in Tago, Surigao del Sur"
+      ]
+    },
+    "office-of-the-municipal-budget#external-1": {
+      "charterTitle": "Review of Barangay Annual/Supplemental Budget",
+      "section": "external",
+      "document": null,
+      "linesInDocument": 110,
+      "notRendered": [
+        "This review is intented for the Municipal Budget Office and Barangay to review and discuss the draft Barangay Annual/Supplemental Budget",
+        "1 Minute",
+        "3.2 Two days",
+        "before the next",
+        "scheduled",
+        "Regular Session",
+        "Refer to table",
+        "below",
+        "pursuant to",
+        "Revenue",
+        "Code of the City"
+      ]
+    },
+    "office-of-the-municipal-budget#internal-1": {
+      "charterTitle": "Printing/Preparation of Advise of Allotment for distribution to the Municipal Accounting Office, Concerned Office and Municipal Treasurer’s Office",
+      "section": "internal",
+      "document": null,
+      "linesInDocument": 60,
+      "notRendered": [
+        "1. Printing/Preparation of Advise of Allotment for distribution to the Municipal Accounting Office, Concerned Office and Municipal Treasurer’s Office",
+        "1 day",
+        "Staff",
+        "Maximum of",
+        "One(1) day/will Officer",
+        "depend on the",
+        "availability of the",
+        "signatories",
+        "½ day",
+        "Office Staff",
+        "Refer to table",
+        "below",
+        "1 and ½",
+        "pursuant to",
+        "days",
+        "Revenue"
+      ]
+    },
+    "office-of-the-municipal-budget#internal-2": {
+      "charterTitle": "Preparation of CAFOA as requested by concern office.",
+      "section": "internal",
+      "document": null,
+      "linesInDocument": 79,
+      "notRendered": [
+        "2. Preparation of CAFOA as requested by concern office.",
+        "Will depend on",
+        "10 Minutes",
+        "Refer to table",
+        "below",
+        "24 Minutes",
+        "pursuant to",
+        "Revenue",
+        "Code of the City"
+      ]
+    },
+    "office-of-the-municipal-civil-registrar#external-1": {
+      "charterTitle": "Registration of births for on-time and delayed report, occurred at home, or in clinic.",
+      "section": "external",
+      "document": null,
+      "linesInDocument": 195,
+      "notRendered": [
+        "1. Registration of births for on-time and delayed report, occurred at home, or in clinic.",
+        "Registration of Birth Certificate is a basic act to report the occurrence of birth of a child/person for registration in the Local Civil Registry Office where the birth",
+        "occurred. The Certificate of Live Birth is a proof of person’s existence and establish identity.",
+        "On-time registration is reporting of birth within thirty (30) days from the time of birth in the Office of the Local Civil Registrar of the city/municipality where the",
+        "Delayed registration is reporting of birth beyond thirty (30) days period to the Office of the Local Civil Registrar of the city/municipality where the birth occurred.",
+        "Secretary and any Authorized Person.",
+        "Php200.00 (on-",
+        "Php600.00",
+        "Php500.00 for",
+        "AUSF (as Legal",
+        "Instrument fee)",
+        "empolyee",
+        "employee"
+      ]
+    },
+    "office-of-the-municipal-civil-registrar#external-2": {
+      "charterTitle": "Registration of Certificate of Marriage (COM) for on-time and delayed report, occurred in Tago, Surigao del Sur.",
+      "section": "external",
+      "document": null,
+      "linesInDocument": 150,
+      "notRendered": [
+        "2. Registration of Certificate of Marriage (COM) for on-time and delayed report, occurred in Tago, Surigao del Sur.",
+        "Registration of Certificate of Marriage (COM) is a reporting of the Certificate of Marriage after the wedding day to the Local Civil Registrar’s office and become",
+        "a proof of a person’s civil status and the existence of marriage.",
+        "In ordinary marriage, the time for submission of the Certificate of Marriage is within fifteen (15) days following the solemnization of marriage while in marriage",
+        "exempt from license requirement, the prescribed period is thirty(30) days, at the place where the marriage was solemnized."
+      ]
+    },
+    "office-of-the-municipal-civil-registrar#external-3": {
+      "charterTitle": "Registration of Certificate of Death for on-time and delayed report, occurred in Tago, Surigao del Sur.",
+      "section": "external",
+      "document": null,
+      "linesInDocument": 139,
+      "notRendered": [
+        "3. Registration of Certificate of Death for on-time and delayed report, occurred in Tago, Surigao del Sur.",
+        "Certificate of Death (COD) is a document that proves of a permanent disappearance of all evidence of life of a person. On-time report of death reporting and",
+        "registration is within thirty (30) days period and beyond thirty(30) days is considered delayed registration.",
+        "Death occurred in hospital or other similar institution shall be prepared or accomplished by the institution and report to the office for registration."
+      ]
+    },
+    "office-of-the-municipal-civil-registrar#external-4": {
+      "charterTitle": "Registration of Certificate of Death",
+      "section": "external",
+      "document": null,
+      "linesInDocument": 217,
+      "notRendered": [
+        "Certificate of Death is a document that proves of a permanent disappearance of all evidence of life of a person. On-time report of death is within thirty (30)",
+        "days period and beyond thirty (30) days is considered delayed registration.",
+        "Death occurred at home, aboard vehicle, vessel or airplane shall be prepared or accomplished in the City Health Office or Local Civil Registrar’s Office.",
+        "1 Hour & 35"
+      ]
+    },
+    "office-of-the-municipal-civil-registrar#external-5": {
+      "charterTitle": "Application and Issuance of Marriage License",
+      "section": "external",
+      "document": null,
+      "linesInDocument": 189,
+      "notRendered": [
+        "5. Application and Issuance of Marriage License",
+        "Application of Marriage License is a process wherein the contracting parties appear to the Office of the City Civil Registrar to apply, submit requirements for",
+        "marriage license for approval. Marriage license application will be posted for ten days and compliance thereto is the issuance of marrage license. This license",
+        "is a guarantee that both are eligible to contract marriage and is a basis of the solemnizing officer to solemnize marriage.",
+        "impediment to enter into marriage and one of the contracting parties is a resident of Tago, Surigao del Sur.",
+        "Php350.00",
+        "(residents of",
+        "-Php500.00 (one",
+        "resides",
+        "outside",
+        "-Php1,500.00",
+        "applicant) Php",
+        "2.00",
+        "License Fee)"
+      ]
+    },
+    "office-of-the-municipal-civil-registrar#external-6": {
+      "charterTitle": "Request for an Electronic Endorsement of Birth, Death and Marriage Certificate",
+      "section": "external",
+      "document": null,
+      "linesInDocument": 111,
+      "notRendered": [
+        "6. Request for an Electronic Endorsement of Birth, Death and Marriage Certificate",
+        "Electronic Endorsement of civil registry documents to the Philippine Statistics Authority, Regional Office, Davao City, is a remedy to FastTrack the issuance",
+        "of PSA Security Paper and to re-indorse blurred document that resulted to PSA negative certification. The Office will endorse those civil registry documents",
+        "to PSA Regional Office, Butuan City, once a week.",
+        "Simple",
+        "Institution Legally In charge, Any Person Authorized by the Owner, Court.",
+        "Php290.00",
+        "Endorsem",
+        "ent fee)for every",
+        "Php 250.00 every",
+        "private courier"
+      ]
+    },
+    "office-of-the-municipal-civil-registrar#external-7": {
+      "charterTitle": "Request for an Electronic Endorsement of Birth, Death and Marriage Certificate and Certifications/Certified",
+      "section": "external",
+      "document": null,
+      "linesInDocument": 140,
+      "notRendered": [
+        "10. Request for an Electronic Endorsement of Birth, Death and Marriage Certificate and Certifications/Certified",
+        "True Copy.",
+        "Electronic Endorsement of civil registry documents to the Philippine Statistics Authority, is a remedy to fastrack the issuance of PSA Security Paper and to re-",
+        "indorse blurred document that resulted to PSA negative certification.",
+        "For Out-of-Town request of an Electronic Endorsement, this Office, after completion of the required documents by the applicants, indorse to the Receiving-",
+        "Local Civil Registrar where the civil registry document originate or registered for endorsement to Philippine Statistics Authority (PSA) in order for the applicant",
+        "after due time or approval of OCRG can request PSA copy in security paper to any PSA Serbilis Center in the Philippines.",
+        "Legally In-charge, Any Person Authorized by the Owner, Court."
+      ]
+    },
+    "office-of-the-municipal-civil-registrar#external-8": {
+      "charterTitle": "Registration and Annotation of Affidavit of Legitimation (Family Code and RA No. 9858)",
+      "section": "external",
+      "document": null,
+      "linesInDocument": 138,
+      "notRendered": [
+        "7. Registration and Annotation of Affidavit of Legitimation (Family Code and RA No. 9858)",
+        "Legitimation is a process in which a child born out of wedlock is considered legitimate by fiction of law due to subsequent valid marriage of his/her parents."
+      ]
+    },
+    "office-of-the-municipal-civil-registrar#external-9": {
+      "charterTitle": "Registration and Annotation of Affidavit to Use the Surname of the Father (AUSF) (RA No. 9255)",
+      "section": "external",
+      "document": null,
+      "linesInDocument": 134,
+      "notRendered": [
+        "8. Registration and Annotation of Affidavit to Use the Surname of the Father (AUSF) (RA No. 9255)",
+        "RA No. 9255 is an act allowing illegitimate children to use the surname of their father. This law is applicable only to illegitimate children born on March 19,",
+        "2004 to present. Illegitimate children born on August 3, 1988 to March 18, 2004, may use the surname of their father by filing a petition in court.",
+        "P 500.00 (Affidavit to",
+        "P 500.00",
+        "charges of the",
+        "receiving Local Civil",
+        "P 500.00",
+        "P 600.00"
+      ]
+    },
+    "office-of-the-municipal-civil-registrar#external-10": {
+      "charterTitle": "Annotation of Affidavit of Supplemental Report in the Certificate of Live Birth, Marriage, Death or Fetal Death.",
+      "section": "external",
+      "document": null,
+      "linesInDocument": 101,
+      "notRendered": [
+        "9. Annotation of Affidavit of Supplemental Report in the Certificate of Live Birth, Marriage, Death or Fetal Death.",
+        "Pursuant to Rule No. 11, Administrative Order No. 1, series of 1993, a supplemental report is used to supply a missing entry/ies or information inadvertently",
+        "omitted when the Certificate of Live Birth, Marriage, Death or Fetal Death was registered. The Affidavit of Supplemental Report shall supply only two (2) missing",
+        "information. For more than two (2) omitted information, the Supplemental Report shall be forwarded to the Office of the Civil Registrar General (OCRG)"
+      ]
+    },
+    "office-of-the-municipal-civil-registrar#external-11": {
+      "charterTitle": "Petition for Change of First Name (CFN) (Pursuant to Republic Act No. 9048)",
+      "section": "external",
+      "document": null,
+      "linesInDocument": 168,
+      "notRendered": [
+        "10. Petition for Change of First Name (CFN) (Pursuant to Republic Act No. 9048)",
+        "Republic Act No.9048 is an act law authorizing the the Municipal/City Civil Registrar or the Consul General to correct the clerical or typographical error in an",
+        "entry and/or change of first name or nickname in the civil register without need of judicial order.",
+        "Surigao del Sur",
+        "P 3,000.00",
+        "P 250.00",
+        "1 Hour and 20",
+        "P 3,000..00",
+        "P 250.00"
+      ]
+    },
+    "office-of-the-municipal-civil-registrar#external-12": {
+      "charterTitle": "Petition for Correction of Clerical Error in the Birth/Marriage/Death Certificate (Pursuant To Republic Act No. 9048)",
+      "section": "external",
+      "document": null,
+      "linesInDocument": 125,
+      "notRendered": [
+        "11. Petition for Correction of Clerical Error in the Birth/Marriage/Death Certificate (Pursuant To Republic Act No. 9048)",
+        "Republic Act No.9048 is an act law authorizing the the Municipal/City Civil Registrar or the Consul General to correct the clerical or typographical error in an",
+        "entry and/or change of first name or nickname in the civil register without need of judicial order.",
+        "P 1,000.00",
+        "P 250.00",
+        "P 1250.00.00"
+      ]
+    },
+    "office-of-the-municipal-civil-registrar#external-13": {
+      "charterTitle": "Petition for Correction of Sex/Gender and Birth Date (Day and Month only) (Pursuant to Republic Act No. 10172)",
+      "section": "external",
+      "document": null,
+      "linesInDocument": 152,
+      "notRendered": [
+        "12. Petition for Correction of Sex/Gender and Birth Date (Day and Month only) (Pursuant to Republic Act No. 10172)",
+        "Republic Act No. 10172 amends Republic Act No. 9048 and now authorizes the the Municipal/City Civil Registrar or the Consul General to correct the clerical",
+        "or typographical error in an entry/ies particularly on the sex/gender and the birth date (month and day only) in the civil register without a need of judicial order.",
+        "Note: If the correction is for sex/gender, the petition shall be filed by the document owner himself or",
+        "herself directly at his/her birth place. If the document owner is still a minor, he or she will be assisted",
+        "by parent or guardian and shall appear personally before the Civil Registrar.",
+        "250.00",
+        "1 Hour and 20"
+      ]
+    },
+    "office-of-the-municipal-civil-registrar#external-14": {
+      "charterTitle": "Request for PSA’s Annotated Birth, Marriage or Death Certificate in Security Paper (SECPA)",
+      "section": "external",
+      "document": null,
+      "linesInDocument": 72,
+      "notRendered": [
+        "13. Request for PSA’s Annotated Birth, Marriage or Death Certificate in Security Paper (SECPA)",
+        "following transactions:",
+        "• Legitimation (RA 9858)",
+        "• Affidavit to Use the Surname of the Father (ra 9255)",
+        "• Correction of Clerical Errors/Change of First Name (RA 9048/RA 10172)",
+        "• Supplemental Report",
+        "• MC 2010-04"
+      ]
+    },
+    "office-of-the-municipal-disaster-risk-reduction-management#external-1": {
+      "charterTitle": "Issuance of Disaster Certification for Shelter Assistance",
+      "section": "external",
+      "document": null,
+      "linesInDocument": 61,
+      "notRendered": [
+        "1. Issuance of Disaster Certification for Shelter Assistance",
+        "Issuance of Disaster Certification is required to avail of the services of charitable institutions, government and nongovernment Organizations and Institutions."
+      ]
+    },
+    "office-of-the-municipal-disaster-risk-reduction-management#external-2": {
+      "charterTitle": "Request for Patient Transfer (Outside Tago, Surigao del Sur)",
+      "section": "external",
+      "document": null,
+      "linesInDocument": 118,
+      "notRendered": [
+        "2. Request for Patient Transfer (Outside Tago, Surigao del Sur)",
+        "To ensure continuity of care to patients with proper referral needing transfer from one health care facility to another health care facility, the MDRRMO handles",
+        "request for patient transfer outside Tago, Surigao del Sur.",
+        "1.Request Letter with the following information:",
+        "Duration of the service",
+        "depends on",
+        "the distance to take",
+        "30 Minutes"
+      ]
+    },
+    "office-of-the-municipal-disaster-risk-reduction-management#external-3": {
+      "charterTitle": "Request for Water Rationing/Delivery",
+      "section": "external",
+      "document": null,
+      "linesInDocument": 85,
+      "notRendered": [
+        "The office handles request for water rationing in areas within Tago which are in dire needs of water supply. Water tankers are used to deliver water on",
+        "schedule basis to the barangays or areas covered by the water rationing services delivery for free.",
+        "1.Request Letter with the following information:",
+        "Duration of the",
+        "depends on",
+        "distance and",
+        "quantity of",
+        "recipient"
+      ]
+    },
+    "office-of-the-municipal-disaster-risk-reduction-management#external-4": {
+      "charterTitle": "Request for DRRM Trainings, Drill, Seminars and Symposiums",
+      "section": "external",
+      "document": null,
+      "linesInDocument": 84,
+      "notRendered": [
+        "4. Request for DRRM Trainings, Drill, Seminars and Symposiums",
+        "To ensure trainings conducted will equip participants with necessary competencies to perform their skills in conformance with standards set by governing",
+        "authorities and to establish a standard training program for communities as per mandated by R.A. 10121.",
+        "1.Request Letter with the following information:",
+        "Within 24 hours",
+        "0 minute",
+        "(Preparations",
+        "prior the",
+        "activity is",
+        "excluded)",
+        "1 Day & 15"
+      ]
+    },
+    "office-of-the-municipal-disaster-risk-reduction-management#external-5": {
+      "charterTitle": "Request for Patient Transfer (Inter-Facility)",
+      "section": "external",
+      "document": null,
+      "linesInDocument": 83,
+      "notRendered": [
+        "5. Request for Patient Transfer (Inter-Facility)",
+        "To ensure continuity of care to patients with proper referral needing transfer from one health care facility to another health facility."
+      ]
+    },
+    "office-of-the-municipal-engineering-services#external-1": {
+      "charterTitle": "Processing of the Application for Building Permits and other Ancillary/Accessory Permits pursuant to P.D. 1096, also known as the “National Building Code of",
+      "section": "external",
+      "document": null,
+      "linesInDocument": 1043,
+      "notRendered": [
+        "1. Processing of the Application for Building Permits and other Ancillary/Accessory Permits pursuant to P.D. 1096, also known as the “National Building Code of",
+        "It is a document issued by the Local Building Official to ensure safe occupancy and conforms to the provisions of P.D. 1096, also known as the “National",
+        "Building Code of the Philippines” and its Implementing Rules and Regulations.",
+        "1-storey Building – Complex",
+        "2-storey building and above - Highly Technical",
+        "G2G – Government to Government",
+        "G2B – Government to Business",
+        "See"
+      ]
+    },
+    "office-of-the-municipal-engineering-services#external-2": {
+      "charterTitle": "Processing of the Application for Certificate of Occupancy pursuant to P.D. 1096, also known as the “National Building Code of the",
+      "section": "external",
+      "document": null,
+      "linesInDocument": 366,
+      "notRendered": [
+        "2. Processing of the Application for Certificate of Occupancy pursuant to P.D. 1096, also known as the “National Building Code of the",
+        "Philippines”.",
+        "It is a document issued by the Local Building Official to ensure safe occupancy and that the building or structure conforms to the provisions of",
+        "P.D. 1096, also known as the “National Building Code of the Philippines”",
+        "1-storey Building – Complex",
+        "2-storey building and above - Highly Technical",
+        "G2G – Government to Government",
+        "G2B – Government to Business",
+        "Releasing Officer",
+        "3 HOURS"
+      ]
+    },
+    "office-of-the-municipal-engineering-services#internal-1": {
+      "charterTitle": "Mandatory submission of Quarterly Report on Government Projects / Programs / Activities",
+      "section": "internal",
+      "document": null,
+      "linesInDocument": 70,
+      "notRendered": [
+        "1. Mandatory submission of Quarterly Report on Government Projects / Programs / Activities",
+        "This report is mandatory for monitoring and evaluation purposes pursuant to the Memorandum Circular No. 2015-006 of the Commission on Audit.",
+        "Audit"
+      ]
+    },
+    "office-of-the-municipal-engineering-services#internal-2": {
+      "charterTitle": "Preparation of Program of Works (POW)",
+      "section": "internal",
+      "document": null,
+      "linesInDocument": 70,
+      "notRendered": [
+        "2. Preparation of Program of Works (POW)",
+        "This document is a requirement for a project approval for external client.",
+        "Citizen"
+      ]
+    },
+    "office-of-the-municipal-engineering-services#internal-3": {
+      "charterTitle": "Preparation of Program of Works (POW), Purchase Request (PR), Detailed Engineering Design (DED)",
+      "section": "internal",
+      "document": null,
+      "linesInDocument": 60,
+      "notRendered": [
+        "1. Preparation of Program of Works (POW), Purchase Request (PR), Detailed Engineering Design (DED)",
+        "These documents are required for project implementation.",
+        "CHECKLIST OF REQUIREMEN",
+        "TS",
+        "1.Annual List of Approved Projects",
+        "Municipal Budget Office",
+        "(2 nd floor Municipal HAll, Brgy. Purisima, Tago Surigao",
+        "(signed by the Municipal Budget Officer and LCE)",
+        "del Sur)",
+        "2.Approved Purchase Request (2 Original Signed Copies and 3 Copies Facsimile)",
+        "Municipal Engineering Office, Annex Building,",
+        "Municipal Hall, Tago Surigao del Sur",
+        "3.Approved Individual Program of Works",
+        "Municipal Engineering Office, Annex Building,",
+        "Municipal Hall, Tago Surigao del Sur",
+        "(2 Original Signed Copies and 6 Copies Facsimile)",
+        "4.Approved Detailed Engineering (Design/PLAN) (2 Original Signed Copies and 3 Copies Facsimile)",
+        "Municipal Engineering Office, Annex Building,",
+        "Municipal Hall, Tago Surigao del Sur",
+        "5.Approved PPMP (4 Original Copies)"
+      ]
+    },
+    "office-of-the-municipal-environment-and-natural-resources-designate-services#external-1": {
+      "charterTitle": "Special Waste Disposal Permit",
+      "section": "external",
+      "document": null,
+      "linesInDocument": 74,
+      "notRendered": [
+        "The Municipal cannot cater all requests for hauling of Special Waste (cut branches, grass, paints, construction debris and other similar waste) to be dumped",
+        "at the Municipal’s Dump site due to limited vehicle available, hence, the office initiates to issue Special Waste Disposal Permit to client/s with private vehicle",
+        "who wan/st to dump their waste on their preferred time and schedule.",
+        "PROCESSIN G"
+      ]
+    },
+    "office-of-the-municipal-environment-and-natural-resources-designate-services#external-2": {
+      "charterTitle": "Recommendation Letter for Tree Cutting Request",
+      "section": "external",
+      "document": null,
+      "linesInDocument": 71,
+      "notRendered": [
+        "CENRO-DENR is the authorized government office to issue Tree Cutting permit. For their easy assessment and approval, they ask for recommendation of the",
+        "city in order to validate if the tree really needs to be cut, how and where to dispose the said logs.",
+        "CHECKLIST OF REQUIREMENTS",
+        "WHERE TO SECURE",
+        "Letter Request for Tree Cutting (1 original)",
+        "1 Day",
+        "5 Days",
+        "25",
+        "Minutes",
+        "3 Minutes",
+        "6 Days, 29",
+        "Minutes"
+      ]
+    },
+    "office-of-the-municipal-nutrition#external-1": {
+      "charterTitle": "Issuance of Patient’s Referral",
+      "section": "external",
+      "document": null,
+      "linesInDocument": 97,
+      "notRendered": [
+        "1. Issuance of Patient’s Referral",
+        "Issuance of Patient’s Referral needs to transfer from one health care facility to another health care facility, the MNO handles request for patient transfer",
+        "outside Tago, Surigao del Sur.",
+        "1.Referral Letter with the following information:"
+      ]
+    },
+    "office-of-the-municipal-nutrition#external-2": {
+      "charterTitle": "Availment of Nutrition Pack and Micronutrient Supplement and advocacy/ counseling",
+      "section": "external",
+      "document": null,
+      "linesInDocument": 75,
+      "notRendered": [
+        "2. Availment of Nutrition Pack and Micronutrient Supplement and advocacy/ counseling",
+        "Avail of Nutrition Pack and Micronutrient to identify Severe Acute Malnourished (SAM) and Moderate Acute Malnourished (MAM) and advocacy/counselling of",
+        "breastfeeding for lactating mothers in order to maintain zero malnutrition.",
+        "Women.",
+        "1. BNS reported patient from hospital and main health center"
+      ]
+    },
+    "office-of-the-municipal-nutrition#internal-1": {
+      "charterTitle": "Issuance of Certificate grant of BNS Eligibility",
+      "section": "internal",
+      "document": null,
+      "linesInDocument": 74,
+      "notRendered": [
+        "1. Issuance of Certificate grant of BNS Eligibility",
+        "Issuance of certificate grant needs to comply in order to have a certificate for sub-prof civil service eligibility",
+        "where applicant is",
+        "assigned"
+      ]
+    },
+    "office-of-the-municipal-planning-and-development#external-1": {
+      "charterTitle": "Issuance of Zoning Certification",
+      "section": "external",
+      "document": null,
+      "linesInDocument": 201,
+      "notRendered": [
+        "A zoning certificate is issued to the applicant/s to ensure the compatibility or conformity of the project/s with the Land Use Plan and Zoning Ordinance of the",
+        "municipality."
+      ]
+    },
+    "office-of-the-municipal-planning-and-development#external-2": {
+      "charterTitle": "Issuance of Locational Clearance",
+      "section": "external",
+      "document": null,
+      "linesInDocument": 203,
+      "notRendered": [
+        "2. Issuance of Locational Clearance",
+        "An approval document issued by Municipal Planning and Development Office that serves as pre-requisite document in issuance of Building and Business",
+        "Permits to guarantee the structure's compliance with the Comprehensive Land Use and Zoning Ordinance.",
+        "Total Fee based 1hrs and 13"
+      ]
+    },
+    "office-of-the-municipal-treasurer#internal-1": {
+      "charterTitle": "Issuance of Accountable Forms",
+      "section": "internal",
+      "document": null,
+      "linesInDocument": 91,
+      "notRendered": [
+        "1. Issuance of Accountable Forms",
+        "The office of the Municipal Treasurer is the custodian of all accountable forms requisitioned by the Municipal Government of Tago. The",
+        "office maintained complete records and facilitate for its receipt, issue and transfer.",
+        "All Barangay Treasurers and Accountable Officers, other LGUs, Government Leagues and",
+        "Associations and other National Government Agencies",
+        "BIR0016 -",
+        "Php121.50/stub",
+        "Total Fee is",
+        "based on the",
+        "amount",
+        "indicated",
+        "above"
+      ]
+    },
+    "office-of-the-sangguniang-bayan-services#external-1": {
+      "charterTitle": null,
+      "section": "external",
+      "document": null,
+      "linesInDocument": 100,
+      "notRendered": [
+        "AGENCY ACTIONS",
+        "AGENCY ACTIONS",
+        "Depends upon the",
+        "schedule of session",
+        "and its approval.",
+        "After approval"
+      ]
+    },
+    "office-of-the-sangguniang-bayan-services#internal-1": {
+      "charterTitle": null,
+      "section": "internal",
+      "document": null,
+      "linesInDocument": 69,
+      "notRendered": [
+        "OFFICE OR DIVISION",
+        "G2G – Government to Government",
+        "TYPE OF CLASSIFICATION",
+        "AGENCY ACTIONS",
+        "AGENCY ACTIONS"
+      ]
+    },
+    "office-of-the-sangguniang-bayan-services#internal-2": {
+      "charterTitle": null,
+      "section": "internal",
+      "document": null,
+      "linesInDocument": 94,
+      "notRendered": [
+        "G2B – Government to Business,",
+        "G2G – Government to Government",
+        "Within Thirty (30) days after",
+        "receipt of the Investigation Report",
+        "and Records of Proceedings",
+        "Within Thirty (30) days from",
+        "receipt of a copy of the decision"
+      ]
+    },
+    "office-of-the-sangguniang-bayan-services#internal-3": {
+      "charterTitle": "Provision of approved resolutions and ordinances, certifications, and any other related legislative documents",
+      "section": "internal",
+      "document": null,
+      "linesInDocument": 55,
+      "notRendered": [
+        "1. Provision of approved resolutions and ordinances, certifications, and any other related legislative documents",
+        "The services are intended to inform the clients on the resolutions and ordinances approved and testify particular actions made by the Municipal",
+        "Council, such as among others: calendar of measures, committee action and others.",
+        "G2B – Government to Business,",
+        "G2G – Government to Government",
+        "P50.00 for Certification",
+        "P25.00 for Certified True"
+      ]
+    },
+    "office-of-the-sangguniang-bayan-services#internal-4": {
+      "charterTitle": "Release the document to the",
+      "section": "internal",
+      "document": null,
+      "linesInDocument": 43,
+      "notRendered": [
+        "3. Release the document to the",
+        "certification or certified true",
+        "requesting party.",
+        "copy document",
+        "Office of the Sangguniang Bayan Secretary",
+        "Internal Services"
+      ]
+    },
+    "office-of-the-vice-mayor#external-1": {
+      "charterTitle": null,
+      "section": "external",
+      "document": null,
+      "linesInDocument": 48,
+      "notRendered": [
+        "AGENCY ACTIONS"
+      ]
+    },
+    "office-of-the-vice-mayor#internal-1": {
+      "charterTitle": null,
+      "section": "internal",
+      "document": null,
+      "linesInDocument": 41,
+      "notRendered": [
+        "OFFICE OR DIVISION",
+        "G2G – Government to Government",
+        "TYPE OF CLASSIFICATION",
+        "AGENCY ACTIONS"
+      ]
+    },
+    "office-of-the-vice-mayor#internal-2": {
+      "charterTitle": null,
+      "section": "internal",
+      "document": null,
+      "linesInDocument": 45,
+      "notRendered": [
+        "OFFICE OR DIVISION",
+        "G2G – Government to Government",
+        "TYPE OF CLASSIFICATION",
+        "AGENCY ACTIONS"
+      ]
+    },
+    "office-of-the-vice-mayor#internal-3": {
+      "charterTitle": null,
+      "section": "internal",
+      "document": null,
+      "linesInDocument": 34,
+      "notRendered": [
+        "OFFICE OR DIVISION",
+        "G2G – Government to Government",
+        "TYPE OF CLASSIFICATION",
+        "AGENCY ACTIONS"
+      ]
+    },
+    "office-of-the-vice-mayor#internal-4": {
+      "charterTitle": null,
+      "section": "internal",
+      "document": null,
+      "linesInDocument": 38,
+      "notRendered": [
+        "OFFICE OR DIVISION",
+        "G2C – Government to Citizen, G2G – Government to Government",
+        "TYPE OF CLASSIFICATION",
+        "AGENCY ACTIONS"
+      ]
+    },
+    "office-of-the-vice-mayor#internal-5": {
+      "charterTitle": null,
+      "section": "internal",
+      "document": null,
+      "linesInDocument": 34,
+      "notRendered": [
+        "OFFICE OR DIVISION",
+        "G2C – Government to Citizen, G2G – Government to Government",
+        "TYPE OF CLASSIFICATION",
+        "AGENCY ACTIONS"
+      ]
+    },
+    "office-of-the-vice-mayor#internal-6": {
+      "charterTitle": null,
+      "section": "internal",
+      "document": null,
+      "linesInDocument": 40,
+      "notRendered": [
+        "OFFICE OR DIVISION",
+        "G2G – Government to Government",
+        "TYPE OF CLASSIFICATION"
+      ]
+    },
+    "public-employment-office-division-external-services#external-1": {
+      "charterTitle": "Special Program for Employment of Students (SPES)",
+      "section": "external",
+      "document": null,
+      "linesInDocument": 89,
+      "notRendered": [
+        "1. Special Program for Employment of Students (SPES)",
+        "The Public Employment Services Office is mandated to conduct Special Program for Employment of Students (SPES) which aims to assist poor but",
+        "deserving students and out-of-school youth or dependents of displaced workers to support and pursue their education by providing income through"
+      ]
+    },
+    "public-employment-office-division-external-services#external-2": {
+      "charterTitle": "Issuance of No Objection Certificate",
+      "section": "external",
+      "document": null,
+      "linesInDocument": 96,
+      "notRendered": [
+        "2. Issuance of No Objection Certificate",
+        "The Public Employment Services Office aims to assist clients seeking for job opportunities not only in local but also overseas, as part of the initiative; the",
+        "PESO is mandated to ensure that all documents provided by the recruitment agencies are legal, accredited and operational before they conduct recruitment"
+      ]
+    },
+    "public-employment-office-division-external-services#external-3": {
+      "charterTitle": "Request for Organization/Association to be registered in DOLE",
+      "section": "external",
+      "document": null,
+      "linesInDocument": 71,
+      "notRendered": [
+        "3. Request for Organization/Association to be registered in DOLE",
+        "The Public Employment Services Office is the main partner of Department of Labor and Employment in providing employment opportunities and sustainable",
+        "livelihood program to those registered organizations or associations which contribute to poverty reduction and reduce the vulnerability to risks of the working",
+        "poor and marginalized workers through economic development."
+      ]
+    },
+    "tourism-external-services#external-1": {
+      "charterTitle": "APPLICATION / RENEWAL OF BUSINESS PERMIT (TOURISM ESTABLISHMENT)",
+      "section": "external",
+      "document": null,
+      "linesInDocument": 44,
+      "notRendered": [
+        "1. APPLICATION / RENEWAL OF BUSINESS PERMIT (TOURISM ESTABLISHMENT)"
+      ]
+    },
+    "tourism-external-services#external-2": {
+      "charterTitle": "DOT ACCREDITATION PROCEDURES",
+      "section": "external",
+      "document": null,
+      "linesInDocument": 44,
+      "notRendered": [
+        "2. DOT ACCREDITATION PROCEDURES"
+      ]
+    },
+    "tourism-external-services#external-3": {
+      "charterTitle": "REQUEST FOR TOURISM FRONTLINERS TRAINING",
+      "section": "external",
+      "document": null,
+      "linesInDocument": 41,
+      "notRendered": [
+        "3. REQUEST FOR TOURISM FRONTLINERS TRAINING"
+      ]
+    }
+  },
+  "totals": {
+    "services": 167,
+    "linesCarriedByThePages": 17520,
+    "linesHeldOnlyHere": 788
+  }
+}

@@ -1,6 +1,6 @@
 {
   "name": "better-tago",
-  "version": "0.1.6",
+  "version": "0.2.0",
   "private": true,
   "engines": {
     "node": ">=24"
@@ -18,6 +18,8 @@
     "harvest": "node scripts/harvest.mjs",
     "freshness": "node scripts/freshness.mjs",
     "charter:diff": "node scripts/charter-diff.mjs",
+    "charter:extract": "node scripts/charter-extract.mjs",
+    "charter:pages": "node scripts/charter-pages.mjs",
     "handover": "node scripts/handover.mjs",
     "test": "vitest run",
     "test:watch": "vitest",

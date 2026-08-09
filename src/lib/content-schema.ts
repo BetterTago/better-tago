@@ -168,22 +168,168 @@ const charterServiceIdSchema = z
   );
 
 /**
+ * A field the charter is SILENT on — recorded as an absence, not left blank.
+ *
+ * ★ TAGO-201 criterion 2 in its original meaning, restored on 2026-08-10 when
+ * ⛔ PROG-003 re-opened and the transcription came back into scope. The
+ * criterion had been recast because the index-and-link shape carried no charter
+ * fields at all, so there was nothing on a page for it to attach to. There is
+ * now.
+ *
+ * The distinction it protects is between a field nobody looked at and a field
+ * somebody looked for and did not find. Both render as no answer; only one of
+ * them is honest about why, and only one of them belongs in the gap register.
+ */
+export const notStatedFieldSchema = z.enum([
+  'whereToGo',
+  'officeHours',
+  'output',
+  'eligibility',
+  'fees',
+  'processingTime',
+  'requirements',
+]);
+
+/**
+ * One requirement, and where the charter says to get it.
+ *
+ * `whereToSecure` is nullable because the document sometimes leaves the second
+ * column empty, and an empty column is a fact about the document. It is never
+ * filled in from a neighbouring row.
+ */
+export const requirementSchema = z.object({
+  item: z.string().min(1),
+  /**
+   * Whether the item carries the charter's OWN list marker — `1.`, `•`, `-`.
+   *
+   * The renderer supplies a bullet only where the document supplied none.
+   * Where a charter numbers its own list, that numbering is transcribed with
+   * it: a requirement printed `1.Original Immunization Card` under a markdown
+   * bullet reads `- 1.Original Immunization Card`, and renumbering a list a
+   * resident may be holding a paper form against is not transcribing it.
+   */
+  marked: z.boolean(),
+  whereToSecure: z.string().min(1).nullable(),
+});
+
+/**
+ * One row of the charter's client-steps table, carried through verbatim.
+ *
+ * Every field is nullable because every one of them is genuinely absent on some
+ * real row: the resident does nothing during an office's internal step, a
+ * merged fee cell cannot be attributed to the rows it covers, and a page whose
+ * prose columns were identified by position alone publishes no labels at all.
+ * A null here means *the charter did not say, in this row* — never *we did not
+ * look*.
+ */
+export const charterStepSchema = z.object({
+  clientStep: z.string().min(1).nullable(),
+  agencyAction: z.string().min(1).nullable(),
+  fee: z.string().min(1).nullable(),
+  processingTime: z.string().min(1).nullable(),
+  personResponsible: z.string().min(1).nullable(),
+});
+
+/**
+ * The charter's contents for one service — the half of a page a resident came
+ * for, and the half this project could not publish until 2026-08-10.
+ *
+ * 🔴 EVERY STRING IN HERE IS BYTE-IDENTICAL TO THE DOCUMENT. The archive prints
+ * `P 1,000.00`, `P1250.00`, `Php200.00` and `PHP100.00`, several of them inside
+ * one file, and that inconsistency is data: it is what the counter will say.
+ * Normalising a figure — even to make a page look tidier — is the failure ★
+ * TAGO-202 criterion 3 exists to forbid, and `transcription-integrity.test.ts`
+ * fails the build on one.
+ *
+ * `extractionFlags` and `columnsNamedBy` are provenance for the verifier, not
+ * copy for a resident. They record how confidently each figure was read, which
+ * is what makes a second-person check possible without re-deriving the geometry.
+ */
+export const charterContentSchema = z.object({
+  eligibility: z.string().min(1).nullable(),
+  classification: z.string().min(1).nullable(),
+  typeOfTransaction: z.string().min(1).nullable(),
+  requirements: z.array(requirementSchema),
+  /**
+   * Places the charter names for obtaining the requirements, where it does NOT
+   * print them against individual items.
+   *
+   * These documents commonly set the *where to secure* column as one tall cell
+   * beside a dozen requirements, and which address belongs to which item is
+   * then not in the page's geometry at all. Pairing is therefore
+   * all-or-nothing: either every address lines up with exactly one requirement,
+   * or none of them is attached and they are carried here instead, under a
+   * heading that says so. Guessing the pairing would send somebody to the wrong
+   * counter with a citation on it.
+   */
+  requirementSources: z.array(z.string().min(1)),
+  steps: z.array(charterStepSchema),
+  /** The charter's own summary row. `null` where the document prints none. */
+  totalFee: z.string().min(1).nullable(),
+  totalProcessingTime: z.string().min(1).nullable(),
+  /** Every distinct fee the service states, in document order. */
+  fees: z.array(z.string().min(1)),
+  processingTimes: z.array(z.string().min(1)),
+  /**
+   * Columns the charter prints ONCE across several rows. Where those rows are
+   * is not recoverable from the document's geometry, so the figure is stated at
+   * service level and never spread — see scripts/charter-values.mjs.
+   */
+  mergedColumns: z.array(z.string().min(1)),
+  /** `header` · `content` · `position` — how each column was identified. */
+  columnsNamedBy: z.record(
+    z.string(),
+    z.enum(['header', 'content', 'position'])
+  ),
+  /**
+   * False when the client-step / agency-action / person-responsible columns
+   * were told apart by position alone. The page then presents the row's text
+   * without claiming which is the resident's move and which is the office's.
+   */
+  proseColumnsTrusted: z.boolean(),
+  /**
+   * False where the steps could not be arranged into a table at all — a page
+   * whose gutters gave no columns, or a table long enough that it plainly was
+   * not one service's worth of rows.
+   *
+   * ⚠️ It is PROVENANCE, not a rendering switch. An earlier version quoted
+   * those steps instead of tabulating them and the page said so; the page now
+   * shows the charter's own table either way, so nothing renders differently on
+   * this. What it still tells a verifier is which tables the tooling could not
+   * resolve, and those are the ones to read against the PDF first.
+   *
+   * Neither condition means the content is wrong; both mean it resisted being
+   * laid out. Treating them as defects withheld eighteen services, including
+   * the building permit — whose table genuinely runs across twenty pages.
+   */
+  stepsAreStructured: z.boolean(),
+  extractionFlags: z.array(z.string().min(1)),
+  /** What the charter is silent on — an absence somebody looked for. */
+  notStated: z.array(notStatedFieldSchema),
+});
+
+/**
  * A charter-derived record: the shape ★ TAGO-201 freezes, and the contract
  * every Phase 2 content ticket is authored against.
  *
- * It is `pageEntrySchema` plus the four things a hundred-odd records need that
- * a generic page does not — the join back to the inventory, the section, the
- * ambiguity the charter left, and whether a second person has checked it.
+ * It is `pageEntrySchema` plus the join back to the inventory, the section, the
+ * ambiguity the charter left, whether a second person has checked it — and,
+ * since 2026-08-10, the charter's actual contents.
  *
- * 🔴 What this record deliberately CANNOT carry is the charter's contents. No
- * fee, requirement, processing time or step field exists here, because
- * republishing those is a permission this project has not asked for (⛔
- * PROG-003, fallback: index-and-link only). The eight-field guide TAGO-004
- * froze is the shape that returns WITH a written permission; until then its
- * absence from this schema is the position, not an omission.
+ * ⚠️ **`content` is nullable, and the nullability is the honest part.** A
+ * record whose extraction needs a human carries `null` rather than a
+ * half-filled guess, and its page publishes what it publishes today: the
+ * service exists, this office provides it, here is the document. Partial is not
+ * an option — the object parses whole or not at all — because a page showing
+ * three of five requirements is more dangerous than one showing none.
  */
 export const charterRecordSchema = pageEntrySchema
   .extend({
+    /**
+     * The charter's contents, or `null` where the extraction was not good
+     * enough to publish and a human has not yet resolved it.
+     */
+    content: charterContentSchema.nullable(),
     charterServiceId: charterServiceIdSchema,
     /**
      * Always `external`, and stated rather than assumed.
@@ -227,6 +373,15 @@ export const charterRecordSchema = pageEntrySchema
      */
     ambiguity: z.string().min(1).nullable(),
     /**
+     * The Filipino of the above. It lives in the manifest rather than in the
+     * markdown because the English does — this is the one piece of project
+     * prose the data layer carries, and a page rendered from data cannot
+     * translate it at render time. Required whenever `ambiguity` is set;
+     * `null` reads as "there is nothing to translate", which would be a lie on
+     * a page that renders an English paragraph under a Filipino heading.
+     */
+    ambiguityFil: z.string().min(1).nullable(),
+    /**
      * How THIS PROJECT read the document — a truncated heading completed by
      * hand, a service number the charter prints twice, an office spelled two
      * ways in one file.
@@ -244,6 +399,14 @@ export const charterRecordSchema = pageEntrySchema
      */
     verificationRecord: verificationRecordSchema.nullable(),
   })
+  .refine(
+    record => (record.ambiguity === null) === (record.ambiguityFil === null),
+    {
+      message:
+        'an ambiguity renders in both locales or in neither — a Filipino page showing an English paragraph under a translated heading is the failure CONT-402 exists to catch',
+      path: ['ambiguityFil'],
+    }
+  )
   .refine(record => record.charterServiceId.includes('#external-'), {
     message:
       'charterSection says external but the inventory id does not — they must agree',
@@ -255,6 +418,41 @@ export const charterRecordSchema = pageEntrySchema
       message:
         'V3 is a primary source. Claiming it without a retrievable address for the document is not a citation',
       path: ['source', 'url'],
+    }
+  )
+  /**
+   * PROG-101's floor, as a property of the data rather than a promise.
+   *
+   * Fees, deadlines and requirements ship at `V2` or better — never `V1`, and
+   * never `V0`. Two secondary sources agreeing is how a fee that changed years
+   * ago stays alive on ten websites, and this record now carries all three of
+   * the fields that rule names.
+   */
+  .refine(
+    record =>
+      record.content === null ||
+      record.verification === 'V3' ||
+      record.verification === 'V2',
+    {
+      message:
+        'a page stating fees, requirements or processing time is at V2 or better — see docs/governance.md',
+      path: ['verification'],
+    }
+  )
+  /**
+   * A transcription cites the copy it was read from, or it is unverifiable.
+   *
+   * The `sha256` is what makes a later charter revision detectable; without it
+   * "transcribed 2026-08-10" says nothing about transcribed from WHAT, and no
+   * second person can repeat the check.
+   */
+  .refine(
+    record =>
+      record.content === null || record.charterDocument.sha256.length === 64,
+    {
+      message:
+        'transcribed contents must name the exact copy they came from, by checksum',
+      path: ['charterDocument', 'sha256'],
     }
   );
 
@@ -400,6 +598,10 @@ export type CharterRecord = z.infer<typeof charterRecordSchema>;
 export type TransparencyRecord = z.infer<typeof transparencyRecordSchema>;
 export type DisclosureStatus = z.infer<typeof disclosureStatusSchema>;
 export type CharterDocumentRef = z.infer<typeof charterDocumentSchema>;
+export type CharterContent = z.infer<typeof charterContentSchema>;
+export type CharterStep = z.infer<typeof charterStepSchema>;
+export type Requirement = z.infer<typeof requirementSchema>;
+export type NotStatedField = z.infer<typeof notStatedFieldSchema>;
 export type SourceRef = z.infer<typeof sourceSchema>;
 export type Verification = z.infer<typeof verificationSchema>;
 export type VerificationRecord = z.infer<typeof verificationRecordSchema>;

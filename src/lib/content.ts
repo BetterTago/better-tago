@@ -3,7 +3,12 @@ import path from 'node:path';
 import { cacheLife, cacheTag } from 'next/cache';
 import yaml from 'js-yaml';
 import { z } from 'zod';
-import { manifestSchema, type PageEntry } from '@/lib/content-schema';
+import {
+  charterManifestSchema,
+  manifestSchema,
+  type CharterRecord,
+  type PageEntry,
+} from '@/lib/content-schema';
 import type { Locale } from '@/i18n/routing';
 
 /**
@@ -139,6 +144,107 @@ export async function getPage(
   return { entry, body: english, usedFallback: locale !== 'en' };
 }
 
+/**
+ * A charter category's manifest, with the transcription attached.
+ *
+ * Separate from `getManifest` because it parses against a different contract.
+ * `manifestSchema` is the generic page entry and strips everything ★ TAGO-201
+ * added — the join back to the inventory, the ambiguity, and the charter's own
+ * contents. A service route reading through the generic loader would render a
+ * page with no fees on it and no error to say why.
+ */
+export async function getCharterManifest(
+  section: string,
+  category: string
+): Promise<CharterRecord[]> {
+  'use cache';
+  cacheLife('max');
+  cacheTag('content', `content:${section}`, `content:${section}/${category}`);
+
+  const file = path.join(CONTENT_ROOT, section, category, 'index.yaml');
+
+  let raw: string;
+  try {
+    raw = await readFile(file, 'utf8');
+  } catch {
+    return [];
+  }
+
+  const parsed = charterManifestSchema.safeParse(yaml.load(raw));
+  if (!parsed.success) {
+    throw new Error(
+      `Malformed charter manifest at content/${section}/${category}/index.yaml:\n${z.prettifyError(parsed.error)}`
+    );
+  }
+
+  return parsed.data.pages;
+}
+
+/** One charter page, in the requested locale, with its record. */
+export async function getCharterPage(
+  section: string,
+  category: string,
+  slug: string,
+  locale: Locale
+): Promise<{
+  entry: CharterRecord;
+  body: string;
+  usedFallback: boolean;
+} | null> {
+  'use cache';
+  cacheLife('max');
+  cacheTag('content', `content:${section}/${category}`);
+
+  const entry = (await getCharterManifest(section, category)).find(
+    page => page.slug === slug
+  );
+  if (!entry) return null;
+
+  const dir = path.join(CONTENT_ROOT, section, category);
+
+  if (locale !== 'en') {
+    const localised = await read(path.join(dir, `${slug}.${locale}.md`));
+    if (localised !== null)
+      return { entry, body: localised, usedFallback: false };
+  }
+
+  const english = await read(path.join(dir, `${slug}.md`));
+  if (english === null) {
+    throw new Error(
+      `content/${section}/${category}/index.yaml lists "${slug}" but ${slug}.md does not exist. The YAML slug must match the markdown filename exactly.`
+    );
+  }
+
+  return { entry, body: english, usedFallback: locale !== 'en' };
+}
+
+/**
+ * Every charter category, and the records in it.
+ *
+ * The services index and `generateStaticParams` both need the whole tree, and
+ * both would otherwise walk it themselves. `content/government/legislative` is
+ * included because two charter services live there rather than under
+ * `services/` — a fact that has already produced one broken link.
+ */
+export async function getCharterSections(): Promise<
+  { section: string; category: string; pages: CharterRecord[] }[]
+> {
+  'use cache';
+  cacheLife('max');
+  cacheTag('content');
+
+  const categories = await listCategories('services');
+  const sections = await Promise.all(
+    categories.map(async category => ({
+      section: 'services',
+      category,
+      pages: await getCharterManifest('services', category),
+    }))
+  );
+
+  return sections.filter(entry => entry.pages.length > 0);
+}
+
 async function read(file: string): Promise<string | null> {
   try {
     return await readFile(file, 'utf8');
@@ -147,7 +253,12 @@ async function read(file: string): Promise<string | null> {
   }
 }
 
-export type { PageEntry, SourceRef, Verification } from '@/lib/content-schema';
+export type {
+  CharterRecord,
+  PageEntry,
+  SourceRef,
+  Verification,
+} from '@/lib/content-schema';
 export {
   manifestSchema,
   pageEntrySchema,

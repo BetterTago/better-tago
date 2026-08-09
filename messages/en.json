@@ -78,5 +78,27 @@
     "heading": "Something went wrong",
     "body": "This page could not be loaded. The official municipal site is unaffected.",
     "retry": "Try again"
+  },
+  "services": {
+    "title": "Services",
+    "lead": "Every service the Municipality of Tago's Citizen's Charter describes, listed by what you are trying to do rather than by which office does it.",
+    "counts": "{transcribed} of {total} services carry the charter’s own requirements, fees and steps. The rest name the service and link the document while a person transcribes them.",
+    "notYetTranscribed": "requirements not yet transcribed",
+    "fallbackNotice": "This page has no Filipino version yet, so you are reading English. Nothing is hidden — the translation is simply not finished.",
+    "categories": {
+      "agriculture-fisheries": "Agriculture and fisheries",
+      "business-and-permits": "Business and permits",
+      "civil-registry": "Civil registry",
+      "disaster-and-safety": "Disaster and safety",
+      "engineering": "Engineering and land use",
+      "health": "Health",
+      "permits-and-clearances": "Permits and clearances",
+      "social-welfare": "Social welfare",
+      "tourism": "Tourism",
+      "treasury": "Treasury and property",
+      "work-and-employment": "Work and employment"
+    },
+    "scrollableTable": "{name}, table, scrollable sideways",
+    "table": "Table"
   }
 }

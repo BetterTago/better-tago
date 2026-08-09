@@ -1,8 +1,10 @@
-# Kumuha ng locational clearance
+# Get a locational clearance
 
 > **Paunawa:** Ang Filipino sa pahinang ito ay **draft, hindi pa nasusuri ng katutubong nagsasalita.** Bakante pa ang tungkulin ng Translator sa proyektong ito. Kung may mali, ang correction link sa footer ang pinakamabilis na paraan para maayos ito.
 
 **Sino ang nagbibigay nito:** Office of the Municipal Planning and Development, Tago Municipal Hall.
+
+> **Isinalin mula sa dokumento sa ibaba, at hindi pa nasusuri ng pangalawang tao.** Ang patakaran ng proyektong ito ay hindi kailanman sinusuri ng nagsulat ng pahina ang sarili niyang gawa, at bakante pa ang tungkulin ng Verifier. Bawat halaga rito ay binasa mula sa charter; wala pang binasang muli ng iba. Suriin sa mismong dokumento ang anumang babayaran o pupuntahan ninyo.
 
 ## Ano ang tawag dito ng charter
 
@@ -10,16 +12,80 @@
 
 Iyan ang sariling pananalita ng munisipyo, kinopya nang eksakto. Mahalagang malaman, dahil iyan ang pananalitang gagamitin sa counter at sa form.
 
-## Ano ang dadalhin, magkano, at gaano katagal
+## Ano ang sinasabi ng charter
 
-**Hindi ito sinasabi ng pahinang ito, at sinadya iyon.** Ang mga kailangan, ang bayad, at ang tagal ng proseso ay nakasulat lahat sa sariling Citizen’s Charter ng munisipyo, at ini-link ng proyektong ito ang dokumentong iyon sa halip na muling i-type ito.
+Isinalin mula sa sariling dokumento ng munisipyo, sa sariling istruktura at pananalita ng dokumento. Walang nasa ibaba ang muling isinulat, inayos o binuod.
 
-Hindi ito pag-iingat sa katumpakan — ang muling paglalathala ng teksto ng charter ay pahintulot na hindi hiningi ng proyektong ito at hindi naman kailangan para maging kapaki-pakinabang ito. Ang kulang sa mga residente ay hindi ang dokumento; kundi ang paraan para malaman kung aling dokumento, at aling opisina. Iyan ang pahinang ito.
+| | |
+| --- | --- |
+| Office or Division | Municipal Planning and Development Office |
+| Who may Avail | Developers; Individuals applying for building/ fencing and business permits |
 
-**Buksan ang dokumento ng charter sa ibaba.** Iyon ang opisyal na bersyon, inilathala ito ng munisipyo, at isang tap lang ang layo.
+**Listahan ng requirement**
+
+| Checklist of requirements | Where to secure |
+| --- | --- |
+| BASIC REQUIREMENTS (1copy per document): | — |
+| 1. Duly accomplished and notarized application form | — |
+| 2. ECC/CNC (Environmental Compliance Certificate/ Certificate of Non-Coverage | — |
+| 3. Traffic Impact Assessment (TIA) (for subdivision) | — |
+| 4. Zoning Certification ADDITIONAL REQUIREMENTS (1copy per document): | — |
+| 1. For Manufacturing projects: Project Profile/Brief | — |
+| 2. Bill of Materials and Cost Estimates | — |
+| 3. Sworn Special Power of Attorney (for applications filed by authorized representative) | — |
+| 4. For Cell Sites- Clearance from: CAAP | — |
+| • DOH | — |
+| • NTC | — |
+| • Conformity from neighbors | — |
+| • Barangay Resolution | — |
+
+**Saan kukunin**, ayon sa pagkakalimbag ng charter — sa tabi ng buong listahan at hindi sa bawat item:
+
+- MPDO – Zoning Division / Releasing & Receiving Clerk
+- DENR
+- Licensed Professional
+- MPDO – Zoning Division
+- Proponent/Technical person Licensed Architect or Engineer
+- Notary Public
+- Civil Aviation Authority of the Phil.
+- Dept. of Health National Telecommunication Commission Proponent Barangay where the project is located
+
+**Mga hakbang**
+
+| Client steps | Agency action | Fees to be paid | Processing time | Person responsible |
+| --- | --- | --- | --- | --- |
+| 1.Log- in the client’s information | 1.1 Require the client to record the name, address, contact number and purpose using logbook; and hand-in feedback form | None | 1 Minute | Office Clerk |
+| 2.Submit requirements • Inquire for requirements necessary for the application; | 2.1 Provide checklist of the requirements needed for the application | None | 2 Minutes | Zoning Officer / PDO II Receiving Clerk |
+| • required for |  |  |  |  |
+| Comply documents application; |  |  |  |  |
+| • Fill-up application form | 2.2 Check the requirements as to completeness | None | 2 Minutes |  |
+| • Assessment for the schedule of fees |  |  |  |  |
+|  | 2.3 Provide an application form to be filled up and notarize | None | 1 Minute |  |
+| 3. Evaluate documents | 2.4 Assess fees based on the cost estimates of project for order of payment | None | 2 Minutes |  |
+| Review the application | 3.1 Check and validate the completeness and correctness of the requirements and the assessment of fees | None | 10 Minutes | Zoning Officer / PDO II |
+| Review the assessed schedule of fees | 3.2 Review and advise to pay at the Treasurer’s Office | None | 2 Minutes |  |
+| 4. Payment of fees | 4.1 Check the issued official receipt from the MTO | Fees based on the project cost | 5 Minutes (depends as to the number of clients) | MT Officer/ Cashier |
+| 5. Schedule Site Inspection • Submission of requirements with official receipt • Schedule date of site inspection |  | None | 1 Minute | Zoning Officer / PDO II Receiving – Releasing Clerk |
+|  | 5.1 Receive the requirements with copy of OR and get the contact number 5.2 Conduct ocular inspection of the project site | None | 30 Minutes |  |
+| 6. Record the Inspected Application in the system | 6.1 In-put the application details in the system (with its corresponding application code) | None | 5 Minutes | Zoning Officer / PDO II Receiving- Releasing Clerk |
+| 7. Final Review of the application | 7.1 Conduct final review of the application | None | 5 Minutes | Zoning Officer / PDO II |
+| 8. Printing of Certification | 8.1 Print the certification | None | 1 Minute | Zoning Officer / PDO II Receiving – Releasing Clerk MPDC/ LCE |
+| 9. Approval of the Certification |  | None | 1 Minute |  |
+| 10. Releasing of Approved Zoning Certification | 9.1 Sign the Certification for approval 10.1 Notify the applicant thru text or call for the releasing of the approved application/ certification | None | 2 Minutes | Zoning Officer / PDO II Receiving – Releasing Clerk |
+| 11. Claiming of Approved Certification | 11.1 Release and record the approved certification in the log-book | None | 2 Minutes | Zoning Officer / PDO II Receiving – Releasing Clerk |
+|  |  |  |  |  |
+| 12. Feedback form retrieval | 12.1 Retrieve the feedback form given to the client/applicant |  |  |  |
+|  | TOTAL |  |  |  |
+
+## Kung may mali
+
+Ang pahinang ito ay transkripsyon ng sariling dokumento ng munisipyo, gawa ng isang independiyenteng boluntaryong proyekto. Hindi ito opisyal na channel, at wala itong maiproproseso para sa inyo.
+
+**Kung iba ang sabihin sa inyo ng opisina kaysa sa pahinang ito, ang opisina ang tama.** Binabago ang mga charter, at ang pahinang isinulat sa isang petsa ay maaaring maiwan. Ang correction link sa footer ang pinakamabilis na paraan para maayos ito — ang mga pagwawasto mula sa munisipyo ay unang inaasikaso.
 
 ## Ang opisyal na dokumento
 
 - [Office of the Municipal Planning and Development](https://tago.gov.ph/wp-content/uploads/2024/12/Office-of-the-Municipal-Planning-and-Development.pdf) — ang Citizen’s Charter para sa opisinang ito, kinuha noong 9 Agosto 2026
+- [Basahin ang buong dokumento, nakatranskribe](/fil/charter/documents/office-of-the-municipal-planning-and-development)
 
-Kung magkaiba ang pahinang ito at ang dokumentong iyon, **tama ang dokumento at mali ang pahinang ito.** Kung mapansin ninyo iyon, ang correction link sa footer ang pinakamabilis na paraan para maayos ito.
+Kung magkaiba ang pahinang ito at ang dokumentong iyon, **tama ang dokumento at mali ang pahinang ito.**

@@ -2,30 +2,67 @@
 
 **Who provides it:** Office of the Municipal Disaster Risk Reduction Management, Tago Municipal Hall.
 
+> **Transcribed from the document below, and not yet checked by a second person.** This project’s rule is that whoever transcribes a page never verifies it, and the Verifier role is currently vacant. Every figure here was read from the charter; none of them has been read back by somebody else. Check anything you are about to pay or travel for against the document itself.
+
 ## What the charter calls it
 
 > Request for Patient Transfer (Outside Tago, Surigao del Sur)
 
 That is the municipality’s own wording, reproduced exactly. It is worth knowing, because it is the wording the counter and the form will use.
 
-## What to bring, what it costs, how long it takes
+## What the charter says
 
-**This page does not say, and that is deliberate.** The requirements, the fees and the processing time are all set out in the municipality’s own Citizen’s Charter, and this project links that document rather than retyping it.
+Transcribed from the municipality’s own document, in the document’s own structure and wording. Nothing below has been re-worded, re-ordered or summarised.
 
-The reason is not caution about accuracy — it is that republishing the text of the charter is a permission this project has not asked for and does not need in order to be useful. What residents were missing was not the document; it was a way to find which document, and which office. That is what this page is.
+| | |
+| --- | --- |
+| Office or Division | Municipal Disaster Risk Reduction and Management Office – Administration and Training |
+| Classification | Simple |
+| Type of Transaction | G2C – Government to Citizen |
+| Who may Avail | All |
 
-**Open the charter document below.** It is the authoritative version, it is published by the municipality, and it is one tap away.
+**Checklist of requirements**
+
+| Checklist of requirements | Where to secure |
+| --- | --- |
+| 1.1 Patient’s Name and Address | — |
+| 1.2Nature of Illness and Patient Status | — |
+| 1.3 Specific location where to transfer | — |
+
+**Client steps**
+
+| Client steps | Agency action | Fees to be paid | Processing time | Person responsible |
+| --- | --- | --- | --- | --- |
+| 1. Visit the office of the Municipal Mayor and kindly approach the front desk to ask for the requirements | 1.1 Advise the client to submit a request letter address to the Local Chief Executive; | TO BE None |  | Municipal Mayor’s Office 10 Minutes |
+| 2. Wait for action of the request | 1.2 Assess and evaluate the client’s request through a brief interview then facilitates the approval of request 2.1 Forward the request with an endorsement letter to the LDRRM Operations Division for Scheduling | None | 10 Minutes | Municipal Mayor’s Office |
+| 3. Comply the following :(whichever is applicable): |  | None |  | Operations Clerk City Disaster Risk |
+| 3.1 Ensure hospital bills are settled; | 3. Prepare the following documents for approval: a.Official Travel Order |  |  | Reduction and |
+| • |  |  |  | Management |
+| For Emergency Transfer – provide medical practitioner to board in the transfer; NO | b.Certificate of Appearance |  |  | Office |
+| MEDICAL |  |  |  |  |
+| PRACTITIONER, |  |  |  |  |
+| NO TRANSFER; |  |  |  |  |
+| For against medical advice or hospital choice – ensure availability of admission and medical practitioner to board in the transfer. |  |  |  |  |
+| 4. While on-transfer, patient’s guardian sign the Authorization to Transfer or Waiver in the Patient Care |  | None |  | SERTSS team |
+| 4. Report | 4.1 Provide the necessary care and management of the patient; 4.2 For emergency transfer, assist the medical practitioner in monitoring the patient’s status |  |  | Municipal Disaster Risk Reduction and Management Office |
+|  | (Duration of the patient’s transfer is excluded) |  |  |  |
+| **TOTAL** | | **None** | **** | |
 
 ## One question, more than one charter entry
 
-The charter answers _"How do I get a patient transferred?"_ in more than one place, and this project has not merged those entries into one page.
+_How do I get a patient transferred?_
 
-One entry covers transfer out of Tago, the other transfer between facilities. A caller in an emergency asks one question; the charter answers it twice.
+This project has not merged those entries into one page. Merging them would mean choosing one set of requirements for you and dropping the other.
 
-Read both in the document below rather than assuming the first one applies to you.
+## If something goes wrong
+
+This page is a transcription of the municipality’s own document by an independent volunteer project. It is not an official channel, and it cannot process anything for you.
+
+**If the office tells you something different from this page, the office is right.** Charters are revised, and a page transcribed on one date can fall behind. The correction link in the footer is the fastest way to get this page fixed — corrections from the municipality go to the front of the queue.
 
 ## The official document
 
 - [Office of the Municipal Disaster Risk Reduction Management](https://tago.gov.ph/wp-content/uploads/2024/12/Office-of-the-Municipal-Disaster-Risk-Reduction-Management.pdf) — the Citizen’s Charter for this office, retrieved 2026-08-09
+- [Read the whole document, transcribed](/en/charter/documents/office-of-the-municipal-disaster-risk-reduction-management)
 
-Where this page and that document disagree, **the document is right and this page is wrong.** If you spot that, the correction link in the footer is the fastest way to get it fixed.
+Where this page and that document disagree, **the document is right and this page is wrong.**

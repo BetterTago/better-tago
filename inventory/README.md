@@ -173,3 +173,27 @@ which is correct and has held across four harvests.
 Nothing here records a person. The charter's `PERSON RESPONSIBLE` column is deliberately not captured — it is
 the one column that could carry a name, and a name in this folder would be an unsourced assertion sitting
 outside the data layer. Refer to the office.
+
+## `charter-completeness.json` — 🔴 reference only, and never delete it
+
+Every line a source document prints that the generated markdown does **not** carry: a preamble, a footnote, a
+heading `pdftotext` split mid-word, a fragment left where a column boundary was not quite where it looked.
+
+**788 of the archive's 18,308 document lines live only here.**
+
+It exists because the transcription's central promise is that it can be checked against the original. Those
+lines used to render as an _Also printed for this service_ block at the foot of every service; that was removed
+from both the task pages and the transcripts, because it read as a pile of loose text under an answer that
+already said the same thing in a readable shape. The lines themselves could not go with it.
+
+- **Never rendered, never served.** `src/lib/guardrails.test.ts` asserts nothing in `src/` reads it and that it
+  is not under `content/` — which is the data layer routes render from.
+- **Never deleted.** `src/lib/transcription-integrity.test.ts` measures the completeness residue against the
+  union of the rendered pages and this file, and proves it is **zero** across all 167 services. Remove the file
+  and that proof becomes a claim, and the build goes red rather than quiet.
+- **Regenerated, not edited.** `npm run charter:pages` rewrites it from
+  `inventory/charter-transcripts/`. Editing it by hand would make it agree with the pages without either
+  agreeing with the document.
+
+It is for whoever sits down with the PDFs and the second-person verification pass (`CONT-212`). It is not for a
+resident, and it is not for a page.

@@ -2,14 +2,14 @@
 
 # Freshness report
 
-Generated **2026-08-09**, against 155 published pages in 26 manifests.
+Generated **2026-08-10**, against 177 published pages in 27 manifests.
 
 ## By data class
 
 | Class             | Cadence   | Pages | Past cadence or due |
 | ----------------- | --------- | ----- | ------------------- |
 | `emergency`       | 90 days   | 4     | 0                   |
-| `charter-derived` | 365 days  | 100   | 0                   |
+| `charter-derived` | 365 days  | 122   | 0                   |
 | `offices`         | 182 days  | 21    | 0                   |
 | `transparency`    | 365 days  | 12    | 0                   |
 | `profile`         | 365 days  | 3     | 0                   |
@@ -26,7 +26,7 @@ due. The first cadence to bite is `emergency`, at 90 days.
 
 ## Reviews recorded
 
-0 of 155 pages carry a `lastReview`.
+0 of 177 pages carry a `lastReview`.
 
 A review records the ROLE that did it and the date. A check date that moves without one
 is a falsified record, and `src/lib/content-records.test.ts` fails the build on it by

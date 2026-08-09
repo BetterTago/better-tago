@@ -2,22 +2,63 @@
 
 **Who provides it:** Municipal Social Welfare and Development Office, Tago Municipal Hall.
 
+> **Transcribed from the document below, and not yet checked by a second person.** This project’s rule is that whoever transcribes a page never verifies it, and the Verifier role is currently vacant. Every figure here was read from the charter; none of them has been read back by somebody else. Check anything you are about to pay or travel for against the document itself.
+
 ## What the charter calls it
 
 > Securing Assistance/Services for the following: 5.1 Violence against Women and their Children (VAWC)
 
-That is the municipality’s own wording, reproduced exactly. **The service name at the top of this page was read off the document by hand**, because the charter does not print a usable heading for this entry — so treat the title as this project’s, and the wording above as the municipality’s.
+That is the municipality’s own wording, reproduced exactly. It is worth knowing, because it is the wording the counter and the form will use.
 
-## What to bring, what it costs, how long it takes
+⚠️ **That heading was read off the document by hand**, because the charter does not print one above this service. It is this project’s reading of the page, not the municipality’s published wording, and it is recorded as such.
 
-**This page does not say, and that is deliberate.** The requirements, the fees and the processing time are all set out in the municipality’s own Citizen’s Charter, and this project links that document rather than retyping it.
+## What the charter says
 
-The reason is not caution about accuracy — it is that republishing the text of the charter is a permission this project has not asked for and does not need in order to be useful. What residents were missing was not the document; it was a way to find which document, and which office. That is what this page is.
+Transcribed from the municipality’s own document, in the document’s own structure and wording. Nothing below has been re-worded, re-ordered or summarised.
 
-**Open the charter document below.** It is the authoritative version, it is published by the municipality, and it is one tap away.
+| | |
+| --- | --- |
+| Office or Division | City Social Welfare and Development Office |
+| Classification | G2C - Government to Citizen |
+| Type of Transaction | Simple |
+| Who may Avail | Women & Children who are victims of domestic violence |
+
+**Checklist of requirements**
+
+| Checklist of requirements | Where to secure |
+| --- | --- |
+| 1. Medical Certificate/Medico Legal Applicant & RHU/any Health Practitioner | — |
+| 2. Police Blotter/Record PNP - Tago | — |
+| 3. Affidavit of Victim from PNP Applicant & PNP Tago | — |
+| 5.4 For the Availment of Release of Recognizance from Court (Availment of RA 9344): | — |
+| 1. Letter Request/Manifestation Report MSWD Office | — |
+| 2. SCSR with Assessment Report on Discernment -do- | — |
+| 3. Birth Certificate CICL | — |
+| 4. Medical Certificate MTO/RHU or any Health Practitioner | — |
+
+**Client steps**
+
+| Client steps | Agency action | Fees to be paid | Processing time | Person responsible |
+| --- | --- | --- | --- | --- |
+| 1. Approach the MSWDO Staff 1.1 Record in the Logbook |  | None | 15 Minutes |  |
+| for interview and presentation of 1.2 Conduct Interview and Assessment of the Case | SWA’s / SWO I / SWO III MSWDO/Staff especially VAWC/Women Focal |  |  |  |
+| Problem |  |  |  |  |
+| 2. Presentation of the Problem 2.1 Refer to the PNP for Blotter and Investigation 2.2 Refer to the Barangay Council for Barangay Protection Order | SWA’s / SWO I / SWO III MSWDO/Staff especially VAWC/Women Focal | None | 15 Minutes |  |
+| 2.3 Refer to the MHO/RHU for Medical Certificate and Adela Serra Ty for Medico – Legal 2.4 Counseling and Further Assistance | -do- |  | 30 Minutes |  |
+| 2.5 Refer to Fiscals Officers for further Legal and other Assistance 2.6 Follow-up the Case on the Agency Handling the Case 2.7 Home Visitation 2.8 Monitoring Back Services | -do- -do- |  | 15 Minutes 30 Minutes |  |
+|  | SWO I & SWO III |  |  |  |
+|  |  |  |  | 6. Securing Assistance/Services for the following: |
+| **TOTAL** | | **None** | **As need arises -do- 105 Minutes** | |
+
+## If something goes wrong
+
+This page is a transcription of the municipality’s own document by an independent volunteer project. It is not an official channel, and it cannot process anything for you.
+
+**If the office tells you something different from this page, the office is right.** Charters are revised, and a page transcribed on one date can fall behind. The correction link in the footer is the fastest way to get this page fixed — corrections from the municipality go to the front of the queue.
 
 ## The official document
 
 - [Municipal Social Welfare and Development Office](https://tago.gov.ph/wp-content/uploads/2024/12/Municipal-Social-Welfare-and-Development-Office.pdf) — the Citizen’s Charter for this office, retrieved 2026-08-09
+- [Read the whole document, transcribed](/en/charter/documents/municipal-social-welfare-and-development-office)
 
-Where this page and that document disagree, **the document is right and this page is wrong.** If you spot that, the correction link in the footer is the fastest way to get it fixed.
+Where this page and that document disagree, **the document is right and this page is wrong.**

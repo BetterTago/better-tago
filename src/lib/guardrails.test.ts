@@ -1,4 +1,4 @@
-import { readFileSync, readdirSync } from 'node:fs';
+import { existsSync, readFileSync, readdirSync } from 'node:fs';
 import path from 'node:path';
 import { describe, expect, it } from 'vitest';
 import {
@@ -123,95 +123,113 @@ describe('self-containment', () => {
   });
 });
 
-describe('nothing is public while the Phase 0 gate is open', () => {
+describe('the route set is the one that was reviewed', () => {
   /*
-   * THE WAVE GATE. No public route ships, and the domain does not begin to
-   * resolve, until the municipality has been told this project exists. That is
-   * a decision about the project rather than about the code — so the code's job
-   * is to make breaching it by accident impossible.
+   * ⚠️ THIS BLOCK REPLACED THE PHASE 0 ROUTE FREEZE ON 2026-08-10.
    *
-   * `content/` is now populated: office records, service index entries, the
-   * emergency layer, the home copy. NONE of it is reachable by a URL, and these
-   * two assertions are the whole of what keeps that true. The trunk deploys to
-   * production, so "we did not mean to publish it" is not a control.
+   * What was here asserted that NO public route existed beyond the holding
+   * page, and that nothing in `src/` imported the content loader — the
+   * mechanical half of `PROG-104`, which says no route ships until the
+   * municipality has been told this project exists.
    *
-   * When the gate closes, this block is DELETED — deliberately, in a diff
-   * somebody reviews. That review is the moment the gate exists to force, and a
-   * test that has to be removed on purpose is the only kind that produces it.
+   * 🔓 The gate was opened by explicit instruction before that happened. The
+   * decision, and what did not change with it, is recorded on `PROG-104`; it is
+   * not restated here, because a test is the wrong place to argue a position.
+   *
+   * The freeze is gone. What replaces it is the same idea one step weaker: the
+   * route set is still ENUMERATED, so adding a public surface is still a diff
+   * somebody reviews rather than a file that appears. A civic portal gaining a
+   * route nobody noticed is the failure this list still exists to prevent.
    */
 
-  /** Every route file permitted while the gate is open. */
-  const ROUTES_WHILE_GATED = [
+  /** Every route file this application publishes. */
+  const ROUTES = [
+    'src/app/[locale]/charter/documents/[slug]/page.tsx',
     'src/app/[locale]/error.tsx',
     'src/app/[locale]/layout.tsx',
     'src/app/[locale]/not-found.tsx',
     'src/app/[locale]/page.tsx',
+    'src/app/[locale]/services/[category]/[slug]/page.tsx',
+    'src/app/[locale]/services/[category]/page.tsx',
+    'src/app/[locale]/services/page.tsx',
     'src/app/layout.tsx',
     'src/app/not-found.tsx',
     'src/app/robots.ts',
     'src/app/sitemap.ts',
   ];
 
-  /** Route files present that the gate does not permit. */
-  function unpermittedRoutes(files: SourceFile[]): string[] {
-    return files
-      .map(file => file.path)
-      .filter(route => !ROUTES_WHILE_GATED.includes(route))
-      .sort();
-  }
+  it('publishes exactly the routes on the list', () => {
+    // Both directions. An added route is a surface nobody reviewed; a removed
+    // one means this list has stopped describing the application.
+    expect(APP_FILES.map(file => file.path).sort()).toEqual([...ROUTES].sort());
+  });
 
-  /**
-   * Anything importing the content loader.
-   *
-   * Deliberately scanned over the WHOLE source tree, not just `src/app`. A
-   * route reaches `content/` just as effectively through a component two levels
-   * down, and a scan that only reads the route files would miss exactly that.
-   * If nothing anywhere imports the loader, no route can reach it — which is
-   * the property worth asserting, and it is cheap to keep true.
-   */
-  function contentReaders(files: SourceFile[]): string[] {
-    return files
-      .filter(file => file.path !== 'src/lib/content.ts')
-      .filter(file => /['"]@\/lib\/content['"]/.test(file.text))
-      .map(file => file.path)
-      .sort();
-  }
+  it('fires on a route that is not on the list', () => {
+    // A guardrail that has never gone red is not known to work.
+    const withExtra = [
+      ...APP_FILES.map(file => file.path),
+      'src/app/[locale]/transparency/page.tsx',
+    ].sort();
+    expect(withExtra).not.toEqual([...ROUTES].sort());
+  });
 
-  it('adds no route beyond the holding page', () => {
-    expect(unpermittedRoutes(APP_FILES)).toEqual([]);
-
-    // The reverse, so a deleted route is caught too: a shrinking route set
-    // while the gate is open is not a breach, but it does mean this list has
-    // stopped describing the application and nobody noticed.
-    expect(APP_FILES.map(file => file.path).sort()).toEqual(
-      [...ROUTES_WHILE_GATED].sort()
+  it('🔴 keeps the completeness ledger, and keeps it out of the application', () => {
+    /*
+     * `inventory/charter-completeness.json` holds every line of a source
+     * document that the rendered markdown does not carry. It is REFERENCE
+     * MATERIAL for a verifier reading against the PDF — never rendered, never
+     * served, and never shown to a resident.
+     *
+     * Three things have to stay true, and none of them is obvious to somebody
+     * tidying up:
+     *
+     *   · it EXISTS. Deleting it turns the completeness guarantee in
+     *     `transcription-integrity.test.ts` from a proof into a claim;
+     *   · it is NOT under `content/`, which is the data layer this application
+     *     renders — a file there is a file a route can reach;
+     *   · nothing in `src/` reads it, so it cannot arrive on a page by accident.
+     */
+    const ledger = path.join(
+      REPO_ROOT,
+      'inventory',
+      'charter-completeness.json'
     );
-  });
-
-  it('lets nothing in the source tree read the content layer', () => {
-    expect(contentReaders(SRC_FILES)).toEqual([]);
-  });
-
-  it('fires on a doctored route and a doctored importer', () => {
-    // Neither assertion above has ever gone red, and a guardrail that has never
-    // gone red is not known to work. These are the two exact breaches: a route
-    // that renders content, and a component that fetches it.
     expect(
-      unpermittedRoutes([
-        ...APP_FILES,
-        { path: 'src/app/[locale]/services/page.tsx', text: '' },
-      ])
-    ).toEqual(['src/app/[locale]/services/page.tsx']);
+      existsSync(ledger),
+      'inventory/charter-completeness.json is missing'
+    ).toBe(true);
+
+    const parsed = JSON.parse(readFileSync(ledger, 'utf8')) as {
+      services: Record<string, unknown>;
+    };
+    expect(Object.keys(parsed.services).length).toBeGreaterThan(160);
 
     expect(
-      contentReaders([
-        ...SRC_FILES,
-        {
-          path: 'src/components/content/ServiceList.tsx',
-          text: "import { getManifest } from '@/lib/content';",
-        },
-      ])
-    ).toEqual(['src/components/content/ServiceList.tsx']);
+      existsSync(path.join(REPO_ROOT, 'content', 'charter-completeness.json')),
+      'the ledger must not be under content/, which is what the app renders'
+    ).toBe(false);
+
+    const readers = SRC_FILES.filter(file =>
+      /charter-completeness/.test(file.text)
+    ).map(file => file.path);
+    expect(readers.filter(file => !file.endsWith('.test.ts'))).toEqual([]);
+  });
+
+  it('reads the content layer only through the loader', () => {
+    /*
+     * `content/` is the data layer and `src/lib/content.ts` is the only module
+     * allowed to touch the filesystem. This survives the gate opening unchanged
+     * — it was never about the gate. A component reading `node:fs` directly is
+     * how a page starts rendering unvalidated YAML.
+     */
+    const direct = SRC_FILES.filter(
+      file =>
+        file.path !== 'src/lib/content.ts' &&
+        file.path !== 'src/lib/file-scan.ts' &&
+        /from 'node:fs/.test(file.text)
+    ).map(file => file.path);
+
+    expect(direct).toEqual([]);
   });
 });
 
@@ -409,6 +427,11 @@ describe('translation coverage', () => {
     'header.filipino': 'the switcher names each language in its own',
     'header.englishFull': 'ditto, for the accessible name',
     'header.filipinoFull': 'ditto, for the accessible name',
+    // The charter itself says "Civil Registry" in both languages, and it is
+    // what the sign above the counter says. Translating a term of art a
+    // resident has to say out loud at an office is not a service to them.
+    'services.categories.civil-registry':
+      'the office and the counter both use the English term',
   };
 
   it('has the same keys in both locales', () => {
@@ -583,7 +606,16 @@ describe('how an absence is described', () => {
    * defended in the reason string — never a way to close a red build. The
    * staleness check below deletes the excuse for leaving one behind.
    */
-  const DEFENDED: Record<string, string> = {};
+  const DEFENDED: Record<string, string> = {
+    'content/charter/documents/municipal-accounting-office.md → concealment: "withholding"':
+      "The accounting office's charter transcript. `Withholding Tax` is a tax the office remits, and `withholding` here is the municipality's own word for that transaction — not this project characterising an absence. Transcribed verbatim, so it cannot be reworded without breaking the byte-for-byte guarantee.",
+    'content/charter/documents/municipal-accounting-office.md → concealment: "Withheld"':
+      'Same document, same reason: `Taxes Withheld` is a line item in the charter, transcribed as printed.',
+    'content/charter/documents/municipal-accounting-office.fil.md → concealment: "withholding"':
+      'The Filipino twin of the above. Charter strings are carried through in the original by rule, so the same words appear in both locales.',
+    'content/charter/documents/municipal-accounting-office.fil.md → concealment: "Withheld"':
+      'The Filipino twin of the above.',
+  };
 
   const SCANNED = scannedText();
 

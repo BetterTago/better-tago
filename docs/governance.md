@@ -348,18 +348,32 @@ collection_ is a real municipal service — and it carries a defended exemption 
 Phase 0 is where this project decides whether it may proceed, and on what basis. Each position below is settled,
 dated, and recorded here so a future contributor cannot re-open it by assumption.
 
-### Permission: index-and-link-only · settled 2026-08-09
+### Permission: transcribe-and-republish · settled 2026-08-10
 
-**This project publishes that a service exists, which office provides it, and a link to the official document.
-It does not republish the text of the Citizen's Charter.**
+**This project publishes the Citizen's Charter's contents** — who may avail, what to bring, the fees, the
+processing time and the steps — in the municipality's own words, on a page that names the office and links the
+original document.
 
-The charter is a public document produced to be read by the public, and that does not by itself mean this
-project may reproduce its contents. Rather than proceed on an assumption or wait on an answer nobody has been
-asked for, the project takes the shape that **needs no permission at all** — the index residents currently lack,
-built entirely from what the official site publishes, with every entry linking back to the original.
+⚠️ **This reverses the position settled on 2026-08-09**, which was index-and-link-only: publish _that_ a service
+exists, _which_ office provides it, and a link, and hold the transcription. That position is superseded, not
+paused. It is recorded here rather than deleted, because a contributor who read it once should be able to see
+what changed and why.
 
-**What would re-open it:** a written permission to transcribe and republish with attribution. Until then the
-transcription work is not "pending" — it is out of scope, and the pages are built without it.
+**What changed is a judgement, not a fact.** The proposal's §14.1 already records the anti-red-tape law
+requiring a published Citizen's Charter — which this municipality has complied with — as **the legal reason the
+charter is public and citable**. §14.2's "ask first" was therefore a stance about the relationship, not a
+finding that republication was barred. What tipped it is what the waiting costs a resident: the whole point of
+this portal is that _the information somebody needs in order to do something is locked in a format they cannot
+use_, and linking that format was never unlocking it.
+
+**Permission is still being asked for.** The request is folded into the introduction letter rather than sent as
+a second approach. The honest description of where this project stands is: it is transcribing a public document
+under the law that makes it public, it has not yet told the municipality it exists, and **it will take the
+transcription down if asked** — §14.5 binds it to that, and because every page is generated from a record, the
+takedown is one command rather than a hundred edits.
+
+**What re-closes it:** a request from the municipality to remove the transcription. The pages revert to
+index-and-link, which is what the tooling produces when a record carries no contents.
 
 ### Emergency information: the gap is published · settled 2026-08-09
 
@@ -382,7 +396,8 @@ stated in [§3](#3--the-contributor-path) rather than papered over.
 holding page that says what this project is, links the official municipal site, and never looks official.
 
 Four of the five things this gate checks are settled: the record of what has been asked exists, the permission
-position is settled, the emergency position is settled, and the point of contact exists as a role and a channel.
+position is settled (**re-settled on 2026-08-10 — see above; it is settled as transcribe-and-republish, not as
+index-and-link**), the emergency position is settled, and the point of contact exists as a role and a channel.
 
 **The fifth is not, and it is the one the gate exists for: the municipality has not been told this project
 exists.**

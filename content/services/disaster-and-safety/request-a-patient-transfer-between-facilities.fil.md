@@ -1,8 +1,10 @@
-# Humingi ng patient transfer sa pagitan ng mga pasilidad
+# Request a patient transfer between facilities
 
 > **Paunawa:** Ang Filipino sa pahinang ito ay **draft, hindi pa nasusuri ng katutubong nagsasalita.** Bakante pa ang tungkulin ng Translator sa proyektong ito. Kung may mali, ang correction link sa footer ang pinakamabilis na paraan para maayos ito.
 
 **Sino ang nagbibigay nito:** Office of the Municipal Disaster Risk Reduction Management, Tago Municipal Hall.
+
+> **Isinalin mula sa dokumento sa ibaba, at hindi pa nasusuri ng pangalawang tao.** Ang patakaran ng proyektong ito ay hindi kailanman sinusuri ng nagsulat ng pahina ang sarili niyang gawa, at bakante pa ang tungkulin ng Verifier. Bawat halaga rito ay binasa mula sa charter; wala pang binasang muli ng iba. Suriin sa mismong dokumento ang anumang babayaran o pupuntahan ninyo.
 
 ## Ano ang tawag dito ng charter
 
@@ -10,24 +12,63 @@
 
 Iyan ang sariling pananalita ng munisipyo, kinopya nang eksakto. Mahalagang malaman, dahil iyan ang pananalitang gagamitin sa counter at sa form.
 
-## Ano ang dadalhin, magkano, at gaano katagal
+## Ano ang sinasabi ng charter
 
-**Hindi ito sinasabi ng pahinang ito, at sinadya iyon.** Ang mga kailangan, ang bayad, at ang tagal ng proseso ay nakasulat lahat sa sariling Citizen’s Charter ng munisipyo, at ini-link ng proyektong ito ang dokumentong iyon sa halip na muling i-type ito.
+Isinalin mula sa sariling dokumento ng munisipyo, sa sariling istruktura at pananalita ng dokumento. Walang nasa ibaba ang muling isinulat, inayos o binuod.
 
-Hindi ito pag-iingat sa katumpakan — ang muling paglalathala ng teksto ng charter ay pahintulot na hindi hiningi ng proyektong ito at hindi naman kailangan para maging kapaki-pakinabang ito. Ang kulang sa mga residente ay hindi ang dokumento; kundi ang paraan para malaman kung aling dokumento, at aling opisina. Iyan ang pahinang ito.
+| | |
+| --- | --- |
+| Office or Division | Municipal Disaster Risk Reduction and Management Office – Administrative and Training |
+| Classification | Simple |
+| Type of Transaction | G2C – Government to Citizen |
+| Who may Avail | All |
 
-**Buksan ang dokumento ng charter sa ibaba.** Iyon ang opisyal na bersyon, inilathala ito ng munisipyo, at isang tap lang ang layo.
+**Listahan ng requirement**
+
+| Checklist of requirements | Where to secure |
+| --- | --- |
+| None | — |
+
+**Mga hakbang**
+
+| Client steps | Agency action | Fees to be paid | Processing time | Person responsible |
+| --- | --- | --- | --- | --- |
+| 1. Call thru Hotline Numbers; or Visit the Office of the |  | None | 3 Minutes | Communication |
+|  | 1. Take the call and asks for the following information: Nature of Emergency; Caller’s Information; Patient’s status; |  |  | Officer |
+| MDRRM | - - - |  |  | Municipal Disaster Risk |
+|  |  |  |  | Reduction and |
+|  | - Where to transfer |  |  | Management |
+|  |  |  |  | Office |
+|  |  |  |  | Operations Clerk |
+|  | 1.1 Assess and evaluate the client’s request and patient’s status |  |  | Municipal Disaster Risk Reduction and Management |
+|  |  |  |  | Office |
+| 2. Comply the following: - Hospital Billing is settled; | Communication | None | 2 Minutes |  |
+| 2. Assign an Emergency Medical Services team to accommodate the client’s | Officer; |  |  |  |
+|  | Operations Clerk |  |  |  |
+|  | Municipal Disaster Risk |  |  |  |
+| - Provision of Medical Practitioner to board in the transfer request | Reduction and |  |  |  |
+|  | Management |  |  |  |
+|  | Office |  |  |  |
+|  | Emergency | None | 10 Minutes |  |
+| 3. While on-transfer of patient to the destination, 3. Assist in the provision of sign the authorization to transfer patient or necessary care and waiver on the Patient Care Report management to the patient while on-transfer | Medical Services SERTSS Team assigned |  |  |  |
+|  | Municipal Disaster Risk Reduction and Management |  |  |  |
+| **TOTAL** | | **None** | **15 Minutes** | |
 
 ## Isang tanong, mahigit isang entry sa charter
 
-Sinasagot ng charter ang _"How do I get a patient transferred?"_ sa mahigit isang lugar, at hindi pinagsama ng proyektong ito ang mga entry na iyon sa isang pahina.
+_How do I get a patient transferred?_
 
-One entry covers transfer out of Tago, the other transfer between facilities. A caller in an emergency asks one question; the charter answers it twice.
+Hindi pinagsama ng proyektong ito ang mga entry na iyon sa isang pahina. Ang pagsasama ay mangangahulugang pagpili ng isang set ng requirement para sa inyo at pagtapon sa isa.
 
-Basahin pareho sa dokumento sa ibaba, sa halip na ipagpalagay na ang una ang tumutukoy sa inyo.
+## Kung may mali
+
+Ang pahinang ito ay transkripsyon ng sariling dokumento ng munisipyo, gawa ng isang independiyenteng boluntaryong proyekto. Hindi ito opisyal na channel, at wala itong maiproproseso para sa inyo.
+
+**Kung iba ang sabihin sa inyo ng opisina kaysa sa pahinang ito, ang opisina ang tama.** Binabago ang mga charter, at ang pahinang isinulat sa isang petsa ay maaaring maiwan. Ang correction link sa footer ang pinakamabilis na paraan para maayos ito — ang mga pagwawasto mula sa munisipyo ay unang inaasikaso.
 
 ## Ang opisyal na dokumento
 
 - [Office of the Municipal Disaster Risk Reduction Management](https://tago.gov.ph/wp-content/uploads/2024/12/Office-of-the-Municipal-Disaster-Risk-Reduction-Management.pdf) — ang Citizen’s Charter para sa opisinang ito, kinuha noong 9 Agosto 2026
+- [Basahin ang buong dokumento, nakatranskribe](/fil/charter/documents/office-of-the-municipal-disaster-risk-reduction-management)
 
-Kung magkaiba ang pahinang ito at ang dokumentong iyon, **tama ang dokumento at mali ang pahinang ito.** Kung mapansin ninyo iyon, ang correction link sa footer ang pinakamabilis na paraan para maayos ito.
+Kung magkaiba ang pahinang ito at ang dokumentong iyon, **tama ang dokumento at mali ang pahinang ito.**

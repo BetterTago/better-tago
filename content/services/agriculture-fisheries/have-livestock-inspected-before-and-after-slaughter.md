@@ -2,22 +2,62 @@
 
 **Who provides it:** Office of the Municipal Agriculture, Tago Municipal Hall.
 
+> **Transcribed from the document below, and not yet checked by a second person.** This project’s rule is that whoever transcribes a page never verifies it, and the Verifier role is currently vacant. Every figure here was read from the charter; none of them has been read back by somebody else. Check anything you are about to pay or travel for against the document itself.
+
 ## What the charter calls it
 
 > Provision of Ante Mortem, Post Mortem and Post Abattoir Services
 
 That is the municipality’s own wording, reproduced exactly. It is worth knowing, because it is the wording the counter and the form will use.
 
-## What to bring, what it costs, how long it takes
+## What the charter says
 
-**This page does not say, and that is deliberate.** The requirements, the fees and the processing time are all set out in the municipality’s own Citizen’s Charter, and this project links that document rather than retyping it.
+Transcribed from the municipality’s own document, in the document’s own structure and wording. Nothing below has been re-worded, re-ordered or summarised.
 
-The reason is not caution about accuracy — it is that republishing the text of the charter is a permission this project has not asked for and does not need in order to be useful. What residents were missing was not the document; it was a way to find which document, and which office. That is what this page is.
+| | |
+| --- | --- |
+| Office or Division | Office of the Municipal Agriculturist |
+| Classification | Simple |
+| Type of Transaction | G2C- Government to Citizen |
+| Who may Avail | All residents of the Municipality of Tago who owns dogs |
 
-**Open the charter document below.** It is the authoritative version, it is published by the municipality, and it is one tap away.
+**Checklist of requirements**
+
+| Checklist of requirements | Where to secure |
+| --- | --- |
+| 1. Vaccination Card | — |
+| 2. Valid ID | — |
+
+**Where to secure**, as the charter prints it — beside the list as a whole rather than against each item:
+
+3. OMAG
+4. SSS, Pag-ibig, Phil Health, LTO, MSWDO, BIR
+5. OMAG/FA President
+
+**Client steps**
+
+| Client steps | Agency action | Fees to be paid | Processing time | Person responsible |
+| --- | --- | --- | --- | --- |
+| 1.Make the animal available | Received the animal |  | 3 Minutes | Meat inspector on duty |
+| 2. Proceed to Municipal Treasurers Office and pay the require fee | Issuance of the Official Receipt | For Large Ruminant: P125.00/head | 1 minute | Cashier |
+| 3. Wait until the documentary assessment is complete |  | For Swine/Goat: P32.00/head For Poultry: P3.00/head | 5 minutes | Meat inspector on duty |
+| 4. Wait until the inspection is complete | 1. Assess documentary requirements 2. Meat inspector evaluates the documentary requirement for slaughter of animals 3. if documents are complete, ante-mortem inspection will proceed. 1.Conduct ante-mortem inspection. 2.Meat inspector examines the animal for fitness and suitability for slaughter according to guidelines of the Administrative Order No. 6 of Meat Inspection Regulation. Conduct slaughter by the licensed butcher |  | 2 hours | Meat inspector on duty |
+| 5. None |  |  | 30 Minutes | Butcher on duty |
+| 6. None |  |  | 10 minutes | Meat inspector on duty |
+| 7. Wait for the Inspection certificate | 1.Conduct of Post- Mortem Inspection. 2.Meat inspector examines the carcass according to guidelines of Administrative Order No. 6 of the Meat Inspection Regulation Issuance of Meat Inspection Certificate |  | 2 minutes | Meat inspector on duty |
+| 8. Claim the Certificate | Release the certificate |  | 4 hours | Butcher on duty |
+| 9. None | Conduct post abattoir inspection |  | 1 hour | Meat inspector on duty |
+|  | TOTAL | For Large Ruminant: P125.00/head For Swine/Goat: P32.00/head For Poultry: P3.00/head | 7 Hours and 51 Minutes |  |
+
+## If something goes wrong
+
+This page is a transcription of the municipality’s own document by an independent volunteer project. It is not an official channel, and it cannot process anything for you.
+
+**If the office tells you something different from this page, the office is right.** Charters are revised, and a page transcribed on one date can fall behind. The correction link in the footer is the fastest way to get this page fixed — corrections from the municipality go to the front of the queue.
 
 ## The official document
 
 - [Office of the Municipal Agriculture](https://tago.gov.ph/wp-content/uploads/2024/12/Office-of-the-Municipal-Agriculture.pdf) — the Citizen’s Charter for this office, retrieved 2026-08-09
+- [Read the whole document, transcribed](/en/charter/documents/office-of-the-municipal-agriculture)
 
-Where this page and that document disagree, **the document is right and this page is wrong.** If you spot that, the correction link in the footer is the fastest way to get it fixed.
+Where this page and that document disagree, **the document is right and this page is wrong.**
