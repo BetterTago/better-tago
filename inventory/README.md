@@ -87,6 +87,22 @@ ask for — and `internal` ones, which are government-to-government. **An intern
 resident task would send someone to a counter for something they cannot request.** Only `external` services
 are candidates for a page.
 
+## Two things the charter does not contain, found while indexing it
+
+Both were discovered by building the index, both are recorded here rather than left as an absence somebody
+assumes is an oversight, and neither is filled in from anywhere else.
+
+**The Municipal Treasurer publishes no external service at all.** `Office-of-the-Municipal-Treasurer.pdf` is
+archived, checksummed, and contains **one service, which is internal** — government-to-government. So there is
+no real property tax page, no community tax certificate page and no schedule of fees and charges to index,
+because the municipality does not put them in its charter. The revenue-side work a resident actually transacts
+is the **Assessor's eight services**, and that is what `content/services/treasury/` holds. The category block in
+`task-vocabulary.yaml` says so on the record itself.
+
+**There is no waste collection schedule and no segregation rules.** The environment office publishes two permit
+services in its charter and nothing about collection. Checked across its charter document and its office page
+on 2026-08-09.
+
 ## `office-pages.yaml` — and the finding it records
 
 An office directory needs each office's mandate. **The municipality does not publish one anywhere**, and this

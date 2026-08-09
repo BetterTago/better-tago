@@ -463,20 +463,32 @@ describe('the two-person rule reaches the record that needs it', () => {
     return end === -1 ? rest : rest.slice(0, end);
   }
 
-  it('requires it on the service guide record, the day that record exists', () => {
-    const guide = declarationOf('serviceGuideSchema');
+  /*
+   * Two names, because the record this rule protects arrived under the second
+   * one. `charterRecordSchema` (★ TAGO-201) is what content/ is authored
+   * against today; `serviceGuideSchema` is the eight-field guide TAGO-004
+   * froze, which returns only WITH a written permission to republish the
+   * charter's contents.
+   *
+   * Keeping both listed is deliberate. Narrowing this to whichever one exists
+   * today is how the rule quietly stops applying to the record that replaces
+   * it.
+   */
+  it.each(['charterRecordSchema', 'serviceGuideSchema'])(
+    'requires it on %s, the day that record exists',
+    name => {
+      const record = declarationOf(name);
 
-    // No guide yet → nothing to check, and the check starts biting by itself
-    // the moment somebody adds one. A guide that never names the record is the
-    // failure this exists to catch.
-    const violation =
-      guide && !/\bverificationRecordSchema\b/.test(guide)
-        ? [
-            'serviceGuideSchema exists but does not carry verificationRecordSchema',
-          ]
-        : [];
-    expect(violation).toEqual([]);
-  });
+      // Absent → nothing to check, and the check starts biting by itself the
+      // moment somebody adds one. A record that never names the verification
+      // record is the failure this exists to catch.
+      const violation =
+        record && !/\bverificationRecordSchema\b/.test(record)
+          ? [`${name} exists but does not carry verificationRecordSchema`]
+          : [];
+      expect(violation).toEqual([]);
+    }
+  );
 });
 
 describe('how an absence is described', () => {

@@ -1,5 +1,7 @@
 import { describe, expect, it } from 'vitest';
 import {
+  charterManifestSchema,
+  charterRecordSchema,
   manifestSchema,
   pageEntrySchema,
   verificationRecordSchema,
@@ -188,6 +190,229 @@ describe('a manifest', () => {
   it('rejects a manifest whose entries are bare strings', () => {
     expect(
       manifestSchema.safeParse({ pages: ['renew-a-business-permit'] }).success
+    ).toBe(false);
+  });
+});
+
+/**
+ * ★ TAGO-201 — the charter-service record.
+ *
+ * Same pessimism as above, and one extra reason for it: this record is
+ * authored ninety-nine times. A mistake a reviewer would catch once is a
+ * mistake that ships eighty-eight more times, so every rule below is one the
+ * parser enforces rather than one a contributor remembers.
+ */
+const validCharterRecord = {
+  ...validEntry,
+  charterServiceId:
+    'business-licensing-and-permitting-division-external-services#external-3',
+  charterSection: 'external',
+  charterDocument: {
+    title: 'Business Licensing and Permitting Division External Services',
+    file: 'Business-Licensing-and-Permitting-Division-External-Services.pdf',
+    sha256: '0000000000000000000000000000000000000000000000000000000000000000',
+  },
+  charterTitle: 'Processing of Application for Business Permit Renewal',
+  charterTitleSource: 'extracted',
+  group: 'business-permit',
+  ambiguity: null,
+  transcriptionNote: null,
+  verificationRecord: null,
+};
+
+describe('a charter record', () => {
+  it('accepts a fully cited, unverified record', () => {
+    expect(charterRecordSchema.safeParse(validCharterRecord).success).toBe(
+      true
+    );
+  });
+
+  it('rejects an internal service outright', () => {
+    // The worst outcome available in this tree: a resident sent to a counter
+    // for something only another office can request.
+    expect(
+      charterRecordSchema.safeParse({
+        ...validCharterRecord,
+        charterSection: 'internal',
+        charterServiceId: 'municipal-accounting-office#internal-6',
+      }).success
+    ).toBe(false);
+  });
+
+  it('rejects a section that disagrees with the inventory id', () => {
+    expect(
+      charterRecordSchema.safeParse({
+        ...validCharterRecord,
+        charterServiceId: 'municipal-accounting-office#internal-6',
+      }).success
+    ).toBe(false);
+  });
+
+  it('rejects an id that is not an inventory id', () => {
+    // The charter's own printed number is not unique; joining on it
+    // mis-assigns one service's title to another. See inventory/README.md.
+    for (const id of ['3', 'municipal-health-office', 'MHO#external-1', '']) {
+      expect(
+        charterRecordSchema.safeParse({
+          ...validCharterRecord,
+          charterServiceId: id,
+        }).success,
+        id
+      ).toBe(false);
+    }
+  });
+
+  it('rejects a record with no charter document', () => {
+    const rest: Record<string, unknown> = { ...validCharterRecord };
+    delete rest.charterDocument;
+    expect(charterRecordSchema.safeParse(rest).success).toBe(false);
+  });
+
+  it('rejects a charter document with no checksum, or a bad one', () => {
+    for (const sha256 of ['', 'not-a-hash', 'ABC123', '0'.repeat(63)]) {
+      expect(
+        charterRecordSchema.safeParse({
+          ...validCharterRecord,
+          charterDocument: { ...validCharterRecord.charterDocument, sha256 },
+        }).success,
+        sha256
+      ).toBe(false);
+    }
+  });
+
+  it('rejects V3 claimed without a retrievable address for the document', () => {
+    expect(
+      charterRecordSchema.safeParse({
+        ...validCharterRecord,
+        verification: 'V3',
+        source: { ...validCharterRecord.source, url: null },
+      }).success
+    ).toBe(false);
+  });
+
+  it('rejects a title source it does not know', () => {
+    // `read-from-pdf` exists so a human-supplied title never reads as a
+    // published one. A third value would quietly reintroduce that confusion.
+    expect(
+      charterRecordSchema.safeParse({
+        ...validCharterRecord,
+        charterTitleSource: 'inferred',
+      }).success
+    ).toBe(false);
+  });
+
+  it('requires group, ambiguity and the transcription note to be stated, even when empty', () => {
+    // `null` is a decision; a missing key is a question nobody asked.
+    for (const key of ['group', 'ambiguity', 'transcriptionNote'] as const) {
+      const copy: Record<string, unknown> = { ...validCharterRecord };
+      delete copy[key];
+      expect(charterRecordSchema.safeParse(copy).success, key).toBe(false);
+    }
+  });
+
+  it('rejects an empty ambiguity or transcription note — say it, or say null', () => {
+    for (const key of ['ambiguity', 'transcriptionNote'] as const) {
+      expect(
+        charterRecordSchema.safeParse({ ...validCharterRecord, [key]: '' })
+          .success,
+        key
+      ).toBe(false);
+    }
+  });
+
+  it('keeps provenance out of the resident-facing field', () => {
+    /*
+     * The two are separate because only ONE of them renders, under a heading
+     * saying the document does not answer your question. "The extractor
+     * truncated a heading" is not that, and putting it there made the section's
+     * closing line a non-sequitur on nine pages.
+     *
+     * The schema cannot tell them apart — a human decides — so this asserts
+     * only that both can be held at once, which is what the split is for.
+     */
+    const parsed = charterRecordSchema.safeParse({
+      ...validCharterRecord,
+      ambiguity:
+        'The charter registers this twice and does not say what separates them.',
+      transcriptionNote:
+        'The published heading was truncated and completed by hand.',
+    });
+    expect(parsed.success).toBe(true);
+  });
+});
+
+describe('the verification record on a charter record', () => {
+  const verified = {
+    collectedBy: 'a-transcriber',
+    verifiedBy: 'a-verifier',
+    verifiedAt: '2026-08-09',
+  };
+
+  it('accepts a complete record naming two different handles', () => {
+    expect(
+      charterRecordSchema.safeParse({
+        ...validCharterRecord,
+        verificationRecord: verified,
+      }).success
+    ).toBe(true);
+  });
+
+  it('rejects one naming the same handle twice', () => {
+    expect(
+      charterRecordSchema.safeParse({
+        ...validCharterRecord,
+        verificationRecord: { ...verified, verifiedBy: verified.collectedBy },
+      }).success
+    ).toBe(false);
+  });
+
+  it('rejects a partially filled record — whole, or null', () => {
+    // A half-claimed check is worse than an absent one: it reads as done.
+    for (const key of ['collectedBy', 'verifiedBy', 'verifiedAt'] as const) {
+      const partial: Record<string, unknown> = { ...verified };
+      delete partial[key];
+      expect(
+        charterRecordSchema.safeParse({
+          ...validCharterRecord,
+          verificationRecord: partial,
+        }).success,
+        key
+      ).toBe(false);
+    }
+  });
+
+  it('rejects a free-text verification date', () => {
+    expect(
+      charterRecordSchema.safeParse({
+        ...validCharterRecord,
+        verificationRecord: { ...verified, verifiedAt: 'August 2026' },
+      }).success
+    ).toBe(false);
+  });
+
+  it('rejects a handle that could carry a personal name or an address', () => {
+    for (const handle of ['A Name', 'someone@example.com', 'first.last']) {
+      expect(
+        charterRecordSchema.safeParse({
+          ...validCharterRecord,
+          verificationRecord: { ...verified, verifiedBy: handle },
+        }).success,
+        handle
+      ).toBe(false);
+    }
+  });
+});
+
+describe('a charter manifest', () => {
+  it('accepts a list of charter records', () => {
+    expect(
+      charterManifestSchema.safeParse({ pages: [validCharterRecord] }).success
+    ).toBe(true);
+  });
+
+  it('rejects a plain page entry — a charter page owes its provenance', () => {
+    expect(
+      charterManifestSchema.safeParse({ pages: [validEntry] }).success
     ).toBe(false);
   });
 });

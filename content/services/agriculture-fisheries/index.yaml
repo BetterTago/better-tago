@@ -1,0 +1,290 @@
+# Agriculture, livestock and fisheries services — index-and-link only.
+#
+# Each entry names a service, says which office provides it, and links the
+# Citizen's Charter document that defines it. NO fee, requirement, processing
+# time or other charter figure is published here: republishing the charter
+# contents is a permission this project has not sought, and the index is the
+# part residents were actually missing.
+#
+# Titles, slugs, offices, groups and ambiguities are joined from
+# inventory/task-vocabulary.yaml by charterServiceId. Do not re-derive one.
+pages:
+  - name: Get rice or corn seeds
+    slug: get-rice-or-corn-seeds
+    description: Seed assistance for rice and corn from the agriculture office.
+    office: Office of the Municipal Agriculture
+    source:
+      label:
+        en: Municipality of Tago Citizen's Charter — Office of the Municipal Agriculture
+      url: https://tago.gov.ph/wp-content/uploads/2024/12/Office-of-the-Municipal-Agriculture.pdf
+      documentTitle: Office of the Municipal Agriculture
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+    charterServiceId: office-of-the-municipal-agriculture#external-1
+    charterSection: external
+    charterDocument:
+      title: Office of the Municipal Agriculture
+      file: Office-of-the-Municipal-Agriculture.pdf
+      sha256: 5a25bff7863ba245f00262cab98fded964d49236ebc71a9709ccb0c34b193515
+    charterTitle: Rice and Corn Seeds Assistance
+    charterTitleSource: extracted
+    group: null
+    ambiguity: null
+    verificationRecord: null
+    transcriptionNote: null
+  - name: Get high-value crop planting materials
+    slug: get-high-value-crop-planting-materials
+    description: Planting material assistance for high-value commercial crops.
+    office: Office of the Municipal Agriculture
+    source:
+      label:
+        en: Municipality of Tago Citizen's Charter — Office of the Municipal Agriculture
+      url: https://tago.gov.ph/wp-content/uploads/2024/12/Office-of-the-Municipal-Agriculture.pdf
+      documentTitle: Office of the Municipal Agriculture
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+    charterServiceId: office-of-the-municipal-agriculture#external-2
+    charterSection: external
+    charterDocument:
+      title: Office of the Municipal Agriculture
+      file: Office-of-the-Municipal-Agriculture.pdf
+      sha256: 5a25bff7863ba245f00262cab98fded964d49236ebc71a9709ccb0c34b193515
+    charterTitle: Provision of High Value Commercial Crop Assistance
+    charterTitleSource: extracted
+    group: null
+    ambiguity: null
+    verificationRecord: null
+    transcriptionNote: null
+  - name: Get an animal vaccinated against rabies
+    slug: get-an-animal-vaccinated-against-rabies
+    description: Anti-rabies vaccination for an animal, from the agriculture office.
+    office: Office of the Municipal Agriculture
+    source:
+      label:
+        en: Municipality of Tago Citizen's Charter — Office of the Municipal Agriculture
+      url: https://tago.gov.ph/wp-content/uploads/2024/12/Office-of-the-Municipal-Agriculture.pdf
+      documentTitle: Office of the Municipal Agriculture
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+    charterServiceId: office-of-the-municipal-agriculture#external-3
+    charterSection: external
+    charterDocument:
+      title: Office of the Municipal Agriculture
+      file: Office-of-the-Municipal-Agriculture.pdf
+      sha256: 5a25bff7863ba245f00262cab98fded964d49236ebc71a9709ccb0c34b193515
+    charterTitle: Provision of Vaccinations (Anti Rabies)
+    charterTitleSource: extracted
+    group: null
+    ambiguity: null
+    verificationRecord: null
+    transcriptionNote: null
+  - name: Have livestock inspected before and after slaughter
+    slug: have-livestock-inspected-before-and-after-slaughter
+    description: Ante-mortem, post-mortem and post-abattoir inspection of livestock.
+    office: Office of the Municipal Agriculture
+    source:
+      label:
+        en: Municipality of Tago Citizen's Charter — Office of the Municipal Agriculture
+      url: https://tago.gov.ph/wp-content/uploads/2024/12/Office-of-the-Municipal-Agriculture.pdf
+      documentTitle: Office of the Municipal Agriculture
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+    charterServiceId: office-of-the-municipal-agriculture#external-4
+    charterSection: external
+    charterDocument:
+      title: Office of the Municipal Agriculture
+      file: Office-of-the-Municipal-Agriculture.pdf
+      sha256: 5a25bff7863ba245f00262cab98fded964d49236ebc71a9709ccb0c34b193515
+    charterTitle: Provision of Ante Mortem, Post Mortem and Post Abattoir Services
+    charterTitleSource: extracted
+    group: null
+    ambiguity: null
+    verificationRecord: null
+    transcriptionNote: null
+  - name: Request artificial insemination for livestock
+    slug: request-artificial-insemination-for-livestock
+    description: Artificial insemination services for livestock.
+    office: Office of the Municipal Agriculture
+    source:
+      label:
+        en: Municipality of Tago Citizen's Charter — Office of the Municipal Agriculture
+      url: https://tago.gov.ph/wp-content/uploads/2024/12/Office-of-the-Municipal-Agriculture.pdf
+      documentTitle: Office of the Municipal Agriculture
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+    charterServiceId: office-of-the-municipal-agriculture#external-5
+    charterSection: external
+    charterDocument:
+      title: Office of the Municipal Agriculture
+      file: Office-of-the-Municipal-Agriculture.pdf
+      sha256: 5a25bff7863ba245f00262cab98fded964d49236ebc71a9709ccb0c34b193515
+    charterTitle: Provision of Artificial Insemination
+    charterTitleSource: extracted
+    group: null
+    ambiguity: null
+    verificationRecord: null
+    transcriptionNote: null
+  - name: Get a travel certificate for live animals
+    slug: get-a-travel-certificate-for-live-animals
+    description: The travel certificate the agriculture office issues for live animals.
+    office: Office of the Municipal Agriculture
+    source:
+      label:
+        en: Municipality of Tago Citizen's Charter — Office of the Municipal Agriculture
+      url: https://tago.gov.ph/wp-content/uploads/2024/12/Office-of-the-Municipal-Agriculture.pdf
+      documentTitle: Office of the Municipal Agriculture
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+    charterServiceId: office-of-the-municipal-agriculture#external-6
+    charterSection: external
+    charterDocument:
+      title: Office of the Municipal Agriculture
+      file: Office-of-the-Municipal-Agriculture.pdf
+      sha256: 5a25bff7863ba245f00262cab98fded964d49236ebc71a9709ccb0c34b193515
+    charterTitle: Provision of Travel Certificate for Live Animals
+    charterTitleSource: extracted
+    group: null
+    ambiguity: null
+    verificationRecord: null
+    transcriptionNote: null
+  - name: Have livestock castrated
+    slug: have-livestock-castrated
+    description: Castration services for livestock.
+    office: Office of the Municipal Agriculture
+    source:
+      label:
+        en: Municipality of Tago Citizen's Charter — Office of the Municipal Agriculture
+      url: https://tago.gov.ph/wp-content/uploads/2024/12/Office-of-the-Municipal-Agriculture.pdf
+      documentTitle: Office of the Municipal Agriculture
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+    charterServiceId: office-of-the-municipal-agriculture#external-7
+    charterSection: external
+    charterDocument:
+      title: Office of the Municipal Agriculture
+      file: Office-of-the-Municipal-Agriculture.pdf
+      sha256: 5a25bff7863ba245f00262cab98fded964d49236ebc71a9709ccb0c34b193515
+    charterTitle: Provision of Castration Services
+    charterTitleSource: extracted
+    group: null
+    ambiguity: null
+    verificationRecord: null
+    transcriptionNote: null
+  - name: Get livestock vaccinated against surra
+    slug: get-livestock-vaccinated-against-surra
+    description: Vaccination of livestock against surra.
+    office: Office of the Municipal Agriculture
+    source:
+      label:
+        en: Municipality of Tago Citizen's Charter — Office of the Municipal Agriculture
+      url: https://tago.gov.ph/wp-content/uploads/2024/12/Office-of-the-Municipal-Agriculture.pdf
+      documentTitle: Office of the Municipal Agriculture
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+    charterServiceId: office-of-the-municipal-agriculture#external-8
+    charterSection: external
+    charterDocument:
+      title: Office of the Municipal Agriculture
+      file: Office-of-the-Municipal-Agriculture.pdf
+      sha256: 5a25bff7863ba245f00262cab98fded964d49236ebc71a9709ccb0c34b193515
+    charterTitle: Provision of Vaccinations (Surra Disease)
+    charterTitleSource: extracted
+    group: null
+    ambiguity: null
+    verificationRecord: null
+    transcriptionNote: null
+  - name: Join a rural-based organization program
+    slug: join-a-rural-based-organization-program
+    description: The agriculture office’s strengthening programme for rural-based organisations.
+    office: Office of the Municipal Agriculture
+    source:
+      label:
+        en: Municipality of Tago Citizen's Charter — Office of the Municipal Agriculture
+      url: https://tago.gov.ph/wp-content/uploads/2024/12/Office-of-the-Municipal-Agriculture.pdf
+      documentTitle: Office of the Municipal Agriculture
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+    charterServiceId: office-of-the-municipal-agriculture#external-9
+    charterSection: external
+    charterDocument:
+      title: Office of the Municipal Agriculture
+      file: Office-of-the-Municipal-Agriculture.pdf
+      sha256: 5a25bff7863ba245f00262cab98fded964d49236ebc71a9709ccb0c34b193515
+    charterTitle: Rural Based Organization (RBO) Strengthening Program
+    charterTitleSource: extracted
+    group: null
+    ambiguity: null
+    verificationRecord: null
+    transcriptionNote: null
+  - name: Get technical help with a fishpond
+    slug: get-technical-help-with-a-fishpond
+    description: Technical assistance with pond preparation and fish sampling.
+    office: Office of the Municipal Agriculture
+    source:
+      label:
+        en: Municipality of Tago Citizen's Charter — Office of the Municipal Agriculture
+      url: https://tago.gov.ph/wp-content/uploads/2024/12/Office-of-the-Municipal-Agriculture.pdf
+      documentTitle: Office of the Municipal Agriculture
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+    charterServiceId: office-of-the-municipal-agriculture#external-10
+    charterSection: external
+    charterDocument:
+      title: Office of the Municipal Agriculture
+      file: Office-of-the-Municipal-Agriculture.pdf
+      sha256: 5a25bff7863ba245f00262cab98fded964d49236ebc71a9709ccb0c34b193515
+    charterTitle: Provision of Technical Assistance (Pond Preparation and Fish Sampling)
+    charterTitleSource: extracted
+    group: null
+    ambiguity: null
+    verificationRecord: null
+    transcriptionNote: null
+  - name: Join a mass animal vaccination and registration drive
+    slug: join-a-mass-animal-vaccination-and-registration-drive
+    description: >-
+      The combined vaccination, animal registration and distribution drive the agriculture office
+      runs.
+    office: Office of the Municipal Agriculture
+    source:
+      label:
+        en: Municipality of Tago Citizen's Charter — Office of the Municipal Agriculture
+      url: https://tago.gov.ph/wp-content/uploads/2024/12/Office-of-the-Municipal-Agriculture.pdf
+      documentTitle: Office of the Municipal Agriculture
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+    charterServiceId: office-of-the-municipal-agriculture#external-11
+    charterSection: external
+    charterDocument:
+      title: Office of the Municipal Agriculture
+      file: Office-of-the-Municipal-Agriculture.pdf
+      sha256: 5a25bff7863ba245f00262cab98fded964d49236ebc71a9709ccb0c34b193515
+    charterTitle: >-
+      Provision of Mass Rabies and Surra Disease Vaccinations, Animal Registration and Mass
+      distribution of Biologics and Vegetables seeds (CVAC Activity)
+    charterTitleSource: extracted
+    group: null
+    ambiguity: null
+    verificationRecord: null
+    transcriptionNote: null

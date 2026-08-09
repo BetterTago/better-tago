@@ -1,10 +1,13 @@
-# Service index — index-and-link only.
+# Civil registry services — index-and-link only.
 #
 # Each entry names a service, says which office provides it, and links the
 # Citizen's Charter document that defines it. NO fee, requirement, processing
-# time or other charter figure is published here: republishing the charter's
+# time or other charter figure is published here: republishing the charter
 # contents is a permission this project has not sought, and the index is the
 # part residents were actually missing.
+#
+# Titles, slugs, offices, groups and ambiguities are joined from
+# inventory/task-vocabulary.yaml by charterServiceId. Do not re-derive one.
 pages:
   - name: Register a birth
     slug: register-a-birth
@@ -21,6 +24,18 @@ pages:
       retrievedAt: '2026-08-09'
     verification: V3
     lastCheckedAt: '2026-08-09'
+    charterServiceId: office-of-the-municipal-civil-registrar#external-1
+    charterSection: external
+    charterDocument:
+      title: Office of the Municipal Civil Registrar
+      file: Office-of-the-Municipal-Civil-Registrar.pdf
+      sha256: b537d560b70fd466041a733a35914a76f839aa8a3b0f39dce60fb0f5b28b9555
+    charterTitle: Registration of births for on-time and delayed report, occurred at home, or in clinic.
+    charterTitleSource: extracted
+    group: null
+    ambiguity: null
+    verificationRecord: null
+    transcriptionNote: null
   - name: Register a marriage
     slug: register-a-marriage
     description: Recording a marriage that took place in Tago in the civil register, on time or late.
@@ -34,6 +49,317 @@ pages:
       retrievedAt: '2026-08-09'
     verification: V3
     lastCheckedAt: '2026-08-09'
+    charterServiceId: office-of-the-municipal-civil-registrar#external-2
+    charterSection: external
+    charterDocument:
+      title: Office of the Municipal Civil Registrar
+      file: Office-of-the-Municipal-Civil-Registrar.pdf
+      sha256: b537d560b70fd466041a733a35914a76f839aa8a3b0f39dce60fb0f5b28b9555
+    charterTitle: >-
+      Registration of Certificate of Marriage (COM) for on-time and delayed report, occurred in
+      Tago, Surigao del Sur.
+    charterTitleSource: extracted
+    group: null
+    ambiguity: null
+    verificationRecord: null
+    transcriptionNote: null
+  - name: Register a death that happened in Tago
+    slug: register-a-death-that-happened-in-tago
+    description: Recording a death that occurred in Tago in the civil register, on time or late.
+    office: Office of the Municipal Civil Registrar
+    source:
+      label:
+        en: Municipality of Tago Citizen's Charter — Office of the Municipal Civil Registrar
+      url: https://tago.gov.ph/wp-content/uploads/2024/12/Office-of-the-Municipal-Civil-Registrar.pdf
+      documentTitle: Office of the Municipal Civil Registrar
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+    charterServiceId: office-of-the-municipal-civil-registrar#external-3
+    charterSection: external
+    charterDocument:
+      title: Office of the Municipal Civil Registrar
+      file: Office-of-the-Municipal-Civil-Registrar.pdf
+      sha256: b537d560b70fd466041a733a35914a76f839aa8a3b0f39dce60fb0f5b28b9555
+    charterTitle: >-
+      Registration of Certificate of Death for on-time and delayed report, occurred in Tago, Surigao
+      del Sur.
+    charterTitleSource: extracted
+    group: register-a-death
+    ambiguity: >-
+      The charter carries two death-registration entries. This one is qualified “occurred in Tago,
+      Surigao del Sur”; the other is not. What separates them is not stated.
+    verificationRecord: null
+    transcriptionNote: null
+  - name: Register a death
+    slug: register-a-death
+    description: Recording a death in the civil register, on time or late.
+    office: Office of the Municipal Civil Registrar
+    source:
+      label:
+        en: Municipality of Tago Citizen's Charter — Office of the Municipal Civil Registrar
+      url: https://tago.gov.ph/wp-content/uploads/2024/12/Office-of-the-Municipal-Civil-Registrar.pdf
+      documentTitle: Office of the Municipal Civil Registrar
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+    charterServiceId: office-of-the-municipal-civil-registrar#external-4
+    charterSection: external
+    charterDocument:
+      title: Office of the Municipal Civil Registrar
+      file: Office-of-the-Municipal-Civil-Registrar.pdf
+      sha256: b537d560b70fd466041a733a35914a76f839aa8a3b0f39dce60fb0f5b28b9555
+    charterTitle: Registration of Certificate of Death
+    charterTitleSource: extracted
+    group: register-a-death
+    ambiguity: >-
+      The charter carries two death-registration entries. This one has no qualifier; the other is
+      limited to deaths that occurred in Tago. What separates them is not stated.
+    verificationRecord: null
+    transcriptionNote: null
+  - name: Apply for a marriage license
+    slug: apply-for-a-marriage-license
+    description: Applying to the civil registrar for a marriage licence.
+    office: Office of the Municipal Civil Registrar
+    source:
+      label:
+        en: Municipality of Tago Citizen's Charter — Office of the Municipal Civil Registrar
+      url: https://tago.gov.ph/wp-content/uploads/2024/12/Office-of-the-Municipal-Civil-Registrar.pdf
+      documentTitle: Office of the Municipal Civil Registrar
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+    charterServiceId: office-of-the-municipal-civil-registrar#external-5
+    charterSection: external
+    charterDocument:
+      title: Office of the Municipal Civil Registrar
+      file: Office-of-the-Municipal-Civil-Registrar.pdf
+      sha256: b537d560b70fd466041a733a35914a76f839aa8a3b0f39dce60fb0f5b28b9555
+    charterTitle: Application and Issuance of Marriage License
+    charterTitleSource: extracted
+    group: null
+    ambiguity: null
+    verificationRecord: null
+    transcriptionNote: null
+  - name: Request an electronic endorsement of a civil registry record
+    slug: request-an-electronic-endorsement-of-a-civil-registry-record
+    description: Asking the registrar to endorse a birth, death or marriage record electronically.
+    office: Office of the Municipal Civil Registrar
+    source:
+      label:
+        en: Municipality of Tago Citizen's Charter — Office of the Municipal Civil Registrar
+      url: https://tago.gov.ph/wp-content/uploads/2024/12/Office-of-the-Municipal-Civil-Registrar.pdf
+      documentTitle: Office of the Municipal Civil Registrar
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+    charterServiceId: office-of-the-municipal-civil-registrar#external-6
+    charterSection: external
+    charterDocument:
+      title: Office of the Municipal Civil Registrar
+      file: Office-of-the-Municipal-Civil-Registrar.pdf
+      sha256: b537d560b70fd466041a733a35914a76f839aa8a3b0f39dce60fb0f5b28b9555
+    charterTitle: Request for an Electronic Endorsement of Birth, Death and Marriage Certificate
+    charterTitleSource: extracted
+    group: electronic-endorsement
+    ambiguity: null
+    verificationRecord: null
+    transcriptionNote: null
+  - name: Request an electronic endorsement with certified copies
+    slug: request-an-electronic-endorsement-with-certified-copies
+    description: The same electronic endorsement, asked for together with certifications or certified copies.
+    office: Office of the Municipal Civil Registrar
+    source:
+      label:
+        en: Municipality of Tago Citizen's Charter — Office of the Municipal Civil Registrar
+      url: https://tago.gov.ph/wp-content/uploads/2024/12/Office-of-the-Municipal-Civil-Registrar.pdf
+      documentTitle: Office of the Municipal Civil Registrar
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+    charterServiceId: office-of-the-municipal-civil-registrar#external-7
+    charterSection: external
+    charterDocument:
+      title: Office of the Municipal Civil Registrar
+      file: Office-of-the-Municipal-Civil-Registrar.pdf
+      sha256: b537d560b70fd466041a733a35914a76f839aa8a3b0f39dce60fb0f5b28b9555
+    charterTitle: >-
+      Request for an Electronic Endorsement of Birth, Death and Marriage Certificate and
+      Certifications/Certified
+    charterTitleSource: extracted
+    group: electronic-endorsement
+    ambiguity: null
+    verificationRecord: null
+    transcriptionNote: >-
+      The charter prints this service as number 10, out of sequence and duplicating the number of a
+      later entry. Its printed number is kept verbatim; the id is what identifies it.
+  - name: Have a child legitimated after the parents marry
+    slug: have-a-child-legitimated-after-the-parents-marry
+    description: Annotating a birth record after the parents marry, so the child is recorded as legitimated.
+    office: Office of the Municipal Civil Registrar
+    source:
+      label:
+        en: Municipality of Tago Citizen's Charter — Office of the Municipal Civil Registrar
+      url: https://tago.gov.ph/wp-content/uploads/2024/12/Office-of-the-Municipal-Civil-Registrar.pdf
+      documentTitle: Office of the Municipal Civil Registrar
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+    charterServiceId: office-of-the-municipal-civil-registrar#external-8
+    charterSection: external
+    charterDocument:
+      title: Office of the Municipal Civil Registrar
+      file: Office-of-the-Municipal-Civil-Registrar.pdf
+      sha256: b537d560b70fd466041a733a35914a76f839aa8a3b0f39dce60fb0f5b28b9555
+    charterTitle: Registration and Annotation of Affidavit of Legitimation (Family Code and RA No. 9858)
+    charterTitleSource: extracted
+    group: null
+    ambiguity: null
+    verificationRecord: null
+    transcriptionNote: null
+  - name: Use the father’s surname on a birth record
+    slug: use-the-fathers-surname-on-a-birth-record
+    description: Registering the affidavit that lets a child carry the father’s surname on a birth record.
+    office: Office of the Municipal Civil Registrar
+    source:
+      label:
+        en: Municipality of Tago Citizen's Charter — Office of the Municipal Civil Registrar
+      url: https://tago.gov.ph/wp-content/uploads/2024/12/Office-of-the-Municipal-Civil-Registrar.pdf
+      documentTitle: Office of the Municipal Civil Registrar
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+    charterServiceId: office-of-the-municipal-civil-registrar#external-9
+    charterSection: external
+    charterDocument:
+      title: Office of the Municipal Civil Registrar
+      file: Office-of-the-Municipal-Civil-Registrar.pdf
+      sha256: b537d560b70fd466041a733a35914a76f839aa8a3b0f39dce60fb0f5b28b9555
+    charterTitle: Registration and Annotation of Affidavit to Use the Surname of the Father (AUSF) (RA No. 9255)
+    charterTitleSource: extracted
+    group: null
+    ambiguity: null
+    verificationRecord: null
+    transcriptionNote: null
+  - name: Add missing details to a civil registry record
+    slug: add-missing-details-to-a-civil-registry-record
+    description: >-
+      Annotating a birth, marriage, death or fetal death record to supply a detail left out at
+      registration.
+    office: Office of the Municipal Civil Registrar
+    source:
+      label:
+        en: Municipality of Tago Citizen's Charter — Office of the Municipal Civil Registrar
+      url: https://tago.gov.ph/wp-content/uploads/2024/12/Office-of-the-Municipal-Civil-Registrar.pdf
+      documentTitle: Office of the Municipal Civil Registrar
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+    charterServiceId: office-of-the-municipal-civil-registrar#external-10
+    charterSection: external
+    charterDocument:
+      title: Office of the Municipal Civil Registrar
+      file: Office-of-the-Municipal-Civil-Registrar.pdf
+      sha256: b537d560b70fd466041a733a35914a76f839aa8a3b0f39dce60fb0f5b28b9555
+    charterTitle: >-
+      Annotation of Affidavit of Supplemental Report in the Certificate of Live Birth, Marriage,
+      Death or Fetal Death.
+    charterTitleSource: extracted
+    group: null
+    ambiguity: null
+    verificationRecord: null
+    transcriptionNote: null
+  - name: Change a first name on a civil registry record
+    slug: change-a-first-name-on-a-civil-registry-record
+    description: Petitioning the registrar to change a first name on a civil registry record.
+    office: Office of the Municipal Civil Registrar
+    source:
+      label:
+        en: Municipality of Tago Citizen's Charter — Office of the Municipal Civil Registrar
+      url: https://tago.gov.ph/wp-content/uploads/2024/12/Office-of-the-Municipal-Civil-Registrar.pdf
+      documentTitle: Office of the Municipal Civil Registrar
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+    charterServiceId: office-of-the-municipal-civil-registrar#external-11
+    charterSection: external
+    charterDocument:
+      title: Office of the Municipal Civil Registrar
+      file: Office-of-the-Municipal-Civil-Registrar.pdf
+      sha256: b537d560b70fd466041a733a35914a76f839aa8a3b0f39dce60fb0f5b28b9555
+    charterTitle: Petition for Change of First Name (CFN) (Pursuant to Republic Act No. 9048)
+    charterTitleSource: extracted
+    group: null
+    ambiguity: null
+    verificationRecord: null
+    transcriptionNote: The charter prints number 10 twice. This is the second of them.
+  - name: Correct a clerical error on a civil registry record
+    slug: correct-a-clerical-error-on-a-civil-registry-record
+    description: >-
+      Petitioning the registrar to correct a clerical error on a birth, marriage or death
+      certificate.
+    office: Office of the Municipal Civil Registrar
+    source:
+      label:
+        en: Municipality of Tago Citizen's Charter — Office of the Municipal Civil Registrar
+      url: https://tago.gov.ph/wp-content/uploads/2024/12/Office-of-the-Municipal-Civil-Registrar.pdf
+      documentTitle: Office of the Municipal Civil Registrar
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+    charterServiceId: office-of-the-municipal-civil-registrar#external-12
+    charterSection: external
+    charterDocument:
+      title: Office of the Municipal Civil Registrar
+      file: Office-of-the-Municipal-Civil-Registrar.pdf
+      sha256: b537d560b70fd466041a733a35914a76f839aa8a3b0f39dce60fb0f5b28b9555
+    charterTitle: >-
+      Petition for Correction of Clerical Error in the Birth/Marriage/Death Certificate (Pursuant To
+      Republic Act No. 9048)
+    charterTitleSource: extracted
+    group: null
+    ambiguity: null
+    verificationRecord: null
+    transcriptionNote: null
+  - name: Correct the sex or birth date on a birth record
+    slug: correct-the-sex-or-birth-date-on-a-birth-record
+    description: >-
+      Petitioning the registrar to correct the recorded sex, or the day and month of birth, on a
+      birth record.
+    office: Office of the Municipal Civil Registrar
+    source:
+      label:
+        en: Municipality of Tago Citizen's Charter — Office of the Municipal Civil Registrar
+      url: https://tago.gov.ph/wp-content/uploads/2024/12/Office-of-the-Municipal-Civil-Registrar.pdf
+      documentTitle: Office of the Municipal Civil Registrar
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+    charterServiceId: office-of-the-municipal-civil-registrar#external-13
+    charterSection: external
+    charterDocument:
+      title: Office of the Municipal Civil Registrar
+      file: Office-of-the-Municipal-Civil-Registrar.pdf
+      sha256: b537d560b70fd466041a733a35914a76f839aa8a3b0f39dce60fb0f5b28b9555
+    charterTitle: >-
+      Petition for Correction of Sex/Gender and Birth Date (Day and Month only) (Pursuant to
+      Republic Act No. 10172)
+    charterTitleSource: extracted
+    group: null
+    ambiguity: null
+    verificationRecord: null
+    transcriptionNote: null
   - name: Get a PSA copy of a birth, marriage or death certificate
     slug: get-a-psa-copy-of-a-birth-marriage-or-death-certificate
     description: Requesting a civil registry certificate on the national statistics authority’s security paper.
@@ -47,3 +373,15 @@ pages:
       retrievedAt: '2026-08-09'
     verification: V3
     lastCheckedAt: '2026-08-09'
+    charterServiceId: office-of-the-municipal-civil-registrar#external-14
+    charterSection: external
+    charterDocument:
+      title: Office of the Municipal Civil Registrar
+      file: Office-of-the-Municipal-Civil-Registrar.pdf
+      sha256: b537d560b70fd466041a733a35914a76f839aa8a3b0f39dce60fb0f5b28b9555
+    charterTitle: Request for PSA’s Annotated Birth, Marriage or Death Certificate in Security Paper (SECPA)
+    charterTitleSource: extracted
+    group: null
+    ambiguity: null
+    verificationRecord: null
+    transcriptionNote: null

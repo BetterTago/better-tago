@@ -34,26 +34,66 @@ content/<section>/<category>/<slug>.fil.md  the Filipino body (optional)
 **The YAML `slug` must match the markdown filename exactly.** A mismatch is the one failure that looks like
 nothing is wrong: the file sits there, correct, and the page 404s.
 
+## The category is not yours to choose either
+
+**A category is a task domain a resident would recognise — never an office name.** That is the title rule
+([`../docs/task-titles.md`](../docs/task-titles.md)) applied one level up: an index organised by org chart is
+exactly what the vocabulary exists to prevent.
+
+Which category a service belongs to is decided once, in the `categories:` block of
+[`../inventory/task-vocabulary.yaml`](../inventory/task-vocabulary.yaml), keyed by the office that owns it.
+**A service moves category by editing that block — never by moving a file.** `src/lib/content-records.test.ts`
+derives this folder from it and fails on a service filed anywhere else.
+
 ## A manifest entry
+
+Everything under `content/services/` and `content/government/legislative/` is a **charter record** and carries
+the ★ `TAGO-201` fields. Other sections use the plain page entry above them.
 
 ```yaml
 pages:
   - name: 'Renew a business permit'
     slug: 'renew-a-business-permit'
-    description: 'What to bring, where to go, what it costs, and how long it takes.'
+    description: 'Renewing the permit a business already holds.'
     office: 'Business Licensing and Permitting Division'
     source:
       label:
         en: "Municipality of Tago Citizen's Charter — Business Licensing and Permitting Division"
-      url: 'https://tago.gov.ph/about-us-2/citizens-charter/'
-      documentTitle: 'Business Licensing and Permitting Division, External Services'
+      url: 'https://tago.gov.ph/wp-content/uploads/2024/12/…-External-Services.pdf'
+      documentTitle: 'Business Licensing and Permitting Division External Services'
       documentType: 'pdf'
-      retrievedAt: '2026-08-03'
+      retrievedAt: '2026-08-09'
     verification: 'V3'
-    lastCheckedAt: '2026-08-03'
+    lastCheckedAt: '2026-08-09'
+    # ── the charter record ──
+    charterServiceId: 'business-licensing-and-permitting-division-external-services#external-3'
+    charterSection: 'external'
+    charterDocument:
+      title: 'Business Licensing and Permitting Division External Services'
+      file: 'Business-Licensing-and-Permitting-Division-External-Services.pdf'
+      sha256: '…'
+    charterTitle: 'Processing of Application for Business Permit Renewal'
+    charterTitleSource: 'extracted'
+    group: 'business-permit'
+    ambiguity: null
+    transcriptionNote: null
+    verificationRecord: null
 ```
 
 `source`, `verification` and `lastCheckedAt` are **required**. Cite or don't publish.
+
+What the charter fields add, and why each one is not optional:
+
+| Field                                 | What it is for                                                                                                                               |
+| ------------------------------------- | -------------------------------------------------------------------------------------------------------------------------------------------- |
+| `charterServiceId`                    | The inventory's stable id. It is what joins a page back to the frozen vocabulary — **not** the charter's printed number, which is not unique |
+| `charterSection`                      | Always `external`. Internal services are government-to-government; the schema **refuses** the value rather than trusting review              |
+| `charterDocument`                     | Title, filename and `sha256` of the copy actually read, so a later revision is detectable                                                    |
+| `charterTitle` · `charterTitleSource` | The charter's own wording, and whether a human had to read it off the page. A human-supplied title must never read as a published one        |
+| `group`                               | Set when the charter answers one resident question in more than one place. Grouped, **never merged**                                         |
+| `ambiguity`                           | What the charter left unclear **for a resident**, carried onto the page as stated. A transcriber never resolves one. **This one renders**    |
+| `transcriptionNote`                   | How _this project_ read the document — a truncated heading, a service number printed twice. Recorded for the verifier, **never rendered**    |
+| `verificationRecord`                  | `null` until a second person has checked it. Never partially filled — whole, or null                                                         |
 
 ## The title is not yours to invent
 
@@ -69,35 +109,47 @@ in [`../docs/task-titles.md`](../docs/task-titles.md).
 The charter's own wording is not discarded — it is kept on the vocabulary entry, and the office name, document
 names and fee names are used **verbatim inside the page**, because that is what the counter will ask for.
 
-## A service guide answers eight questions
+## What a page looks like today
 
-That shape is not invented — it is the shape of a Citizen's Charter entry, which is why the charter is the
-spine of this portal.
+Every charter record uses the same body, and the sameness is the point: ninety-nine pages written to one shape
+is ninety-nine pages a reader can skim, and a shape that drifts per author is how a fee gets added to one of
+them.
 
 ```markdown
 # Renew a business permit
 
-One sentence on who this is for.
+**Who provides it:** <office>, Tago Municipal Hall.
 
-## Who can apply
+## What the charter calls it
 
-## What to bring
+> <the charter's own wording, verbatim>
 
-## Where to go
+## What to bring, what it costs, how long it takes
 
-## Office hours
+<the deliberate refusal, and why — unchanged wording>
 
-## Fees
+## One question, more than one charter entry <!-- only when `group` is set -->
 
-## How long it takes
+## What the charter leaves unclear <!-- only when `ambiguity` is set; `transcriptionNote` never renders -->
 
-## What you get
+## The official document
 
-## If something goes wrong
+- [<document title>](url) — the Citizen's Charter for this office, retrieved <date>
 ```
 
-**A guide missing _Fees_, _Where to go_, or _What to bring_ is not publishable** — those three are why the page
-was opened.
+## The eight questions — the shape that returns with a permission
+
+A Citizen's Charter entry answers eight questions, and ★ `TAGO-004` froze them: _who can apply · what to bring ·
+where to go · office hours · fees · how long it takes · what you get · if something goes wrong._ That shape is
+the reason the charter is the spine of this portal, and it is recorded here so it is not lost.
+
+🔴 **It is also the shape a page must not have today.** Those headings are the charter's contents, republishing
+them is the permission ⛔ `PROG-003` records as **out of scope rather than pending**, and
+`src/lib/content-records.test.ts` fails the build on any of them appearing under `content/services/`.
+
+**That is not a contradiction, it is a sequence.** The eight-field guide is what this project publishes the day
+a written permission to transcribe and republish with attribution arrives. Until then the index is the
+deliverable, and the guide's headings appearing on a page means somebody started transcribing without one.
 
 ## Rules for anything transcribed from an official document
 

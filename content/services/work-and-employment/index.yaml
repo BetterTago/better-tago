@@ -1,0 +1,239 @@
+# Work, employment and human resource services — index-and-link only.
+#
+# Each entry names a service, says which office provides it, and links the
+# Citizen's Charter document that defines it. NO fee, requirement, processing
+# time or other charter figure is published here: republishing the charter
+# contents is a permission this project has not sought, and the index is the
+# part residents were actually missing.
+#
+# Titles, slugs, offices, groups and ambiguities are joined from
+# inventory/task-vocabulary.yaml by charterServiceId. Do not re-derive one.
+pages:
+  - name: Get an employment clearance certification
+    slug: get-an-employment-clearance-certification
+    description: A clearance certification issued by the human resource office.
+    office: Human Resource Management Division
+    source:
+      label:
+        en: >-
+          Municipality of Tago Citizen's Charter — Human Resource Management Division External
+          Services
+      url: >-
+        https://tago.gov.ph/wp-content/uploads/2024/12/Human-Resource-Management-Division-External-Services.pdf
+      documentTitle: Human Resource Management Division External Services
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+    charterServiceId: human-resource-management-division-external-services#external-1
+    charterSection: external
+    charterDocument:
+      title: Human Resource Management Division External Services
+      file: Human-Resource-Management-Division-External-Services.pdf
+      sha256: 6bcfed56adfb709df2b052349c92d0dd334c03079920d636f9e4e5443ceffd75
+    charterTitle: Issuance of Clearance Certifications
+    charterTitleSource: extracted
+    group: null
+    ambiguity: null
+    verificationRecord: null
+    transcriptionNote: null
+  - name: Get a certificate of employment
+    slug: get-a-certificate-of-employment
+    description: A certificate of employment issued by the human resource office.
+    office: Human Resource Management Division
+    source:
+      label:
+        en: >-
+          Municipality of Tago Citizen's Charter — Human Resource Management Division External
+          Services
+      url: >-
+        https://tago.gov.ph/wp-content/uploads/2024/12/Human-Resource-Management-Division-External-Services.pdf
+      documentTitle: Human Resource Management Division External Services
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+    charterServiceId: human-resource-management-division-external-services#external-2
+    charterSection: external
+    charterDocument:
+      title: Human Resource Management Division External Services
+      file: Human-Resource-Management-Division-External-Services.pdf
+      sha256: 6bcfed56adfb709df2b052349c92d0dd334c03079920d636f9e4e5443ceffd75
+    charterTitle: Issuance of Certificate of Employment & Others
+    charterTitleSource: extracted
+    group: null
+    ambiguity: null
+    verificationRecord: null
+    transcriptionNote: null
+  - name: Get a service record
+    slug: get-a-service-record
+    description: A service record issued by the human resource office.
+    office: Human Resource Management Division
+    source:
+      label:
+        en: >-
+          Municipality of Tago Citizen's Charter — Human Resource Management Division External
+          Services
+      url: >-
+        https://tago.gov.ph/wp-content/uploads/2024/12/Human-Resource-Management-Division-External-Services.pdf
+      documentTitle: Human Resource Management Division External Services
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+    charterServiceId: human-resource-management-division-external-services#external-3
+    charterSection: external
+    charterDocument:
+      title: Human Resource Management Division External Services
+      file: Human-Resource-Management-Division-External-Services.pdf
+      sha256: 6bcfed56adfb709df2b052349c92d0dd334c03079920d636f9e4e5443ceffd75
+    charterTitle: Issuance of Service Record
+    charterTitleSource: extracted
+    group: null
+    ambiguity: null
+    verificationRecord: null
+    transcriptionNote: null
+  - name: Apply for a local government job
+    slug: apply-for-a-local-government-job
+    description: >-
+      How the municipality accepts job applications — the permanent page for something otherwise
+      announced only as news.
+    office: Human Resource Management Division
+    source:
+      label:
+        en: >-
+          Municipality of Tago Citizen's Charter — Human Resource Management Division External
+          Services
+      url: >-
+        https://tago.gov.ph/wp-content/uploads/2024/12/Human-Resource-Management-Division-External-Services.pdf
+      documentTitle: Human Resource Management Division External Services
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+    charterServiceId: human-resource-management-division-external-services#external-4
+    charterSection: external
+    charterDocument:
+      title: Human Resource Management Division External Services
+      file: Human-Resource-Management-Division-External-Services.pdf
+      sha256: 6bcfed56adfb709df2b052349c92d0dd334c03079920d636f9e4e5443ceffd75
+    charterTitle: Accepting Job Applications
+    charterTitleSource: extracted
+    group: null
+    ambiguity: null
+    verificationRecord: null
+    transcriptionNote: null
+  - name: Get your appointment papers
+    slug: get-your-appointment-papers
+    description: Issuance of an appointment by the human resource office.
+    office: Human Resource Management Division
+    source:
+      label:
+        en: >-
+          Municipality of Tago Citizen's Charter — Human Resource Management Division External
+          Services
+      url: >-
+        https://tago.gov.ph/wp-content/uploads/2024/12/Human-Resource-Management-Division-External-Services.pdf
+      documentTitle: Human Resource Management Division External Services
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+    charterServiceId: human-resource-management-division-external-services#external-5
+    charterSection: external
+    charterDocument:
+      title: Human Resource Management Division External Services
+      file: Human-Resource-Management-Division-External-Services.pdf
+      sha256: 6bcfed56adfb709df2b052349c92d0dd334c03079920d636f9e4e5443ceffd75
+    charterTitle: Issuance of Appointment
+    charterTitleSource: extracted
+    group: null
+    ambiguity: null
+    verificationRecord: null
+    transcriptionNote: null
+  - name: Apply for a student summer job
+    slug: apply-for-a-student-summer-job
+    description: The Special Program for Employment of Students, run through the public employment office.
+    office: Public Employment Office Division
+    source:
+      label:
+        en: >-
+          Municipality of Tago Citizen's Charter — Public Employment Office Division External
+          Services
+      url: >-
+        https://tago.gov.ph/wp-content/uploads/2024/12/Public-Employment-Office-Division-External-Services.pdf
+      documentTitle: Public Employment Office Division External Services
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+    charterServiceId: public-employment-office-division-external-services#external-1
+    charterSection: external
+    charterDocument:
+      title: Public Employment Office Division External Services
+      file: Public-Employment-Office-Division-External-Services.pdf
+      sha256: 21df64b3470d5b84206c973842216b14650f5927fc7240f81d7ee8c89b676034
+    charterTitle: Special Program for Employment of Students (SPES)
+    charterTitleSource: extracted
+    group: null
+    ambiguity: null
+    verificationRecord: null
+    transcriptionNote: null
+  - name: Get a no objection certificate
+    slug: get-a-no-objection-certificate
+    description: A no objection certificate issued by the public employment office.
+    office: Public Employment Office Division
+    source:
+      label:
+        en: >-
+          Municipality of Tago Citizen's Charter — Public Employment Office Division External
+          Services
+      url: >-
+        https://tago.gov.ph/wp-content/uploads/2024/12/Public-Employment-Office-Division-External-Services.pdf
+      documentTitle: Public Employment Office Division External Services
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+    charterServiceId: public-employment-office-division-external-services#external-2
+    charterSection: external
+    charterDocument:
+      title: Public Employment Office Division External Services
+      file: Public-Employment-Office-Division-External-Services.pdf
+      sha256: 21df64b3470d5b84206c973842216b14650f5927fc7240f81d7ee8c89b676034
+    charterTitle: Issuance of No Objection Certificate
+    charterTitleSource: extracted
+    group: null
+    ambiguity: null
+    verificationRecord: null
+    transcriptionNote: null
+  - name: Register a workers’ organization with DOLE
+    slug: register-a-workers-organization-with-dole
+    description: >-
+      Asking the public employment office to have an organisation or association registered with
+      DOLE.
+    office: Public Employment Office Division
+    source:
+      label:
+        en: >-
+          Municipality of Tago Citizen's Charter — Public Employment Office Division External
+          Services
+      url: >-
+        https://tago.gov.ph/wp-content/uploads/2024/12/Public-Employment-Office-Division-External-Services.pdf
+      documentTitle: Public Employment Office Division External Services
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+    charterServiceId: public-employment-office-division-external-services#external-3
+    charterSection: external
+    charterDocument:
+      title: Public Employment Office Division External Services
+      file: Public-Employment-Office-Division-External-Services.pdf
+      sha256: 21df64b3470d5b84206c973842216b14650f5927fc7240f81d7ee8c89b676034
+    charterTitle: Request for Organization/Association to be registered in DOLE
+    charterTitleSource: extracted
+    group: null
+    ambiguity: null
+    verificationRecord: null
+    transcriptionNote: null

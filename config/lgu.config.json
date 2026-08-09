@@ -120,7 +120,7 @@
       "lastCheckedAt": "2026-08-09"
     },
     "lgu.psgc": {
-      "note": "The national statistics authority publishes this municipality's PSGC record at psa.gov.ph/classification/psgc/barangays/1606818000. Checked 2026-08-09: the host returns an automated-traffic challenge, so the page could not be retrieved. It is not behind a login and robots.txt permits it — closing this needs a person opening that URL in a browser and recording the code with the date they read it.",
+      "note": "The national statistics authority publishes this municipality's PSGC record at psa.gov.ph/classification/psgc/barangays/1606818000. Checked 2026-08-09 and re-attempted the same day for the barangay directory: the host answers HTTP 403 to an automated request. It is not behind a login and robots.txt permits it — closing this needs a person opening that URL in a browser and recording the code with the date they read it. Two attempts, both machine-refused, is the reason CONT-210 is recorded blocked rather than skipped.",
       "channel": "national-agency",
       "state": "open",
       "lastCheckedAt": "2026-08-09"
@@ -150,7 +150,7 @@
       "lastCheckedAt": "2026-08-09"
     },
     "lgu.barangayCount": {
-      "note": "Not published by the municipality, and neither is the barangay list. Checked 2026-08-09 across every page the official site's sitemap lists that is not a news post or a profile page — home, about, vision-and-mission, services, tourism, contact, transparency-seal and all 17 office pages — and across all 22 Citizen's Charter documents. Both are on the national statistics authority's PSGC record, which could not be retrieved (see lgu.psgc). This is the field that blocks per-barangay hazard and evacuation records.",
+      "note": "Not published by the municipality, and neither is the barangay list. Checked 2026-08-09 across every page the official site's sitemap lists that is not a news post or a profile page — home, about, vision-and-mission, services, tourism, contact, transparency-seal and all 17 office pages — and across all 22 Citizen's Charter documents. Re-swept the same day across the sitemap in full, posts included: no barangay list or directory anywhere on it. Both figures are on the national statistics authority's PSGC record, which could not be retrieved (see lgu.psgc). This is the field that blocks per-barangay hazard and evacuation records, and it is what holds CONT-210 at not-started: a one-sided national list is not the reconciliation that ticket asks for, because the municipality publishes no spelling to reconcile it against.",
       "channel": "national-agency",
       "state": "open",
       "lastCheckedAt": "2026-08-09"

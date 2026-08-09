@@ -1,11 +1,96 @@
-# Service index — index-and-link only.
+# Social welfare and gender and development services — index-and-link only.
 #
 # Each entry names a service, says which office provides it, and links the
 # Citizen's Charter document that defines it. NO fee, requirement, processing
-# time or other charter figure is published here: republishing the charter's
+# time or other charter figure is published here: republishing the charter
 # contents is a permission this project has not sought, and the index is the
 # part residents were actually missing.
+#
+# Titles, slugs, offices, groups and ambiguities are joined from
+# inventory/task-vocabulary.yaml by charterServiceId. Do not re-derive one.
 pages:
+  - name: Claim an honorarium as a women’s association president
+    slug: claim-an-honorarium-as-a-womens-association-president
+    description: Claiming the honorarium paid to a women’s association president.
+    office: Gender and Development Division
+    source:
+      label:
+        en: Municipality of Tago Citizen's Charter — Gender and Development Division External Services
+      url: >-
+        https://tago.gov.ph/wp-content/uploads/2024/12/Gender-and-Development-Division-External-Services.pdf
+      documentTitle: Gender and Development Division External Services
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+    charterServiceId: gender-and-development-division-external-services#external-1
+    charterSection: external
+    charterDocument:
+      title: Gender and Development Division External Services
+      file: Gender-and-Development-Division-External-Services.pdf
+      sha256: 13faa4a6c8169a2255c758a6dc39cd28796bfc4e057f3254b0a6d3045f42de2c
+    charterTitle: Payroll of Honorarium of Women President’s
+    charterTitleSource: extracted
+    group: null
+    ambiguity: null
+    verificationRecord: null
+    transcriptionNote: null
+  - name: Get emergency financial assistance
+    slug: get-emergency-financial-assistance
+    description: Assistance from the social welfare office for a household in a crisis situation.
+    office: Municipal Social Welfare and Development Office
+    source:
+      label:
+        en: Municipality of Tago Citizen's Charter — Municipal Social Welfare and Development Office
+      url: >-
+        https://tago.gov.ph/wp-content/uploads/2024/12/Municipal-Social-Welfare-and-Development-Office.pdf
+      documentTitle: Municipal Social Welfare and Development Office
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+    charterServiceId: municipal-social-welfare-and-development-office#external-1
+    charterSection: external
+    charterDocument:
+      title: Municipal Social Welfare and Development Office
+      file: Municipal-Social-Welfare-and-Development-Office.pdf
+      sha256: 24f039ee8843ba06a94ade56baf77c1113722bc2625277a5c3b2a04c18f59fbd
+    charterTitle: >-
+      Availing of Assistance in Crisis Situation (Financial for Food, Medicines, Funeral/ Burial,
+      Materials for Houses, etc.)
+    charterTitleSource: extracted
+    group: null
+    ambiguity: null
+    verificationRecord: null
+    transcriptionNote: null
+  - name: Get a social case study report
+    slug: get-a-social-case-study-report
+    description: Requesting a social case study, home study or child case study report with a referral letter.
+    office: Municipal Social Welfare and Development Office
+    source:
+      label:
+        en: Municipality of Tago Citizen's Charter — Municipal Social Welfare and Development Office
+      url: >-
+        https://tago.gov.ph/wp-content/uploads/2024/12/Municipal-Social-Welfare-and-Development-Office.pdf
+      documentTitle: Municipal Social Welfare and Development Office
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+    charterServiceId: municipal-social-welfare-and-development-office#external-2
+    charterSection: external
+    charterDocument:
+      title: Municipal Social Welfare and Development Office
+      file: Municipal-Social-Welfare-and-Development-Office.pdf
+      sha256: 24f039ee8843ba06a94ade56baf77c1113722bc2625277a5c3b2a04c18f59fbd
+    charterTitle: >-
+      Securing a Social Case Study Report/ Home Study Report/ Child Case Study Report with Referral
+      Letter
+    charterTitleSource: extracted
+    group: null
+    ambiguity: null
+    verificationRecord: null
+    transcriptionNote: null
   - name: Get a certificate of indigency
     slug: get-a-certificate-of-indigency
     description: A certificate of indigency from the municipal social welfare office.
@@ -20,6 +105,18 @@ pages:
       retrievedAt: '2026-08-09'
     verification: V3
     lastCheckedAt: '2026-08-09'
+    charterServiceId: municipal-social-welfare-and-development-office#external-3
+    charterSection: external
+    charterDocument:
+      title: Municipal Social Welfare and Development Office
+      file: Municipal-Social-Welfare-and-Development-Office.pdf
+      sha256: 24f039ee8843ba06a94ade56baf77c1113722bc2625277a5c3b2a04c18f59fbd
+    charterTitle: Securing Certificate of Indigency
+    charterTitleSource: extracted
+    group: null
+    ambiguity: null
+    verificationRecord: null
+    transcriptionNote: null
   - name: Get support as a solo parent, senior citizen or person with disability
     slug: get-support-as-a-solo-parent-senior-citizen-or-person-with-disability
     description: >-
@@ -36,3 +133,76 @@ pages:
       retrievedAt: '2026-08-09'
     verification: V3
     lastCheckedAt: '2026-08-09'
+    charterServiceId: municipal-social-welfare-and-development-office#external-4
+    charterSection: external
+    charterDocument:
+      title: Municipal Social Welfare and Development Office
+      file: Municipal-Social-Welfare-and-Development-Office.pdf
+      sha256: 24f039ee8843ba06a94ade56baf77c1113722bc2625277a5c3b2a04c18f59fbd
+    charterTitle: >-
+      Securing Services for Kalipi-Women, Solo Parents, Persons with Disabilities, Out of School
+      Youth and Senior Citizens.
+    charterTitleSource: extracted
+    group: null
+    ambiguity: null
+    verificationRecord: null
+    transcriptionNote: null
+  - name: Get help after violence against a woman or child
+    slug: get-help-after-violence-against-a-woman-or-child
+    description: Support from the social welfare office after violence against a woman or her children.
+    office: Municipal Social Welfare and Development Office
+    source:
+      label:
+        en: Municipality of Tago Citizen's Charter — Municipal Social Welfare and Development Office
+      url: >-
+        https://tago.gov.ph/wp-content/uploads/2024/12/Municipal-Social-Welfare-and-Development-Office.pdf
+      documentTitle: Municipal Social Welfare and Development Office
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+    charterServiceId: municipal-social-welfare-and-development-office#external-5
+    charterSection: external
+    charterDocument:
+      title: Municipal Social Welfare and Development Office
+      file: Municipal-Social-Welfare-and-Development-Office.pdf
+      sha256: 24f039ee8843ba06a94ade56baf77c1113722bc2625277a5c3b2a04c18f59fbd
+    charterTitle: >-
+      Securing Assistance/Services for the following: 5.1 Violence against Women and their Children
+      (VAWC)
+    charterTitleSource: read-from-pdf
+    group: null
+    ambiguity: null
+    verificationRecord: null
+    transcriptionNote: >-
+      The document titles this entry with a colon and lists sub-services beneath it (5.1 VAWC, 5.4
+      release on recognizance). The heading alone is not a title, so it was read from the page.
+  - name: Get help for a child in conflict with the law
+    slug: get-help-for-a-child-in-conflict-with-the-law
+    description: Support from the social welfare office for a child in conflict with the law.
+    office: Municipal Social Welfare and Development Office
+    source:
+      label:
+        en: Municipality of Tago Citizen's Charter — Municipal Social Welfare and Development Office
+      url: >-
+        https://tago.gov.ph/wp-content/uploads/2024/12/Municipal-Social-Welfare-and-Development-Office.pdf
+      documentTitle: Municipal Social Welfare and Development Office
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+    charterServiceId: municipal-social-welfare-and-development-office#external-6
+    charterSection: external
+    charterDocument:
+      title: Municipal Social Welfare and Development Office
+      file: Municipal-Social-Welfare-and-Development-Office.pdf
+      sha256: 24f039ee8843ba06a94ade56baf77c1113722bc2625277a5c3b2a04c18f59fbd
+    charterTitle: 'Securing Assistance/Services for the following: 6.1 Children in Conflict with the Law (CICL)'
+    charterTitleSource: read-from-pdf
+    group: null
+    ambiguity: null
+    verificationRecord: null
+    transcriptionNote: >-
+      The document titles this entry with a colon and lists sub-services beneath it (6.1 CICL, 6.2
+      referral to a rehabilitation centre). The heading alone is not a title, so it was read from
+      the page.

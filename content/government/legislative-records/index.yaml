@@ -1,0 +1,22 @@
+# What the Legislative branch publishes, and what it does not.
+#
+# Not a service index — a record of an absence, in the shape CONT-107 used for
+# the advisory channel. CONT-209 asks for the Sangguniang Bayan's membership by
+# position and committee, and for ordinances and resolutions listed by number,
+# title, date and subject. Neither is published anywhere this project can cite,
+# and a resident looking for one deserves to be told that rather than to find
+# an empty page.
+pages:
+  - name: 'Where ordinances and session records are published'
+    slug: 'where-ordinances-and-session-records-are-published'
+    description: 'What the Sangguniang Bayan publishes about its own work, and what it does not — checked, and dated.'
+    office: 'Office of the Sangguniang Bayan'
+    source:
+      label:
+        en: 'Municipality of Tago — official website, legislative office pages and sitemap'
+      url: 'https://tago.gov.ph/municipal-offices/legislative-offices/office-of-the-sangguniang-bayan/'
+      documentTitle: 'Office of the Sangguniang Bayan'
+      documentType: 'web'
+      retrievedAt: '2026-08-09'
+    verification: 'V3'
+    lastCheckedAt: '2026-08-09'

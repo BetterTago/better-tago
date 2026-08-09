@@ -280,15 +280,148 @@ offices:
     canonical: Office of the Vice Mayor
     branch: legislative
     note: null
+# The category each service is published under, keyed by the office that owns it.
+#
+# A category is a TASK DOMAIN a resident would recognise — never an office name.
+# That is the same rule as a title (docs/task-titles.md), applied one level up:
+# an index organised by org chart is the thing the vocabulary exists to prevent.
+#
+# Keyed by office rather than repeated on all 99 services because the assignment
+# IS a function of the office, and because the two judgement calls are worth
+# seeing side by side rather than buried on two rows out of ninety-nine.
+#
+# src/lib/content-records.test.ts derives content/ from this. A service moves
+# category by editing this block, and never by moving a file.
+categories:
+  - folder: services/civil-registry
+    offices:
+      - Office of the Municipal Civil Registrar
+    note: null
+  - folder: services/business-and-permits
+    offices:
+      - Business Licensing and Permitting Division
+    note: >-
+      The folder is `business-and-permits`, not `business`. CONT-202's Content paths row says the
+      latter; the tree shipped the former under CONT-104 and moving a published slug is a URL change.
+  - folder: services/health
+    offices:
+      - Municipal Health Office
+      - Office of the Municipal Nutrition
+    note: >-
+      JUDGEMENT CALL — the nutrition office's two services are filed under health rather than given
+      a category of their own. A resident looking for a nutrition referral is looking for health.
+      Two services do not carry a category, and a category of two is a navigation dead end.
+  - folder: services/social-welfare
+    offices:
+      - Municipal Social Welfare and Development Office
+      - Gender and Development Division
+    note: >-
+      JUDGEMENT CALL — the gender and development office's one service is an honorarium claim, which
+      is arguably a payment and could sit under treasury. It is filed by who the claimant is rather
+      than by what changes hands. Recorded so a later disagreement is a one-line edit.
+  - folder: services/treasury
+    offices:
+      - Office of the Municipal Assessor
+      - Municipal Accounting Office
+      - Office of the Municipal Budget
+    note: >-
+      ⚠️ The Office of the Municipal Treasurer is NOT here, because it publishes no external service
+      at all — see source-notes.md. The revenue-side work a resident actually transacts is the
+      assessor's, and that is what this category holds.
+  - folder: services/engineering
+    offices:
+      - Office of the Municipal Engineering
+      - Office of the Municipal Planning and Development
+    note: >-
+      Building and land use together: a resident applying for a building permit needs the zoning
+      certification too, and the charter splits them across two offices.
+  - folder: services/agriculture-fisheries
+    offices:
+      - Office of the Municipal Agriculture
+    note: null
+  - folder: services/work-and-employment
+    offices:
+      - Human Resource Management Division
+      - Public Employment Office Division
+    note: null
+  - folder: services/permits-and-clearances
+    offices:
+      - Executive Division
+      - Municipal Environment and Natural Resources Office
+    note: >-
+      The mayor's permits and the environment office's two clearances. Named for what a resident is
+      asking for, because "Executive Division" tells them nothing about what it issues.
+  - folder: services/disaster-and-safety
+    offices:
+      - Office of the Municipal Disaster Risk Reduction Management
+    note: >-
+      ⚠️ NOT content/emergency/, which is hotlines, evacuation, hazard and advisories. These five are
+      transactions with the DRRM office. Keeping them apart is what stops somebody in an emergency
+      landing on a page about booking a training.
+  - folder: services/tourism
+    offices:
+      - Tourism Office
+    note: >-
+      Includes the tourism establishment's business permit, whose `business-permit` group crosses
+      into services/business-and-permits. A resident does not know two offices answer that question,
+      which is the whole reason the group exists.
+  - folder: government/legislative
+    offices:
+      - Office of the Sangguniang Bayan
+      - Office of the Vice Mayor
+    note: >-
+      Under government/, not services/ — the Legislative branch is a branch, not a service domain,
+      and both its documents carry one external service each.
+# The twenty services translated into Filipino first (CONT-211).
+#
+# "The twenty the most residents need" cannot be measured yet — there is no
+# analytics, no counter footfall data, and no route serving a page. So the
+# selection is by TRANSACTION CLASS, written down here rather than argued again
+# next wave, and src/lib/content-records.test.ts asserts the files match it.
+#
+# The weighting, and why: civil registry certificates are the transactions a
+# household needs most often across a lifetime; a business permit is the worked
+# example the whole project opened with; the health services chosen are the
+# recurring ones rather than the rare ones; the social welfare IDs reach the
+# residents least able to absorb a wasted trip.
+#
+# Revisit when the portal has been live long enough to measure — PROG-301.
+filipinoPriority:
+  reason: transaction-class
+  selectedAt: '2026-08-09'
+  slugs:
+    - register-a-birth
+    - register-a-marriage
+    - register-a-death-that-happened-in-tago
+    - register-a-death
+    - get-a-psa-copy-of-a-birth-marriage-or-death-certificate
+    - apply-for-a-marriage-license
+    - correct-a-clerical-error-on-a-civil-registry-record
+    - apply-for-a-new-business-permit
+    - renew-a-business-permit
+    - see-a-doctor-for-a-consultation
+    - get-a-child-immunized
+    - get-a-medical-certificate
+    - get-prenatal-check-ups
+    - get-free-medicine
+    - get-a-health-certificate
+    - get-a-certificate-of-indigency
+    - get-support-as-a-solo-parent-senior-citizen-or-person-with-disability
+    - get-emergency-financial-assistance
+    - get-a-certified-copy-of-a-tax-declaration
+    - apply-for-a-local-government-job
 groups:
   - id: register-a-death
     question: How do I register a death?
     members:
       - office-of-the-municipal-civil-registrar#external-3
       - office-of-the-municipal-civil-registrar#external-4
+    # Reworded 2026-08-09: this note is reader-facing once a page carries it, and "hiding the other"
+    # read as an accusation of concealment. The absence-framing guardrail caught it. Same meaning,
+    # no imputed intent — the choice being described is THIS project's, not the municipality's.
     note: >-
       Two charter entries, and the charter does not say what separates them. Both are kept: merging
-      them would mean choosing one set of requirements for a resident and hiding the other.
+      them would mean choosing one set of requirements for a resident and dropping the other.
   - id: electronic-endorsement
     question: How do I get a civil registry record endorsed electronically?
     members:

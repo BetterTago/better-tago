@@ -1,0 +1,151 @@
+# Disaster risk reduction services — transactions with the DRRM office, not the emergency layer — index-and-link only.
+#
+# Each entry names a service, says which office provides it, and links the
+# Citizen's Charter document that defines it. NO fee, requirement, processing
+# time or other charter figure is published here: republishing the charter
+# contents is a permission this project has not sought, and the index is the
+# part residents were actually missing.
+#
+# Titles, slugs, offices, groups and ambiguities are joined from
+# inventory/task-vocabulary.yaml by charterServiceId. Do not re-derive one.
+pages:
+  - name: Get a disaster certification for shelter assistance
+    slug: get-a-disaster-certification-for-shelter-assistance
+    description: The disaster certification used when applying for shelter assistance.
+    office: Office of the Municipal Disaster Risk Reduction Management
+    source:
+      label:
+        en: >-
+          Municipality of Tago Citizen's Charter — Office of the Municipal Disaster Risk Reduction
+          Management
+      url: >-
+        https://tago.gov.ph/wp-content/uploads/2024/12/Office-of-the-Municipal-Disaster-Risk-Reduction-Management.pdf
+      documentTitle: Office of the Municipal Disaster Risk Reduction Management
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+    charterServiceId: office-of-the-municipal-disaster-risk-reduction-management#external-1
+    charterSection: external
+    charterDocument:
+      title: Office of the Municipal Disaster Risk Reduction Management
+      file: Office-of-the-Municipal-Disaster-Risk-Reduction-Management.pdf
+      sha256: 1320a4f4a09c544f3fd4dabaadc84ea91f72b698dd2931aa8fa6e3731bd6638b
+    charterTitle: Issuance of Disaster Certification for Shelter Assistance
+    charterTitleSource: extracted
+    group: null
+    ambiguity: null
+    verificationRecord: null
+    transcriptionNote: null
+  - name: Request a patient transfer outside Tago
+    slug: request-a-patient-transfer-outside-tago
+    description: Asking the disaster office to transfer a patient out of Tago.
+    office: Office of the Municipal Disaster Risk Reduction Management
+    source:
+      label:
+        en: >-
+          Municipality of Tago Citizen's Charter — Office of the Municipal Disaster Risk Reduction
+          Management
+      url: >-
+        https://tago.gov.ph/wp-content/uploads/2024/12/Office-of-the-Municipal-Disaster-Risk-Reduction-Management.pdf
+      documentTitle: Office of the Municipal Disaster Risk Reduction Management
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+    charterServiceId: office-of-the-municipal-disaster-risk-reduction-management#external-2
+    charterSection: external
+    charterDocument:
+      title: Office of the Municipal Disaster Risk Reduction Management
+      file: Office-of-the-Municipal-Disaster-Risk-Reduction-Management.pdf
+      sha256: 1320a4f4a09c544f3fd4dabaadc84ea91f72b698dd2931aa8fa6e3731bd6638b
+    charterTitle: Request for Patient Transfer (Outside Tago, Surigao del Sur)
+    charterTitleSource: extracted
+    group: patient-transfer
+    ambiguity: null
+    verificationRecord: null
+    transcriptionNote: null
+  - name: Request water delivery
+    slug: request-water-delivery
+    description: Requesting water rationing or delivery from the disaster office.
+    office: Office of the Municipal Disaster Risk Reduction Management
+    source:
+      label:
+        en: >-
+          Municipality of Tago Citizen's Charter — Office of the Municipal Disaster Risk Reduction
+          Management
+      url: >-
+        https://tago.gov.ph/wp-content/uploads/2024/12/Office-of-the-Municipal-Disaster-Risk-Reduction-Management.pdf
+      documentTitle: Office of the Municipal Disaster Risk Reduction Management
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+    charterServiceId: office-of-the-municipal-disaster-risk-reduction-management#external-3
+    charterSection: external
+    charterDocument:
+      title: Office of the Municipal Disaster Risk Reduction Management
+      file: Office-of-the-Municipal-Disaster-Risk-Reduction-Management.pdf
+      sha256: 1320a4f4a09c544f3fd4dabaadc84ea91f72b698dd2931aa8fa6e3731bd6638b
+    charterTitle: Request for Water Rationing/Delivery
+    charterTitleSource: extracted
+    group: null
+    ambiguity: null
+    verificationRecord: null
+    transcriptionNote: null
+  - name: Request a disaster preparedness training
+    slug: request-a-disaster-preparedness-training
+    description: Requesting a disaster preparedness training, drill, seminar or symposium.
+    office: Office of the Municipal Disaster Risk Reduction Management
+    source:
+      label:
+        en: >-
+          Municipality of Tago Citizen's Charter — Office of the Municipal Disaster Risk Reduction
+          Management
+      url: >-
+        https://tago.gov.ph/wp-content/uploads/2024/12/Office-of-the-Municipal-Disaster-Risk-Reduction-Management.pdf
+      documentTitle: Office of the Municipal Disaster Risk Reduction Management
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+    charterServiceId: office-of-the-municipal-disaster-risk-reduction-management#external-4
+    charterSection: external
+    charterDocument:
+      title: Office of the Municipal Disaster Risk Reduction Management
+      file: Office-of-the-Municipal-Disaster-Risk-Reduction-Management.pdf
+      sha256: 1320a4f4a09c544f3fd4dabaadc84ea91f72b698dd2931aa8fa6e3731bd6638b
+    charterTitle: Request for DRRM Trainings, Drill, Seminars and Symposiums
+    charterTitleSource: extracted
+    group: null
+    ambiguity: null
+    verificationRecord: null
+    transcriptionNote: null
+  - name: Request a patient transfer between facilities
+    slug: request-a-patient-transfer-between-facilities
+    description: Asking the disaster office to transfer a patient between facilities.
+    office: Office of the Municipal Disaster Risk Reduction Management
+    source:
+      label:
+        en: >-
+          Municipality of Tago Citizen's Charter — Office of the Municipal Disaster Risk Reduction
+          Management
+      url: >-
+        https://tago.gov.ph/wp-content/uploads/2024/12/Office-of-the-Municipal-Disaster-Risk-Reduction-Management.pdf
+      documentTitle: Office of the Municipal Disaster Risk Reduction Management
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+    charterServiceId: office-of-the-municipal-disaster-risk-reduction-management#external-5
+    charterSection: external
+    charterDocument:
+      title: Office of the Municipal Disaster Risk Reduction Management
+      file: Office-of-the-Municipal-Disaster-Risk-Reduction-Management.pdf
+      sha256: 1320a4f4a09c544f3fd4dabaadc84ea91f72b698dd2931aa8fa6e3731bd6638b
+    charterTitle: Request for Patient Transfer (Inter-Facility)
+    charterTitleSource: extracted
+    group: patient-transfer
+    ambiguity: null
+    verificationRecord: null
+    transcriptionNote: null

@@ -137,8 +137,19 @@ is worth knowing now rather than discovering it with a dozen pages half-written.
 
 What is _not_ blocked: the searchable index of which services exist, which office provides each one, and a link
 to the official document. That shape needs no transcription and no second verifier, and it is most of what
-residents currently lack. **That index is now written** — 21 office records and the first service entries, each
-citing the charter document it came from.
+residents currently lack. **That index is now complete** — 21 office records, and a record for **every one of
+the 99 external services** the enumeration found, each citing the charter document it came from and each joined
+back to the frozen vocabulary by a stable id.
+
+**So the vacancy now has a number attached to it.** Ninety-nine records exist and **not one carries a
+verification record**, because with one contributor none honestly can — `verificationRecordSchema` rejects a
+record naming the same handle twice, and a test asserts that none has appeared. That is what holds `CONT-201`
+through `CONT-209` and `CONT-212` at partial rather than done.
+
+**The first task attached to filling the verifier role is therefore concrete:** open a charter PDF, open the
+page beside it, and confirm four things — the service is real, the office is right, the document linked is the
+one it came from, and the title is not something this project invented. That is a job for an afternoon and a
+browser, it needs no engineering background, and it closes nine tickets.
 
 ### What the vacancies are actually holding up, as of 2026-08-09
 
@@ -152,7 +163,7 @@ a role has an obvious first task attached to it.
 | The municipal hall's published landline | Ring it. Does it answer, and is it the hall?         | `config/lgu.config.json` → `contact.municipalHall.phone`, currently `published-unverified` |
 | The municipal hall's address            | Is the hall where the contact page says it is?       | `contact.municipalHall.address`                                                            |
 | Office hours, every office              | Photograph what is posted on the door, with the date | 21 office records, all currently a dated _not stated_                                      |
-| Which room each office occupies         | The office records say the hall and no more          | 21 office records                                                                          |
+| Which room each office occupies         | The office records say the hall and no more          | 21 office records — **and 99 service pages now repeating that same address**               |
 | Any emergency number                    | Whether it rings, and what hours it is staffed       | Nothing to check yet — none has been found                                                 |
 
 **Until that list is worked, nothing on it ships as though it had been checked.** Today that costs nothing,
@@ -164,11 +175,12 @@ The bilingual policy is explicit that machine output is a draft and never a publ
 copy is rewritten for meaning by a fluent speaker. **No Filipino in this repository has been reviewed by one.**
 What exists is a careful draft, and it is listed here rather than left to be assumed:
 
-| Filipino text                                              | State            |
-| ---------------------------------------------------------- | ---------------- |
-| `messages/fil.json` — the whole shell string set           | Unreviewed draft |
-| `content/emergency/**/*.fil.md` — all four emergency pages | Unreviewed draft |
-| `content/home/notice/*.fil.md` — both home pages           | Unreviewed draft |
+| Filipino text                                                 | State            |
+| ------------------------------------------------------------- | ---------------- |
+| `messages/fil.json` — the whole shell string set              | Unreviewed draft |
+| `content/emergency/**/*.fil.md` — all four emergency pages    | Unreviewed draft |
+| `content/home/notice/*.fil.md` — both home pages              | Unreviewed draft |
+| `content/services/**/*.fil.md` — the twenty priority services | Unreviewed draft |
 
 Service titles inside the Filipino pages are **deliberately left in English**, because they are the words on the
 form and at the counter. That is a translation decision, not an omission, and it is the same rule that keeps

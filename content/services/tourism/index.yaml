@@ -1,0 +1,86 @@
+# Tourism services — index-and-link only.
+#
+# Each entry names a service, says which office provides it, and links the
+# Citizen's Charter document that defines it. NO fee, requirement, processing
+# time or other charter figure is published here: republishing the charter
+# contents is a permission this project has not sought, and the index is the
+# part residents were actually missing.
+#
+# Titles, slugs, offices, groups and ambiguities are joined from
+# inventory/task-vocabulary.yaml by charterServiceId. Do not re-derive one.
+pages:
+  - name: Get or renew a permit for a tourism business
+    slug: get-or-renew-a-permit-for-a-tourism-business
+    description: Applying for or renewing the business permit for a tourism establishment.
+    office: Tourism Office
+    source:
+      label:
+        en: Municipality of Tago Citizen's Charter — Tourism Office
+      url: https://tago.gov.ph/wp-content/uploads/2024/12/Tourism-External-Services.pdf
+      documentTitle: Tourism Office
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+    charterServiceId: tourism-external-services#external-1
+    charterSection: external
+    charterDocument:
+      title: Tourism Office
+      file: Tourism-External-Services.pdf
+      sha256: 3615bba1857fbfda59ce474d0203d4ef89c9320bfa5a2888c49f88affd28599d
+    charterTitle: APPLICATION / RENEWAL OF BUSINESS PERMIT (TOURISM ESTABLISHMENT)
+    charterTitleSource: extracted
+    group: business-permit
+    ambiguity: null
+    verificationRecord: null
+    transcriptionNote: null
+  - name: Apply for DOT accreditation
+    slug: apply-for-dot-accreditation
+    description: The accreditation procedure for establishments seeking Department of Tourism accreditation.
+    office: Tourism Office
+    source:
+      label:
+        en: Municipality of Tago Citizen's Charter — Tourism Office
+      url: https://tago.gov.ph/wp-content/uploads/2024/12/Tourism-External-Services.pdf
+      documentTitle: Tourism Office
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+    charterServiceId: tourism-external-services#external-2
+    charterSection: external
+    charterDocument:
+      title: Tourism Office
+      file: Tourism-External-Services.pdf
+      sha256: 3615bba1857fbfda59ce474d0203d4ef89c9320bfa5a2888c49f88affd28599d
+    charterTitle: DOT ACCREDITATION PROCEDURES
+    charterTitleSource: extracted
+    group: null
+    ambiguity: null
+    verificationRecord: null
+    transcriptionNote: null
+  - name: Request tourism frontliner training
+    slug: request-tourism-frontliner-training
+    description: Requesting the tourism office’s training for frontliners.
+    office: Tourism Office
+    source:
+      label:
+        en: Municipality of Tago Citizen's Charter — Tourism Office
+      url: https://tago.gov.ph/wp-content/uploads/2024/12/Tourism-External-Services.pdf
+      documentTitle: Tourism Office
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+    charterServiceId: tourism-external-services#external-3
+    charterSection: external
+    charterDocument:
+      title: Tourism Office
+      file: Tourism-External-Services.pdf
+      sha256: 3615bba1857fbfda59ce474d0203d4ef89c9320bfa5a2888c49f88affd28599d
+    charterTitle: REQUEST FOR TOURISM FRONTLINERS TRAINING
+    charterTitleSource: extracted
+    group: null
+    ambiguity: null
+    verificationRecord: null
+    transcriptionNote: null

@@ -1,0 +1,217 @@
+# Permits and clearances from the executive division and the environment office — index-and-link only.
+#
+# Each entry names a service, says which office provides it, and links the
+# Citizen's Charter document that defines it. NO fee, requirement, processing
+# time or other charter figure is published here: republishing the charter
+# contents is a permission this project has not sought, and the index is the
+# part residents were actually missing.
+#
+# Titles, slugs, offices, groups and ambiguities are joined from
+# inventory/task-vocabulary.yaml by charterServiceId. Do not re-derive one.
+pages:
+  - name: Get a mayor’s certificate that a church exists
+    slug: get-a-mayors-certificate-that-a-church-exists
+    description: A mayor’s certificate attesting that a church exists.
+    office: Executive Division
+    source:
+      label:
+        en: Municipality of Tago Citizen's Charter — Executive Division External Services
+      url: https://tago.gov.ph/wp-content/uploads/2024/12/Executive-Division-External-Services.pdf
+      documentTitle: Executive Division External Services
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+    charterServiceId: executive-division-external-services#external-1
+    charterSection: external
+    charterDocument:
+      title: Executive Division External Services
+      file: Executive-Division-External-Services.pdf
+      sha256: d63e9c819eab59050efe25d31481ee79302787d9a3024834218d2cfe126c7178
+    charterTitle: Mayor’s Certificate for the Church Existence
+    charterTitleSource: extracted
+    group: null
+    ambiguity: null
+    verificationRecord: null
+    transcriptionNote: null
+  - name: Pay a mayor’s service fee
+    slug: pay-a-mayors-service-fee
+    description: Paying a service fee to the Office of the Mayor.
+    office: Executive Division
+    source:
+      label:
+        en: Municipality of Tago Citizen's Charter — Executive Division External Services
+      url: https://tago.gov.ph/wp-content/uploads/2024/12/Executive-Division-External-Services.pdf
+      documentTitle: Executive Division External Services
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+    charterServiceId: executive-division-external-services#external-2
+    charterSection: external
+    charterDocument:
+      title: Executive Division External Services
+      file: Executive-Division-External-Services.pdf
+      sha256: d63e9c819eab59050efe25d31481ee79302787d9a3024834218d2cfe126c7178
+    charterTitle: Service fee for the Office of the Mayor
+    charterTitleSource: extracted
+    group: null
+    ambiguity: null
+    verificationRecord: null
+    transcriptionNote: null
+  - name: Get a permit for a concert or public performance
+    slug: get-a-permit-for-a-concert-or-public-performance
+    description: The mayor’s special permit for a concert, stage performance or other amusement activity.
+    office: Executive Division
+    source:
+      label:
+        en: Municipality of Tago Citizen's Charter — Executive Division External Services
+      url: https://tago.gov.ph/wp-content/uploads/2024/12/Executive-Division-External-Services.pdf
+      documentTitle: Executive Division External Services
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+    charterServiceId: executive-division-external-services#external-3
+    charterSection: external
+    charterDocument:
+      title: Executive Division External Services
+      file: Executive-Division-External-Services.pdf
+      sha256: d63e9c819eab59050efe25d31481ee79302787d9a3024834218d2cfe126c7178
+    charterTitle: Mayor’s Special Permit for Concert, Stage Performances and Other Amusement Activities
+    charterTitleSource: extracted
+    group: null
+    ambiguity: null
+    verificationRecord: null
+    transcriptionNote: null
+  - name: Get a mayor’s permit for a business
+    slug: get-a-mayors-permit-for-a-business
+    description: The mayor’s permit on a business, issued by the executive division.
+    office: Executive Division
+    source:
+      label:
+        en: Municipality of Tago Citizen's Charter — Executive Division External Services
+      url: https://tago.gov.ph/wp-content/uploads/2024/12/Executive-Division-External-Services.pdf
+      documentTitle: Executive Division External Services
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+    charterServiceId: executive-division-external-services#external-4
+    charterSection: external
+    charterDocument:
+      title: Executive Division External Services
+      file: Executive-Division-External-Services.pdf
+      sha256: d63e9c819eab59050efe25d31481ee79302787d9a3024834218d2cfe126c7178
+    charterTitle: Mayor’s Permit on Business
+    charterTitleSource: extracted
+    group: null
+    ambiguity: null
+    verificationRecord: null
+    transcriptionNote: null
+  - name: Pay a mayor’s permit fee for a cockpit
+    slug: pay-a-mayors-permit-fee-for-a-cockpit
+    description: The mayor’s permit fee for cockpit owners, operators, licensees, promoters and personnel.
+    office: Executive Division
+    source:
+      label:
+        en: Municipality of Tago Citizen's Charter — Executive Division External Services
+      url: https://tago.gov.ph/wp-content/uploads/2024/12/Executive-Division-External-Services.pdf
+      documentTitle: Executive Division External Services
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+    charterServiceId: executive-division-external-services#external-5
+    charterSection: external
+    charterDocument:
+      title: Executive Division External Services
+      file: Executive-Division-External-Services.pdf
+      sha256: d63e9c819eab59050efe25d31481ee79302787d9a3024834218d2cfe126c7178
+    charterTitle: Mayor’s Permit Fee for Cockpits Owners/Operators/Licensees/Promoters and Cockpit Personnel
+    charterTitleSource: extracted
+    group: null
+    ambiguity: null
+    verificationRecord: null
+    transcriptionNote: null
+  - name: Get a special permit for a cockfight
+    slug: get-a-special-permit-for-a-cockfight
+    description: The mayor’s special permit for cockfighting.
+    office: Executive Division
+    source:
+      label:
+        en: Municipality of Tago Citizen's Charter — Executive Division External Services
+      url: https://tago.gov.ph/wp-content/uploads/2024/12/Executive-Division-External-Services.pdf
+      documentTitle: Executive Division External Services
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+    charterServiceId: executive-division-external-services#external-6
+    charterSection: external
+    charterDocument:
+      title: Executive Division External Services
+      file: Executive-Division-External-Services.pdf
+      sha256: d63e9c819eab59050efe25d31481ee79302787d9a3024834218d2cfe126c7178
+    charterTitle: Mayor’s Special Permit for Cockfighting
+    charterTitleSource: extracted
+    group: null
+    ambiguity: null
+    verificationRecord: null
+    transcriptionNote: null
+  - name: Get a special waste disposal permit
+    slug: get-a-special-waste-disposal-permit
+    description: A special waste disposal permit from the environment office.
+    office: Municipal Environment and Natural Resources Office
+    source:
+      label:
+        en: >-
+          Municipality of Tago Citizen's Charter — Municipal Environment and Natural Resources
+          Office
+      url: >-
+        https://tago.gov.ph/wp-content/uploads/2024/12/Office-of-the-Municipal-Environment-and-Natural-Resources-Designate-Services.pdf
+      documentTitle: Municipal Environment and Natural Resources Office
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+    charterServiceId: office-of-the-municipal-environment-and-natural-resources-designate-services#external-1
+    charterSection: external
+    charterDocument:
+      title: Municipal Environment and Natural Resources Office
+      file: Office-of-the-Municipal-Environment-and-Natural-Resources-Designate-Services.pdf
+      sha256: f7722cff1f2d6a0a7d133094eb3eb6f0623c52e81d619e1c8581945af0fe28c1
+    charterTitle: Special Waste Disposal Permit
+    charterTitleSource: extracted
+    group: null
+    ambiguity: null
+    verificationRecord: null
+    transcriptionNote: null
+  - name: Get a recommendation letter to cut a tree
+    slug: get-a-recommendation-letter-to-cut-a-tree
+    description: A recommendation letter from the environment office in support of a tree cutting request.
+    office: Municipal Environment and Natural Resources Office
+    source:
+      label:
+        en: >-
+          Municipality of Tago Citizen's Charter — Municipal Environment and Natural Resources
+          Office
+      url: >-
+        https://tago.gov.ph/wp-content/uploads/2024/12/Office-of-the-Municipal-Environment-and-Natural-Resources-Designate-Services.pdf
+      documentTitle: Municipal Environment and Natural Resources Office
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+    charterServiceId: office-of-the-municipal-environment-and-natural-resources-designate-services#external-2
+    charterSection: external
+    charterDocument:
+      title: Municipal Environment and Natural Resources Office
+      file: Office-of-the-Municipal-Environment-and-Natural-Resources-Designate-Services.pdf
+      sha256: f7722cff1f2d6a0a7d133094eb3eb6f0623c52e81d619e1c8581945af0fe28c1
+    charterTitle: Recommendation Letter for Tree Cutting Request
+    charterTitleSource: extracted
+    group: null
+    ambiguity: null
+    verificationRecord: null
+    transcriptionNote: null

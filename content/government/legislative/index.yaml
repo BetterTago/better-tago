@@ -1,0 +1,71 @@
+# Services of the Legislative branch — index-and-link only.
+#
+# Each entry names a service, says which office provides it, and links the
+# Citizen's Charter document that defines it. NO fee, requirement, processing
+# time or other charter figure is published here: republishing the charter
+# contents is a permission this project has not sought, and the index is the
+# part residents were actually missing.
+#
+# Titles, slugs, offices, groups and ambiguities are joined from
+# inventory/task-vocabulary.yaml by charterServiceId. Do not re-derive one.
+pages:
+  - name: Get an NGO or people’s organization accredited
+    slug: get-an-ngo-or-peoples-organization-accredited
+    description: >-
+      Accreditation of a non-governmental organisation or people’s organisation by the Sangguniang
+      Bayan.
+    office: Office of the Sangguniang Bayan
+    source:
+      label:
+        en: Municipality of Tago Citizen's Charter — Office of the Sangguniang Bayan Services
+      url: https://tago.gov.ph/wp-content/uploads/2024/12/Office-of-the-Sangguniang-Bayan-Services.pdf
+      documentTitle: Office of the Sangguniang Bayan Services
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+    charterServiceId: office-of-the-sangguniang-bayan-services#external-1
+    charterSection: external
+    charterDocument:
+      title: Office of the Sangguniang Bayan Services
+      file: Office-of-the-Sangguniang-Bayan-Services.pdf
+      sha256: 4a8f85552456cb33a5936ef3faf8bb2f9d9ea7f7f7c45c9f4ada9c73bac4950a
+    charterTitle: Accreditation of Non-Governmental Organizations (NGO’s) and People’s Organization (PO’s)
+    charterTitleSource: read-from-pdf
+    group: null
+    ambiguity: null
+    verificationRecord: null
+    transcriptionNote: >-
+      This document carries no numbered service headings at all. The service name was read from the
+      requirements block of the archived document.
+  - name: Submit a letter or invitation to the Vice Mayor
+    slug: submit-a-letter-or-invitation-to-the-vice-mayor
+    description: >-
+      How official documents, correspondence, notices, letters and invitations reach the Office of
+      the Vice Mayor.
+    office: Office of the Vice Mayor
+    source:
+      label:
+        en: Municipality of Tago Citizen's Charter — Office of the Vice Mayor
+      url: https://tago.gov.ph/wp-content/uploads/2024/12/Office-of-the-Vice-Mayor.pdf
+      documentTitle: Office of the Vice Mayor
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+    charterServiceId: office-of-the-vice-mayor#external-1
+    charterSection: external
+    charterDocument:
+      title: Office of the Vice Mayor
+      file: Office-of-the-Vice-Mayor.pdf
+      sha256: cc85450fc1cbc7d95937bcc8fa393735e27b3d4d799592e9bcbda7889a4fd81c
+    charterTitle: >-
+      Receiving of official documents, communications correspondences, notices, letters, invitations
+      from individuals, private organizations or other government agencies
+    charterTitleSource: read-from-pdf
+    group: null
+    ambiguity: null
+    verificationRecord: null
+    transcriptionNote: >-
+      This document carries no numbered service headings at all. The service name was read from the
+      client-steps column of the archived document.

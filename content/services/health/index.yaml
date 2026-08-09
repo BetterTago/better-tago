@@ -1,10 +1,13 @@
-# Service index — index-and-link only.
+# Health and nutrition services — index-and-link only.
 #
 # Each entry names a service, says which office provides it, and links the
 # Citizen's Charter document that defines it. NO fee, requirement, processing
-# time or other charter figure is published here: republishing the charter's
+# time or other charter figure is published here: republishing the charter
 # contents is a permission this project has not sought, and the index is the
 # part residents were actually missing.
+#
+# Titles, slugs, offices, groups and ambiguities are joined from
+# inventory/task-vocabulary.yaml by charterServiceId. Do not re-derive one.
 pages:
   - name: See a doctor for a consultation
     slug: see-a-doctor-for-a-consultation
@@ -19,6 +22,168 @@ pages:
       retrievedAt: '2026-08-09'
     verification: V3
     lastCheckedAt: '2026-08-09'
+    charterServiceId: municipal-health-office#external-1
+    charterSection: external
+    charterDocument:
+      title: Municipal Health Office
+      file: Municipal-Health-Office.pdf
+      sha256: f3715851b4db771acd215841846731bf4fc3b778610ef388f5cf0d0089c55ec4
+    charterTitle: General Consultation and Treatment Services
+    charterTitleSource: extracted
+    group: null
+    ambiguity: null
+    verificationRecord: null
+    transcriptionNote: null
+  - name: Get a certification of the cause of death
+    slug: get-a-certification-of-the-cause-of-death
+    description: The health office’s certification of a cause of death, in a medico-legal case.
+    office: Municipal Health Office
+    source:
+      label:
+        en: Municipality of Tago Citizen's Charter — Municipal Health Office
+      url: https://tago.gov.ph/wp-content/uploads/2024/12/Municipal-Health-Office.pdf
+      documentTitle: Municipal Health Office
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+    charterServiceId: municipal-health-office#external-2
+    charterSection: external
+    charterDocument:
+      title: Municipal Health Office
+      file: Municipal-Health-Office.pdf
+      sha256: f3715851b4db771acd215841846731bf4fc3b778610ef388f5cf0d0089c55ec4
+    charterTitle: Certification of the Cause of Death (Medico-Legal Cases)
+    charterTitleSource: extracted
+    group: null
+    ambiguity: null
+    verificationRecord: null
+    transcriptionNote: null
+  - name: Have a death certificate reviewed
+    slug: have-a-death-certificate-reviewed
+    description: Having the health office review a death certificate.
+    office: Municipal Health Office
+    source:
+      label:
+        en: Municipality of Tago Citizen's Charter — Municipal Health Office
+      url: https://tago.gov.ph/wp-content/uploads/2024/12/Municipal-Health-Office.pdf
+      documentTitle: Municipal Health Office
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+    charterServiceId: municipal-health-office#external-3
+    charterSection: external
+    charterDocument:
+      title: Municipal Health Office
+      file: Municipal-Health-Office.pdf
+      sha256: f3715851b4db771acd215841846731bf4fc3b778610ef388f5cf0d0089c55ec4
+    charterTitle: Review of Death Certificate
+    charterTitleSource: extracted
+    group: null
+    ambiguity: null
+    verificationRecord: null
+    transcriptionNote: null
+  - name: Get a dental check-up during pregnancy
+    slug: get-a-dental-check-up-during-pregnancy
+    description: The ante-partum dental check-up offered at the health office.
+    office: Municipal Health Office
+    source:
+      label:
+        en: Municipality of Tago Citizen's Charter — Municipal Health Office
+      url: https://tago.gov.ph/wp-content/uploads/2024/12/Municipal-Health-Office.pdf
+      documentTitle: Municipal Health Office
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+    charterServiceId: municipal-health-office#external-4
+    charterSection: external
+    charterDocument:
+      title: Municipal Health Office
+      file: Municipal-Health-Office.pdf
+      sha256: f3715851b4db771acd215841846731bf4fc3b778610ef388f5cf0d0089c55ec4
+    charterTitle: Ante-Partum Dental Check Up
+    charterTitleSource: extracted
+    group: null
+    ambiguity: null
+    verificationRecord: null
+    transcriptionNote: null
+  - name: Get a dental check-up or tooth extraction
+    slug: get-a-dental-check-up-or-tooth-extraction
+    description: Oral examination, dental consultation and tooth extraction at the health office.
+    office: Municipal Health Office
+    source:
+      label:
+        en: Municipality of Tago Citizen's Charter — Municipal Health Office
+      url: https://tago.gov.ph/wp-content/uploads/2024/12/Municipal-Health-Office.pdf
+      documentTitle: Municipal Health Office
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+    charterServiceId: municipal-health-office#external-5
+    charterSection: external
+    charterDocument:
+      title: Municipal Health Office
+      file: Municipal-Health-Office.pdf
+      sha256: f3715851b4db771acd215841846731bf4fc3b778610ef388f5cf0d0089c55ec4
+    charterTitle: Oral Examination/ Consultation & Tooth Extraction
+    charterTitleSource: extracted
+    group: null
+    ambiguity: null
+    verificationRecord: null
+    transcriptionNote: null
+  - name: Get family planning advice
+    slug: get-family-planning-advice
+    description: Family planning services and counselling at the health office.
+    office: Municipal Health Office
+    source:
+      label:
+        en: Municipality of Tago Citizen's Charter — Municipal Health Office
+      url: https://tago.gov.ph/wp-content/uploads/2024/12/Municipal-Health-Office.pdf
+      documentTitle: Municipal Health Office
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+    charterServiceId: municipal-health-office#external-6
+    charterSection: external
+    charterDocument:
+      title: Municipal Health Office
+      file: Municipal-Health-Office.pdf
+      sha256: f3715851b4db771acd215841846731bf4fc3b778610ef388f5cf0d0089c55ec4
+    charterTitle: Family Planning and Counseling
+    charterTitleSource: extracted
+    group: null
+    ambiguity: null
+    verificationRecord: null
+    transcriptionNote: null
+  - name: Get an HIV test
+    slug: get-an-hiv-test
+    description: HIV testing services at the health office.
+    office: Municipal Health Office
+    source:
+      label:
+        en: Municipality of Tago Citizen's Charter — Municipal Health Office
+      url: https://tago.gov.ph/wp-content/uploads/2024/12/Municipal-Health-Office.pdf
+      documentTitle: Municipal Health Office
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+    charterServiceId: municipal-health-office#external-7
+    charterSection: external
+    charterDocument:
+      title: Municipal Health Office
+      file: Municipal-Health-Office.pdf
+      sha256: f3715851b4db771acd215841846731bf4fc3b778610ef388f5cf0d0089c55ec4
+    charterTitle: HIV Testing Services
+    charterTitleSource: extracted
+    group: null
+    ambiguity: null
+    verificationRecord: null
+    transcriptionNote: null
   - name: Get a child immunized
     slug: get-a-child-immunized
     description: Childhood immunisation at the municipal health office.
@@ -32,6 +197,45 @@ pages:
       retrievedAt: '2026-08-09'
     verification: V3
     lastCheckedAt: '2026-08-09'
+    charterServiceId: municipal-health-office#external-8
+    charterSection: external
+    charterDocument:
+      title: Municipal Health Office
+      file: Municipal-Health-Office.pdf
+      sha256: f3715851b4db771acd215841846731bf4fc3b778610ef388f5cf0d0089c55ec4
+    charterTitle: Immunization for Children
+    charterTitleSource: extracted
+    group: null
+    ambiguity: null
+    verificationRecord: null
+    transcriptionNote: null
+  - name: Get a laboratory test
+    slug: get-a-laboratory-test
+    description: Tests run by the health office’s clinical laboratory.
+    office: Municipal Health Office
+    source:
+      label:
+        en: Municipality of Tago Citizen's Charter — Municipal Health Office
+      url: https://tago.gov.ph/wp-content/uploads/2024/12/Municipal-Health-Office.pdf
+      documentTitle: Municipal Health Office
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+    charterServiceId: municipal-health-office#external-9
+    charterSection: external
+    charterDocument:
+      title: Municipal Health Office
+      file: Municipal-Health-Office.pdf
+      sha256: f3715851b4db771acd215841846731bf4fc3b778610ef388f5cf0d0089c55ec4
+    charterTitle: Municipality Health Office Clinical Laboratory
+    charterTitleSource: extracted
+    group: null
+    ambiguity: null
+    verificationRecord: null
+    transcriptionNote: >-
+      The office is written “Municipality Health Office” on this entry and “Municipal Health Office”
+      on the rest of the document.
   - name: Get a medical certificate
     slug: get-a-medical-certificate
     description: A medical certificate issued by the municipal health office.
@@ -45,3 +249,342 @@ pages:
       retrievedAt: '2026-08-09'
     verification: V3
     lastCheckedAt: '2026-08-09'
+    charterServiceId: municipal-health-office#external-10
+    charterSection: external
+    charterDocument:
+      title: Municipal Health Office
+      file: Municipal-Health-Office.pdf
+      sha256: f3715851b4db771acd215841846731bf4fc3b778610ef388f5cf0d0089c55ec4
+    charterTitle: Issuance of Medical Certificate
+    charterTitleSource: extracted
+    group: medical-certificate
+    ambiguity: null
+    verificationRecord: null
+    transcriptionNote: null
+  - name: Get a medico-legal medical certificate
+    slug: get-a-medico-legal-medical-certificate
+    description: >-
+      A medical certificate issued for a medico-legal case, which the charter treats as its own
+      service.
+    office: Municipal Health Office
+    source:
+      label:
+        en: Municipality of Tago Citizen's Charter — Municipal Health Office
+      url: https://tago.gov.ph/wp-content/uploads/2024/12/Municipal-Health-Office.pdf
+      documentTitle: Municipal Health Office
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+    charterServiceId: municipal-health-office#external-11
+    charterSection: external
+    charterDocument:
+      title: Municipal Health Office
+      file: Municipal-Health-Office.pdf
+      sha256: f3715851b4db771acd215841846731bf4fc3b778610ef388f5cf0d0089c55ec4
+    charterTitle: Issuance of Medical Certificate (Medico-Legal Cases)
+    charterTitleSource: extracted
+    group: medical-certificate
+    ambiguity: null
+    verificationRecord: null
+    transcriptionNote: null
+  - name: Get free medicine
+    slug: get-free-medicine
+    description: Obtaining medication stocked by the health office.
+    office: Municipal Health Office
+    source:
+      label:
+        en: Municipality of Tago Citizen's Charter — Municipal Health Office
+      url: https://tago.gov.ph/wp-content/uploads/2024/12/Municipal-Health-Office.pdf
+      documentTitle: Municipal Health Office
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+    charterServiceId: municipal-health-office#external-12
+    charterSection: external
+    charterDocument:
+      title: Municipal Health Office
+      file: Municipal-Health-Office.pdf
+      sha256: f3715851b4db771acd215841846731bf4fc3b778610ef388f5cf0d0089c55ec4
+    charterTitle: Availing of Medication
+    charterTitleSource: extracted
+    group: null
+    ambiguity: null
+    verificationRecord: null
+    transcriptionNote: null
+  - name: Attend pre-marriage counseling
+    slug: attend-pre-marriage-counseling
+    description: The pre-marriage counselling session run by the health office.
+    office: Municipal Health Office
+    source:
+      label:
+        en: Municipality of Tago Citizen's Charter — Municipal Health Office
+      url: https://tago.gov.ph/wp-content/uploads/2024/12/Municipal-Health-Office.pdf
+      documentTitle: Municipal Health Office
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+    charterServiceId: municipal-health-office#external-13
+    charterSection: external
+    charterDocument:
+      title: Municipal Health Office
+      file: Municipal-Health-Office.pdf
+      sha256: f3715851b4db771acd215841846731bf4fc3b778610ef388f5cf0d0089c55ec4
+    charterTitle: Pre-Marriage Counseling
+    charterTitleSource: extracted
+    group: null
+    ambiguity: null
+    verificationRecord: null
+    transcriptionNote: null
+  - name: Get prenatal check-ups
+    slug: get-prenatal-check-ups
+    description: Prenatal care at the health office.
+    office: Municipal Health Office
+    source:
+      label:
+        en: Municipality of Tago Citizen's Charter — Municipal Health Office
+      url: https://tago.gov.ph/wp-content/uploads/2024/12/Municipal-Health-Office.pdf
+      documentTitle: Municipal Health Office
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+    charterServiceId: municipal-health-office#external-14
+    charterSection: external
+    charterDocument:
+      title: Municipal Health Office
+      file: Municipal-Health-Office.pdf
+      sha256: f3715851b4db771acd215841846731bf4fc3b778610ef388f5cf0d0089c55ec4
+    charterTitle: Prenatal Care
+    charterTitleSource: extracted
+    group: null
+    ambiguity: null
+    verificationRecord: null
+    transcriptionNote: null
+  - name: Get a health certificate
+    slug: get-a-health-certificate
+    description: Obtaining a health certificate from the health office.
+    office: Municipal Health Office
+    source:
+      label:
+        en: Municipality of Tago Citizen's Charter — Municipal Health Office
+      url: https://tago.gov.ph/wp-content/uploads/2024/12/Municipal-Health-Office.pdf
+      documentTitle: Municipal Health Office
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+    charterServiceId: municipal-health-office#external-15
+    charterSection: external
+    charterDocument:
+      title: Municipal Health Office
+      file: Municipal-Health-Office.pdf
+      sha256: f3715851b4db771acd215841846731bf4fc3b778610ef388f5cf0d0089c55ec4
+    charterTitle: Issuance of Health Certificate
+    charterTitleSource: extracted
+    group: null
+    ambiguity: null
+    verificationRecord: null
+    transcriptionNote: null
+  - name: Get a sanitary permit
+    slug: get-a-sanitary-permit
+    description: Obtaining a sanitary permit from the health office.
+    office: Municipal Health Office
+    source:
+      label:
+        en: Municipality of Tago Citizen's Charter — Municipal Health Office
+      url: https://tago.gov.ph/wp-content/uploads/2024/12/Municipal-Health-Office.pdf
+      documentTitle: Municipal Health Office
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+    charterServiceId: municipal-health-office#external-16
+    charterSection: external
+    charterDocument:
+      title: Municipal Health Office
+      file: Municipal-Health-Office.pdf
+      sha256: f3715851b4db771acd215841846731bf4fc3b778610ef388f5cf0d0089c55ec4
+    charterTitle: Issuance of Sanitary Permit
+    charterTitleSource: extracted
+    group: null
+    ambiguity: null
+    verificationRecord: null
+    transcriptionNote: null
+  - name: Get an exhumation permit
+    slug: get-an-exhumation-permit
+    description: The exhumation permit issued by the health office.
+    office: Municipal Health Office
+    source:
+      label:
+        en: Municipality of Tago Citizen's Charter — Municipal Health Office
+      url: https://tago.gov.ph/wp-content/uploads/2024/12/Municipal-Health-Office.pdf
+      documentTitle: Municipal Health Office
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+    charterServiceId: municipal-health-office#external-17
+    charterSection: external
+    charterDocument:
+      title: Municipal Health Office
+      file: Municipal-Health-Office.pdf
+      sha256: f3715851b4db771acd215841846731bf4fc3b778610ef388f5cf0d0089c55ec4
+    charterTitle: Issuance of Exhumation Permit
+    charterTitleSource: extracted
+    group: null
+    ambiguity: null
+    verificationRecord: null
+    transcriptionNote: null
+  - name: Get a permit to transfer remains
+    slug: get-a-permit-to-transfer-remains
+    description: The permit the health office issues for transferring a cadaver.
+    office: Municipal Health Office
+    source:
+      label:
+        en: Municipality of Tago Citizen's Charter — Municipal Health Office
+      url: https://tago.gov.ph/wp-content/uploads/2024/12/Municipal-Health-Office.pdf
+      documentTitle: Municipal Health Office
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+    charterServiceId: municipal-health-office#external-18
+    charterSection: external
+    charterDocument:
+      title: Municipal Health Office
+      file: Municipal-Health-Office.pdf
+      sha256: f3715851b4db771acd215841846731bf4fc3b778610ef388f5cf0d0089c55ec4
+    charterTitle: Issuance of Transfer Permit of Cadaver
+    charterTitleSource: extracted
+    group: null
+    ambiguity: null
+    verificationRecord: null
+    transcriptionNote: null
+  - name: Visit the social hygiene clinic
+    slug: visit-the-social-hygiene-clinic
+    description: The health office’s social hygiene clinic.
+    office: Municipal Health Office
+    source:
+      label:
+        en: Municipality of Tago Citizen's Charter — Municipal Health Office
+      url: https://tago.gov.ph/wp-content/uploads/2024/12/Municipal-Health-Office.pdf
+      documentTitle: Municipal Health Office
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+    charterServiceId: municipal-health-office#external-19
+    charterSection: external
+    charterDocument:
+      title: Municipal Health Office
+      file: Municipal-Health-Office.pdf
+      sha256: f3715851b4db771acd215841846731bf4fc3b778610ef388f5cf0d0089c55ec4
+    charterTitle: Social Hygiene Clinic
+    charterTitleSource: extracted
+    group: null
+    ambiguity: null
+    verificationRecord: null
+    transcriptionNote: null
+  - name: Get treatment for tuberculosis
+    slug: get-treatment-for-tuberculosis
+    description: Tuberculosis treatment services provided by the health office.
+    office: Municipal Health Office
+    source:
+      label:
+        en: Municipality of Tago Citizen's Charter — Municipal Health Office
+      url: https://tago.gov.ph/wp-content/uploads/2024/12/Municipal-Health-Office.pdf
+      documentTitle: Municipal Health Office
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+    charterServiceId: municipal-health-office#external-20
+    charterSection: external
+    charterDocument:
+      title: Municipal Health Office
+      file: Municipal-Health-Office.pdf
+      sha256: f3715851b4db771acd215841846731bf4fc3b778610ef388f5cf0d0089c55ec4
+    charterTitle: Treatment Services for Tuberculosis (TB) Patients
+    charterTitleSource: extracted
+    group: null
+    ambiguity: null
+    verificationRecord: null
+    transcriptionNote: null
+  - name: Get help to stop smoking
+    slug: get-help-to-stop-smoking
+    description: Smoking cessation counselling at the health office.
+    office: Municipal Health Office
+    source:
+      label:
+        en: Municipality of Tago Citizen's Charter — Municipal Health Office
+      url: https://tago.gov.ph/wp-content/uploads/2024/12/Municipal-Health-Office.pdf
+      documentTitle: Municipal Health Office
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+    charterServiceId: municipal-health-office#external-21
+    charterSection: external
+    charterDocument:
+      title: Municipal Health Office
+      file: Municipal-Health-Office.pdf
+      sha256: f3715851b4db771acd215841846731bf4fc3b778610ef388f5cf0d0089c55ec4
+    charterTitle: Smoking Cessation Counseling
+    charterTitleSource: extracted
+    group: null
+    ambiguity: null
+    verificationRecord: null
+    transcriptionNote: null
+  - name: Get a nutrition referral
+    slug: get-a-nutrition-referral
+    description: A patient referral issued by the municipal nutrition office.
+    office: Office of the Municipal Nutrition
+    source:
+      label:
+        en: Municipality of Tago Citizen's Charter — Office of the Municipal Nutrition
+      url: https://tago.gov.ph/wp-content/uploads/2024/12/Office-of-the-Municipal-Nutrition.pdf
+      documentTitle: Office of the Municipal Nutrition
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+    charterServiceId: office-of-the-municipal-nutrition#external-1
+    charterSection: external
+    charterDocument:
+      title: Office of the Municipal Nutrition
+      file: Office-of-the-Municipal-Nutrition.pdf
+      sha256: 0e0050a27c8998e55920f401e100abcf9f8199a32f65acd087ccd0aab83291a6
+    charterTitle: Issuance of Patient’s Referral
+    charterTitleSource: extracted
+    group: null
+    ambiguity: null
+    verificationRecord: null
+    transcriptionNote: null
+  - name: Get a nutrition pack or supplements
+    slug: get-a-nutrition-pack-or-supplements
+    description: Nutrition packs, micronutrient supplements, and the counselling that goes with them.
+    office: Office of the Municipal Nutrition
+    source:
+      label:
+        en: Municipality of Tago Citizen's Charter — Office of the Municipal Nutrition
+      url: https://tago.gov.ph/wp-content/uploads/2024/12/Office-of-the-Municipal-Nutrition.pdf
+      documentTitle: Office of the Municipal Nutrition
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+    charterServiceId: office-of-the-municipal-nutrition#external-2
+    charterSection: external
+    charterDocument:
+      title: Office of the Municipal Nutrition
+      file: Office-of-the-Municipal-Nutrition.pdf
+      sha256: 0e0050a27c8998e55920f401e100abcf9f8199a32f65acd087ccd0aab83291a6
+    charterTitle: Availment of Nutrition Pack and Micronutrient Supplement and advocacy/ counseling
+    charterTitleSource: extracted
+    group: null
+    ambiguity: null
+    verificationRecord: null
+    transcriptionNote: null

@@ -1,0 +1,123 @@
+# Engineering, building and land-use services — index-and-link only.
+#
+# Each entry names a service, says which office provides it, and links the
+# Citizen's Charter document that defines it. NO fee, requirement, processing
+# time or other charter figure is published here: republishing the charter
+# contents is a permission this project has not sought, and the index is the
+# part residents were actually missing.
+#
+# Titles, slugs, offices, groups and ambiguities are joined from
+# inventory/task-vocabulary.yaml by charterServiceId. Do not re-derive one.
+pages:
+  - name: Apply for a building permit
+    slug: apply-for-a-building-permit
+    description: Applying for a building permit and the ancillary or accessory permits that go with it.
+    office: Office of the Municipal Engineering
+    source:
+      label:
+        en: Municipality of Tago Citizen's Charter — Office of the Municipal Engineering Services
+      url: >-
+        https://tago.gov.ph/wp-content/uploads/2024/12/Office-of-the-Municipal-Engineering-Services.pdf
+      documentTitle: Office of the Municipal Engineering Services
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+    charterServiceId: office-of-the-municipal-engineering-services#external-1
+    charterSection: external
+    charterDocument:
+      title: Office of the Municipal Engineering Services
+      file: Office-of-the-Municipal-Engineering-Services.pdf
+      sha256: d2081a7cebb71ef530445bd9d25c8db955f9bf96be4d8cdc857b563743bd1bcd
+    charterTitle: >-
+      Processing of the Application for Building Permits and other Ancillary/Accessory Permits
+      pursuant to P.D. 1096, also known as the “National Building Code of the Philippines”
+    charterTitleSource: read-from-pdf
+    group: null
+    ambiguity: null
+    verificationRecord: null
+    transcriptionNote: >-
+      The published heading runs onto a second line; the extractor captured it as far as “National
+      Building Code of”. Completed from the archived document.
+  - name: Get a certificate of occupancy
+    slug: get-a-certificate-of-occupancy
+    description: Applying for the certificate of occupancy for a completed building.
+    office: Office of the Municipal Engineering
+    source:
+      label:
+        en: Municipality of Tago Citizen's Charter — Office of the Municipal Engineering Services
+      url: >-
+        https://tago.gov.ph/wp-content/uploads/2024/12/Office-of-the-Municipal-Engineering-Services.pdf
+      documentTitle: Office of the Municipal Engineering Services
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+    charterServiceId: office-of-the-municipal-engineering-services#external-2
+    charterSection: external
+    charterDocument:
+      title: Office of the Municipal Engineering Services
+      file: Office-of-the-Municipal-Engineering-Services.pdf
+      sha256: d2081a7cebb71ef530445bd9d25c8db955f9bf96be4d8cdc857b563743bd1bcd
+    charterTitle: >-
+      Processing of the Application for Certificate of Occupancy pursuant to P.D. 1096, also known
+      as the “National Building Code of the Philippines”.
+    charterTitleSource: read-from-pdf
+    group: null
+    ambiguity: null
+    verificationRecord: null
+    transcriptionNote: >-
+      The published heading runs onto a second line; the extractor captured it as far as “National
+      Building Code of the”. Completed from the archived document.
+  - name: Get a zoning certification
+    slug: get-a-zoning-certification
+    description: Obtaining a zoning certification from the planning and development office.
+    office: Office of the Municipal Planning and Development
+    source:
+      label:
+        en: Municipality of Tago Citizen's Charter — Office of the Municipal Planning and Development
+      url: >-
+        https://tago.gov.ph/wp-content/uploads/2024/12/Office-of-the-Municipal-Planning-and-Development.pdf
+      documentTitle: Office of the Municipal Planning and Development
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+    charterServiceId: office-of-the-municipal-planning-and-development#external-1
+    charterSection: external
+    charterDocument:
+      title: Office of the Municipal Planning and Development
+      file: Office-of-the-Municipal-Planning-and-Development.pdf
+      sha256: 4962c64ba552ccf96651025ff266a50b90fb130e049eb99b3bc98c70b175e034
+    charterTitle: Issuance of Zoning Certification
+    charterTitleSource: extracted
+    group: null
+    ambiguity: null
+    verificationRecord: null
+    transcriptionNote: null
+  - name: Get a locational clearance
+    slug: get-a-locational-clearance
+    description: Obtaining a locational clearance from the planning and development office.
+    office: Office of the Municipal Planning and Development
+    source:
+      label:
+        en: Municipality of Tago Citizen's Charter — Office of the Municipal Planning and Development
+      url: >-
+        https://tago.gov.ph/wp-content/uploads/2024/12/Office-of-the-Municipal-Planning-and-Development.pdf
+      documentTitle: Office of the Municipal Planning and Development
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+    charterServiceId: office-of-the-municipal-planning-and-development#external-2
+    charterSection: external
+    charterDocument:
+      title: Office of the Municipal Planning and Development
+      file: Office-of-the-Municipal-Planning-and-Development.pdf
+      sha256: 4962c64ba552ccf96651025ff266a50b90fb130e049eb99b3bc98c70b175e034
+    charterTitle: Issuance of Locational Clearance
+    charterTitleSource: extracted
+    group: null
+    ambiguity: null
+    verificationRecord: null
+    transcriptionNote: null

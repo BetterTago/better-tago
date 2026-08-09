@@ -1,0 +1,267 @@
+# Treasury and revenue services — property assessment, accounting and budget — index-and-link only.
+#
+# Each entry names a service, says which office provides it, and links the
+# Citizen's Charter document that defines it. NO fee, requirement, processing
+# time or other charter figure is published here: republishing the charter
+# contents is a permission this project has not sought, and the index is the
+# part residents were actually missing.
+#
+# Titles, slugs, offices, groups and ambiguities are joined from
+# inventory/task-vocabulary.yaml by charterServiceId. Do not re-derive one.
+#
+# ⚠️ The Office of the Municipal Treasurer is NOT in here, and that is the finding rather
+# than an omission: its charter document publishes ONE service and that service is
+# internal — government-to-government — so there is no real property tax page, no
+# community tax certificate and no schedule of fees and charges to index. The
+# revenue-side work a resident actually transacts is the assessor's. See inventory/README.md.
+pages:
+  - name: Get a certificate of no claim
+    slug: get-a-certificate-of-no-claim
+    description: Obtaining a certificate of no claim from the accounting office.
+    office: Municipal Accounting Office
+    source:
+      label:
+        en: Municipality of Tago Citizen's Charter — Municipal Accounting Office
+      url: https://tago.gov.ph/wp-content/uploads/2024/12/Municipal-Accounting-Office.pdf
+      documentTitle: Municipal Accounting Office
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+    charterServiceId: municipal-accounting-office#external-1
+    charterSection: external
+    charterDocument:
+      title: Municipal Accounting Office
+      file: Municipal-Accounting-Office.pdf
+      sha256: ede39d416f9a1227c7e4dd064b2b1b304fd5758dbfb439267ada8c3dfbb793f1
+    charterTitle: Issuance of Certificate of No Claim
+    charterTitleSource: extracted
+    group: null
+    ambiguity: null
+    verificationRecord: null
+    transcriptionNote: null
+  - name: Get a certified copy of a tax declaration
+    slug: get-a-certified-copy-of-a-tax-declaration
+    description: Obtaining a certified true copy of a tax declaration from the assessor.
+    office: Office of the Municipal Assessor
+    source:
+      label:
+        en: Municipality of Tago Citizen's Charter — Office of the Municipal Assessor Services
+      url: https://tago.gov.ph/wp-content/uploads/2024/12/Office-of-the-Municipal-Assessor-Services.pdf
+      documentTitle: Office of the Municipal Assessor Services
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+    charterServiceId: office-of-the-municipal-assessor-services#external-1
+    charterSection: external
+    charterDocument:
+      title: Office of the Municipal Assessor Services
+      file: Office-of-the-Municipal-Assessor-Services.pdf
+      sha256: f6f9319ae261547800da4b66c9e5ca3fc7dfe93e4451b9cd2243ac4c963c2db8
+    charterTitle: Processing of Issuance of Certified True Copy of Tax Declaration
+    charterTitleSource: extracted
+    group: null
+    ambiguity: null
+    verificationRecord: null
+    transcriptionNote: null
+  - name: Get an assessment certification
+    slug: get-an-assessment-certification
+    description: Obtaining an assessment certification from the assessor.
+    office: Office of the Municipal Assessor
+    source:
+      label:
+        en: Municipality of Tago Citizen's Charter — Office of the Municipal Assessor Services
+      url: https://tago.gov.ph/wp-content/uploads/2024/12/Office-of-the-Municipal-Assessor-Services.pdf
+      documentTitle: Office of the Municipal Assessor Services
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+    charterServiceId: office-of-the-municipal-assessor-services#external-2
+    charterSection: external
+    charterDocument:
+      title: Office of the Municipal Assessor Services
+      file: Office-of-the-Municipal-Assessor-Services.pdf
+      sha256: f6f9319ae261547800da4b66c9e5ca3fc7dfe93e4451b9cd2243ac4c963c2db8
+    charterTitle: Processing for the Issuance of Assessment Certifications
+    charterTitleSource: extracted
+    group: null
+    ambiguity: null
+    verificationRecord: null
+    transcriptionNote: null
+  - name: Transfer property ownership on a tax declaration
+    slug: transfer-property-ownership-on-a-tax-declaration
+    description: Recording a change of ownership of real property on its tax declaration.
+    office: Office of the Municipal Assessor
+    source:
+      label:
+        en: Municipality of Tago Citizen's Charter — Office of the Municipal Assessor Services
+      url: https://tago.gov.ph/wp-content/uploads/2024/12/Office-of-the-Municipal-Assessor-Services.pdf
+      documentTitle: Office of the Municipal Assessor Services
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+    charterServiceId: office-of-the-municipal-assessor-services#external-3
+    charterSection: external
+    charterDocument:
+      title: Office of the Municipal Assessor Services
+      file: Office-of-the-Municipal-Assessor-Services.pdf
+      sha256: f6f9319ae261547800da4b66c9e5ca3fc7dfe93e4451b9cd2243ac4c963c2db8
+    charterTitle: Processing for Transfer of Ownership of Real Property
+    charterTitleSource: extracted
+    group: null
+    ambiguity: null
+    verificationRecord: null
+    transcriptionNote: null
+  - name: Declare land for the first time
+    slug: declare-land-for-the-first-time
+    description: Declaring land for taxation for the first time, as a newly declared property.
+    office: Office of the Municipal Assessor
+    source:
+      label:
+        en: Municipality of Tago Citizen's Charter — Office of the Municipal Assessor Services
+      url: https://tago.gov.ph/wp-content/uploads/2024/12/Office-of-the-Municipal-Assessor-Services.pdf
+      documentTitle: Office of the Municipal Assessor Services
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+    charterServiceId: office-of-the-municipal-assessor-services#external-4
+    charterSection: external
+    charterDocument:
+      title: Office of the Municipal Assessor Services
+      file: Office-of-the-Municipal-Assessor-Services.pdf
+      sha256: f6f9319ae261547800da4b66c9e5ca3fc7dfe93e4451b9cd2243ac4c963c2db8
+    charterTitle: PROCESSING OF TAX DECLARATION FOR LAND DECLARED FOR THE 1ST TIME (DECLARED NEW PROPERTIES)
+    charterTitleSource: extracted
+    group: null
+    ambiguity: null
+    verificationRecord: null
+    transcriptionNote: null
+  - name: Reclassify land for taxation
+    slug: reclassify-land-for-taxation
+    description: Reclassifying land for taxation purposes on its tax declaration.
+    office: Office of the Municipal Assessor
+    source:
+      label:
+        en: Municipality of Tago Citizen's Charter — Office of the Municipal Assessor Services
+      url: https://tago.gov.ph/wp-content/uploads/2024/12/Office-of-the-Municipal-Assessor-Services.pdf
+      documentTitle: Office of the Municipal Assessor Services
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+    charterServiceId: office-of-the-municipal-assessor-services#external-5
+    charterSection: external
+    charterDocument:
+      title: Office of the Municipal Assessor Services
+      file: Office-of-the-Municipal-Assessor-Services.pdf
+      sha256: f6f9319ae261547800da4b66c9e5ca3fc7dfe93e4451b9cd2243ac4c963c2db8
+    charterTitle: PROCESSING OF TAX DECLARATION FOR RECLASSIFICATION OF LAND FOR TAXATION PURPOSES
+    charterTitleSource: extracted
+    group: null
+    ambiguity: null
+    verificationRecord: null
+    transcriptionNote: null
+  - name: Correct a tax declaration
+    slug: correct-a-tax-declaration
+    description: Revising or adjusting an existing tax declaration.
+    office: Office of the Municipal Assessor
+    source:
+      label:
+        en: Municipality of Tago Citizen's Charter — Office of the Municipal Assessor Services
+      url: https://tago.gov.ph/wp-content/uploads/2024/12/Office-of-the-Municipal-Assessor-Services.pdf
+      documentTitle: Office of the Municipal Assessor Services
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+    charterServiceId: office-of-the-municipal-assessor-services#external-6
+    charterSection: external
+    charterDocument:
+      title: Office of the Municipal Assessor Services
+      file: Office-of-the-Municipal-Assessor-Services.pdf
+      sha256: f6f9319ae261547800da4b66c9e5ca3fc7dfe93e4451b9cd2243ac4c963c2db8
+    charterTitle: PROCESSING FOR REVISION/ADJUSTMENT OF TAX DECLARATION
+    charterTitleSource: extracted
+    group: null
+    ambiguity: null
+    verificationRecord: null
+    transcriptionNote: null
+  - name: Declare a new building or machinery
+    slug: declare-a-new-building-or-machinery
+    description: Declaring a newly built structure or newly installed machinery for taxation.
+    office: Office of the Municipal Assessor
+    source:
+      label:
+        en: Municipality of Tago Citizen's Charter — Office of the Municipal Assessor Services
+      url: https://tago.gov.ph/wp-content/uploads/2024/12/Office-of-the-Municipal-Assessor-Services.pdf
+      documentTitle: Office of the Municipal Assessor Services
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+    charterServiceId: office-of-the-municipal-assessor-services#external-7
+    charterSection: external
+    charterDocument:
+      title: Office of the Municipal Assessor Services
+      file: Office-of-the-Municipal-Assessor-Services.pdf
+      sha256: f6f9319ae261547800da4b66c9e5ca3fc7dfe93e4451b9cd2243ac4c963c2db8
+    charterTitle: PROCESSING TAX DECLARATION FOR DECLARED NEW BUILDING AND MACHINERY
+    charterTitleSource: extracted
+    group: null
+    ambiguity: null
+    verificationRecord: null
+    transcriptionNote: null
+  - name: Cancel a tax declaration
+    slug: cancel-a-tax-declaration
+    description: Cancelling a tax declaration.
+    office: Office of the Municipal Assessor
+    source:
+      label:
+        en: Municipality of Tago Citizen's Charter — Office of the Municipal Assessor Services
+      url: https://tago.gov.ph/wp-content/uploads/2024/12/Office-of-the-Municipal-Assessor-Services.pdf
+      documentTitle: Office of the Municipal Assessor Services
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+    charterServiceId: office-of-the-municipal-assessor-services#external-8
+    charterSection: external
+    charterDocument:
+      title: Office of the Municipal Assessor Services
+      file: Office-of-the-Municipal-Assessor-Services.pdf
+      sha256: f6f9319ae261547800da4b66c9e5ca3fc7dfe93e4451b9cd2243ac4c963c2db8
+    charterTitle: PROCESSING FOR CANCELLATION OF TAX DECLARATION
+    charterTitleSource: extracted
+    group: null
+    ambiguity: null
+    verificationRecord: null
+    transcriptionNote: null
+  - name: Have a barangay budget reviewed
+    slug: have-a-barangay-budget-reviewed
+    description: Submitting a barangay annual or supplemental budget to the municipal budget office for review.
+    office: Office of the Municipal Budget
+    source:
+      label:
+        en: Municipality of Tago Citizen's Charter — Office of the Municipal Budget
+      url: https://tago.gov.ph/wp-content/uploads/2024/12/Office-of-the-Municipal-Budget.pdf
+      documentTitle: Office of the Municipal Budget
+      documentType: pdf
+      retrievedAt: '2026-08-09'
+    verification: V3
+    lastCheckedAt: '2026-08-09'
+    charterServiceId: office-of-the-municipal-budget#external-1
+    charterSection: external
+    charterDocument:
+      title: Office of the Municipal Budget
+      file: Office-of-the-Municipal-Budget.pdf
+      sha256: d301a6900a5c6af0cf7605e012a4ec3ff1ee5b386b9e4c93cb8143ad806bbfda
+    charterTitle: Review of Barangay Annual/Supplemental Budget
+    charterTitleSource: extracted
+    group: null
+    ambiguity: null
+    verificationRecord: null
+    transcriptionNote: null
