@@ -141,18 +141,40 @@ historical figure that reaches the page through a cited record in `content/`.
 - **Named tokens only.** `bg-primary-700`, `text-ink-secondary`, `gap-4`. **Hardcoded hex/rgb/hsl and arbitrary
   values (`bg-[#16643c]`, `text-[13px]`) fail the build** — `src/lib/guardrails.test.ts` scans for them. A
   colour with no token means the ramp is incomplete: extend `@theme`, don't inline a hex.
-- **Two token layers.** Raw ramps (`primary`, `accent`, `neutral`) live in `@theme` and never change with the
-  theme. Semantic **roles** (`--surface-page`, `--ink`, `--line`, `--focus`) are declared on `:root` and under
-  `@media (prefers-color-scheme: dark)`, then exposed through `@theme inline` so a utility resolves them **at
-  the element**. That is what lets `bg-surface-page text-ink` work with no `dark:` prefix anywhere.
+- **Three token layers.**
+  1. **Raw ramps** (`primary`, `accent`, `neutral`) live in `@theme` and never change with the theme.
+  2. **Semantic roles** (`--surface-page`, `--ink`, `--line-control`, `--focus-ring`) are declared on `:root`
+     and on `:root[data-theme='dark']`, then exposed through **`@theme inline`** so a utility resolves them
+     **at the element**. That is what lets `bg-surface-page text-ink` work with no `dark:` prefix anywhere.
+     ⚠️ **`inline` is load-bearing**: a plain `@theme` bakes the light value onto `:root` and the dark theme
+     silently does nothing — a failure that is invisible in light mode, which is the mode it gets reviewed in.
+  3. **Surface scopes** — `[data-surface='inverse']` (any ground that is dark in _both_ themes) and
+     `[data-surface='accent']` (the gold card) re-point the ink, line, focus and mark roles for everything
+     inside them. A component on a dark slab never asks which theme it is in.
 - **Semantic names, not literal ones.** `--color-primary-700`, not `--color-green-700`. The portal is
   re-pointable at another LGU by changing the ramp.
-- **The mark is the one exception, and it is deliberate.** `--color-mark-emblem-{light,mid,deep}` and
-  `--color-mark-sun` sit in `@theme` named for what they draw, outside the ramps and with no role layer. The
-  ramps are provisional and re-pointable; the mark is a fixed artefact, and settling the palette must not
-  silently repaint the logo. They are hex rather than oklch because they are exact delivered brand values.
-  **Don't fold them into the ramp, and don't add a fifth without a design sheet.** See
-  [`brand/logo/README.md`](../brand/logo/README.md).
+- **The palette is derived from BetterTago's OWN mark**, not from the municipality's identity, and the
+  distinction is the whole point: `primary-300/500/700` and `accent-400` reproduce the emblem's three greens
+  and its sun **exactly, unrounded**. `primary` carries a deliberate hue drift (~149° → 162.5°) because the
+  deep green is 16° bluer than the other two and no single-hue ramp can hold all three. Independence from
+  _municipal_ livery is unchanged and is stated in `portal.paletteNote`.
+- **There are two accent inks and the split is not cosmetic.** `--ink-accent` (accent-700) is **3.67:1** on
+  paper — display sizes ≥24px only. Body-size accent text must use `--ink-accent-strong`, which clears 4.5:1.
+- **Contrast is verified by computation, not by comment.** `src/lib/theme-tokens.test.ts` reads the ramps and
+  roles out of `globals.css`, resolves each role through `var()` the way a browser would, and computes every
+  ratio — floor **and** recorded value. Move a ramp and the build goes red naming the pair. It also asserts
+  every ramp is strictly monotonic in OKLab lightness.
+- **The mark is the one exception to the ramp rule, and it now has two levels.**
+  `--mark-delivered-{emblem-light,emblem-mid,emblem-deep,sun}` are the fixed artefact, in hex, never
+  overridden. `--mark-*` are **roles** that resolve to the artefact on the page and to white inside
+  `[data-surface='inverse']` — which is what lets one component render all three delivered variants instead of
+  shipping three SVGs. `--color-accent-400` and `--mark-delivered-sun` hold the _same value_ and remain _two
+  tokens_: a future change to the accent ramp must not reach the logo. **Don't fold them into the ramp, and
+  don't add a fifth without a design sheet.** See [`brand/logo/README.md`](../brand/logo/README.md).
+- 🔴 **The dark page ground's 16% lightness is a ceiling, not a preference.** The ground is green-tinted, so
+  _lightening_ it reduces the emblem deep green's contrast against it rather than improving it. Any future
+  lightening drops the mark further below 3:1 and needs either a lighter deep green or a documented exemption.
+  A test asserts the direction so it cannot be "brightened a little" by accident.
 - **The mark is inlined, never an `<img>`.** `src/components/ui/Logo.tsx` carries the geometry so its fills can
   come from those tokens. It takes a **required `idPrefix`** — its masks, clip path and `<use>` chain need
   document-unique ids and a Server Component cannot call `useId()`, so two instances sharing a prefix break the
@@ -175,6 +197,45 @@ historical figure that reaches the page through a cited record in `content/`.
   semantic roles, never a separate set of hardcoded colours.
 - `globals.css` declares `@source '../../node_modules/@bettergov/kapwa/dist'` so Tailwind scans Kapwa's
   compiled output. Removing that line silently drops Kapwa's styles from the build.
+
+### Theming — the attribute, the pre-paint script and the toggle
+
+- **`data-theme` on `<html>` is the switch**, bound through a custom variant declared **after** the
+  design-system import. `prefers-color-scheme` alone cannot express _"the OS says dark, the reader chose
+  light"_, which is why the attribute exists at all.
+- 🔴 **`<html>` carries both `data-theme="dark"` and `class="dark"`, always** — because Kapwa's two
+  stylesheets disagree. `dist/kapwa.css` binds its tokens to `.dark, [data-theme='dark']` and accepts either;
+  `dist/index.css`, where the component utilities live, declares `@custom-variant dark (&:is(.dark *))`, which
+  is **class only**. Writing one without the other leaves half the page in the wrong theme — exactly the half
+  that a screenshot of our own components never shows. ⚠️ Neither file is imported yet (`globals.css` only
+  `@source`s the dist for class names), so the class is inert today and becomes load-bearing the moment
+  `index.css` is. **Reading only `kapwa.css` and deleting the class is the mistake this rule guards against.**
+- **The resolved theme is written before first paint** by an inline script in the root layout, so no route
+  renders in the wrong theme for a frame. That script also corrects `<html lang>` from the first path segment,
+  because the root layout owns the document and is never re-rendered on a client-side locale switch.
+- 🔴 **That script is the one and only permitted `dangerouslySetInnerHTML` in the app**, and it is safe for
+  exactly one reason: it is a **static literal**. A unit test fails on the first interpolation, and a second
+  fails if its hardcoded locale list drifts from `routing.locales`. **Do not make it take a parameter.**
+- 🔴 **`src/lib/theme-init.ts` is the only module in `src/` that knows the attribute name or the storage key.**
+  `ThemeToggle` calls into it and never touches `document`; the layout only imports the script string. A
+  guardrail fails the build the moment a second file mentions either.
+- **The toggle renders both icons and both accessible names and lets CSS choose.** Reading the theme in an
+  effect paints the wrong icon and then flips it — the hydration mismatch the pre-paint script exists to
+  prevent. It announces the new state through a polite live region _outside_ the button (inside, the region
+  would become part of the button's own accessible name), and it keeps working when `localStorage` throws, as
+  it does in private-browsing modes.
+- 🔴 **No component carries a `dark:` colour utility.** Colour flips through the roles, at the element. A
+  guardrail scan fails on the first one, because a component that branches on the theme has bypassed the layer
+  the roles exist to be.
+- **`color-scheme` is set per theme**, so form controls and scrollbars follow the page. There is deliberately
+  no `<meta name="color-scheme">`: it would let the UA paint a dark canvas for a reader whose stored choice is
+  light.
+- **Known and accepted:** with JavaScript disabled the attribute is never written and the page renders
+  **light**, whatever the OS says. That is the cost of a switch a reader can actually operate — the page stays
+  fully readable either way, and a media-query fallback would reintroduce the split the `dark` class exists to
+  avoid.
+- **Both themes are a gate, not a preference.** Every route's `@a11y` check runs in both themes **and** both
+  locales.
 
 ## Accessibility — a gate, not a polish pass
 

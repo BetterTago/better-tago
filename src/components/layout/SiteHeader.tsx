@@ -2,6 +2,7 @@ import { getTranslations } from 'next-intl/server';
 import { Container } from '@/components/ui/Container';
 import { LocaleSwitcher } from '@/components/ui/LocaleSwitcher';
 import { Logo } from '@/components/ui/Logo';
+import { ThemeToggle } from '@/components/ui/ThemeToggle';
 import { Link } from '@/i18n/navigation';
 import type { Locale } from '@/i18n/routing';
 import { lguConfig } from '@/lib/lgu-config';
@@ -33,7 +34,13 @@ export async function SiteHeader({ locale }: { locale: Locale }) {
             <span className="text-ink uppercase">{wordmark.main}</span>
           </span>
         </Link>
-        <LocaleSwitcher current={locale} />
+        {/* A Server Component holding two client leaves. The header itself
+            stays server-rendered; only the two controls that need a browser
+            cross the boundary. */}
+        <div className="flex items-center gap-1">
+          <LocaleSwitcher current={locale} />
+          <ThemeToggle />
+        </div>
       </Container>
     </header>
   );

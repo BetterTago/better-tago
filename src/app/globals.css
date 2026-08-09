@@ -6,87 +6,141 @@
 @source '../../node_modules/@bettergov/kapwa/dist';
 
 /* ---------------------------------------------------------------------------
+   The dark theme is an ATTRIBUTE, not a media query.
+
+   Declared AFTER the imports above so it governs this project's utilities
+   rather than being overridden by them.
+
+   `prefers-color-scheme` cannot express "the operating system says dark, the
+   reader chose light", so a reader who wants the other theme has no way to ask
+   for it. `data-theme` on <html> is the switch, resolved before first paint by
+   the init script in src/lib/theme-init.ts.
+
+   The consequence, stated rather than discovered: with JavaScript disabled the
+   attribute is never written and the page renders LIGHT, whatever the operating
+   system says. That is the deliberate cost of a switch a reader can actually
+   operate — the page stays fully readable either way, and a media-query
+   fallback would reintroduce a split page, because the `dark` CLASS that
+   Kapwa's components need cannot be set from CSS at all.
+
+   ⚠️ On that class, precisely, because half the story invites its deletion:
+   Kapwa ships TWO stylesheets and they do not agree with each other.
+   `dist/kapwa.css` binds its tokens to `.dark, [data-theme='dark']` — either
+   works — but `dist/index.css`, where the component utilities live, declares
+   `@custom-variant dark (&:is(.dark *))`, which is CLASS ONLY. Anyone who
+   checks the first file, sees the attribute and concludes the class is
+   redundant breaks the second. Neither file is imported today (the `@source`
+   above only scans the dist for class names), so the class is currently inert —
+   and it becomes load-bearing the moment `index.css` is imported.
+
+   Almost nothing should need this variant: colour flips through the ROLES
+   below, at the element, so a `dark:` colour utility in a component means the
+   role layer was bypassed. `guardrails.test.ts` fails the build on one.
+--------------------------------------------------------------------------- */
+@custom-variant dark (&:where([data-theme='dark'], [data-theme='dark'] *));
+
+/* ---------------------------------------------------------------------------
    Layer 1 — raw ramps.
    These never change with the theme. Names are SEMANTIC (`primary`), not
-   literal (`teal`), so re-pointing the portal at another LGU is a change to the
-   values here and nowhere else.
+   literal (`green`), so re-pointing the portal at another LGU is a change to
+   the values here and nowhere else.
 
-   The palette is DELIBERATELY INDEPENDENT of the Municipality of Tago's own
-   visual identity: visual similarity to official material would imply an
-   endorsement this project does not have. It is also provisional — it is a
-   working palette, not a finished brand.
+   ## Where these values come from
+
+   The ramps are derived from BetterTago's OWN delivered mark — its three
+   emblem greens and its sun. `primary-300/500/700` and `accent-400` reproduce
+   those four colours EXACTLY, unrounded; the rest of each scale is built around
+   them.
+
+   That does not weaken the independence rule, and the distinction matters:
+   `portal.paletteNote` requires the palette to be independent of the
+   MUNICIPALITY'S visual identity, not of this portal's own logo. Deriving the
+   page from the mark is the opposite of borrowing municipal livery. The
+   measured comparison against the official site's CSS — which declares no
+   chromatic brand colour at all — is recorded in brand/logo/README.md.
+
+   ## The deliberate hue drift, which is not a defect
+
+   The mark's light and mid greens share a hue (~147°). The DEEP green does not:
+   it is 16° bluer and a third less chromatic — a sea green rather than a leaf
+   green. A single-hue ramp cannot contain all three. Forcing one either loses
+   the deep green or drags the other two toward it and muddies them.
+
+   So `primary` carries a hue drift: ~149° through the light steps, easing to
+   162.5° at 700 and holding there. That is the mark's own construction
+   reproduced as a scale, and it is why all three greens land on it exactly.
+
+   Lightness is strictly monotonic across every step of every ramp, so the
+   scales compose the way a scale is supposed to. `theme-tokens.test.ts` asserts
+   both facts, and every contrast pair below, by computation.
+
+   ## Why hex rather than oklch
+
+   These values are pinned to delivered brand colours and to a measured contrast
+   table. A round trip through another colour space is a change to them, however
+   small, and it would silently move the ratios the test asserts.
 --------------------------------------------------------------------------- */
 @theme {
-  --color-primary-50: oklch(97.5% 0.014 190);
-  --color-primary-100: oklch(94% 0.03 190);
-  --color-primary-200: oklch(88% 0.055 189);
-  --color-primary-300: oklch(80% 0.075 188);
-  --color-primary-400: oklch(70% 0.09 186);
-  --color-primary-500: oklch(60% 0.095 185);
-  --color-primary-600: oklch(52% 0.088 184);
-  --color-primary-700: oklch(45% 0.078 184);
-  --color-primary-800: oklch(38% 0.062 184);
-  --color-primary-900: oklch(30% 0.048 185);
-  --color-primary-950: oklch(21% 0.035 186);
+  --color-primary-50: #effaf0;
+  --color-primary-100: #dbf3de;
+  --color-primary-200: #b6e6bd;
+  --color-primary-300: #86d294; /* ◆ mark: emblem light */
+  --color-primary-400: #5bb66a;
+  --color-primary-500: #2e9b41; /* ◆ mark: emblem mid */
+  --color-primary-600: #157f47;
+  --color-primary-700: #1c6b4c; /* ◆ mark: emblem deep — the brand anchor */
+  --color-primary-800: #105038;
+  --color-primary-900: #063525;
+  --color-primary-950: #021d13;
 
-  --color-accent-50: oklch(97.5% 0.02 75);
-  --color-accent-100: oklch(94% 0.045 72);
-  --color-accent-200: oklch(89% 0.08 70);
-  --color-accent-300: oklch(82% 0.11 68);
-  --color-accent-400: oklch(75% 0.13 64);
-  --color-accent-500: oklch(68% 0.14 60);
-  --color-accent-600: oklch(60% 0.135 55);
-  --color-accent-700: oklch(50% 0.115 50);
-  --color-accent-800: oklch(41% 0.09 48);
-  --color-accent-900: oklch(33% 0.07 48);
+  --color-accent-50: #fcf7e2;
+  --color-accent-100: #f8edc4;
+  --color-accent-200: #f8e395;
+  --color-accent-300: #fcda5f;
+  --color-accent-400: #fcd116; /* ◆ mark: the sun */
+  --color-accent-500: #d9b115;
+  --color-accent-600: #ba9516;
+  --color-accent-700: #9e7b12;
+  --color-accent-800: #846515;
+  --color-accent-900: #604910;
+  --color-accent-950: #3b2b07;
 
-  --color-neutral-0: oklch(100% 0 0);
-  --color-neutral-50: oklch(98% 0.002 250);
-  --color-neutral-100: oklch(96% 0.004 250);
-  --color-neutral-200: oklch(92% 0.005 250);
-  --color-neutral-300: oklch(86% 0.006 250);
-  --color-neutral-400: oklch(70% 0.008 250);
-  --color-neutral-500: oklch(58% 0.009 250);
-  --color-neutral-600: oklch(48% 0.01 250);
-  --color-neutral-700: oklch(38% 0.01 250);
-  --color-neutral-800: oklch(28% 0.009 250);
-  --color-neutral-900: oklch(20% 0.008 250);
-  --color-neutral-950: oklch(14% 0.007 250);
+  /* Faintly green-tinted (chroma ≤ 0.016 at hue ~152°) over a green-tinted
+     paper. At that chroma the tint is not perceptible as colour; what it does
+     is stop the greys reading as cold against the greens. */
+  --color-neutral-50: #ffffff;
+  --color-neutral-75: #f8fbf9; /* the sunken step, between 50 and 100 */
+  --color-neutral-100: #f3f7f4; /* ← the light page ground, "paper" */
+  --color-neutral-200: #e6ebe7;
+  --color-neutral-300: #d5dbd6;
+  --color-neutral-400: #a6aba7;
+  --color-neutral-500: #878c88;
+  --color-neutral-600: #6c726d;
+  --color-neutral-700: #4b504c;
+  --color-neutral-800: #2b312c;
+  --color-neutral-900: #151b16;
+  --color-neutral-950: #060c07;
 
   /* -------------------------------------------------------------------------
-     The mark's own colours — see brand/logo/README.md.
+     The dark theme's grounds.
 
-     NOT part of the ramps above, and deliberately so. The ramps are provisional
-     and re-pointable; the mark is a fixed artefact. Its sun is the PHILIPPINE
-     FLAG yellow (#fcd116, the flag's official value) and its three greens are
-     the emblem's three regions. Settling the portal palette must not silently
-     repaint the logo, so the mark carries its own tokens and is the one place
-     `--color-*` is named for what it draws rather than what role it plays.
-
-     Hex rather than oklch here on purpose: these are exact delivered brand
-     values, and a round trip through another colour space is a change to them,
-     however small.
-
-     No dark-mode override, because the mark's worst case on the dark ground is
-     the deep green at 3.09:1 — still above the 3:1 floor for a graphic, so
-     there is nothing for a second set of values to fix.
-
-     On the LIGHT ground two of the four sit below that floor: the sun at 1.47:1
-     and the light green at 1.80:1. That is the mark as delivered and it is not
-     a defect to fix here — flag yellow on white is 1.47:1 by construction. It
-     is legible because the eight rays are read as a shape against the emblem's
-     hard circular edge, not against the page. WCAG exempts logotypes, the mark
-     is aria-hidden, and the text wordmark beside it carries the meaning.
-
-     No role indirection either: there is no inverse surface in this portal yet,
-     so there is nothing to flip these to. When one lands, they get promoted to
-     roles the way the sibling portal does it, and brand/logo/better-tago-white.svg
-     is the record of what that reversed variant looks like.
+     Off-ramp on purpose: they are greener and darker than any neutral step, and
+     the page ground's lightness is pinned by a measurement rather than chosen
+     (see "the night ground's lightness is set by the mark" below).
   ------------------------------------------------------------------------- */
-  --color-mark-emblem-light: #86d294;
-  --color-mark-emblem-mid: #2e9b41;
-  --color-mark-emblem-deep: #1c6b4c;
-  --color-mark-sun: #fcd116;
+  --color-surface-night: #02110a; /* L 16% — a CEILING, not a preference */
+  --color-surface-night-sunken: #091b13;
+  --color-surface-night-tint: #0b2015;
+  --color-surface-night-raised: #11241b;
+  --color-surface-night-band: #17553a;
+  /* The band's pressed state. Off-ramp for the same reason the band is: no
+     neutral or primary step sits ~6 points below #17553a in OKLab lightness,
+     and a hover has to be a nudge rather than a jump. */
+  --color-surface-night-band-hover: #114129;
+  --color-surface-night-deep: #0a3b28;
+
+  --color-line-night: #22392e;
+  --color-line-night-subtle: #16281f;
 
   --font-sans:
     ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
@@ -101,71 +155,226 @@
    resolves them AT THE ELEMENT. That is what lets `bg-surface-page text-ink`
    work with no `dark:` prefix anywhere in a component.
 
+   `inline` is load-bearing: a plain `@theme` bakes the light value onto :root
+   and the dark theme silently does nothing.
+
    Light mode is the design. Dark is derived from the same roles — never a
    second set of hardcoded colours.
 --------------------------------------------------------------------------- */
 :root {
-  --surface-page: var(--color-neutral-0);
+  color-scheme: light;
+
+  --surface-page: var(--color-neutral-100);
   --surface-raised: var(--color-neutral-50);
-  --surface-inset: var(--color-neutral-100);
-  --surface-brand: var(--color-primary-800);
-  --surface-notice: var(--color-accent-50);
+  --surface-sunken: var(--color-neutral-75);
+  --surface-tint: var(--color-primary-50);
+  --surface-band: var(--color-primary-700);
+  /* One step down the ramp, ~9 OKLab points. `--surface-inverse-deep` is 18
+     points down and reads as pressed rather than hovered — a hover is feedback,
+     not a state change. `theme-tokens.test.ts` asserts the direction. */
+  --surface-band-hover: var(--color-primary-800);
+  --surface-inverse: var(--color-surface-night-deep);
+  --surface-inverse-deep: var(--color-primary-900);
 
   --ink: var(--color-neutral-900);
-  --ink-secondary: var(--color-neutral-600);
-  --ink-inverse: var(--color-neutral-0);
+  --ink-secondary: var(--color-neutral-700);
+  --ink-tertiary: var(--color-neutral-600);
   --ink-link: var(--color-primary-700);
   --ink-link-hover: var(--color-primary-800);
+  /* Two accent inks, and the split is not cosmetic. accent-700 is 3.67:1 on
+     paper — display sizes (≥24px) only. Body-size accent text must use
+     `-strong`, which clears 4.5:1. Reaching for the wrong one is the exact
+     mistake the re-point surfaced in the holding page's eyebrow. */
+  --ink-accent: var(--color-accent-700);
+  --ink-accent-strong: var(--color-accent-800);
+  --ink-on-accent: var(--color-primary-950);
+  --ink-on-band: var(--color-neutral-50);
+  --ink-on-band-muted: var(--color-primary-100);
 
-  --line: var(--color-neutral-200);
-  --line-strong: var(--color-neutral-300);
-  --focus: var(--color-primary-600);
+  --line: var(--color-neutral-300);
+  --line-subtle: var(--color-neutral-200);
+  --line-control: var(--color-neutral-500);
+
+  --focus-ring: var(--color-primary-800);
 }
 
-@media (prefers-color-scheme: dark) {
-  :root {
-    --surface-page: var(--color-neutral-950);
-    --surface-raised: var(--color-neutral-900);
-    --surface-inset: var(--color-neutral-800);
-    --surface-brand: var(--color-primary-900);
-    --surface-notice: var(--color-accent-900);
+:root[data-theme='dark'] {
+  color-scheme: dark;
 
-    --ink: var(--color-neutral-100);
-    --ink-secondary: var(--color-neutral-400);
-    --ink-inverse: var(--color-neutral-950);
-    --ink-link: var(--color-primary-300);
-    --ink-link-hover: var(--color-primary-200);
+  --surface-page: var(--color-surface-night);
+  --surface-raised: var(--color-surface-night-raised);
+  --surface-sunken: var(--color-surface-night-sunken);
+  --surface-tint: var(--color-surface-night-tint);
+  --surface-band: var(--color-surface-night-band);
+  --surface-band-hover: var(--color-surface-night-band-hover);
+  --surface-inverse: var(--color-surface-night-band);
+  --surface-inverse-deep: var(--color-primary-950);
 
-    --line: var(--color-neutral-800);
-    --line-strong: var(--color-neutral-700);
-    --focus: var(--color-primary-400);
-  }
+  --ink: var(--color-neutral-100);
+  --ink-secondary: var(--color-neutral-400);
+  --ink-tertiary: var(--color-neutral-400);
+  --ink-link: var(--color-primary-300);
+  --ink-link-hover: var(--color-accent-400);
+  --ink-accent: var(--color-accent-400);
+  --ink-accent-strong: var(--color-accent-400);
+  --ink-on-accent: var(--color-primary-950);
+  --ink-on-band: var(--color-neutral-50);
+  --ink-on-band-muted: var(--color-primary-100);
+
+  --line: var(--color-line-night);
+  --line-subtle: var(--color-line-night-subtle);
+  --line-control: var(--color-neutral-600);
+
+  --focus-ring: var(--color-primary-300);
+}
+
+/* ---------------------------------------------------------------------------
+   Layer 3 — surface scopes.
+
+   A scope is a ground that does NOT follow the page theme, and it re-points the
+   ink, line and mark roles for everything inside it. That is what removes the
+   colour literals a dark slab on a light page would otherwise need, and it is
+   why a component never asks which theme it is in.
+--------------------------------------------------------------------------- */
+
+/* Any ground that is dark in BOTH themes — the emergency slab, the contact
+   slab, the footer. The mark flattens to a single white silhouette here. */
+[data-surface='inverse'] {
+  --ink: var(--color-neutral-50);
+  --ink-secondary: var(--color-primary-100);
+  --ink-tertiary: var(--color-primary-200);
+  --ink-link: var(--color-accent-400);
+  --ink-link-hover: var(--color-accent-300);
+  --ink-accent: var(--color-accent-400);
+  --ink-accent-strong: var(--color-accent-400);
+
+  /* Alpha, so the rule reads as an edge of the ground rather than a second
+     colour laid over it. Decorative — `--line-control`, which a reader has to
+     be able to SEE to operate a control, stays opaque and is measured. */
+  --line: rgb(255 255 255 / 18%);
+  --line-subtle: rgb(255 255 255 / 10%);
+  --line-control: var(--color-neutral-400);
+
+  --focus-ring: var(--color-neutral-50);
+
+  --mark-emblem-light: var(--color-neutral-50);
+  --mark-emblem-mid: var(--color-neutral-50);
+  --mark-emblem-deep: var(--color-neutral-50);
+  --mark-sun: var(--color-neutral-50);
+}
+
+/* The gold featured card. Hover goes DARKER than the link, because a hover that
+   lands on the colour the text already wears is no feedback at all. */
+[data-surface='accent'] {
+  /* Through `--ink-on-accent`, not by restating its value. The role already
+     means "ink that goes on the accent ground"; a scope that hardcodes the same
+     step instead is a second place to change and a second place to forget. */
+  --ink: var(--ink-on-accent);
+  --ink-secondary: var(--color-primary-900);
+  --ink-tertiary: var(--color-primary-900);
+  --ink-link: var(--ink-on-accent);
+  --ink-link-hover: var(--color-neutral-950);
+  --ink-accent: var(--ink-on-accent);
+  --ink-accent-strong: var(--ink-on-accent);
+
+  --line: var(--color-primary-800);
+  --line-subtle: var(--color-primary-700);
+  --line-control: var(--color-primary-900);
+
+  --focus-ring: var(--ink-on-accent);
+}
+
+/* ---------------------------------------------------------------------------
+   The mark's own colours — see brand/logo/README.md.
+
+   NOT part of the ramps, and deliberately so. `--color-accent-400` and
+   `--mark-delivered-sun` now hold the SAME value, #fcd116, and they remain two
+   tokens: a future change to the accent ramp must not reach the logo, and the
+   only thing keeping that true is the separation. The ramps are re-pointable;
+   the mark is a fixed delivered artefact.
+
+   Two levels, because the mark has to survive an inverse surface:
+
+     --mark-delivered-*  the artefact. Never overridden, anywhere.
+     --mark-*            the ROLE. Resolves to the artefact on the page, and to
+                         white inside [data-surface='inverse'].
+
+   That indirection is what lets ONE component render all three delivered
+   variants — colour, colour-on-dark, and the reversed all-white mark — instead
+   of shipping three SVGs. brand/logo/better-tago-white.svg is the record of
+   what the reversed variant must look like.
+
+   ## Legibility, measured against the two page grounds
+
+   On the DARK ground the emblem's deep green is the mark's worst case at
+   2.996:1 — and because the ground is itself green-tinted, LIGHTENING it
+   reduces that ratio rather than improving it (17% → 2.94, 18.5% → 2.87).
+   16% is therefore a ceiling, not a preference: any future lightening of the
+   dark page ground drops the mark further below 3:1 and needs either a lighter
+   deep green or an accepted, documented exemption.
+
+   On the LIGHT ground two of the four sit below 3:1 — the sun at 1.36:1 and the
+   light green at 1.67:1. That is the mark as delivered and it is NOT a defect
+   to fix in the palette: flag yellow on a near-white page is ~1.4:1 by
+   construction. It is legible because the eight rays read as a shape against
+   the emblem's hard circular edge, not against the page.
+
+   All three are RECORDED, not outstanding: WCAG exempts logotypes, the mark
+   ships aria-hidden, and the text wordmark beside it carries the meaning.
+--------------------------------------------------------------------------- */
+:root {
+  --mark-delivered-emblem-light: #86d294;
+  --mark-delivered-emblem-mid: #2e9b41;
+  --mark-delivered-emblem-deep: #1c6b4c;
+  --mark-delivered-sun: #fcd116;
+
+  --mark-emblem-light: var(--mark-delivered-emblem-light);
+  --mark-emblem-mid: var(--mark-delivered-emblem-mid);
+  --mark-emblem-deep: var(--mark-delivered-emblem-deep);
+  --mark-sun: var(--mark-delivered-sun);
 }
 
 @theme inline {
   --color-surface-page: var(--surface-page);
   --color-surface-raised: var(--surface-raised);
-  --color-surface-inset: var(--surface-inset);
-  --color-surface-brand: var(--surface-brand);
-  --color-surface-notice: var(--surface-notice);
+  --color-surface-sunken: var(--surface-sunken);
+  --color-surface-tint: var(--surface-tint);
+  --color-surface-band: var(--surface-band);
+  --color-surface-band-hover: var(--surface-band-hover);
+  --color-surface-inverse: var(--surface-inverse);
+  --color-surface-inverse-deep: var(--surface-inverse-deep);
 
   --color-ink: var(--ink);
   --color-ink-secondary: var(--ink-secondary);
-  --color-ink-inverse: var(--ink-inverse);
+  --color-ink-tertiary: var(--ink-tertiary);
   --color-ink-link: var(--ink-link);
   --color-ink-link-hover: var(--ink-link-hover);
+  --color-ink-accent: var(--ink-accent);
+  --color-ink-accent-strong: var(--ink-accent-strong);
+  --color-ink-on-accent: var(--ink-on-accent);
+  --color-ink-on-band: var(--ink-on-band);
+  --color-ink-on-band-muted: var(--ink-on-band-muted);
 
   --color-line: var(--line);
-  --color-line-strong: var(--line-strong);
-  --color-focus: var(--focus);
+  --color-line-subtle: var(--line-subtle);
+  --color-line-control: var(--line-control);
+
+  --color-focus-ring: var(--focus-ring);
+
+  --color-mark-emblem-light: var(--mark-emblem-light);
+  --color-mark-emblem-mid: var(--mark-emblem-mid);
+  --color-mark-emblem-deep: var(--mark-emblem-deep);
+  --color-mark-sun: var(--mark-sun);
 }
 
 /* --------------------------------------------------------------------------- */
 
 @layer base {
-  /* One visible focus ring for everything, so no component has to remember. */
+  /* One visible focus ring for everything, so no component has to remember.
+     Every surface scope above re-points `--focus-ring`, so it stays visible on
+     a dark slab and on the gold card without a single component opting out. */
   :focus-visible {
-    outline: 2px solid var(--focus);
+    outline: 2px solid var(--focus-ring);
     outline-offset: 2px;
   }
 
@@ -178,6 +387,38 @@
       transition-duration: 0.01ms !important;
       scroll-behavior: auto !important;
     }
+  }
+}
+
+@layer components {
+  /*
+   * The theme toggle renders BOTH icons and BOTH accessible names, and lets CSS
+   * choose between them. Reading the theme in an effect instead would paint the
+   * wrong icon and then flip it — the hydration mismatch the pre-paint init
+   * script exists to prevent.
+   *
+   * Only the wrong one is hidden; the right one keeps its natural `display`, so
+   * this works for an inline <span> and a block <svg> alike with no second rule.
+   * `display: none` also removes the hidden name from the accessibility tree,
+   * which is what keeps the button's accessible name singular.
+   *
+   * ⚠️ **Never put a `display` utility on an element carrying one of these.**
+   * `@layer utilities` outranks `@layer components`, so `block`, `flex`, or
+   * `hidden` on the same element beats the rule below — both icons appear and
+   * the button acquires two accessible names at once. `sr-only` and `size-*`
+   * are safe: neither sets `display`. `theme.spec.ts` counts the accessible
+   * names, so this fails loudly rather than quietly, but it fails in a test
+   * whose connection to the utility that broke it is not obvious.
+   *
+   * With no JavaScript there is no `data-theme` at all, so the light-theme
+   * pieces show — which matches the page the reader is actually looking at.
+   */
+  :root:not([data-theme='dark']) .theme-only-dark {
+    display: none;
+  }
+
+  :root[data-theme='dark'] .theme-only-light {
+    display: none;
   }
 }
 

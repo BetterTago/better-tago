@@ -39,7 +39,7 @@ export function LocaleSwitcher({ current }: { current: Locale }) {
                 className={cn(
                   'inline-flex min-h-11 min-w-11 items-center justify-center rounded-md px-3 text-sm font-semibold',
                   active
-                    ? 'bg-surface-inset text-ink'
+                    ? 'bg-surface-sunken text-ink'
                     : 'text-ink-secondary hover:text-ink-link'
                 )}
               >

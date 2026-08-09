@@ -14,7 +14,7 @@ export default async function LocaleNotFound() {
       <p className="mt-3 max-w-prose text-ink-secondary">{t('body')}</p>
       <Link
         href="/"
-        className="mt-6 inline-flex min-h-11 items-center rounded-full bg-ink-link px-6 font-semibold text-ink-inverse hover:bg-ink-link-hover"
+        className="mt-6 inline-flex min-h-11 items-center rounded-full bg-surface-band px-6 font-semibold text-ink-on-band hover:bg-surface-band-hover"
       >
         {tCommon('home')}
       </Link>

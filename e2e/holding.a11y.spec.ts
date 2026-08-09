@@ -5,16 +5,36 @@ import { expect, test } from '@playwright/test';
  * Axe catches roughly a third of real accessibility problems. It is the floor,
  * not the ceiling — tab through the page yourself before calling a route done.
  */
-for (const locale of ['en', 'fil']) {
-  test(`@a11y the holding page has no axe violations in ${locale}`, async ({
-    page,
-  }) => {
-    await page.goto(`/${locale}`);
-    const results = await new AxeBuilder({ page })
-      .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'])
-      .analyze();
-    expect(results.violations).toEqual([]);
-  });
+/*
+ * Both themes and both locales, because both themes are a gate rather than a
+ * preference — and because contrast is the failure mode a dark theme
+ * introduces, which is precisely what axe is good at catching.
+ *
+ * The theme is set through the OS preference on a fresh context rather than by
+ * clicking the toggle: that exercises the pre-paint script, which is the path a
+ * real first visit takes.
+ */
+for (const colorScheme of ['light', 'dark'] as const) {
+  for (const locale of ['en', 'fil']) {
+    test(`@a11y the holding page has no axe violations in ${locale}, ${colorScheme}`, async ({
+      browser,
+    }) => {
+      const context = await browser.newContext({ colorScheme });
+      const page = await context.newPage();
+      await page.goto(`/${locale}`);
+      await expect(page.locator('html')).toHaveAttribute(
+        'data-theme',
+        colorScheme
+      );
+
+      const results = await new AxeBuilder({ page })
+        .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'])
+        .analyze();
+      expect(results.violations).toEqual([]);
+
+      await context.close();
+    });
+  }
 }
 
 test('@a11y the first tab stop is the skip link, and it becomes visible', async ({

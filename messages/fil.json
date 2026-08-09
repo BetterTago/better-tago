@@ -14,7 +14,11 @@
     "english": "EN",
     "filipino": "FIL",
     "englishFull": "English",
-    "filipinoFull": "Filipino"
+    "filipinoFull": "Filipino",
+    "themeToDark": "Lumipat sa madilim na tema",
+    "themeToLight": "Lumipat sa maliwanag na tema",
+    "themeNowDark": "Nakabukas ang madilim na tema",
+    "themeNowLight": "Nakabukas ang maliwanag na tema"
   },
   "holding": {
     "eyebrow": "Wala pang inilalathala rito",

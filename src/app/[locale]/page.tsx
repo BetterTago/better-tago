@@ -30,7 +30,10 @@ export default async function HoldingPage({ params }: PageProps<'/[locale]'>) {
 
   return (
     <Container className="py-12 sm:py-16">
-      <p className="text-sm font-semibold tracking-wide text-accent-700 uppercase">
+      {/* `--ink-accent-strong`, not `--ink-accent`. The eyebrow is set at
+          text-sm, and accent-700 is 3.67:1 on paper — a display-size token.
+          Body-size accent text has to use the -strong role, which clears 4.5:1. */}
+      <p className="text-sm font-semibold tracking-wide text-ink-accent-strong uppercase">
         {t('eyebrow')}
       </p>
       <h1 className="mt-3 max-w-3xl text-3xl font-bold text-balance sm:text-4xl">
@@ -61,7 +64,7 @@ export default async function HoldingPage({ params }: PageProps<'/[locale]'>) {
             href={officialSite.url}
             rel="noopener noreferrer"
             target="_blank"
-            className="mt-4 inline-flex min-h-11 items-center gap-2 rounded-full border border-line-strong px-5 font-semibold text-ink-link hover:border-ink-link"
+            className="mt-4 inline-flex min-h-11 items-center gap-2 rounded-full border border-line-control px-5 font-semibold text-ink-link hover:border-ink-link"
           >
             {t('officialCta')}
             <ArrowUpRight aria-hidden="true" className="size-4" />
@@ -71,7 +74,7 @@ export default async function HoldingPage({ params }: PageProps<'/[locale]'>) {
 
       <section
         aria-labelledby="emergency-heading"
-        className="mt-12 rounded-lg border border-line bg-surface-notice p-6"
+        className="mt-12 rounded-lg border border-line bg-surface-tint p-6"
       >
         <h2
           id="emergency-heading"

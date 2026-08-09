@@ -14,7 +14,7 @@ export default function LocaleError({ reset }: { reset: () => void }) {
       <button
         type="button"
         onClick={reset}
-        className="mt-6 inline-flex min-h-11 items-center rounded-full bg-ink-link px-6 font-semibold text-ink-inverse hover:bg-ink-link-hover"
+        className="mt-6 inline-flex min-h-11 items-center rounded-full bg-surface-band px-6 font-semibold text-ink-on-band hover:bg-surface-band-hover"
       >
         {t('retry')}
       </button>

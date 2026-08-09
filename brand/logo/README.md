@@ -71,8 +71,13 @@ chose**, and this is recorded precisely so the next contributor who runs this co
 the same 2.1° and mistake it for a real finding.
 
 **Against colours the municipality actually chose, there is nothing to compare** — it has not declared any on
-its website. The portal's teal `primary` (hue ≈ 184°) and amber `accent` (hue ≈ 50–60°) therefore collide with
-nothing, and the mark's greens collide with nothing.
+its website. The mark's greens therefore collide with nothing.
+
+> **Since re-measured against a changed palette (2026-08-09).** At the time of the comparison the portal ran a
+> provisional teal `primary` and amber `accent`, both unrelated to the mark. The palette has since been settled
+> **on the mark itself**, so `primary` and `accent` now _are_ the emblem greens and the sun — which is why the
+> finding above still holds and now covers the whole site rather than just the logo. What it does mean is that
+> the derivation noted below applies to every surface, not only the header.
 
 **What this comparison does _not_ cover**, and should not be read as covering: the seal's own colours as
 printed, municipal signage, letterhead, vehicle livery, or anything else off the website. It compared one
@@ -121,17 +126,30 @@ Measured against the two page grounds in `src/app/globals.css`. The 3:1 line is 
 object; **a logotype is exempt from it**, and this mark is `aria-hidden` beside a text wordmark that carries
 the meaning — so the two failures below are recorded, not outstanding.
 
-| Colour                 | On light (`neutral-0`) | On dark (`neutral-950`) |
-| ---------------------- | ---------------------- | ----------------------- |
-| Emblem light `#86d294` | 1.80:1 ⚠️              | 11.05:1                 |
-| Emblem mid `#2e9b41`   | 3.57:1                 | 5.57:1                  |
-| Emblem deep `#1c6b4c`  | 6.45:1                 | 3.09:1                  |
-| Sun `#fcd116`          | 1.47:1 ⚠️              | 13.53:1                 |
+**Re-measured 2026-08-09**, against the two page grounds as they are now: the light "paper" ground
+`#f3f7f4` and the "night" ground `#02110a`. Both moved when the palette was settled on the mark, so the
+earlier figures — taken against pure white and a cool near-black — no longer describe anything a reader sees.
 
-**On a white page the rays read as a faint halo** — flag yellow is 1.47:1 on white by construction, and no
-choice made here changes that. What makes the mark hold at header size is the emblem's hard circular edge, not
-the rays. On the dark ground the whole mark is comfortable, and the deep green's 3.09:1 is the worst case
-anywhere.
+| Colour                 | On paper (`#f3f7f4`) | On night (`#02110a`) |
+| ---------------------- | -------------------- | -------------------- |
+| Emblem light `#86d294` | 1.67:1 ⚠️            | 10.73:1              |
+| Emblem mid `#2e9b41`   | 3.30:1               | 5.41:1               |
+| Emblem deep `#1c6b4c`  | 5.96:1               | 2.996:1 ⚠️           |
+| Sun `#fcd116`          | 1.36:1 ⚠️            | 13.13:1              |
+
+**On the light page the rays read as a faint halo** — flag yellow on a near-white ground is ~1.4:1 by
+construction, and no choice made here changes that. What makes the mark hold at header size is the emblem's
+hard circular edge, not the rays.
+
+**On the dark ground the deep green is now the worst case anywhere, at 2.996:1** — and the reason is worth
+stating because it is counter-intuitive. The night ground is itself green-tinted, so **lightening it closes
+the gap to the deep green rather than opening it**: 17% lightness gives 2.94, 18.5% gives 2.87. Its 16% is
+therefore a **ceiling**, not a preference, and it is the best ratio available to this mark on a dark ground.
+`src/lib/theme-tokens.test.ts` asserts the direction, so nobody can brighten the dark theme "a little"
+without the build saying what it costs.
+
+All three ⚠️ rows are **recorded, not outstanding**, for the same reason: a logotype is exempt from the 3:1
+graphical-object floor, this mark ships `aria-hidden`, and the text wordmark beside it carries the meaning.
 
 The three regions do **not** separate from each other by contrast (1.8–2.0:1 between neighbours). They separate
 by the channel cut between them, which is why the channel is a mask and not a colour boundary.
@@ -154,9 +172,21 @@ Three things in that component are load-bearing:
   one of them is masked, but they are one artwork. Turning either alone twists the channels out of the rays'
   rhythm.
 
-The mark's colours sit in `@theme` with no role indirection and no dark-mode override, because measured against
-both grounds neither is needed. **When an inverse surface lands**, they get promoted to semantic roles the way
-the sibling portal does it, and `better-tago-white.svg` is the record of what that reversed variant looks like.
+**The inverse surface has since landed, and the fills are now roles.** Two levels, and the separation is the
+point:
+
+- `--mark-delivered-{emblem-light,emblem-mid,emblem-deep,sun}` — the artefact, in hex, never overridden.
+- `--mark-{emblem-light,emblem-mid,emblem-deep,sun}` — the **role**, resolving to the artefact on the page and
+  to white inside `[data-surface='inverse']`.
+
+That is what lets **one component render all three delivered variants** — colour, colour-on-dark, and the
+reversed all-white mark — instead of shipping three SVGs. `better-tago-white.svg` stays the record of what the
+reversed variant must look like.
+
+There is still **no dark-mode override**: measured against both grounds, none is needed. And the delivered
+values keep their own tokens even though `--color-accent-400` now holds the same value as
+`--mark-delivered-sun` — a future change to the accent ramp must not reach the logo, and the separation is the
+only thing keeping that true.
 
 `Logo.test.tsx` compares the component's viewBox, its seven path definitions and every transform against
 `better-tago-color.svg` on each run, so the record and the lockup cannot drift apart silently.

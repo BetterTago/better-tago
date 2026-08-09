@@ -184,6 +184,63 @@ describe('design tokens', () => {
   });
 });
 
+describe('theming', () => {
+  /*
+   * Colour flips through the semantic ROLES in globals.css, resolved at the
+   * element. A component that branches on the theme has bypassed the role layer
+   * — and it will be the one surface that stays wrong when a role changes,
+   * because nothing else in the codebase looks like it.
+   */
+  it('carries no `dark:` colour utility in any component', () => {
+    expect(
+      offenders(
+        SRC_FILES,
+        /\bdark:(?:bg|text|border|divide|outline|ring|fill|stroke|decoration|shadow|from|via|to|placeholder|caret|accent)-/
+      )
+    ).toEqual([]);
+  });
+
+  it('writes the theme from exactly one module', () => {
+    /*
+     * The attribute name and the storage key live in `theme-init.ts` and
+     * nowhere else — the toggle calls into it rather than touching `document`,
+     * and the layout only imports the script string.
+     *
+     * A theme written from two places drifts silently: the page looks right
+     * until a reader's stored preference stops being read by whichever half was
+     * updated last.
+     */
+    const touching = SRC_FILES.filter(file =>
+      /data-theme|bettertago-theme/.test(file.text)
+    ).map(file => file.path);
+
+    expect(touching).toEqual(['src/lib/theme-init.ts']);
+  });
+
+  it('resolves the theme before first paint, from the root layout', () => {
+    // If this injection is dropped, nothing fails — every route just renders
+    // in the wrong theme for a frame, on the reader's very first impression.
+    const layout = SRC_FILES.find(file => file.path === 'src/app/layout.tsx');
+    expect(layout?.text).toContain('THEME_INIT_SCRIPT');
+  });
+
+  it('permits `dangerouslySetInnerHTML` for that script and nothing else', () => {
+    /*
+     * The prop, not the word — the module that owns the script talks about it
+     * at length in its own doc comment, and a scan that cannot tell prose from
+     * a call site is a scan somebody eventually deletes.
+     *
+     * It is safe in the one place it appears for exactly one reason: the script
+     * is a static literal. `theme-init.test.ts` fails on the first `${`.
+     */
+    const uses = SRC_FILES.filter(file =>
+      /dangerouslySetInnerHTML\s*=\s*\{/.test(file.text)
+    ).map(file => file.path);
+
+    expect(uses).toEqual(['src/app/layout.tsx']);
+  });
+});
+
 describe('static rendering', () => {
   it('reads no dynamic request API in the route tree', () => {
     // cookies()/headers()/draftMode()/connection() in a layout drags every
