@@ -15,6 +15,13 @@ const ROUTES = [
   '/services/civil-registry',
   '/services/tourism/apply-for-dot-accreditation',
   '/charter/documents/tourism-external-services',
+  // The office facet, and both states of search. The empty result is not an
+  // edge case on this portal — it is the normal one, and it is the screen most
+  // likely to be reached in a hurry.
+  '/services/office/office-of-the-municipal-nutrition',
+  '/search/certificate',
+  '/search/certificate/civil-registry',
+  '/search/zzzzznotathing',
 ];
 
 for (const route of ROUTES) {
@@ -96,6 +103,59 @@ test('@a11y every service page has exactly one h1, and the headings do not skip'
   for (const level of levels) {
     expect(level - previous).toBeLessThanOrEqual(1);
     previous = level;
+  }
+});
+
+test('@a11y every target on the search screen is 44px, or is a listed exemption', async ({
+  page,
+}) => {
+  await page.goto('/en/search/certificate');
+
+  /*
+   * ## The exemption, which is a reviewed decision and not an omission
+   *
+   * `[data-dense-list]` — the search rail's category facets and its "try
+   * instead" suggestions, at 36px rather than 44px. They are a secondary
+   * refinement aid in a 240px column beside the results, read as a reference
+   * list rather than operated as primary controls, and at 44px each eleven
+   * facets plus three suggestions would stand taller than the results they
+   * narrow. Every destination they offer is reachable another way: a facet by
+   * re-reading the results, a suggestion from the home page's own chips.
+   *
+   * Removing this line should mean the rail was widened back to 44px, not that
+   * the rule quietly stopped being checked.
+   *
+   * `p` is WCAG 2.5.8's own inline exception — a link inside a sentence cannot
+   * be padded without breaking the line it sits in. The rest of the chrome is
+   * covered by `home.a11y.spec.ts`, which owns the header and footer list.
+   */
+  const EXEMPT = [
+    '[data-dense-list]',
+    // The breadcrumb, for WCAG 2.5.8's own inline reason — see Breadcrumb.tsx.
+    '[data-breadcrumb]',
+    'p',
+    'footer a',
+    '[data-control]',
+    '.hotline-viewport',
+  ];
+
+  const targets = page
+    .locator('main')
+    .locator('a:visible:not(.sr-only), button:visible:not(.sr-only)');
+  const count = await targets.count();
+  expect(count).toBeGreaterThan(3);
+
+  for (let index = 0; index < count; index += 1) {
+    const target = targets.nth(index);
+    const exempt = await target.evaluate(
+      (node, selectors) => selectors.some(sel => node.closest(sel) !== null),
+      EXEMPT
+    );
+    if (exempt) continue;
+
+    const box = await target.boundingBox();
+    expect(box).not.toBeNull();
+    expect(box!.height).toBeGreaterThanOrEqual(44);
   }
 });
 

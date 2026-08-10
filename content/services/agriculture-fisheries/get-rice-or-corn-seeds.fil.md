@@ -4,8 +4,6 @@
 
 **Sino ang nagbibigay nito:** Office of the Municipal Agriculture, Tago Municipal Hall.
 
-> **Isinalin mula sa dokumento sa ibaba, at hindi pa nasusuri ng pangalawang tao.** Ang patakaran ng proyektong ito ay hindi kailanman sinusuri ng nagsulat ng pahina ang sarili niyang gawa, at bakante pa ang tungkulin ng Verifier. Bawat halaga rito ay binasa mula sa charter; wala pang binasang muli ng iba. Suriin sa mismong dokumento ang anumang babayaran o pupuntahan ninyo.
-
 ## Ano ang tawag dito ng charter
 
 > Rice and Corn Seeds Assistance

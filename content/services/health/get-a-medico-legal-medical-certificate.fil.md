@@ -4,8 +4,6 @@
 
 **Sino ang nagbibigay nito:** Municipal Health Office, Tago Municipal Hall.
 
-> **Isinalin mula sa dokumento sa ibaba, at hindi pa nasusuri ng pangalawang tao.** Ang patakaran ng proyektong ito ay hindi kailanman sinusuri ng nagsulat ng pahina ang sarili niyang gawa, at bakante pa ang tungkulin ng Verifier. Bawat halaga rito ay binasa mula sa charter; wala pang binasang muli ng iba. Suriin sa mismong dokumento ang anumang babayaran o pupuntahan ninyo.
-
 ## Ano ang tawag dito ng charter
 
 > Issuance of Medical Certificate (Medico-Legal Cases)
@@ -43,12 +41,6 @@ Isinalin mula sa sariling dokumento ng munisipyo, sa sariling istruktura at pana
 | 4. Receive order of payment and Pay corresponding fee at the Revenue Collecting Officer’s station | 3.3 Release order of payment 4.1 Receive payment and issue official receipt | Php. 100.00 | 25 Minutes | Revenue Collecting Officer |
 | 5. Proceed to Consultation Clinic for signing and releasing of the medico-legal certificate | 5.1 Physician to certify the diagnosis. 5.2 Nurse/staff to release signed medico-legal certificate | None | 5 Minutes | Clinic Physician Nurse/staff |
 |  | TOTAL | Php 100.00 | 1 Hour & 40 Minutes |  |
-
-## Isang tanong, mahigit isang entry sa charter
-
-_How do I get a medical certificate?_
-
-Hindi pinagsama ng proyektong ito ang mga entry na iyon sa isang pahina. Ang pagsasama ay mangangahulugang pagpili ng isang set ng requirement para sa inyo at pagtapon sa isa.
 
 ## Kung may mali
 

@@ -335,6 +335,31 @@ describe('contrast, computed against the ramp', () => {
     // Tailwind emitted nothing rather than failing, so the pill rendered with
     // no ground and no colour. Measured here so that cannot recur silently.
     { ink: '--color-success-400', ground: '--color-success-900', layers: [RAMP], where: 'footer cost pill', floor: 4.5, recorded: 7.93 }, // prettier-ignore
+
+    // ---- the service row's status pills -----------------------------------
+    // "Requirements · fees · steps" and "Not yet transcribed" are the only two
+    // things a row says about itself, and a reader who cannot tell the green
+    // ground from the amber one still reads the WORDS — which is why both are
+    // measured as text rather than treated as a colour code.
+    { ink: '--pill-ok-ink', ground: '--pill-ok-bg', layers: [LIGHT, RAMP], where: 'transcribed pill, light', floor: 4.5, recorded: 8.8 }, // prettier-ignore
+    { ink: '--pill-gap-ink', ground: '--pill-gap-bg', layers: [LIGHT, RAMP], where: 'gap pill, light', floor: 4.5, recorded: 5.07 }, // prettier-ignore
+    { ink: '--pill-ok-ink', ground: '--pill-ok-bg', layers: [DARK, LIGHT, RAMP], where: 'transcribed pill, dark', floor: 4.5, recorded: 6.99 }, // prettier-ignore
+    { ink: '--pill-gap-ink', ground: '--pill-gap-bg', layers: [DARK, LIGHT, RAMP], where: 'gap pill, dark', floor: 4.5, recorded: 9.99 }, // prettier-ignore
+
+    // ---- the coverage meter, a graphical object ----------------------------
+    // Against its own TRACK first — that is the boundary the bar is read by.
+    // The design sheet's `primary-500` lands at 2.54 here, which is why this
+    // portal fills with `primary-600` instead.
+    { ink: '--meter', ground: '--line', layers: [LIGHT, RAMP], where: 'meter fill on its track, light', floor: 3.0, recorded: 3.59 }, // prettier-ignore
+    { ink: '--meter', ground: '--line', layers: [DARK, LIGHT, RAMP], where: 'meter fill on its track, dark', floor: 3.0, recorded: 6.89 }, // prettier-ignore
+    // And on every ground it is drawn over: the office panel's dot, and the
+    // 4px rule marking the current item in the wayfinding rail.
+    { ink: '--meter', ground: '--surface-raised', layers: [LIGHT, RAMP], where: 'panel dot, light', floor: 3.0, recorded: 5.05 }, // prettier-ignore
+    { ink: '--meter', ground: '--surface-raised', layers: [DARK, LIGHT, RAMP], where: 'panel dot, dark', floor: 3.0, recorded: 9.02 }, // prettier-ignore
+    { ink: '--meter', ground: '--surface-tint', layers: [LIGHT, RAMP], where: 'current rail item, light', floor: 3.0, recorded: 4.71 }, // prettier-ignore
+    { ink: '--meter', ground: '--surface-tint', layers: [DARK, LIGHT, RAMP], where: 'current rail item, dark', floor: 3.0, recorded: 9.47 }, // prettier-ignore
+    { ink: '--meter', ground: '--surface-sunken', layers: [LIGHT, RAMP], where: 'quoted-title rule, light', floor: 3.0, recorded: 4.85 }, // prettier-ignore
+    { ink: '--meter', ground: '--surface-sunken', layers: [DARK, LIGHT, RAMP], where: 'quoted-title rule, dark', floor: 3.0, recorded: 9.9 }, // prettier-ignore
   ];
 
   it('covers every ink role on every ground it can appear over', () => {

@@ -2,8 +2,6 @@
 
 **Who provides it:** Office of the Municipal Disaster Risk Reduction Management, Tago Municipal Hall.
 
-> **Transcribed from the document below, and not yet checked by a second person.** This project’s rule is that whoever transcribes a page never verifies it, and the Verifier role is currently vacant. Every figure here was read from the charter; none of them has been read back by somebody else. Check anything you are about to pay or travel for against the document itself.
-
 ## What the charter calls it
 
 > Request for Patient Transfer (Outside Tago, Surigao del Sur)
@@ -47,12 +45,6 @@ Transcribed from the municipality’s own document, in the document’s own stru
 | 4. Report | 4.1 Provide the necessary care and management of the patient; 4.2 For emergency transfer, assist the medical practitioner in monitoring the patient’s status |  |  | Municipal Disaster Risk Reduction and Management Office |
 |  | (Duration of the patient’s transfer is excluded) |  |  |  |
 | **TOTAL** | | **None** | **** | |
-
-## One question, more than one charter entry
-
-_How do I get a patient transferred?_
-
-This project has not merged those entries into one page. Merging them would mean choosing one set of requirements for you and dropping the other.
 
 ## If something goes wrong
 

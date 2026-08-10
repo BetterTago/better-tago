@@ -2,8 +2,6 @@
 
 **Who provides it:** Office of the Municipal Engineering, Tago Municipal Hall.
 
-> **Transcribed from the document below, and not yet checked by a second person.** This project’s rule is that whoever transcribes a page never verifies it, and the Verifier role is currently vacant. Every figure here was read from the charter; none of them has been read back by somebody else. Check anything you are about to pay or travel for against the document itself.
-
 ## What the charter calls it
 
 > Processing of the Application for Certificate of Occupancy pursuant to P.D. 1096, also known as the “National Building Code of the Philippines”.

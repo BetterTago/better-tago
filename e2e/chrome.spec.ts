@@ -6,6 +6,135 @@ import { expect, test } from '@playwright/test';
  * back-to-top.
  */
 
+/**
+ * The document's own identity — what a tab strip shows, and what a bookmark
+ * keeps.
+ */
+test.describe('the tab', () => {
+  test('leads with the mark and then names the page', async ({ page }) => {
+    /*
+     * 🔴 Brand FIRST. A tab strip truncates from the right, so a reader with
+     * eight tabs open sees eight identical stubs if the page name leads.
+     *
+     * And the page half says what KIND of page it is: "Civil registry services"
+     * rather than "Civil registry", because a tab and a search result have no
+     * H1 beside them to explain which of the two it is.
+     */
+    await page.goto('/en/services/civil-registry');
+    await expect(page).toHaveTitle('BetterTago | Civil registry services');
+
+    await page.goto('/en/services/civil-registry/register-a-birth');
+    await expect(page).toHaveTitle('BetterTago | Register a birth');
+
+    await page.goto('/en/search/certificate/civil-registry');
+    await expect(page).toHaveTitle(
+      'BetterTago | “certificate” in Civil registry'
+    );
+  });
+
+  test('🔴 never says the brand twice', async ({ page }) => {
+    /*
+     * The failure this exists for: a page that sets its own title to something
+     * already carrying the brand runs it back through `BetterTago | %s`. The
+     * home page did exactly that, and "BetterTago | BetterTago | …" is the kind
+     * of thing nobody notices until it is in a search result.
+     */
+    for (const route of [
+      '/en',
+      '/fil',
+      '/en/services',
+      '/en/services/civil-registry',
+      '/en/search/certificate',
+      '/en/gaps',
+      '/en/charter/documents/tourism-external-services',
+    ]) {
+      await page.goto(route);
+      const title = await page.title();
+      expect(title.startsWith('BetterTago | '), `${route}: ${title}`).toBe(
+        true
+      );
+      expect(title.split('BetterTago').length - 1, `${route}: ${title}`).toBe(
+        1
+      );
+    }
+  });
+
+  test('gives the home page the whole claim, in both locales', async ({
+    page,
+  }) => {
+    // The one page with no page-name of its own to carry, so it says what this
+    // portal is instead — and it is translated, like every other string here.
+    await page.goto('/en');
+    await expect(page).toHaveTitle(
+      'BetterTago | Municipality of Tago Services, Government Info & Public Data'
+    );
+
+    await page.goto('/fil');
+    const fil = await page.title();
+    expect(fil.startsWith('BetterTago | ')).toBe(true);
+    expect(fil).not.toBe(
+      'BetterTago | Municipality of Tago Services, Government Info & Public Data'
+    );
+  });
+
+  test('🔴 the card a shared link produces is the PAGE, not the portal', async ({
+    page,
+  }) => {
+    /*
+     * These pages are meant to travel: TAGO-204 asks for a filtered view that
+     * can be sent to somebody in a message, and a service page is the thing a
+     * resident forwards to a relative.
+     *
+     * The locale layout's `openGraph` block is inherited by every route, so a
+     * flat value there is stated on all ~300 of them — and all three of these
+     * were flat once. `og:title` read the portal's generic claim on every page,
+     * `og:description` carried the home page's summary onto every service, and
+     * `og:url` pointed every card back at the home page.
+     */
+    for (const route of [
+      '/en/services',
+      '/en/services/civil-registry',
+      '/en/services/civil-registry/register-a-birth',
+      '/en/services/office/office-of-the-municipal-nutrition',
+    ]) {
+      await page.goto(route);
+
+      const title = await page.title();
+      const ogTitle = await page
+        .locator('meta[property="og:title"]')
+        .getAttribute('content');
+      const ogDescription = await page
+        .locator('meta[property="og:description"]')
+        .getAttribute('content');
+      const description = await page
+        .locator('meta[name="description"]')
+        .getAttribute('content');
+
+      // The card says what the PAGE says, not what the portal says.
+      expect(ogTitle, route).toBe(title);
+      expect(ogDescription, route).toBe(description);
+
+      // And it does not claim to be a different URL than the one being shared.
+      await expect(page.locator('meta[property="og:url"]'), route).toHaveCount(
+        0
+      );
+    }
+  });
+
+  test('carries the delivered mark as its icon', async ({ page }) => {
+    await page.goto('/en');
+    const icon = page.locator('link[rel="icon"][type="image/svg+xml"]');
+    await expect(icon).toHaveCount(1);
+
+    // And it resolves — a favicon nobody fetched is a favicon nobody noticed
+    // was 404ing.
+    const href = await icon.getAttribute('href');
+    const response = await page.request.get(href!);
+    expect(response.status()).toBe(200);
+    expect(await response.text()).toContain('Better Tago mark');
+  });
+});
+
 test.describe('navigation', () => {
   // The desktop row is `hidden lg:block`. Below `lg` the same tree renders in
   // the mobile sheet, which has its own describe block below — testing the

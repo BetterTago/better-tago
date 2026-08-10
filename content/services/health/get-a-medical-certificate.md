@@ -2,8 +2,6 @@
 
 **Who provides it:** Municipal Health Office, Tago Municipal Hall.
 
-> **Transcribed from the document below, and not yet checked by a second person.** This project’s rule is that whoever transcribes a page never verifies it, and the Verifier role is currently vacant. Every figure here was read from the charter; none of them has been read back by somebody else. Check anything you are about to pay or travel for against the document itself.
-
 ## What the charter calls it
 
 > Issuance of Medical Certificate
@@ -50,12 +48,6 @@ Transcribed from the municipality’s own document, in the document’s own stru
 | 5. Proceed to consultation clinic | 5.1 Physician to sign medical certificate | None | 3 Minutes | Physician |
 | 6. Claim medical certificate | 6.1 Release signed medical certificate | None | 2 Minutes | Clinic Nurse / staff |
 |  | TOTAL | Php 100.00 | 1 Hour & 40 Minutes |  |
-
-## One question, more than one charter entry
-
-_How do I get a medical certificate?_
-
-This project has not merged those entries into one page. Merging them would mean choosing one set of requirements for you and dropping the other.
 
 ## If something goes wrong
 

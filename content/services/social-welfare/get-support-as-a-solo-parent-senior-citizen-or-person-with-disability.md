@@ -2,8 +2,6 @@
 
 **Who provides it:** Municipal Social Welfare and Development Office, Tago Municipal Hall.
 
-> **Transcribed from the document below, and not yet checked by a second person.** This project’s rule is that whoever transcribes a page never verifies it, and the Verifier role is currently vacant. Every figure here was read from the charter; none of them has been read back by somebody else. Check anything you are about to pay or travel for against the document itself.
-
 ## What the charter calls it
 
 > Securing Services for Kalipi-Women, Solo Parents, Persons with Disabilities, Out of School Youth and Senior Citizens.

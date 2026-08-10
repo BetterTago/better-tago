@@ -2,8 +2,6 @@
 
 **Who provides it:** Business Licensing and Permitting Division, Tago Municipal Hall.
 
-> **Transcribed from the document below, and not yet checked by a second person.** This project’s rule is that whoever transcribes a page never verifies it, and the Verifier role is currently vacant. Every figure here was read from the charter; none of them has been read back by somebody else. Check anything you are about to pay or travel for against the document itself.
-
 ## What the charter calls it
 
 > Processing of Application for New Business Permit (Assuming inspection has already been conducted)
@@ -82,12 +80,6 @@ Transcribed from the municipality’s own document, in the document’s own stru
 | 2. Proceed to Mun. Treasurer's Office for the - Assessment - Payment |  |  |  |  |
 | 3. Go back to BPL0 for the printing, 3.1Check official receipts, and print approval and release of business permit business permit. 3.2 Approve business permit | None None None |  | 5 Minutes 3 Minutes |  |
 | 3.3 Segregate and release. |  |  | 7 Minutes |  |
-
-## One question, more than one charter entry
-
-_How do I get or renew a business permit?_
-
-This project has not merged those entries into one page. Merging them would mean choosing one set of requirements for you and dropping the other.
 
 ## If something goes wrong
 

@@ -58,7 +58,16 @@ export async function generateMetadata({
   const t = await getTranslations({ locale, namespace: 'meta' });
 
   return {
-    title: t('title'),
+    /*
+     * 🔴 NO `title` here, deliberately. The locale layout declares
+     * `title.default`, and a `default` is what renders when a page sets none —
+     * templates never apply to it. Setting `t('title')` here instead ran the
+     * full claim back through `BetterTago | %s` and produced the brand twice.
+     *
+     * This is the one page with no page-name of its own, so the default IS its
+     * title: what this portal is, whose information it indexes, and what it
+     * covers.
+     */
     description: t('description'),
     alternates: { canonical: `/${locale}` },
   };

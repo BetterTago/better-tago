@@ -500,16 +500,31 @@ describe('a transcribed page is at V2 or better, and says it is unverified', () 
     ).toEqual([]);
   });
 
-  it('says on every transcribed page that nobody has checked it', () => {
-    // The rendered half. A resident about to pay a fee is told, on the page,
-    // that one person read it off a PDF and no second person read it back.
-    const silent = RECORDS.filter(record => {
+  it('🔴 claims on no page that a second person HAS checked it', () => {
+    /*
+     * ⚠️ This assertion was the other way round until 2026-08-10.
+     *
+     * It used to require every transcribed page to CARRY the sentence *"not yet
+     * checked by a second person"* above its fees. That blockquote was removed
+     * by instruction, so the requirement is gone with it — and what replaces it
+     * is the half that must never go: no page may claim the opposite.
+     *
+     * The state of the data is unchanged and is asserted above:
+     * `verificationRecord` is `null` on every record, because the Verifier role
+     * is vacant. `VerificationBadge` and the source block at the foot of each
+     * page still say what the page was read from. If a page ever starts saying
+     * it has been verified, this is what fails.
+     */
+    const claiming = RECORDS.filter(record => {
       if (!record.content) return false;
       const body = pageFor(record, 'en');
-      return body ? !body.includes('not yet checked by a second person') : true;
+      return body
+        ? /(checked|verified|confirmed) by a second person/i.test(body) &&
+            !/not yet/i.test(body)
+        : false;
     }).map(record => record.slug);
 
-    expect(silent).toEqual([]);
+    expect(claiming).toEqual([]);
   });
 });
 

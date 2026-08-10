@@ -1,6 +1,6 @@
 {
   "meta": {
-    "title": "BetterTago — Municipality of Tago public information",
+    "title": "BetterTago | Municipality of Tago Services, Government Info & Public Data",
     "description": "An independent, volunteer-run index over the Municipality of Tago's own published information. Not the official site.",
     "notFoundTitle": "Page not found"
   },
@@ -80,10 +80,9 @@
     "retry": "Try again"
   },
   "services": {
+    "counts": "{transcribed} of {total} services carry the charter’s own requirements, fees and steps. The rest name the service and link the document while a person transcribes them.",
     "title": "Services",
     "lead": "Every service the Municipality of Tago's Citizen's Charter describes, listed by what you are trying to do rather than by which office does it.",
-    "counts": "{transcribed} of {total} services carry the charter’s own requirements, fees and steps. The rest name the service and link the document while a person transcribes them.",
-    "notYetTranscribed": "requirements not yet transcribed",
     "fallbackNotice": "This page has no Filipino version yet, so you are reading English. Nothing is hidden — the translation is simply not finished.",
     "categories": {
       "agriculture-fisheries": "Agriculture and fisheries",
@@ -99,7 +98,50 @@
       "work-and-employment": "Work and employment"
     },
     "scrollableTable": "{name}, table, scrollable sideways",
-    "table": "Table"
+    "table": "Table",
+    "eyebrow": "The Citizen's Charter",
+    "browseHeading": "Browse by what you need",
+    "sortedAZ": "Sorted A–Z",
+    "categoriesCount": "{count, plural, one {# category} other {# categories}}",
+    "allCategories": "All categories",
+    "categoryEyebrow": "Category · {count, plural, one {# service} other {# services}}",
+    "serviceEyebrow": "{category} · Service",
+    "coverage": "{transcribed} of {total} services fully transcribed",
+    "coveragePercent": "{percent}% transcribed",
+    "coverageInCategory": "{transcribed} of {total} carry the charter’s requirements, fees and steps",
+    "coverageSource": "Source: Citizen’s Charter · checked {date}",
+    "readFromCharter": "Read from the Citizen’s Charter · checked {date}",
+    "pillTranscribed": "Requirements · fees · steps",
+    "pillNotTranscribed": "Not yet transcribed",
+    "pillLabel": "What this page carries",
+    "whoProvidesThese": "Who provides these",
+    "whoProvidesIt": "Who provides it",
+    "onThisPage": "On this page",
+    "backToCategory": "All {category}",
+    "breadcrumbLabel": "You are here",
+    "filterByOffice": "Filter by office",
+    "allInCategory": "All {count}",
+    "officeServiceCount": "{count, plural, one {# service} other {# services}}",
+    "officeLead": "Every service in the Citizen’s Charter that this office provides. Offices are a way to narrow the list, never the way it is organised.",
+    "officeEyebrow": "Office · {count, plural, one {# service} other {# services}}",
+    "officeBackToAll": "All services",
+    "missingCtaTitle": "A service you needed is not here?",
+    "missingCtaBody": "This index only carries what the municipality has published. What is missing is listed openly, and you can tell us what to chase next.",
+    "missingCtaAction": "See what is missing",
+    "categoryDescriptions": {
+      "agriculture-fisheries": "Seeds and planting materials, animal vaccination and inspection, and the help the agriculture office gives farmers and fishpond operators.",
+      "business-and-permits": "Opening, renewing and closing a business in Tago, and the tricycle operator’s permit.",
+      "civil-registry": "Births, marriages, deaths, and corrections to any record the municipality holds.",
+      "disaster-and-safety": "Certifications after a disaster, patient transfers, water delivery, and preparedness training.",
+      "engineering": "Building permits, occupancy, zoning and locational clearances before you build or change the use of land.",
+      "health": "Consultations, certificates, medicines, and the programmes the health and nutrition offices run.",
+      "permits-and-clearances": "Mayor’s permits, clearances and certifications, including the fees the charter prints for each one.",
+      "social-welfare": "Assistance, certificates of indigency, and support for solo parents, senior citizens, persons with disability and survivors of violence.",
+      "tourism": "Permits for a tourism business, DOT accreditation, and frontliner training.",
+      "treasury": "Tax declarations, assessments, and transfers of property on the municipal roll.",
+      "work-and-employment": "Employment records and clearances for municipal staff, and applying for a local government or student summer job."
+    },
+    "categoryMetaTitle": "{category} services"
   },
   "nav": {
     "label": "Main",
@@ -157,7 +199,6 @@
     "hint": "Search every service in the municipality's Citizen's Charter.",
     "placeholder": "business permit, birth certificate, indigency…",
     "submit": "Search",
-    "searching": "Searching…",
     "emptyQuery": "Type what you are trying to do — a task, not an office. You do not need to know which office handles it.",
     "resultsHeading": "{count, plural, one {# service} other {# services}} for “{query}”",
     "noResultsHeading": "Nothing here matches “{query}”",
@@ -167,7 +208,14 @@
     "resultsTitle": "Results for “{query}”",
     "findService": "Find a service",
     "findServiceHelp": "Search every service in the Municipality of Tago's Citizen's Charter — by what you are trying to do, not by which office does it.",
-    "popular": "Popular:"
+    "popular": "Popular:",
+    "scope": "Searches the service name, its description and the office that provides it.",
+    "clear": "Clear the search",
+    "narrowByCategory": "Narrow by category",
+    "allResults": "All results",
+    "tryInstead": "Try instead",
+    "resultsFor": "{count, plural, one {result} other {results}} for “{query}”",
+    "resultsInCategory": "“{query}” in {category}"
   },
   "stats": {
     "heading": "{municipality} at a glance",

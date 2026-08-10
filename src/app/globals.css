@@ -200,6 +200,22 @@
   --line-control: var(--color-neutral-500);
 
   --focus-ring: var(--color-primary-800);
+
+  /* The two things a service row says about itself: the charter's requirements,
+     fees and steps are on the page, or they are not yet transcribed. A pair of
+     grounds and a pair of inks, so the state is carried by a WORD on a ground
+     and never by the ground alone. */
+  --pill-ok-bg: var(--color-primary-50);
+  --pill-ok-ink: var(--color-primary-800);
+  --pill-gap-bg: var(--color-accent-50);
+  --pill-gap-ink: var(--color-accent-800);
+
+  /* The coverage bar's fill, over a `--line` track.
+     ⚠️ NOT the design sheet's value. The sheet fills with `primary-500`, which
+     is 2.54:1 against that track — under the 3:1 floor a graphical object has to
+     clear. `primary-600` is 3.59:1 and still reads as the same green. The bar is
+     also never the only statement: "97 of 97 · 100%" is printed beside it. */
+  --meter: var(--color-primary-600);
 }
 
 :root[data-theme='dark'] {
@@ -230,6 +246,13 @@
   --line-control: var(--color-neutral-600);
 
   --focus-ring: var(--color-primary-300);
+
+  --pill-ok-bg: var(--color-surface-night-deep);
+  --pill-ok-ink: var(--color-primary-300);
+  --pill-gap-bg: var(--color-accent-950);
+  --pill-gap-ink: var(--color-accent-300);
+
+  --meter: var(--color-primary-300);
 }
 
 /* ---------------------------------------------------------------------------
@@ -384,6 +407,12 @@
   --color-focus-ring: var(--focus-ring);
   --color-surface-control: var(--surface-control);
 
+  --color-pill-ok-bg: var(--pill-ok-bg);
+  --color-pill-ok-ink: var(--pill-ok-ink);
+  --color-pill-gap-bg: var(--pill-gap-bg);
+  --color-pill-gap-ink: var(--pill-gap-ink);
+  --color-meter: var(--meter);
+
   --color-mark-emblem-light: var(--mark-emblem-light);
   --color-mark-emblem-mid: var(--mark-emblem-mid);
   --color-mark-emblem-deep: var(--mark-emblem-deep);
@@ -468,6 +497,63 @@
   :root[data-theme='dark'] .theme-only-light {
     display: none;
   }
+}
+
+/* A charter table, as the municipality's own document lays one out.
+   Declared here rather than as a dozen per-element classes in `Markdown.tsx`
+   because the shape belongs to the DOCUMENT, not to a component: a two-column
+   facts table, a checklist, and a five-column client-steps grid are all the same
+   object with different column counts, and they have to read alike. */
+@utility charter-table {
+  width: 100%;
+  border-collapse: collapse;
+  text-align: left;
+  font-size: var(--text-sm);
+
+  & thead th {
+    padding: 0.625rem 0.875rem;
+    border-bottom: 1px solid var(--line);
+    background: var(--surface-sunken);
+    font-size: var(--text-2xs);
+    font-weight: 600;
+    letter-spacing: 0.08em;
+    text-transform: uppercase;
+    color: var(--ink-tertiary);
+    /* A wrapped column heading reads as two headings. The table scrolls
+       instead — that is what the region around it is for. */
+    white-space: nowrap;
+  }
+
+  & tbody td {
+    padding: 0.6875rem 0.875rem;
+    border-top: 1px solid var(--line-subtle);
+    vertical-align: top;
+    line-height: 1.5;
+    color: var(--ink-secondary);
+  }
+
+  /* The row's LABEL — the field name in a facts table, the requirement in a
+     checklist, the resident's own move in the client-steps grid. The charter
+     prints all three as the thing being named, and a table whose first column
+     reads at the same weight as its values is a grid of undifferentiated text. */
+  & tbody td:first-child {
+    font-weight: 600;
+    color: var(--ink);
+  }
+}
+
+/* The 4px rule down the left edge of a wayfinding-rail item.
+   Two utilities rather than one arbitrary `shadow-[…]` per call site: an inset
+   box-shadow carrying a token is exactly the kind of value the theme should own,
+   and `guardrails.test.ts` treats anything the theme cannot express as a missing
+   token. The rule is never the only signal — the current item also carries
+   `aria-current` and a weight change. */
+@utility rail-mark-current {
+  box-shadow: inset 4px 0 0 var(--meter);
+}
+
+@utility rail-mark-hover {
+  box-shadow: inset 4px 0 0 var(--line-control);
 }
 
 @utility page-measure {

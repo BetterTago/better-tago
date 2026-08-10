@@ -2,8 +2,6 @@
 
 **Who provides it:** Office of the Municipal Civil Registrar, Tago Municipal Hall.
 
-> **Transcribed from the document below, and not yet checked by a second person.** This project’s rule is that whoever transcribes a page never verifies it, and the Verifier role is currently vacant. Every figure here was read from the charter; none of them has been read back by somebody else. Check anything you are about to pay or travel for against the document itself.
-
 ## What the charter calls it
 
 > Registration of Certificate of Death
@@ -83,12 +81,6 @@ Transcribed from the municipality’s own document, in the document’s own stru
 > The charter carries two death-registration entries. This one has no qualifier; the other is limited to deaths that occurred in Tago. What separates them is not stated.
 
 Guessing which reading is right would be inventing a fact, so this page carries the question rather than an answer. Read the document below.
-
-## One question, more than one charter entry
-
-_How do I register a death?_
-
-This project has not merged those entries into one page. Merging them would mean choosing one set of requirements for you and dropping the other.
 
 ## If something goes wrong
 

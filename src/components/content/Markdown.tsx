@@ -1,6 +1,8 @@
 import { getTranslations } from 'next-intl/server';
 import ReactMarkdown from 'react-markdown';
 import remarkGfm from 'remark-gfm';
+import { createSlugger } from '@/lib/markdown-outline';
+import { cn } from '@/lib/utils';
 
 /**
  * The text of a table's first header cell, for its accessible name.
@@ -40,6 +42,32 @@ function firstHeaderCell(node: unknown): string | null {
   return walk(node);
 }
 
+/** The number of cells in a table's first row — its column count. */
+function columnCount(node: unknown): number {
+  const rows: unknown[] = [];
+  const walk = (value: unknown) => {
+    if (!value || typeof value !== 'object') return;
+    const element = value as { tagName?: string; children?: unknown[] };
+    if (element.tagName === 'tr') rows.push(element);
+    else (element.children ?? []).forEach(walk);
+  };
+  walk(node);
+
+  const first = rows[0] as { children?: unknown[] } | undefined;
+  return (first?.children ?? []).filter(child => {
+    const cell = child as { tagName?: string };
+    return cell.tagName === 'th' || cell.tagName === 'td';
+  }).length;
+}
+
+/** Every text node under `node`, concatenated — a heading's own words. */
+function textOf(node: unknown): string {
+  if (!node || typeof node !== 'object') return '';
+  const element = node as { value?: string; children?: unknown[] };
+  if (typeof element.value === 'string') return element.value;
+  return (element.children ?? []).map(textOf).join('');
+}
+
 /**
  * A charter page's body, rendered.
  *
@@ -63,6 +91,13 @@ export async function Markdown({ children }: { children: string }) {
   const t = await getTranslations('services');
 
   /*
+   * The SAME slugger the "On this page" rail is built with — see
+   * `markdown-outline.ts`. Two implementations of the id rule would agree until
+   * the first duplicated heading and then send the rail to the wrong section.
+   */
+  const slug = createSlugger();
+
+  /*
    * FULL WIDTH. Nothing here sets its own measure.
    *
    * A charter page is mostly TABLES — the checklist of requirements and the
@@ -81,8 +116,11 @@ export async function Markdown({ children }: { children: string }) {
         remarkPlugins={[remarkGfm]}
         components={{
           h1: () => null,
-          h2: ({ children: content }) => (
-            <h2 className="mt-10 scroll-mt-24 text-xl font-bold sm:text-2xl">
+          h2: ({ children: content, node }) => (
+            <h2
+              className="font-display mt-10 scroll-mt-24 text-xl font-bold text-ink sm:text-2xl"
+              id={slug(textOf(node)) ?? undefined}
+            >
               {content}
             </h2>
           ),
@@ -122,8 +160,20 @@ export async function Markdown({ children }: { children: string }) {
             </ol>
           ),
           li: ({ children: content }) => <li className="pl-1">{content}</li>,
+          /*
+           * Deliberately NOT italic. A blockquote here is usually the charter's
+           * own wording, quoted at length, and a long run of italic is harder
+           * work for exactly the readers who can least afford it. The quotation
+           * is signalled by the ground and the rule instead.
+           *
+           * ⚠️ Three different things reach this component and are drawn alike:
+           * the charter's wording, this project's ⚠️ transcription notes, and
+           * the Filipino draft warning. Only the first is a quotation. Telling
+           * them apart would mean the generator marking them — a content-lane
+           * change (CONT-2xx), not a styling one.
+           */
           blockquote: ({ children: content }) => (
-            <blockquote className="mt-4 border-l-4 border-line-control pl-4 text-ink-secondary italic">
+            <blockquote className="mt-4 rounded-r-xl border-l-4 border-meter bg-surface-sunken py-3 pr-4 pl-4 text-ink">
               {content}
             </blockquote>
           ),
@@ -152,26 +202,41 @@ export async function Markdown({ children }: { children: string }) {
               aria-label={t('scrollableTable', {
                 name: firstHeaderCell(node) ?? t('table'),
               })}
-              className="mt-6 -mx-4 overflow-x-auto px-4 focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-ring sm:mx-0 sm:px-0"
+              // The document's own frame: a hairline box on the raised ground,
+              // corners rounded, and the header strip clipped by it.
+              className="mt-6 overflow-x-auto rounded-xl border border-line bg-surface-raised focus-visible:outline-2 focus-visible:outline-offset-2 focus-visible:outline-focus-ring"
               role="region"
               tabIndex={0}
             >
-              <table className="w-full min-w-xl border-collapse text-left text-sm">
+              <table
+                className={cn(
+                  'charter-table',
+                  /*
+                   * A minimum width for a table with THREE OR MORE columns, and
+                   * none below that.
+                   *
+                   * Every table used to carry `min-w-xl`, which forced the
+                   * two-column facts table — *Office or Division*,
+                   * *Classification* — to scroll sideways on a phone when it
+                   * fits perfectly well. The five-column client-steps grid
+                   * genuinely does not fit and has to scroll; squeezing it into
+                   * 320px stacks every cell one word per line.
+                   */
+                  columnCount(node) > 2 && 'min-w-2xl'
+                )}
+              >
                 {content}
               </table>
             </div>
           ),
-          thead: ({ children: content }) => (
-            <thead className="border-b border-line">{content}</thead>
-          ),
-          th: ({ children: content }) => (
-            <th className="px-3 py-2 align-top font-semibold">{content}</th>
-          ),
-          td: ({ children: content }) => (
-            <td className="border-t border-line-subtle px-3 py-2 align-top leading-relaxed text-ink-secondary">
-              {content}
-            </td>
-          ),
+          /*
+           * A charter facts table is authored with an EMPTY header row — the
+           * document labels its rows, not its columns. `remark-gfm` still emits
+           * a `thead`, and rendering it paints an empty sunken strip above the
+           * table and announces two blank column headers to a screen reader.
+           */
+          thead: ({ children: content, node }) =>
+            textOf(node).trim() ? <thead>{content}</thead> : null,
           hr: () => <hr className="mt-10 border-line-subtle" />,
           code: ({ children: content }) => (
             <code className="rounded bg-surface-tint px-1.5 py-0.5 text-sm">

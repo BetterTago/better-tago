@@ -14,7 +14,11 @@ import { getTranslations } from 'next-intl/server';
  * They are also the three queries `/[locale]/search/[query]` prerenders, so the
  * commonest journey into this portal is served from a static file.
  */
-const POPULAR_QUERIES = ['business permit', 'birth certificate', 'indigency'];
+export const POPULAR_QUERIES = [
+  'business permit',
+  'birth certificate',
+  'indigency',
+];
 
 /**
  * The "Find a service" card — one component for the hero and both search pages.

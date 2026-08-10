@@ -4,8 +4,6 @@
 
 **Sino ang nagbibigay nito:** Tourism Office, Tago Municipal Hall.
 
-> **Isinalin mula sa dokumento sa ibaba, at hindi pa nasusuri ng pangalawang tao.** Ang patakaran ng proyektong ito ay hindi kailanman sinusuri ng nagsulat ng pahina ang sarili niyang gawa, at bakante pa ang tungkulin ng Verifier. Bawat halaga rito ay binasa mula sa charter; wala pang binasang muli ng iba. Suriin sa mismong dokumento ang anumang babayaran o pupuntahan ninyo.
-
 ## Ano ang tawag dito ng charter
 
 > APPLICATION / RENEWAL OF BUSINESS PERMIT (TOURISM ESTABLISHMENT)
@@ -41,12 +39,6 @@ Isinalin mula sa sariling dokumento ng munisipyo, sa sariling istruktura at pana
 | **TOTAL** | | **None** | **35 inutes** | |
 
 > ⚠️ Ang kabuuan sa itaas ay kinopya nang eksakto tulad ng nakalimbag sa dokumento, kasama ang maling baybay ng dokumento. Hindi ito itinama rito: ang tahimik na pagwawasto ay magpapahirap na masuri ang pahinang ito laban sa orihinal.
-
-## Isang tanong, mahigit isang entry sa charter
-
-_How do I get or renew a business permit?_
-
-Hindi pinagsama ng proyektong ito ang mga entry na iyon sa isang pahina. Ang pagsasama ay mangangahulugang pagpili ng isang set ng requirement para sa inyo at pagtapon sa isa.
 
 ## Kung may mali
 

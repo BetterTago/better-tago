@@ -4,8 +4,6 @@
 
 **Sino ang nagbibigay nito:** Office of the Municipal Civil Registrar, Tago Municipal Hall.
 
-> **Isinalin mula sa dokumento sa ibaba, at hindi pa nasusuri ng pangalawang tao.** Ang patakaran ng proyektong ito ay hindi kailanman sinusuri ng nagsulat ng pahina ang sarili niyang gawa, at bakante pa ang tungkulin ng Verifier. Bawat halaga rito ay binasa mula sa charter; wala pang binasang muli ng iba. Suriin sa mismong dokumento ang anumang babayaran o pupuntahan ninyo.
-
 ## Ano ang tawag dito ng charter
 
 > Request for an Electronic Endorsement of Birth, Death and Marriage Certificate and Certifications/Certified
@@ -58,12 +56,6 @@ Isinalin mula sa sariling dokumento ng munisipyo, sa sariling istruktura at pana
 | Letter as owner’s copy |  | None | 15 Minutes | Civil Registry Clerk |
 | and claim stub. | 5.2 Mail the request to the Receiving Local Civil Registrar with Acknowledgment Receipt for their endorsement to PSA Regional Office of their locality. |  |  | Any assigned personnel |
 | **TOTAL** | | **250.00** | **1 Hour & 10 Minutes** | |
-
-## Isang tanong, mahigit isang entry sa charter
-
-_How do I get a civil registry record endorsed electronically?_
-
-Hindi pinagsama ng proyektong ito ang mga entry na iyon sa isang pahina. Ang pagsasama ay mangangahulugang pagpili ng isang set ng requirement para sa inyo at pagtapon sa isa.
 
 ## Kung may mali
 

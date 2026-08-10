@@ -442,6 +442,50 @@ describe('the postal code stays unpublished', () => {
   });
 });
 
+describe('the office facet says the same number twice', () => {
+  it('🔴 keeps every office inside ONE category', () => {
+    /*
+     * A latent trap in the office filter, guarded before it can bite.
+     *
+     * A category page's chip counts the services THAT OFFICE PROVIDES IN THAT
+     * CATEGORY. `/services/office/<slug>` lists every service that office
+     * provides, full stop. Those two numbers are equal only while no office
+     * spans more than one category — which is true of all 18 today, and is a
+     * property of the vocabulary rather than a guarantee.
+     *
+     * The moment one office appears in two categories, a reader clicks a chip
+     * reading "8" and lands on a page of eleven. This fails first, and whoever
+     * moved the service decides what the chip should say — scope the facet to
+     * the category, or label the chip with the office's whole total.
+     */
+    const perOffice = new Map<string, Set<string>>();
+
+    for (const manifest of MANIFESTS.filter(doc =>
+      doc.path.startsWith('content/services/')
+    )) {
+      const category = manifest.path.split('/')[2];
+      const parsed = yaml.load(manifest.text) as {
+        pages: { office?: string }[];
+      };
+      for (const page of parsed.pages) {
+        if (!page.office) continue;
+        const seen = perOffice.get(page.office) ?? new Set<string>();
+        seen.add(category);
+        perOffice.set(page.office, seen);
+      }
+    }
+
+    expect(perOffice.size).toBeGreaterThan(10);
+    const spanning = [...perOffice]
+      .filter(([, categories]) => categories.size > 1)
+      .map(
+        ([office, categories]) => `${office} → ${[...categories].join(', ')}`
+      );
+
+    expect(spanning).toEqual([]);
+  });
+});
+
 describe('the office directory is complete', () => {
   it('has a record for every office the charter names', () => {
     /*
@@ -768,15 +812,26 @@ describe('a service page shows the transcription, and says whose it is', () => {
     expect(uncited).toEqual([]);
   });
 
-  it('says on every one that no second person has checked it', () => {
-    // The Verifier role is vacant. A page carrying fees must say so on its face.
-    const silent = CHARTER_PAGES.filter(
-      page =>
-        !/not yet checked by a second person|hindi pa nasusuri ng pangalawang tao/i.test(
-          page.text
-        )
+  it('🔴 claims on no page that a second person has checked it', () => {
+    /*
+     * ⚠️ Reversed on 2026-08-10, and the reversal is the point.
+     *
+     * This required every charter page to CARRY the sentence *"not yet checked
+     * by a second person"*. The blockquote that carried it was removed by
+     * instruction; the requirement went with it, and what remains is the
+     * assertion that no page ever says the opposite.
+     *
+     * The Verifier role is still vacant and every `verificationRecord` is still
+     * `null` — `transcription-integrity.test.ts` asserts both. What a reader
+     * now gets on the page is the source block: what the page was read from,
+     * when, and that the document wins where the two disagree.
+     */
+    const claiming = CHARTER_PAGES.filter(page =>
+      /(?<!not yet )(?:checked|verified) by a second person|(?<!hindi pa )nasusuri ng pangalawang tao/i.test(
+        page.text
+      )
     ).map(page => page.path);
-    expect(silent).toEqual([]);
+    expect(claiming).toEqual([]);
   });
 
   it('🔴 carries no completeness block — that belongs to the transcript', () => {

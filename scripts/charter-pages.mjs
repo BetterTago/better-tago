@@ -67,7 +67,6 @@ const COPY = {
     calls: 'What the charter calls it',
     asTranscribed: 'What the charter says',
     unclear: 'What the charter leaves unclear',
-    groupHeading: 'One question, more than one charter entry',
     wrong: 'If something goes wrong',
     document: 'The official document',
     documentSuffix: 'the Citizen’s Charter for this office, retrieved',
@@ -78,21 +77,16 @@ const COPY = {
       'Transcribed from the municipality’s own document, in the document’s own structure and wording. Nothing below has been re-worded, re-ordered or summarised.',
     unclearNote:
       'Guessing which reading is right would be inventing a fact, so this page carries the question rather than an answer. Read the document below.',
-    groupNote:
-      'This project has not merged those entries into one page. Merging them would mean choosing one set of requirements for you and dropping the other.',
     wrongBody:
       'This page is a transcription of the municipality’s own document by an independent volunteer project. It is not an official channel, and it cannot process anything for you.\n\n**If the office tells you something different from this page, the office is right.** Charters are revised, and a page transcribed on one date can fall behind. The correction link in the footer is the fastest way to get this page fixed — corrections from the municipality go to the front of the queue.',
     disagree:
       'Where this page and that document disagree, **the document is right and this page is wrong.**',
-    transcribedNote:
-      '**Transcribed from the document below, and not yet checked by a second person.** This project’s rule is that whoever transcribes a page never verifies it, and the Verifier role is currently vacant. Every figure here was read from the charter; none of them has been read back by somebody else. Check anything you are about to pay or travel for against the document itself.',
   },
   fil: {
     provides: 'Sino ang nagbibigay nito',
     calls: 'Ano ang tawag dito ng charter',
     asTranscribed: 'Ano ang sinasabi ng charter',
     unclear: 'Ang hindi malinaw sa charter',
-    groupHeading: 'Isang tanong, mahigit isang entry sa charter',
     wrong: 'Kung may mali',
     document: 'Ang opisyal na dokumento',
     documentSuffix: 'ang Citizen’s Charter para sa opisinang ito, kinuha noong',
@@ -103,14 +97,10 @@ const COPY = {
       'Isinalin mula sa sariling dokumento ng munisipyo, sa sariling istruktura at pananalita ng dokumento. Walang nasa ibaba ang muling isinulat, inayos o binuod.',
     unclearNote:
       'Ang paghula kung alin ang tamang pagbasa ay pag-imbento ng katotohanan, kaya dala ng pahinang ito ang tanong at hindi ang sagot. Basahin ang dokumento sa ibaba.',
-    groupNote:
-      'Hindi pinagsama ng proyektong ito ang mga entry na iyon sa isang pahina. Ang pagsasama ay mangangahulugang pagpili ng isang set ng requirement para sa inyo at pagtapon sa isa.',
     wrongBody:
       'Ang pahinang ito ay transkripsyon ng sariling dokumento ng munisipyo, gawa ng isang independiyenteng boluntaryong proyekto. Hindi ito opisyal na channel, at wala itong maiproproseso para sa inyo.\n\n**Kung iba ang sabihin sa inyo ng opisina kaysa sa pahinang ito, ang opisina ang tama.** Binabago ang mga charter, at ang pahinang isinulat sa isang petsa ay maaaring maiwan. Ang correction link sa footer ang pinakamabilis na paraan para maayos ito — ang mga pagwawasto mula sa munisipyo ay unang inaasikaso.',
     disagree:
       'Kung magkaiba ang pahinang ito at ang dokumentong iyon, **tama ang dokumento at mali ang pahinang ito.**',
-    transcribedNote:
-      '**Isinalin mula sa dokumento sa ibaba, at hindi pa nasusuri ng pangalawang tao.** Ang patakaran ng proyektong ito ay hindi kailanman sinusuri ng nagsulat ng pahina ang sarili niyang gawa, at bakante pa ang tungkulin ng Verifier. Bawat halaga rito ay binasa mula sa charter; wala pang binasang muli ng iba. Suriin sa mismong dokumento ang anumang babayaran o pupuntahan ninyo.',
   },
 };
 
@@ -285,7 +275,7 @@ function renderServiceRecord(service, locale, { link } = {}) {
 
 // ── the service page ────────────────────────────────────────────────────────
 
-function servicePage(entry, service, group, locale) {
+function servicePage(entry, service, locale) {
   const copy = COPY[locale];
   const out = [];
 
@@ -293,7 +283,18 @@ function servicePage(entry, service, group, locale) {
   if (locale === 'fil') out.push(FIL_DRAFT_NOTICE, '');
 
   out.push(`**${copy.provides}:** ${entry.office}, Tago Municipal Hall.`, '');
-  out.push(`> ${copy.transcribedNote}`, '');
+
+  /*
+   * ⚠️ A blockquote stood here — *"Transcribed from the document below, and not
+   * yet checked by a second person."* Removed on 2026-08-10 by instruction.
+   *
+   * 🔴 What it said is still TRUE: `verificationRecord` is `null` on every
+   * record and the Verifier role is vacant. The claim now reaches a reader only
+   * through the source block at the foot of the page — `VerificationBadge` and
+   * the deference line — rather than above the fees it applies to. Nothing about
+   * the DATA changed, and nothing here may be read as a claim that a second
+   * person has checked anything.
+   */
 
   out.push(
     `## ${copy.calls}`,
@@ -326,16 +327,17 @@ function servicePage(entry, service, group, locale) {
         : entry.ambiguity;
     out.push(`## ${copy.unclear}`, '', `> ${stated}`, '', copy.unclearNote, '');
   }
-  if (group) {
-    out.push(
-      `## ${copy.groupHeading}`,
-      '',
-      `_${group.question}_`,
-      '',
-      copy.groupNote,
-      ''
-    );
-  }
+  /*
+   * ⚠️ There was a `## One question, more than one charter entry` section here,
+   * rendered for the 22 services whose vocabulary `group` is set. Removed on
+   * 2026-08-10 by instruction as irrelevant to a resident.
+   *
+   * The `group` field itself is UNTOUCHED in the record — it is how the
+   * vocabulary records that the charter answers one question twice, and it is
+   * still what stops two entries being silently merged into one page. What was
+   * removed is only the paragraph on the page explaining that to a reader who
+   * came for a fee.
+   */
 
   out.push(`## ${copy.wrong}`, '', copy.wrongBody, '');
 
@@ -549,7 +551,13 @@ function contentFor(service, known) {
 }
 
 function main() {
-  const vocabulary = load(path.join(INVENTORY, 'task-vocabulary.yaml'));
+  /*
+   * `inventory/task-vocabulary.yaml` is no longer READ here — the only thing
+   * this generator took from it was the `groups` map, and the section that
+   * rendered was removed on 2026-08-10. The vocabulary is still the frozen
+   * authority on titles, slugs and categories (CONT-002); those reach the page
+   * through the manifests, which are built from it elsewhere.
+   */
   const documents = load(path.join(INVENTORY, 'charter-documents.yaml'));
   // The frozen enumeration is the authority on what each document STATES.
   // The extraction is only the authority on what could be read out of it.
@@ -559,10 +567,6 @@ function main() {
       entry.fields,
     ])
   );
-  const groups = new Map(
-    (vocabulary.groups ?? []).map(group => [group.id, group])
-  );
-
   const services = new Map();
   const byDocument = new Map();
   for (const file of readdirSync(TRANSCRIPTS).filter(name =>
@@ -615,13 +619,12 @@ function main() {
       transcribed += 1;
       changed = true;
 
-      const group = entry.group ? groups.get(entry.group) : null;
       for (const locale of ['en', 'fil']) {
         const file = path.join(
           path.dirname(manifestPath),
           `${entry.slug}${locale === 'fil' ? '.fil' : ''}.md`
         );
-        writeFileSync(file, servicePage(entry, service, group, locale), 'utf8');
+        writeFileSync(file, servicePage(entry, service, locale), 'utf8');
         written += 1;
       }
     }

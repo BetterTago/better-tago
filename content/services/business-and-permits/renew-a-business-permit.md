@@ -2,8 +2,6 @@
 
 **Who provides it:** Business Licensing and Permitting Division, Tago Municipal Hall.
 
-> **Transcribed from the document below, and not yet checked by a second person.** This project’s rule is that whoever transcribes a page never verifies it, and the Verifier role is currently vacant. Every figure here was read from the charter; none of them has been read back by somebody else. Check anything you are about to pay or travel for against the document itself.
-
 ## What the charter calls it
 
 > Processing of Application for Business Permit Renewal
@@ -52,12 +50,6 @@ Transcribed from the municipality’s own document, in the document’s own stru
 | 3. Go back to BPLO for the printing, approval and release of business permit. | 3.1 Check the receipts. Then, print business permit | None | 3 Minutes | - BPLO Personnel |
 |  | 3.2 Approve business permit | None None | 2 Minutes | - Municipal Mayor |
 |  | 3.3 Segregate and release. |  | 5 Minutes | - BPLO Personnel |
-
-## One question, more than one charter entry
-
-_How do I get or renew a business permit?_
-
-This project has not merged those entries into one page. Merging them would mean choosing one set of requirements for you and dropping the other.
 
 ## If something goes wrong
 

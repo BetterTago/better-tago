@@ -24,7 +24,21 @@ import { routing } from '@/i18n/routing';
  */
 export async function GET(request: Request) {
   const url = new URL(request.url);
-  const query = (url.searchParams.get('q') ?? '').trim();
+  /*
+   * 🔴 `%` is dropped, and it is the one character that has to be.
+   *
+   * The query becomes a PATH SEGMENT, and Next decodes a route param
+   * repeatedly: `100%` encodes to `100%25`, which Next decodes to `100%` and
+   * then throws on — `failed to decode param`, a 500, for a search a resident
+   * can genuinely type. There is no encoding that survives, because every one
+   * of them decodes back to a lone `%`.
+   *
+   * Dropping it is not silent: the results page prints the query it actually
+   * ran and puts it back in the field, so a reader sees `100` and can correct
+   * it. No service name or description in the charter contains a `%`, so
+   * nothing findable is lost.
+   */
+  const query = (url.searchParams.get('q') ?? '').replaceAll('%', '').trim();
 
   /*
    * The locale rides along in a hidden field. It is validated against the

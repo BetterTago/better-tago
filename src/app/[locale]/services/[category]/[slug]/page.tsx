@@ -1,22 +1,39 @@
 import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
+import { FileText } from 'lucide-react';
 import { hasLocale } from 'next-intl';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
-import { Link } from '@/i18n/navigation';
 import { Markdown } from '@/components/content/Markdown';
 import { SourceDocument } from '@/components/content/SourceDocument';
 import { VerificationBadge } from '@/components/content/VerificationBadge';
+import { PageMasthead } from '@/components/services/PageMasthead';
+import { OfficePanel } from '@/components/services/OfficePanel';
+import { PageRail } from '@/components/services/PageRail';
 import { Container } from '@/components/ui/Container';
+import { Link } from '@/i18n/navigation';
 import { routing } from '@/i18n/routing';
-import { getCharterPage, getCharterSections } from '@/lib/content';
+import {
+  getCharterDocumentSlug,
+  getCharterPage,
+  getCharterSections,
+} from '@/lib/content';
+import { markdownOutline } from '@/lib/markdown-outline';
 
 /**
- * ★ TAGO-109 — one service, as the charter describes it.
+ * ★ TAGO-109 / TAGO-206 / TAGO-207 — one service, as the charter describes it.
  *
- * The body is generated markdown: the eight headings where the transcription
- * could be stood behind, and an honest account of what is missing where it
- * could not. The page's own job is the frame around it — the citation, the
- * verification state, and the Filipino fallback notice.
+ * The body is generated markdown: the headings where the transcription could be
+ * stood behind, and an honest account of what is missing where it could not. The
+ * page's own job is the frame around it — where you are, who provides this, what
+ * it was read from, and the Filipino fallback notice.
+ *
+ * ## What the page will NOT do to the charter's tables
+ *
+ * They are reproduced as the document prints them: ragged continuation rows,
+ * empty cells, a fee-particulars table that runs into the client-steps grid.
+ * They look tidier in the design sheet than they do here, and the sheet is
+ * wrong — normalising a figure or merging a row to improve the layout is the
+ * failure `transcription-integrity.test.ts` fails the build on.
  */
 export async function generateMetadata({
   params,
@@ -67,50 +84,91 @@ export default async function ServicePage({
   // An unknown slug is a 404, never a soft 200 with a message inside it.
   if (!page) notFound();
 
-  const t = await getTranslations('services');
   const { entry, body, usedFallback } = page;
+  const [t, tCommon, documentSlug] = await Promise.all([
+    getTranslations('services'),
+    getTranslations('common'),
+    getCharterDocumentSlug(entry.charterDocument.sha256),
+  ]);
+
+  const categoryLabel = t(`categories.${category}`);
+  const headings = markdownOutline(body);
 
   return (
-    <Container className="py-12 sm:py-16">
-      <p className="text-sm">
-        <Link
-          href={`/services/${category}`}
-          className="text-ink-link hover:text-ink-link-hover"
-        >
-          {t(`categories.${category}`)}
-        </Link>
-      </p>
+    <>
+      <PageMasthead
+        aside={
+          <OfficePanel
+            footer={<VerificationBadge verification={entry.verification} />}
+            heading={t('whoProvidesIt')}
+            offices={entry.office ? [{ name: entry.office }] : []}
+          />
+        }
+        eyebrow={t('serviceEyebrow', { category: categoryLabel })}
+        lead={entry.description}
+        title={entry.name}
+        trail={[
+          { href: '/', label: tCommon('home') },
+          { href: '/services', label: t('title') },
+          { href: `/services/${category}`, label: categoryLabel },
+          { label: entry.name },
+        ]}
+      />
 
-      <h1 className="mt-3 text-3xl font-bold text-balance sm:text-4xl">
-        {entry.name}
-      </h1>
+      <Container className="flex flex-col gap-10 py-10 lg:flex-row lg:items-start lg:gap-14 lg:py-14">
+        {/* Hidden below the desktop breakpoint, and nothing is lost: every
+            heading it lists is in the article immediately beside it, in the same
+            order. The rail is a shortcut, never a route. */}
+        <aside className="hidden lg:sticky lg:top-6 lg:block lg:w-60 lg:shrink-0">
+          <PageRail
+            footer={
+              <Link
+                className="text-ink-link hover:text-ink-link-hover"
+                href={`/services/${category}`}
+              >
+                {t('backToCategory', { category: categoryLabel })}
+              </Link>
+            }
+            heading={t('onThisPage')}
+            headings={headings}
+          />
+        </aside>
 
-      <div className="mt-4 flex flex-wrap items-center gap-3">
-        <VerificationBadge verification={entry.verification} />
-      </div>
+        <article className="flex min-w-0 flex-1 flex-col gap-8">
+          {/* The fallback is deliberate and it is never silent. A Filipino
+              reader looking at English is told why, on the page, before the
+              content — and by an icon-free, colour-independent notice, because
+              a banner distinguishable only by colour is not conveyed at all. */}
+          {usedFallback && (
+            <p
+              className="rounded-xl border border-line-control bg-surface-tint p-4 leading-relaxed text-ink"
+              role="note"
+            >
+              {t('fallbackNotice')}
+            </p>
+          )}
 
-      {/* The fallback is deliberate and it is never silent. A Filipino reader
-          looking at English is told why, on the page, before the content. */}
-      {usedFallback ? (
-        <p
-          role="note"
-          className="mt-6 rounded-lg border border-line bg-surface-tint p-4 leading-relaxed text-ink-secondary"
-        >
-          {t('fallbackNotice')}
-        </p>
-      ) : null}
+          <Markdown>{body}</Markdown>
 
-      <article className="mt-8">
-        <Markdown>{body}</Markdown>
-      </article>
+          {documentSlug && (
+            <p>
+              <Link
+                className="inline-flex min-h-11 items-center gap-2 font-semibold text-ink-link hover:text-ink-link-hover"
+                href={`/charter/documents/${documentSlug}`}
+              >
+                <FileText aria-hidden="true" className="size-4 shrink-0" />
+                {entry.charterDocument.title}
+              </Link>
+            </p>
+          )}
 
-      <div className="mt-12">
-        <SourceDocument
-          source={entry.source}
-          verification={entry.verification}
-          office={entry.office}
-        />
-      </div>
-    </Container>
+          <SourceDocument
+            office={entry.office}
+            source={entry.source}
+            verification={entry.verification}
+          />
+        </article>
+      </Container>
+    </>
   );
 }

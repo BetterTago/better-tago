@@ -303,8 +303,6 @@ them.
 
 <the deliberate refusal, and why — unchanged wording>
 
-## One question, more than one charter entry <!-- only when `group` is set -->
-
 ## What the charter leaves unclear <!-- only when `ambiguity` is set; `transcriptionNote` never renders -->
 
 ## The official document

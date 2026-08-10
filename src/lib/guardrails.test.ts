@@ -158,11 +158,20 @@ describe('the route set is the one that was reviewed', () => {
     // Suspense boundary, which is what makes them reachable with JavaScript
     // disabled. All three are `noindex` — a crawler indexing every query
     // produces thousands of near-duplicate URLs of a civic site.
+    // Narrowing a result set by category. A filter value, so an unknown one
+    // falls back to the unfiltered results rather than 404ing.
+    'src/app/[locale]/search/[query]/[category]/page.tsx',
     'src/app/[locale]/search/[query]/page.tsx',
     'src/app/[locale]/search/page.tsx',
     'src/app/api/search/route.ts',
     'src/app/[locale]/services/[category]/[slug]/page.tsx',
     'src/app/[locale]/services/[category]/page.tsx',
+    // The office facet. A FILTER over resident tasks, prerendered one page per
+    // office — not the office directory, which is TAGO-107 and is a different
+    // route with a different job. It is a route segment rather than `?office=`
+    // because a filtered view has to survive JavaScript being off, and a
+    // Suspense boundary streams as a hidden div; see the file's own note.
+    'src/app/[locale]/services/office/[office]/page.tsx',
     'src/app/[locale]/services/page.tsx',
     'src/app/layout.tsx',
     'src/app/not-found.tsx',
@@ -242,6 +251,29 @@ describe('the route set is the one that was reviewed', () => {
     ).map(file => file.path);
 
     expect(direct).toEqual([]);
+  });
+});
+
+describe('the tab icon is the delivered mark, not a copy of it', () => {
+  it('🔴 keeps src/app/icon.svg byte-identical to brand/logo/better-tago-color.svg', () => {
+    /*
+     * Next's icon convention needs the file inside `src/app/`, so the mark
+     * exists twice in this repository. Two copies of one piece of artwork drift
+     * the first time either is revised — and the one that drifts is always the
+     * one nobody looks at, which is the favicon.
+     *
+     * There is no build step that could dedupe them (the convention is a file
+     * path, not an import), so this is the thing that keeps them equal. If it
+     * fails, `cp brand/logo/better-tago-color.svg src/app/icon.svg` — do not
+     * edit the copy.
+     */
+    const brand = readFileSync(
+      path.join(ROOT, 'brand', 'logo', 'better-tago-color.svg'),
+      'utf8'
+    );
+    const icon = readFileSync(path.join(APP, 'icon.svg'), 'utf8');
+
+    expect(icon).toBe(brand);
   });
 });
 
@@ -464,6 +496,11 @@ describe('the server/client boundary', () => {
      */
     const CLIENT_LEAVES = [
       'src/components/layout/AdvisoryBar.tsx',
+      // "Which section am I looking at" is a fact about the viewport, and the
+      // server has no viewport. Everything else about the rail — the headings,
+      // their ids, their order — is computed on the server and arrives as
+      // props.
+      'src/components/services/PageRail.tsx',
       'src/components/layout/MobileNav.tsx',
       'src/components/layout/NavDisclosure.tsx',
       'src/components/layout/TickerViewport.tsx',

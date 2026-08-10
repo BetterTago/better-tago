@@ -1,6 +1,6 @@
 {
   "meta": {
-    "title": "BetterTago — pampublikong impormasyon ng Bayan ng Tago",
+    "title": "BetterTago | Mga Serbisyo, Impormasyon ng Pamahalaan at Pampublikong Datos ng Bayan ng Tago",
     "description": "Isang malayang proyekto ng mga boluntaryo na nag-aayos ng impormasyong inilalathala mismo ng Bayan ng Tago. Hindi ito ang opisyal na sityo.",
     "notFoundTitle": "Hindi natagpuan ang pahina"
   },
@@ -80,10 +80,9 @@
     "retry": "Subukan muli"
   },
   "services": {
+    "counts": "May sariling requirement, bayad at hakbang ng charter ang {transcribed} sa {total} serbisyo. Ang iba ay pinapangalanan ang serbisyo at ini-link ang dokumento habang isinasalin ito ng tao.",
     "title": "Mga serbisyo",
     "lead": "Bawat serbisyong inilalarawan ng Citizen’s Charter ng Munisipyo ng Tago, nakalista ayon sa kung ano ang gusto ninyong gawin at hindi ayon sa kung aling opisina ang gumagawa nito.",
-    "counts": "May sariling requirement, bayad at hakbang ng charter ang {transcribed} sa {total} serbisyo. Ang iba ay pinapangalanan ang serbisyo at ini-link ang dokumento habang isinasalin ito ng tao.",
-    "notYetTranscribed": "hindi pa naisasalin ang mga requirement",
     "fallbackNotice": "Wala pang Filipino ang pahinang ito, kaya Ingles ang ipinapakita. Hindi ito nakatago — ang pagsasalin ay hindi pa tapos.",
     "categories": {
       "agriculture-fisheries": "Agrikultura at pangisdaan",
@@ -99,7 +98,50 @@
       "work-and-employment": "Trabaho at empleyo"
     },
     "scrollableTable": "{name}, talahanayan, puwedeng i-scroll pahalang",
-    "table": "Talahanayan"
+    "table": "Talahanayan",
+    "eyebrow": "Ang Citizen’s Charter",
+    "browseHeading": "Maghanap ayon sa kailangan mo",
+    "sortedAZ": "Nakasunod sa A–Z",
+    "categoriesCount": "{count, plural, one {# kategorya} other {# na kategorya}}",
+    "allCategories": "Lahat ng kategorya",
+    "categoryEyebrow": "Kategorya · {count, plural, one {# serbisyo} other {# na serbisyo}}",
+    "serviceEyebrow": "{category} · Serbisyo",
+    "coverage": "{transcribed} sa {total} na serbisyo ang buong nakasalin",
+    "coveragePercent": "{percent}% ang nakasalin",
+    "coverageInCategory": "{transcribed} sa {total} ang may dalang mga kailangan, bayad at hakbang mula sa charter",
+    "coverageSource": "Pinagmulan: Citizen’s Charter · sinuri noong {date}",
+    "readFromCharter": "Binasa mula sa Citizen’s Charter · sinuri noong {date}",
+    "pillTranscribed": "Mga kailangan · bayad · hakbang",
+    "pillNotTranscribed": "Hindi pa nakakasalin",
+    "pillLabel": "Ano ang dala ng pahinang ito",
+    "whoProvidesThese": "Sino ang nagbibigay nito",
+    "whoProvidesIt": "Sino ang nagbibigay nito",
+    "onThisPage": "Nasa pahinang ito",
+    "backToCategory": "Lahat ng {category}",
+    "breadcrumbLabel": "Nasaan ka",
+    "filterByOffice": "Salain ayon sa tanggapan",
+    "allInCategory": "Lahat ng {count}",
+    "officeServiceCount": "{count, plural, one {# serbisyo} other {# na serbisyo}}",
+    "officeLead": "Lahat ng serbisyo sa Citizen’s Charter na ibinibigay ng tanggapang ito. Ang tanggapan ay paraan lamang ng pagsala, hindi ang pagkakaayos ng listahan.",
+    "officeEyebrow": "Tanggapan · {count, plural, one {# serbisyo} other {# na serbisyo}}",
+    "officeBackToAll": "Lahat ng serbisyo",
+    "missingCtaTitle": "Wala rito ang serbisyong hinahanap mo?",
+    "missingCtaBody": "Ang talaang ito ay naglalaman lamang ng inilathala ng munisipyo. Hayagang nakalista ang mga kulang, at maaari mong sabihin kung ano ang susunod naming hahanapin.",
+    "missingCtaAction": "Tingnan ang mga kulang",
+    "categoryDescriptions": {
+      "agriculture-fisheries": "Binhi at pananim, bakuna at inspeksyon ng hayop, at ang tulong ng tanggapan ng agrikultura sa mga magsasaka at may-ari ng palaisdaan.",
+      "business-and-permits": "Pagbubukas, pag-renew at pagsasara ng negosyo sa Tago, at ang permit ng tricycle operator.",
+      "civil-registry": "Kapanganakan, kasal, kamatayan, at pagwawasto ng anumang talaang hawak ng munisipyo.",
+      "disaster-and-safety": "Sertipikasyon pagkatapos ng sakuna, paglipat ng pasyente, paghahatid ng tubig, at pagsasanay sa paghahanda.",
+      "engineering": "Building permit, occupancy, zoning at locational clearance bago magtayo o magbago ng gamit ng lupa.",
+      "health": "Konsultasyon, sertipiko, gamot, at ang mga programa ng tanggapan ng kalusugan at nutrisyon.",
+      "permits-and-clearances": "Mga permit, clearance at sertipikasyon mula sa mayor, kasama ang mga bayad na nakalimbag sa charter.",
+      "social-welfare": "Tulong, certificate of indigency, at suporta para sa solo parent, senior citizen, person with disability at mga nakaligtas sa karahasan.",
+      "tourism": "Permit para sa negosyong panturismo, DOT accreditation, at pagsasanay ng tourism frontliner.",
+      "treasury": "Tax declaration, assessment, at paglilipat ng pagmamay-ari ng ari-arian sa talaan ng munisipyo.",
+      "work-and-employment": "Talaan at clearance sa trabaho para sa kawani ng munisipyo, at pag-apply sa trabaho sa lokal na pamahalaan o student summer job."
+    },
+    "categoryMetaTitle": "Mga serbisyo sa {category}"
   },
   "nav": {
     "label": "Pangunahin",
@@ -157,7 +199,6 @@
     "hint": "Hanapin ang bawat serbisyo sa Citizen's Charter ng munisipyo.",
     "placeholder": "permit sa negosyo, sertipiko ng kapanganakan, indigency…",
     "submit": "Hanapin",
-    "searching": "Naghahanap…",
     "emptyQuery": "I-type ang sinusubukan mong ayusin — isang gawain, hindi isang tanggapan. Hindi mo kailangang alamin kung aling tanggapan ang humahawak nito.",
     "resultsHeading": "{count, plural, one {# serbisyo} other {# na serbisyo}} para sa “{query}”",
     "noResultsHeading": "Walang tumutugma rito sa “{query}”",
@@ -167,7 +208,14 @@
     "resultsTitle": "Mga resulta para sa “{query}”",
     "findService": "Maghanap ng serbisyo",
     "findServiceHelp": "Hanapin ang bawat serbisyo sa Citizen's Charter ng Munisipyo ng Tago — ayon sa gusto mong gawin, hindi ayon sa tanggapang humahawak nito.",
-    "popular": "Madalas hanapin:"
+    "popular": "Madalas hanapin:",
+    "scope": "Hinahanap ang pangalan ng serbisyo, ang paglalarawan nito at ang tanggapang nagbibigay.",
+    "clear": "Burahin ang hinahanap",
+    "narrowByCategory": "Salain ayon sa kategorya",
+    "allResults": "Lahat ng resulta",
+    "tryInstead": "Subukan sa halip",
+    "resultsFor": "{count, plural, one {resulta} other {na resulta}} para sa “{query}”",
+    "resultsInCategory": "“{query}” sa {category}"
   },
   "stats": {
     "heading": "Ang {municipality} sa isang sulyap",
