@@ -7,8 +7,11 @@
  * untrusted by definition, so this function never builds HTML at all — the
  * component maps the segments onto real elements and React escapes them.
  *
- * Folding matches `search.ts` exactly: NFD, strip diacritics, lowercase, so
- * "Niño" is found by "nino". The folded string is used ONLY to locate the runs;
+ * Folding matches `search.ts` exactly — NFD, strip the COMBINING marks,
+ * lowercase — so "Niño" is found by "nino" and a `^` a resident typed is still
+ * a `^`. The two have to agree: what the search matched on is what gets marked,
+ * and a fold that diverged here would mark the wrong run of the wrong row.
+ * The folded string is used ONLY to locate the runs;
  * every emitted segment is a slice of the ORIGINAL text, so the reader sees the
  * municipality's own spelling and casing rather than a normalised copy.
  *
@@ -24,7 +27,7 @@ export type Segment = { text: string; matched: boolean };
 function foldChar(character: string): string {
   const stripped = character
     .normalize('NFD')
-    .replace(/\p{Diacritic}/gu, '')
+    .replace(/\p{Mn}/gu, '')
     .toLowerCase();
   // A character with no base letter (a lone combining mark) folds to nothing,
   // which would shift every index after it. Keep the original instead.

@@ -1,4 +1,22 @@
-import { expect, test } from '@playwright/test';
+import { expect, test, type Page } from '@playwright/test';
+
+/**
+ * Whichever heading the results section is announcing itself by — `#results-heading`
+ * when there are hits, `#no-results` when there are none — on the page the reader
+ * is actually LOOKING at.
+ *
+ * 🔴 `:visible` is load-bearing, not tidiness. After a client-side navigation
+ * Next keeps the previous segment mounted inside `<main>` under
+ * `display: none !important`, so a bare `#results-heading` matches TWICE — the
+ * page on screen and the page behind it — and an id-based assertion fails
+ * Playwright's strict mode with two counts of the same query
+ * (`4 services for “business permit”` over `6 services for …`).
+ *
+ * `getByRole` never had this problem, because a `display: none` subtree is not
+ * in the accessibility tree. Only the CSS locators need saying.
+ */
+const resultsHeading = (page: Page) =>
+  page.locator('#results-heading:visible, #no-results:visible');
 
 /**
  * Search — a real GET form, server-rendered results, and no client-side
@@ -242,6 +260,192 @@ test.describe('search', () => {
     const response = await page.goto('/en/search/certificate/not-a-category');
     expect(response?.status()).toBe(200);
     await expect(page).toHaveURL(/\/en\/search\/certificate$/);
+  });
+
+  test('🔴 a prerendered popular query renders the space, not %20', async ({
+    page,
+  }) => {
+    /*
+     * The bug this test is named for, exactly as it shipped.
+     *
+     * `generateStaticParams` pre-encoded its values. Next encodes a returned
+     * param itself, so the URL was unchanged and the PARAM recorded against it
+     * was escaped twice — and this route is partially prerendered, so the shell
+     * renders at build time and the results resume at request time from that
+     * recorded param. One document, two spellings: a tab reading
+     * `Results for “business permit”` over a page reading
+     * `Nothing here matches “business%20permit”`, with the six real results
+     * missing.
+     *
+     * Checking the two AGREE is what makes this test the bug rather than a
+     * paraphrase of it. A regression that broke both halves equally would slip
+     * past an assertion on either one alone.
+     */
+    for (const query of ['business permit', 'birth certificate']) {
+      await page.goto(`/en/search/${encodeURIComponent(query)}`);
+
+      await expect(page).toHaveTitle(`BetterTago | Results for “${query}”`);
+      const heading = resultsHeading(page);
+      await expect(heading).toContainText(`“${query}”`);
+      await expect(heading).not.toContainText('%');
+      // The field a reader corrects their search in has to agree as well.
+      await expect(page.getByRole('searchbox').first()).toHaveValue(query);
+      // And these are the queries the chips promise results for.
+      expect(
+        await page.locator('main a[href*="/services/"]').count()
+      ).toBeGreaterThan(0);
+    }
+  });
+
+  test('🔴 a symbol the fold used to eat finds nothing, not six unrelated services', async ({
+    page,
+  }) => {
+    /*
+     * The defect, end to end, and the half a heading assertion cannot see.
+     *
+     * `fold` stripped `\p{Diacritic}`, which covers standalone punctuation and
+     * not just the combining marks NFD produces: `^`, `` ` ``, `¨`, `¯`, `´` and
+     * `¸` are all `Diacritic=Yes`. A search for `a^b` was therefore run as `ab`
+     * and matched six services across agriculture, health, social welfare and
+     * tourism — under a heading quoting `a^b` back at the reader, which is what
+     * made them read as answers rather than as noise.
+     *
+     * Wrong results are worse than none on a civic portal, so this asserts the
+     * RESULT SET and not the heading. Every earlier test in this file passed
+     * throughout the bug, because the heading was never the part that was wrong.
+     */
+    for (const character of ['^', '`', '¨', '¯', '´', '¸']) {
+      const query = `a${character}b`;
+      await page.goto(`/api/search?q=${encodeURIComponent(query)}&locale=en`);
+
+      // Nothing in the charter contains it, so nothing is the right answer.
+      await expect(page.locator('#no-results'), query).toContainText(
+        `“${query}”`
+      );
+      expect(
+        await page.locator('main a[href*="/services/"]').count(),
+        query
+      ).toBe(0);
+    }
+  });
+
+  test('🔴 no symbol comes back escaped, whatever it was', async ({ page }) => {
+    /*
+     * The sweep, rather than the one character somebody reported. Each of these
+     * makes the real trip a typed query makes — `/api/search` drops `%` and
+     * trims, redirects to an encoded segment, and the page reads it back — and
+     * the heading has to quote what was typed, not the URL it travelled in.
+     *
+     * A `%` in a heading is the tell for every bug in this class, so it is
+     * asserted separately from the exact text: it fails the same way whichever
+     * escape leaked.
+     */
+    const cases: [typed: string, searched: string][] = [
+      ['business permit', 'business permit'],
+      ['a b  c', 'a b  c'], // repeated spaces, %20%20
+      ['  spaced  ', 'spaced'], // trimmed by the handler
+      ['100%', '100'], // `%` dropped — it cannot survive a path segment
+      ['50%off', '50off'],
+      ['a/b', 'a/b'], // %2F — would otherwise redirect somewhere else
+      ['a?b', 'a?b'],
+      ['a#b', 'a#b'],
+      ['a&b', 'a&b'],
+      ['a+b', 'a+b'],
+      ['a=b', 'a=b'],
+      ['a:b', 'a:b'],
+      ['a;b', 'a;b'],
+      ['a,b', 'a,b'],
+      ['a@b', 'a@b'],
+      ['a$b', 'a$b'],
+      ['a"b', 'a"b'],
+      ["a'b", "a'b"],
+      ['a\\b', 'a\\b'],
+      ['a|b', 'a|b'],
+      ['a^b', 'a^b'], // Diacritic=Yes — was silently deleted, see search.ts
+      ['a`b', 'a`b'],
+      ['a´b', 'a´b'],
+      ['a[b]', 'a[b]'],
+      ['a{b}', 'a{b}'],
+      ['a(b)', 'a(b)'],
+      ['a<b>', 'a<b>'],
+      ['señor', 'señor'],
+      ['Bañaybañay', 'Bañaybañay'],
+      ['日本', '日本'],
+      ['👍', '👍'],
+      ['../../etc/passwd', '../../etc/passwd'],
+      ['<script>alert(1)</script>', '<script>alert(1)</script>'],
+    ];
+
+    for (const [typed, searched] of cases) {
+      const response = await page.goto(
+        `/api/search?q=${encodeURIComponent(typed)}&locale=en`
+      );
+      expect(response?.status(), typed).toBe(200);
+
+      const heading = resultsHeading(page);
+      await expect(heading, typed).toContainText(`“${searched}”`);
+      if (!searched.includes('%')) {
+        await expect(heading, typed).not.toContainText('%');
+      }
+      // The field is repopulated from the same value, so a reader correcting a
+      // search never has to retype it — and never sees an escape either.
+      await expect(page.getByRole('searchbox').first(), typed).toHaveValue(
+        searched
+      );
+    }
+  });
+
+  test('🔴 a doubly-escaped URL resolves to the query, not to the escape', async ({
+    page,
+  }) => {
+    /*
+     * Belt to the braces above. The route must not depend on Next handing a
+     * param over at one particular encoding depth — that assumption is what
+     * shipped `%20`, and a Next upgrade or a platform routing layer can change
+     * it again. `decodeParam` decodes until the string settles, so all three
+     * spellings of one query are one page.
+     */
+    for (const segment of [
+      'business permit',
+      'business%20permit',
+      'business%2520permit',
+    ]) {
+      await page.goto(`/en/search/${segment}`);
+      const heading = resultsHeading(page);
+      await expect(heading, segment).toContainText('“business permit”');
+      expect(
+        await page.locator('main a[href*="/services/"]').count(),
+        segment
+      ).toBeGreaterThan(0);
+    }
+  });
+
+  test('a facet link keeps the query encoded exactly once', async ({
+    page,
+  }) => {
+    /*
+     * The rail builds its hrefs from the decoded query, and the filtered route
+     * hands an unknown category back to the unfiltered one. Both are places a
+     * segment gets rebuilt, and both are places a second round of escaping used
+     * to be able to creep in.
+     *
+     * This one runs WITH JavaScript, unlike the facet test above it: the click
+     * is a soft navigation, so the href is rebuilt by the client router rather
+     * than by the browser, and that is a third place the escaping can slip.
+     */
+    await page.goto('/en/search/business%20permit');
+    const facet = page
+      .getByRole('navigation', { name: /narrow by category/i })
+      .getByRole('link')
+      .first();
+    await facet.click();
+    await expect(page).toHaveURL(/\/en\/search\/business%20permit\/[a-z-]+$/);
+    await expect(resultsHeading(page)).toContainText('“business permit”');
+
+    // And the fall-back redirect off an unknown category, which rebuilds it.
+    await page.goto('/en/search/business%20permit/not-a-category');
+    await expect(page).toHaveURL(/\/en\/search\/business%20permit$/);
+    await expect(resultsHeading(page)).toContainText('“business permit”');
   });
 
   test('is not indexed', async ({ page }) => {

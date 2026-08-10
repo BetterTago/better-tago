@@ -51,15 +51,18 @@ export async function generateMetadata({
 export function generateStaticParams() {
   /*
    * The same three the hero's chips link to, so the commonest journey into this
-   * portal is served from a static file. ENCODED exactly as the chips encode
-   * them, or the prerendered path and the linked path differ by a space and
-   * neither is reused.
+   * portal is served from a static file.
    *
-   * ⚠️ A prerendered route then receives this string RAW, while a dynamically
-   * rendered one receives it decoded — see `decodeParam`, which is what makes
-   * the two agree.
+   * 🔴 **RAW, never `encodeURIComponent`.** Next treats a value returned here as
+   * the DECODED param and encodes it itself when it builds the path, so
+   * `business permit` still prerenders `/en/search/business%20permit` — the
+   * exact URL the chips link to. Pre-encoding it does not change that URL; it
+   * changes the param recorded against it, and the partially-prerendered route
+   * resumed at request time then hands the page `business%2520permit`. That
+   * shipped: the results read `Nothing here matches “business%20permit”` while
+   * the tab title, rendered from the build-time param, read correctly.
    */
-  return POPULAR_QUERIES.map(query => ({ query: encodeURIComponent(query) }));
+  return POPULAR_QUERIES.map(query => ({ query }));
 }
 
 export default async function SearchResultsPage({

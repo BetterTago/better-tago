@@ -23,11 +23,25 @@ export type SearchHit = {
   category: string;
 };
 
-/** Fold case and strip diacritics, so "Niño" matches "nino". */
-function fold(value: string): string {
+/**
+ * Fold case and strip diacritics, so "Niño" matches "nino" and "Bañaybañay"
+ * matches "banaybanay".
+ *
+ * Exported for `search.test.ts` only — `searchServices` itself reaches
+ * `content.ts`, which imports `next/cache` and cannot be unit-tested. This is
+ * the part with a rule in it, so this is the part that gets pinned.
+ *
+ * 🔴 **`\p{Mn}` — the COMBINING marks NFD produces — never `\p{Diacritic}`.**
+ * That property also covers standalone punctuation a resident can type: `^`,
+ * `` ` ``, `¨`, `¯`, `´` and `¸` are all `Diacritic=Yes`. Deleting them turned
+ * `a^b` into a search for `ab`, which returned six unrelated services under a
+ * heading quoting the query the reader actually typed. Stripping only the marks
+ * that NFD decomposed is what "ignore the accent" was ever meant to mean.
+ */
+export function fold(value: string): string {
   return value
     .normalize('NFD')
-    .replace(/\p{Diacritic}/gu, '')
+    .replace(/\p{Mn}/gu, '')
     .toLowerCase();
 }
 

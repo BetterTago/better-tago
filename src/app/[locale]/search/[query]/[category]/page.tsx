@@ -74,12 +74,10 @@ export async function generateStaticParams() {
       const categories = [
         ...new Set((await searchServices(query)).map(hit => hit.category)),
       ];
-      // Encoded, matching the route above — and read back through
-      // `decodeParam`, because a prerendered route receives it raw.
-      return categories.map(category => ({
-        query: encodeURIComponent(query),
-        category,
-      }));
+      // 🔴 RAW, never `encodeURIComponent` — same rule as the route above.
+      // Next encodes a returned param itself when it builds the path; encoding
+      // it here leaves the URL identical and the recorded param double-encoded.
+      return categories.map(category => ({ query, category }));
     })
   );
   const pairs: { query: string; category: string }[] = nested.flat();
@@ -99,14 +97,17 @@ export default async function FilteredSearchResultsPage({
   const known = (await getCharterSections()).some(
     section => section.category === category
   );
-  // The param is already a path segment, so it goes back into one unchanged.
-  if (!known) redirect(`/${locale}/search/${query}`);
+  const decoded = decodeParam(query).trim();
+
+  /*
+   * Decoded, then encoded once — never passed through as-is. The param arrives
+   * at whichever encoding depth this render happened to be produced at, and
+   * forwarding that raw is how `business%20permit` becomes `business%2520permit`
+   * one redirect later.
+   */
+  if (!known) redirect(`/${locale}/search/${encodeURIComponent(decoded)}`);
 
   return (
-    <SearchResultsView
-      category={category}
-      locale={locale}
-      query={decodeParam(query).trim()}
-    />
+    <SearchResultsView category={category} locale={locale} query={decoded} />
   );
 }
