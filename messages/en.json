@@ -6,7 +6,11 @@
   },
   "common": {
     "home": "Home",
-    "skipToContent": "Skip to content"
+    "skipToContent": "Skip to content",
+    "comingSoon": "Coming soon",
+    "backToTop": "Back to the top of the page",
+    "opensExternalSite": "opens another website",
+    "noWebsite": "no website"
   },
   "header": {
     "homeLink": "{portal} home",
@@ -18,27 +22,23 @@
     "themeToDark": "Switch to the dark theme",
     "themeToLight": "Switch to the light theme",
     "themeNowDark": "Dark theme on",
-    "themeNowLight": "Light theme on"
-  },
-  "holding": {
-    "eyebrow": "Nothing has been published here yet",
-    "heading": "A way in to the Municipality of Tago's own information.",
-    "lead": "The municipality already publishes its Citizen's Charter, its offices, and its news. This project would make that information searchable and readable on a phone — one page for each thing a resident is trying to do, each one citing and linking back to the official document it came from.",
-    "statusHeading": "What exists today",
-    "statusBody": "The domain, and this page. No service guides, no office directory, no figures. The municipality has not yet been asked for permission to republish its charter, and this project does not build first and ask later.",
-    "officialHeading": "The official record",
-    "officialBody": "Everything authoritative about the Municipality of Tago is published by the municipality itself. Where that record and this project ever disagree, the official record is right and this project is wrong.",
-    "officialCta": "Go to the official municipal site",
-    "emergencyHeading": "In an emergency",
-    "emergencyNational": "National emergency hotline",
-    "emergencyGap": "No municipal emergency hotline is published anywhere this project can cite, and one has been requested. Until it is obtained, this page shows the gap rather than a number that might be wrong — a wrong number in an emergency is worse than no number at all."
+    "themeNowLight": "Light theme on",
+    "openMenu": "Open the menu",
+    "closeMenu": "Close the menu"
   },
   "footer": {
-    "independence": "BetterTago is an independent, volunteer-run project. It is not operated by, endorsed by, or affiliated with the Municipal Government of Tago.",
-    "networkLabel": "Part of {network}",
-    "versionLabel": "Version {version}",
-    "corrections": "Report an error",
-    "sourceNote": "Every figure this portal publishes names its source and the date it was last checked — including the ones we do not have yet."
+    "independence": "Built by Tagon-on for Tago. Empowering the people of Tago with transparent access to government services, programs, and public funds.",
+    "copyright": "© 2026 {host}. All rights reserved.",
+    "sourceCode": "Source Code",
+    "version": "Portal version",
+    "costLine": "Cost to the People of Tago = ₱0",
+    "columnPages": "Pages",
+    "columnResources": "Resources",
+    "columnContribute": "Contribute",
+    "volunteer": "Volunteer with us",
+    "contributeCode": "Contribute code with us",
+    "repositoryGap": "The source code is not published yet, so there is nowhere to point you. It will be linked here the day it is.",
+    "network": "Part of the {network} network"
   },
   "source": {
     "heading": "Where this comes from",
@@ -100,5 +100,153 @@
     },
     "scrollableTable": "{name}, table, scrollable sideways",
     "table": "Table"
+  },
+  "nav": {
+    "label": "Main",
+    "mobileLabel": "Main, on this device",
+    "footerLabel": "Footer",
+    "services": "Services",
+    "allServices": "All services",
+    "civilRegistry": "Civil registry",
+    "businessAndPermits": "Business and permits",
+    "health": "Health",
+    "socialWelfare": "Social welfare",
+    "government": "Government",
+    "offices": "Offices",
+    "transparency": "Transparency",
+    "barangays": "Barangays",
+    "municipality": "The municipality",
+    "atAGlance": "At a glance",
+    "history": "History",
+    "tourism": "Tourism",
+    "emergency": "Emergency",
+    "contact": "Contact",
+    "gaps": "What is missing"
+  },
+  "resources": {
+    "officialSite": "Official municipal website",
+    "citizensCharter": "The Citizen's Charter",
+    "transparencySeal": "Transparency Seal",
+    "sangguniangBayan": "Sangguniang Bayan",
+    "lguFacebook": "LGU Tago Facebook",
+    "foi": "Freedom of Information",
+    "govph": "Official Gov.PH",
+    "philgeps": "PhilGEPS",
+    "cmci": "CMCI DTI Portal",
+    "blgf": "BLGF Portal"
+  },
+  "ticker": {
+    "regionLabel": "Emergency numbers",
+    "label": "Emergency",
+    "municipalGap": "No municipal hotline for Tago has been published anywhere this project can cite — see what we looked for"
+  },
+  "advisory": {
+    "regionLabel": "Current advisory",
+    "badge": "Advisory",
+    "dismiss": "Dismiss this advisory"
+  },
+  "hero": {
+    "headingLead": "Padayon sa pag-asenso",
+    "lede": "Access government services, information, and resources for the people of the Municipality of Tago, Surigao del Sur.",
+    "ctaServices": "Browse all services",
+    "ctaContact": "Contact Us"
+  },
+  "search": {
+    "title": "Search",
+    "label": "What are you trying to do?",
+    "hint": "Search every service in the municipality's Citizen's Charter.",
+    "placeholder": "business permit, birth certificate, indigency…",
+    "submit": "Search",
+    "searching": "Searching…",
+    "emptyQuery": "Type what you are trying to do — a task, not an office. You do not need to know which office handles it.",
+    "resultsHeading": "{count, plural, one {# service} other {# services}} for “{query}”",
+    "noResultsHeading": "Nothing here matches “{query}”",
+    "noResultsBody": "Only the Citizen's Charter is searchable so far, so offices, barangays and news are not in these results. Two things worth trying:",
+    "browseAll": "Browse every service by category",
+    "tryOfficialSite": "Search the official municipal site",
+    "resultsTitle": "Results for “{query}”",
+    "findService": "Find a service",
+    "findServiceHelp": "Search every service in the Municipality of Tago's Citizen's Charter — by what you are trying to do, not by which office does it.",
+    "popular": "Popular:"
+  },
+  "stats": {
+    "heading": "{municipality} at a glance",
+    "label": {
+      "population": "Residents",
+      "households": "Households",
+      "barangayCount": "Barangays",
+      "incomeClass": "Income class",
+      "landAreaKm2": "Land area"
+    },
+    "alsoMissing": "Also not obtained: {figures}.",
+    "listSeparator": ", ",
+    "seeRegister": "See everything that is missing",
+    "regionLabel": "Tago at a glance",
+    "squareKilometres": "km²",
+    "caption": {
+      "population": "2024 census · PSA",
+      "incomeClass": "2nd municipal income class",
+      "barangayCount": "Urban/rural split not obtained",
+      "landAreaKm2": "{percent}% of the province"
+    }
+  },
+  "home": {
+    "eyebrowServices": "01 — Services",
+    "servicesHeading": "What you came here to sort out",
+    "allServices": "All services",
+    "featuredEyebrow": "The whole charter",
+    "browseByTask": "Browse by what you need",
+    "byCategory": "By category",
+    "serviceCount": "{count, plural, one {# service} other {# services}}",
+    "eyebrowEmergency": "03 — Emergency",
+    "emergencyHeading": "In an emergency",
+    "emergencyIntro": "Who to call in Tago, and for what. The national line at the bottom works from any phone, anywhere in the country.",
+    "seeRegister": "See everything that is missing",
+    "eyebrowContact": "05 — Get In Touch",
+    "hotlinesSourced": "These six are read from the municipality's own official Facebook page. Check them at the source if anything looks wrong:"
+  },
+  "emergency": {
+    "nationalLine": "National emergency hotline",
+    "callAria": "Call {organisation} on {number}",
+    "result": {
+      "no-municipal-number-published": "Checked; no municipal number published",
+      "not-retrievable": "Checked; the page could not be retrieved"
+    }
+  },
+  "history": {
+    "eyebrow": "02 — History",
+    "heading": "How {municipality} became a municipality",
+    "intro": "Six dated entries, published by the municipality on its own history page and cited below. Two name the office-holders involved — the Governor-General who issued Executive Order No. 41, and the first appointed Municipal President — because both are already part of the municipality's own public record.",
+    "milestone": "milestone",
+    "sourceLabel": "Source",
+    "openSource": "Open the Municipality of Tago's official history page"
+  },
+  "contact": {
+    "heading": "Reaching the {municipality}",
+    "provenance": "All three are read from the municipality's official contact page, last checked {date}. Read them there rather than trusting this copy if anything looks wrong.",
+    "openContactPage": "Open the official contact page",
+    "phoneLabel": "Phone",
+    "emailLabel": "Email",
+    "addressLabel": "Address",
+    "addressNote": "opens in Google Maps"
+  },
+  "gaps": {
+    "title": "What this portal does not know yet",
+    "lead": "Every fact this project has looked for and not obtained, with the reason, what would close it, and the day somebody last looked. This page is the register itself — nothing here is written twice.",
+    "counts": "{open} still open · {held} obtained and deliberately not published",
+    "openHeading": "Not obtained yet",
+    "openBlurb": "Looked for, and not found in a form this project can cite. Each one names the channel that would close it.",
+    "heldHeading": "Obtained, and deliberately not published",
+    "heldBlurb": "A different kind of absence: the value exists, and publishing it would propagate an error. The reason is stated in full.",
+    "channel": {
+      "official-site": "Would close when the municipality publishes it",
+      "national-agency": "Would close from a national agency's own record",
+      "field-verification": "Needs somebody in Tago to go and look",
+      "project": "This project's own to fix"
+    }
+  },
+  "gettingHere": {
+    "eyebrow": "04 — Getting here",
+    "heading": "Getting to {municipality}"
   }
 }

@@ -135,7 +135,16 @@ describe('the stylesheet is actually being read', () => {
 });
 
 describe('the ramps', () => {
-  const RAMPS = ['primary', 'accent', 'neutral'] as const;
+  /*
+   * `error` joins the three brand ramps here deliberately.
+   *
+   * It is not a brand colour — nothing about BetterTago is red — and it is used
+   * on exactly one surface, the emergency ticker's ground. It is declared as a
+   * FULL scale rather than a one-off maroon precisely so it can be held to the
+   * same monotonic-lightness rule as the others, and so every pair the ticker
+   * actually renders is measured rather than eyeballed.
+   */
+  const RAMPS = ['primary', 'accent', 'neutral', 'error'] as const;
 
   it.each(RAMPS)('%s is strictly monotonic in lightness', name => {
     const steps = Object.keys(RAMP)
@@ -286,12 +295,46 @@ describe('contrast, computed against the ramp', () => {
     // ---- [data-surface='accent'], the gold card --------------------------
     { ink: '--ink', ground: '--color-accent-400', layers: [ACCENT_SURFACE, LIGHT, RAMP], where: 'accent card', floor: 4.5, recorded: 12.02 }, // prettier-ignore
     { ink: '--ink-secondary', ground: '--color-accent-400', layers: [ACCENT_SURFACE, LIGHT, RAMP], where: 'accent card', floor: 4.5, recorded: 9.24 }, // prettier-ignore
+    // The emergency call band's number, which renders `text-ink-accent` on the
+    // gold ground. The scope re-points it to `--ink-on-accent`, so it lands on
+    // the same deep green as `--ink` — asserted rather than assumed, because
+    // the unscoped value is the gold itself and gold on gold is invisible.
+    { ink: '--ink-accent', ground: '--color-accent-400', layers: [ACCENT_SURFACE, LIGHT, RAMP], where: 'accent card', floor: 4.5, recorded: 12.02 }, // prettier-ignore
     { ink: '--ink-link', ground: '--color-accent-400', layers: [ACCENT_SURFACE, LIGHT, RAMP], where: 'accent card', floor: 4.5, recorded: 12.02 }, // prettier-ignore
     // Hover has to go DARKER than the link. A hover that lands on the colour
     // the text already wears is no feedback at all.
     { ink: '--ink-link-hover', ground: '--color-accent-400', layers: [ACCENT_SURFACE, LIGHT, RAMP], where: 'accent card', floor: 4.5, recorded: 13.42 }, // prettier-ignore
     { ink: '--line-control', ground: '--color-accent-400', layers: [ACCENT_SURFACE, LIGHT, RAMP], where: 'accent card', floor: 3.0, recorded: 9.24 }, // prettier-ignore
     { ink: '--focus-ring', ground: '--color-accent-400', layers: [ACCENT_SURFACE, LIGHT, RAMP], where: 'accent card', floor: 4.5, recorded: 12.02 }, // prettier-ignore
+
+    // ---- [data-surface='inverse'], on its OWN sunken ground ---------------
+    // `GapNotice` carries `bg-surface-sunken` and appears inside the emergency
+    // and contact slabs. Before the scope re-pointed the surfaces, its ink
+    // flipped to white while its ground stayed the light theme's #f8fbf9 —
+    // 1.04:1, on the two sections where a stated absence matters most.
+    { ink: '--ink', ground: '--surface-sunken', layers: [INVERSE, LIGHT, RAMP], where: 'inverse, sunken', floor: 4.5, recorded: 17.83 }, // prettier-ignore
+    { ink: '--ink-secondary', ground: '--surface-sunken', layers: [INVERSE, LIGHT, RAMP], where: 'inverse, sunken', floor: 4.5, recorded: 15.19 }, // prettier-ignore
+    { ink: '--ink-accent-strong', ground: '--surface-sunken', layers: [INVERSE, LIGHT, RAMP], where: 'inverse, sunken', floor: 4.5, recorded: 12.12 }, // prettier-ignore
+    { ink: '--line-control', ground: '--surface-sunken', layers: [INVERSE, LIGHT, RAMP], where: 'inverse, sunken', floor: 3.0, recorded: 7.65 }, // prettier-ignore
+
+    // ---- the emergency ticker, on `error-950` ----------------------------
+    // The one surface the error ramp is used on, and the one bar a reader might
+    // need in a storm. Every pair it actually renders is measured, in BOTH the
+    // resting and the hover state — a hover that costs legibility on this bar
+    // is not a trade worth making anywhere, least of all here.
+    { ink: '--color-error-200', ground: '--color-error-950', layers: [RAMP], where: 'ticker number', floor: 4.5, recorded: 12.43 }, // prettier-ignore
+    { ink: '--color-error-400', ground: '--color-error-950', layers: [RAMP], where: 'ticker label', floor: 4.5, recorded: 6.22 }, // prettier-ignore
+    { ink: '--color-neutral-50', ground: '--color-error-950', layers: [RAMP], where: 'ticker organisation', floor: 4.5, recorded: 18.20 }, // prettier-ignore
+    { ink: '--color-error-600', ground: '--color-error-950', layers: [RAMP], where: 'ticker separator, decorative', floor: 3.0, recorded: 3.21 }, // prettier-ignore
+    { ink: '--color-error-100', ground: '--color-error-700', layers: [RAMP], where: 'ticker number, hovered', floor: 4.5, recorded: 6.20 }, // prettier-ignore
+    { ink: '--color-error-200', ground: '--color-error-700', layers: [RAMP], where: 'ticker gap clause, hovered', floor: 4.5, recorded: 5.18 }, // prettier-ignore
+
+    // ---- the footer's cost pill ------------------------------------------
+    // The project's headline claim. Both tokens were MISSING when the footer
+    // was first ported — the classes were copied across without them, and
+    // Tailwind emitted nothing rather than failing, so the pill rendered with
+    // no ground and no colour. Measured here so that cannot recur silently.
+    { ink: '--color-success-400', ground: '--color-success-900', layers: [RAMP], where: 'footer cost pill', floor: 4.5, recorded: 7.93 }, // prettier-ignore
   ];
 
   it('covers every ink role on every ground it can appear over', () => {

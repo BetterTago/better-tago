@@ -2,10 +2,13 @@ import { existsSync, readFileSync } from 'node:fs';
 import path from 'node:path';
 import yaml from 'js-yaml';
 import { describe, expect, it } from 'vitest';
+import { z } from 'zod';
 import {
   charterManifestSchema,
   transparencyManifestSchema,
   manifestSchema,
+  timelineSchema,
+  travelSchema,
   type CharterRecord,
 } from './content-schema';
 import { DATA_CLASSES, freshnessOf } from './freshness';
@@ -13,6 +16,7 @@ import {
   REPO_ROOT as ROOT,
   filesMatching,
   matchesIn as hits,
+  sourceFilesIn,
   type ScannedFile as Doc,
 } from './file-scan';
 
@@ -1691,5 +1695,215 @@ describe('every page declares a cadence, and no check date is invented', () => {
     // is the tripwire: it means somebody did the work, and this assertion is
     // then deleted deliberately rather than quietly loosened.
     expect(entries.filter(({ page }) => page.lastReview !== null)).toEqual([]);
+  });
+});
+
+describe('the history timeline', () => {
+  /*
+   * Loaded and validated directly here, mirroring every other record above:
+   * `content.ts` imports `next/cache` and cannot be unit-tested, so the tree
+   * is read straight off disk against the same schema the loader uses.
+   */
+  const TIMELINE_PATH = path.join(CONTENT, 'home', 'history', 'timeline.yaml');
+
+  function loadTimeline() {
+    const raw = readFileSync(TIMELINE_PATH, 'utf8');
+    const parsed = timelineSchema.safeParse(yaml.load(raw));
+    if (!parsed.success) throw new Error(z.prettifyError(parsed.error));
+    return parsed.data;
+  }
+
+  it('exists and validates against the schema', () => {
+    expect(existsSync(TIMELINE_PATH)).toBe(true);
+    expect(() => loadTimeline()).not.toThrow();
+  });
+
+  it('fires on a doctored fixture', () => {
+    // A guardrail that has never gone red is not known to work.
+    const doctored = { source: { url: 'https://example.invalid' } };
+    expect(timelineSchema.safeParse(doctored).success).toBe(false);
+  });
+
+  it('carries at least six entries, each with both locales complete', () => {
+    const timeline = loadTimeline();
+    expect(timeline.entries.length).toBeGreaterThanOrEqual(6);
+
+    for (const entry of timeline.entries) {
+      expect(entry.title.en.length).toBeGreaterThan(0);
+      expect(entry.title.fil.length).toBeGreaterThan(0);
+      expect(entry.body.en.length).toBeGreaterThan(0);
+      expect(entry.body.fil.length).toBeGreaterThan(0);
+      // Never a pre-formatted English date string — a bare 4-digit year or a
+      // full ISO calendar date, so `dates.ts` can format it per locale.
+      expect(entry.period).toMatch(/^\d{4}(-\d{2}-\d{2})?$/);
+    }
+  });
+
+  it('reaches `V3` — a primary source, not a paraphrase of one', () => {
+    // The whole reason this timeline can name anyone at all: it is read from,
+    // and checked against, the municipality's own history page directly.
+    const timeline = loadTimeline();
+    expect(timeline.verification).toBe('V3');
+    expect(timeline.source.url).toBe('https://tago.gov.ph/about-us-2/history/');
+  });
+
+  it('mixes milestone and non-milestone entries', () => {
+    // The mix is what exercises both markers on the rail — a timeline that is
+    // all one or the other never renders the branch it does not use.
+    const milestones = loadTimeline().entries.map(entry => entry.milestone);
+    expect(milestones.some(Boolean)).toBe(true);
+    expect(milestones.some(value => !value)).toBe(true);
+  });
+
+  describe('🔴 named historical figures stay inside content/', () => {
+    /*
+     * Root rule 13's carve-out is narrow by design: a historical figure
+     * already in a cited public record may be named in `content/`, and ONLY
+     * there. This asserts the carve-out was not read as a licence to mention
+     * a name anywhere convenient — not in the component that renders this
+     * file, not in another component, not in a comment, not in a test
+     * fixture, not in a message string.
+     *
+     * The candidates are extracted from the loaded content rather than
+     * hardcoded here, so a future edit to a name cannot silently
+     * desynchronise this guardrail from the record it is guarding. The
+     * extraction is a two-or-three-capitalised-word pattern, which is
+     * slightly broader than "person names" — it also catches phrases like
+     * "Executive Order" or "Philippine Revolution". That is fine: checking a
+     * few institutional phrases costs nothing, and the two names that matter
+     * (Francis Burton Harrison, Catalino Pareja — named here in this comment
+     * only to explain the test, never as a literal string the test itself
+     * matches against) are guaranteed to be swept up by the same pattern.
+     */
+    const CANDIDATES = loadTimeline()
+      .entries.flatMap(entry => [entry.body.en, entry.body.fil])
+      .join(' ')
+      .match(/\b[A-Z][a-z]+(?:\s[A-Z][a-z]+){1,2}\b/g)
+      /*
+       * The pattern above cannot tell a person's name from a two-or-three-word
+       * INSTITUTIONAL phrase — "Executive Order No", "Provincial Board",
+       * "Philippine Revolution", "Municipal President" all match it too, and
+       * every one of those is legitimate, expected content in
+       * `messages/en.json → history.intro`, which explains in prose why this
+       * timeline names anyone at all. None of them is a person, so none of
+       * them belongs in a check for whether a PERSON'S name leaked out of
+       * content/. This denylist is words that mark an institution or a role
+       * rather than a name — not an escape hatch for an actual leaked name,
+       * which would not contain any of them.
+       */
+      ?.filter(
+        phrase =>
+          !/\b(?:Order|Revolution|Board|Town|Lungsod|Municipal|Government|History|Municipality|Provincial|Philippine)\b/.test(
+            phrase
+          )
+      );
+
+    it('found candidate phrases to check — the check is not a no-op', () => {
+      expect(CANDIDATES).not.toBeNull();
+      expect(CANDIDATES!.length).toBeGreaterThan(0);
+    });
+
+    it('candidate phrases appear nowhere in src/, only in content/', () => {
+      // `sourceFilesIn` already excludes every `.test.ts`/`.spec.ts` file, this
+      // one included — no self-match to filter out by hand.
+      const SRC_FILES = sourceFilesIn(path.join(ROOT, 'src'));
+      for (const phrase of new Set(CANDIDATES)) {
+        const offenders = hits(
+          SRC_FILES,
+          new RegExp(phrase.replace(/\s/g, '\\s+'))
+        );
+        expect(offenders, `"${phrase}" appears in src/`).toEqual([]);
+      }
+    });
+
+    it('candidate phrases appear nowhere in messages/, only in content/', () => {
+      for (const locale of ['en', 'fil']) {
+        const text = readFileSync(
+          path.join(ROOT, 'messages', `${locale}.json`),
+          'utf8'
+        );
+        for (const phrase of new Set(CANDIDATES)) {
+          expect(
+            text.includes(phrase),
+            `"${phrase}" appears in messages/${locale}.json`
+          ).toBe(false);
+        }
+      }
+    });
+  });
+});
+
+describe('the getting-here cards', () => {
+  const TRAVEL_PATH = path.join(CONTENT, 'home', 'getting-here', 'routes.yaml');
+
+  function loadTravel() {
+    const raw = readFileSync(TRAVEL_PATH, 'utf8');
+    const parsed = travelSchema.safeParse(yaml.load(raw));
+    if (!parsed.success) throw new Error(z.prettifyError(parsed.error));
+    return parsed.data;
+  }
+
+  it('exists and validates against the schema', () => {
+    expect(existsSync(TRAVEL_PATH)).toBe(true);
+    expect(() => loadTravel()).not.toThrow();
+  });
+
+  it('fires on a doctored fixture', () => {
+    // A guardrail that has never gone red is not known to work.
+    expect(travelSchema.safeParse({ cards: [] }).success).toBe(false);
+  });
+
+  it('carries four cards, each complete in both locales', () => {
+    const travel = loadTravel();
+    expect(travel.cards).toHaveLength(4);
+
+    for (const card of travel.cards) {
+      for (const field of [card.kicker, card.title, card.body]) {
+        expect(field.en.length).toBeGreaterThan(0);
+        expect(field.fil.length).toBeGreaterThan(0);
+        // A Filipino string identical to its English is an untranslated field
+        // wearing a translation's clothes — the fallback banner cannot see it.
+        expect(field.fil).not.toBe(field.en);
+      }
+    }
+    expect(travel.summary.fil).not.toBe(travel.summary.en);
+  });
+
+  it('promotes exactly one card to the inverse surface', () => {
+    // The arrival card. Two would stop it reading as the odd one out; none
+    // would leave four identical boxes a reader skims past.
+    const inverse = loadTravel().cards.filter(c => c.surface === 'inverse');
+    expect(inverse).toHaveLength(1);
+    expect(inverse[0].kicker.en.toLowerCase()).toContain('here');
+  });
+
+  it('🔴 states no timetable, fare or schedule', () => {
+    /*
+     * The card set is ORIENTATION only, and the schema deliberately cannot
+     * carry a departure time or a price: those change without notice, would
+     * each need their own citation, and this file has one shared source and a
+     * slow cadence.
+     *
+     * This scans for the shapes a schedule takes — a clock time, a peso
+     * amount, a "daily/hourly" frequency claim — so the constraint is enforced
+     * rather than merely intended. The one duration that IS present
+     * ("roughly 13 minutes") is a journey length, not a departure time, and is
+     * flagged in the file's own header for confirmation.
+     */
+    const travel = loadTravel();
+    const prose = travel.cards
+      .flatMap(c => [c.body.en, c.body.fil, c.title.en, c.title.fil])
+      .join(' ');
+
+    expect(prose).not.toMatch(/\b\d{1,2}:\d{2}\s*(?:am|pm)?\b/i);
+    expect(prose).not.toMatch(/₱\s*\d/);
+    expect(prose).not.toMatch(/\bevery\s+\d+\s+(?:minutes?|hours?)\b/i);
+  });
+
+  it('records its level, and does not overclaim it', () => {
+    // Supplied rather than read off a published transport record.
+    const travel = loadTravel();
+    expect(travel.verification).toBe('V0');
+    expect(travel.source.url).toBeNull();
   });
 });

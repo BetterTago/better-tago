@@ -29,6 +29,19 @@ export const CALENDAR_DATE = {
 } as const;
 
 /**
+ * A year on its own, for a historical milestone the record dates only to a year.
+ *
+ * Same UTC pinning and the same reason: `1865-01-01` west of UTC renders as
+ * 1864. A timeline entry off by a year is exactly the kind of small permanent
+ * falsehood this module exists to prevent, and it is harder to notice than a
+ * wrong day because nobody checks a year against a calendar.
+ */
+export const YEAR_ONLY = {
+  timeZone: 'UTC',
+  year: 'numeric',
+} as const;
+
+/**
  * An ISO calendar date as the instant that names it, or a throw.
  *
  * The schema already requires `YYYY-MM-DD` on every date it governs. This

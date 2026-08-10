@@ -1,0 +1,115 @@
+# Getting to Tago — by air, by land, from the provincial capital, and on arrival.
+#
+# 🔴 PROVENANCE. This copy was supplied by the project lead on 2026-08-10, and
+# the level says so: V0 — unconfirmed, not read off a published transport
+# record. That is a deliberate choice of level rather than an oversight.
+#
+# What it means in practice, and why the shape of this file matters:
+#
+#   · Every card is general ORIENTATION — which gateway, which corridor, which
+#     poblacion. None of it is a timetable, a fare or an operator's schedule.
+#     Those change without notice and would need their own citation per card
+#     plus a far shorter re-check cadence than this file has; the schema does
+#     not carry them, and that is on purpose.
+#   · A traveller planning around a specific departure needs the terminal, not
+#     this page. The cards say where to go, not when a bus leaves.
+#
+# ⚠️ The Tandag → Tago journey time is recorded as "roughly 13 minutes", as
+# supplied. It reads fast for the distance and is the one figure here somebody
+# might actually plan around, so it is worth confirming against a posted
+# schedule before this is promoted above V0.
+
+source:
+  label:
+    en: 'Supplied to this project by the project lead'
+    fil: 'Ibinigay sa proyektong ito ng project lead'
+  url: null
+  documentType: 'notice'
+  retrievedAt: '2026-08-10'
+verification: 'V0'
+lastCheckedAt: '2026-08-10'
+
+summary:
+  en: >-
+    455 nautical miles from Manila, 159 from Cebu, 302 km up the road from
+    Davao.
+  fil: >-
+    455 nautical miles mula Maynila, 159 mula Cebu, 302 km sa kalsada mula
+    Davao.
+
+cards:
+  - kicker:
+      en: 'By air'
+      fil: 'Sa eroplano'
+    title:
+      en: 'Fly to Butuan, then continue by land'
+      fil: 'Lumipad papuntang Butuan, saka magpatuloy sa lupa'
+    body:
+      en: >-
+        The nearest major gateway is Bancasi Airport in Butuan City. From the
+        airport, travellers can take a van or bus toward Tandag and continue
+        south to Tago. Butuan is one of the main transport hubs serving Surigao
+        del Sur.
+      fil: >-
+        Ang pinakamalapit na malaking daungan ay ang Bancasi Airport sa Butuan
+        City. Mula sa paliparan, maaaring sumakay ng van o bus patungong Tandag
+        at magpatuloy pa timog hanggang Tago. Ang Butuan ay isa sa mga
+        pangunahing himpilan ng transportasyon na naglilingkod sa Surigao del
+        Sur.
+
+  - kicker:
+      en: 'By land'
+      fil: 'Sa lupa'
+    title:
+      en: 'Buses and vans connect Tago to the region'
+      fil: 'Nag-uugnay ang mga bus at van sa Tago at sa rehiyon'
+    body:
+      en: >-
+        Tago is accessible by buses and vans travelling along the Surigao del
+        Sur coastal corridor. Regular land transport connects the municipality
+        with Tandag, Butuan, Davao and other towns in the province.
+      fil: >-
+        Marating ang Tago sa pamamagitan ng mga bus at van na dumadaan sa
+        baybaying koridor ng Surigao del Sur. Regular na nag-uugnay ang
+        transportasyong panlupa sa munisipyo at sa Tandag, Butuan, Davao at iba
+        pang bayan sa lalawigan.
+
+  - kicker:
+      en: 'From Tandag'
+      fil: 'Mula sa Tandag'
+    title:
+      en: 'Just a short ride south of the provincial capital'
+      fil: 'Maikling biyahe lang pa timog ng kabisera ng lalawigan'
+    body:
+      en: >-
+        Tandag is the easiest transfer point for travellers coming from farther
+        north. Buses and other public transport travel directly between Tandag
+        and Tago, with the journey taking roughly 13 minutes by bus.
+      fil: >-
+        Ang Tandag ang pinakamadaling lipatan para sa mga galing pa hilaga.
+        Direktang bumibiyahe ang mga bus at iba pang pampublikong sasakyan sa
+        pagitan ng Tandag at Tago, na umaabot nang humigit-kumulang 13 minuto
+        sakay ng bus.
+
+  # The arrival card, on the dark ground — the one a reader who has already
+  # travelled is looking for, so it is set apart from the three about getting
+  # here at all.
+  - kicker:
+      en: "Once you're here"
+      fil: 'Pagdating mo rito'
+    title:
+      en: 'Purisima, the heart of Tago'
+      fil: 'Purisima, ang puso ng Tago'
+    surface: 'inverse'
+    body:
+      en: >-
+        Most local trips lead into Purisima, Tago's poblacion, where the
+        municipal centre and local services are located. From the Tago Terminal,
+        tricycles and other local transport can take you around the poblacion
+        and nearby barangays.
+      fil: >-
+        Karamihan sa mga lokal na biyahe ay patungo sa Purisima, ang poblacion
+        ng Tago, kung saan matatagpuan ang sentro ng munisipyo at ang mga lokal
+        na serbisyo. Mula sa Tago Terminal, maaari kang ihatid ng traysikel at
+        iba pang lokal na sasakyan sa paligid ng poblacion at mga kalapit na
+        barangay.

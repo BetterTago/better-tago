@@ -146,9 +146,21 @@ describe('the route set is the one that was reviewed', () => {
   const ROUTES = [
     'src/app/[locale]/charter/documents/[slug]/page.tsx',
     'src/app/[locale]/error.tsx',
+    // The gap register. Added 2026-08-10 with the portal chrome: every
+    // `GapNotice` on every surface links here, which is what turns "we do not
+    // know" from an apology into a request for help.
+    'src/app/[locale]/gaps/page.tsx',
     'src/app/[locale]/layout.tsx',
     'src/app/[locale]/not-found.tsx',
     'src/app/[locale]/page.tsx',
+    // Search. The form posts to the route handler, which turns `?q=` into a
+    // path segment and redirects; the results render from that segment with no
+    // Suspense boundary, which is what makes them reachable with JavaScript
+    // disabled. All three are `noindex` — a crawler indexing every query
+    // produces thousands of near-duplicate URLs of a civic site.
+    'src/app/[locale]/search/[query]/page.tsx',
+    'src/app/[locale]/search/page.tsx',
+    'src/app/api/search/route.ts',
     'src/app/[locale]/services/[category]/[slug]/page.tsx',
     'src/app/[locale]/services/[category]/page.tsx',
     'src/app/[locale]/services/page.tsx',
@@ -330,9 +342,32 @@ describe('static rendering', () => {
   });
 
   it('never opts a route out of static rendering', () => {
+    /*
+     * There is no exemption, and there cannot be one: `export const dynamic` is
+     * flatly incompatible with `cacheComponents` and fails the build outright.
+     *
+     * That is worth knowing before someone reaches for it. A search results
+     * page genuinely cannot be prerendered, and the answer is NOT this escape
+     * hatch — it is to move the query into a route SEGMENT, which is known at
+     * render start. See `src/app/[locale]/search/[query]/page.tsx`.
+     */
+    /*
+     * Anchored to the start of a line, so it matches a DECLARATION rather than
+     * any mention of one. Unanchored, this fired on the route handler's own
+     * comment explaining why the escape hatch is unavailable — a guardrail that
+     * fails on its own documentation teaches people to delete the
+     * documentation.
+     */
+    const OPT_OUT = /^export const (?:dynamic|revalidate)\b/m;
+    expect(offenders(APP_FILES, OPT_OUT)).toEqual([]);
+
+    // A guardrail that has never gone red is not known to work.
     expect(
-      offenders(APP_FILES, /export const (?:dynamic|revalidate)\b/)
-    ).toEqual([]);
+      offenders(
+        [{ path: 'fixture', text: "export const dynamic = 'force-dynamic';" }],
+        OPT_OUT
+      )
+    ).toEqual(['fixture → export const dynamic']);
   });
 
   it('calls setRequestLocale in every next-intl route OUTSIDE [locale]', () => {
@@ -371,6 +406,82 @@ describe('static rendering', () => {
         .filter(file => !file.text.includes('setRequestLocale('))
         .map(file => file.path)
     ).toEqual([]);
+  });
+});
+
+describe('the server/client boundary', () => {
+  it('never makes a route file a Client Component', () => {
+    /*
+     * TAGO-113's negative criterion, and it is the one that decides whether
+     * this portal stays server-rendered.
+     *
+     * `'use client'` on a `page.tsx` or `layout.tsx` does not make one
+     * component interactive — it moves that route and everything under it into
+     * the browser bundle. The chrome is built so this is never necessary: the
+     * navigation tree stays on the server and every disclosure receives its
+     * children ALREADY RENDERED, so the interactive leaves are the only client
+     * modules the header pulls in.
+     *
+     * It is an easy mistake to make under pressure ("just add it so the toggle
+     * works") and almost impossible to notice afterwards.
+     */
+    const routeFiles = APP_FILES.filter(file =>
+      /\/(?:page|layout|error|not-found)\.tsx$/.test(file.path)
+    );
+    expect(routeFiles.length).toBeGreaterThan(5);
+
+    const clientRoutes = routeFiles
+      .filter(file => /^\s*['"]use client['"]/m.test(file.text))
+      // `error.tsx` MUST be a Client Component — React requires it, because an
+      // error boundary runs in the browser.
+      .filter(file => !file.path.endsWith('error.tsx'))
+      .map(file => file.path);
+
+    expect(clientRoutes).toEqual([]);
+  });
+
+  it('fires on a doctored route file', () => {
+    // A guardrail that has never gone red is not known to work.
+    const doctored = [
+      {
+        path: 'src/app/[locale]/page.tsx',
+        text: "'use client';\nexport default function P() {}",
+      },
+    ];
+    expect(
+      doctored.filter(file => /^\s*['"]use client['"]/m.test(file.text))
+    ).toHaveLength(1);
+  });
+
+  it('keeps the client leaves to the ones that need a browser', () => {
+    /*
+     * Named rather than counted: a new client module is a real decision, and it
+     * should cost a line here so the next person sees the list it joined.
+     *
+     * Each of these owns state, an effect, or a browser API that has no server
+     * equivalent — a stored theme, a scroll position, a measured overflow, a
+     * disclosure's open boolean.
+     */
+    const CLIENT_LEAVES = [
+      'src/components/layout/AdvisoryBar.tsx',
+      'src/components/layout/MobileNav.tsx',
+      'src/components/layout/NavDisclosure.tsx',
+      'src/components/layout/TickerViewport.tsx',
+      'src/components/ui/BackToTop.tsx',
+      'src/components/ui/CountUp.tsx',
+      'src/components/ui/HtmlLang.tsx',
+      'src/components/ui/LocaleSwitcher.tsx',
+      'src/components/ui/ThemeToggle.tsx',
+    ];
+
+    const actual = SRC_FILES.filter(
+      file =>
+        /^\s*['"]use client['"]/m.test(file.text) &&
+        !/\.test\.tsx?$/.test(file.path) &&
+        !file.path.endsWith('error.tsx')
+    ).map(file => file.path);
+
+    expect(actual.sort()).toEqual([...CLIENT_LEAVES].sort());
   });
 });
 
@@ -432,6 +543,52 @@ describe('translation coverage', () => {
     // resident has to say out loud at an office is not a service to them.
     'services.categories.civil-registry':
       'the office and the counter both use the English term',
+    // Same term, same reason, in the navigation rather than the category list.
+    // A resident has to say this out loud at a counter, and the sign above that
+    // counter is in English.
+    'nav.civilRegistry': 'the office and the counter both use the English term',
+    // Proper nouns. The municipal legislature's name is Sangguniang Bayan in
+    // any language — and it is `Bayan`, never `Panlungsod`, because Tago is a
+    // municipality and not a city.
+    'resources.sangguniangBayan': 'the body’s own name, in Filipino already',
+    'resources.psa':
+      'the agency’s own registered name, which it does not translate',
+    // Punctuation, not prose. Both locales separate a list the same way, and a
+    // "translation" here would be a typography change disguised as one.
+    'stats.listSeparator': 'a list separator, not a word',
+    // The loanword is the word. "Email" is what a Filipino speaker says and
+    // writes; `elektronikong sulat` is not what anyone would look for.
+    'contact.emailLabel': 'the loanword is the ordinary Filipino term',
+    // Same reasoning, and the same call BetterTandag's own contact card
+    // makes: "Address" is the ordinary word a Filipino speaker uses here too.
+    'contact.addressLabel': 'the loanword is the ordinary Filipino term',
+    /*
+     * The hero line is SURIGAONON, not English and not Filipino, so it is the
+     * same string in both catalogues by nature rather than by omission.
+     *
+     * ⚠️ Worth knowing rather than burying: the locale decision this project
+     * has recorded is EN/FIL only, on the grounds that shipping a language
+     * without a fluent speaker to write and check the copy would be publishing
+     * machine output. This line arrived by instruction from the project lead,
+     * which is a different thing from a machine guess — but it does mean the
+     * portal now carries Surigaonon on its most prominent surface while the
+     * question of serving Surigaonon properly is still open.
+     */
+    'hero.headingLead': 'Surigaonon — the same phrase in either catalogue',
+    // A unit symbol. There is nothing to translate, and "translating" km²
+    // would be a typography change wearing a costume.
+    'stats.squareKilometres': 'a unit symbol, not a word',
+    /*
+     * Proper nouns and product names, added with the footer's Resources column
+     * on 2026-08-10. Each is the name the destination gives ITSELF and is what
+     * a reader will see when they arrive — translating "PhilGEPS" or the
+     * municipality's own Facebook name would make the label disagree with the
+     * page behind it.
+     */
+    'resources.lguFacebook': 'the page names itself this, in either language',
+    'resources.philgeps': 'a system’s own registered name',
+    'resources.cmci': 'a portal’s own registered name',
+    'resources.blgf': 'a bureau’s own registered name',
   };
 
   it('has the same keys in both locales', () => {

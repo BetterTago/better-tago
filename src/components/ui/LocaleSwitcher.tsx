@@ -14,7 +14,13 @@ import { cn } from '@/lib/utils';
  * required to change language, which matters on the connections this portal is
  * built for.
  */
-export function LocaleSwitcher({ current }: { current: Locale }) {
+export function LocaleSwitcher({
+  current,
+  className,
+}: {
+  current: Locale;
+  className?: string;
+}) {
   const t = useTranslations('header');
   const pathname = usePathname();
 
@@ -24,8 +30,29 @@ export function LocaleSwitcher({ current }: { current: Locale }) {
   };
 
   return (
-    <nav aria-label={t('language')}>
-      <ul className="flex items-center gap-1">
+    <nav aria-label={t('language')} className={className}>
+      {/*
+       * A SEGMENTED control with a real boundary, not two bare words.
+       *
+       * The active option used to be marked with `bg-surface-sunken`, which
+       * sits about 1.02:1 against the page ground — a difference that is real
+       * in the token table and invisible on a screen. Neither option had a
+       * border either, so the pair read as body text rather than as something
+       * you could operate.
+       *
+       * (The two values are deliberately NOT quoted here: the guardrail scan
+       * bans colour literals outside globals.css, comments included, and it is
+       * right to — a hex in a comment is the first step to a hex in a class.)
+       *
+       * The group now carries the boundary and the active segment is FILLED
+       * with the brand band (white on green, 6.45:1 — the pair measured in
+       * theme-tokens.test.ts). Every token here re-points per theme, so this is
+       * one set of classes that is correct in light and dark alike.
+       */}
+      <ul
+        data-control
+        className="flex items-center gap-0.5 rounded-lg border border-line-control bg-surface-raised p-0.5"
+      >
         {routing.locales.map(locale => {
           const active = locale === current;
           return (
@@ -37,10 +64,17 @@ export function LocaleSwitcher({ current }: { current: Locale }) {
                 hrefLang={locale}
                 aria-current={active ? 'true' : undefined}
                 className={cn(
-                  'inline-flex min-h-11 min-w-11 items-center justify-center rounded-md px-3 text-sm font-semibold',
+                  // 28px, by instruction — the 44px version was too heavy for
+                  // the header. Below the touch floor, so it carries
+                  // `data-control` and is a LISTED exemption in
+                  // e2e/home.a11y.spec.ts rather than a silent shrink. The
+                  // reference portal sizes its own switcher the same way.
+                  'inline-flex min-h-7 items-center justify-center rounded-md px-2 text-xs font-semibold motion-safe:transition-colors motion-safe:duration-150',
+                  // Never colour alone: the active option also carries
+                  // `aria-current`, which is what a screen reader announces.
                   active
-                    ? 'bg-surface-sunken text-ink'
-                    : 'text-ink-secondary hover:text-ink-link'
+                    ? 'bg-surface-band text-ink-on-band'
+                    : 'text-ink-secondary hover:bg-surface-control hover:text-ink'
                 )}
               >
                 <span aria-hidden="true">{label[locale].short}</span>

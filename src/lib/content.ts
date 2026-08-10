@@ -6,8 +6,12 @@ import { z } from 'zod';
 import {
   charterManifestSchema,
   manifestSchema,
+  timelineSchema,
+  travelSchema,
   type CharterRecord,
   type PageEntry,
+  type Timeline,
+  type Travel,
 } from '@/lib/content-schema';
 import type { Locale } from '@/i18n/routing';
 
@@ -253,15 +257,75 @@ async function read(file: string): Promise<string | null> {
   }
 }
 
+/**
+ * The municipality's history, as a short narrative timeline.
+ *
+ * ONE file, `content/home/history/timeline.yaml` — not the per-slug
+ * `index.yaml` + markdown pattern the rest of `content/` uses, because a
+ * timeline entry has no route of its own to be a "page" about: it is a dated
+ * paragraph in a sequence, and `pageEntrySchema` has no field for a period or
+ * a milestone flag. Malformed YAML throws, same as every other loader here —
+ * a broken timeline caught at build time is a red build, not a page that
+ * silently renders five of six entries.
+ */
+export async function getHistoryTimeline(): Promise<Timeline> {
+  'use cache';
+  cacheLife('max');
+  cacheTag('content', 'content:home/history');
+
+  const file = path.join(CONTENT_ROOT, 'home', 'history', 'timeline.yaml');
+  const raw = await readFile(file, 'utf8');
+
+  const parsed = timelineSchema.safeParse(yaml.load(raw));
+  if (!parsed.success) {
+    throw new Error(
+      `Malformed timeline at content/home/history/timeline.yaml:\n${z.prettifyError(parsed.error)}`
+    );
+  }
+
+  return parsed.data;
+}
+
+/**
+ * How to reach the municipality, as a short set of orientation cards.
+ *
+ * Same shape and same reasoning as `getHistoryTimeline`: one YAML file rather
+ * than the per-slug `index.yaml` + markdown pattern, because a travel card has
+ * no route of its own to be a "page" about.
+ */
+export async function getTravelRoutes(): Promise<Travel> {
+  'use cache';
+  cacheLife('max');
+  cacheTag('content', 'content:home/getting-here');
+
+  const file = path.join(CONTENT_ROOT, 'home', 'getting-here', 'routes.yaml');
+  const raw = await readFile(file, 'utf8');
+
+  const parsed = travelSchema.safeParse(yaml.load(raw));
+  if (!parsed.success) {
+    throw new Error(
+      `Malformed travel content at content/home/getting-here/routes.yaml:\n${z.prettifyError(parsed.error)}`
+    );
+  }
+
+  return parsed.data;
+}
+
 export type {
   CharterRecord,
   PageEntry,
   SourceRef,
+  Timeline,
+  TimelineEntry,
+  Travel,
+  TravelCard,
   Verification,
 } from '@/lib/content-schema';
 export {
   manifestSchema,
   pageEntrySchema,
   sourceSchema,
+  timelineSchema,
+  travelSchema,
   verificationSchema,
 } from '@/lib/content-schema';

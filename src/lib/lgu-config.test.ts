@@ -44,16 +44,26 @@ describe('the gap register', () => {
     lguConfigSchema.safeParse({ ...rawConfig, pending });
 
   it('rejects a null fact with no entry explaining it', () => {
+    /*
+     * `lgu.households` rather than `lgu.landAreaKm2`, which this used to
+     * doctor: the land area was published on 2026-08-10, so removing its
+     * (now absent) entry proved nothing and the doctored config parsed
+     * cleanly — a guardrail that had quietly stopped guarding.
+     *
+     * The field chosen here has to be one that is genuinely still null.
+     */
+    expect(rawConfig.lgu.households).toBeNull();
+
     const result = withPending(
       Object.fromEntries(
         Object.entries(rawConfig.pending).filter(
-          ([key]) => key !== 'lgu.landAreaKm2'
+          ([key]) => key !== 'lgu.households'
         )
       )
     );
 
     expect(result.success).toBe(false);
-    expect(JSON.stringify(result.error?.issues)).toContain('lgu.landAreaKm2');
+    expect(JSON.stringify(result.error?.issues)).toContain('lgu.households');
   });
 
   it('rejects an entry that no longer describes a gap', () => {
@@ -127,9 +137,18 @@ describe('the gap register', () => {
   });
 
   it('still lists every fact this project has not obtained', () => {
-    // Not a snapshot — a floor. If this drops to zero the register is either
-    // finished (celebrate) or has been quietly emptied (do not celebrate).
-    expect(Object.keys(lguConfig.pending).length).toBeGreaterThan(10);
+    /*
+     * Not a snapshot — a floor. If this drops to zero the register is either
+     * finished (celebrate) or has been quietly emptied (do not celebrate).
+     *
+     * It came down from thirteen to nine on 2026-08-10, when the population,
+     * census year, barangay count and land area were closed at V1 through a
+     * tertiary path. That is a real reduction and the floor moved with it —
+     * but note what did NOT close: the PSGC record still answers HTTP 403 to
+     * an automated request, so the per-barangay urban/rural classification,
+     * the district and the postal code are all still open.
+     */
+    expect(Object.keys(lguConfig.pending).length).toBeGreaterThan(5);
   });
 
   it('carries a real check date on every entry', () => {
@@ -156,7 +175,7 @@ describe('the emergency block', () => {
       emergency: {
         ...rawConfig.emergency,
         status: 'obtained',
-        municipalHotlines: [{ label: 'MDRRMO', number: '086-000-0000' }],
+        municipalHotlines: [{ label: 'MDRRMO', numbers: ['086-000-0000'] }],
       },
     });
     expect(result.success).toBe(false);
@@ -168,9 +187,20 @@ describe('the emergency block', () => {
      * become a registered path. The consequence was that the LARGEST gap in
      * this record was the one the register structurally could not hold: a
      * coastal municipality with no findable local emergency number.
+     *
+     * The real config CARRIES hotlines since 2026-08-10, so this now builds
+     * the empty state as a fixture rather than reading it off the live record.
+     * The rule it defends is unchanged and still worth defending: were the
+     * numbers ever withdrawn, the register would have to account for them
+     * again or the parse fails.
      */
     const result = lguConfigSchema.safeParse({
       ...rawConfig,
+      emergency: {
+        ...rawConfig.emergency,
+        status: 'not-obtained',
+        municipalHotlines: [],
+      },
       pending: Object.fromEntries(
         Object.entries(rawConfig.pending).filter(
           ([key]) => key !== 'emergency.municipalHotlines'
@@ -185,17 +215,33 @@ describe('the emergency block', () => {
   });
 
   it('makes that entry stale the moment a hotline is recorded', () => {
-    // The other direction, and the one that rots quietly: numbers arrive, and
-    // the register goes on saying they are missing.
+    /*
+     * The other direction, and the one that rots quietly: numbers arrive, and
+     * the register goes on saying they are missing.
+     *
+     * The entry is re-added to the fixture below because the live config no
+     * longer has it — publishing the hotlines on 2026-08-10 deleted it, which
+     * is this exact rule working.
+     */
     const result = lguConfigSchema.safeParse({
       ...rawConfig,
+      pending: {
+        ...rawConfig.pending,
+        'emergency.municipalHotlines': {
+          note: 'A stale register entry, re-added by this fixture to prove the rule still fires.',
+          channel: 'national-agency',
+          state: 'open',
+          lastCheckedAt: '2026-08-09',
+        },
+      },
       emergency: {
         ...rawConfig.emergency,
         status: 'obtained',
         municipalHotlines: [
           {
             label: 'Municipal Disaster Risk Reduction and Management Office',
-            number: '086-000-0000',
+            numbers: ['086-000-0000'],
+            role: 'Fixture role',
             hours: 'not stated',
             verification: 'V2',
             source: {
@@ -363,15 +409,34 @@ describe('the register, as a surface reads it', () => {
     // If a surface meets a null that is not here, `gapFor` cannot explain it —
     // and the config parse would already have failed.
     for (const path of [
-      'lgu.population',
+      // Closed at V1 on 2026-08-10 and therefore NOT here any more: population,
+      // censusYear, barangayCount, landAreaKm2. The schema enforces the swap in
+      // both directions, so a value without a source or a source without a
+      // value fails the parse rather than this list.
       'lgu.households',
-      'lgu.barangayCount',
-      'lgu.landAreaKm2',
+      'lgu.psgc',
+      'lgu.district',
       'lgu.postalCode',
+      'lgu.coordinates',
       'contact.municipalHall.officeHours',
-      'emergency.municipalHotlines',
     ]) {
       expect(GAP_PATHS).toContain(path);
+    }
+
+    // And the mirror: a figure that now HAS a value must have left the
+    // register, or a page would render a gap notice beside a number.
+    for (const closed of [
+      'lgu.population',
+      'lgu.censusYear',
+      'lgu.barangayCount',
+      'lgu.landAreaKm2',
+      // Closed 2026-08-10: a verified Google Maps pin, by instruction.
+      'contact.municipalHall.mapUrl',
+      // Closed 2026-08-10: six agencies read from the municipality's own
+      // Facebook page. The largest gap this register ever held.
+      'emergency.municipalHotlines',
+    ]) {
+      expect(GAP_PATHS).not.toContain(closed);
     }
   });
 });

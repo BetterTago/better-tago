@@ -21,7 +21,11 @@ describe('GapNotice', () => {
     // A register that emptied itself would make every assertion below a green
     // no-op, and the component would look tested while rendering nothing.
     expect(GAP_PATHS.length).toBe(Object.keys(lguConfig.pending).length);
-    expect(GAP_PATHS.length).toBeGreaterThanOrEqual(10);
+    // The floor came down from ten to five on 2026-08-10, when the
+    // population, census year, barangay count and land area were closed at
+    // V1. A floor rather than a snapshot: zero means the register is either
+    // finished or has been emptied, and those need telling apart.
+    expect(GAP_PATHS.length).toBeGreaterThanOrEqual(5);
   });
 
   it('prints the register entry verbatim, for every gap in it', async () => {
@@ -45,12 +49,12 @@ describe('GapNotice', () => {
     expect(screen.getByText(/deliberately not published/i)).toBeInTheDocument();
     unmount();
 
-    render(await GapNotice({ path: 'lgu.population' }));
+    render(await GapNotice({ path: 'lgu.households' }));
     expect(screen.getByText(/not obtained yet/i)).toBeInTheDocument();
   });
 
   it('says when somebody last looked', async () => {
-    render(await GapNotice({ path: 'emergency.municipalHotlines' }));
+    render(await GapNotice({ path: 'contact.project.email' }));
     // A gap with no date is indistinguishable from nobody having looked.
     expect(screen.getByText(/Last looked for on/)).toBeInTheDocument();
     expect(screen.getByText(/2026/)).toBeInTheDocument();
@@ -78,7 +82,7 @@ describe('GapNotice', () => {
   });
 
   it('is content in the accessibility tree, not decoration', async () => {
-    const { container } = render(await GapNotice({ path: 'lgu.population' }));
+    const { container } = render(await GapNotice({ path: 'lgu.households' }));
 
     // A gap rendered as a disabled control or an aria-hidden ornament is a gap
     // a screen-reader user never learns about.
@@ -94,13 +98,13 @@ describe('GapNotice', () => {
     // other fallback in this portal is visible, and so is this one.
     localeState.current = 'fil';
     const { container, unmount } = render(
-      await GapNotice({ path: 'lgu.population' })
+      await GapNotice({ path: 'lgu.households' })
     );
     expect(container.textContent).toMatch(/hindi pa ito naisasalin/i);
     unmount();
 
     localeState.current = 'en';
-    const english = render(await GapNotice({ path: 'lgu.population' }));
+    const english = render(await GapNotice({ path: 'lgu.households' }));
     expect(english.container.textContent).not.toMatch(/naisasalin/i);
   });
 
@@ -121,11 +125,11 @@ describe('GapNotice', () => {
      * added, these lines compile and `npm run typecheck` fails.
      */
     // @ts-expect-error — no value may be passed.
-    void (() => GapNotice({ path: 'lgu.population', value: 40097 }));
+    void (() => GapNotice({ path: 'lgu.households', value: 40097 }));
     // @ts-expect-error — no alternative wording may be passed.
-    void (() => GapNotice({ path: 'lgu.population', reason: 'Coming soon' }));
+    void (() => GapNotice({ path: 'lgu.households', reason: 'Coming soon' }));
     // @ts-expect-error — and nothing may be nested inside it.
-    void (() => GapNotice({ path: 'lgu.population', children: 'Coming soon' }));
+    void (() => GapNotice({ path: 'lgu.households', children: 'Coming soon' }));
     expect(true).toBe(true);
   });
 });

@@ -212,11 +212,44 @@ test.describe('both themes are a gate, not a preference', () => {
     await page.setViewportSize({ width: 320, height: 720 });
     await page.goto('/en');
 
-    const offenders = await page.evaluate(() =>
-      [...document.querySelectorAll('body *')]
+    const offenders = await page.evaluate(() => {
+      /*
+       * Content an ancestor already CLIPS or SCROLLS does not count.
+       *
+       * The rule being defended is that the PAGE never scrolls sideways, and
+       * the second assertion below states exactly that. This first list is the
+       * diagnostic that names the culprit when it does — but an element inside
+       * a clipping or scrolling box cannot be the culprit, by definition.
+       *
+       * Two deliberate designs live behind this and both were reported as
+       * layout defects while the page itself scrolled perfectly:
+       *
+       * · the hotline bar, a contained `overflow-x: auto` region whose track is
+       *   wider than the viewport on purpose;
+       * · the contact slab's decorative mark, positioned past the edge and
+       *   clipped by `overflow: hidden` — which is what makes it a cropped
+       *   silhouette rather than a picture.
+       *
+       * Anything overflowing WITHOUT such an ancestor is still a real defect
+       * and is still named.
+       */
+      const contained = (node: Element): boolean => {
+        for (
+          let parent = node.parentElement;
+          parent && parent !== document.body;
+          parent = parent.parentElement
+        ) {
+          const overflowX = getComputedStyle(parent).overflowX;
+          if (overflowX !== 'visible') return true;
+        }
+        return false;
+      };
+
+      return [...document.querySelectorAll('body *')]
         .filter(node => Math.round(node.getBoundingClientRect().right) > 320)
-        .map(node => `${node.tagName.toLowerCase()}.${node.className}`)
-    );
+        .filter(node => !contained(node))
+        .map(node => `${node.tagName.toLowerCase()}.${node.className}`);
+    });
 
     // Named rather than counted. A bare boolean reported "expected false,
     // received true" and left the next person measuring elements by hand on a

@@ -1,0 +1,122 @@
+# The municipality's history, as a short narrative timeline.
+#
+# Every date and event here was fetched from the official page and checked
+# against it — not paraphrased from a request, and not assumed correct because
+# it matched what was already in config/lgu.config.json (though every one of
+# the five dates config already carried does match this page exactly, which is
+# itself worth recording as corroboration).
+#
+# Two entries name a historical office-holder — the Governor-General who
+# issued Executive Order No. 41, and the first appointed Municipal President.
+# That is permitted ONLY here: root rule 13's carve-out for a historical figure
+# already in a cited public record, rendered through content/. Neither name may
+# appear in a component, a comment outside this file, a test fixture, or any
+# spec — see timelineEntrySchema in src/lib/content-schema.ts.
+#
+# The official page also names fifteen more people as co-signers of the 1916
+# petition, and the first elected Vice President in 1919. None of them are
+# reproduced here: the 1916 entry states the petition, not its signatories, and
+# adding fourteen more names because the source happens to carry them would be
+# scope nobody asked for.
+
+source:
+  label:
+    en: 'Municipality of Tago — History'
+    fil: 'Munisipyo ng Tago — Kasaysayan'
+  url: 'https://tago.gov.ph/about-us-2/history/'
+  documentTitle: 'History'
+  documentType: 'web'
+  retrievedAt: '2026-08-10'
+verification: 'V3'
+lastCheckedAt: '2026-08-10'
+
+entries:
+  - period: '1865'
+    milestone: false
+    title:
+      en: 'First established'
+      fil: 'Unang itinatag'
+    body:
+      en: >-
+        Tago first emerges as a distinct settlement during the Spanish
+        colonial period, under the Maura Law. Its first municipal existence
+        lasts only a few years before the community returns to barrio status.
+      fil: >-
+        Unang lumitaw ang Tago bilang hiwalay na pamayanan noong panahon ng
+        mga Espanyol, sa ilalim ng Maura Law. Tumagal lamang ng ilang taon ang
+        una nitong pagiging bayan bago ito muling naging barrio.
+
+  - period: '1883-08-23'
+    milestone: true
+    title:
+      en: 'Re-established'
+      fil: 'Muling itinatag'
+    body:
+      en: >-
+        Tago regains municipal status for the second time after moving from
+        Daan Lungsod (Old Town), an area described as being repeatedly
+        flooded, to Laguna.
+      fil: >-
+        Nabawi ng Tago ang katayuan bilang bayan sa ikalawang pagkakataon
+        matapos lumipat mula sa Daan Lungsod, isang lugar na paulit-ulit na
+        binabaha, patungo sa Laguna.
+
+  - period: '1896'
+    milestone: true
+    title:
+      en: 'Municipal status lost'
+      fil: 'Nawalang katayuan bilang bayan'
+    body:
+      en: >-
+        The outbreak of the Philippine Revolution is followed by Tago's
+        return to barrio status.
+      fil: >-
+        Kasunod ng pagsiklab ng Rebolusyong Pilipino, muling naging barrio
+        ang Tago.
+
+  - period: '1916'
+    milestone: false
+    title:
+      en: 'The movement begins'
+      fil: 'Nagsimula ang kilusan'
+    body:
+      en: >-
+        Local leaders organize a petition seeking Tago's political
+        independence from Tandag. The request moves from the Tandag
+        municipal council to the Provincial Board of Surigao and eventually
+        toward the Governor-General in Manila.
+      fil: >-
+        Nag-organisa ang mga lokal na pinuno ng petisyon para sa
+        kalayaang pampulitika ng Tago mula sa Tandag. Dumaan ang kahilingan
+        sa konsehong munisipal ng Tandag, patungo sa Lupon Panlalawigan ng
+        Surigao, at sa huli, tungo sa Gobernador-Heneral sa Maynila.
+
+  - period: '1918-11-06'
+    milestone: true
+    title:
+      en: 'Municipality restored'
+      fil: 'Naibalik ang katayuan bilang bayan'
+    body:
+      en: >-
+        Governor-General Francis Burton Harrison issues Executive Order
+        No. 41, converting Tago from a barrio into a town for the third
+        time.
+      fil: >-
+        Inilabas ng Gobernador-Heneral na si Francis Burton Harrison ang
+        Executive Order No. 41, na muling ginawang bayan ang Tago mula sa
+        pagiging barrio sa ikatlong pagkakataon.
+
+  - period: '1919-01-01'
+    milestone: true
+    title:
+      en: 'Municipal government begins'
+      fil: 'Nagsimula ang pamahalaang bayan'
+    body:
+      en: >-
+        Catalino Pareja becomes the appointed Municipal President. Tago's
+        first municipal government formally begins, followed later that
+        year by its first municipal election.
+      fil: >-
+        Naging hinirang na Municipal President si Catalino Pareja. Pormal
+        na nagsimula ang unang pamahalaang bayan ng Tago, na sinundan sa
+        parehong taon ng unang halalang munisipal.

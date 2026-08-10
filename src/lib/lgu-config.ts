@@ -154,6 +154,10 @@ const contactSchema = z.object({
     phoneStatus: z.enum(['published-unverified', 'verified', 'unreachable']),
     email: z.email().nullable(),
     officeHours: z.string().min(1).nullable(),
+    /** Which office the phone and email actually reach — a resident dialling
+     *  a municipal hall number deserves to know who picks up. `null` until
+     *  confirmed, same as every other unobtained fact in this schema. */
+    office: z.string().min(1).nullable(),
     source: sourceSchema,
   }),
   project: z.object({
@@ -164,7 +168,24 @@ const contactSchema = z.object({
 
 const hotlineSchema = z.object({
   label: z.string().min(1),
-  number: z.string().min(1),
+  /**
+   * One agency, one entry, however many numbers it publishes.
+   *
+   * This was a single `number` until 2026-08-10, which could not express the
+   * list actually supplied: the disaster office publishes three numbers and
+   * two other agencies publish two each. Splitting those into six entries
+   * would have repeated each agency's name and its provenance line beside
+   * every one of its numbers, and a reader scanning for "who do I call" reads
+   * the AGENCY first.
+   */
+  numbers: z.array(z.string().min(1)).min(1),
+  /**
+   * What this agency actually handles, in a resident's words — "Fire and
+   * rescue", not "Bureau of Fire Protection". An agency name tells somebody
+   * who already knows which one they want; this line is for the reader who
+   * knows their situation and not the org chart.
+   */
+  role: z.string().min(1),
   /** 'not stated' is a legitimate value. A guess is not. */
   hours: z.string().min(1),
   verification: z.enum(['V3', 'V2', 'V1', 'V0']),

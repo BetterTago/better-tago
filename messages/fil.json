@@ -6,7 +6,11 @@
   },
   "common": {
     "home": "Unang pahina",
-    "skipToContent": "Lumaktaw sa nilalaman"
+    "skipToContent": "Lumaktaw sa nilalaman",
+    "comingSoon": "Malapit na",
+    "backToTop": "Balik sa itaas ng pahina",
+    "opensExternalSite": "magbubukas ng ibang website",
+    "noWebsite": "walang website"
   },
   "header": {
     "homeLink": "Unang pahina ng {portal}",
@@ -18,27 +22,23 @@
     "themeToDark": "Lumipat sa madilim na tema",
     "themeToLight": "Lumipat sa maliwanag na tema",
     "themeNowDark": "Nakabukas ang madilim na tema",
-    "themeNowLight": "Nakabukas ang maliwanag na tema"
-  },
-  "holding": {
-    "eyebrow": "Wala pang inilalathala rito",
-    "heading": "Isang daan papasok sa impormasyon ng Bayan ng Tago.",
-    "lead": "Inilalathala na ng bayan ang kanilang Citizen's Charter, ang kanilang mga tanggapan, at ang kanilang mga balita. Layunin ng proyektong ito na gawing mahahanap at mababasa sa telepono ang impormasyong iyon — isang pahina para sa bawat bagay na kailangang gawin ng isang residente, at may kaakibat na sipi at kawing pabalik sa opisyal na dokumentong pinagmulan nito.",
-    "statusHeading": "Ano ang mayroon ngayon",
-    "statusBody": "Ang domain, at ang pahinang ito. Walang gabay sa serbisyo, walang direktoryo ng tanggapan, walang bilang. Hindi pa nahihingan ng pahintulot ang bayan upang muling ilathala ang kanilang charter, at hindi nagtatayo muna ang proyektong ito bago magpaalam.",
-    "officialHeading": "Ang opisyal na talaan",
-    "officialBody": "Ang bayan mismo ang naglalathala ng lahat ng opisyal tungkol sa Bayan ng Tago. Kapag nagkaiba ang talaang iyon at ang proyektong ito, tama ang opisyal na talaan at mali ang proyektong ito.",
-    "officialCta": "Pumunta sa opisyal na sityo ng bayan",
-    "emergencyHeading": "Sa oras ng emerhensiya",
-    "emergencyNational": "Pambansang hotline sa emerhensiya",
-    "emergencyGap": "Walang hotline sa emerhensiya ng bayan na maaaring sipiin ng proyektong ito, at hiniling na ito. Hangga't hindi pa nakukuha, ipinapakita ng pahinang ito ang kakulangan sa halip na isang numerong maaaring mali — mas masahol ang maling numero sa oras ng emerhensiya kaysa sa walang numero."
+    "themeNowLight": "Nakabukas ang maliwanag na tema",
+    "openMenu": "Buksan ang menu",
+    "closeMenu": "Isara ang menu"
   },
   "footer": {
-    "independence": "Ang BetterTago ay isang malayang proyekto ng mga boluntaryo. Hindi ito pinapatakbo, inendorso, o kaugnay ng Pamahalaang Bayan ng Tago.",
-    "networkLabel": "Bahagi ng {network}",
-    "versionLabel": "Bersyon {version}",
-    "corrections": "Mag-ulat ng mali",
-    "sourceNote": "Bawat bilang na inilalathala rito ay may pinagmulan at petsa ng huling pagsusuri — pati na ang mga wala pa sa amin."
+    "independence": "Gawa ng mga Tagon-on para sa Tago. Binibigyan ng kapangyarihan ang mga taga-Tago sa pamamagitan ng malinaw na akses sa mga serbisyo, programa at pondong publiko ng pamahalaan.",
+    "copyright": "© 2026 {host}. Nakalaan ang lahat ng karapatan.",
+    "sourceCode": "Source code",
+    "version": "Bersyon ng portal",
+    "costLine": "Halaga sa mga taga-Tago = ₱0",
+    "columnPages": "Mga pahina",
+    "columnResources": "Mga Rekurso",
+    "columnContribute": "Mag-ambag",
+    "volunteer": "Sumama bilang boluntaryo",
+    "contributeCode": "Mag-ambag ng code",
+    "repositoryGap": "Hindi pa nailalathala ang source code, kaya wala pang mai-uugnay dito. Ilalagay ito rito sa araw na mailathala.",
+    "network": "Bahagi ng network ng {network}"
   },
   "source": {
     "heading": "Saan ito nanggaling",
@@ -100,5 +100,153 @@
     },
     "scrollableTable": "{name}, talahanayan, puwedeng i-scroll pahalang",
     "table": "Talahanayan"
+  },
+  "nav": {
+    "label": "Pangunahin",
+    "mobileLabel": "Pangunahin, sa device na ito",
+    "footerLabel": "Ibaba ng pahina",
+    "services": "Mga Serbisyo",
+    "allServices": "Lahat ng serbisyo",
+    "civilRegistry": "Civil registry",
+    "businessAndPermits": "Negosyo at permit",
+    "health": "Kalusugan",
+    "socialWelfare": "Serbisyong panlipunan",
+    "government": "Pamahalaan",
+    "offices": "Mga tanggapan",
+    "transparency": "Transparensiya",
+    "barangays": "Mga barangay",
+    "municipality": "Ang munisipyo",
+    "atAGlance": "Sa isang sulyap",
+    "history": "Kasaysayan",
+    "tourism": "Turismo",
+    "emergency": "Emerhensiya",
+    "contact": "Kontak",
+    "gaps": "Ano ang kulang"
+  },
+  "resources": {
+    "officialSite": "Opisyal na website ng munisipyo",
+    "citizensCharter": "Ang Citizen's Charter",
+    "transparencySeal": "Selyo ng Transparensiya",
+    "sangguniangBayan": "Sangguniang Bayan",
+    "lguFacebook": "LGU Tago Facebook",
+    "foi": "Kalayaan sa Impormasyon",
+    "govph": "Opisyal na Gov.PH",
+    "philgeps": "PhilGEPS",
+    "cmci": "CMCI DTI Portal",
+    "blgf": "BLGF Portal"
+  },
+  "ticker": {
+    "regionLabel": "Mga numero sa emerhensiya",
+    "label": "Emerhensiya",
+    "municipalGap": "Walang hotline ng munisipyo ng Tago na nailathala saanman na maaaring banggitin ng proyektong ito — tingnan kung saan kami naghanap"
+  },
+  "advisory": {
+    "regionLabel": "Kasalukuyang abiso",
+    "badge": "Abiso",
+    "dismiss": "Isara ang abisong ito"
+  },
+  "hero": {
+    "headingLead": "Padayon sa pag-asenso",
+    "lede": "I-access ang mga serbisyo, impormasyon, at rekurso ng pamahalaan para sa mga mamamayan ng Munisipyo ng Tago, Surigao del Sur.",
+    "ctaServices": "Tingnan lahat ng serbisyo",
+    "ctaContact": "Makipag-ugnayan"
+  },
+  "search": {
+    "title": "Maghanap",
+    "label": "Ano ang sinusubukan mong ayusin?",
+    "hint": "Hanapin ang bawat serbisyo sa Citizen's Charter ng munisipyo.",
+    "placeholder": "permit sa negosyo, sertipiko ng kapanganakan, indigency…",
+    "submit": "Hanapin",
+    "searching": "Naghahanap…",
+    "emptyQuery": "I-type ang sinusubukan mong ayusin — isang gawain, hindi isang tanggapan. Hindi mo kailangang alamin kung aling tanggapan ang humahawak nito.",
+    "resultsHeading": "{count, plural, one {# serbisyo} other {# na serbisyo}} para sa “{query}”",
+    "noResultsHeading": "Walang tumutugma rito sa “{query}”",
+    "noResultsBody": "Ang Citizen's Charter pa lamang ang mahahanap dito, kaya wala pang mga tanggapan, barangay at balita sa mga resultang ito. Dalawang bagay na maaaring subukan:",
+    "browseAll": "Tingnan ang lahat ng serbisyo ayon sa kategorya",
+    "tryOfficialSite": "Maghanap sa opisyal na site ng munisipyo",
+    "resultsTitle": "Mga resulta para sa “{query}”",
+    "findService": "Maghanap ng serbisyo",
+    "findServiceHelp": "Hanapin ang bawat serbisyo sa Citizen's Charter ng Munisipyo ng Tago — ayon sa gusto mong gawin, hindi ayon sa tanggapang humahawak nito.",
+    "popular": "Madalas hanapin:"
+  },
+  "stats": {
+    "heading": "Ang {municipality} sa isang sulyap",
+    "label": {
+      "population": "Mga residente",
+      "households": "Mga sambahayan",
+      "barangayCount": "Mga barangay",
+      "incomeClass": "Uri ng kita",
+      "landAreaKm2": "Lawak ng lupain"
+    },
+    "alsoMissing": "Hindi rin pa nakukuha: {figures}.",
+    "listSeparator": ", ",
+    "seeRegister": "Tingnan ang lahat ng kulang",
+    "regionLabel": "Ang Tago sa isang sulyap",
+    "squareKilometres": "km²",
+    "caption": {
+      "population": "Senso 2024 · PSA",
+      "incomeClass": "Ika-2 uri ng kita ng munisipyo",
+      "barangayCount": "Hindi pa nakukuha ang hati sa urban at rural",
+      "landAreaKm2": "{percent}% ng lalawigan"
+    }
+  },
+  "home": {
+    "eyebrowServices": "01 — Mga serbisyo",
+    "servicesHeading": "Ang dahilan kung bakit ka narito",
+    "allServices": "Lahat ng serbisyo",
+    "featuredEyebrow": "Ang buong charter",
+    "browseByTask": "Tingnan ayon sa kailangan mo",
+    "byCategory": "Ayon sa kategorya",
+    "serviceCount": "{count, plural, one {# serbisyo} other {# na serbisyo}}",
+    "eyebrowEmergency": "03 — Emerhensiya",
+    "emergencyHeading": "Sa oras ng emerhensiya",
+    "emergencyIntro": "Kung sino ang tatawagan sa Tago, at para saan. Gumagana ang pambansang linya sa ibaba mula sa kahit anong telepono, saanman sa bansa.",
+    "seeRegister": "Tingnan ang lahat ng kulang",
+    "eyebrowContact": "05 — Makipag-ugnayan",
+    "hotlinesSourced": "Ang anim na ito ay binasa mula sa opisyal na Facebook page mismo ng munisipyo. Suriin ang mga ito sa pinagmulan kung may mukhang mali:"
+  },
+  "emergency": {
+    "nationalLine": "Pambansang hotline sa emerhensiya",
+    "callAria": "Tawagan ang {organisation} sa {number}",
+    "result": {
+      "no-municipal-number-published": "Nasuri; walang nailathalang numero ng munisipyo",
+      "not-retrievable": "Nasuri; hindi makuha ang pahina"
+    }
+  },
+  "history": {
+    "eyebrow": "02 — Kasaysayan",
+    "heading": "Paano naging munisipyo ang {municipality}",
+    "intro": "Anim na may-petsang yugto, inilathala ng munisipyo sa sarili nitong pahina ng kasaysayan at binanggit sa ibaba. Dalawang yugto ang nagpapangalan sa mga humawak ng tungkulin — ang Gobernador-Heneral na naglabas ng Executive Order No. 41, at ang unang hinirang na Municipal President — dahil kapwa sila bahagi na ng sariling pampublikong talaan ng munisipyo.",
+    "milestone": "mahalagang yugto",
+    "sourceLabel": "Pinagmulan",
+    "openSource": "Buksan ang opisyal na pahina ng kasaysayan ng Munisipyo ng Tago"
+  },
+  "contact": {
+    "heading": "Pag-abot sa {municipality}",
+    "provenance": "Lahat ng tatlo ay binasa mula sa opisyal na pahina ng kontak ng munisipyo, huling sinuri noong {date}. Basahin ang mga ito roon sa halip na magtiwala sa kopyang ito kung may mukhang mali.",
+    "openContactPage": "Buksan ang opisyal na pahina ng kontak",
+    "phoneLabel": "Telepono",
+    "emailLabel": "Email",
+    "addressLabel": "Address",
+    "addressNote": "magbubukas sa Google Maps"
+  },
+  "gaps": {
+    "title": "Ano ang hindi pa alam ng portal na ito",
+    "lead": "Bawat impormasyong hinanap ng proyektong ito at hindi nakuha, kasama ang dahilan, kung ano ang magsasara nito, at ang araw na huling naghanap ang isang tao. Ang pahinang ito mismo ang talaan — walang isinulat nang dalawang beses dito.",
+    "counts": "{open} na bukas pa · {held} na nakuha at sinadyang hindi ilathala",
+    "openHeading": "Hindi pa nakukuha",
+    "openBlurb": "Hinanap, at hindi natagpuan sa anyong maaaring banggitin ng proyektong ito. Bawat isa ay pinapangalanan ang daan na magsasara nito.",
+    "heldHeading": "Nakuha, at sinadyang hindi inilathala",
+    "heldBlurb": "Ibang uri ng kawalan: umiiral ang halaga, at ang paglalathala nito ay magpapalaganap ng mali. Nakasaad nang buo ang dahilan.",
+    "channel": {
+      "official-site": "Magsasara kapag inilathala ito ng munisipyo",
+      "national-agency": "Magsasara mula sa sariling talaan ng pambansang ahensiya",
+      "field-verification": "Kailangan ng taong nasa Tago upang puntahan at tingnan",
+      "project": "Nasa proyektong ito ang pag-aayos"
+    }
+  },
+  "gettingHere": {
+    "eyebrow": "04 — Pagpunta rito",
+    "heading": "Pagpunta sa {municipality}"
   }
 }

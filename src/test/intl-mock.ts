@@ -76,6 +76,14 @@ export function intlServerMock() {
     getFormatter: async () => ({
       dateTime: (value: Date, options?: Intl.DateTimeFormatOptions): string =>
         new Intl.DateTimeFormat(localeState.current, options).format(value),
+      /*
+       * Grouping separators are locale-dependent, and a figure rendered without
+       * them is harder to read at exactly the sizes this portal sets them in.
+       * Same thin wrapper as `dateTime`: what production renders is what this
+       * renders.
+       */
+      number: (value: number, options?: Intl.NumberFormatOptions): string =>
+        new Intl.NumberFormat(localeState.current, options).format(value),
     }),
     getTranslations: async (
       namespaceOrOptions: string | { locale?: Locale; namespace: string }
@@ -85,5 +93,20 @@ export function intlServerMock() {
           ? namespaceOrOptions
           : namespaceOrOptions.namespace
       ),
+  };
+}
+
+/**
+ * The client half. `vi.mock('next-intl', () => intlClientMock())`.
+ *
+ * `useTranslations` is a hook, so it cannot share `intlServerMock`'s async
+ * shape — but it resolves through the same `translator`, against the same real
+ * catalogues, so a component rendered through this mock still fails on a
+ * message key that does not exist in the locale under test.
+ */
+export function intlClientMock() {
+  return {
+    useTranslations: (namespace: string) => translator(namespace),
+    useLocale: (): Locale => localeState.current,
   };
 }

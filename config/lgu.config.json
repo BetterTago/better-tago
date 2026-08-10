@@ -29,11 +29,11 @@
     "postalCode": null,
     "incomeClass": "2nd class",
     "coordinates": null,
-    "landAreaKm2": null,
-    "barangayCount": null,
-    "population": null,
+    "landAreaKm2": 253.28,
+    "barangayCount": 24,
+    "population": 40097,
     "households": null,
-    "censusYear": null,
+    "censusYear": 2024,
     "history": {
       "establishedYear": 1865,
       "reEstablishedDate": "1883-08-23",
@@ -52,7 +52,31 @@
         "label": "Municipality of Tago — Tourism",
         "url": "https://tago.gov.ph/about-us-2/tourism/",
         "checkedAt": "2026-08-09",
-        "note": "The municipality states this itself: its tourism page opens 'The Municipality of Tago is a 2nd class Municipality'. Recorded from the municipality's own site rather than left null, and it is the ONLY one of the ten tracked figures the municipality publishes anywhere. STILL OPEN, and recorded rather than implied: the national issuance that SET this classification was not retrieved, so the figure is the municipality's own statement about itself and carries no issuance date. If a national record is later obtained and disagrees, both are shown with their sources — neither is chosen."
+        "note": "The municipality states this itself: its tourism page opens 'The Municipality of Tago is a 2nd class Municipality'. Recorded from the municipality's own site rather than left null, and it is the ONLY one of the ten tracked figures the municipality publishes anywhere. STILL OPEN, and recorded rather than implied: the national issuance that SET this classification was not retrieved, so the figure is the municipality's own statement about itself and carries no issuance date. If a national record is later obtained and disagrees, both are shown with their sources — neither is chosen. CORROBORATED 2026-08-10: the tertiary record also gives '2nd municipal income class', independently of the municipality's own statement. That raises confidence and does not change the level — the national issuance that SET the classification is still not in hand."
+      },
+      "population": {
+        "label": "Philippine Statistics Authority — PSGC record for Tago, Surigao del Sur",
+        "url": "https://psa.gov.ph/classification/psgc/barangays/1606818000",
+        "checkedAt": "2026-08-10",
+        "note": "The 2024 census count for the whole municipality. V1 — CORROBORATED INDIRECT, and it must not be read as anything stronger. The primary record is the national statistics authority's own PSGC/census release at https://psa.gov.ph/classification/psgc/barangays/1606818000; that URL was requested again on 2026-08-10 and answered HTTP 403 to an automated request, as it has on every previous attempt. The figure below was therefore reached through the English Wikipedia article on Tago (https://en.wikipedia.org/wiki/Tago,_Surigao_del_Sur), which attributes it to that release. The tertiary path is named here rather than hidden: a person opening the PSGC page in a browser and recording what it says promotes this to V3, and that is the single cheapest outstanding task on this record."
+      },
+      "censusYear": {
+        "label": "Philippine Statistics Authority — PSGC record for Tago, Surigao del Sur",
+        "url": "https://psa.gov.ph/classification/psgc/barangays/1606818000",
+        "checkedAt": "2026-08-10",
+        "note": "The census the population figure above is counted from. A population without its census year is not citable, so the two are set and sourced together. V1 — CORROBORATED INDIRECT, and it must not be read as anything stronger. The primary record is the national statistics authority's own PSGC/census release at https://psa.gov.ph/classification/psgc/barangays/1606818000; that URL was requested again on 2026-08-10 and answered HTTP 403 to an automated request, as it has on every previous attempt. The figure below was therefore reached through the English Wikipedia article on Tago (https://en.wikipedia.org/wiki/Tago,_Surigao_del_Sur), which attributes it to that release. The tertiary path is named here rather than hidden: a person opening the PSGC page in a browser and recording what it says promotes this to V3, and that is the single cheapest outstanding task on this record."
+      },
+      "barangayCount": {
+        "label": "Philippine Statistics Authority — PSGC record for Tago, Surigao del Sur",
+        "url": "https://psa.gov.ph/classification/psgc/barangays/1606818000",
+        "checkedAt": "2026-08-10",
+        "note": "The municipality is subdivided into 24 barangays. ⚠️ The per-barangay URBAN/RURAL CLASSIFICATION the PSGC record also carries is NOT published here: it exists only on the page that could not be retrieved, and a count is not a classification. V1 — CORROBORATED INDIRECT, and it must not be read as anything stronger. The primary record is the national statistics authority's own PSGC/census release at https://psa.gov.ph/classification/psgc/barangays/1606818000; that URL was requested again on 2026-08-10 and answered HTTP 403 to an automated request, as it has on every previous attempt. The figure below was therefore reached through the English Wikipedia article on Tago (https://en.wikipedia.org/wiki/Tago,_Surigao_del_Sur), which attributes it to that release. The tertiary path is named here rather than hidden: a person opening the PSGC page in a browser and recording what it says promotes this to V3, and that is the single cheapest outstanding task on this record."
+      },
+      "landAreaKm2": {
+        "label": "Tago, Surigao del Sur — tertiary encyclopaedia record, infobox",
+        "url": "https://en.wikipedia.org/wiki/Tago,_Surigao_del_Sur",
+        "checkedAt": "2026-08-10",
+        "note": "⚠️ PUBLISHED BY INSTRUCTION 2026-08-10, and the reader is owed the whole story rather than the number. The source gives TWO land areas for Tago and reconciles neither: 253.28 km² in its infobox and 343.52 km² in its body text, a 36% difference, re-read the same day and both still present. The value published here is the infobox one, and the selection is reasoned rather than a coin toss: the body's figure is the one its own stale arithmetic depends on — the density it prints, 86 persons per km², is reproduced exactly by 343.52 km² against the 2000 census, so that paragraph is a quarter-century old. Against the 2024 count neither area yields 86, and the density figure is rejected outright at every level. V1 — CORROBORATED INDIRECT. The primary record is a national land-area or cadastral release and it is NOT in hand; obtaining one is what promotes or corrects this, and it may well correct it."
       }
     }
   },
@@ -66,8 +90,8 @@
     "municipalHall": {
       "name": "Tago Municipal Hall",
       "locality": "Tago, Surigao del Sur",
-      "address": "Purisima, Tago, Surigao del Sur",
-      "mapUrl": null,
+      "address": "Purisima St., Tago, Surigao del Sur",
+      "mapUrl": "https://maps.app.goo.gl/fqEX9emT6ZZ9eVHr5",
       "phone": "086-214-2116",
       "phoneStatus": "published-unverified",
       "email": "lgutagosds@gmail.com",
@@ -75,7 +99,8 @@
       "source": {
         "url": "https://tago.gov.ph/contact-us/",
         "checkedAt": "2026-08-09"
-      }
+      },
+      "office": "Office of the Mayor"
     },
     "project": {
       "email": null,
@@ -84,10 +109,83 @@
   },
   "emergency": {
     "nationalLine": "911",
-    "municipalHotlines": [],
-    "status": "not-obtained",
-    "note": "No municipal emergency hotline is published anywhere this project can cite. SETTLED POSITION (2026-08-09): the emergency surface renders that absence rather than a number, and will not carry a neighbouring municipality's number, a provincial office's number, an undated one, or a plausible guess. This is the position, not a temporary state — a wrong number in an emergency is worse than no number at all. The sources swept are listed below, so the absence is a recorded result rather than an assumption. If numbers are obtained later they are recorded with the office that supplied them and the date, and the surface changes then. See docs/governance.md.",
-    "checkedAt": "2026-08-09",
+    "municipalHotlines": [
+      {
+        "label": "Municipal DRRMC",
+        "numbers": ["0912 214 9765", "0966 723 0478", "0963 974 2460"],
+        "role": "Flooding, evacuation, storm updates",
+        "hours": "not stated",
+        "verification": "V3",
+        "source": {
+          "label": "Municipality of Tago — official Facebook page",
+          "url": "https://www.facebook.com/profile.php?id=61577723051532",
+          "checkedAt": "2026-08-10"
+        }
+      },
+      {
+        "label": "Tago Police Station",
+        "numbers": ["0998 598 7376"],
+        "role": "Crime, road incidents",
+        "hours": "not stated",
+        "verification": "V3",
+        "source": {
+          "label": "Municipality of Tago — official Facebook page",
+          "url": "https://www.facebook.com/profile.php?id=61577723051532",
+          "checkedAt": "2026-08-10"
+        }
+      },
+      {
+        "label": "Municipal Health Office – Tago",
+        "numbers": ["0946 107 0378"],
+        "role": "Medical emergencies and health concerns",
+        "hours": "not stated",
+        "verification": "V3",
+        "source": {
+          "label": "Municipality of Tago — official Facebook page",
+          "url": "https://www.facebook.com/profile.php?id=61577723051532",
+          "checkedAt": "2026-08-10"
+        }
+      },
+      {
+        "label": "Bureau of Fire Protection (BFP)",
+        "numbers": ["0970 543 0047", "214-6295"],
+        "role": "Fire and rescue",
+        "hours": "not stated",
+        "verification": "V3",
+        "source": {
+          "label": "Municipality of Tago — official Facebook page",
+          "url": "https://www.facebook.com/profile.php?id=61577723051532",
+          "checkedAt": "2026-08-10"
+        }
+      },
+      {
+        "label": "Coast Guard Station – Surigao del Sur",
+        "numbers": ["0906 381 1224"],
+        "role": "Sea and coastal incidents",
+        "hours": "not stated",
+        "verification": "V3",
+        "source": {
+          "label": "Municipality of Tago — official Facebook page",
+          "url": "https://www.facebook.com/profile.php?id=61577723051532",
+          "checkedAt": "2026-08-10"
+        }
+      },
+      {
+        "label": "Philippine Red Cross",
+        "numbers": ["0964 133 9751", "0995 120 5195"],
+        "role": "Ambulance, blood, disaster relief",
+        "hours": "not stated",
+        "verification": "V3",
+        "source": {
+          "label": "Municipality of Tago — official Facebook page",
+          "url": "https://www.facebook.com/profile.php?id=61577723051532",
+          "checkedAt": "2026-08-10"
+        }
+      }
+    ],
+    "status": "obtained",
+    "note": "Six agencies, read from a hotline post on the municipality's own official Facebook page, published 2026-08-10. Cited at V3 — the municipality publishing a number on its own channel is the municipality's own published record, which is what V3 means here. CITED TO THE PAGE, NOT THE POST, by instruction: the permalink to the specific post was available and was deliberately not used. The trade is real and is recorded rather than glossed — a page URL keeps working and is the channel a resident would think to check, but it does not pin the exact post these were read from, so checkedAt carries more of the weight. HISTORY, kept because it explains the shape of this record rather than being tidied away: four sweeps (the official site, the provincial site and two national police directories) are recorded under sourcesChecked and every one came back empty or unretrievable. That is why this field carried a settled position for months that the surface would render the absence rather than a number — it was the honest state at the time, and it changed because a source turned up, not because the standard moved. NOTE ON SCOPE: two of the six — the Coast Guard station and the Red Cross — are provincial or national bodies rather than municipal ones. They are listed because they serve Tago and a resident in an emergency needs them, which is different from substituting a provincial number FOR a missing municipal one; that substitution is still forbidden.",
+    "checkedAt": "2026-08-10",
     "recheckDays": 90,
     "sourcesChecked": [
       {
@@ -133,7 +231,7 @@
       "lastCheckedAt": "2026-08-09"
     },
     "lgu.psgc": {
-      "note": "The national statistics authority publishes this municipality's PSGC record at psa.gov.ph/classification/psgc/barangays/1606818000. Checked 2026-08-09, re-attempted the same day for the barangay directory, and re-attempted a THIRD time on 2026-08-09 for the statistics baseline: the host answers HTTP 403 to an automated request every time, as does psa.gov.ph itself and every /classification/ and /statistics/ path tried. It is not behind a login and robots.txt permits it — closing this needs a person opening that URL in a browser and recording the code with the date they read it. Three attempts, all machine-refused, is the reason CONT-210 is recorded blocked rather than skipped. NOT A CHANNEL: an aggregator site answered 200 on the same sweep and was deliberately NOT READ — this project did not check what it carries, because a figure it cannot trace to the authority that published it is unusable either way. Recorded so the refusal is a decision on the record rather than an absence.",
+      "note": "The national statistics authority publishes this municipality's PSGC record at psa.gov.ph/classification/psgc/barangays/1606818000. Checked 2026-08-09, re-attempted the same day for the barangay directory, and re-attempted a THIRD time on 2026-08-09 for the statistics baseline: the host answers HTTP 403 to an automated request every time, as does psa.gov.ph itself and every /classification/ and /statistics/ path tried. It is not behind a login and robots.txt permits it — closing this needs a person opening that URL in a browser and recording the code with the date they read it. Three attempts, all machine-refused, is the reason CONT-210 is recorded blocked rather than skipped. NOT A CHANNEL: an aggregator site answered 200 on the same sweep and was deliberately NOT READ — this project did not check what it carries, because a figure it cannot trace to the authority that published it is unusable either way. Recorded so the refusal is a decision on the record rather than an absence. RE-ATTEMPTED 2026-08-10 with the same result: HTTP 403. The population, census year and barangay count were closed at V1 through the tertiary path instead; this entry stays open because the PSGC CODE itself, and the per-barangay urban/rural classification, are on that page and nowhere else. FOURTH ATTEMPT 2026-08-10, specifically for the barangay-level urban/rural classification: the response is a Cloudflare interstitial ('Just a moment...', a JavaScript challenge), confirmed by reading the response body rather than only the status code — this is not a simple bot-header block that a different request might clear, and no automated fetch can complete it. The aggregator surveyed this time (philatlas.com) was READ rather than skipped, on the reasoning that its population tables are transparently PSA-derived and worth checking for this one field: its barangay table carries five population columns and NO classification column at all, so the earlier 'not a channel' decision did not need to be revisited — the data is simply not there to trace. The per-barangay classification remains obtainable only by a person opening the PSGC page in a browser.",
       "channel": "national-agency",
       "state": "open",
       "lastCheckedAt": "2026-08-09"
@@ -150,39 +248,9 @@
       "state": "open",
       "lastCheckedAt": "2026-08-09"
     },
-    "lgu.landAreaKm2": {
-      "note": "Not published by the municipality. Checked 2026-08-09 across every page the official site's sitemap lists that is not a news post or a profile page — home, about, vision-and-mission, services, tourism, contact, transparency-seal and all 17 office pages — and across all 22 Citizen's Charter documents. Obtain from the national statistics authority alongside the population figure; a land area with no cited source is exactly the kind of plausible number this register exists to keep out.",
-      "channel": "national-agency",
-      "state": "open",
-      "lastCheckedAt": "2026-08-09"
-    },
-    "lgu.barangayCount": {
-      "note": "Not published by the municipality, and neither is the barangay list. Checked 2026-08-09 across every page the official site's sitemap lists that is not a news post or a profile page — home, about, vision-and-mission, services, tourism, contact, transparency-seal and all 17 office pages — and across all 22 Citizen's Charter documents. Re-swept the same day across the sitemap in full, posts included: no barangay list or directory anywhere on it. Both figures are on the national statistics authority's PSGC record, which could not be retrieved (see lgu.psgc). This is the field that blocks per-barangay hazard and evacuation records, and it is what holds CONT-210 at not-started: a one-sided national list is not the reconciliation that ticket asks for, because the municipality publishes no spelling to reconcile it against.",
-      "channel": "national-agency",
-      "state": "open",
-      "lastCheckedAt": "2026-08-09"
-    },
-    "lgu.population": {
-      "note": "Obtain from the national statistics authority's census release, cited by census year. Checked 2026-08-09 and re-attempted the same day against the authority's population and housing pages; every path answers HTTP 403 to an automated request (see lgu.psgc). The municipality publishes no figure of its own. An aggregator site was reachable on the same sweep and was deliberately not read; whether it carries a figure for this municipality was not checked, because it could not be used either way.",
-      "channel": "national-agency",
-      "state": "open",
-      "lastCheckedAt": "2026-08-09"
-    },
     "lgu.households": {
       "note": "Obtain from the same census release as the population figure. Checked 2026-08-09; not retrievable, and not published by the municipality (see lgu.psgc).",
       "channel": "national-agency",
-      "state": "open",
-      "lastCheckedAt": "2026-08-09"
-    },
-    "lgu.censusYear": {
-      "note": "Set in the same change that sets population and households; a figure without its census year is not citable. Checked 2026-08-09 alongside them.",
-      "channel": "national-agency",
-      "state": "open",
-      "lastCheckedAt": "2026-08-09"
-    },
-    "contact.municipalHall.mapUrl": {
-      "note": "No map link is published on the official contact page, re-read 2026-08-09. Confirm the hall's actual location in person before publishing one — a wrong pin costs a resident a fare.",
-      "channel": "field-verification",
       "state": "open",
       "lastCheckedAt": "2026-08-09"
     },
@@ -195,12 +263,6 @@
     "contact.project.email": {
       "note": "The only entry here that is not about the municipality. The correction channel is the public repository's issue tracker — live and linked from every page — but it needs a free account on a code-hosting site, which is a real barrier for exactly the resident most likely to spot a wrong fee at a counter. Closing this needs an address that exists and someone reading it; it needs no code, because the footer link is already null-guarded.",
       "channel": "project",
-      "state": "open",
-      "lastCheckedAt": "2026-08-09"
-    },
-    "emergency.municipalHotlines": {
-      "note": "The largest known gap in this record. No municipal disaster, police, fire, rescue or hospital number for Tago is published on the municipal site or the provincial site, and the national police directories could not be retrieved — all four sweeps are recorded under emergency.sourcesChecked with today's date. A number will be recorded only when a source states it is Tago's; a provincial or neighbouring-municipality number is never a substitute.",
-      "channel": "national-agency",
       "state": "open",
       "lastCheckedAt": "2026-08-09"
     }

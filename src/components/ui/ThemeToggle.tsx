@@ -44,12 +44,22 @@ export function ThemeToggle() {
             next === 'dark' ? t('themeNowDark') : t('themeNowLight')
           );
         }}
-        className="inline-flex min-h-11 min-w-11 items-center justify-center rounded-md text-ink-secondary hover:text-ink-link"
+        data-control
+        // A bare icon with no boundary does not read as a button. The border
+        // and raised ground give it one in BOTH themes — `--line-control` is
+        // measured at 3.42:1 on the raised surface in light and 3.30:1 in
+        // dark, so the edge is visible either way rather than only on paper.
+        //
+        // 28px to match the locale switch beside it, by instruction. Below the
+        // 44px floor, so it carries `data-control` and is a listed exemption
+        // in e2e/home.a11y.spec.ts — the boundary is what makes it findable at
+        // this size, which is why the border is not the thing that gave way.
+        className="inline-flex size-7 items-center justify-center rounded-md border border-line-control bg-surface-raised text-ink motion-safe:transition-colors motion-safe:duration-150 hover:border-ink-link hover:text-ink-link"
       >
         {/* Each pair is named for the theme it belongs to, not for the icon:
             the moon offers dark and therefore belongs to the light theme. */}
-        <Moon aria-hidden="true" className="theme-only-light size-5" />
-        <Sun aria-hidden="true" className="theme-only-dark size-5" />
+        <Moon aria-hidden="true" className="theme-only-light size-4" />
+        <Sun aria-hidden="true" className="theme-only-dark size-4" />
         <span className="theme-only-light sr-only">{t('themeToDark')}</span>
         <span className="theme-only-dark sr-only">{t('themeToLight')}</span>
       </button>

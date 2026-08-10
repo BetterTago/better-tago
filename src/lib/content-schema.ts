@@ -593,6 +593,93 @@ export const transparencyManifestSchema = z.object({
   pages: z.array(transparencyRecordSchema),
 });
 
+/**
+ * A bilingual string pair. Body copy — never UI chrome, which stays in
+ * `messages/{en,fil}.json` — so a translation ships beside the fact it
+ * translates rather than in a second file a content author has to remember.
+ */
+const bilingualSchema = z.object({
+  en: z.string().min(1),
+  fil: z.string().min(1),
+});
+
+/**
+ * One dated entry in a narrative timeline.
+ *
+ * `period` is a bare 4-digit year OR a full ISO calendar date — never a
+ * pre-formatted string like "November 6, 1918". A pre-formatted date is
+ * English by construction and cannot be rendered in the other locale; storing
+ * the raw value and formatting it through `next-intl` at render time (as every
+ * other date in this portal is required to) is what keeps a Filipino reader
+ * from meeting an English date inside Filipino prose.
+ *
+ * `milestone` is a DESIGN signal, not a magnitude judgement: it decides which
+ * marker the timeline rail draws (filled or hollow) and is stated in text
+ * for a screen reader, never left as colour alone.
+ */
+export const timelineEntrySchema = z.object({
+  period: z.union([z.string().regex(/^\d{4}$/), z.iso.date()]),
+  milestone: z.boolean(),
+  title: bilingualSchema,
+  body: bilingualSchema,
+});
+
+/**
+ * A short narrative timeline, one shared citation for every entry.
+ *
+ * 🔴 Where a historical office-holder is named inside an entry's `body`, that
+ * name is permitted ONLY because this file is `content/` — root rule 13's own
+ * carve-out for "historical figures already in a cited public record,
+ * rendered through content/". The carve-out does not extend to `messages/`,
+ * to a component, to a test fixture, or to this schema's own comments, and a
+ * reviewer should treat a name appearing anywhere else in a diff touching this
+ * file as a blocking finding.
+ */
+export const timelineSchema = z.object({
+  source: sourceSchema,
+  verification: verificationSchema,
+  lastCheckedAt: z.iso.date(),
+  entries: z.array(timelineEntrySchema).min(1),
+});
+
+export type TimelineEntry = z.infer<typeof timelineEntrySchema>;
+export type Timeline = z.infer<typeof timelineSchema>;
+
+/**
+ * One "getting here" card: a kicker, a heading and a short body.
+ *
+ * `surface: 'inverse'` promotes a card to the dark ground. It is a DESIGN
+ * signal rather than a ranking — the last card is the arrival one, and giving
+ * it a different ground is what stops four identical boxes reading as a list
+ * a reader skims past.
+ */
+export const travelCardSchema = z.object({
+  kicker: bilingualSchema,
+  title: bilingualSchema,
+  body: bilingualSchema,
+  surface: z.enum(['default', 'inverse']).default('default'),
+});
+
+/**
+ * How to reach the municipality, as a small set of cards.
+ *
+ * 🔴 One shared `source` for the set, like the timeline: travel facts here are
+ * general orientation — which airport, which corridor, which poblacion — not
+ * timetables. A schedule or a fare would need its own citation per card and a
+ * far shorter re-check cadence than this shape gives, so neither belongs in
+ * here without extending the schema first.
+ */
+export const travelSchema = z.object({
+  source: sourceSchema,
+  verification: verificationSchema,
+  lastCheckedAt: z.iso.date(),
+  summary: bilingualSchema,
+  cards: z.array(travelCardSchema).min(1),
+});
+
+export type TravelCard = z.infer<typeof travelCardSchema>;
+export type Travel = z.infer<typeof travelSchema>;
+
 export type PageEntry = z.infer<typeof pageEntrySchema>;
 export type CharterRecord = z.infer<typeof charterRecordSchema>;
 export type TransparencyRecord = z.infer<typeof transparencyRecordSchema>;

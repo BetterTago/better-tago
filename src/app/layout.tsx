@@ -1,7 +1,56 @@
+import { IBM_Plex_Sans, Inter, Space_Grotesk } from 'next/font/google';
 import type { ReactNode } from 'react';
 import { routing } from '@/i18n/routing';
 import { THEME_INIT_SCRIPT } from '@/lib/theme-init';
 import './globals.css';
+
+/**
+ * Display: headings, stat figures and the wordmark's second line.
+ *
+ * Chosen for its TABULAR FIGURES, which is not a stylistic preference here —
+ * every stat, every hotline and the version string sets `tabular-nums`, and a
+ * proportional face makes a column of figures ripple.
+ */
+const grotesk = Space_Grotesk({
+  subsets: ['latin'],
+  weight: ['600', '700'],
+  variable: '--font-grotesk',
+  display: 'swap',
+});
+
+/** Body, and the `<body>` default. Its Filipino diacritics are drawn, not synthesised. */
+const plex = IBM_Plex_Sans({
+  subsets: ['latin'],
+  weight: ['400', '600'],
+  variable: '--font-plex',
+  display: 'swap',
+});
+
+/*
+ * The BetterGov network wordmark face.
+ *
+ * Not a font borrowed from the reference portal — Inter IS the Kapwa design
+ * system's sans (`--font-kapwa-sans`), which @bettergov/kapwa's own README
+ * declares with exactly this call. The network shares a wordmark, not a body
+ * face, so this must never be promoted to `--font-sans`.
+ *
+ * ONE weight, 900, because exactly two spans use it: the header and footer
+ * lockups. The design asks for black; loading only to 700 and letting the
+ * browser synthesise the rest is visibly muddier at wordmark size.
+ */
+const inter = Inter({
+  subsets: ['latin'],
+  weight: '900',
+  variable: '--font-kapwa-sans',
+  display: 'swap',
+});
+
+/*
+ * There is deliberately NO serif here. The reference portal loads one for a
+ * single element — an etymology card — and this portal's history section has no
+ * etymology column, because no account of the name "Tago" has been sourced.
+ * Loading a face nothing renders costs a request and buys nothing.
+ */
 
 /**
  * The document shell.
@@ -26,6 +75,10 @@ export default function RootLayout({ children }: { children: ReactNode }) {
       lang={routing.defaultLocale}
       suppressHydrationWarning
       data-scroll-behavior="smooth"
+      // The font variables belong on the shell, not on the locale layout: this
+      // element is mounted once per tab, so a client-side locale switch cannot
+      // drop them and re-request the faces.
+      className={`${grotesk.variable} ${plex.variable} ${inter.variable}`}
     >
       <head>
         {/*

@@ -142,8 +142,12 @@
   --color-line-night: #22392e;
   --color-line-night-subtle: #16281f;
 
+  /* `--font-plex` is declared by `next/font` on <html> in the root layout. The
+     stack behind it is what renders during the swap and if the request fails —
+     never nothing. */
   --font-sans:
-    ui-sans-serif, system-ui, -apple-system, 'Segoe UI', Roboto, sans-serif;
+    var(--font-plex), ui-sans-serif, system-ui, -apple-system, 'Segoe UI',
+    Roboto, sans-serif;
 
   /* Content width. Civic prose, not a marketing page. */
   --spacing-measure: 72rem;
@@ -240,6 +244,24 @@
 /* Any ground that is dark in BOTH themes — the emergency slab, the contact
    slab, the footer. The mark flattens to a single white silhouette here. */
 [data-surface='inverse'] {
+  /*
+   * 🔴 The SURFACES re-point too, and leaving them out was a real defect.
+   *
+   * The scope originally re-pointed only ink, line and mark. Any component
+   * carrying its own ground — `GapNotice` is the one that matters, and it
+   * appears in the emergency and contact slabs — kept the PAGE theme's ground
+   * while its text flipped to white. The result was `#ffffff` on `#f8fbf9`:
+   * 1.04:1, a component that renders a stated absence rendered invisibly, on
+   * the two sections where the absence is the most important thing said.
+   *
+   * Caught by axe rather than by eye, which is the argument for running it in
+   * both themes on every route.
+   */
+  --surface-page: var(--color-surface-night);
+  --surface-raised: var(--color-surface-night-raised);
+  --surface-sunken: var(--color-surface-night-sunken);
+  --surface-tint: var(--color-surface-night-tint);
+
   --ink: var(--color-neutral-50);
   --ink-secondary: var(--color-primary-100);
   --ink-tertiary: var(--color-primary-200);
@@ -360,6 +382,7 @@
   --color-line-control: var(--line-control);
 
   --color-focus-ring: var(--focus-ring);
+  --color-surface-control: var(--surface-control);
 
   --color-mark-emblem-light: var(--mark-emblem-light);
   --color-mark-emblem-mid: var(--mark-emblem-mid);
@@ -370,6 +393,31 @@
 /* --------------------------------------------------------------------------- */
 
 @layer base {
+  /*
+   * In-page anchors glide rather than jump — `#emergency`, `#contact`,
+   * `#history` and the rest, from the nav, the hero CTA and the ticker alike.
+   *
+   * A jump-cut gives a reader no sense of WHERE they landed relative to where
+   * they were; on a page this long that is the difference between "I moved down
+   * the page" and "the page was replaced".
+   *
+   * Two things make this safe rather than a motion-sickness hazard:
+   *
+   *   · the reduced-motion block below overrides it with `auto !important`,
+   *     and `*` matches `html`, so a reader who asked not to be moved is not;
+   *   · `data-scroll-behavior="smooth"` on `<html>` in the root layout tells
+   *     Next to SUSPEND this during route transitions — without it, a
+   *     client-side navigation to a new route animates the scroll reset, which
+   *     looks like the page sliding away under the reader.
+   *
+   * ⚠️ It governs CSS-driven scrolling only. `window.scrollTo` is unaffected,
+   * which is exactly why `BackToTop` matches the media query in JavaScript
+   * itself — see that component.
+   */
+  html {
+    scroll-behavior: smooth;
+  }
+
   /* One visible focus ring for everything, so no component has to remember.
      Every surface scope above re-points `--focus-ring`, so it stays visible on
      a dark slab and on the gold card without a single component opting out. */
@@ -431,4 +479,530 @@
   @variant sm {
     padding-inline: 1.5rem;
   }
+}
+
+/* ===========================================================================
+   PORTAL LAYER — added with the chrome and the home page (TAGO-113/114/110).
+
+   Everything below exists because a component may carry NO colour literal, NO
+   arbitrary Tailwind value and NO `dark:` colour utility — `guardrails.test.ts`
+   fails the build on all three. So the ticker's geometry, the entrance motion,
+   the display type scale and the one non-brand ramp are declared here and reach
+   the markup as named tokens.
+   =========================================================================== */
+
+@theme {
+  /* --- the status ramp the ticker's ground is built from ------------------
+     Declared as a full scale with strictly monotonic lightness rather than a
+     one-off maroon, so `theme-tokens.test.ts` can hold it to the same rule as
+     the three brand ramps. Every pair the ticker actually renders is measured
+     in that test against `error-950`, which is the only ground it is used on.
+
+     It is deliberately NOT a brand ramp: nothing about BetterTago is red. This
+     is the emergency register and it is used on exactly one surface. */
+  --color-error-50: #fef3f2;
+  --color-error-100: #fee2e0;
+  --color-error-200: #fdc9c5;
+  --color-error-300: #faa39d;
+  --color-error-400: #f56b64;
+  --color-error-500: #e63f38;
+  --color-error-600: #c62620;
+  --color-error-700: #a41d18;
+  --color-error-800: #7d1712;
+  --color-error-900: #5a100d;
+  --color-error-950: #2e0806;
+
+  /* --- the success ramp, for the footer's cost pill ----------------------
+     Four steps rather than a full scale: this is used on exactly one surface,
+     and declaring seven unused steps would be seven values nobody measured.
+
+     🔴 These were MISSING when the footer was first ported on 2026-08-10 —
+     `bg-success-900` and `text-success-400` were copied across from
+     BetterTandag without the tokens behind them, so Tailwind emitted nothing
+     and the pill rendered with no ground and no colour at all. A class name
+     that resolves to no token fails silently, which is exactly why the values
+     live here and are asserted in theme-tokens.test.ts.
+
+     `success-400` on `success-900` is 7.93:1. The pill's own ground sits at
+     1.43:1 against the footer ground — deliberately low, because it is a
+     SHAPE and not text: it reads as a quiet pill, and the luminous green
+     inside it is what carries the claim. Lightness is monotonic across all
+     four steps. */
+  --color-success-100: #d9f2e3;
+  --color-success-400: #4ade80;
+  --color-success-700: #0f6b3d;
+  --color-success-900: #08341e;
+
+  /* --- type ---------------------------------------------------------------
+     Three families, loaded through `next/font` in the root layout and reaching
+     components ONLY through these tokens.
+
+     `--font-serif` is deliberately absent. The reference portal loads one for a
+     single element — an etymology card — and this portal's history section has
+     no etymology column, because no account of the name "Tago" has been sourced
+     (CONT-304). Loading a face that nothing renders costs a request and buys
+     nothing, so the decision is recorded here rather than left as a gap
+     somebody fills in later. */
+  --font-display: var(--font-grotesk), var(--font-sans);
+  /* The mark's lockup only. Inter IS Kapwa's own sans, declared under exactly
+     this variable name — the network shares a wordmark, not a body face, so
+     this must never be promoted to `--font-sans`. */
+  --font-wordmark: var(--font-kapwa-sans), var(--font-sans);
+
+  /* Fluid display sizes, each with its own line-height and tracking so that no
+     component ever carries an arbitrary value. */
+  --text-2xs: 0.6875rem;
+  --text-2xs--line-height: 1rem;
+
+  --text-hero: clamp(2rem, 1.1rem + 4.2vw, 3.5rem);
+  --text-hero--line-height: 1.05;
+  --text-hero--letter-spacing: -0.02em;
+
+  /* The municipality name, set larger than the words above it so it reads as
+     the destination rather than as a third word in a list. Sized so the
+     rendered name is ~70% of the rendered WIDTH of the line above — a width
+     ratio, not a font-size ratio. */
+  --text-hero-town: clamp(2.75rem, 1.4rem + 6vw, 4.75rem);
+  --text-hero-town--line-height: 0.95;
+  --text-hero-town--letter-spacing: -0.03em;
+
+  /* Matches BetterTandag's --text-section exactly (2026-08-10, by
+     instruction) — the reference portal's section-header size, so "Services",
+     "History", "Emergency" and "Contact" read at the same scale there and
+     here. Colour is untouched: the eyebrow and heading still resolve through
+     --ink-tertiary / --ink, this portal's own role tokens, in both themes. */
+  --text-section: clamp(1.75rem, 3.4vw, 2.75rem);
+  --text-section--line-height: 1.05;
+  --text-section--letter-spacing: -0.03em;
+
+  --text-feature: clamp(1.25rem, 1.05rem + 0.9vw, 1.625rem);
+  --text-feature--line-height: 1.2;
+
+  --text-cta: 0.9375rem;
+  --text-cta--line-height: 1.25rem;
+
+  --text-stat: clamp(1.75rem, 1.3rem + 2.1vw, 2.75rem);
+  --text-stat--line-height: 1;
+  /* Explicit, not inherited. At this size the hero's negative tracking collides
+     tabular digits into each other. */
+  --text-stat--letter-spacing: normal;
+
+  /*
+   * The footer's cost line — an EXACT-FIT formula, matching BetterTandag's
+   * own `--text-cost` shape (2026-08-10, by instruction), with this portal's
+   * own measured constant in place of theirs.
+   *
+   * `(100cqi - 2rem) / 15.36` solves directly for the font-size that makes the
+   * pill's text EXACTLY fill its container's available width — `100cqi` is
+   * the column's own inline size, `2rem` is the pill's `px-4` horizontal
+   * padding (2 × 1rem) subtracted before dividing, and `15.36` is the
+   * MEASURED em-width of "Cost to the People of Tago = ₱0" (the longer of the
+   * two cost-line strings — English, not Filipino, in this LGU's case) at a
+   * 100px reference size: rendered 1536px ÷ 100 = 15.36.
+   *
+   * A rough `clamp(1rem, 7cqi, 1.5rem)` sat here first and overflowed at
+   * 320px: `whitespace-nowrap` was ported from BetterTandag's own pill
+   * without also porting the sizing math that makes `nowrap` safe. `7cqi` of
+   * a 288px single-column container computes to 20.16px, and this string at
+   * that size needs ~310px — 38px more than the container had. This formula
+   * cannot repeat that: by construction, text-width equals available width at
+   * every container size, not just the ones a rough guess happened to fit.
+   *
+   * Available width is not monotonic in viewport width — it DROPS at the
+   * four-column step — which is exactly why a fixed formula beats a `vw` size
+   * here: `cqi` tracks the COLUMN, not the viewport.
+   */
+  --text-cost: clamp(0.375rem, calc((100cqi - 2rem) / 15.36), 1.125rem);
+  --text-cost--line-height: 1.25;
+  --text-cost--letter-spacing: normal;
+
+  --tracking-eyebrow: 0.14em;
+  --tracking-label: 0.08em;
+  --tracking-caps: 0.1em;
+
+  /* --- layout & motion --- */
+  --ease-portal: cubic-bezier(0.2, 0.9, 0.3, 1);
+
+  --animate-drop-in: drop-in 0.5s var(--ease-portal) both;
+  --animate-pulse-dot: pulse-dot 1.8s ease-in-out infinite;
+  --animate-rise: rise 0.6s var(--ease-portal) both;
+
+  --shadow-panel: 0 12px 32px -12px rgb(2 17 10 / 28%);
+
+  @keyframes drop-in {
+    from {
+      transform: translateY(-100%);
+    }
+    to {
+      transform: translateY(0);
+    }
+  }
+  /* The `from` state lives ONLY here. An element whose RESTING style is
+     `opacity: 0` is invisible the moment anything stops the animation running —
+     a stalled stylesheet, an unsupported property, a reduced-motion override
+     that kills the animation but not the base rule. */
+  @keyframes rise {
+    from {
+      opacity: 0;
+      transform: translateY(1rem);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+  @keyframes pulse-dot {
+    0%,
+    100% {
+      opacity: 0.5;
+    }
+    50% {
+      opacity: 1;
+    }
+  }
+  @keyframes hotline-scroll {
+    from {
+      transform: translateX(0);
+    }
+    to {
+      /* Exactly one run. The track holds two, so this is a seamless loop. */
+      transform: translateX(-50%);
+    }
+  }
+  @keyframes reveal-rise {
+    from {
+      opacity: 0;
+      transform: translateY(1.375rem);
+    }
+    to {
+      opacity: 1;
+      transform: translateY(0);
+    }
+  }
+}
+
+/* A wash behind icon buttons and pills, on whatever surface they sit — mixed
+   from the ink role rather than declared per theme, so it follows every surface
+   scope automatically. */
+:root {
+  --surface-control: color-mix(in oklab, var(--ink) 8%, transparent);
+}
+
+/* ---------------------------------------------------------------------------
+   Staggered entrance. Always applied behind `motion-safe:` at the call site.
+--------------------------------------------------------------------------- */
+@utility rise-* {
+  animation-delay: calc(--value(integer) * 90ms);
+}
+
+/*
+ * Section reveal, INVERTED from the usual pattern: content is visible by
+ * default and the animation is added only where it is supported and wanted.
+ *
+ * The reference design ran this the other way — `opacity: 0` revealed by an
+ * observer — which meant a blocked or slow script left the whole page below the
+ * fold invisible. Scroll-driven CSS, so there is no observer, no JavaScript,
+ * and nothing to gate.
+ */
+@media (prefers-reduced-motion: no-preference) {
+  @supports (animation-timeline: view()) {
+    .reveal-on-scroll {
+      animation: reveal-rise linear both;
+      animation-timeline: view();
+      animation-range: entry 0% cover 22%;
+    }
+  }
+}
+
+/* ---------------------------------------------------------------------------
+   The emergency hotline ticker.
+
+   All of its geometry and motion lives here so the component carries named
+   classes only. The DEFAULT state is the accessible one — a static,
+   horizontally scrollable, fully readable row with no animation and no
+   duplicated copy. The marquee is ADDED back, gated on an attribute that only
+   exists once JavaScript has measured a genuine overflow.
+--------------------------------------------------------------------------- */
+.hotline-viewport {
+  /*
+   * 🔴 `safe center`, not plain `center`, and this is a correctness fix rather
+   * than a nicety.
+   *
+   * Centring is right while the row FITS — one short line looks wrong jammed
+   * against the start edge. But once the content overflows, centring puts the
+   * overflow at a NEGATIVE offset on the leading side, and `scrollLeft` cannot
+   * go below zero: measured at 1280px, a 2240px track began at x=-480 and the
+   * first hotline sat at x=-229, permanently unreachable by scroll, wheel or
+   * swipe.
+   *
+   * `safe` is the primitive for exactly this — it falls back to `start`
+   * alignment the moment centring would overflow, so nothing is ever parked
+   * where the reader cannot scroll to it.
+   */
+  justify-content: safe center;
+
+  /*
+   * `auto`, not `hidden`, in the resting state — this is what a reader gets
+   * with no JavaScript and under reduced motion, and a row they cannot scroll
+   * is a row with a number they cannot reach.
+   *
+   * The scrollbar itself is suppressed: a classic Windows scrollbar is 15px in
+   * a 28px bar. The row stays reachable by wheel, swipe and Tab, and the same
+   * number sits in #emergency at full size.
+   */
+  overflow-x: auto;
+  scrollbar-width: none;
+}
+.hotline-viewport::-webkit-scrollbar {
+  display: none;
+}
+
+.hotline-track {
+  display: flex;
+  width: max-content;
+  align-items: center;
+  /*
+   * Load-bearing. The viewport is a flex container and a flex item defaults to
+   * `flex-shrink: 1`, so without this the track is SHRUNK to the viewport width
+   * instead of overflowing it, and the static row has nothing left to scroll.
+   */
+  flex-shrink: 0;
+}
+
+.hotline-run {
+  display: flex;
+  flex: 1 0 auto;
+  align-items: center;
+  /* `center`, not `space-around`: the bar is one sentence, and spreading it
+     would pull the separators away from the terms they bind. */
+  justify-content: center;
+  gap: --spacing(2);
+  /* The seam sits INSIDE the run, so it is counted in the run's width and the
+     `-50%` step stays exactly one run. A `gap` on the track would space the two
+     copies apart and put the gap in the loop straight back. */
+  padding-inline-end: --spacing(2);
+  white-space: nowrap;
+}
+
+/* The visual echo exists for the running marquee and nothing else. */
+.hotline-echo {
+  display: none;
+}
+
+/*
+ * The marquee.
+ *
+ * ## Why it is gated on MEASURED overflow, not a breakpoint
+ *
+ * `[data-marquee]` is set by `TickerViewport` only when one run is genuinely
+ * wider than the bar. A breakpoint is a guess at content width and was wrong in
+ * both locales. With no JavaScript the attribute never appears, so the row is a
+ * static, scrollable, fully readable line — the right direction for an
+ * enhancement whose entire job is to move.
+ *
+ * ## 🔴 A moving `tel:` link has to be catchable
+ *
+ * This bar carries emergency numbers, and a target that slides away cannot be
+ * tapped — measured: an automated click on a scrolling number times out. Four
+ * things make it reachable anyway, and none of them may be dropped:
+ *
+ *   · **hover** pauses it, so a mouse moving toward the bar stops it before it
+ *     arrives;
+ *   · **`:focus-within`** pauses it, so Tab reaches a number that then holds
+ *     still — and both of these are pure CSS, so neither waits on hydration;
+ *   · **touch and drag** pause it via `[data-paused]`, which is the half CSS
+ *     cannot do;
+ *   · every number is ALSO in `#emergency` at full size, which is the target
+ *     anybody dialling in a storm should actually be using.
+ *
+ * ## Why `flex-start` while it runs
+ *
+ * The viewport is `justify-content: safe center`, which is right for a short
+ * row. A RUNNING track is `min-width: 200%`, and centring something twice the
+ * viewport's width puts its leading half at a negative offset — a bare strip
+ * once per cycle, and content `scrollLeft` cannot reach. `safe` already guards
+ * the static case; this pins the animated one.
+ */
+@media (prefers-reduced-motion: no-preference) {
+  /* Hidden only while the marquee is genuinely running. Paused — by hover,
+     focus, touch or a scroll gesture — it becomes a real scroller again, so the
+     row can be dragged or swiped through by hand. */
+  .hotline-viewport[data-marquee='true']:not([data-paused='true']) {
+    overflow-x: hidden;
+  }
+
+  .hotline-viewport[data-marquee='true'] .hotline-echo {
+    display: flex;
+  }
+
+  .hotline-viewport[data-marquee='true'] {
+    justify-content: flex-start;
+  }
+
+  .hotline-viewport[data-marquee='true'] .hotline-track {
+    /* Resolves against the viewport, which has a definite width, so there is no
+       cycle with the track's `max-content`. The track ends at
+       max(content, 2 × viewport) and the two runs split it evenly because they
+       grow — so `-50%` steps exactly one run whichever term won. */
+    min-width: 200%;
+    animation: hotline-scroll 38s linear infinite;
+  }
+
+  .hotline-viewport[data-marquee='true']:hover .hotline-track,
+  .hotline-viewport[data-marquee='true']:focus-within .hotline-track,
+  .hotline-viewport[data-marquee='true'][data-paused='true'] .hotline-track {
+    animation-play-state: paused;
+  }
+}
+
+/*
+ * The mobile nav dropdown. Anchored under the sticky header, so it gets the
+ * viewport minus the header's height — `100dvh` rather than `100vh`, because a
+ * mobile browser's retracting URL bar is exactly the case this has to survive.
+ * It scrolls itself and does NOT lock the body behind it.
+ */
+@utility mobile-nav-panel {
+  max-height: calc(100dvh - --spacing(16));
+  overflow-y: auto;
+  overscroll-behavior: contain;
+}
+
+/* ---------------------------------------------------------------------------
+   Decorative layers.
+
+   Each is applied to a CHILDLESS, absolutely-positioned element. Masking an
+   element masks its descendants, so these must never go on a container.
+--------------------------------------------------------------------------- */
+
+/* The hero wash. The reference portal carries a repeating WAVE here because
+   Tandag is a river city; the honest analogue for BetterTago is the emblem's
+   own channel curve, so the texture is derived from the mark rather than
+   borrowed from a place it does not describe. Opacity resolves to 0 in dark
+   theme, where the glow would sit on an already-luminous ground. */
+@utility hero-glow {
+  background:
+    radial-gradient(
+      60% 60% at 15% 0%,
+      color-mix(in oklab, var(--color-primary-300) 38%, transparent),
+      transparent 70%
+    ),
+    radial-gradient(
+      50% 50% at 95% 10%,
+      color-mix(in oklab, var(--color-accent-300) 30%, transparent),
+      transparent 70%
+    );
+  opacity: var(--glow-opacity, 1);
+}
+
+:root[data-theme='dark'] {
+  --glow-opacity: 0.22;
+  /* The ridge is a light-theme flourish only. On the night ground the page is
+     already dark enough that a texture at any legible opacity reads as noise
+     behind the type rather than as landscape. */
+  --hero-ridge-opacity: 0;
+}
+
+/*
+ * The hero's landscape texture — a fine, repeating ridgeline.
+ *
+ * BetterTandag's equivalent is a WAVE, because Tandag is a river city and its
+ * mark is a sun over two waves. Tago's motif is the ridgeline: the municipality
+ * runs from a coastal plain up into steep ground in the north-west, and a
+ * mountain silhouette is the honest analogue rather than a borrowed one.
+ *
+ * Same mechanics as that wave, deliberately: a `background-color` masked by a
+ * tiny inline SVG, repeated. That keeps it one paint with no image request, and
+ * — because the colour comes from `--color-primary-700` rather than being baked
+ * into the SVG — the texture cannot drift out of the palette.
+ *
+ * 🔴 The tile is SEAMLESS by construction, not by eye. Both ridgelines have the
+ * same y at x=0 and x=24 (5.0 and 10.25 respectively), so no tile edge draws a
+ * vertical seam across the hero. Changing a delta means re-checking that; a
+ * ridge that ends 0.5px off its start is invisible in isolation and produces a
+ * hairline grid once repeated.
+ *
+ * Two paths at different phases rather than one: a single ridge repeated every
+ * 14px reads as a rigid grid, and the second, lower ridge offset by -2px breaks
+ * that up into something closer to overlapping hills.
+ *
+ * `0.7` stroke on a 24×14 tile is what "very fine" means here — at 0.07 opacity
+ * it is texture a reader feels rather than a picture they look at, which is the
+ * point of putting it behind an H1.
+ */
+@utility hero-ridge {
+  background-color: var(--color-primary-700);
+  opacity: var(--hero-ridge-opacity, 0.07);
+  mask-image: url("data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' width='24' height='14' viewBox='0 0 24 14'%3E%3Cg fill='none' stroke='%23000' stroke-width='0.7' stroke-linecap='round' stroke-linejoin='round'%3E%3Cpath d='M0 5 l4 -3.5 l4 3.5 l4 -4 l4 4 l4 -3 l4 3'/%3E%3Cpath d='M-2 12 l4 -3.5 l4 3.5 l4 -4 l4 4 l4 -3 l4 3 l4 -3.5'/%3E%3C/g%3E%3C/svg%3E");
+  mask-repeat: repeat;
+  mask-size: 24px 14px;
+}
+
+/* The slab wash, for the two full-bleed inverse sections. */
+@utility slab-glow {
+  background: radial-gradient(
+    70% 90% at 80% 0%,
+    color-mix(in oklab, var(--color-primary-500) 30%, transparent),
+    transparent 70%
+  );
+}
+
+/*
+ * The mark as a cropped silhouette on the contact section — mechanics matched
+ * to BetterTandag's `contact-mark` by instruction (2026-08-10), colour and
+ * comments our own.
+ *
+ * Anchored to the bottom-START corner (so it follows the writing direction),
+ * **40% of the section's width**, and pushed down by 30% of its own height so
+ * only the **top 70%** is visible — the section's `overflow-hidden` does the
+ * cropping.
+ *
+ * Sized on the INLINE axis, with `block-size: auto` letting the mark's own
+ * aspect ratio set the height. Width is the stable axis: the section's height
+ * is set by its content and changes with the locale, so a height-derived
+ * silhouette would have breathed with the copy.
+ *
+ * Percentages resolve against the section's padding box because the section is
+ * the nearest positioned ancestor — no container query, which matters because
+ * `cqh` would need `container-type: size` and the section has no definite
+ * height to give it.
+ */
+@utility contact-mark {
+  /* Named, because the horizontal crop below is a fraction OF THIS. */
+  --contact-mark-inline: 40%;
+
+  position: absolute;
+  inset-block-end: 0;
+  inline-size: var(--contact-mark-inline);
+  block-size: auto;
+  pointer-events: none;
+
+  /*
+   * Cropped on both axes: 70% visible from the END edge (so the leading 30% of
+   * the mark sits outside the section) and 70% visible from the top.
+   *
+   * The horizontal offset is a LOGICAL inset, not a `translateX`, so it flips
+   * with the writing direction — the mark is cut on its leading edge either
+   * way. `calc()` keeps it tied to the width above: change the width and the
+   * crop stays 30%, which a hardcoded offset would not.
+   */
+  inset-inline-start: calc(var(--contact-mark-inline) * -0.3);
+  /* Vertical has no direction to respect, so a transform is fine here. */
+  transform: translateY(30%);
+}
+
+/*
+ * The footer's own ground — near-black in BOTH themes.
+ *
+ * It carries `data-surface="inverse"` for its ink roles, and this refines the
+ * two LINE roles on top. The inverse scope sets them as white-alpha, which is
+ * correct over a mid-green slab and wrong here: at 10–18% over a near-black
+ * ground they composite to about 1.4:1 and the column rules effectively vanish.
+ *
+ * Opaque neutrals instead, whose contrast is fixed rather than dependent on
+ * what they happen to be laid over.
+ */
+[data-ground='footer'] {
+  --surface-page: var(--color-neutral-950);
+  --line: var(--color-neutral-800);
+  --line-subtle: var(--color-neutral-900);
 }
