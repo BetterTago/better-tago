@@ -145,6 +145,14 @@ describe('the route set is the one that was reviewed', () => {
   /** Every route file this application publishes. */
   const ROUTES = [
     'src/app/[locale]/charter/documents/[slug]/page.tsx',
+    // The contact and emergency directories, each on its own URL. Both were
+    // `#contact` / `#emergency` sections of the home page and still are; these
+    // routes render the SAME two directory components under a masthead, so a
+    // phone number cannot be current on one surface and stale on the other.
+    // The header's Contact and Emergency entries now point here rather than
+    // sending a reader on any other page back to the front door to scroll.
+    'src/app/[locale]/contact/page.tsx',
+    'src/app/[locale]/emergency/page.tsx',
     'src/app/[locale]/error.tsx',
     // The gap register. Added 2026-08-10 with the portal chrome: every
     // `GapNotice` on every surface links here, which is what turns "we do not
@@ -623,6 +631,14 @@ describe('translation coverage', () => {
      * page behind it.
      */
     'resources.lguFacebook': 'the page names itself this, in either language',
+    /*
+     * Was "Official municipal website" / "Opisyal na website ng munisipyo" — a
+     * DESCRIPTION of the destination, which is why it had a translation. It was
+     * changed by instruction on 2026-08-12 to name the destination instead, and
+     * a name does not get translated: it is the same label in either catalogue
+     * for the same reason `resources.lguFacebook` is.
+     */
+    'resources.officialSite': 'the LGU’s own name for its site, not a phrase',
     'resources.philgeps': 'a system’s own registered name',
     'resources.cmci': 'a portal’s own registered name',
     'resources.blgf': 'a bureau’s own registered name',

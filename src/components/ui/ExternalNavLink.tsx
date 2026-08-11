@@ -16,9 +16,19 @@ import { cn } from '@/lib/utils';
  * honest state, and it is what the Sangguniang Bayan row is.
  *
  * Leaving the site is signalled twice — the arrow for sighted readers, text for
- * screen readers, because an icon alone is not an accessible indication. Same
- * tab, matching every citation link in this portal: a forced new window takes
- * the Back button away from the reader.
+ * screen readers, because an icon alone is not an accessible indication.
+ *
+ * ⚠️ **A new tab, by instruction — this used to be the same tab, deliberately.**
+ * The argument recorded here was that a forced new window takes the Back button
+ * away from the reader, and that argument has not stopped being true; it was
+ * overruled, and every outbound link in the portal now behaves this way rather
+ * than this one differing from the rest. What makes it survivable is that the
+ * announcement says so: `common.opensExternalSite` names the new tab, so a
+ * screen-reader user is told before they follow it rather than discovering it
+ * when Back does nothing.
+ *
+ * `rel="noopener noreferrer"` is not optional alongside it — a new tab with an
+ * opener is a real, if small, hole.
  */
 export function ExternalNavLink({
   item,
@@ -46,7 +56,8 @@ export function ExternalNavLink({
   return (
     <a
       href={item.href}
-      rel="noreferrer"
+      rel="noopener noreferrer"
+      target="_blank"
       className={cn(
         'inline-flex items-center gap-1 text-ink-secondary hover:text-ink-link-hover',
         className

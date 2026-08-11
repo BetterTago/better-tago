@@ -231,7 +231,8 @@ export async function SearchResultsView({
                 <a
                   className="inline-flex min-h-11 items-center gap-2 rounded-xl border border-line-control px-4.5 text-sm font-semibold text-ink hover:border-ink-link hover:text-ink-link"
                   href={lguConfig.officialSite.url}
-                  rel="noreferrer"
+                  rel="noopener noreferrer"
+                  target="_blank"
                 >
                   {t('tryOfficialSite')}
                   <ArrowUpRight

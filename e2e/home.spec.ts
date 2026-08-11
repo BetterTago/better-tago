@@ -88,7 +88,7 @@ test.describe('the home page', () => {
     await page.goto('/en');
     const official = page
       .locator('footer')
-      .getByRole('link', { name: /official municipal website/i });
+      .getByRole('link', { name: /LGU Tago Website/i });
     await expect(official).toHaveAttribute('href', 'https://tago.gov.ph');
   });
 

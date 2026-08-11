@@ -115,8 +115,16 @@ export const PRIMARY_NAV: NavItem[] = [
       { messageKey: 'tourism', href: '/tourism', status: 'coming-soon' },
     ],
   },
-  { messageKey: 'emergency', href: '#emergency', status: 'live' },
-  { messageKey: 'contact', href: '#contact', status: 'live' },
+  // 🔴 Routes, not the `#emergency` / `#contact` anchors these were until the
+  // two pages shipped. An in-page anchor in the PRIMARY nav is only correct on
+  // the page it belongs to: a reader three levels into the service guides who
+  // tapped Emergency was sent back to the home page and then scrolled most of
+  // the way down it, which is the wrong number of steps on the one surface
+  // somebody might reach in a storm. The home sections are unchanged and still
+  // carry those ids — `#history` still uses one, so the anchor branch of
+  // `NavLink` is still exercised.
+  { messageKey: 'emergency', href: '/emergency', status: 'live' },
+  { messageKey: 'contact', href: '/contact', status: 'live' },
 ];
 
 /** Parents and children in one flat list, for the search index. */

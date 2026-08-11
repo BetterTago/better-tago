@@ -9,7 +9,7 @@
     "skipToContent": "Lumaktaw sa nilalaman",
     "comingSoon": "Malapit na",
     "backToTop": "Balik sa itaas ng pahina",
-    "opensExternalSite": "magbubukas ng ibang website",
+    "opensExternalSite": "magbubukas ng ibang website sa bagong tab",
     "noWebsite": "walang website"
   },
   "header": {
@@ -166,7 +166,7 @@
     "gaps": "Ano ang kulang"
   },
   "resources": {
-    "officialSite": "Opisyal na website ng munisipyo",
+    "officialSite": "LGU Tago Website",
     "citizensCharter": "Ang Citizen's Charter",
     "transparencySeal": "Selyo ng Transparensiya",
     "sangguniangBayan": "Sangguniang Bayan",
@@ -247,13 +247,14 @@
     "byCategory": "Ayon sa kategorya",
     "serviceCount": "{count, plural, one {# serbisyo} other {# na serbisyo}}",
     "eyebrowEmergency": "03 — Emerhensiya",
-    "emergencyHeading": "Sa oras ng emerhensiya",
-    "emergencyIntro": "Kung sino ang tatawagan sa Tago, at para saan. Gumagana ang pambansang linya sa ibaba mula sa kahit anong telepono, saanman sa bansa.",
     "seeRegister": "Tingnan ang lahat ng kulang",
-    "eyebrowContact": "05 — Makipag-ugnayan",
-    "hotlinesSourced": "Ang anim na ito ay binasa mula sa opisyal na Facebook page mismo ng munisipyo. Suriin ang mga ito sa pinagmulan kung may mukhang mali:"
+    "eyebrowContact": "05 — Makipag-ugnayan"
   },
   "emergency": {
+    "eyebrow": "Mga numero sa emerhensiya",
+    "heading": "Sa oras ng emerhensiya",
+    "intro": "Kung sino ang tatawagan sa Tago, at para saan. Gumagana ang pambansang linya sa ibaba mula sa kahit anong telepono, saanman sa bansa.",
+    "sourced": "Ang anim na ito ay binasa mula sa opisyal na Facebook page mismo ng munisipyo. Suriin ang mga ito sa pinagmulan kung may mukhang mali:",
     "nationalLine": "Pambansang hotline sa emerhensiya",
     "callAria": "Tawagan ang {organisation} sa {number}",
     "result": {
@@ -270,7 +271,9 @@
     "openSource": "Buksan ang opisyal na pahina ng kasaysayan ng Munisipyo ng Tago"
   },
   "contact": {
+    "eyebrow": "Makipag-ugnayan",
     "heading": "Pag-abot sa {municipality}",
+    "intro": "Telepono, email at kung saan matatagpuan ang municipal hall — ayon mismo sa inilalathala ng munisipyo.",
     "provenance": "Lahat ng tatlo ay binasa mula sa opisyal na pahina ng kontak ng munisipyo, huling sinuri noong {date}. Basahin ang mga ito roon sa halip na magtiwala sa kopyang ito kung may mukhang mali.",
     "openContactPage": "Buksan ang opisyal na pahina ng kontak",
     "phoneLabel": "Telepono",

@@ -174,7 +174,8 @@ export async function SiteFooter({
                 <li>
                   <a
                     href={repository}
-                    rel="noreferrer"
+                    rel="noopener noreferrer"
+                    target="_blank"
                     className={contributeButton}
                   >
                     <Users aria-hidden="true" className="size-4 shrink-0" />
@@ -188,7 +189,8 @@ export async function SiteFooter({
                 <li>
                   <a
                     href={repository}
-                    rel="noreferrer"
+                    rel="noopener noreferrer"
+                    target="_blank"
                     className={contributeButton}
                   >
                     <Github aria-hidden="true" className="size-4 shrink-0" />
@@ -223,7 +225,8 @@ export async function SiteFooter({
               wrong trade. */}
           <a
             href={network.url}
-            rel="noreferrer"
+            rel="noopener noreferrer"
+            target="_blank"
             className="mt-5 inline-block motion-safe:transition-opacity motion-safe:duration-200 hover:opacity-80"
           >
             <Image
@@ -246,7 +249,8 @@ export async function SiteFooter({
             {repository && (
               <a
                 href={repository}
-                rel="noreferrer"
+                rel="noopener noreferrer"
+                target="_blank"
                 className="inline-flex min-h-5 items-center text-ink-link hover:text-ink-link-hover"
               >
                 {t('sourceCode')}

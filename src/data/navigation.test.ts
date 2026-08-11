@@ -106,7 +106,7 @@ describe('a destination that does not exist is not a link', () => {
      * calls `live` and that is neither an in-page anchor nor a shipped route is
      * a 404 reached from our own navigation, which reads as a broken site.
      */
-    const SHIPPED = ['/services', '/gaps'];
+    const SHIPPED = ['/services', '/gaps', '/emergency', '/contact'];
 
     const liveRoutes = ALL_ITEMS.filter(
       item => item.status === 'live' && !item.href.startsWith('#')

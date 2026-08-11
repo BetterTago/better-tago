@@ -60,6 +60,8 @@ export default async function sitemap(): Promise<MetadataRoute.Sitemap> {
 
   return [
     ...entry(''),
+    ...entry('/contact'),
+    ...entry('/emergency'),
     ...entry('/gaps'),
     ...entry('/services'),
 

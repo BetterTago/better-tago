@@ -315,6 +315,19 @@ describe('contrast, computed against the ramp', () => {
     { ink: '--ink', ground: '--surface-sunken', layers: [INVERSE, LIGHT, RAMP], where: 'inverse, sunken', floor: 4.5, recorded: 17.83 }, // prettier-ignore
     { ink: '--ink-secondary', ground: '--surface-sunken', layers: [INVERSE, LIGHT, RAMP], where: 'inverse, sunken', floor: 4.5, recorded: 15.19 }, // prettier-ignore
     { ink: '--ink-accent-strong', ground: '--surface-sunken', layers: [INVERSE, LIGHT, RAMP], where: 'inverse, sunken', floor: 4.5, recorded: 12.12 }, // prettier-ignore
+    /*
+     * The contact card's label — 11px bold, so a 4.5 floor rather than 3.0.
+     *
+     * BOTH grounds, because the card now renders on both. It was `--ink-accent`
+     * and passed for as long as it only ever appeared inside this slab, where
+     * the scope points both accent roles at the same `accent-400`. Reusing the
+     * card was enough to break it: on the light page ground the unscoped token
+     * is the display-only gold and axe measured the label at 3.96:1 against
+     * white. Measuring the raised ground in both scopes is what stops the next
+     * reuse finding out the same way.
+     */
+    { ink: '--ink-accent-strong', ground: '--surface-raised', layers: [INVERSE, LIGHT, RAMP], where: 'inverse, raised', floor: 4.5, recorded: 11.05 }, // prettier-ignore
+    { ink: '--ink-accent-strong', ground: '--surface-raised', layers: [LIGHT, RAMP], where: 'light, raised', floor: 4.5, recorded: 5.45 }, // prettier-ignore
     { ink: '--line-control', ground: '--surface-sunken', layers: [INVERSE, LIGHT, RAMP], where: 'inverse, sunken', floor: 3.0, recorded: 7.65 }, // prettier-ignore
 
     // ---- the emergency ticker, on `error-950` ----------------------------

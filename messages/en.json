@@ -9,7 +9,7 @@
     "skipToContent": "Skip to content",
     "comingSoon": "Coming soon",
     "backToTop": "Back to the top of the page",
-    "opensExternalSite": "opens another website",
+    "opensExternalSite": "opens another website in a new tab",
     "noWebsite": "no website"
   },
   "header": {
@@ -166,7 +166,7 @@
     "gaps": "What is missing"
   },
   "resources": {
-    "officialSite": "Official municipal website",
+    "officialSite": "LGU Tago Website",
     "citizensCharter": "The Citizen's Charter",
     "transparencySeal": "Transparency Seal",
     "sangguniangBayan": "Sangguniang Bayan",
@@ -247,13 +247,14 @@
     "byCategory": "By category",
     "serviceCount": "{count, plural, one {# service} other {# services}}",
     "eyebrowEmergency": "03 — Emergency",
-    "emergencyHeading": "In an emergency",
-    "emergencyIntro": "Who to call in Tago, and for what. The national line at the bottom works from any phone, anywhere in the country.",
     "seeRegister": "See everything that is missing",
-    "eyebrowContact": "05 — Get In Touch",
-    "hotlinesSourced": "These six are read from the municipality's own official Facebook page. Check them at the source if anything looks wrong:"
+    "eyebrowContact": "05 — Get In Touch"
   },
   "emergency": {
+    "eyebrow": "Emergency numbers",
+    "heading": "In an emergency",
+    "intro": "Who to call in Tago, and for what. The national line at the bottom works from any phone, anywhere in the country.",
+    "sourced": "These six are read from the municipality's own official Facebook page. Check them at the source if anything looks wrong:",
     "nationalLine": "National emergency hotline",
     "callAria": "Call {organisation} on {number}",
     "result": {
@@ -270,7 +271,9 @@
     "openSource": "Open the Municipality of Tago's official history page"
   },
   "contact": {
+    "eyebrow": "Get in touch",
     "heading": "Reaching the {municipality}",
+    "intro": "Phone, email and where to find the municipal hall — as the municipality itself publishes them.",
     "provenance": "All three are read from the municipality's official contact page, last checked {date}. Read them there rather than trusting this copy if anything looks wrong.",
     "openContactPage": "Open the official contact page",
     "phoneLabel": "Phone",

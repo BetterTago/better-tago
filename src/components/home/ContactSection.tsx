@@ -1,46 +1,54 @@
-import { ArrowUpRight, Mail, MapPin, Phone } from 'lucide-react';
-import { getFormatter, getTranslations } from 'next-intl/server';
+import { getTranslations } from 'next-intl/server';
+import { ContactDirectory } from '@/components/contact/ContactDirectory';
 import { Logo } from '@/components/ui/Logo';
 import { Section } from '@/components/ui/Section';
-import { CALENDAR_DATE, calendarDate } from '@/lib/dates';
 import { lguConfig } from '@/lib/lgu-config';
-import { telHref } from '@/lib/tel';
-import { ContactCard } from './ContactCard';
+import { cn } from '@/lib/utils';
 
 /**
- * How to reach the municipality — not this project.
+ * How to reach the municipality — section 05 of the home page, and the whole of
+ * `/contact`.
+ *
+ * ## One section, two surfaces
+ *
+ * `variant="page"` renders the SAME section — the same dark slab, the same
+ * glow, the same cropped mark and the same three cards — under `/contact`'s
+ * masthead instead of inside the home page. By instruction: the section's
+ * format is preserved rather than reinterpreted as a light-ground page, so a
+ * reader who knows the home page recognises the page they arrive at from the
+ * menu.
+ *
+ * The two differ in exactly two ways, both following from the masthead above
+ * it: no eyebrow and no heading (the section's title has been TRANSFERRED to
+ * the masthead's `h1` rather than repeated under it), and no top margin, since
+ * on the page the slab butts against the masthead's own bottom rule.
+ *
+ * Because the heading moved up, the cards' labels move up a level with it — see
+ * `headingLevel`. A page whose only heading below the `h1` is an `h3` tells a
+ * screen-reader user a level is missing that is not.
  *
  * Cards and mark ported from BetterTandag's `ContactSection` (2026-08-10, by
- * instruction) — the whole-card-as-link mechanic, the icon-tile layout, and
- * the `contact-mark` silhouette sizing/position are the same; the content,
- * palette and gradient stops are this portal's own.
- *
- * All three cards below are real, live values today: phone and email are
- * published on the municipality's own contact page, and the address links a
- * Google Maps pin confirmed, by instruction, to resolve to a place named
- * "Tago Municipal Hall" at coordinates consistent with the municipality's
- * already-recorded centroid — not a guessed pin.
- *
- * `contact.municipalHall.officeHours` is still `null` in the configuration,
- * with its `pending` entry unchanged and still listed on `/gaps`. This
- * section stopped RENDERING that gap on 2026-08-10, by instruction — the
- * underlying fact is unaffected, and the register is still the honest,
- * complete account of it.
+ * instruction) — the whole-card-as-link mechanic, the icon-tile layout, and the
+ * `contact-mark` silhouette sizing/position are the same; the content, palette
+ * and gradient stops are this portal's own.
  */
-export async function ContactSection() {
-  const [t, tHome, tCommon, format] = await Promise.all([
+export async function ContactSection({
+  variant = 'home',
+}: { variant?: 'home' | 'page' } = {}) {
+  const [t, tHome] = await Promise.all([
     getTranslations('contact'),
     getTranslations('home'),
-    getTranslations('common'),
-    getFormatter(),
   ]);
 
-  const { municipalHall } = lguConfig.contact;
+  const onPage = variant === 'page';
 
   return (
     <div
       data-surface="inverse"
-      className="relative mt-14 overflow-hidden bg-surface-inverse text-ink sm:mt-16"
+      className={cn(
+        'relative overflow-hidden bg-surface-inverse text-ink',
+        !onPage && 'mt-14 sm:mt-16'
+      )}
     >
       <div aria-hidden="true" className="slab-glow absolute inset-0" />
       {/* Cropped silhouette. `Logo` is `aria-hidden` by construction and the
@@ -51,77 +59,27 @@ export async function ContactSection() {
       <Logo idPrefix="contact-mark" className="contact-mark opacity-5" />
 
       <div className="relative">
-        <Section
-          id="contact"
-          eyebrow={tHome('eyebrowContact')}
-          heading={t('heading', { municipality: lguConfig.lgu.officialName })}
-          className="page-measure py-14 sm:py-16"
-          intro={
-            // Full width — no `max-w-prose`, no border box. Every section
-            // intro on this page is full width as of 2026-08-10, by
-            // instruction; this one led. The link back to the source page
-            // stays: a reader still deserves the means to verify it.
-            <p className="mb-6 leading-relaxed text-ink-secondary">
-              {t('provenance', {
-                date: format.dateTime(
-                  calendarDate(municipalHall.source.checkedAt),
-                  CALENDAR_DATE
-                ),
-              })}{' '}
-              {municipalHall.source.url && (
-                <a
-                  href={municipalHall.source.url}
-                  rel="noreferrer"
-                  className="inline-flex items-center gap-1 underline underline-offset-2 text-ink-link hover:text-ink-link-hover"
-                >
-                  {t('openContactPage')}
-                  <ArrowUpRight
-                    aria-hidden="true"
-                    className="size-3.5 shrink-0"
-                  />
-                </a>
-              )}
-            </p>
-          }
-        >
-          <ul className="grid gap-4 sm:grid-cols-3">
-            {municipalHall.phone && (
-              <li>
-                <ContactCard
-                  icon={Phone}
-                  label={t('phoneLabel')}
-                  value={municipalHall.phone}
-                  note={municipalHall.office ?? undefined}
-                  href={telHref(municipalHall.phone)}
-                />
-              </li>
-            )}
-
-            {municipalHall.email && (
-              <li>
-                <ContactCard
-                  icon={Mail}
-                  label={t('emailLabel')}
-                  value={municipalHall.email}
-                  note={municipalHall.office ?? undefined}
-                  href={`mailto:${municipalHall.email}`}
-                />
-              </li>
-            )}
-
-            <li>
-              <ContactCard
-                icon={MapPin}
-                label={t('addressLabel')}
-                value={municipalHall.address}
-                note={`${municipalHall.name} · ${t('addressNote')}`}
-                href={municipalHall.mapUrl}
-                external
-                externalLabel={tCommon('opensExternalSite')}
-              />
-            </li>
-          </ul>
-        </Section>
+        {onPage ? (
+          // No `Section`: its eyebrow and heading are exactly what the masthead
+          // above already carries. The measure and the vertical rhythm are the
+          // section's own, so the slab reads identically on both surfaces.
+          <div className="page-measure py-14 sm:py-16">
+            <ContactDirectory headingLevel={2} />
+          </div>
+        ) : (
+          <Section
+            id="contact"
+            eyebrow={tHome('eyebrowContact')}
+            /* The section's own title, and — since the `/contact` route
+               shipped — that page's heading too. One key, so the destination a
+               reader reaches from the menu is named the same as the section
+               they may have read first. */
+            heading={t('heading', { municipality: lguConfig.lgu.officialName })}
+            className="page-measure py-14 sm:py-16"
+          >
+            <ContactDirectory />
+          </Section>
+        )}
       </div>
     </div>
   );

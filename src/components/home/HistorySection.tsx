@@ -47,9 +47,10 @@ import { lguConfig } from '@/lib/lgu-config';
  * spec. Neither name appears anywhere in this file.
  */
 export async function HistorySection() {
-  const [t, tSource, format, locale, timeline] = await Promise.all([
+  const [t, tSource, tCommon, format, locale, timeline] = await Promise.all([
     getTranslations('history'),
     getTranslations('source'),
+    getTranslations('common'),
     getFormatter(),
     getLocale(),
     getHistoryTimeline(),
@@ -149,11 +150,13 @@ export async function HistorySection() {
         {'  '}
         <a
           href={timeline.source.url ?? undefined}
-          rel="noreferrer"
+          rel="noopener noreferrer"
+          target="_blank"
           className="inline-flex items-center gap-1 underline underline-offset-2 text-ink-link hover:text-ink-link-hover"
         >
           {t('openSource')}
           <ArrowUpRight aria-hidden="true" className="size-3.5 shrink-0" />
+          <span className="sr-only">({tCommon('opensExternalSite')})</span>
         </a>
       </p>
     </Section>
