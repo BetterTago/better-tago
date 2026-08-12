@@ -556,6 +556,80 @@ describe('independence', () => {
   });
 });
 
+describe('the canonical host', () => {
+  /*
+   * 🔴 `portal.domain` must name the host the deployment ACTUALLY serves, and
+   * that host is `www`.
+   *
+   * This shipped wrong. The value was the apex, written before the domain was
+   * pointed; hosting then settled on `www` and 308-redirects the apex to it.
+   * Nothing reconciled the two, because nothing read this key — so for two days
+   * every page told crawlers its canonical URL was one that redirects away from
+   * the page serving it, and all ~380 sitemap entries plus the robots.txt
+   * `Sitemap:` directive named the same wrong host:
+   *
+   *   https://www.bettertago.org/en  →  <link rel="canonical"
+   *                                       href="https://bettertago.org/en">
+   *   https://bettertago.org/en      →  308 https://www.bettertago.org/en
+   *
+   * 🔴 **The config is what moves, never the redirect.** `www` is the identity
+   * already published: the introduction letter delivered to the Office of the
+   * Mayor on 2026-08-12 names `www.bettertago.org`, and the municipality was
+   * told to look there. Flipping the hosting to make the apex canonical would
+   * falsify a letter that has already been sent.
+   *
+   * This is a unit assertion and not an e2e one deliberately. Comparing
+   * `<link rel="canonical">` against `location.origin` would be the honest
+   * check, but the suite runs against `localhost` while `metadataBase` is the
+   * production domain — it would fail on every developer machine.
+   */
+  // Read from disk, like every other scan here, rather than importing the
+  // parsed module — the guard is on the VALUE a contributor edits.
+  const domain: string = JSON.parse(
+    readFileSync(path.join(ROOT, 'config', 'lgu.config.json'), 'utf8')
+  ).portal.domain;
+
+  it('is the www host the deployment serves, not the apex it redirects from', () => {
+    expect(domain).toBe('https://www.bettertago.org');
+  });
+
+  it('is https, has no trailing slash and no path', () => {
+    // A trailing slash here becomes a double slash in every sitemap `<loc>`,
+    // and a path would be silently prefixed onto every canonical URL.
+    const url = new URL(domain);
+    expect(url.protocol).toBe('https:');
+    expect(url.pathname).toBe('/');
+    expect(domain.endsWith('/')).toBe(false);
+  });
+
+  it('is the ONLY place the host is written down', () => {
+    /*
+     * The bug was survivable in one edit precisely because everything absolute
+     * derives from this key. A second hardcoded host would break that, and it
+     * is the failure mode that turns a one-line fix into a hunt — so a literal
+     * `bettertago.org` anywhere in `src/` fails here.
+     *
+     * The footer is the one legitimate reader: it strips `www.` for DISPLAY, so
+     * a resident still sees `bettertago.org`. It derives that from this key
+     * rather than hardcoding it, which is why it needs no exemption.
+     *
+     * The host, bare — not a quoted-literal pattern. An earlier version required
+     * a leading quote, which read as "no hardcoded string" but behaved as this
+     * does anyway: its negated class matched newlines, so any quote earlier in
+     * the file let a later unquoted mention through the same match. Matching the
+     * host itself is what the name of this test claims and is simpler than a
+     * prefix that was never doing the work it appeared to.
+     *
+     * A comment mentioning the domain therefore fails too, and that is intended:
+     * this file is the place that documents the host, and `src/` is not.
+     */
+    const stray = SRC_FILES.filter(file =>
+      /\bbettertago\.org\b/.test(file.text)
+    ).map(file => file.path);
+    expect(stray).toEqual([]);
+  });
+});
+
 describe('translation coverage', () => {
   const read = (locale: string): Record<string, unknown> =>
     JSON.parse(
