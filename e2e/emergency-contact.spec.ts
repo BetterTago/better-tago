@@ -146,10 +146,36 @@ test.describe('the contact page', () => {
     await expect(provenance).toBeVisible();
 
     const citation = await provenance.boundingBox();
-    // `ul > li` — the masthead's breadcrumb is an `<ol>` of `<li>`s above
-    // everything, and a bare `li` here measures a crumb, not a card.
-    const firstCard = await main.locator('ul > li').first().boundingBox();
-    expect(citation!.y).toBeLessThan(firstCard!.y);
+    /*
+     * Scoped to `#contact`, not to `main`.
+     *
+     * `ul > li` over the whole page used to be enough — the note it replaces
+     * said the masthead's breadcrumb is an `<ol>`, so a bare `li` measured a
+     * crumb rather than a card. That reasoning stopped holding on 2026-08-21
+     * when the local-conditions panel was mounted above this section: its
+     * outlook cells are a `ul > li` too, and being higher up the page they
+     * became "the first card" and inverted the comparison.
+     *
+     * The section this test is about is the one that carries the citation, so
+     * measuring inside it is what the assertion always meant. It also stops the
+     * next component added above from silently redefining "first card" again.
+     */
+    const cardTop = await page.evaluate(() => {
+      // The citation and the card list are SIBLINGS inside ContactDirectory, so
+      // the first card is found from the citation's own parent rather than from
+      // the page. That is what the assertion always meant, and it no longer
+      // depends on nothing else on the page using a `ul > li`.
+      const citationNode = [...document.querySelectorAll('main p')].find(node =>
+        /read from the municipality's official contact page/i.test(
+          node.textContent ?? ''
+        )
+      );
+      const card = citationNode?.parentElement?.querySelector('ul > li');
+      return card ? card.getBoundingClientRect().top : null;
+    });
+
+    expect(cardTop).not.toBeNull();
+    expect(citation!.y).toBeLessThan(cardTop!);
   });
 });
 
@@ -180,14 +206,29 @@ test.describe('the two surfaces cannot disagree', () => {
   test('the page and the home section give the same contact routes', async ({
     page,
   }) => {
+    /*
+     * DESTINATIONS, deduplicated — not a count of anchors.
+     *
+     * The claim is that both surfaces offer the same ways to reach the
+     * municipality, and a destination linked twice on one of them is not drift.
+     * `/en/contact` gained a second link to the same map on 2026-08-21, when the
+     * local-conditions panel was mounted above this section and captioned its
+     * map with the hall's address and a directions link. Same href, same place,
+     * one more anchor.
+     *
+     * ⚠️ Comparing sets rather than lists is deliberately weaker in exactly one
+     * way, and it is worth knowing which: it would no longer notice a surface
+     * that lost a DUPLICATE. It still fails the moment either surface gains or
+     * loses a destination the other does not have, which is the drift this test
+     * exists to catch.
+     */
     const targetsIn = async (url: string, scope: string) => {
       await page.goto(url);
-      return (
-        await page
-          .locator(scope)
-          .locator('a[href^="tel:"], a[href^="mailto:"], a[href*="maps"]')
-          .evaluateAll(links => links.map(link => link.getAttribute('href')))
-      ).sort();
+      const hrefs = await page
+        .locator(scope)
+        .locator('a[href^="tel:"], a[href^="mailto:"], a[href*="maps"]')
+        .evaluateAll(links => links.map(link => link.getAttribute('href')));
+      return [...new Set(hrefs)].sort();
     };
 
     expect(await targetsIn('/en/contact', 'main')).toEqual(

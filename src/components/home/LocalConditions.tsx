@@ -79,7 +79,16 @@ export async function LocalConditions() {
     <section
       id="local-conditions"
       aria-labelledby="local-conditions-heading"
-      className="page-measure scroll-mt-24 pt-14 sm:pt-16"
+      /*
+       * `py-14 sm:py-16` — a full section's rhythm, top and bottom.
+       *
+       * It carried only a top pad, which was survivable on the home page where
+       * the contact slab below brings its own, and wrong on `/contact` where the
+       * panel sits directly between the masthead and that slab and the map ran
+       * into it. The same value the contact section uses, so the seams either
+       * side of this panel match every other seam on both routes.
+       */
+      className="page-measure scroll-mt-24 py-14 sm:py-16"
     >
       <h2 id="local-conditions-heading" className="sr-only">
         {t('heading', { place: shortName })}

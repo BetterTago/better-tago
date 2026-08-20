@@ -3,7 +3,6 @@ import { ContactDirectory } from '@/components/contact/ContactDirectory';
 import { Logo } from '@/components/ui/Logo';
 import { Section } from '@/components/ui/Section';
 import { lguConfig } from '@/lib/lgu-config';
-import { cn } from '@/lib/utils';
 
 /**
  * How to reach the municipality — section 05 of the home page, and the whole of
@@ -45,10 +44,21 @@ export async function ContactSection({
   return (
     <div
       data-surface="inverse"
-      className={cn(
-        'relative overflow-hidden bg-surface-inverse text-ink',
-        !onPage && 'mt-14 sm:mt-16'
-      )}
+      /*
+       * No top margin, and that is a change rather than an omission.
+       *
+       * The slab is full-bleed, so it carried `mt-14 sm:mt-16` to separate
+       * itself from the measured content above — which had no bottom padding of
+       * its own. `LocalConditions` now precedes it on the home page and brings
+       * `py-14 sm:py-16`, so the margin stacked on top of that padding and this
+       * seam ran to twice the size of every other one on the page.
+       *
+       * ⚠️ The gap here is now the PRECEDING section's bottom padding. If this
+       * slab is ever moved to follow a section that has none, it needs its
+       * margin back — `EmergencySection` is the live example: `HistorySection`
+       * runs into it with no bottom padding, so that slab keeps its margin.
+       */
+      className="relative overflow-hidden bg-surface-inverse text-ink"
     >
       <div aria-hidden="true" className="slab-glow absolute inset-0" />
       {/* Cropped silhouette. `Logo` is `aria-hidden` by construction and the

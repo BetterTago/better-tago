@@ -246,6 +246,79 @@ test.describe('the conditions strip', () => {
   });
 });
 
+test.describe('the panel on /contact', () => {
+  test('renders under the hero, with the map and the address', async ({
+    page,
+  }) => {
+    /*
+     * The same component the home page mounts, not a copy — so the marker, the
+     * address and the directions link cannot drift from the home page's answer
+     * to the same question.
+     */
+    await page.goto('/en/contact');
+    await settleAnimations(page);
+
+    const panel = page.locator('#local-conditions');
+    await expect(panel).toHaveCount(1);
+    await expect(
+      panel.locator('[role="region"][aria-label*="Map of"]')
+    ).toHaveCount(1);
+    await expect(panel.getByText(/Purisima St/)).toBeVisible();
+  });
+
+  test('sits BELOW the hero heading, not above it', async ({ page }) => {
+    // "Under the hero" is the instruction, and DOM order is how it stays true.
+    await page.goto('/en/contact');
+    await settleAnimations(page);
+
+    const belowHero = await page.evaluate(() => {
+      const h1 = document.querySelector('main h1');
+      const panel = document.querySelector('#local-conditions');
+      if (!h1 || !panel) return null;
+      return !!(
+        h1.compareDocumentPosition(panel) & Node.DOCUMENT_POSITION_FOLLOWING
+      );
+    });
+    expect(belowHero).toBe(true);
+  });
+
+  test('🔴 still tells the reader the map contacts OpenStreetMap', async ({
+    page,
+  }) => {
+    // Two routes make a third-party request now. Each one says so on itself;
+    // the notice travels with the component rather than being page furniture.
+    await page.goto('/en/contact');
+    await settleAnimations(page);
+    await expect(
+      page.getByText(/loads its tiles from OpenStreetMap/i)
+    ).toBeVisible();
+  });
+
+  test('@a11y has no axe violations on the contact route', async ({
+    page,
+  }, testInfo) => {
+    test.skip(
+      testInfo.project.name !== 'chromium',
+      'One engine is enough for a rule-based scan.'
+    );
+
+    for (const colorScheme of ['light', 'dark'] as const) {
+      await page.emulateMedia({ colorScheme });
+      await page.goto('/en/contact');
+      await settleAnimations(page);
+
+      // `.hotline-viewport` excluded for the reason documented in
+      // `home.a11y.spec.ts` — a scroll container's off-screen text hit-tests
+      // against the page, not against the bar it actually sits on.
+      const results = await new AxeBuilder({ page })
+        .exclude('.hotline-viewport')
+        .withTags(['wcag2a', 'wcag2aa', 'wcag21a', 'wcag21aa'])
+        .analyze();
+      expect(results.violations, colorScheme).toEqual([]);
+    }
+  });
+});
+
 test.describe('the visitor counter', () => {
   test('answers 204 and never errors, whatever the request', async ({
     request,

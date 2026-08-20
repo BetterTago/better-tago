@@ -345,6 +345,16 @@ describe('contrast, computed against the ramp', () => {
      */
     { ink: '--ink-accent-strong', ground: '--surface-raised', layers: [INVERSE, LIGHT, RAMP], where: 'inverse, raised', floor: 4.5, recorded: 11.05 }, // prettier-ignore
     { ink: '--ink-accent-strong', ground: '--surface-raised', layers: [LIGHT, RAMP], where: 'light, raised', floor: 4.5, recorded: 5.45 }, // prettier-ignore
+    /*
+     * The conditions card's timezone subscript — 11px semibold on the raised
+     * ground, in BOTH page themes.
+     *
+     * The dark half was the gap: this role had been measured on raised in the
+     * light theme and in the inverse scope, but never in the dark PAGE theme,
+     * which is where the conditions card actually renders half the time. The
+     * same shape of hole the footer badges fell into.
+     */
+    { ink: '--ink-accent-strong', ground: '--surface-raised', layers: [DARK, LIGHT, RAMP], where: 'timezone subscript, dark raised', floor: 4.5, recorded: 11.05 }, // prettier-ignore
     { ink: '--line-control', ground: '--surface-sunken', layers: [INVERSE, LIGHT, RAMP], where: 'inverse, sunken', floor: 3.0, recorded: 7.65 }, // prettier-ignore
 
     // ---- the emergency ticker, on `error-950` ----------------------------

@@ -47,6 +47,18 @@ export async function GettingHere() {
       id="getting-here"
       eyebrow={t('eyebrow')}
       heading={t('heading', { municipality: 'Tago' })}
+      /*
+       * `Section`'s default rhythm — a top pad and NO bottom one — and the
+       * absence is deliberate.
+       *
+       * A `py` was tried here and made the seam below WORSE, not better:
+       * `LocalConditions` brings its own `pt-14`, so the two stacked to 112px
+       * while every real section seam on this page is 56px of padding either
+       * side of a boundary. The map and the conditions card carry no visible
+       * heading and read as a continuation of *Getting to Tago* rather than as
+       * a new section, so the tighter seam is the correct one — it is the same
+       * gap the travel cards sit at, not a section break.
+       */
       className="page-measure"
       aside={
         <p className="max-w-xs text-base leading-relaxed text-ink-secondary">

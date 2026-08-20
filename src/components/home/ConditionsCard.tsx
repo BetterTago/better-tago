@@ -136,16 +136,38 @@ export async function ConditionsCard({ reading }: { reading: WeatherReading }) {
               provenance the panel owes for a figure a reader might act on, and
               it sits WITH the figure rather than in the footnote below. */}
           <p className="mt-0.5 font-semibold text-ink">
-            {t('conditionAt', {
+            {t.rich('conditionAt', {
               condition: t(`conditions.${key}`),
               /*
-               * The zone is named by the message string, not by the formatter
-               * — see the note in `dates.ts`. This is the one time a reader
-               * might try to reconcile against their own clock, so it says
-               * whose clock it is; the outlook cells below stay bare, because
-               * they are obviously the same zone as the line above them.
+               * The zone is named by the message string, not the formatter —
+               * next-intl accepts only `long` and `short` for `timeZoneName`,
+               * and `short` renders "GMT+8", which is worse than nothing on a
+               * municipal page. CLDR carries no abbreviation for Asia/Manila at
+               * all, so "PHT" is supplied by the catalogue, where a translator
+               * can see it beside the sentence it sits in.
                */
               time: format.dateTime(new Date(reading.observedAt), TIME_OF_DAY),
+              zone: chunks => (
+                /*
+                 * De-emphasised by SIZE and colour, and sitting on the same
+                 * baseline as the time it qualifies.
+                 *
+                 * It was `align-sub` first, which dropped it below the line and
+                 * read as a stray footnote rather than as part of the sentence.
+                 * Smaller text on a shared baseline is the whole effect that was
+                 * wanted; the vertical offset was doing nothing but breaking the
+                 * line it belongs to.
+                 *
+                 * No `<sub>` element either — that is semantically for
+                 * mathematical and chemical notation, and a screen reader has no
+                 * reason to treat a timezone that way. The gold is
+                 * `--ink-accent-strong`, the same role the contact card's small
+                 * bold label uses.
+                 */
+                <span className="align-baseline text-2xs font-semibold tracking-label text-ink-accent-strong">
+                  {chunks}
+                </span>
+              ),
             })}
           </p>
 
