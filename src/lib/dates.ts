@@ -62,6 +62,20 @@ export const TIME_OF_DAY = {
   minute: '2-digit',
 } as const;
 
+/*
+ * ⚠️ There is deliberately no zoned variant here, and it was tried.
+ *
+ * `timeZoneName: 'shortGeneric'` renders "Philippines Time" / "Oras sa
+ * Pilipinas" and would be ideal, but next-intl's formatter accepts only
+ * `'long' | 'short'` — the same narrowing the note above records — and `'short'`
+ * gives "GMT+8", which is worse than nothing on a municipal page.
+ *
+ * So the zone is named in the MESSAGE catalogue instead (`weather.conditionAt`),
+ * where a translator controls the wording and the time itself still goes through
+ * the formatter. Do not reach for `Intl.DateTimeFormat` directly to get around
+ * this; formatting belongs to next-intl.
+ */
+
 /**
  * An ISO calendar date as the instant that names it, or a throw.
  *

@@ -138,6 +138,13 @@ export async function ConditionsCard({ reading }: { reading: WeatherReading }) {
           <p className="mt-0.5 font-semibold text-ink">
             {t('conditionAt', {
               condition: t(`conditions.${key}`),
+              /*
+               * The zone is named by the message string, not by the formatter
+               * — see the note in `dates.ts`. This is the one time a reader
+               * might try to reconcile against their own clock, so it says
+               * whose clock it is; the outlook cells below stay bare, because
+               * they are obviously the same zone as the line above them.
+               */
               time: format.dateTime(new Date(reading.observedAt), TIME_OF_DAY),
             })}
           </p>

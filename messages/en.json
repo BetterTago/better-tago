@@ -348,7 +348,7 @@
     "wind": "{kph} km/h",
     "windLabel": "Wind speed",
     "rainChanceLabel": "Chance of rain today",
-    "conditionAt": "{condition} at {time}"
+    "conditionAt": "{condition} at {time} Philippines Time"
   },
   "conditions": {
     "heading": "Finding {place}, and the weather there",

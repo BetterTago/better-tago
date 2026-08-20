@@ -348,7 +348,7 @@
     "wind": "{kph} km/h",
     "windLabel": "Bilis ng hangin",
     "rainChanceLabel": "Tsansa ng ulan ngayong araw",
-    "conditionAt": "{condition} nang {time}"
+    "conditionAt": "{condition} nang {time} Oras sa Pilipinas"
   },
   "conditions": {
     "heading": "Paghahanap sa {place}, at ang panahon doon",

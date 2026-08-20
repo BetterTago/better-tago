@@ -146,6 +146,7 @@ describe('🔴 the loader returns null and never throws', () => {
     // Without this, every case below could pass on a function that returns
     // early and never reaches the network at all.
     const spy = ok({
+      utc_offset_seconds: 28800,
       current: {
         time: '2026-08-20T14:00',
         temperature_2m: 29,
@@ -195,6 +196,7 @@ describe('🔴 the loader returns null and never throws', () => {
 
   it('time-boxes the request', async () => {
     const spy = ok({
+      utc_offset_seconds: 28800,
       current: {
         time: '2026-08-20T14:00',
         temperature_2m: 29,
@@ -283,6 +285,7 @@ describe('🔴 the loader returns null and never throws', () => {
     vi.stubGlobal(
       'fetch',
       ok({
+        utc_offset_seconds: 28800,
         current: {
           time: '2026-08-20T14:00',
           temperature_2m: 29.6,
@@ -309,10 +312,10 @@ describe('🔴 the loader returns null and never throws', () => {
       // shows "1 PM · 28°" beside a 2 PM reading, which reads as a broken
       // widget rather than as history.
       outlook: [
-        { at: '2026-08-20T15:00', temperatureC: 30, weatherCode: 61 },
-        { at: '2026-08-20T16:00', temperatureC: 30, weatherCode: 80 },
+        { at: '2026-08-20T15:00+08:00', temperatureC: 30, weatherCode: 61 },
+        { at: '2026-08-20T16:00+08:00', temperatureC: 30, weatherCode: 80 },
       ],
-      observedAt: '2026-08-20T14:00',
+      observedAt: '2026-08-20T14:00+08:00',
     });
   });
 
@@ -322,6 +325,7 @@ describe('🔴 the loader returns null and never throws', () => {
     vi.stubGlobal(
       'fetch',
       ok({
+        utc_offset_seconds: 28800,
         current: {
           time: '2026-08-20T23:00',
           temperature_2m: 25,
@@ -347,6 +351,7 @@ describe('🔴 the loader returns null and never throws', () => {
     vi.stubGlobal(
       'fetch',
       ok({
+        utc_offset_seconds: 28800,
         current: {
           time: '2026-08-20T14:00',
           temperature_2m: 29,
@@ -365,5 +370,107 @@ describe('🔴 the loader returns null and never throws', () => {
     const reading = await fetchWeather();
     expect(reading?.rainChance).toBeNull();
     expect(reading?.temperatureC).toBe(29);
+  });
+});
+
+describe('🔴 timestamps are instants, not naive local strings', () => {
+  /*
+   * The bug this pins shipped to production and every local check passed.
+   *
+   * With `timezone=Asia/Manila` the upstream returns `"2026-08-21T00:30"` —
+   * already Manila local, carrying nothing that says so. ECMAScript parses a
+   * date-time form WITHOUT an offset as the RUNTIME's local time, so the same
+   * string meant two different instants:
+   *
+   *   machine set to Asia/Manila → 00:30 PHT → rendered 12:30 AM  (correct)
+   *   server running UTC         → 00:30 UTC → rendered  8:30 AM  (eight hours out)
+   *
+   * The reading was current throughout; only the clock beside it was wrong, by
+   * exactly the offset. Reported from the live site, not caught here — the
+   * developer machine is in the Philippines, so the defect was invisible.
+   *
+   * These assertions are runtime-timezone INDEPENDENT on purpose: they compare
+   * absolute instants, so they fail on any machine if the offset is dropped
+   * again. `vitest.config.ts` additionally pins the suite to UTC.
+   */
+  const ok = (body: unknown) =>
+    vi.fn().mockResolvedValue({ ok: true, json: async () => body });
+
+  const payload = {
+    utc_offset_seconds: 28800,
+    current: {
+      time: '2026-08-21T00:30',
+      temperature_2m: 25,
+      relative_humidity_2m: 90,
+      wind_speed_10m: 6,
+      weather_code: 3,
+    },
+    hourly: {
+      time: ['2026-08-21T01:00', '2026-08-21T02:00'],
+      temperature_2m: [25, 24],
+      weather_code: [2, 3],
+    },
+    daily: { precipitation_probability_max: [67] },
+  };
+
+  it('carries the offset on the reading, so it means one thing everywhere', async () => {
+    vi.stubGlobal('fetch', ok(payload));
+    const reading = await fetchWeather();
+
+    expect(reading?.observedAt).toBe('2026-08-21T00:30+08:00');
+    // 00:30 in Manila IS 16:30 UTC the previous day. This is the assertion that
+    // goes red the moment the offset is dropped, whatever machine runs it.
+    expect(new Date(reading!.observedAt).toISOString()).toBe(
+      '2026-08-20T16:30:00.000Z'
+    );
+  });
+
+  it('carries it on every outlook hour too', async () => {
+    vi.stubGlobal('fetch', ok(payload));
+    const reading = await fetchWeather();
+
+    expect(reading?.outlook.map(hour => hour.at)).toEqual([
+      '2026-08-21T01:00+08:00',
+      '2026-08-21T02:00+08:00',
+    ]);
+    expect(new Date(reading!.outlook[0].at).toISOString()).toBe(
+      '2026-08-20T17:00:00.000Z'
+    );
+  });
+
+  it('renders the reading as Manila time from a UTC runtime', async () => {
+    /*
+     * The end of the chain, and the thing a resident actually saw. Formatting
+     * the stored value into Asia/Manila must give back the wall clock the
+     * upstream reported — 12:30 AM — not 8:30 AM.
+     */
+    vi.stubGlobal('fetch', ok(payload));
+    const reading = await fetchWeather();
+
+    const rendered = new Intl.DateTimeFormat('en', {
+      timeZone: 'Asia/Manila',
+      hour: 'numeric',
+      minute: '2-digit',
+    }).format(new Date(reading!.observedAt));
+
+    expect(rendered).toBe('12:30 AM');
+  });
+
+  it('handles a negative offset without inverting the sign', async () => {
+    // Nothing in Tago needs this. The helper is general, and a sign flip is the
+    // classic way an offset formatter goes wrong unnoticed.
+    vi.stubGlobal(
+      'fetch',
+      ok({
+        ...payload,
+        utc_offset_seconds: -18000,
+        current: { ...payload.current, time: '2026-08-20T12:00' },
+      })
+    );
+    const reading = await fetchWeather();
+    expect(reading?.observedAt).toBe('2026-08-20T12:00-05:00');
+    expect(new Date(reading!.observedAt).toISOString()).toBe(
+      '2026-08-20T17:00:00.000Z'
+    );
   });
 });

@@ -25,6 +25,16 @@ import { lguConfig } from '@/lib/lgu-config';
 
 /** Open-Meteo's documented current-conditions shape, narrowed to what renders. */
 const responseSchema = z.object({
+  /**
+   * 🔴 Required, and it is what makes every timestamp below unambiguous.
+   *
+   * With `timezone=Asia/Manila` the upstream returns times like
+   * `"2026-08-21T00:30"` — already Manila local, and with NO zone designator.
+   * JavaScript parses a bare date-time as the RUNTIME's local time, so the same
+   * string became 00:30 Manila on a developer machine and 00:30 UTC on the
+   * server. See `qualify` below.
+   */
+  utc_offset_seconds: z.number().int(),
   current: z.object({
     time: z.string().min(1),
     temperature_2m: z.number(),
@@ -47,9 +57,42 @@ const responseSchema = z.object({
   }),
 });
 
+/**
+ * A naive upstream timestamp turned into a real instant.
+ *
+ * 🔴 This function exists because its absence shipped a visibly wrong time to
+ * production, and every local check passed.
+ *
+ * The upstream returns `"2026-08-21T00:30"` with `timezone=Asia/Manila` — the
+ * value is already Manila local, but carries nothing to say so. Per the
+ * ECMAScript spec a date-time form WITHOUT an offset is parsed as the
+ * runtime's local time, so:
+ *
+ * · on a machine set to `Asia/Manila`, `new Date("...T00:30")` is 00:30 PHT and
+ *   rendering it in `Asia/Manila` gives **12:30 AM** — correct;
+ * · on the server, which runs UTC, the same string is 00:30 **UTC**, and
+ *   rendering it in `Asia/Manila` adds eight hours and gives **8:30 AM**.
+ *
+ * The reading was current the whole time; only the clock beside it was wrong,
+ * by exactly the offset. Appending `+08:00` from the payload's own
+ * `utc_offset_seconds` makes the string an instant that means the same thing on
+ * any runtime, which is what should have been done at the boundary in the first
+ * place.
+ *
+ * ⚠️ Do not "simplify" this back to `new Date(upstreamString)`. It will look
+ * right on a machine in the Philippines and be eight hours out in production.
+ */
+function qualify(naive: string, offsetSeconds: number): string {
+  const sign = offsetSeconds < 0 ? '-' : '+';
+  const total = Math.abs(offsetSeconds);
+  const hours = String(Math.floor(total / 3600)).padStart(2, '0');
+  const minutes = String(Math.floor((total % 3600) / 60)).padStart(2, '0');
+  return `${naive}${sign}${hours}:${minutes}`;
+}
+
 /** One cell of the short outlook. */
 export type HourlyReading = {
-  /** ISO local time, as the upstream reported it. */
+  /** A fully-qualified instant, offset included. Never the naive upstream form. */
   at: string;
   temperatureC: number;
   weatherCode: number;
@@ -78,7 +121,13 @@ export type WeatherReading = {
   rainChance: number | null;
   /** The next couple of hours. Empty when the upstream gave nothing usable. */
   outlook: HourlyReading[];
-  /** ISO instant the reading is for, as the upstream reported it. */
+  /**
+   * A fully-qualified instant, offset included — e.g. `2026-08-21T00:30+08:00`.
+   *
+   * NOT the naive string the upstream sends. See `qualify`: without the offset
+   * this renders eight hours out on any runtime that is not already Philippine
+   * time, which is every server this will ever run on.
+   */
   observedAt: string;
 };
 
@@ -198,14 +247,15 @@ export async function fetchWeather(): Promise<WeatherReading | null> {
     if (!parsed.success) return null;
 
     const { current, hourly, daily } = parsed.data;
+    const offset = parsed.data.utc_offset_seconds;
     return {
       temperatureC: Math.round(current.temperature_2m),
       weatherCode: current.weather_code,
       humidity: Math.round(current.relative_humidity_2m),
       windKph: Math.round(current.wind_speed_10m),
       rainChance: daily.precipitation_probability_max[0] ?? null,
-      outlook: nextHours(current.time, hourly),
-      observedAt: current.time,
+      outlook: nextHours(current.time, hourly, offset),
+      observedAt: qualify(current.time, offset),
     };
   } catch {
     /*
@@ -232,7 +282,8 @@ export async function fetchWeather(): Promise<WeatherReading | null> {
  */
 function nextHours(
   now: string,
-  hourly: { time: string[]; temperature_2m: number[]; weather_code: number[] }
+  hourly: { time: string[]; temperature_2m: number[]; weather_code: number[] },
+  offsetSeconds: number
 ): HourlyReading[] {
   const readings: HourlyReading[] = [];
 
@@ -248,7 +299,10 @@ function nextHours(
     if (at <= now) continue;
 
     readings.push({
-      at,
+      // Qualified here, AFTER the comparison above — that comparison needs both
+      // sides in the same naive form, and the stored value needs an offset so
+      // no consumer has to know which runtime it is being parsed on.
+      at: qualify(at, offsetSeconds),
       temperatureC: Math.round(temperature),
       weatherCode: code,
     });
