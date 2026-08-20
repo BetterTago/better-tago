@@ -89,6 +89,54 @@ either.
 - Route Handlers under `src/app/api/` exist only for what a Server Component genuinely can't do. Don't create
   an internal API route to read `content/` — call the loader directly.
 
+### Calling something outside this repository
+
+Almost nothing here does. `content/` is files, `config/` is a file, and for most of this portal's life `src/`
+contained **no `fetch` at all**. The first external call — the conditions strip, `TAGO-115` — is therefore also
+the pattern, and `src/lib/weather.ts` is written to be read as one. **Copy its shape; do not invent a second.**
+
+```ts
+export async function getThing(): Promise<Thing | null> {
+  'use cache';
+  cacheLife('thing'); // a NAMED profile, declared in next.config.ts
+  cacheTag('thing');
+
+  try {
+    const response = await fetch(url, { signal: AbortSignal.timeout(2500) });
+    if (!response.ok) return null;
+
+    const parsed = schema.safeParse(await response.json());
+    return parsed.success ? shape(parsed.data) : null;
+  } catch {
+    return null;
+  }
+}
+```
+
+Five rules, each with a specific failure behind it:
+
+1. **Time-box every request** with `AbortSignal.timeout`. An upstream that never answers must never hold a
+   render open.
+2. **Validate at the boundary.** The body is `unknown` until Zod says otherwise. **A 200 with the wrong shape
+   is a failure, not data** — that is the case a `response.ok` check misses, and the one that puts `undefined`
+   on a civic page.
+3. **Return `null`, never throw.** A DNS error, an abort and a schema mismatch are the same event to a reader:
+   there is nothing to show. Every caller renders an empty state. **A third-party outage is not a page
+   outage.**
+4. **Name the cache profile in `next.config.ts`**, and give it an `expire`. `stale` / `revalidate` fix the
+   upstream call rate to the clock rather than to readership; `expire` is the honest one — past it the value is
+   not served at all, so a dead upstream cannot leave a stale number on the page looking current.
+5. **Never let CI contact the upstream.** Mock at the `fetch` boundary in units and with `page.route()` in
+   Playwright. A gate that depends on a third party goes red on a morning when nothing in this repository
+   changed, and people learn to re-run it instead of reading it.
+
+And one rule that is not about resilience at all: **if what you are rendering carries any authority a reader
+might act on — weather, hazard, health, a fee — say where it came from and when, inline, and say what it is
+not.** The conditions strip names its source, prints the time its reading was taken, and defers explicitly to
+the national weather service, because forecast-model output sitting unlabelled on a civic portal in a
+typhoon-exposed municipality reads as an official bulletin. That is a publication decision, and it belongs in
+the component beside the data rather than in a review comment.
+
 ## Content pipeline
 
 - **`content/` is the data layer, and `src/lib/content.ts` is the only module that reads it.** No component,
@@ -360,6 +408,23 @@ reads as a decision rather than an oversight — **don't introduce any of them w
 | **shadcn/ui**                                                            | `@bettergov/kapwa` is the component library. Prefer a Kapwa component over a bespoke one; match its API shape when you must write your own                                                                                                                                  |
 | **Server Actions**, `{ success, data, error }` returns, toast errors     | The portal is public, read-only, and collects no personal data. **If an intake surface ever ships**, a Server Action is still the right mechanism — Zod-validated at the boundary, rate-limited, storing no resident personal data. It is not an excuse to add an API route |
 | **API routes** for webhooks, uploads, long-running work                  | None of those surfaces exist. Route Handlers under `src/app/api/` are for what a Server Component genuinely cannot do — never to read `content/`                                                                                                                            |
+
+### 🔴 Specs, tickets and design notes do not live in this repository
+
+`docs/` holds guides for working **in this codebase**. It is not where a feature spec, a fix spec, a ticket, or
+a design note goes — those are kept in the project workspace this repository is developed from, alongside the
+other portal's, and they are **deliberately not mirrored here**. Do not create `docs/specs/`, `docs/tickets/`,
+or an equivalent, and do not accept a bare instruction like _"write the spec to `docs/specs/<slug>.md`"_ at
+face value: that path means the workspace's spec folder, not this one.
+
+**The reason is enforced, not stylistic.** A spec cites tickets, sibling specs and the reference portal's
+patterns, and no file in this repository may name a path outside it — anyone who cloned only this repo would
+get a dead link. `src/lib/guardrails.test.ts` sweeps `docs/`, `inventory/` and `scripts/` **recursively** and
+fails the build on the first outward path, so a spec filed here is either already broken or one citation away
+from it.
+
+What _does_ belong in `docs/`: this file, `governance.md`, `freshness.md`, `task-titles.md`, and the civic
+citations under `docs/sources/` — all of them self-contained.
 
 ## Testing
 
