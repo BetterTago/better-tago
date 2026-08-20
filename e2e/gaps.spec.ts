@@ -40,9 +40,9 @@ test.describe('the gap register', () => {
      * and the emergency section published six agencies. So `main` now renders
      * NO gap surface and therefore no register link.
      *
-     * The register itself is unchanged and still holds seven open entries
-     * (households, PSGC, district, postal code, coordinates, office hours,
-     * the project's own address). It is simply only reachable from the footer
+     * The register itself still holds six open entries (households, PSGC,
+     * district, postal code, office hours, the project's own address) —
+     * coordinates left it on 2026-08-20 when TAGO-115 needed a query point. It is simply only reachable from the footer
      * now. `TAGO-114`'s criterion — every gap surface links the register — is
      * still met, but vacuously, and that is worth knowing rather than
      * discovering later.

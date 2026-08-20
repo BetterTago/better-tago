@@ -28,7 +28,7 @@
     "psgc": null,
     "postalCode": null,
     "incomeClass": "2nd class",
-    "coordinates": null,
+    "coordinates": { "latitude": 9.0198, "longitude": 126.2332 },
     "landAreaKm2": 253.28,
     "barangayCount": 24,
     "population": 40097,
@@ -71,6 +71,12 @@
         "url": "https://psa.gov.ph/classification/psgc/barangays/1606818000",
         "checkedAt": "2026-08-10",
         "note": "The municipality is subdivided into 24 barangays. ⚠️ The per-barangay URBAN/RURAL CLASSIFICATION the PSGC record also carries is NOT published here: it exists only on the page that could not be retrieved, and a count is not a classification. V1 — CORROBORATED INDIRECT, and it must not be read as anything stronger. The primary record is the national statistics authority's own PSGC/census release at https://psa.gov.ph/classification/psgc/barangays/1606818000; that URL was requested again on 2026-08-10 and answered HTTP 403 to an automated request, as it has on every previous attempt. The figure below was therefore reached through the English Wikipedia article on Tago (https://en.wikipedia.org/wiki/Tago,_Surigao_del_Sur), which attributes it to that release. The tertiary path is named here rather than hidden: a person opening the PSGC page in a browser and recording what it says promotes this to V3, and that is the single cheapest outstanding task on this record."
+      },
+      "coordinates": {
+        "label": "Tago Municipal Hall — the map link recorded on this project's own contact card, resolved",
+        "url": "https://maps.app.goo.gl/fqEX9emT6ZZ9eVHr5",
+        "checkedAt": "2026-08-20",
+        "note": "The poblacion, and the point every conditions and hazard lookup answers to. V1 \u2014 CORROBORATED INDIRECT, and deliberately NOT described as the municipality's geographic centroid, which is a different fact this project still does not hold. Two independent records were read on 2026-08-20 and agree to about 70 metres: the Google Maps link already recorded at contact.municipalHall.mapUrl resolves to a place named 'Tago Municipal Hall' at 9.0197619, 126.2331866, and the tertiary encyclopaedia record cited for population, census year, barangay count and land area gives 9.0192, 126.2333. The value published here is rounded to four decimal places \u2014 about 11 metres, far finer than either source's own precision and far finer than anything that depends on it. The primary record is the national statistics authority's PSGC release, which would also give the centroid; it has answered HTTP 403 or a JavaScript challenge to every automated request (see lgu.psgc), so it is not in hand and would supersede this if obtained."
       },
       "landAreaKm2": {
         "label": "Tago, Surigao del Sur — tertiary encyclopaedia record, infobox",
@@ -240,12 +246,6 @@
       "note": "HELD, not missing. The official contact page publishes 1101, re-read 2026-08-09; that value sits outside the range used for this province and appears to belong to a different part of the country. Do not publish it, and do not 'correct' it to a guess. Confirm against the postal service's own record, then tell the municipality if their published value is a typo.",
       "channel": "national-agency",
       "state": "held",
-      "lastCheckedAt": "2026-08-09"
-    },
-    "lgu.coordinates": {
-      "note": "Not published by the municipality. Checked 2026-08-09 across every page the official site's sitemap lists that is not a news post or a profile page — home, about, vision-and-mission, services, tourism, contact, transparency-seal and all 17 office pages — and across all 22 Citizen's Charter documents. Needed before any map ships, and before a per-barangay hazard reading can be looked up, because the national hazard service answers a point rather than a place name.",
-      "channel": "national-agency",
-      "state": "open",
       "lastCheckedAt": "2026-08-09"
     },
     "lgu.households": {

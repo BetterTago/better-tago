@@ -417,7 +417,6 @@ describe('the register, as a surface reads it', () => {
       'lgu.psgc',
       'lgu.district',
       'lgu.postalCode',
-      'lgu.coordinates',
       'contact.municipalHall.officeHours',
     ]) {
       expect(GAP_PATHS).toContain(path);
@@ -432,6 +431,10 @@ describe('the register, as a surface reads it', () => {
       'lgu.landAreaKm2',
       // Closed 2026-08-10: a verified Google Maps pin, by instruction.
       'contact.municipalHall.mapUrl',
+      // Closed 2026-08-20 for TAGO-115: the poblacion, corroborated to ~70m by
+      // the map pin above and by the tertiary record the four figures above
+      // already cite. NOT the geographic centroid — that is still not held.
+      'lgu.coordinates',
       // Closed 2026-08-10: six agencies read from the municipality's own
       // Facebook page. The largest gap this register ever held.
       'emergency.municipalHotlines',
