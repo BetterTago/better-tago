@@ -1092,3 +1092,82 @@
   --line: var(--color-neutral-800);
   --line-subtle: var(--color-neutral-900);
 }
+
+/* ── Leaflet, brought inside the token layer ─────────────────────────────────
+ *
+ * Leaflet ships its own stylesheet with hardcoded greys and a white control
+ * chrome. Left alone it is the one surface on this site that ignores the theme
+ * entirely — a white zoom button and a black-on-white attribution bar sitting
+ * on the night ground.
+ *
+ * These are the only rules that touch it, and each re-points a Leaflet default
+ * at a ROLE token rather than restyling the map. The declarations live here
+ * because `globals.css` is where colour is declared; a component may not carry
+ * a colour literal, and `guardrails.test.ts` enforces that.
+ */
+.hall-marker {
+  stroke: var(--color-primary-700);
+  fill: var(--color-accent-400);
+  fill-opacity: 1;
+}
+
+:root[data-theme='dark'] .hall-marker {
+  stroke: var(--color-accent-400);
+  fill: var(--color-primary-700);
+}
+
+.leaflet-container {
+  /* Leaflet's own default is #ddd, which shows through while tiles load. */
+  background: var(--surface-sunken);
+  font-family: inherit;
+}
+
+/*
+ * 🔴 Leaflet ships its zoom buttons at 26px. The 44px floor is a GATE on this
+ * portal, not a preference, and `home.a11y.spec.ts` failed on them the moment
+ * the map landed.
+ *
+ * Sized up rather than added to that spec's exemption list. The two exemptions
+ * already there — the 28px hotline strip and the header controls — are each a
+ * deliberate trade against a crowded viewport. A map control has no such
+ * argument: it sits in open space, and 44px costs nothing but a slightly larger
+ * button that is easier to hit on the phone most readers use.
+ */
+/*
+ * ⚠️ BOTH selectors, and the second is the one that actually does the work.
+ * Leaflet ships `.leaflet-touch .leaflet-bar a { width: 30px }`, and it adds
+ * `leaflet-touch` to the container on any touch-capable context — which is a
+ * phone, and also most laptops now. A plain `.leaflet-bar a` rule loses to it
+ * on specificity, so the buttons measured 30px and the 44px gate stayed red
+ * while the CSS looked correct.
+ */
+.leaflet-bar a,
+.leaflet-container.leaflet-touch .leaflet-bar a {
+  width: 2.75rem;
+  height: 2.75rem;
+  line-height: 2.75rem;
+  font-size: 1.25rem;
+}
+
+.leaflet-bar a,
+.leaflet-control-attribution {
+  background: var(--surface-raised);
+  color: var(--ink-secondary);
+  border-color: var(--line);
+}
+
+.leaflet-bar a:hover {
+  background: var(--surface-sunken);
+  color: var(--ink);
+}
+
+.leaflet-control-attribution a {
+  color: var(--ink-link);
+}
+
+/* The map is a real tab stop; it gets the same focus ring as everything else
+   rather than the browser default Leaflet leaves in place. */
+.leaflet-container:focus-visible {
+  outline: 2px solid var(--focus-ring);
+  outline-offset: 2px;
+}

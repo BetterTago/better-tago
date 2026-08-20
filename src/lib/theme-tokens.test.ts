@@ -316,6 +316,23 @@ describe('contrast, computed against the ramp', () => {
     { ink: '--ink-secondary', ground: '--surface-sunken', layers: [INVERSE, LIGHT, RAMP], where: 'inverse, sunken', floor: 4.5, recorded: 15.19 }, // prettier-ignore
     { ink: '--ink-accent-strong', ground: '--surface-sunken', layers: [INVERSE, LIGHT, RAMP], where: 'inverse, sunken', floor: 4.5, recorded: 12.12 }, // prettier-ignore
     /*
+     * The footer's three BADGES, added 2026-08-20 — the visit count, the portal
+     * version and the source-code link, all pills on the sunken ground inside
+     * this scope.
+     *
+     * ⚠️ Two of these pairs existed on the page before they existed here. The
+     * badges were built and shipped through a green suite because nothing in
+     * this registry described `--ink-tertiary` or `--ink-link` over
+     * `--surface-sunken` in the inverse scope — the ground was covered for
+     * three other inks and the gap was invisible. Registering a pair is what
+     * makes it checked; rendering it is not.
+     */
+    { ink: '--ink-tertiary', ground: '--surface-sunken', layers: [INVERSE, LIGHT, RAMP], where: 'footer badge, inverse sunken, light', floor: 4.5, recorded: 12.77 }, // prettier-ignore
+    { ink: '--ink-tertiary', ground: '--surface-sunken', layers: [INVERSE, DARK, LIGHT, RAMP], where: 'footer badge, inverse sunken, dark', floor: 4.5, recorded: 12.77 }, // prettier-ignore
+    { ink: '--ink-link', ground: '--surface-sunken', layers: [INVERSE, LIGHT, RAMP], where: 'source-code badge, inverse sunken, light', floor: 4.5, recorded: 12.12 }, // prettier-ignore
+    { ink: '--ink-link', ground: '--surface-sunken', layers: [INVERSE, DARK, LIGHT, RAMP], where: 'source-code badge, inverse sunken, dark', floor: 4.5, recorded: 12.12 }, // prettier-ignore
+    { ink: '--ink-link-hover', ground: '--surface-sunken', layers: [INVERSE, LIGHT, RAMP], where: 'source-code badge hover, inverse sunken, light', floor: 4.5, recorded: 13.02 }, // prettier-ignore
+    /*
      * The contact card's label — 11px bold, so a 4.5 floor rather than 3.0.
      *
      * BOTH grounds, because the card now renders on both. It was `--ink-accent`

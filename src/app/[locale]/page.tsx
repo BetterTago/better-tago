@@ -2,6 +2,7 @@ import { notFound } from 'next/navigation';
 import type { Metadata } from 'next';
 import { hasLocale } from 'next-intl';
 import { getTranslations, setRequestLocale } from 'next-intl/server';
+import { LocalConditions } from '@/components/home/LocalConditions';
 import { ContactSection } from '@/components/home/ContactSection';
 import { EmergencySection } from '@/components/home/EmergencySection';
 import { GettingHere } from '@/components/home/GettingHere';
@@ -44,9 +45,35 @@ import { routing } from '@/i18n/routing';
  * so plainly rather than leaving the old argument standing unchallenged next
  * to code that no longer follows it.
  *
- * There is no analytics, no tracking pixel and no third-party script here, and
- * there will not be: this is a civic site and traffic is deliberately not a
- * measured outcome.
+ * ## ⚠️ The traffic position was reversed on 2026-08-20
+ *
+ * This comment read: *"There is no analytics, no tracking pixel and no
+ * third-party script here, and there will not be: this is a civic site and
+ * traffic is deliberately not a measured outcome."*
+ *
+ * **Half of that still holds and is still enforced: nothing third-party.** No
+ * analytics vendor, no tracking pixel, no external script — not here and not
+ * anywhere in this application. The portal talks to nobody about its readers.
+ *
+ * **What changed** is that the project now counts visits itself, first-party,
+ * on its own origin, and shows the number in the footer (`TAGO-116`). It stores
+ * nothing personal to do it: no IP address is read, hashed or persisted, which
+ * is what keeps `docs/governance.md` § *What we never ask for* true as written.
+ * The reversal is recorded as a dated amendment on `TAGO-110` criterion 5 and
+ * `PROG-301` criterion 4 rather than silently re-ticked.
+ *
+ * ## The local-conditions panel is NOT part of the emergency layer
+ *
+ * `LocalConditions` — the municipal hall map, then the weather card — sits here
+ * in the page body, deliberately far from the hotline bar and the advisory bar
+ * in the locale layout. The weather half renders forecast model output and
+ * hides itself entirely while a real advisory is live; the map half is the only
+ * thing in this application that makes a reader's browser contact a third
+ * party, and the panel says so on the page.
+ *
+ * It must never be promoted into that stack or into the layout: it would
+ * inherit the emergency layer's meaning, and it would put a third-party tile
+ * request on all ~380 routes. See the component's own note.
  */
 export async function generateMetadata({
   params,
@@ -90,6 +117,7 @@ export default async function HomePage({ params }: PageProps<'/[locale]'>) {
       <HistorySection />
       <EmergencySection />
       <GettingHere />
+      <LocalConditions />
       <ContactSection />
     </>
   );

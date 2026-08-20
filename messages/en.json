@@ -38,7 +38,11 @@
     "volunteer": "Volunteer with us",
     "contributeCode": "Contribute code with us",
     "repositoryGap": "The source code is not published yet, so there is nowhere to point you. It will be linked here the day it is.",
-    "network": "Part of the {network} network"
+    "network": "Part of the {network} network",
+    "visitsLabel": "Visits",
+    "visitsCaveat": "Page loads, counted at most once per browser per day. It cannot see readers with JavaScript off, and it is inflated by automated crawlers nobody can identify — it is not unique visitors, sessions, or pageviews.",
+    "visits": "{count} visits",
+    "visitsEmpty": "— visits"
   },
   "source": {
     "heading": "Where this comes from",
@@ -299,5 +303,61 @@
   "gettingHere": {
     "eyebrow": "04 — Getting here",
     "heading": "Getting to {municipality}"
+  },
+  "weather": {
+    "heading": "Current conditions in {place}",
+    "temperature": "{degrees}°C",
+    "rainChance": "{percent}% chance of rain today",
+    "observedAt": "Reading taken at {time}.",
+    "attribution": "Forecast data from <source>Open-Meteo</source>, CC BY 4.0.",
+    "notAdvisory": "This is forecast model output, not an official bulletin — PAGASA is the authority for tropical cyclone bulletins and rainfall bulletins.",
+    "unavailable": "A current reading is not available right now.",
+    "conditions": {
+      "clearSky": "Clear sky",
+      "mainlyClear": "Mainly clear",
+      "partlyCloudy": "Partly cloudy",
+      "overcast": "Overcast",
+      "fog": "Fog",
+      "freezingFog": "Freezing fog",
+      "lightDrizzle": "Light drizzle",
+      "drizzle": "Drizzle",
+      "heavyDrizzle": "Heavy drizzle",
+      "lightFreezingDrizzle": "Light freezing drizzle",
+      "freezingDrizzle": "Freezing drizzle",
+      "lightRain": "Light rain",
+      "rain": "Rain",
+      "heavyRain": "Heavy rain",
+      "lightFreezingRain": "Light freezing rain",
+      "freezingRain": "Freezing rain",
+      "lightSnow": "Light snow",
+      "snow": "Snow",
+      "heavySnow": "Heavy snow",
+      "snowGrains": "Snow grains",
+      "lightRainShowers": "Light rain showers",
+      "rainShowers": "Rain showers",
+      "heavyRainShowers": "Heavy rain showers",
+      "lightSnowShowers": "Light snow showers",
+      "snowShowers": "Snow showers",
+      "thunderstorms": "Thunderstorms",
+      "thunderstormsWithHail": "Thunderstorms with hail",
+      "thunderstormsWithHeavyHail": "Thunderstorms with heavy hail",
+      "unknown": "Condition not recognised"
+    },
+    "humidity": "{percent}%",
+    "humidityLabel": "Humidity",
+    "wind": "{kph} km/h",
+    "windLabel": "Wind speed",
+    "rainChanceLabel": "Chance of rain today",
+    "conditionAt": "{condition} at {time}"
+  },
+  "conditions": {
+    "heading": "Finding {place}, and the weather there",
+    "mapLabel": "Map of {place}, showing the municipal hall",
+    "directions": "Get directions",
+    "weatherUnavailable": "A current weather reading is not available right now.",
+    "weatherAttribution": "Forecast data from <source>Open-Meteo</source>, CC BY 4.0.",
+    "notAdvisory": "This is forecast model output, not an official bulletin — PAGASA is the authority for tropical cyclone bulletins and rainfall bulletins.",
+    "mapAttribution": "Map data © <source>OpenStreetMap</source> contributors, ODbL.",
+    "tileNotice": "The map loads its tiles from OpenStreetMap, so your browser contacts them directly. It is the only part of this site that requests anything from another organisation; the address and the directions link above work without it."
   }
 }

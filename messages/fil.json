@@ -38,7 +38,11 @@
     "volunteer": "Sumama bilang boluntaryo",
     "contributeCode": "Mag-ambag ng code",
     "repositoryGap": "Hindi pa nailalathala ang source code, kaya wala pang mai-uugnay dito. Ilalagay ito rito sa araw na mailathala.",
-    "network": "Bahagi ng network ng {network}"
+    "network": "Bahagi ng network ng {network}",
+    "visitsLabel": "Mga pagbisita",
+    "visitsCaveat": "Bilang ng pagbukas ng pahina, isang beses lamang kada browser bawat araw. Hindi nito nakikita ang mga mambabasang nakapatay ang JavaScript, at napalalaki ito ng mga awtomatikong crawler na walang makakakilala — hindi ito bilang ng natatanging bisita, sesyon, o pageview.",
+    "visits": "{count} na pagbisita",
+    "visitsEmpty": "— na pagbisita"
   },
   "source": {
     "heading": "Saan ito nanggaling",
@@ -299,5 +303,61 @@
   "gettingHere": {
     "eyebrow": "04 — Pagpunta rito",
     "heading": "Pagpunta sa {municipality}"
+  },
+  "weather": {
+    "heading": "Kasalukuyang lagay ng panahon sa {place}",
+    "temperature": "{degrees}°C",
+    "rainChance": "{percent}% na tsansa ng ulan ngayong araw",
+    "observedAt": "Kinuha ang pagbasa nang {time}.",
+    "attribution": "Datos ng taya mula sa <source>Open-Meteo</source>, CC BY 4.0.",
+    "notAdvisory": "Ito ay output ng modelo ng taya, hindi opisyal na ulat — ang PAGASA ang may awtoridad sa mga ulat tungkol sa bagyo at sa pag-ulan.",
+    "unavailable": "Walang makuhang kasalukuyang pagbasa sa ngayon.",
+    "conditions": {
+      "clearSky": "Maaliwalas na langit",
+      "mainlyClear": "Halos maaliwalas",
+      "partlyCloudy": "Bahagyang maulap",
+      "overcast": "Makulimlim",
+      "fog": "Makapal na hamog",
+      "freezingFog": "Nagyeyelong hamog",
+      "lightDrizzle": "Mahinang ambon",
+      "drizzle": "Ambon",
+      "heavyDrizzle": "Malakas na ambon",
+      "lightFreezingDrizzle": "Mahinang nagyeyelong ambon",
+      "freezingDrizzle": "Nagyeyelong ambon",
+      "lightRain": "Mahinang ulan",
+      "rain": "Ulan",
+      "heavyRain": "Malakas na ulan",
+      "lightFreezingRain": "Mahinang nagyeyelong ulan",
+      "freezingRain": "Nagyeyelong ulan",
+      "lightSnow": "Mahinang niyebe",
+      "snow": "Niyebe",
+      "heavySnow": "Malakas na niyebe",
+      "snowGrains": "Butil ng niyebe",
+      "lightRainShowers": "Mahinang pabugso-bugsong ulan",
+      "rainShowers": "Pabugso-bugsong ulan",
+      "heavyRainShowers": "Malakas na pabugso-bugsong ulan",
+      "lightSnowShowers": "Mahinang pabugso-bugsong niyebe",
+      "snowShowers": "Pabugso-bugsong niyebe",
+      "thunderstorms": "Pagkidlat at pagkulog",
+      "thunderstormsWithHail": "Pagkidlat at pagkulog na may yelo",
+      "thunderstormsWithHeavyHail": "Pagkidlat at pagkulog na may malakas na yelo",
+      "unknown": "Hindi nakilala ang kondisyon"
+    },
+    "humidity": "{percent}%",
+    "humidityLabel": "Halumigmig",
+    "wind": "{kph} km/h",
+    "windLabel": "Bilis ng hangin",
+    "rainChanceLabel": "Tsansa ng ulan ngayong araw",
+    "conditionAt": "{condition} nang {time}"
+  },
+  "conditions": {
+    "heading": "Paghahanap sa {place}, at ang panahon doon",
+    "mapLabel": "Mapa ng {place}, ipinapakita ang munisipyo",
+    "directions": "Kumuha ng direksyon",
+    "weatherUnavailable": "Walang makuhang kasalukuyang pagbasa ng panahon sa ngayon.",
+    "weatherAttribution": "Datos ng taya mula sa <source>Open-Meteo</source>, CC BY 4.0.",
+    "notAdvisory": "Ito ay output ng modelo ng taya, hindi opisyal na ulat — ang PAGASA ang may awtoridad sa mga ulat tungkol sa bagyo at sa pag-ulan.",
+    "mapAttribution": "Datos ng mapa © mga kontribyutor ng <source>OpenStreetMap</source>, ODbL.",
+    "tileNotice": "Kinukuha ng mapa ang mga tile nito mula sa OpenStreetMap, kaya direktang nakikipag-ugnayan ang inyong browser sa kanila. Ito lamang ang bahagi ng site na humihingi ng anuman sa ibang organisasyon; gumagana ang address at ang link ng direksyon sa itaas kahit wala ito."
   }
 }

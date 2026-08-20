@@ -1,6 +1,7 @@
 import Image from 'next/image';
-import { GitBranch, Github, Users } from 'lucide-react';
-import { getTranslations } from 'next-intl/server';
+import { Eye, GitBranch, Github, Users } from 'lucide-react';
+import { getFormatter, getTranslations } from 'next-intl/server';
+import { VisitCount } from '@/components/layout/VisitCount';
 import { ExternalNavLink } from '@/components/ui/ExternalNavLink';
 import { Logo } from '@/components/ui/Logo';
 import { NavLink } from '@/components/ui/NavLink';
@@ -8,6 +9,7 @@ import { Wordmark } from '@/components/ui/Wordmark';
 import { FOOTER_PAGES, FOOTER_RESOURCES } from '@/data/navigation';
 import { lguConfig } from '@/lib/lgu-config';
 import { PORTAL_VERSION } from '@/lib/version';
+import { getVisitCount } from '@/lib/visits';
 
 /**
  * The four-column footer, on its own near-black ground in both themes.
@@ -56,10 +58,19 @@ export async function SiteFooter({
 }: {
   portal?: (typeof lguConfig)['portal'];
 } = {}) {
-  const [t, tNav, tCommon] = await Promise.all([
+  const [t, tNav, tCommon, format, visits] = await Promise.all([
     getTranslations('footer'),
     getTranslations('nav'),
     getTranslations('common'),
+    getFormatter(),
+    /*
+     * Server-rendered, deliberately. A client-fetched figure would flash, would
+     * need a loading state this codebase does not have, and would put a number
+     * that is not yet true on screen for a frame — which `CountUp.tsx` exists
+     * to prevent. `null` here means the store is unconfigured, cold, or did not
+     * answer, and nothing renders.
+     */
+    getVisitCount(),
   ]);
 
   const { repository, network } = portal;
@@ -251,8 +262,20 @@ export async function SiteFooter({
                 href={repository}
                 rel="noopener noreferrer"
                 target="_blank"
-                className="inline-flex min-h-5 items-center text-ink-link hover:text-ink-link-hover"
+                data-badge="source"
+                /*
+                 * The third badge, and the only one that carries its own
+                 * colour. `border-current` rather than `border-line`: inside
+                 * this scope `--ink-link` is the mark's sun, so the outline is
+                 * literally the link's own ink and cannot drift from it if the
+                 * role is ever re-pointed.
+                 *
+                 * It reads as a different KIND of thing from the two beside it
+                 * on purpose — those are figures, this is somewhere to go.
+                 */
+                className="inline-flex items-center gap-1.5 rounded-full border border-current bg-surface-sunken px-3 py-1 text-ink-link hover:text-ink-link-hover"
               >
+                <Github aria-hidden="true" className="size-3.5 shrink-0" />
                 {t('sourceCode')}
                 <span className="sr-only">
                   {' '}
@@ -260,10 +283,47 @@ export async function SiteFooter({
                 </span>
               </a>
             )}
+            {/*
+              Both figures are BADGES — a pill with a border and a ground,
+              rather than bare text in the rail. They are the only two numbers
+              down here and they read as a pair, so they are shaped as one.
+
+              🔴 The dash is deliberate, and it is NOT the rule `StatBand`
+              follows. There, a missing figure renders its gap-register entry
+              and never a dash, because a population is a civic fact and a dash
+              would stand where a sourced number belongs. A visit count is
+              explicitly decorative — the ticket says so and the label says so —
+              so "— visits" is honest here in a way it would never be there: a
+              dash is not a claim, and it keeps the pair from reflowing every
+              time the store is cold.
+
+              What must still never appear is `0`. A zero is a NUMBER, and this
+              portal has not counted it.
+            */}
+            <p
+              /* Named so a test can find the PAIR without matching every
+                 rounded-full element in the footer — the cost line is one too. */
+              data-badge="visits"
+              className="inline-flex items-center gap-1.5 rounded-full border border-line bg-surface-sunken px-3 py-1 tabular-nums"
+              title={t('visitsCaveat')}
+            >
+              <Eye aria-hidden="true" className="size-3.5 shrink-0" />
+              <span className="sr-only">{t('visitsLabel')}: </span>
+              <span data-badge-value>
+                {visits !== null && visits > 0
+                  ? t('visits', { count: format.number(visits) })
+                  : t('visitsEmpty')}
+              </span>
+              <span className="sr-only"> — {t('visitsCaveat')}</span>
+            </p>
+
             {/* PORTAL_VERSION comes from package.json via src/lib/version.ts —
                 never a literal. The glyph is decorative, so the label it
                 needs is supplied in text for a screen reader. */}
-            <p className="inline-flex items-center gap-1.5 tabular-nums">
+            <p
+              data-badge="version"
+              className="inline-flex items-center gap-1.5 rounded-full border border-line bg-surface-sunken px-3 py-1 tabular-nums"
+            >
               <GitBranch aria-hidden="true" className="size-3.5 shrink-0" />
               <span className="sr-only">{t('version')}: </span>
               {PORTAL_VERSION}
@@ -275,6 +335,14 @@ export async function SiteFooter({
       {/* The nav label is read here so the column headings and the primary
           nav cannot drift into two vocabularies for the same destinations. */}
       <span className="sr-only">{tNav('footerLabel')}</span>
+
+      {/*
+        Renders no markup. It exists to perform the count write, which needs a
+        real browser and the reader's own 24-hour marker — neither available to
+        a prerendered server render. It is mounted here rather than in the
+        layout so the write and the figure live in one file.
+      */}
+      <VisitCount />
     </footer>
   );
 }

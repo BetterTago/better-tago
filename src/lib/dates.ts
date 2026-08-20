@@ -42,6 +42,27 @@ export const YEAR_ONLY = {
 } as const;
 
 /**
+ * A clock time, for the ONE value in this portal that is an instant.
+ *
+ * 🔴 It pins **`Asia/Manila`, not UTC**, and that is the opposite of every
+ * other export here on purpose. The two constants above render a calendar DAY
+ * and must print the day they name from anywhere; a weather reading is a moment,
+ * and the only moment a resident of Tago cares about is the one on their own
+ * clock. Rendering `06:00 PHT` as `22:00` because the server is in UTC would
+ * make a current reading look like last night's.
+ *
+ * It is stated here rather than relying on the global `timeZone` in
+ * `src/i18n/request.ts` — which is also `Asia/Manila` — because a reading whose
+ * hour is wrong is indistinguishable from a stale one, and that is too quiet a
+ * failure to leave to a default two files away.
+ */
+export const TIME_OF_DAY = {
+  timeZone: 'Asia/Manila',
+  hour: 'numeric',
+  minute: '2-digit',
+} as const;
+
+/**
  * An ISO calendar date as the instant that names it, or a throw.
  *
  * The schema already requires `YYYY-MM-DD` on every date it governs. This

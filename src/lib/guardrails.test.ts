@@ -172,6 +172,16 @@ describe('the route set is the one that was reviewed', () => {
     'src/app/[locale]/search/[query]/page.tsx',
     'src/app/[locale]/search/page.tsx',
     'src/app/api/search/route.ts',
+    /*
+     * The visit counter's write endpoint (`TAGO-116`). It earns a handler
+     * differently from the search one: every route here is prerendered, so
+     * there is no server render at the moment a reader arrives, and a per-visit
+     * write has nowhere else to live.
+     *
+     * 🔒 It reads no IP, no cookie and no identifier. Deduplication is the
+     * browser's, against a timestamp only the reader holds.
+     */
+    'src/app/api/visits/route.ts',
     'src/app/[locale]/services/[category]/[slug]/page.tsx',
     'src/app/[locale]/services/[category]/page.tsx',
     // The office facet. A FILTER over resident tasks, prerendered one page per
@@ -517,6 +527,24 @@ describe('the server/client boundary', () => {
       'src/components/ui/HtmlLang.tsx',
       'src/components/ui/LocaleSwitcher.tsx',
       'src/components/ui/ThemeToggle.tsx',
+      /*
+       * Renders NO markup. It is a client module for the one thing a server
+       * cannot do on a prerendered route: know that a real browser just loaded
+       * the page, and read the reader's own 24-hour marker. The figure itself
+       * is server-rendered in `SiteFooter`, deliberately — see `CountUp.tsx`
+       * for why a number never starts life in the browser here.
+       */
+      'src/components/layout/VisitCount.tsx',
+      /*
+       * Leaflet is a browser library end to end — it measures a viewport,
+       * attaches wheel and keyboard handlers, and paints tiles into a DOM node.
+       * There is no server equivalent and no server rendering of it.
+       *
+       * 🔴 It is also the ONLY component in this repository that causes a
+       * reader's browser to contact a third party. `LocalConditions` states that
+       * on the page. Read `HallMap.tsx`'s own note before adding another.
+       */
+      'src/components/home/HallMap.tsx',
     ];
 
     const actual = SRC_FILES.filter(
@@ -527,6 +555,65 @@ describe('the server/client boundary', () => {
     ).map(file => file.path);
 
     expect(actual.sort()).toEqual([...CLIENT_LEAVES].sort());
+  });
+});
+
+describe("nothing is loaded from someone else's server", () => {
+  /*
+   * `TAGO-110` criterion 5 as amended on 2026-08-20. Only the TRAFFIC half was
+   * reversed; this half was not, and it is the half that is easiest to breach
+   * by accident — a CDN `<script>` is one copy-paste from any tutorial.
+   *
+   * 🔴 It became load-bearing the day the map shipped. The reference portal
+   * loads Leaflet from `unpkg.com`; this one takes the same library at the same
+   * version from the lockfile instead, and the only thing keeping those apart
+   * is this test.
+   *
+   * ⚠️ What this does NOT claim: that no third-party request happens. The map
+   * fetches tiles from OpenStreetMap, which is a deliberate, stated exception
+   * — `LocalConditions` tells the reader so on the page. What is forbidden is
+   * executing CODE served by someone else.
+   */
+  const CDN_HOSTS =
+    /(?:src|href)=["'`]https?:\/\/(?:[a-z0-9-]+\.)*(?:unpkg\.com|cdn\.jsdelivr\.net|cdnjs\.cloudflare\.com|ajax\.googleapis\.com|esm\.sh|skypack\.dev)/i;
+
+  it('loads no script or stylesheet from a CDN', () => {
+    expect(offenders(SRC_FILES, CDN_HOSTS)).toEqual([]);
+  });
+
+  it('fires on a doctored fixture', () => {
+    // A guardrail that has never gone red is not known to work.
+    expect(
+      offenders(
+        [
+          {
+            path: 'fixture',
+            text: '<script src="https://unpkg.com/leaflet@1.9.4/dist/leaflet.js"></script>',
+          },
+        ],
+        CDN_HOSTS
+      )
+    ).toHaveLength(1);
+  });
+
+  it('resolves leaflet from the lockfile, at a pinned stable version', () => {
+    /*
+     * `2.0.0` exists only as an alpha, so `1.9.4` IS latest stable. Pinned in
+     * this assertion rather than trusted to a range: a `latest` bump that
+     * silently took the alpha would be a rewrite landing in a civic site.
+     */
+    const pkg = JSON.parse(
+      readFileSync(path.join(ROOT, 'package.json'), 'utf8')
+    ) as { dependencies: Record<string, string> };
+    expect(pkg.dependencies.leaflet).toBe('^1.9.4');
+  });
+
+  it('imports leaflet only from the one client leaf that owns it', () => {
+    // Keeps the third-party surface to a single reviewable file.
+    const importers = SRC_FILES.filter(file =>
+      /from ['"]leaflet|import\(['"]leaflet/.test(file.text)
+    ).map(file => file.path);
+    expect(importers).toEqual(['src/components/home/HallMap.tsx']);
   });
 });
 
@@ -697,6 +784,15 @@ describe('translation coverage', () => {
     // A unit symbol. There is nothing to translate, and "translating" km²
     // would be a typography change wearing a costume.
     'stats.squareKilometres': 'a unit symbol, not a word',
+    // Same reasoning, added with the conditions strip: `{degrees}°C` is a
+    // number and a unit symbol. Every other string in the `weather` namespace,
+    // including all 29 condition labels, is really translated.
+    'weather.temperature': 'a number and a unit symbol, not a word',
+    // Added with the local-conditions panel. Same reasoning again: a figure and
+    // an SI unit. The LABELS beside them — `humidityLabel`, `windLabel` — are
+    // words, and both are really translated.
+    'weather.humidity': 'a number and a unit symbol, not a word',
+    'weather.wind': 'a number and a unit symbol, not a word',
     /*
      * Proper nouns and product names, added with the footer's Resources column
      * on 2026-08-10. Each is the name the destination gives ITSELF and is what
