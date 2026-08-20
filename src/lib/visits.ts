@@ -1,3 +1,4 @@
+import { cacheLife, cacheTag } from 'next/cache';
 import { z } from 'zod';
 
 /**
@@ -106,7 +107,18 @@ export function isVisitStoreConfigured(): boolean {
   return Boolean(STORE_URL && STORE_TOKEN);
 }
 
-async function command(...path: string[]): Promise<unknown> {
+/**
+ * One store command.
+ *
+ * ⚠️ `init` is how the READ and the WRITE differ, and the difference matters.
+ * The read runs inside a `'use cache'` scope and lets that scope govern it; the
+ * write passes `no-store` explicitly, so no future refactor can quietly cache an
+ * increment and stop the counter dead.
+ */
+async function command(
+  path: string[],
+  init?: Pick<RequestInit, 'cache'>
+): Promise<unknown> {
   if (!STORE_URL || !STORE_TOKEN) return null;
 
   try {
@@ -115,9 +127,7 @@ async function command(...path: string[]): Promise<unknown> {
       {
         headers: { authorization: `Bearer ${STORE_TOKEN}` },
         signal: AbortSignal.timeout(TIMEOUT_MS),
-        // This value changes on every visit. Caching it would be a bug that
-        // renders as a counter that has stopped.
-        cache: 'no-store',
+        ...init,
       }
     );
     if (!response.ok) return null;
@@ -137,9 +147,9 @@ async function command(...path: string[]): Promise<unknown> {
  * portal knows nothing, and a portal that publishes `0` visits it has not
  * counted is publishing a number that is not true. The footer renders nothing.
  */
-export async function getVisitCount(): Promise<number | null> {
+export async function readVisitCount(): Promise<number | null> {
   if (isVisitStoreConfigured()) {
-    const result = await command('get', KEY);
+    const result = await command(['get', KEY]);
     if (result === null || result === undefined) return null;
 
     const count = Number(result);
@@ -172,6 +182,34 @@ export async function getVisitCount(): Promise<number | null> {
 }
 
 /**
+ * The cached count. This is what `SiteFooter` calls.
+ *
+ * 🔴 The `'use cache'` is NOT optional, and its absence broke the deployment
+ * build.
+ *
+ * `SiteFooter` renders inside `src/app/[locale]/layout.tsx`, so this read sits
+ * in `<html><body>` on EVERY route. Uncached, that is uncached data outside a
+ * `<Suspense>` boundary, which `cacheComponents` refuses to prerender:
+ *
+ *   Route "/[locale]/charter/documents/[slug]": Uncached data was accessed
+ *   outside of <Suspense> … at body … at html
+ *
+ * `getWeather` in `src/lib/weather.ts` was written this way from the start;
+ * this was not, and the inconsistency was invisible on a local build.
+ *
+ * A thin wrapper for the same reason as `getWeather` — everything that can fail
+ * is in `readVisitCount`, where a test can reach it, because `'use cache'` only
+ * resolves inside the Next runtime.
+ */
+export async function getVisitCount(): Promise<number | null> {
+  'use cache';
+  cacheLife('visits');
+  cacheTag('visits');
+
+  return readVisitCount();
+}
+
+/**
  * Add one. Best effort, and deliberately unreported.
  *
  * The caller never awaits this on a render path and there is nothing useful to
@@ -180,5 +218,5 @@ export async function getVisitCount(): Promise<number | null> {
  * not count would not be.
  */
 export async function recordVisit(): Promise<void> {
-  await command('incr', KEY);
+  await command(['incr', KEY], { cache: 'no-store' });
 }

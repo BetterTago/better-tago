@@ -558,6 +558,77 @@ describe('the server/client boundary', () => {
   });
 });
 
+describe('everything a Server Component reads is cached', () => {
+  /*
+   * 🔴 This exists because its absence broke a deployment, and nothing local
+   * caught it.
+   *
+   * `cacheComponents: true` means nothing is cached implicitly. A loader that a
+   * Server Component awaits without `'use cache'` is UNCACHED DATA, and if that
+   * component renders in a layout it sits inside `<html><body>` on every route
+   * with no `<Suspense>` around it — which the build refuses to prerender:
+   *
+   *   Route "/[locale]/charter/documents/[slug]": Uncached data was accessed
+   *   outside of <Suspense> … at body … at html
+   *
+   * `src/lib/weather.ts` was written with `'use cache'` from the first line.
+   * `src/lib/visits.ts` was not, and `SiteFooter` renders in the locale layout.
+   * The two were inconsistent and only one of them was ever going to fail.
+   *
+   * ⚠️ What this proves and what it does not: it proves every module in `lib/`
+   * that reaches the network also opts into the cache SOMEWHERE. It cannot
+   * prove the right function carries it. The named assertions below cover the
+   * loaders that actually render in the layout tree, which is where the cost of
+   * getting it wrong is a failed build rather than a slow page.
+   */
+  const FETCHERS = SRC_FILES.filter(
+    file =>
+      file.path.startsWith('src/lib/') &&
+      !/\.test\.tsx?$/.test(file.path) &&
+      /\bfetch\(/.test(file.text)
+  );
+
+  it('is actually finding the modules that reach the network', () => {
+    // A scan that silently matches nothing is a green no-op.
+    expect(FETCHERS.map(file => file.path).sort()).toEqual([
+      'src/lib/visits.ts',
+      'src/lib/weather.ts',
+    ]);
+  });
+
+  it('opts every one of them into the cache', () => {
+    const uncached = FETCHERS.filter(
+      file => !/'use cache'/.test(file.text)
+    ).map(file => file.path);
+    expect(uncached).toEqual([]);
+  });
+
+  it('caches the loaders the LAYOUT tree awaits', () => {
+    const declaration = (text: string, fn: string) => {
+      const start = text.indexOf(`export async function ${fn}(`);
+      expect(start, `${fn} not found`).toBeGreaterThan(-1);
+      return text.slice(start, start + 900);
+    };
+
+    const visits = SRC_FILES.find(f => f.path === 'src/lib/visits.ts')!.text;
+    const weather = SRC_FILES.find(f => f.path === 'src/lib/weather.ts')!.text;
+
+    expect(declaration(visits, 'getVisitCount')).toContain("'use cache'");
+    expect(declaration(weather, 'getWeather')).toContain("'use cache'");
+  });
+
+  it('keeps the visit INCREMENT uncached', () => {
+    // The mirror of the rule above. A cached increment is a counter that has
+    // silently stopped, which looks exactly like a working feature.
+    const visits = SRC_FILES.find(f => f.path === 'src/lib/visits.ts')!.text;
+    const start = visits.indexOf('export async function recordVisit(');
+    expect(start).toBeGreaterThan(-1);
+    const body = visits.slice(start, start + 400);
+    expect(body).not.toContain("'use cache'");
+    expect(body).toContain("cache: 'no-store'");
+  });
+});
+
 describe("nothing is loaded from someone else's server", () => {
   /*
    * `TAGO-110` criterion 5 as amended on 2026-08-20. Only the TRAFFIC half was

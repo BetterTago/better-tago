@@ -10,6 +10,21 @@ vi.mock('next-intl/server', async () => {
 });
 
 /*
+ * `getVisitCount` carries `'use cache'` + `cacheLife('visits')`, and `cacheLife`
+ * throws outside the Next runtime — the same wall `AdvisoryBar.test.tsx`
+ * documents for `getManifest`. Stubbed rather than worked around, because what
+ * this file tests is the Contribute column and the badge rail, not the store.
+ *
+ * `null` is the deliberate value: it is the state every developer machine and
+ * every unconfigured deployment is in, and it exercises the branch that must
+ * render "— visits" rather than a zero. The store's own behaviour is pinned in
+ * `src/lib/visits.test.ts`, against the uncached half where it can be reached.
+ */
+vi.mock('@/lib/visits', () => ({
+  getVisitCount: () => Promise.resolve(null),
+}));
+
+/*
  * `NavLink` reaches `@/i18n/navigation`, whose `Link` is built by next-intl's
  * CLIENT navigation factory and pulls in `next/navigation` — a module that does
  * not resolve outside a Next request. Only the two column lists route through

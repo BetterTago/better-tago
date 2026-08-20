@@ -186,6 +186,12 @@ describe('the preview count', () => {
    * environment already stubbed. `vi.resetModules()` is what makes that real
    * rather than returning the first-loaded copy.
    */
+  /*
+   * `readVisitCount`, not `getVisitCount` — the cached wrapper carries
+   * `'use cache'`, which only resolves inside the Next runtime, so it cannot be
+   * called from a unit test at all. Everything that can be wrong lives in the
+   * uncached half, which is exactly why the two are split.
+   */
   const load = async (env: Record<string, string | undefined>) => {
     vi.resetModules();
     for (const [key, value] of Object.entries(env)) {
@@ -201,8 +207,8 @@ describe('the preview count', () => {
   });
 
   it('renders the stand-in when no store is configured', async () => {
-    const { getVisitCount } = await load({ VISITOR_COUNT_PREVIEW: '12480' });
-    await expect(getVisitCount()).resolves.toBe(12480);
+    const { readVisitCount } = await load({ VISITOR_COUNT_PREVIEW: '12480' });
+    await expect(readVisitCount()).resolves.toBe(12480);
   });
 
   it('🔴 never outranks a real store', async () => {
@@ -216,35 +222,35 @@ describe('the preview count', () => {
       'fetch',
       vi.fn().mockResolvedValue({ ok: true, json: async () => ({ result: 7 }) })
     );
-    const { getVisitCount } = await load({
+    const { readVisitCount } = await load({
       VISITOR_STORE_URL: 'https://store.example',
       VISITOR_STORE_TOKEN: 'token',
       VISITOR_COUNT_PREVIEW: '999999',
     });
-    await expect(getVisitCount()).resolves.toBe(7);
+    await expect(readVisitCount()).resolves.toBe(7);
   });
 
   it('🔴 stays silent when a configured store fails, even with a preview set', async () => {
     // The dangerous case: a real deployment whose store is down must render
     // nothing, not fall back to a fabricated figure.
     vi.stubGlobal('fetch', vi.fn().mockRejectedValue(new TypeError('down')));
-    const { getVisitCount } = await load({
+    const { readVisitCount } = await load({
       VISITOR_STORE_URL: 'https://store.example',
       VISITOR_STORE_TOKEN: 'token',
       VISITOR_COUNT_PREVIEW: '999999',
     });
-    await expect(getVisitCount()).resolves.toBeNull();
+    await expect(readVisitCount()).resolves.toBeNull();
   });
 
   it('renders nothing for a malformed preview value', async () => {
     for (const value of ['', 'lots', '-1', '12.5', 'NaN']) {
-      const { getVisitCount } = await load({ VISITOR_COUNT_PREVIEW: value });
-      await expect(getVisitCount(), value).resolves.toBeNull();
+      const { readVisitCount } = await load({ VISITOR_COUNT_PREVIEW: value });
+      await expect(readVisitCount(), value).resolves.toBeNull();
     }
   });
 
   it('renders nothing when no preview and no store are set', async () => {
-    const { getVisitCount } = await load({});
-    await expect(getVisitCount()).resolves.toBeNull();
+    const { readVisitCount } = await load({});
+    await expect(readVisitCount()).resolves.toBeNull();
   });
 });
